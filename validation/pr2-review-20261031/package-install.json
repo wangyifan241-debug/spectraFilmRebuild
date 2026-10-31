@@ -1,0 +1,12 @@
+{
+  "passed": true,
+  "installed_files_checked": 1721,
+  "executable_sha256": "b963bc9d2bb1b2c62bdd16ad7c4a44a91e83bdcb207b120fa657757423123acf",
+  "isolated_path": "D:\\学习资料\\SpektraLab\\build\\installer-pr2-review\\install-test-83d5cd20629e4bb386d49fdc56449b52\\安装 测试",
+  "overwrite_refused": true,
+  "installed_app_smoke": true,
+  "uninstalled": true,
+  "recipient_file_preserved": true,
+  "user_registration_unchanged": true,
+  "clean_machine": false
+}

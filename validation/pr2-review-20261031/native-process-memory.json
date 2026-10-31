@@ -1,0 +1,7 @@
+{
+  "exit_code": 0,
+  "observed_peak_working_set_bytes": 2875416576,
+  "observed_peak_paged_bytes": 4474970112,
+  "native_qwindows": true,
+  "synthetic": false
+}
