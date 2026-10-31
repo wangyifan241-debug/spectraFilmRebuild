@@ -127,3 +127,7 @@ $p=Start-Process -FilePath D:/学习资料/SpektraLab/build/qt-pr2-review-final/
 安装必须使用新的空目录；本 Preview 拒绝覆盖和目录联接。升级前先保存编辑、卸载旧包，材料/编辑数据在用户数据目录，卸载不递归删除。安装失败可能留下无注册、无有效 marker 的部分文件；不会为清理残留递归删除用户目录。marker 是防误操作/目录归属校验，不是抵抗具有同等写权限攻击者的密码学认证；目录检查与删除之间的恶意并发替换也没有句柄级原子防护。
 
 **尚未达到正式发布标准**：广色域导出 UI、完整 45/61MP 相机 RAW 的 CPU/VRAM 峰值、全部旧照片金样对照、Mac 全链路色彩一致性、硬终止日志恢复、干净 Windows、非 ASCII 用户名、多显卡/显示器/HDR、可见窗口交互和 Authenticode 签名仍待后续验收。保留为 Preview 与 Draft PR，等待人工审查，不自行合并。
+
+## 后续用户复测：分屏线越界
+
+修复 100% 和平移时分屏线及其拖动区域超出画布的问题。新增六种视图状态的像素回归及四种位置的拖动测试，先红后绿；Windows Release 完整 CTest 再次 35/35 通过，0 失败、0 跳过，210.37 秒。细节、测试范围和新启动路径见 [COMPARE-DIVIDER.md](COMPARE-DIVIDER.md)。此次独立构建位于 `build/qt-compare-divider/app/`；上文 `review.2` 安装包未重打包，不包含本次 UI 修复。

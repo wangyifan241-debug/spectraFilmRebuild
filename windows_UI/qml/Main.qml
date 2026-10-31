@@ -430,16 +430,19 @@ ApplicationWindow {
                         Keys.onPressed: function(event) { if(event.key===Qt.Key_Space && !event.isAutoRepeat) { heldOriginal=true;event.accepted=true } }
                         Keys.onReleased: function(event) { if(event.key===Qt.Key_Space) { heldOriginal=false;event.accepted=true } }
                         onActiveFocusChanged: if(!activeFocus)heldOriginal=false
-                    }
-                    Rectangle {
-                        visible: canvas.compare && !canvas.showOriginal && preview.hasFrame
-                        x: canvas.x + canvas.imageRect.x + canvas.imageRect.width * canvas.splitPosition
-                        y: canvas.y + canvas.imageRect.y; width: 1; height: canvas.imageRect.height
-                        color: Theme.text
-                        MouseArea {
-                            anchors.fill: parent; anchors.leftMargin: -7; anchors.rightMargin: -7
-                            cursorShape: Qt.SplitHCursor
-                            onPositionChanged: function(mouse) { if(pressed) { var p=mapToItem(canvas,mouse.x,mouse.y);canvas.splitPosition=(p.x-canvas.imageRect.x)/canvas.imageRect.width } }
+                        // Clip the divider and its hit area with the textures.
+                        // At 100% imageRect may extend far beyond the viewport.
+                        Rectangle {
+                            objectName: "compareDivider"
+                            visible: canvas.compare && !canvas.showOriginal && preview.hasFrame
+                            x: canvas.imageRect.x + canvas.imageRect.width * canvas.splitPosition
+                            y: canvas.imageRect.y; width: 1; height: canvas.imageRect.height
+                            color: Theme.text
+                            MouseArea {
+                                anchors.fill: parent; anchors.leftMargin: -7; anchors.rightMargin: -7
+                                cursorShape: Qt.SplitHCursor
+                                onPositionChanged: function(mouse) { if(pressed) { var p=mapToItem(canvas,mouse.x,mouse.y);canvas.splitPosition=(p.x-canvas.imageRect.x)/canvas.imageRect.width } }
+                            }
                         }
                     }
                     Item {

@@ -478,7 +478,62 @@ private:
             require(false,"unexpected_operation_during_settle");
         }
     }
+    void testComparisonViewport(int view,std::function<void()> complete) {
+        if(view==6) {
+            canvas_->resetView(true);canvas_->setSplitPosition(.37);
+            window_.setProperty("compareMode",false);
+            later(std::move(complete));return;
+        }
+        // Exercise the actual QML overlay as well as the clipped textures.
+        // Native-size images extend beyond the viewport; their divider and
+        // its hit area must never escape into the rails or toolbar.
+        canvas_->resetView(view==0);
+        if(view==2)canvas_->panBy(1e9,1e9);
+        if(view==3)canvas_->panBy(-1e9,-1e9);
+        canvas_->setSplitPosition(view==2?.15:view==3?.85:view==4?0:view==5?1:.5);
+        canvas_->setCompare(false);
+        later([this,view,complete=std::move(complete)]{
+            if(!capture(QStringLiteral("compare-viewport-%1-base").arg(view)))return;
+            const auto baseline=capture_;
+            canvas_->setCompare(true);
+            later([this,view,baseline,complete]{
+                if(!capture(QStringLiteral("compare-viewport-%1-split").arg(view)))return;
+                const double ratio=window_.effectiveDevicePixelRatio();
+                const auto origin=canvas_->mapToScene(QPointF());
+                const QRectF viewport(origin,QSizeF(canvas_->width(),canvas_->height()));
+                bool contained=baseline.size()==capture_.size();
+                for(int y=0;contained&&y<capture_.height();++y)
+                    for(int x=0;x<capture_.width();++x)
+                        if(!viewport.adjusted(-1,-1,1,1).contains(QPointF((x+.5)/ratio,(y+.5)/ratio))&&
+                           baseline.pixel(x,y)!=capture_.pixel(x,y)){contained=false;break;}
+                if(!require(contained,QStringLiteral("compare_viewport_%1_no_pixels_outside_canvas").arg(view)))return;
+                auto* divider=visualNamed(window_.contentItem(),"compareDivider");
+                if(view==5&&!require(divider&&divider->parentItem()==canvas_&&canvas_->clip()&&divider->width()==1,
+                            QStringLiteral("compare_viewport_%1_line_and_hit_area_clipped_at_constant_width").arg(view)))return;
+                if(view<4) {
+                    const auto imageBox=canvas_->imageRect();const double split=canvas_->splitPosition();
+                    const auto start=canvas_->mapToScene(QPointF(imageBox.x()+imageBox.width()*split+.5,canvas_->height()*.5));
+                    const auto end=start+QPointF(12,0);
+                    auto pointer=[this](QEvent::Type type,QPointF point,Qt::MouseButton button,Qt::MouseButtons buttons){
+                        QMouseEvent event(type,point,point,window_.mapToGlobal(point.toPoint()),button,buttons,Qt::NoModifier);
+                        QCoreApplication::sendEvent(&window_,&event);
+                    };
+                    pointer(QEvent::MouseButtonPress,start,Qt::LeftButton,Qt::LeftButton);
+                    pointer(QEvent::MouseMove,end,Qt::NoButton,Qt::LeftButton);
+                    pointer(QEvent::MouseButtonRelease,end,Qt::LeftButton,Qt::NoButton);
+                    const double expected=(end.x()-origin.x()-imageBox.x())/imageBox.width();
+                    if(!require(std::abs(canvas_->splitPosition()-expected)<1e-6&&canvas_->imageRect()==imageBox,
+                                QStringLiteral("compare_viewport_%1_drag_moves_split_without_panning").arg(view)))return;
+                }
+                testComparisonViewport(view+1,complete);
+            });
+        });
+    }
     void testComparisons() {
+        window_.setProperty("originalMode",false);window_.setProperty("compareMode",true);
+        testComparisonViewport(0,[this]{testComparisonModes();});
+    }
+    void testComparisonModes() {
         const auto held=controller_.frame();const auto rendered=controller_.previewImage();
         const auto original=controller_.originalImage();
         if(!require(!original.isNull()&&original.size()==rendered.size()&&original!=rendered,"comparison_has_real_decoded_original"))return;
