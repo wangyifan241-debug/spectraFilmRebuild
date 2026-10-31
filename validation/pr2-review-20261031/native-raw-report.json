@@ -202,7 +202,7 @@
             "display_sha256": "cce2cc6855a002fa8401764d47df0deaa6adbc49cf5a82b4dbf760717a885291",
             "film": "fujifilm_provia_100f",
             "height": 2271,
-            "render_ms": 393.2418,
+            "render_ms": 536.9309,
             "scan_film": true,
             "screenshot": "slide-fujifilm_provia_100f.png",
             "width": 3400
@@ -212,7 +212,7 @@
             "display_sha256": "94b8112e1c99b694bed8122f920684b797d0720fba40c06754db42bd15dfbce4",
             "film": "fujifilm_velvia_100",
             "height": 2271,
-            "render_ms": 440.8554,
+            "render_ms": 405.0751,
             "scan_film": true,
             "screenshot": "slide-fujifilm_velvia_100.png",
             "width": 3400
@@ -222,7 +222,7 @@
             "display_sha256": "2235baa7a1f110233b89a3d646920ee7f840a491ae00a4bf8e5ddbcb17394ef7",
             "film": "kodak_ektachrome_100",
             "height": 2271,
-            "render_ms": 491.712,
+            "render_ms": 452.7574,
             "scan_film": true,
             "screenshot": "slide-kodak_ektachrome_100.png",
             "width": 3400
@@ -232,7 +232,7 @@
             "display_sha256": "df42e95a129f1e72f1b19fa1ca2a898a81b78d01a578f85876e24f763f8a195f",
             "film": "kodak_kodachrome_64",
             "height": 2271,
-            "render_ms": 512.9989,
+            "render_ms": 467.2103,
             "scan_film": true,
             "screenshot": "slide-kodak_kodachrome_64.png",
             "width": 3400
@@ -242,7 +242,7 @@
             "display_sha256": "b8552ab7b7817d5d0149d2e40cfd52b6d3e3f3c79ecffc24e9c3abdf5085ee9a",
             "film": "fujifilm_provia_100f",
             "height": 2271,
-            "render_ms": 508.3793,
+            "render_ms": 423.4333,
             "scan_film": true,
             "screenshot": "slide-fujifilm_provia_100f-headroom.png",
             "width": 3400
@@ -252,7 +252,7 @@
             "display_sha256": "c9325c318bcc25beb63c3322daf34e444e96a03d90781d11018ffd0ba2f8479b",
             "film": "fujifilm_velvia_100",
             "height": 2271,
-            "render_ms": 476.4335,
+            "render_ms": 472.6093,
             "scan_film": true,
             "screenshot": "slide-fujifilm_velvia_100-headroom.png",
             "width": 3400
@@ -262,7 +262,7 @@
             "display_sha256": "347f6472e6d63e3eefefb42463c2eabe3e4ec15f50c41bc2d195df8666eb865e",
             "film": "kodak_ektachrome_100",
             "height": 2271,
-            "render_ms": 498.3877,
+            "render_ms": 429.8194,
             "scan_film": true,
             "screenshot": "slide-kodak_ektachrome_100-headroom.png",
             "width": 3400
@@ -272,7 +272,7 @@
             "display_sha256": "82feb4837fe269c1aca1d2461a316a54d176000d78ccf05e6c942c355447cbd2",
             "film": "kodak_kodachrome_64",
             "height": 2271,
-            "render_ms": 460.5678,
+            "render_ms": 452.4496,
             "scan_film": true,
             "screenshot": "slide-kodak_kodachrome_64-headroom.png",
             "width": 3400

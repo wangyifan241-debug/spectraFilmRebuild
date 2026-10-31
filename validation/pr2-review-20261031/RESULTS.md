@@ -6,10 +6,10 @@
 
 | 项目 | 实现与范围 |
 |---|---|
-| 任务生命周期 | `PreviewController.cpp:89` 的任务信封保留 generation、settings revision、operation；worker 捕获标准与非标准异常，错误能归还 UI，worker 可继续工作。`accept:129` 保留先拒绝旧 generation 的规则。原 busy 竞态在当前公共入口下为误报；新增测试还覆盖将来允许排队时的旧回复。 |
+| 任务生命周期 | `PreviewController.cpp:89` 的任务信封保留 generation、settings revision、operation；worker 捕获标准与非标准异常，错误能归还 UI，worker 可继续工作。`submit:123` 在发 Qt 信号前捕获元信息，`accept:132` 保留先拒绝旧 generation 的规则。原 busy 竞态在当前公共入口下为误报；新增测试覆盖旧回复、异常恢复及同步信号回调中的新编辑。 |
 | 曝光 | `FrameOutput.cpp:74-84` 新配方按真实 sRGB / ROMM CCTF 解码 → 乘 2^EV → 编码。`EditStore.cpp:244,367,449` 的 v9 明确保存 `linear-v1` / `gamma22-v1`。v2-v8 自动读取为历史模型；v1 原本无后期调整。旧记录读取不改写，实际保存才升级容器，旧模型仍保留。默认未调整时像素不变。 |
 | 内存 | `FrameOutput.cpp:495` 在最终编码前释放不再需要的工作空间中间图。原有 128 行浮点色彩转换与 TIFF 分条写入保留。此项缩短一张 RGBA16 图的持有期，**不保证整个进程峰值必然降低同样数值**。 |
-| 编辑保存 | `PreviewController.cpp:811-833` 保留 pending、显示错误、最多 3 次自动重试（1/2/4 秒），成功后清除提示；提供手动重试。正常关闭会同步尝试保存；仍有未保存修改时取消关闭并显示对话框。原子写入、冲突拒绝、照片指纹与材料版本校验保留。 |
+| 编辑保存 | `PreviewController.cpp:814-837` 保留 pending、显示错误、最多 3 次自动重试（1/2/4 秒），成功后清除提示；提供手动重试。正常关闭会同步尝试保存；仍有未保存修改时取消关闭并显示对话框。原子写入、冲突拒绝、照片指纹与材料版本校验保留。 |
 | 安装与卸载 | `preview.nsi` 校验 UTF-16 marker 的产品/构建和实际安装目录；受管理目录及其祖先存在联接/符号链接时拒绝。删除前先检查全部目录，随后只删准确文件清单，目录仅非递归删除。解压/写卸载器/写 marker/注册失败会返回错误，不启动应用，不留下有效 marker；为保护个人文件，失败残留不递归清理。 |
 | 构建与打包 | `source-inventory.ps1` 增加部署目录的准确文件集合及 SHA256；`build.ps1` 保存测试后的清单；`package.ps1` 在打包前及复制后核对 DLL、插件、资源与 EXE，并拒绝 reparse 输入。该关系是可追溯构建，尚非逐字节确定性构建。 |
 
@@ -46,7 +46,7 @@ Qt 当前导出仍明确为 sRGB：先转换像素，再嵌入对应 ICC。广�
 | 8256×5504（45.44MP） | 1330663424 | 1269.02 |
 | 9600×6400（61.44MP） | 1794011136 | 1710.90 |
 
-这是 **Qt 导出子链**，没有包含真实 RAW 解码、host 保留帧或 GPU 分配，不可当作完整 RAW 峰值。测量时后台有构建活动，不用耗时作为速度基准。完整 45/61MP 相机 RAW 的 CPU/VRAM 峰值及跨显卡表现仍未验证。
+这是 **Qt 导出子链**，没有包含真实 RAW 解码、host 保留帧或 GPU 分配，不可当作完整 RAW 峰值。测量时后台有构建活动，不用耗时作为速度基准。后续任务信号捕获修复不涉及该 FrameOutput 实现。完整 45/61MP 相机 RAW 的 CPU/VRAM 峰值及跨显卡表现仍未验证。
 
 ## 复现与运行命令
 
@@ -74,7 +74,9 @@ Qt 当前导出仍明确为 sRGB：先转换像素，再嵌入对应 ICC。广�
 
 ## 最终验证
 
-代码提交 `eff48d12`，最终稳定源码 Release 构建成功。完整 CTest **35 通过 / 0 失败 / 0 跳过，206.80 秒**。完整输出为 [ctest.log](ctest.log)，构建身份为 [qt-build.json](qt-build.json)。其中包括原有 32 项与新增 controller、colour、payload inventory 三项。先前失败的断言已修复为正确的版本 fixture，全部重跑，没有跳过或降低精度界限。
+代码提交 `f187ff00`（主体修复 `eff48d12`），最终稳定源码 Release 构建成功。完整 CTest **35 通过 / 0 失败 / 0 跳过，197.55 秒**。完整输出为 [ctest.log](ctest.log)，构建身份为 [qt-build.json](qt-build.json)。其中包括原有 32 项与新增 controller、colour、payload inventory 三项。先前失败的断言已修复为正确的版本 fixture，全部重跑，没有跳过或降低精度界限。
+
+收尾检查发现本轮新任务信封曾在发信号后捕获 revision；同步 `stateChanged` 回调编辑设置会将旧任务误标为新 revision。新增回归先在该实现上退出 1：`reentrant edit relabelled an old job as the newest revision`；随后将捕获移至信号前，回归及完整 CTest 通过。该问题不是原始 HEAD 的 generation/busy 竞态。修复后又重新执行真实 RAW 自测、打包和完整安装测试；旧 review.1 包已标记不可分发，以下均指 review.2。
 
 | 实际运行 | 结果 | 限定 |
 |---|---|---|
@@ -85,7 +87,7 @@ Qt 当前导出仍明确为 sRGB：先转换像素，再嵌入对应 ICC。广�
 | 归档源码 | 480/480 条目哈希正确、无额外条目 | 与稳定源码清单一致 |
 | 大图探针 | 3/3 独立进程退出 0 | 上述 24/45/61MP 合成 RGBA16 的 Qt 子链 |
 
-真实 RAW 的完整自动化序列还覆盖连续编辑去抖、真实在途渲染被新设置取代、导出与编辑交错、显示发布失败后的恢复、胶片/相纸、裁切、对比、日期、片边、双拼、材料版本保存和文件导出。原生进程每 500ms 读取 Windows peak counter，观测到峰值工作集 `2875416576` 字节，峰值 paged/commit counter `4474970112` 字节；这是**整段多操作自测**，不是单次导出或 GPU 峰值。详情见 [native-raw-report.json](native-raw-report.json)、[native-process-memory.json](native-process-memory.json)。
+真实 RAW 的完整自动化序列还覆盖连续编辑去抖、真实在途渲染被新设置取代、导出与编辑交错、显示发布失败后的恢复、胶片/相纸、裁切、对比、日期、片边、双拼、材料版本保存和文件导出。原生进程每 500ms 读取 Windows peak counter，观测到峰值工作集 `2391379968` 字节，峰值 paged/commit counter `4493000704` 字节；这是**整段多操作自测**，不是单次导出或 GPU 峰值，也不能与不同后台负载下的旧运行直接比较。详情见 [native-raw-report.json](native-raw-report.json)、[native-process-memory.json](native-process-memory.json)。
 
 Computer Use 窗口检查工具初始化连续两次失败：`failed to write kernel assets: 系统找不到指定的路径。 (os error 3)`。未通过其它 UI 自动化后门绕过。可见窗口显示与人工操作验收保持**未验证**，没有把隐藏窗口的 grabWindow 画面当作桌面截图。
 
@@ -95,7 +97,7 @@ Computer Use 窗口检查工具初始化连续两次失败：`failed to write ke
 $p=Start-Process -FilePath D:/学习资料/SpektraLab/build/qt-pr2-review-final/app/SpektraLabQt.exe `
   -ArgumentList @('--open','"D:/学习资料/SpektraLab/build/validation-20261031-ui-native-3/input.ARW"',
     '--reject','"D:/学习资料/SpektraLab/build/validation-20261031-ui-native-3/rejected.NEF"',
-    '--self-test','"D:/学习资料/SpektraLab/build/pr2-native-review-final"') `
+    '--self-test','"D:/学习资料/SpektraLab/build/pr2-native-review-final-2"') `
   -WindowStyle Hidden -PassThru
 # 本轮清除了 QT_QPA_PLATFORM / QSG_RHI_BACKEND / QT_QUICK_BACKEND；report.platform=windows。
 
@@ -104,18 +106,18 @@ $p=Start-Process -FilePath D:/学习资料/SpektraLab/build/qt-pr2-review-final/
   -DependencyDirectory C:/Users/Strickland/SpektraLab-deps-20261028 `
   -LibrarySourceDirectory C:/Users/Strickland/SpektraLab-work/build/packaging-sources `
   -NsisDirectory C:/Users/Strickland/SpektraLab-work/build/packaging-tools/nsis-3.12 `
-  -OutputDirectory C:/Users/Strickland/SpektraLab-work/build/installer-pr2-review `
-  -BuildLabel 2026.10.31-review.1
+  -OutputDirectory C:/Users/Strickland/SpektraLab-work/build/installer-pr2-review-2 `
+  -BuildLabel 2026.10.31-review.2
 & C:/Users/Strickland/SpektraLab-work/windows_UI/tests/package.ps1 `
-  -PackageDirectory C:/Users/Strickland/SpektraLab-work/build/installer-pr2-review
+  -PackageDirectory C:/Users/Strickland/SpektraLab-work/build/installer-pr2-review-2
 ```
 
 ## 产物与来源
 
-* `build/installer-pr2-review/SpektraLab-2026.10.31-review.1-windows-x64-setup.exe`：151052353 字节；SHA256 `698bd18ff565b9059abfc5124801757a3ff6667a4d53b03bf19dd24dffe9abab`。
-* EXE SHA256 `b963bc9d2bb1b2c62bdd16ad7c4a44a91e83bdcb207b120fa657757423123acf`。
-* 源码清单 SHA256 `250a8ebbbd6a149fdb76ff89a7a2cf2de9fc848e83ad85e78891bd2c0bc73448`。
-* 测试后部署清单 SHA256 `c30416f83965f5e95c9d0447d615089b46b5b4544a751867751c0bdbd41f09f3`。
+* `build/installer-pr2-review-2/SpektraLab-2026.10.31-review.2-windows-x64-setup.exe`：151073821 字节；SHA256 `4935caa5c2fadc4083d0032e36f81e8d7c07a8c905cdc45d412c6d78b2272baa`。
+* EXE SHA256 `ea387e9b477373062691bd205ebe848e7ee9eee548de7720f0948cacd4d7d7d1`。
+* 源码清单 SHA256 `58795d6e9d355221aaec09c24f74402495410427e9de0d3f0ff5756a0b25c3ba`。
+* 测试后部署清单 SHA256 `c56b6c38e792b67b193cbee2f89dae19bc4ab49f7ccf36bec8e6e7d0c08d85dd`。
 * 原有 GPL、CC BY-SA 材料归属、Qt/MinGW/LibRaw/volk/stb/DXC/NSIS 通知保留。Qt/MinGW 运行时及引擎/LibRaw 的相应源码和许可入包；Vulkan 驱动与系统 loader 由显卡驱动提供，安装包不安装驱动。DXC/着色器编译工具不是要求普通用户安装的运行时。完整包测试以隔离 PATH 证明本机部署，不能替代干净系统。不是许可证法律认证。
 
 ## 使用与剩余风险
