@@ -1,0 +1,39 @@
+#version 450
+// Direct port of scene_latitude.metal; scene-linear gain before the film.
+// Both pair curves use full-plane coordinates, including a striped row origin.
+layout(local_size_x=256) in;
+layout(set=0,binding=0,std430) readonly buffer Input {float value[];} rgb;
+layout(set=0,binding=1,std430) readonly buffer Parameters {float value[];} params;
+layout(set=0,binding=2,std430) readonly buffer Count {uint value[];} count;
+layout(set=0,binding=3,std430) writeonly buffer Output {float value[];} result;
+float departure(float D,float H,float m) {
+    if(!(D>0))return 0;
+    if(m==2) {float r=sqrt(H*H+D*D);return -(D*D*D)/(r*(H+r));}
+    if(m==1)return -(D*D)/(H+D);
+    return D*(H/pow(pow(H,m)+pow(D,m),1/m)-1);
+}
+void main() {
+    uint i=gl_GlobalInvocationID.y*(gl_NumWorkGroups.x*gl_WorkGroupSize.x)+gl_GlobalInvocationID.x;
+    if(i>=count.value[0])return;
+    vec3 c=vec3(rgb.value[3*i],rgb.value[3*i+1],rgb.value[3*i+2]),positive=max(c,vec3(0));
+    uint norm=uint(params.value[6]);float v;
+    if(norm==1)v=dot(positive,vec3(params.value[7],params.value[8],params.value[9]));
+    else if(norm==2)v=max(positive.r,max(positive.g,positive.b));
+    else {float s2=dot(positive,positive);v=s2>0?dot(positive*positive,positive)/s2:0;}
+    float gain=1;
+    if(v>0&&!isnan(v)&&!isinf(v)) {
+        float reference=params.value[10],E=clamp(log2(max(v,reference*exp2(-24))/reference),-24,24);
+        float Kh=params.value[0],Hh=params.value[1],Ks=params.value[2],Hs=params.value[3];
+        if(params.value[13]>0) {
+            uint w=uint(params.value[11]),h=uint(params.value[12]);
+            float along=w>=h?(float(i%w)+.5)/float(w):(float(i/w)+params.value[18]+.5)/float(h);
+            if(along>=params.value[13]){Kh=params.value[14];Hh=params.value[15];Ks=params.value[16];Hs=params.value[17];}
+        }
+        float d=0;
+        if(Hh>0&&E>Kh)d=departure(E-Kh,Hh,params.value[4]);
+        else if(Hs>0&&E<Ks)d=-departure(Ks-E,Hs,params.value[4]);
+        if(d>0){float L=params.value[5];d=d*L/sqrt(L*L+d*d);}
+        gain=clamp(exp2(d),exp2(-30),exp2(30));
+    }
+    result.value[3*i]=c.r*gain;result.value[3*i+1]=c.g*gain;result.value[3*i+2]=c.b*gain;
+}

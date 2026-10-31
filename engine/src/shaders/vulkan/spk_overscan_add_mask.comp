@@ -1,0 +1,24 @@
+#version 450
+#extension GL_GOOGLE_include_directive : require
+layout(local_size_x=256) in;
+layout(set=0,binding=0,std430) readonly buffer Input { float f[]; };
+layout(set=0,binding=1,std430) readonly buffer Parameters { float P[]; };
+layout(set=0,binding=2,std430) readonly buffer Count { uint n[]; };
+layout(set=0,binding=3,std430) buffer Output { float dst[]; };
+uint spk_global_index() {
+    return gl_GlobalInvocationID.y*(gl_NumWorkGroups.x*gl_WorkGroupSize.x)+gl_GlobalInvocationID.x;
+}
+#include "overscan.glsl"
+void main() {
+    const uint i = spk_global_index();
+    if (i >= n[0]) return;
+    const uint mw = uint(P[2]);
+    const int x = int(P[0]) + int(i % mw), y = int(P[1]) + int(i / mw);
+    if (x < 0 || y < 0 || x >= int(P[4]) || y >= int(P[5])) return;
+    precise float c = f[i];
+    if (c <= 0.0f) return;
+    const uint o = 3u * (uint(y) * uint(P[4]) + uint(x));
+    dst[o] += c * P[6];
+    dst[o + 1u] += c * P[7];
+    dst[o + 2u] += c * P[8];
+}

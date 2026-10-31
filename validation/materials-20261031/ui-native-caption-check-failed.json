@@ -1,0 +1,22 @@
+{
+    "canvas_found": true,
+    "engine_init": true,
+    "error": "native_dark_caption_applied: 渲染完成 0.96 秒",
+    "film_count": 27,
+    "frame_publications": 1,
+    "height": 2271,
+    "native_dark_caption_applied": false,
+    "open_raw": true,
+    "operations_finished": 1,
+    "paper_count": 10,
+    "passed": false,
+    "platform": "windows",
+    "qt_version": "6.11.3",
+    "quick_backend_requested": "",
+    "quick_picker_matches_selected_stock": true,
+    "scope": "QML scene, controller, native Vulkan renderer and file writer; not physical display calibration or native dialog automation",
+    "slide_results": [
+    ],
+    "stock_cine_metadata_correct": true,
+    "width": 3400
+}

@@ -1,0 +1,71 @@
+#version 450
+#extension GL_GOOGLE_include_directive : require
+layout(local_size_x=256) in;
+layout(set=0,binding=0,std430) readonly buffer Input { float f[]; };
+layout(set=0,binding=1,std430) readonly buffer Parameters { float P[]; };
+layout(set=0,binding=2,std430) readonly buffer Count { uint n[]; };
+layout(set=0,binding=3,std430) writeonly buffer Output { float dst[]; };
+uint spk_global_index() {
+    return gl_GlobalInvocationID.y*(gl_NumWorkGroups.x*gl_WorkGroupSize.x)+gl_GlobalInvocationID.x;
+}
+#include "overscan.glsl"
+void main() {
+    const uint i = spk_global_index();
+    if (i >= n[0]) return;
+    const uint cw = uint(P[P_CW]);
+    precise vec2 st = canvas_to_film(float(i % cw), float(i / cw));
+    precise float a = film_alpha(st);
+    const bool white = P[P_HOLES_LIGHT] > 0.5f;
+    vec3 light = vec3(P[P_LIGHT_R], P[P_LIGHT_G], P[P_LIGHT_B]);
+    vec3 c = vec3(f[3u * i], f[3u * i + 1u], f[3u * i + 2u]);
+    if (P[P_PERFORATED] > 0.5f) {
+        uint hole;
+        precise float d = perf_sdf(st, hole);
+        // The cut is not a perfectly vertical knife: the base is a little rounded
+        // where the punch went through, and a scan sees that as a soft shoulder
+        // just outside the hole -- measured on the owner's reference at 1-2 px
+        // of 0.03 mm, lifting the black by ~1-5 % (linear), a faint olive-warm,
+        // and not the same on every side or every hole. Inside, a few edges
+        // carry a faint cream line. Subtle on purpose (RFC-032 §31.5).
+        const uint seed = uint(P[P_PERF_SEED]);
+        const int h = int(hole & 0xFFFFu);
+        if (d > -0.03f && d < 0.15f) {
+            precise float e = 0.003f;
+            uint hh;
+            precise vec2 g = vec2(perf_sdf(st + vec2(e, 0), hh) - perf_sdf(st - vec2(e, 0), hh),
+                                    perf_sdf(st + vec2(0, e), hh) - perf_sdf(st - vec2(0, e), hh));
+            precise vec2 nrm = g / max(length(g), 1e-6f);
+            precise vec2 vdir = vec2(P[P_WALL_VS], P[P_WALL_VT]);
+            // how much this stretch of this hole's outline shows: per hole, patchy
+            // along the outline, a little more on the side the scan leans to
+            precise float per_hole = 0.4f + 0.6f * hash_f(h, seed ^ 0xE1u);
+            precise float edge_patch = smoothstep(0.25f, 0.75f, 0.5f * (value_noise(st.x / 0.35f, seed ^ uint(h)) +
+                                                                 value_noise(st.y / 0.35f, seed ^ uint(h) ^ 0x3Cu)));
+            precise float side = 0.6f + 0.8f * max(0.0f, dot(nrm, vdir));
+            precise float k = per_hole * edge_patch * side;
+            // the base's tint, mostly washed out
+            precise vec3 tint = mix(vec3(1.0f), vec3(P[P_BASE_R], P[P_BASE_G], P[P_BASE_B]), 0.3f);
+            precise float lam = P[P_WALL_SCATTER];
+            if (d >= 0.0f) {
+                precise float lift = P[P_WALL_GLOW] * k * exp(-d / lam);
+                c += lift * tint * (white ? light : vec3(1.0f));
+            } else if (white && hash_f(h, seed ^ 0xE4u) < 0.5f) {
+                light *= 1.0f - 0.12f * k * (1.0f - tint) * exp(d / 0.012f);
+            }
+        }
+        if (white && d >= 0.0f) {
+            // a faint flare from the hole's light into the film, on some holes
+            precise float fl = 0.012f * hash_f(h, seed ^ 0xC4u) * step(0.5f, hash_f(h, seed ^ 0xC5u));
+            c += fl * exp(-d / 0.025f) * light;
+        }
+    }
+    // Past the film's long edges is the scan's carrier, not a hole: black, or
+    // the scan's open light.
+    precise float W = P[P_FILM_W], px = P[P_PX];
+    precise float on_strip = P[P_CARRIER] > 1.5f ? 1.0f : clamp(min(st.y, W - st.y) / px + 0.5f, 0.0f, 1.0f);
+    precise float in_film = on_strip > 0.0f ? a / on_strip : 0.0f;
+    precise vec3 r3 = mix(vec3(P[P_CARRIER]), mix(light, c, in_film), on_strip);
+    dst[3u * i] = r3.x;
+    dst[3u * i + 1u] = r3.y;
+    dst[3u * i + 2u] = r3.z;
+}

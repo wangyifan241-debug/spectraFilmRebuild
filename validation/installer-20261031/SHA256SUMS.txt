@@ -1,0 +1,1 @@
+e6953fa38f4d81d1a7652ce17668caa3c7ea0104ddcde428a2e6a653f1cb8d2f  SpektraLab-2026.10.31-preview.2-windows-x64-setup.exe

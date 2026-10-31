@@ -1,0 +1,188 @@
+{
+  "snapshots": [
+    {
+      "commit": "3bb2c2d2801ff68b92019cf1dbcbb133d60832bc",
+      "branch": "main",
+      "repo": "andreavolpato/spektrafilm",
+      "id": "spektrafilm-main",
+      "tree_sha": "3bb2c2d2801ff68b92019cf1dbcbb133d60832bc"
+    },
+    {
+      "commit": "6cd00c8d4f30b5b550f50f4bbd3753c9f2a48507",
+      "branch": "dev",
+      "repo": "andreavolpato/spektrafilm",
+      "id": "spektrafilm-dev",
+      "tree_sha": "6cd00c8d4f30b5b550f50f4bbd3753c9f2a48507"
+    },
+    {
+      "commit": "28bf883e1672e884307edc75852549376e13644e",
+      "branch": "experimental",
+      "repo": "andreavolpato/spektrafilm",
+      "id": "spektrafilm-experimental",
+      "tree_sha": "28bf883e1672e884307edc75852549376e13644e"
+    },
+    {
+      "commit": "a273e49b4243d19d7447df39c2b9880e9ec35a66",
+      "branch": "couplers-tuning-iterations",
+      "repo": "andreavolpato/spektrafilm",
+      "id": "spektrafilm-couplers",
+      "tree_sha": "a273e49b4243d19d7447df39c2b9880e9ec35a66"
+    },
+    {
+      "commit": "b15cfe18fb35ec15084f78c986b0ebc730338e6e",
+      "branch": "main",
+      "repo": "darktable-org/darktable-spektrafilm",
+      "id": "darktable-main",
+      "tree_sha": "b15cfe18fb35ec15084f78c986b0ebc730338e6e"
+    },
+    {
+      "commit": "8d03a0e0c111625b8a88fb8647a35d95b491249d",
+      "branch": "main",
+      "repo": "OwlMightyCh/film-scan-calibration",
+      "id": "calibration-main",
+      "tree_sha": "8d03a0e0c111625b8a88fb8647a35d95b491249d"
+    }
+  ],
+  "hash_algorithm": "spk-audit-v1 typed canonical stream; SHA-256 raw bytes also retained",
+  "verified_download_files": 1080,
+  "local_head": "fd891c6bc5eb350387602deb5c1ef9b6dcdab948",
+  "retrieved_utc": "2026-10-30T15:09:21.6860938Z",
+  "local_resource_hashes": [
+    {
+      "path": "engine/resources/profiles/fujifilm_c200.json",
+      "sha256": "33c1acc77ca85963e6165f7fa7fed545803f0c955732e500681e4f3946d44e4a"
+    },
+    {
+      "path": "engine/resources/profiles/fujifilm_crystal_archive_typeii.json",
+      "sha256": "8aa83ca1d1fafdc72813f1abae0c17facbb6680b566c0f8e8bbd505251c76700"
+    },
+    {
+      "path": "engine/resources/profiles/fujifilm_pro_400h.json",
+      "sha256": "beff34f309c5a9c102a87f48876986e7a7bbb20da7994cfc8d08629f6121ae46"
+    },
+    {
+      "path": "engine/resources/profiles/fujifilm_provia_100f.json",
+      "sha256": "04c42273d861d26838b0c760579a59e4a985483081f1ff100d7cab9007f54a2f"
+    },
+    {
+      "path": "engine/resources/profiles/fujifilm_velvia_100.json",
+      "sha256": "4678399aaf2e623dc482e46255093f79ddee93ae963759627e58eee002d7ec84"
+    },
+    {
+      "path": "engine/resources/profiles/fujifilm_xtra_400.json",
+      "sha256": "8d2369fc3a8f707f07d04c17283fbc5bb66d95e65addc09d06be222c785ff92d"
+    },
+    {
+      "path": "engine/resources/profiles/kodak_2383.json",
+      "sha256": "a7a494c593ff5da06767d6293f7c796a146ca6346cdddd369f1b55cdfef855cf"
+    },
+    {
+      "path": "engine/resources/profiles/kodak_2393.json",
+      "sha256": "db1d293d5f515c22d3f19b8aa91d874ec9c8c6ebfbfa731dd04de9a303c2a129"
+    },
+    {
+      "path": "engine/resources/profiles/kodak_ektachrome_100.json",
+      "sha256": "3113bde02c05e707e353911b7628f66ffb1931493dc3a0581c546498e9ab75a2"
+    },
+    {
+      "path": "engine/resources/profiles/kodak_ektacolor_edge.json",
+      "sha256": "d05b37d843af82057316717844898be9440e61b0e7a0ab36fe9efb83e629a3c7"
+    },
+    {
+      "path": "engine/resources/profiles/kodak_ektar_100.json",
+      "sha256": "f2a8c9092153b2d1ee90c5aa588ece7c199c8687520e250946484ff3294b0319"
+    },
+    {
+      "path": "engine/resources/profiles/kodak_endura_premier.json",
+      "sha256": "3f63b8c5a56967776fa9782914079156736c0b1e0ec739ff946d8b1aa2950a6e"
+    },
+    {
+      "path": "engine/resources/profiles/kodak_gold_200.json",
+      "sha256": "8190c24d1e2f0aa9daeff89a8325f9051d2d2e9a96d867386fbded7fe3a82004"
+    },
+    {
+      "path": "engine/resources/profiles/kodak_kodachrome_64.json",
+      "sha256": "75b07bf032c80353383b73fbfde6ea5d718ec3d2b05db06aa83a6f960b07f28d"
+    },
+    {
+      "path": "engine/resources/profiles/kodak_portra_160.json",
+      "sha256": "54caffc4246619e5135996a00386393d37a2dfc7c6fdf4ebf3f32d68281ee0cc"
+    },
+    {
+      "path": "engine/resources/profiles/kodak_portra_400.json",
+      "sha256": "140c49bbff6d7b6589058ce0836e3286fa995e9433bb8a62a0189d6e1a04da9f"
+    },
+    {
+      "path": "engine/resources/profiles/kodak_portra_800_push1.json",
+      "sha256": "db6b9623e6c64f9188c9e9afb5926895f8d55965b68102e97768694f3ea572b3"
+    },
+    {
+      "path": "engine/resources/profiles/kodak_portra_800_push2.json",
+      "sha256": "502b232a7395ef6a961c51cd65f53813e2ecbd4ae861802800b7d8cc02d3da6b"
+    },
+    {
+      "path": "engine/resources/profiles/kodak_portra_800.json",
+      "sha256": "ba2863125ef4ad4039616c1be76ee38e7bff28706a769b4010a7dfca3e786ee2"
+    },
+    {
+      "path": "engine/resources/profiles/kodak_portra_endura.json",
+      "sha256": "28bee939504da48e3556c58fc880696f471c2d63bd00e3b8e1831dd0ff5cd25c"
+    },
+    {
+      "path": "engine/resources/profiles/kodak_supra_endura.json",
+      "sha256": "b3ea5143e10b6bd1cb10026391a425a2ac901aeb96549918d3e1093b395a6b68"
+    },
+    {
+      "path": "engine/resources/profiles/kodak_ultra_endura.json",
+      "sha256": "c92bcbcb01c917592be523a66140f4110b29f7331546bb58574aa4111d8a7b2c"
+    },
+    {
+      "path": "engine/resources/profiles/kodak_ultramax_400.json",
+      "sha256": "c36ab49d63ea72cf558c83e4c665ca9d25e3008387ecb8eeb862bf6a996590f6"
+    },
+    {
+      "path": "engine/resources/profiles/kodak_verita_200d.json",
+      "sha256": "8c5373730fa9eb3bb443e670a915b24530af6ae6468a1e2a369c5e43bf0658de"
+    },
+    {
+      "path": "engine/resources/profiles/kodak_vision3_200t.json",
+      "sha256": "843fed6fe82eae9c13a2191547347c368634921abb635e1ac5fc7cc7169e72f0"
+    },
+    {
+      "path": "engine/resources/profiles/kodak_vision3_250d.json",
+      "sha256": "d67d4f551bda1489a1590a2a63fe420f275713682453276b2d99e2f72019d12a"
+    },
+    {
+      "path": "engine/resources/profiles/kodak_vision3_500t.json",
+      "sha256": "192b85a7050586b88467101a3af96fdffc7317f81332fa07aa4679e67af2b17d"
+    },
+    {
+      "path": "engine/resources/profiles/kodak_vision3_50d.json",
+      "sha256": "f252ef031edda4be305f9cde8dd52257a7d34a94210ef86c4e6471544f1600c8"
+    },
+    {
+      "path": "engine/resources_product/profiles/cinestill_800t.json",
+      "sha256": "b4539181be0fc2c6260d8a7ca04fcfd88be0a45fa52b460fd159dd39d2b42611"
+    },
+    {
+      "path": "engine/resources_product/profiles/fujifilm_neopan_acros_100_ii.json",
+      "sha256": "4429b45664a06c7ee8d16687bcc7adf656403e534fba584f83762e160abdc4f9"
+    },
+    {
+      "path": "engine/resources_product/profiles/ilford_hp5_plus_400.json",
+      "sha256": "a09ccdb57816f220ab598e534318a743ef79e16a300f8bd2de7453d451fe8ec5"
+    },
+    {
+      "path": "engine/resources_product/profiles/ilford_multigrade_iv_rc.json",
+      "sha256": "0f776f1f26f04aca4ec438ed377dc1acf4073dc1a8ae32c51607a6cb1a02521d"
+    },
+    {
+      "path": "engine/resources_product/profiles/kodak_tmax_100.json",
+      "sha256": "c9160236872034b86fb42b67be3a9252088bfa7bdbb450148b0c20ad83e3033a"
+    },
+    {
+      "path": "engine/resources_product/profiles/kodak_tri_x_400.json",
+      "sha256": "a54be071c6a055a9a49acb7072d10bf0b1bcddf9c0a459b0800a9b14bb66b1f1"
+    }
+  ]
+}

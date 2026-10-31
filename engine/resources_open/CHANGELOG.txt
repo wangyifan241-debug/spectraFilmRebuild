@@ -1,0 +1,35 @@
+2026-10-30 — SpektraLab Windows, conversion revision 1
+Original author: Andrea Volpato, spektrafilm, CC BY-SA 4.0.
+Source commit: 6cd00c8d4f30b5b550f50f4bbd3753c9f2a48507.
+New ID open_kodak_trix_7266_033; existing profiles were not replaced.
+Repeated the one silver sensitivity and characteristic curve across three
+channels. Split its dye-density contribution equally across those channels
+(sum of optical densities conserved). Repeated sublayer curves and CDF model
+rows. Renamed norm_cdfs to cdfs: both describe the same Gaussian CDF already
+implemented by this engine. Omitted absent/null optional adaptation and
+midscale fields. Wavelength/log-exposure axes and base density unchanged.
+Kept original source data and full attribution. No new grain/halation fits.
+
+2026-10-31 — SpektraLab Windows, Double-X conversion revision 1
+Original author: Andrea Volpato, spektrafilm, CC BY-SA 4.0.
+Source commit: 6cd00c8d4f30b5b550f50f4bbd3753c9f2a48507.
+New ID open_kodak_doublex_5222_65m_033, no existing material replaced.
+Selected condition index 2 (6.5 minutes) from the original 4/5/6.5/9/12
+minute family for base density, curves, sublayers and CDF model. Kept all
+five conditions in the untouched original archive. Repeated sensitivity,
+selected characteristic/model/sublayers across three channels; divided dye
+density by three to conserve total optical density. Same Gaussian CDF
+representation; omitted null optional fields; axes unchanged. No refit,
+condition interpolation, or new grain/halation calibration.
+
+2026-10-31 — SpektraLab Windows, Print Film 2302 conversion revision 1
+Original author: Andrea Volpato, spektrafilm, CC BY-SA 4.0.
+Source commit: 6cd00c8d4f30b5b550f50f4bbd3753c9f2a48507.
+New ID open_kodak_2302_5m_033. Select index 2 (5 minutes) from the supplied
+2/3.5/5/7/9-minute family consistently for curves/base/sublayers/CDF. Silver
+sensitivity, curve, layers and model repeated across three channels; dye
+density split equally to conserve total optical density. Same Gaussian CDF
+representation, null optional fields omitted, measured axes unchanged.
+Retain support=film and stage=printing; original five-condition source archived.
+Desktop policy uses an unfiltered pack instead of Ilford's grade-2 filter.
+No physical algorithm, original Profile, grain or printer calibration changed.
