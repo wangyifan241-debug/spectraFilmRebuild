@@ -1,0 +1,5343 @@
+[
+  {
+    "path": "data/films/EktachromeE100_datasheet_curves.json",
+    "source_url": "https://raw.githubusercontent.com/OwlMightyCh/film-scan-calibration/8d03a0e0c111625b8a88fb8647a35d95b491249d/data/films/EktachromeE100_datasheet_curves.json",
+    "sha256": "cf1809809cb43789969482e0c451ad3727ab5144f01464041e05616e8309fc8d",
+    "git_blob_sha1": "e276fbab9003990f512dce643d6a190b276eb25e",
+    "keys": [
+      "source",
+      "char_curves",
+      "digitization_audit"
+    ],
+    "metadata": [
+      {
+        "value": "Ektachrome E100 datasheet E-4000 (rev 8-18), page index 2, characteristic curves, route vector-polyline; exposure Daylight 1/100 second; densitometry Status A",
+        "key": "source"
+      }
+    ],
+    "structure": [
+      {
+        "field": "source",
+        "shape": "string"
+      },
+      {
+        "field": "char_curves",
+        "shape": "object{curve_order_note,densitometry,log_exposure,log_exposure_units,statusA_density}"
+      },
+      {
+        "field": "digitization_audit",
+        "shape": "object{characteristic_curves}"
+      }
+    ]
+  },
+  {
+    "path": "data/films/EktachromeE100_dye_density.json",
+    "source_url": "https://raw.githubusercontent.com/OwlMightyCh/film-scan-calibration/8d03a0e0c111625b8a88fb8647a35d95b491249d/data/films/EktachromeE100_dye_density.json",
+    "sha256": "9648d643440734eb55999eebc0999174018b853e47be6888938fafca2c5daf52",
+    "git_blob_sha1": "856b2c6b40231eb59666a3b3aa4b995fe03caf01",
+    "keys": [
+      "title",
+      "family",
+      "stocks_covered",
+      "normalization",
+      "units",
+      "source",
+      "cross_validation",
+      "important_note",
+      "uncertainty",
+      "support_nm",
+      "peak_wavelengths_nm",
+      "led_wavelengths_nm",
+      "dye_density_at_led_wavelengths",
+      "shared_full_curves",
+      "published_neutral_midscale_1nm",
+      "fine_curves_1nm"
+    ],
+    "metadata": [
+      {
+        "value": [
+          "Ektachrome E100 (still, Kodak Alaris)",
+          "Ektachrome 100D Color Reversal Film 5294/7294 (motion picture, Eastman Kodak)"
+        ],
+        "key": "stocks_covered"
+      },
+      {
+        "value": "Kodak Alaris publication E-4000 (rev 8-18), Spectral-Dye-Density Curves, p.4 — extracted from embedded vector paths with cubic beziers evaluated on-curve (control points NOT used as curve points). Axis calibration from gridlines at 400/500/600/700 nm (70.64/137.46/204.28/271.10 pt, uniform to <0.01 pt) and 0.0-1.4 D (21.632 pt per 0.2 D).",
+        "key": "source"
+      },
+      {
+        "value": "Measured support 400.8-700.8 nm for cyan/magenta/neutral; yellow is drawn only to 680.8 nm (value ~0.008 D there) — entries beyond each dye's support are null; do NOT extrapolate or zero-fill in the data file (the engine's resample() treats beyond-support as 0 at build time, which is the documented bounded systematic). Cyan is still ~0.75 D at the 700 nm plot edge — a substantially larger long-wavelength truncation than Velvia 100 (0.29 D at 710); quantify before any narrowband build (see systematics register pattern).",
+        "key": "important_note"
+      }
+    ],
+    "structure": [
+      {
+        "field": "title",
+        "shape": "string"
+      },
+      {
+        "field": "family",
+        "shape": "string"
+      },
+      {
+        "field": "stocks_covered",
+        "shape": "[2]string"
+      },
+      {
+        "field": "normalization",
+        "shape": "string"
+      },
+      {
+        "field": "units",
+        "shape": "string"
+      },
+      {
+        "field": "source",
+        "shape": "string"
+      },
+      {
+        "field": "cross_validation",
+        "shape": "object{against,best_fit_lateral_shift_nm,conclusion,internal_consistency,rmse_D}"
+      },
+      {
+        "field": "important_note",
+        "shape": "string"
+      },
+      {
+        "field": "uncertainty",
+        "shape": "string"
+      },
+      {
+        "field": "support_nm",
+        "shape": "object{cyan,magenta,neutral,yellow}"
+      },
+      {
+        "field": "peak_wavelengths_nm",
+        "shape": "object{cyan,magenta,yellow}"
+      },
+      {
+        "field": "led_wavelengths_nm",
+        "shape": "[3]number"
+      },
+      {
+        "field": "dye_density_at_led_wavelengths",
+        "shape": "object{cols,matrix,rows}"
+      },
+      {
+        "field": "shared_full_curves",
+        "shape": "object{cyan,magenta,wavelength_nm,yellow}"
+      },
+      {
+        "field": "published_neutral_midscale_1nm",
+        "shape": "object{comment,values}"
+      },
+      {
+        "field": "fine_curves_1nm",
+        "shape": "object{cyan,magenta,wavelength_nm,yellow}"
+      }
+    ]
+  },
+  {
+    "path": "data/films/EktachromeE100_mtf.json",
+    "source_url": "https://raw.githubusercontent.com/OwlMightyCh/film-scan-calibration/8d03a0e0c111625b8a88fb8647a35d95b491249d/data/films/EktachromeE100_mtf.json",
+    "sha256": "267e7b73ba7b921dff3b5d99b0bff921617768c401ca509853e8fdea0776ab2a",
+    "git_blob_sha1": "71f0be0835d22d1b0f908a8ae41fb4130a94cc56",
+    "keys": [
+      "title",
+      "stock",
+      "family",
+      "source",
+      "units",
+      "grid",
+      "curves",
+      "summary",
+      "digitization_audit"
+    ],
+    "metadata": [
+      {
+        "value": "EktachromeE100",
+        "key": "stock"
+      },
+      {
+        "value": {
+          "pdf": "Ektachrome E100.pdf",
+          "page_index": 2,
+          "datasheet_code": "E-4000",
+          "revision": "rev. 8-18",
+          "chart": "Modulation Transfer Function",
+          "exposure_as_printed": "not stated on chart",
+          "process_as_printed": "E-6"
+        },
+        "key": "source"
+      }
+    ],
+    "structure": [
+      {
+        "field": "title",
+        "shape": "string"
+      },
+      {
+        "field": "stock",
+        "shape": "string"
+      },
+      {
+        "field": "family",
+        "shape": "string"
+      },
+      {
+        "field": "source",
+        "shape": "object{chart,datasheet_code,exposure_as_printed,page_index,pdf,process_as_printed,revision}"
+      },
+      {
+        "field": "units",
+        "shape": "object{x,y}"
+      },
+      {
+        "field": "grid",
+        "shape": "object{note,per_decade}"
+      },
+      {
+        "field": "curves",
+        "shape": "object{B,G,R}"
+      },
+      {
+        "field": "summary",
+        "shape": "object{B,G,R}"
+      },
+      {
+        "field": "digitization_audit",
+        "shape": "object{bezier_note,frame_device_pt,frame_drawn_as,label_assignment,label_check,route,x_axis,y_axis}"
+      }
+    ]
+  },
+  {
+    "path": "data/films/Ektar100_datasheet_curves.json",
+    "source_url": "https://raw.githubusercontent.com/OwlMightyCh/film-scan-calibration/8d03a0e0c111625b8a88fb8647a35d95b491249d/data/films/Ektar100_datasheet_curves.json",
+    "sha256": "be83e7e2bf2b6898e15f8fdf488ef59caf35222cf99204c27a30ed9a16ed8f3f",
+    "git_blob_sha1": "a9000d99f3276a28cce527c978fe4fb8b463a627",
+    "keys": [
+      "source",
+      "char_curves",
+      "spectral",
+      "digitization_audit"
+    ],
+    "metadata": [
+      {
+        "value": "Kodak Ektar 100 datasheet E-4046 (Jan 2025), page 4 vector charts, digitized from the embedded PDF path geometry",
+        "key": "source"
+      }
+    ],
+    "structure": [
+      {
+        "field": "source",
+        "shape": "string"
+      },
+      {
+        "field": "char_curves",
+        "shape": "object{curve_order_note,log_exposure,log_exposure_units,statusM_density}"
+      },
+      {
+        "field": "spectral",
+        "shape": "object{dmin,midscale_neutral,wavelength_nm}"
+      },
+      {
+        "field": "digitization_audit",
+        "shape": "object{characteristic_curves,spectral_dye_density}"
+      }
+    ]
+  },
+  {
+    "path": "data/films/Ektar100_dye_density.json",
+    "source_url": "https://raw.githubusercontent.com/OwlMightyCh/film-scan-calibration/8d03a0e0c111625b8a88fb8647a35d95b491249d/data/films/Ektar100_dye_density.json",
+    "sha256": "399a12e8d59ee31f8d328cb21aafb1f4cbf65fce31c2ae3f91f30bf346f3f392",
+    "git_blob_sha1": "465754bcdda51bfdfe64fc9ab5cce1c176642beb",
+    "keys": [
+      "title",
+      "family",
+      "stocks_covered",
+      "normalization",
+      "units",
+      "source",
+      "uncertainty",
+      "shared_full_curves",
+      "led_wavelengths_nm",
+      "per_stock",
+      "fit_audit"
+    ],
+    "metadata": [
+      {
+        "value": [
+          "Ektar 100"
+        ],
+        "key": "stocks_covered"
+      },
+      {
+        "value": "Fitted to Kodak Ektar 100 datasheet E-4046 (Jan 2025) midscale-neutral minus D-min spectral density (see Ektar100_datasheet_curves.json), projected onto the Vision3 ECN-2 image-dye set as surrogate basis",
+        "key": "source"
+      },
+      {
+        "value": {
+          "100": {
+            "dye_density_at_led_wavelengths": {
+              "wavelength_nm": [
+                450,
+                544,
+                640
+              ],
+              "cyan": [
+                0.042,
+                0.0901,
+                0.6711
+              ],
+              "magenta": [
+                -0.0027,
+                0.998,
+                0.0719
+              ],
+              "yellow": [
+                0.9987,
+                0.0927,
+                0.0085
+              ]
+            },
+            "decoupling_matrix_rowmajor_RGB_density": [
+              [
+                1.0,
+                -0.115,
+                0.0007
+              ],
+              [
+                -0.1954,
+                1.0,
+                -0.0971
+              ],
+              [
+                -0.0781,
+                -0.0095,
+                1.0
+              ]
+            ],
+            "matrix_note": "rows=R/G/B scan density @640/544/450; columns=cyan/magenta/yellow; diag-normalized inverse of the LED-SPD x CFA x 10^-Dmin mixing matrix (scan density per unit peak dye density, read through the base+mask as the roll anchor leaves it); off-diagonals = crosstalk removed"
+          }
+        },
+        "key": "per_stock"
+      }
+    ],
+    "structure": [
+      {
+        "field": "title",
+        "shape": "string"
+      },
+      {
+        "field": "family",
+        "shape": "string"
+      },
+      {
+        "field": "stocks_covered",
+        "shape": "[1]string"
+      },
+      {
+        "field": "normalization",
+        "shape": "string"
+      },
+      {
+        "field": "units",
+        "shape": "string"
+      },
+      {
+        "field": "source",
+        "shape": "string"
+      },
+      {
+        "field": "uncertainty",
+        "shape": "string"
+      },
+      {
+        "field": "shared_full_curves",
+        "shape": "object{cyan,magenta,wavelength_nm,yellow}"
+      },
+      {
+        "field": "led_wavelengths_nm",
+        "shape": "[3]number"
+      },
+      {
+        "field": "per_stock",
+        "shape": "object{100}"
+      },
+      {
+        "field": "fit_audit",
+        "shape": "object{aggregate_maxabs_density,aggregate_rmse_density,basis,basis_held,basis_held_note,basis_support_nm,bounds,bounds_pinned,bounds_pinned_note,decoupling_condition_number,multistart,params,peak_shift_nm,peak_shift_note,statusM_constraint,statusM_of_digitized_curves,statusM_red_truncation}"
+      }
+    ]
+  },
+  {
+    "path": "data/films/Ektar100_mtf.json",
+    "source_url": "https://raw.githubusercontent.com/OwlMightyCh/film-scan-calibration/8d03a0e0c111625b8a88fb8647a35d95b491249d/data/films/Ektar100_mtf.json",
+    "sha256": "9ee5fa2dedf79a19a78ba12ec1b75a82a4936a5d7a8ebfec5ff8205aae7b8326",
+    "git_blob_sha1": "2f07fac012d57903032f3c115447c3154652270e",
+    "keys": [
+      "title",
+      "stock",
+      "family",
+      "source",
+      "units",
+      "grid",
+      "curves",
+      "summary",
+      "digitization_audit"
+    ],
+    "metadata": [
+      {
+        "value": "Ektar100",
+        "key": "stock"
+      },
+      {
+        "value": {
+          "pdf": "Ektar 100.pdf",
+          "page_index": 3,
+          "datasheet_code": "E-4046",
+          "revision": "Jan 2025",
+          "chart": "Modulation Transfer Function",
+          "exposure_as_printed": "Daylight",
+          "process_as_printed": "C-41"
+        },
+        "key": "source"
+      }
+    ],
+    "structure": [
+      {
+        "field": "title",
+        "shape": "string"
+      },
+      {
+        "field": "stock",
+        "shape": "string"
+      },
+      {
+        "field": "family",
+        "shape": "string"
+      },
+      {
+        "field": "source",
+        "shape": "object{chart,datasheet_code,exposure_as_printed,page_index,pdf,process_as_printed,revision}"
+      },
+      {
+        "field": "units",
+        "shape": "object{x,y}"
+      },
+      {
+        "field": "grid",
+        "shape": "object{note,per_decade}"
+      },
+      {
+        "field": "curves",
+        "shape": "object{B,G,R}"
+      },
+      {
+        "field": "summary",
+        "shape": "object{B,G,R}"
+      },
+      {
+        "field": "digitization_audit",
+        "shape": "object{bezier_note,frame_device_pt,frame_drawn_as,label_assignment,label_check,route,x_axis,y_axis}"
+      }
+    ]
+  },
+  {
+    "path": "data/films/Ektar100_spectral_sensitivity.json",
+    "source_url": "https://raw.githubusercontent.com/OwlMightyCh/film-scan-calibration/8d03a0e0c111625b8a88fb8647a35d95b491249d/data/films/Ektar100_spectral_sensitivity.json",
+    "sha256": "cd095e8ffbd8d597b3af5bd1c4abb93de0be8764a31c293bb831a60ca14f4ace",
+    "git_blob_sha1": "5522eb683273dc4bba4e1ff4b4dd51cb4cc8d2ca",
+    "keys": [
+      "source",
+      "measurement_note",
+      "wavelength_nm",
+      "wavelength_note",
+      "log_sensitivity",
+      "digitization_audit"
+    ],
+    "metadata": [
+      {
+        "value": "Kodak Ektar 100 datasheet E-4046 (Jan 2025), page 4 bottom-left 'Spectral-Sensitivity Curves', digitized from the embedded PDF path geometry",
+        "key": "source"
+      },
+      {
+        "value": "sensitivity = log10(1/H) for the exposure H giving density 0.2 above D-min; daylight; 1/50 s",
+        "key": "measurement_note"
+      },
+      {
+        "value": "1 nm grid over the union support of the three layers; each layer is null (JSON null) outside its own support",
+        "key": "wavelength_note"
+      }
+    ],
+    "structure": [
+      {
+        "field": "source",
+        "shape": "string"
+      },
+      {
+        "field": "measurement_note",
+        "shape": "string"
+      },
+      {
+        "field": "wavelength_nm",
+        "shape": "[317]number"
+      },
+      {
+        "field": "wavelength_note",
+        "shape": "string"
+      },
+      {
+        "field": "log_sensitivity",
+        "shape": "object{cyan,magenta,yellow}"
+      },
+      {
+        "field": "digitization_audit",
+        "shape": "object{calibration_basis,curve_classification,frame_device_bbox,layers,x_axis,y_axis}"
+      }
+    ]
+  },
+  {
+    "path": "data/films/Fujicolor100_datasheet_curves.json",
+    "source_url": "https://raw.githubusercontent.com/OwlMightyCh/film-scan-calibration/8d03a0e0c111625b8a88fb8647a35d95b491249d/data/films/Fujicolor100_datasheet_curves.json",
+    "sha256": "3b9eb7dc589c154ff02603995580f78dcaa4291bae5ea6bfc8a507a3420681d7",
+    "git_blob_sha1": "5f74807c8b88cdcafa77ba5a46b6531eb065751a",
+    "keys": [
+      "source",
+      "char_curves",
+      "spectral",
+      "spectral_full_support",
+      "digitization_audit"
+    ],
+    "metadata": [
+      {
+        "value": "FUJICOLOR 100 Color Negative Film datasheet, Ref. No. 013AR0317A, page 5 vector charts, digitized from the embedded paths by engine/c41/fuji_digitize.py",
+        "key": "source"
+      }
+    ],
+    "structure": [
+      {
+        "field": "source",
+        "shape": "string"
+      },
+      {
+        "field": "char_curves",
+        "shape": "object{curve_order_note,log_exposure,log_exposure_units,measurement_note,statusM_density}"
+      },
+      {
+        "field": "spectral",
+        "shape": "object{dmin,measurement_note,midscale_neutral,wavelength_nm}"
+      },
+      {
+        "field": "spectral_full_support",
+        "shape": "object{dmin,midscale_neutral,support_note,wavelength_nm}"
+      },
+      {
+        "field": "digitization_audit",
+        "shape": "object{characteristic_curves,spectral_dye_density}"
+      }
+    ]
+  },
+  {
+    "path": "data/films/Fujicolor100_dye_density.json",
+    "source_url": "https://raw.githubusercontent.com/OwlMightyCh/film-scan-calibration/8d03a0e0c111625b8a88fb8647a35d95b491249d/data/films/Fujicolor100_dye_density.json",
+    "sha256": "31f2956c22460baa1a7c25fe7b8996e69ae0701b0da234ad91a2f280180e70ff",
+    "git_blob_sha1": "53cc16215b83ce1146508ab952b4766cc115a40b",
+    "keys": [
+      "title",
+      "family",
+      "stocks_covered",
+      "normalization",
+      "units",
+      "source",
+      "uncertainty",
+      "shared_full_curves",
+      "led_wavelengths_nm",
+      "per_stock",
+      "fit_audit"
+    ],
+    "metadata": [
+      {
+        "value": [
+          "Fujicolor 100"
+        ],
+        "key": "stocks_covered"
+      },
+      {
+        "value": "Fitted to Kodak Fujicolor 100 datasheet 013AR0317A (2007) midscale-neutral minus D-min spectral density (see Fujicolor100_datasheet_curves.json), projected onto the Vision3 ECN-2 image-dye set as surrogate basis",
+        "key": "source"
+      },
+      {
+        "value": {
+          "100": {
+            "dye_density_at_led_wavelengths": {
+              "wavelength_nm": [
+                450,
+                544,
+                640
+              ],
+              "cyan": [
+                0.0368,
+                0.1145,
+                0.727
+              ],
+              "magenta": [
+                0.0077,
+                0.9933,
+                0.0738
+              ],
+              "yellow": [
+                0.9975,
+                0.0975,
+                0.0089
+              ]
+            },
+            "decoupling_matrix_rowmajor_RGB_density": [
+              [
+                1.0,
+                -0.1165,
+                0.0013
+              ],
+              [
+                -0.2128,
+                1.0,
+                -0.1021
+              ],
+              [
+                -0.0619,
+                -0.0063,
+                1.0
+              ]
+            ],
+            "matrix_note": "rows=R/G/B scan density @640/544/450; columns=cyan/magenta/yellow; diag-normalized inverse of the LED-SPD x CFA x 10^-Dmin mixing matrix (scan density per unit peak dye density, read through the base+mask as the roll anchor leaves it); off-diagonals = crosstalk removed"
+          }
+        },
+        "key": "per_stock"
+      }
+    ],
+    "structure": [
+      {
+        "field": "title",
+        "shape": "string"
+      },
+      {
+        "field": "family",
+        "shape": "string"
+      },
+      {
+        "field": "stocks_covered",
+        "shape": "[1]string"
+      },
+      {
+        "field": "normalization",
+        "shape": "string"
+      },
+      {
+        "field": "units",
+        "shape": "string"
+      },
+      {
+        "field": "source",
+        "shape": "string"
+      },
+      {
+        "field": "uncertainty",
+        "shape": "string"
+      },
+      {
+        "field": "shared_full_curves",
+        "shape": "object{cyan,magenta,wavelength_nm,yellow}"
+      },
+      {
+        "field": "led_wavelengths_nm",
+        "shape": "[3]number"
+      },
+      {
+        "field": "per_stock",
+        "shape": "object{100}"
+      },
+      {
+        "field": "fit_audit",
+        "shape": "object{aggregate_maxabs_density,aggregate_rmse_density,basis,basis_held,basis_held_note,basis_support_nm,bounds,bounds_pinned,bounds_pinned_note,decoupling_condition_number,multistart,params,peak_shift_nm,peak_shift_note,statusM_constraint,statusM_of_digitized_curves,statusM_red_truncation}"
+      }
+    ]
+  },
+  {
+    "path": "data/films/Fujicolor100_mtf.json",
+    "source_url": "https://raw.githubusercontent.com/OwlMightyCh/film-scan-calibration/8d03a0e0c111625b8a88fb8647a35d95b491249d/data/films/Fujicolor100_mtf.json",
+    "sha256": "954d36213c54774cf24eb8c33a4f789b3264a216a6d451b1c6f3576f8148bf98",
+    "git_blob_sha1": "5904d10eb049490f1dcc0aafc9530960efa1b25f",
+    "keys": [
+      "title",
+      "stock",
+      "family",
+      "source",
+      "units",
+      "grid",
+      "curves",
+      "summary",
+      "digitization_audit"
+    ],
+    "metadata": [
+      {
+        "value": "Fujicolor100",
+        "key": "stock"
+      },
+      {
+        "value": {
+          "pdf": "Fujicolor 100 [JP].pdf",
+          "page_index": 4,
+          "datasheet_code": "013AR0317A",
+          "revision": "2007",
+          "chart": "Modulation Transfer Function",
+          "exposure_as_printed": "Daylight",
+          "process_as_printed": "CN-16"
+        },
+        "key": "source"
+      }
+    ],
+    "structure": [
+      {
+        "field": "title",
+        "shape": "string"
+      },
+      {
+        "field": "stock",
+        "shape": "string"
+      },
+      {
+        "field": "family",
+        "shape": "string"
+      },
+      {
+        "field": "source",
+        "shape": "object{chart,datasheet_code,exposure_as_printed,page_index,pdf,process_as_printed,revision}"
+      },
+      {
+        "field": "units",
+        "shape": "object{x,y}"
+      },
+      {
+        "field": "grid",
+        "shape": "object{note,per_decade}"
+      },
+      {
+        "field": "curves",
+        "shape": "object{MTF}"
+      },
+      {
+        "field": "summary",
+        "shape": "object{MTF}"
+      },
+      {
+        "field": "digitization_audit",
+        "shape": "object{bezier_note,frame_device_pt,frame_drawn_as,label_assignment,label_check,route,x_axis,y_axis}"
+      }
+    ]
+  },
+  {
+    "path": "data/films/Fujicolor100_spectral_sensitivity.json",
+    "source_url": "https://raw.githubusercontent.com/OwlMightyCh/film-scan-calibration/8d03a0e0c111625b8a88fb8647a35d95b491249d/data/films/Fujicolor100_spectral_sensitivity.json",
+    "sha256": "7d3097f96e6801b70d9ef421f38ec3a02a7b222ea38d2b5b0958c7cec4474a18",
+    "git_blob_sha1": "538dac0b0286956d2d707638a3356f8d05d33430",
+    "keys": [
+      "source",
+      "measurement_note",
+      "log_sensitivity_origin",
+      "wavelength_nm",
+      "wavelength_note",
+      "log_sensitivity",
+      "digitization_audit"
+    ],
+    "metadata": [
+      {
+        "value": "FUJICOLOR 100 Color Negative Film datasheet, Ref. No. 013AR0317A, page 5 chart 17, spectral-sensitivity, digitized from the embedded paths by engine/c41/fuji_digitize.py",
+        "key": "source"
+      },
+      {
+        "value": "Process: CN-16; Densitometry: Status M; Density: 1.0 Above D-min",
+        "key": "measurement_note"
+      },
+      {
+        "value": "1 nm grid over the union support of the three layers; each layer is null (JSON null) outside its own support",
+        "key": "wavelength_note"
+      }
+    ],
+    "structure": [
+      {
+        "field": "source",
+        "shape": "string"
+      },
+      {
+        "field": "measurement_note",
+        "shape": "string"
+      },
+      {
+        "field": "log_sensitivity_origin",
+        "shape": "string"
+      },
+      {
+        "field": "wavelength_nm",
+        "shape": "[306]number"
+      },
+      {
+        "field": "wavelength_note",
+        "shape": "string"
+      },
+      {
+        "field": "log_sensitivity",
+        "shape": "object{cyan,magenta,yellow}"
+      },
+      {
+        "field": "digitization_audit",
+        "shape": "object{calibration_basis,curve_classification,curve_representation,layers,x_axis,y_axis}"
+      }
+    ]
+  },
+  {
+    "path": "data/films/Fujifilm200_datasheet_curves.json",
+    "source_url": "https://raw.githubusercontent.com/OwlMightyCh/film-scan-calibration/8d03a0e0c111625b8a88fb8647a35d95b491249d/data/films/Fujifilm200_datasheet_curves.json",
+    "sha256": "841f920b303a0e8441e8bf0b801ffd68ad89f00795ffd73470b20cfbb8ddda14",
+    "git_blob_sha1": "da70798addcef4fd8a280e30755c77b581807293",
+    "keys": [
+      "source",
+      "char_curves",
+      "spectral",
+      "spectral_full_support",
+      "digitization_audit"
+    ],
+    "metadata": [
+      {
+        "value": "FUJIFILM 200 Color Negative Film datasheet, Ref. No. AF3-0261E, page 5 vector charts, digitized from the embedded paths by engine/c41/fuji_digitize.py",
+        "key": "source"
+      }
+    ],
+    "structure": [
+      {
+        "field": "source",
+        "shape": "string"
+      },
+      {
+        "field": "char_curves",
+        "shape": "object{curve_order_note,log_exposure,log_exposure_units,measurement_note,statusM_density}"
+      },
+      {
+        "field": "spectral",
+        "shape": "object{dmin,measurement_note,midscale_neutral,wavelength_nm}"
+      },
+      {
+        "field": "spectral_full_support",
+        "shape": "object{dmin,midscale_neutral,support_note,wavelength_nm}"
+      },
+      {
+        "field": "digitization_audit",
+        "shape": "object{characteristic_curves,spectral_dye_density}"
+      }
+    ]
+  },
+  {
+    "path": "data/films/Fujifilm200_dye_density.json",
+    "source_url": "https://raw.githubusercontent.com/OwlMightyCh/film-scan-calibration/8d03a0e0c111625b8a88fb8647a35d95b491249d/data/films/Fujifilm200_dye_density.json",
+    "sha256": "067a8b5d248c8b2e1db58fab4b4019138ea645f592a24b5e8c2d66b268127e9d",
+    "git_blob_sha1": "be811a41fc36e020bb6da3a562d56914a3bb639b",
+    "keys": [
+      "title",
+      "family",
+      "stocks_covered",
+      "normalization",
+      "units",
+      "source",
+      "uncertainty",
+      "shared_full_curves",
+      "led_wavelengths_nm",
+      "per_stock",
+      "fit_audit"
+    ],
+    "metadata": [
+      {
+        "value": [
+          "Fujifilm 200"
+        ],
+        "key": "stocks_covered"
+      },
+      {
+        "value": "Fitted to Kodak Fujifilm 200 datasheet AF3-0261E (2023) midscale-neutral minus D-min spectral density (see Fujifilm200_datasheet_curves.json), projected onto the Vision3 ECN-2 image-dye set as surrogate basis",
+        "key": "source"
+      },
+      {
+        "value": {
+          "200": {
+            "dye_density_at_led_wavelengths": {
+              "wavelength_nm": [
+                450,
+                544,
+                640
+              ],
+              "cyan": [
+                0.2164,
+                0.0316,
+                0.5106
+              ],
+              "magenta": [
+                -0.0039,
+                0.9981,
+                0.0584
+              ],
+              "yellow": [
+                0.9931,
+                0.149,
+                0.0137
+              ]
+            },
+            "decoupling_matrix_rowmajor_RGB_density": [
+              [
+                1.0,
+                -0.0997,
+                -0.0023
+              ],
+              [
+                -0.0502,
+                1.0,
+                -0.1606
+              ],
+              [
+                -0.453,
+                0.0335,
+                1.0
+              ]
+            ],
+            "matrix_note": "rows=R/G/B scan density @640/544/450; columns=cyan/magenta/yellow; diag-normalized inverse of the LED-SPD x CFA x 10^-Dmin mixing matrix (scan density per unit peak dye density, read through the base+mask as the roll anchor leaves it); off-diagonals = crosstalk removed"
+          }
+        },
+        "key": "per_stock"
+      }
+    ],
+    "structure": [
+      {
+        "field": "title",
+        "shape": "string"
+      },
+      {
+        "field": "family",
+        "shape": "string"
+      },
+      {
+        "field": "stocks_covered",
+        "shape": "[1]string"
+      },
+      {
+        "field": "normalization",
+        "shape": "string"
+      },
+      {
+        "field": "units",
+        "shape": "string"
+      },
+      {
+        "field": "source",
+        "shape": "string"
+      },
+      {
+        "field": "uncertainty",
+        "shape": "string"
+      },
+      {
+        "field": "shared_full_curves",
+        "shape": "object{cyan,magenta,wavelength_nm,yellow}"
+      },
+      {
+        "field": "led_wavelengths_nm",
+        "shape": "[3]number"
+      },
+      {
+        "field": "per_stock",
+        "shape": "object{200}"
+      },
+      {
+        "field": "fit_audit",
+        "shape": "object{aggregate_maxabs_density,aggregate_rmse_density,basis,basis_held,basis_held_note,basis_support_nm,bounds,bounds_pinned,bounds_pinned_note,decoupling_condition_number,multistart,params,peak_shift_nm,peak_shift_note,statusM_constraint,statusM_of_digitized_curves,statusM_red_truncation}"
+      }
+    ]
+  },
+  {
+    "path": "data/films/Fujifilm200_spectral_sensitivity.json",
+    "source_url": "https://raw.githubusercontent.com/OwlMightyCh/film-scan-calibration/8d03a0e0c111625b8a88fb8647a35d95b491249d/data/films/Fujifilm200_spectral_sensitivity.json",
+    "sha256": "c3db5936145682829e17030a0cb7eade3216daf0e1db70a3e283d617ed0a0579",
+    "git_blob_sha1": "8b4e368d2c9dac748ddff059d94363d07aae43ef",
+    "keys": [
+      "source",
+      "measurement_note",
+      "log_sensitivity_origin",
+      "wavelength_nm",
+      "wavelength_note",
+      "log_sensitivity",
+      "digitization_audit"
+    ],
+    "metadata": [
+      {
+        "value": "FUJIFILM 200 Color Negative Film datasheet, Ref. No. AF3-0261E, page 5 chart 17, spectral-sensitivity, digitized from the embedded paths by engine/c41/fuji_digitize.py",
+        "key": "source"
+      },
+      {
+        "value": "Process: CN-16; Densitometry: Status M; Density: 1.0 Above D-min",
+        "key": "measurement_note"
+      },
+      {
+        "value": "1 nm grid over the union support of the three layers; each layer is null (JSON null) outside its own support",
+        "key": "wavelength_note"
+      }
+    ],
+    "structure": [
+      {
+        "field": "source",
+        "shape": "string"
+      },
+      {
+        "field": "measurement_note",
+        "shape": "string"
+      },
+      {
+        "field": "log_sensitivity_origin",
+        "shape": "string"
+      },
+      {
+        "field": "wavelength_nm",
+        "shape": "[300]number"
+      },
+      {
+        "field": "wavelength_note",
+        "shape": "string"
+      },
+      {
+        "field": "log_sensitivity",
+        "shape": "object{cyan,magenta,yellow}"
+      },
+      {
+        "field": "digitization_audit",
+        "shape": "object{calibration_basis,curve_classification,curve_representation,layers,x_axis,y_axis}"
+      }
+    ]
+  },
+  {
+    "path": "data/films/Fujifilm400_datasheet_curves.json",
+    "source_url": "https://raw.githubusercontent.com/OwlMightyCh/film-scan-calibration/8d03a0e0c111625b8a88fb8647a35d95b491249d/data/films/Fujifilm400_datasheet_curves.json",
+    "sha256": "aa02d8c7fe8e9e633f75fcf97d61ee443bbeb77c78bd17b57a88b632c4a12eac",
+    "git_blob_sha1": "0d528def78540431d3c6e746af047dede3fc7605",
+    "keys": [
+      "source",
+      "char_curves",
+      "spectral",
+      "spectral_full_support",
+      "digitization_audit"
+    ],
+    "metadata": [
+      {
+        "value": "FUJIFILM 400 Color Negative Film datasheet, Ref. No. AF3-0262E, page 6 vector charts, digitized from the embedded paths by engine/c41/fuji400_digitize.py",
+        "key": "source"
+      }
+    ],
+    "structure": [
+      {
+        "field": "source",
+        "shape": "string"
+      },
+      {
+        "field": "char_curves",
+        "shape": "object{curve_order_note,log_exposure,log_exposure_units,measurement_note,statusM_density}"
+      },
+      {
+        "field": "spectral",
+        "shape": "object{dmin,measurement_note,midscale_neutral,wavelength_nm}"
+      },
+      {
+        "field": "spectral_full_support",
+        "shape": "object{dmin,midscale_neutral,support_note,wavelength_nm}"
+      },
+      {
+        "field": "digitization_audit",
+        "shape": "object{characteristic_curves,spectral_dye_density}"
+      }
+    ]
+  },
+  {
+    "path": "data/films/Fujifilm400_dye_density.json",
+    "source_url": "https://raw.githubusercontent.com/OwlMightyCh/film-scan-calibration/8d03a0e0c111625b8a88fb8647a35d95b491249d/data/films/Fujifilm400_dye_density.json",
+    "sha256": "b6133b6cfac910b4a259de76a3ad71c8a742da633183c7822fddb5689f796b92",
+    "git_blob_sha1": "a85da8ee853b1795245d4e2f96430d8a19510782",
+    "keys": [
+      "title",
+      "family",
+      "stocks_covered",
+      "normalization",
+      "units",
+      "source",
+      "uncertainty",
+      "shared_full_curves",
+      "led_wavelengths_nm",
+      "per_stock",
+      "fit_audit"
+    ],
+    "metadata": [
+      {
+        "value": [
+          "Fujifilm 400"
+        ],
+        "key": "stocks_covered"
+      },
+      {
+        "value": "Fitted to Kodak Fujifilm 400 datasheet AF3-0262E (2023) midscale-neutral minus D-min spectral density (see Fujifilm400_datasheet_curves.json), projected onto the Vision3 ECN-2 image-dye set as surrogate basis",
+        "key": "source"
+      },
+      {
+        "value": {
+          "400": {
+            "dye_density_at_led_wavelengths": {
+              "wavelength_nm": [
+                450,
+                544,
+                640
+              ],
+              "cyan": [
+                0.2164,
+                0.0316,
+                0.5106
+              ],
+              "magenta": [
+                -0.0039,
+                0.9981,
+                0.0584
+              ],
+              "yellow": [
+                0.9931,
+                0.149,
+                0.0137
+              ]
+            },
+            "decoupling_matrix_rowmajor_RGB_density": [
+              [
+                1.0,
+                -0.0997,
+                -0.0023
+              ],
+              [
+                -0.0502,
+                1.0,
+                -0.1606
+              ],
+              [
+                -0.453,
+                0.0335,
+                1.0
+              ]
+            ],
+            "matrix_note": "rows=R/G/B scan density @640/544/450; columns=cyan/magenta/yellow; diag-normalized inverse of the LED-SPD x CFA x 10^-Dmin mixing matrix (scan density per unit peak dye density, read through the base+mask as the roll anchor leaves it); off-diagonals = crosstalk removed"
+          }
+        },
+        "key": "per_stock"
+      }
+    ],
+    "structure": [
+      {
+        "field": "title",
+        "shape": "string"
+      },
+      {
+        "field": "family",
+        "shape": "string"
+      },
+      {
+        "field": "stocks_covered",
+        "shape": "[1]string"
+      },
+      {
+        "field": "normalization",
+        "shape": "string"
+      },
+      {
+        "field": "units",
+        "shape": "string"
+      },
+      {
+        "field": "source",
+        "shape": "string"
+      },
+      {
+        "field": "uncertainty",
+        "shape": "string"
+      },
+      {
+        "field": "shared_full_curves",
+        "shape": "object{cyan,magenta,wavelength_nm,yellow}"
+      },
+      {
+        "field": "led_wavelengths_nm",
+        "shape": "[3]number"
+      },
+      {
+        "field": "per_stock",
+        "shape": "object{400}"
+      },
+      {
+        "field": "fit_audit",
+        "shape": "object{aggregate_maxabs_density,aggregate_rmse_density,basis,basis_held,basis_held_note,basis_support_nm,bounds,bounds_pinned,bounds_pinned_note,decoupling_condition_number,multistart,params,peak_shift_nm,peak_shift_note,statusM_constraint,statusM_of_digitized_curves,statusM_red_truncation}"
+      }
+    ]
+  },
+  {
+    "path": "data/films/Fujifilm400_spectral_sensitivity.json",
+    "source_url": "https://raw.githubusercontent.com/OwlMightyCh/film-scan-calibration/8d03a0e0c111625b8a88fb8647a35d95b491249d/data/films/Fujifilm400_spectral_sensitivity.json",
+    "sha256": "f039055e0a9f4de10147ca42243e5873f1250b27d0c10b5c97a53c16aad111a3",
+    "git_blob_sha1": "b1df5c795dcf2e06c2ac9f1095f599ebbb6e0ec2",
+    "keys": [
+      "source",
+      "measurement_note",
+      "log_sensitivity_origin",
+      "wavelength_nm",
+      "wavelength_note",
+      "log_sensitivity",
+      "digitization_audit"
+    ],
+    "metadata": [
+      {
+        "value": "FUJIFILM 400 Color Negative Film datasheet, Ref. No. AF3-0262E, page 6 chart 17, spectral-sensitivity, digitized from the embedded paths by engine/c41/fuji400_digitize.py",
+        "key": "source"
+      },
+      {
+        "value": "Process: CN-16; Densitometry: Status M; Density: 1.0 Above D-min",
+        "key": "measurement_note"
+      },
+      {
+        "value": "1 nm grid over the union support of the three layers; each layer is null (JSON null) outside its own support",
+        "key": "wavelength_note"
+      }
+    ],
+    "structure": [
+      {
+        "field": "source",
+        "shape": "string"
+      },
+      {
+        "field": "measurement_note",
+        "shape": "string"
+      },
+      {
+        "field": "log_sensitivity_origin",
+        "shape": "string"
+      },
+      {
+        "field": "wavelength_nm",
+        "shape": "[300]number"
+      },
+      {
+        "field": "wavelength_note",
+        "shape": "string"
+      },
+      {
+        "field": "log_sensitivity",
+        "shape": "object{cyan,magenta,yellow}"
+      },
+      {
+        "field": "digitization_audit",
+        "shape": "object{calibration_basis,curve_classification,curve_representation,layers,x_axis,y_axis}"
+      }
+    ]
+  },
+  {
+    "path": "data/films/Gold200_datasheet_curves.json",
+    "source_url": "https://raw.githubusercontent.com/OwlMightyCh/film-scan-calibration/8d03a0e0c111625b8a88fb8647a35d95b491249d/data/films/Gold200_datasheet_curves.json",
+    "sha256": "14861c94ec1ca1618901dc6fc8f1f6d1014c8cca8f8d146192e47a692610635e",
+    "git_blob_sha1": "2e26105808a0e04d15c8dfc961241738f24f3969",
+    "keys": [
+      "source",
+      "char_curves",
+      "spectral",
+      "digitization_audit"
+    ],
+    "metadata": [
+      {
+        "value": "Kodak Gold 200 datasheet E-7022 (not stated), page 4 vector charts, digitized from the embedded PDF path geometry",
+        "key": "source"
+      }
+    ],
+    "structure": [
+      {
+        "field": "source",
+        "shape": "string"
+      },
+      {
+        "field": "char_curves",
+        "shape": "object{curve_order_note,log_exposure,log_exposure_units,statusM_density}"
+      },
+      {
+        "field": "spectral",
+        "shape": "object{dmin,midscale_neutral,wavelength_nm}"
+      },
+      {
+        "field": "digitization_audit",
+        "shape": "object{characteristic_curves,spectral_dye_density}"
+      }
+    ]
+  },
+  {
+    "path": "data/films/Gold200_dye_density.json",
+    "source_url": "https://raw.githubusercontent.com/OwlMightyCh/film-scan-calibration/8d03a0e0c111625b8a88fb8647a35d95b491249d/data/films/Gold200_dye_density.json",
+    "sha256": "6429c42494e65209b574672606575d71101a418f5020f889a92788f9b60a734a",
+    "git_blob_sha1": "54f929d79e383787f73d898ddbf58a91b0f119e0",
+    "keys": [
+      "title",
+      "family",
+      "stocks_covered",
+      "normalization",
+      "units",
+      "source",
+      "uncertainty",
+      "shared_full_curves",
+      "led_wavelengths_nm",
+      "per_stock",
+      "fit_audit"
+    ],
+    "metadata": [
+      {
+        "value": [
+          "Gold 200"
+        ],
+        "key": "stocks_covered"
+      },
+      {
+        "value": "Fitted to Kodak Gold 200 datasheet E-7022 (not stated) midscale-neutral minus D-min spectral density (see Gold200_datasheet_curves.json), projected onto the Vision3 ECN-2 image-dye set as surrogate basis",
+        "key": "source"
+      },
+      {
+        "value": {
+          "200": {
+            "dye_density_at_led_wavelengths": {
+              "wavelength_nm": [
+                450,
+                544,
+                640
+              ],
+              "cyan": [
+                0.041,
+                0.0939,
+                0.6806
+              ],
+              "magenta": [
+                0.0067,
+                0.9931,
+                0.0654
+              ],
+              "yellow": [
+                0.9969,
+                0.1129,
+                0.0102
+              ]
+            },
+            "decoupling_matrix_rowmajor_RGB_density": [
+              [
+                1.0,
+                -0.1087,
+                0.0003
+              ],
+              [
+                -0.1961,
+                1.0,
+                -0.1206
+              ],
+              [
+                -0.0763,
+                -0.0136,
+                1.0
+              ]
+            ],
+            "matrix_note": "rows=R/G/B scan density @640/544/450; columns=cyan/magenta/yellow; diag-normalized inverse of the LED-SPD x CFA x 10^-Dmin mixing matrix (scan density per unit peak dye density, read through the base+mask as the roll anchor leaves it); off-diagonals = crosstalk removed"
+          }
+        },
+        "key": "per_stock"
+      }
+    ],
+    "structure": [
+      {
+        "field": "title",
+        "shape": "string"
+      },
+      {
+        "field": "family",
+        "shape": "string"
+      },
+      {
+        "field": "stocks_covered",
+        "shape": "[1]string"
+      },
+      {
+        "field": "normalization",
+        "shape": "string"
+      },
+      {
+        "field": "units",
+        "shape": "string"
+      },
+      {
+        "field": "source",
+        "shape": "string"
+      },
+      {
+        "field": "uncertainty",
+        "shape": "string"
+      },
+      {
+        "field": "shared_full_curves",
+        "shape": "object{cyan,magenta,wavelength_nm,yellow}"
+      },
+      {
+        "field": "led_wavelengths_nm",
+        "shape": "[3]number"
+      },
+      {
+        "field": "per_stock",
+        "shape": "object{200}"
+      },
+      {
+        "field": "fit_audit",
+        "shape": "object{aggregate_maxabs_density,aggregate_rmse_density,basis,basis_held,basis_held_note,basis_support_nm,bounds,bounds_pinned,bounds_pinned_note,decoupling_condition_number,multistart,params,peak_shift_nm,peak_shift_note,statusM_constraint,statusM_of_digitized_curves,statusM_red_truncation}"
+      }
+    ]
+  },
+  {
+    "path": "data/films/Gold200_spectral_sensitivity.json",
+    "source_url": "https://raw.githubusercontent.com/OwlMightyCh/film-scan-calibration/8d03a0e0c111625b8a88fb8647a35d95b491249d/data/films/Gold200_spectral_sensitivity.json",
+    "sha256": "4dac8a3dda111761736a7cf605f4e5537948bbc3b8c719ba92964133183b626d",
+    "git_blob_sha1": "e2cb07a4ba2581a40a97a89bf31e351bfe8ed58d",
+    "keys": [
+      "source",
+      "measurement_note",
+      "wavelength_nm",
+      "wavelength_note",
+      "log_sensitivity",
+      "digitization_audit"
+    ],
+    "metadata": [
+      {
+        "value": "Kodak Gold 200 datasheet E-7022 (not stated), page 4 bottom-left 'Spectral-Sensitivity Curves', digitized from the embedded PDF path geometry",
+        "key": "source"
+      },
+      {
+        "value": "sensitivity = log10(1/H) for the exposure H giving density 0.2 above D-min; daylight; 1/50 s",
+        "key": "measurement_note"
+      },
+      {
+        "value": "1 nm grid over the union support of the three layers; each layer is null (JSON null) outside its own support",
+        "key": "wavelength_note"
+      }
+    ],
+    "structure": [
+      {
+        "field": "source",
+        "shape": "string"
+      },
+      {
+        "field": "measurement_note",
+        "shape": "string"
+      },
+      {
+        "field": "wavelength_nm",
+        "shape": "[322]number"
+      },
+      {
+        "field": "wavelength_note",
+        "shape": "string"
+      },
+      {
+        "field": "log_sensitivity",
+        "shape": "object{cyan,magenta,yellow}"
+      },
+      {
+        "field": "digitization_audit",
+        "shape": "object{calibration_basis,curve_classification,fragment_stitching,frame_device_bbox,layers,x_axis,y_axis}"
+      }
+    ]
+  },
+  {
+    "path": "data/films/Portra160_datasheet_curves.json",
+    "source_url": "https://raw.githubusercontent.com/OwlMightyCh/film-scan-calibration/8d03a0e0c111625b8a88fb8647a35d95b491249d/data/films/Portra160_datasheet_curves.json",
+    "sha256": "cfa709da1b8673a6e62cef9eb87cdfe640f311828fa7e2e3d987ca1b865e8803",
+    "git_blob_sha1": "3691d152f7ec53c548f0d4a5833c056646317514",
+    "keys": [
+      "source",
+      "char_curves",
+      "spectral",
+      "digitization_audit"
+    ],
+    "metadata": [
+      {
+        "value": "Kodak Portra 160 datasheet E-4051 (Jan 2025), page 4 vector charts, digitized from the embedded PDF path geometry",
+        "key": "source"
+      }
+    ],
+    "structure": [
+      {
+        "field": "source",
+        "shape": "string"
+      },
+      {
+        "field": "char_curves",
+        "shape": "object{curve_order_note,log_exposure,log_exposure_units,statusM_density}"
+      },
+      {
+        "field": "spectral",
+        "shape": "object{dmin,midscale_neutral,wavelength_nm}"
+      },
+      {
+        "field": "digitization_audit",
+        "shape": "object{characteristic_curves,spectral_dye_density}"
+      }
+    ]
+  },
+  {
+    "path": "data/films/Portra160_dye_density.json",
+    "source_url": "https://raw.githubusercontent.com/OwlMightyCh/film-scan-calibration/8d03a0e0c111625b8a88fb8647a35d95b491249d/data/films/Portra160_dye_density.json",
+    "sha256": "b8b4989c01eaf5e618b3c7526191883464e06600bbe83fa5de2aca8e3ec18d66",
+    "git_blob_sha1": "d2c6288d88051f76910a3dcbf13eb19db1fa055a",
+    "keys": [
+      "title",
+      "family",
+      "stocks_covered",
+      "normalization",
+      "units",
+      "source",
+      "uncertainty",
+      "shared_full_curves",
+      "led_wavelengths_nm",
+      "per_stock",
+      "fit_audit"
+    ],
+    "metadata": [
+      {
+        "value": [
+          "Portra 160"
+        ],
+        "key": "stocks_covered"
+      },
+      {
+        "value": "Fitted to Kodak Portra 160 datasheet E-4051 (Jan 2025) midscale-neutral minus D-min spectral density (see Portra160_datasheet_curves.json), projected onto the Vision3 ECN-2 image-dye set as surrogate basis",
+        "key": "source"
+      },
+      {
+        "value": {
+          "160": {
+            "dye_density_at_led_wavelengths": {
+              "wavelength_nm": [
+                450,
+                544,
+                640
+              ],
+              "cyan": [
+                0.1127,
+                0.0512,
+                0.6219
+              ],
+              "magenta": [
+                -0.0117,
+                0.9979,
+                0.0786
+              ],
+              "yellow": [
+                0.9921,
+                0.0807,
+                0.0072
+              ]
+            },
+            "decoupling_matrix_rowmajor_RGB_density": [
+              [
+                1.0,
+                -0.1281,
+                0.0017
+              ],
+              [
+                -0.1423,
+                1.0,
+                -0.0826
+              ],
+              [
+                -0.1995,
+                0.0037,
+                1.0
+              ]
+            ],
+            "matrix_note": "rows=R/G/B scan density @640/544/450; columns=cyan/magenta/yellow; diag-normalized inverse of the LED-SPD x CFA x 10^-Dmin mixing matrix (scan density per unit peak dye density, read through the base+mask as the roll anchor leaves it); off-diagonals = crosstalk removed"
+          }
+        },
+        "key": "per_stock"
+      }
+    ],
+    "structure": [
+      {
+        "field": "title",
+        "shape": "string"
+      },
+      {
+        "field": "family",
+        "shape": "string"
+      },
+      {
+        "field": "stocks_covered",
+        "shape": "[1]string"
+      },
+      {
+        "field": "normalization",
+        "shape": "string"
+      },
+      {
+        "field": "units",
+        "shape": "string"
+      },
+      {
+        "field": "source",
+        "shape": "string"
+      },
+      {
+        "field": "uncertainty",
+        "shape": "string"
+      },
+      {
+        "field": "shared_full_curves",
+        "shape": "object{cyan,magenta,wavelength_nm,yellow}"
+      },
+      {
+        "field": "led_wavelengths_nm",
+        "shape": "[3]number"
+      },
+      {
+        "field": "per_stock",
+        "shape": "object{160}"
+      },
+      {
+        "field": "fit_audit",
+        "shape": "object{aggregate_maxabs_density,aggregate_rmse_density,basis,basis_held,basis_held_note,basis_support_nm,bounds,bounds_pinned,bounds_pinned_note,decoupling_condition_number,multistart,params,peak_shift_nm,peak_shift_note,statusM_constraint,statusM_of_digitized_curves,statusM_red_truncation}"
+      }
+    ]
+  },
+  {
+    "path": "data/films/Portra160_mtf.json",
+    "source_url": "https://raw.githubusercontent.com/OwlMightyCh/film-scan-calibration/8d03a0e0c111625b8a88fb8647a35d95b491249d/data/films/Portra160_mtf.json",
+    "sha256": "94be43e2222978b9f43a29b8b6dd4513e057ce17470a5c6f85c97a2d49aa8b5b",
+    "git_blob_sha1": "6a2f9bd2d8ef64f38268bf4153b59b83dc2cb1f5",
+    "keys": [
+      "title",
+      "stock",
+      "family",
+      "source",
+      "units",
+      "grid",
+      "curves",
+      "summary",
+      "digitization_audit"
+    ],
+    "metadata": [
+      {
+        "value": "Portra160",
+        "key": "stock"
+      },
+      {
+        "value": {
+          "pdf": "Portra 160.pdf",
+          "page_index": 3,
+          "datasheet_code": "E-4051",
+          "revision": "Jan 2025",
+          "chart": "Modulation Transfer Function",
+          "exposure_as_printed": "Daylight",
+          "process_as_printed": "C-41"
+        },
+        "key": "source"
+      }
+    ],
+    "structure": [
+      {
+        "field": "title",
+        "shape": "string"
+      },
+      {
+        "field": "stock",
+        "shape": "string"
+      },
+      {
+        "field": "family",
+        "shape": "string"
+      },
+      {
+        "field": "source",
+        "shape": "object{chart,datasheet_code,exposure_as_printed,page_index,pdf,process_as_printed,revision}"
+      },
+      {
+        "field": "units",
+        "shape": "object{x,y}"
+      },
+      {
+        "field": "grid",
+        "shape": "object{note,per_decade}"
+      },
+      {
+        "field": "curves",
+        "shape": "object{B,G,R}"
+      },
+      {
+        "field": "summary",
+        "shape": "object{B,G,R}"
+      },
+      {
+        "field": "digitization_audit",
+        "shape": "object{bezier_note,frame_device_pt,frame_drawn_as,label_assignment,label_check,route,x_axis,y_axis}"
+      }
+    ]
+  },
+  {
+    "path": "data/films/Portra160_spectral_sensitivity.json",
+    "source_url": "https://raw.githubusercontent.com/OwlMightyCh/film-scan-calibration/8d03a0e0c111625b8a88fb8647a35d95b491249d/data/films/Portra160_spectral_sensitivity.json",
+    "sha256": "871138442fdb89d88a2cc4ed26baf8d047806f24a57aeb48a1b3235247adc74c",
+    "git_blob_sha1": "5490fe926df5cfbca51eca62c4d5f2f13fadbfcc",
+    "keys": [
+      "source",
+      "measurement_note",
+      "wavelength_nm",
+      "wavelength_note",
+      "log_sensitivity",
+      "digitization_audit"
+    ],
+    "metadata": [
+      {
+        "value": "Kodak Portra 160 datasheet E-4051 (Jan 2025), page 4 bottom-left 'Spectral-Sensitivity Curves', digitized from the embedded PDF path geometry",
+        "key": "source"
+      },
+      {
+        "value": "sensitivity = log10(1/H) for the exposure H giving density 0.2 above D-min; daylight; 1/50 s",
+        "key": "measurement_note"
+      },
+      {
+        "value": "1 nm grid over the union support of the three layers; each layer is null (JSON null) outside its own support",
+        "key": "wavelength_note"
+      }
+    ],
+    "structure": [
+      {
+        "field": "source",
+        "shape": "string"
+      },
+      {
+        "field": "measurement_note",
+        "shape": "string"
+      },
+      {
+        "field": "wavelength_nm",
+        "shape": "[293]number"
+      },
+      {
+        "field": "wavelength_note",
+        "shape": "string"
+      },
+      {
+        "field": "log_sensitivity",
+        "shape": "object{cyan,magenta,yellow}"
+      },
+      {
+        "field": "digitization_audit",
+        "shape": "object{calibration_basis,curve_classification,frame_device_bbox,layers,x_axis,y_axis}"
+      }
+    ]
+  },
+  {
+    "path": "data/films/Portra400_datasheet_curves.json",
+    "source_url": "https://raw.githubusercontent.com/OwlMightyCh/film-scan-calibration/8d03a0e0c111625b8a88fb8647a35d95b491249d/data/films/Portra400_datasheet_curves.json",
+    "sha256": "fb7d1ddade32d34d1dda095a7b0034fe16eb61932935e9dcc742bb0747a52d3d",
+    "git_blob_sha1": "3958a57a3d3bfb40b137762e69abae3dc42b2631",
+    "keys": [
+      "source",
+      "char_curves",
+      "spectral",
+      "digitization_audit"
+    ],
+    "metadata": [
+      {
+        "value": "Kodak Portra 400 datasheet E-4050 (Jan 2025), page 4 vector charts, digitized from the embedded PDF path geometry",
+        "key": "source"
+      }
+    ],
+    "structure": [
+      {
+        "field": "source",
+        "shape": "string"
+      },
+      {
+        "field": "char_curves",
+        "shape": "object{curve_order_note,log_exposure,log_exposure_units,statusM_density}"
+      },
+      {
+        "field": "spectral",
+        "shape": "object{dmin,midscale_neutral,wavelength_nm}"
+      },
+      {
+        "field": "digitization_audit",
+        "shape": "object{characteristic_curves,spectral_dye_density}"
+      }
+    ]
+  },
+  {
+    "path": "data/films/Portra400_dye_density.json",
+    "source_url": "https://raw.githubusercontent.com/OwlMightyCh/film-scan-calibration/8d03a0e0c111625b8a88fb8647a35d95b491249d/data/films/Portra400_dye_density.json",
+    "sha256": "31beb5e31ac10222a6bfc22ed482349d7d9758ee07fa40c4fd6da83168a72b92",
+    "git_blob_sha1": "82987335bdb02c954ddae7e0b66df5b95620d6eb",
+    "keys": [
+      "title",
+      "family",
+      "stocks_covered",
+      "normalization",
+      "units",
+      "source",
+      "uncertainty",
+      "shared_full_curves",
+      "led_wavelengths_nm",
+      "per_stock",
+      "fit_audit"
+    ],
+    "metadata": [
+      {
+        "value": [
+          "Portra 400"
+        ],
+        "key": "stocks_covered"
+      },
+      {
+        "value": "Fitted to Kodak Portra 400 datasheet E-4050 (Jan 2025) midscale-neutral minus D-min spectral density (see Portra400_datasheet_curves.json), projected onto the Vision3 ECN-2 image-dye set as surrogate basis",
+        "key": "source"
+      },
+      {
+        "value": {
+          "400": {
+            "dye_density_at_led_wavelengths": {
+              "wavelength_nm": [
+                450,
+                544,
+                640
+              ],
+              "cyan": [
+                0.0434,
+                0.0867,
+                0.6616
+              ],
+              "magenta": [
+                0.0018,
+                0.9983,
+                0.0701
+              ],
+              "yellow": [
+                0.9971,
+                0.1011,
+                0.0092
+              ]
+            },
+            "decoupling_matrix_rowmajor_RGB_density": [
+              [
+                1.0,
+                -0.116,
+                0.0004
+              ],
+              [
+                -0.2,
+                1.0,
+                -0.1006
+              ],
+              [
+                -0.0823,
+                -0.007,
+                1.0
+              ]
+            ],
+            "matrix_note": "rows=R/G/B scan density @640/544/450; columns=cyan/magenta/yellow; diag-normalized inverse of the LED-SPD x CFA x 10^-Dmin mixing matrix (scan density per unit peak dye density, read through the base+mask as the roll anchor leaves it); off-diagonals = crosstalk removed"
+          }
+        },
+        "key": "per_stock"
+      }
+    ],
+    "structure": [
+      {
+        "field": "title",
+        "shape": "string"
+      },
+      {
+        "field": "family",
+        "shape": "string"
+      },
+      {
+        "field": "stocks_covered",
+        "shape": "[1]string"
+      },
+      {
+        "field": "normalization",
+        "shape": "string"
+      },
+      {
+        "field": "units",
+        "shape": "string"
+      },
+      {
+        "field": "source",
+        "shape": "string"
+      },
+      {
+        "field": "uncertainty",
+        "shape": "string"
+      },
+      {
+        "field": "shared_full_curves",
+        "shape": "object{cyan,magenta,wavelength_nm,yellow}"
+      },
+      {
+        "field": "led_wavelengths_nm",
+        "shape": "[3]number"
+      },
+      {
+        "field": "per_stock",
+        "shape": "object{400}"
+      },
+      {
+        "field": "fit_audit",
+        "shape": "object{aggregate_maxabs_density,aggregate_rmse_density,basis,basis_held,basis_held_note,basis_support_nm,bounds,bounds_pinned,bounds_pinned_note,decoupling_condition_number,multistart,params,peak_shift_nm,peak_shift_note,statusM_constraint,statusM_of_digitized_curves,statusM_red_truncation}"
+      }
+    ]
+  },
+  {
+    "path": "data/films/Portra400_mtf.json",
+    "source_url": "https://raw.githubusercontent.com/OwlMightyCh/film-scan-calibration/8d03a0e0c111625b8a88fb8647a35d95b491249d/data/films/Portra400_mtf.json",
+    "sha256": "ac0a07daeed14f5910a26a2d52b0ee29119566998ec50bed3c2ab1cdc61c22c0",
+    "git_blob_sha1": "e3895bc7007d45cac4816013582a1a151da52fc0",
+    "keys": [
+      "title",
+      "stock",
+      "family",
+      "source",
+      "units",
+      "grid",
+      "curves",
+      "summary",
+      "digitization_audit"
+    ],
+    "metadata": [
+      {
+        "value": "Portra400",
+        "key": "stock"
+      },
+      {
+        "value": {
+          "pdf": "Portra 400.pdf",
+          "page_index": 3,
+          "datasheet_code": "E-4050",
+          "revision": "Jan 2025",
+          "chart": "Modulation Transfer Function",
+          "exposure_as_printed": "Daylight",
+          "process_as_printed": "C-41"
+        },
+        "key": "source"
+      }
+    ],
+    "structure": [
+      {
+        "field": "title",
+        "shape": "string"
+      },
+      {
+        "field": "stock",
+        "shape": "string"
+      },
+      {
+        "field": "family",
+        "shape": "string"
+      },
+      {
+        "field": "source",
+        "shape": "object{chart,datasheet_code,exposure_as_printed,page_index,pdf,process_as_printed,revision}"
+      },
+      {
+        "field": "units",
+        "shape": "object{x,y}"
+      },
+      {
+        "field": "grid",
+        "shape": "object{note,per_decade}"
+      },
+      {
+        "field": "curves",
+        "shape": "object{B,G,R}"
+      },
+      {
+        "field": "summary",
+        "shape": "object{B,G,R}"
+      },
+      {
+        "field": "digitization_audit",
+        "shape": "object{bezier_note,frame_device_pt,frame_drawn_as,label_assignment,label_check,route,x_axis,y_axis}"
+      }
+    ]
+  },
+  {
+    "path": "data/films/Portra400_spectral_sensitivity.json",
+    "source_url": "https://raw.githubusercontent.com/OwlMightyCh/film-scan-calibration/8d03a0e0c111625b8a88fb8647a35d95b491249d/data/films/Portra400_spectral_sensitivity.json",
+    "sha256": "3a1520f3c28d58c982ef9b436057679ed06d27d8f843bb32a646d0c6d88eff2c",
+    "git_blob_sha1": "165c165cef91c2929be6006601723e16a4a4d74e",
+    "keys": [
+      "source",
+      "measurement_note",
+      "wavelength_nm",
+      "wavelength_note",
+      "log_sensitivity",
+      "digitization_audit"
+    ],
+    "metadata": [
+      {
+        "value": "Kodak Portra 400 datasheet E-4050 (Jan 2025), page 4 bottom-left 'Spectral-Sensitivity Curves', digitized from the embedded PDF path geometry",
+        "key": "source"
+      },
+      {
+        "value": "sensitivity = log10(1/H) for the exposure H giving density 0.2 above D-min; daylight; 1/50 s",
+        "key": "measurement_note"
+      },
+      {
+        "value": "1 nm grid over the union support of the three layers; each layer is null (JSON null) outside its own support",
+        "key": "wavelength_note"
+      }
+    ],
+    "structure": [
+      {
+        "field": "source",
+        "shape": "string"
+      },
+      {
+        "field": "measurement_note",
+        "shape": "string"
+      },
+      {
+        "field": "wavelength_nm",
+        "shape": "[302]number"
+      },
+      {
+        "field": "wavelength_note",
+        "shape": "string"
+      },
+      {
+        "field": "log_sensitivity",
+        "shape": "object{cyan,magenta,yellow}"
+      },
+      {
+        "field": "digitization_audit",
+        "shape": "object{calibration_basis,curve_classification,frame_device_bbox,layers,x_axis,y_axis}"
+      }
+    ]
+  },
+  {
+    "path": "data/films/Portra800_datasheet_curves.json",
+    "source_url": "https://raw.githubusercontent.com/OwlMightyCh/film-scan-calibration/8d03a0e0c111625b8a88fb8647a35d95b491249d/data/films/Portra800_datasheet_curves.json",
+    "sha256": "f6817d721b754b7cda6639696ba39c1e21866a38ebe807154398f84ab4da824b",
+    "git_blob_sha1": "911912c7900b8073c2fb49acb61a74bb5aba9154",
+    "keys": [
+      "source",
+      "char_curves",
+      "spectral",
+      "digitization_audit"
+    ],
+    "metadata": [
+      {
+        "value": "Kodak Portra 800 datasheet E-4040 (Jan 2025), pages 4-5 vector charts, digitized from the embedded PDF path geometry",
+        "key": "source"
+      }
+    ],
+    "structure": [
+      {
+        "field": "source",
+        "shape": "string"
+      },
+      {
+        "field": "char_curves",
+        "shape": "object{curve_order_note,log_exposure,log_exposure_units,statusM_density}"
+      },
+      {
+        "field": "spectral",
+        "shape": "object{dmin,midscale_neutral,wavelength_nm}"
+      },
+      {
+        "field": "digitization_audit",
+        "shape": "object{characteristic_curves,spectral_dye_density}"
+      }
+    ]
+  },
+  {
+    "path": "data/films/Portra800_dye_density.json",
+    "source_url": "https://raw.githubusercontent.com/OwlMightyCh/film-scan-calibration/8d03a0e0c111625b8a88fb8647a35d95b491249d/data/films/Portra800_dye_density.json",
+    "sha256": "c615a0501014f487fe13216b9332bb8df58c57bd0ed8728736d805ee9bd61726",
+    "git_blob_sha1": "5dc07042467dcae4c53fd8241e931b756702dab7",
+    "keys": [
+      "title",
+      "family",
+      "stocks_covered",
+      "normalization",
+      "units",
+      "source",
+      "uncertainty",
+      "shared_full_curves",
+      "led_wavelengths_nm",
+      "per_stock",
+      "fit_audit"
+    ],
+    "metadata": [
+      {
+        "value": [
+          "Portra 800"
+        ],
+        "key": "stocks_covered"
+      },
+      {
+        "value": "Fitted to Kodak Portra 800 datasheet E-4040 (Jan 2025) midscale-neutral minus D-min spectral density (see Portra800_datasheet_curves.json), projected onto the Vision3 ECN-2 image-dye set as surrogate basis",
+        "key": "source"
+      },
+      {
+        "value": {
+          "800": {
+            "dye_density_at_led_wavelengths": {
+              "wavelength_nm": [
+                450,
+                544,
+                640
+              ],
+              "cyan": [
+                0.0439,
+                0.0875,
+                0.6711
+              ],
+              "magenta": [
+                0.0013,
+                0.9924,
+                0.0679
+              ],
+              "yellow": [
+                0.9967,
+                0.1137,
+                0.0103
+              ]
+            },
+            "decoupling_matrix_rowmajor_RGB_density": [
+              [
+                1.0,
+                -0.112,
+                0.0004
+              ],
+              [
+                -0.1911,
+                1.0,
+                -0.1202
+              ],
+              [
+                -0.0826,
+                -0.015,
+                1.0
+              ]
+            ],
+            "matrix_note": "rows=R/G/B scan density @640/544/450; columns=cyan/magenta/yellow; diag-normalized inverse of the LED-SPD x CFA x 10^-Dmin mixing matrix (scan density per unit peak dye density, read through the base+mask as the roll anchor leaves it); off-diagonals = crosstalk removed"
+          }
+        },
+        "key": "per_stock"
+      }
+    ],
+    "structure": [
+      {
+        "field": "title",
+        "shape": "string"
+      },
+      {
+        "field": "family",
+        "shape": "string"
+      },
+      {
+        "field": "stocks_covered",
+        "shape": "[1]string"
+      },
+      {
+        "field": "normalization",
+        "shape": "string"
+      },
+      {
+        "field": "units",
+        "shape": "string"
+      },
+      {
+        "field": "source",
+        "shape": "string"
+      },
+      {
+        "field": "uncertainty",
+        "shape": "string"
+      },
+      {
+        "field": "shared_full_curves",
+        "shape": "object{cyan,magenta,wavelength_nm,yellow}"
+      },
+      {
+        "field": "led_wavelengths_nm",
+        "shape": "[3]number"
+      },
+      {
+        "field": "per_stock",
+        "shape": "object{800}"
+      },
+      {
+        "field": "fit_audit",
+        "shape": "object{aggregate_maxabs_density,aggregate_rmse_density,basis,basis_held,basis_held_note,basis_support_nm,bounds,bounds_pinned,bounds_pinned_note,decoupling_condition_number,multistart,params,peak_shift_nm,peak_shift_note,statusM_constraint,statusM_of_digitized_curves,statusM_red_truncation}"
+      }
+    ]
+  },
+  {
+    "path": "data/films/Portra800_mtf.json",
+    "source_url": "https://raw.githubusercontent.com/OwlMightyCh/film-scan-calibration/8d03a0e0c111625b8a88fb8647a35d95b491249d/data/films/Portra800_mtf.json",
+    "sha256": "19dbfcf55a9b1424f53c0a48b1697b109f5612e93aeb9c64528eacb69da3ee05",
+    "git_blob_sha1": "2381cf3685ebf8dadb304461761426eaff18f975",
+    "keys": [
+      "title",
+      "stock",
+      "family",
+      "source",
+      "units",
+      "grid",
+      "curves",
+      "summary",
+      "digitization_audit"
+    ],
+    "metadata": [
+      {
+        "value": "Portra800",
+        "key": "stock"
+      },
+      {
+        "value": {
+          "pdf": "Portra 800.pdf",
+          "page_index": 4,
+          "datasheet_code": "E-4040",
+          "revision": "Jan 2025",
+          "chart": "Modulation Transfer Function",
+          "exposure_as_printed": "Daylight",
+          "process_as_printed": "C-41"
+        },
+        "key": "source"
+      }
+    ],
+    "structure": [
+      {
+        "field": "title",
+        "shape": "string"
+      },
+      {
+        "field": "stock",
+        "shape": "string"
+      },
+      {
+        "field": "family",
+        "shape": "string"
+      },
+      {
+        "field": "source",
+        "shape": "object{chart,datasheet_code,exposure_as_printed,page_index,pdf,process_as_printed,revision}"
+      },
+      {
+        "field": "units",
+        "shape": "object{x,y}"
+      },
+      {
+        "field": "grid",
+        "shape": "object{note,per_decade}"
+      },
+      {
+        "field": "curves",
+        "shape": "object{B,G,R}"
+      },
+      {
+        "field": "summary",
+        "shape": "object{B,G,R}"
+      },
+      {
+        "field": "digitization_audit",
+        "shape": "object{bezier_note,frame_device_pt,frame_drawn_as,label_assignment,label_check,route,x_axis,y_axis}"
+      }
+    ]
+  },
+  {
+    "path": "data/films/Portra800_spectral_sensitivity.json",
+    "source_url": "https://raw.githubusercontent.com/OwlMightyCh/film-scan-calibration/8d03a0e0c111625b8a88fb8647a35d95b491249d/data/films/Portra800_spectral_sensitivity.json",
+    "sha256": "7869818eae4a965e6fc63808dc654da6e574f62f8a2f5693f36508e07234f441",
+    "git_blob_sha1": "c5ebe28be1d00e5d7f0c283db91e1f3499cb381b",
+    "keys": [
+      "source",
+      "measurement_note",
+      "wavelength_nm",
+      "wavelength_note",
+      "log_sensitivity",
+      "digitization_audit"
+    ],
+    "metadata": [
+      {
+        "value": "Kodak Portra 800 datasheet E-4040 (Jan 2025), page 4 bottom-left 'Spectral-Sensitivity Curves', digitized from the embedded PDF path geometry",
+        "key": "source"
+      },
+      {
+        "value": "sensitivity = log10(1/H) for the exposure H giving density 0.2 above D-min; daylight; 1/50 s",
+        "key": "measurement_note"
+      },
+      {
+        "value": "1 nm grid over the union support of the three layers; each layer is null (JSON null) outside its own support",
+        "key": "wavelength_note"
+      }
+    ],
+    "structure": [
+      {
+        "field": "source",
+        "shape": "string"
+      },
+      {
+        "field": "measurement_note",
+        "shape": "string"
+      },
+      {
+        "field": "wavelength_nm",
+        "shape": "[337]number"
+      },
+      {
+        "field": "wavelength_note",
+        "shape": "string"
+      },
+      {
+        "field": "log_sensitivity",
+        "shape": "object{cyan,magenta,yellow}"
+      },
+      {
+        "field": "digitization_audit",
+        "shape": "object{calibration_basis,curve_classification,frame_device_bbox,layers,x_axis,y_axis}"
+      }
+    ]
+  },
+  {
+    "path": "data/films/Pro400H_datasheet_curves.json",
+    "source_url": "https://raw.githubusercontent.com/OwlMightyCh/film-scan-calibration/8d03a0e0c111625b8a88fb8647a35d95b491249d/data/films/Pro400H_datasheet_curves.json",
+    "sha256": "b3c2ee4d9d53ca0bc9ce86f631c6e147ec19b3be825c252774d99847170fc8b0",
+    "git_blob_sha1": "d4dfabe6903d116c3dd069a44bfa3259b8e6cd42",
+    "keys": [
+      "source",
+      "char_curves",
+      "spectral",
+      "spectral_full_support",
+      "digitization_audit"
+    ],
+    "metadata": [
+      {
+        "value": "FUJICOLOR PRO 400H Color Negative Film datasheet, Ref. No. AF3-176E, page 8 vector charts, digitized from the embedded paths by engine/c41/fuji_digitize.py",
+        "key": "source"
+      }
+    ],
+    "structure": [
+      {
+        "field": "source",
+        "shape": "string"
+      },
+      {
+        "field": "char_curves",
+        "shape": "object{curve_order_note,log_exposure,log_exposure_units,measurement_note,statusM_density}"
+      },
+      {
+        "field": "spectral",
+        "shape": "object{dmin,measurement_note,midscale_neutral,wavelength_nm}"
+      },
+      {
+        "field": "spectral_full_support",
+        "shape": "object{dmin,midscale_neutral,support_note,wavelength_nm}"
+      },
+      {
+        "field": "digitization_audit",
+        "shape": "object{axis_label_cross_check,characteristic_curves,spectral_dye_density,spectral_sensitivity}"
+      }
+    ]
+  },
+  {
+    "path": "data/films/Pro400H_dye_density.json",
+    "source_url": "https://raw.githubusercontent.com/OwlMightyCh/film-scan-calibration/8d03a0e0c111625b8a88fb8647a35d95b491249d/data/films/Pro400H_dye_density.json",
+    "sha256": "462a1289928f107a8d8c9d2c80fec7ef2473f8e800769c80328598f2d41f0db3",
+    "git_blob_sha1": "50aa69b8b8cfa8266dcee9365ebb5f38849ee6db",
+    "keys": [
+      "title",
+      "family",
+      "stocks_covered",
+      "normalization",
+      "units",
+      "source",
+      "uncertainty",
+      "shared_full_curves",
+      "led_wavelengths_nm",
+      "per_stock",
+      "fit_audit"
+    ],
+    "metadata": [
+      {
+        "value": [
+          "Fujifilm Pro 400H"
+        ],
+        "key": "stocks_covered"
+      },
+      {
+        "value": "Fitted to Kodak Fujifilm Pro 400H datasheet AF3-176E (n.d.) midscale-neutral minus D-min spectral density (see Pro400H_datasheet_curves.json), projected onto the Vision3 ECN-2 image-dye set as surrogate basis",
+        "key": "source"
+      },
+      {
+        "value": {
+          "400": {
+            "dye_density_at_led_wavelengths": {
+              "wavelength_nm": [
+                450,
+                544,
+                640
+              ],
+              "cyan": [
+                0.1218,
+                0.0518,
+                0.6572
+              ],
+              "magenta": [
+                0.0366,
+                0.9996,
+                0.1141
+              ],
+              "yellow": [
+                0.9978,
+                0.0528,
+                0.0042
+              ]
+            },
+            "decoupling_matrix_rowmajor_RGB_density": [
+              [
+                1.0,
+                -0.1708,
+                0.0038
+              ],
+              [
+                -0.1445,
+                1.0,
+                -0.0557
+              ],
+              [
+                -0.1914,
+                -0.0613,
+                1.0
+              ]
+            ],
+            "matrix_note": "rows=R/G/B scan density @640/544/450; columns=cyan/magenta/yellow; diag-normalized inverse of the LED-SPD x CFA x 10^-Dmin mixing matrix (scan density per unit peak dye density, read through the base+mask as the roll anchor leaves it); off-diagonals = crosstalk removed"
+          }
+        },
+        "key": "per_stock"
+      }
+    ],
+    "structure": [
+      {
+        "field": "title",
+        "shape": "string"
+      },
+      {
+        "field": "family",
+        "shape": "string"
+      },
+      {
+        "field": "stocks_covered",
+        "shape": "[1]string"
+      },
+      {
+        "field": "normalization",
+        "shape": "string"
+      },
+      {
+        "field": "units",
+        "shape": "string"
+      },
+      {
+        "field": "source",
+        "shape": "string"
+      },
+      {
+        "field": "uncertainty",
+        "shape": "string"
+      },
+      {
+        "field": "shared_full_curves",
+        "shape": "object{cyan,magenta,wavelength_nm,yellow}"
+      },
+      {
+        "field": "led_wavelengths_nm",
+        "shape": "[3]number"
+      },
+      {
+        "field": "per_stock",
+        "shape": "object{400}"
+      },
+      {
+        "field": "fit_audit",
+        "shape": "object{aggregate_maxabs_density,aggregate_rmse_density,basis,basis_held,basis_held_note,basis_support_nm,bounds,bounds_pinned,bounds_pinned_note,decoupling_condition_number,multistart,params,peak_shift_nm,peak_shift_note,statusM_constraint,statusM_of_digitized_curves,statusM_red_truncation,traced_tail_fit}"
+      }
+    ]
+  },
+  {
+    "path": "data/films/Pro400H_mtf.json",
+    "source_url": "https://raw.githubusercontent.com/OwlMightyCh/film-scan-calibration/8d03a0e0c111625b8a88fb8647a35d95b491249d/data/films/Pro400H_mtf.json",
+    "sha256": "5671c97797b93e67964325427195184121cbaa4475a79946e6f4d256be249a2d",
+    "git_blob_sha1": "61bd9011fecec5430e87ae7e95f0b1f3117d10ed",
+    "keys": [
+      "title",
+      "stock",
+      "family",
+      "source",
+      "units",
+      "grid",
+      "curves",
+      "summary",
+      "digitization_audit"
+    ],
+    "metadata": [
+      {
+        "value": "Pro400H",
+        "key": "stock"
+      },
+      {
+        "value": {
+          "pdf": "Fujifilm Pro 400H.pdf",
+          "page_index": 7,
+          "datasheet_code": "AF3-176E",
+          "revision": "not recorded",
+          "chart": "Modulation Transfer Function",
+          "exposure_as_printed": "Daylight",
+          "process_as_printed": "C-41"
+        },
+        "key": "source"
+      }
+    ],
+    "structure": [
+      {
+        "field": "title",
+        "shape": "string"
+      },
+      {
+        "field": "stock",
+        "shape": "string"
+      },
+      {
+        "field": "family",
+        "shape": "string"
+      },
+      {
+        "field": "source",
+        "shape": "object{chart,datasheet_code,exposure_as_printed,page_index,pdf,process_as_printed,revision}"
+      },
+      {
+        "field": "units",
+        "shape": "object{x,y}"
+      },
+      {
+        "field": "grid",
+        "shape": "object{note,per_decade}"
+      },
+      {
+        "field": "curves",
+        "shape": "object{MTF}"
+      },
+      {
+        "field": "summary",
+        "shape": "object{MTF}"
+      },
+      {
+        "field": "digitization_audit",
+        "shape": "object{bezier_note,frame_device_pt,frame_drawn_as,label_assignment,label_check,route,x_axis,y_axis}"
+      }
+    ]
+  },
+  {
+    "path": "data/films/ProImage100_datasheet_curves.json",
+    "source_url": "https://raw.githubusercontent.com/OwlMightyCh/film-scan-calibration/8d03a0e0c111625b8a88fb8647a35d95b491249d/data/films/ProImage100_datasheet_curves.json",
+    "sha256": "ec23f1756de5597a86ed779676ba8546595c6e590b9749b53abb41809ee0e75e",
+    "git_blob_sha1": "f5a3f153e595681d7ede886325e58bf3226f3d96",
+    "keys": [
+      "source",
+      "char_curves",
+      "spectral",
+      "digitization_audit"
+    ],
+    "metadata": [
+      {
+        "value": "Kodak Pro Image 100 datasheet E-4L (July 1997), page 4 vector charts, digitized from the embedded PDF path geometry",
+        "key": "source"
+      }
+    ],
+    "structure": [
+      {
+        "field": "source",
+        "shape": "string"
+      },
+      {
+        "field": "char_curves",
+        "shape": "object{curve_order_note,log_exposure,log_exposure_units,statusM_density}"
+      },
+      {
+        "field": "spectral",
+        "shape": "object{dmin,midscale_neutral,wavelength_nm}"
+      },
+      {
+        "field": "digitization_audit",
+        "shape": "object{characteristic_curves,spectral_dye_density}"
+      }
+    ]
+  },
+  {
+    "path": "data/films/ProImage100_dye_density.json",
+    "source_url": "https://raw.githubusercontent.com/OwlMightyCh/film-scan-calibration/8d03a0e0c111625b8a88fb8647a35d95b491249d/data/films/ProImage100_dye_density.json",
+    "sha256": "342ad845bd70f0f70ea008e8ac670db43e15352260ca12244c14a89baf34c968",
+    "git_blob_sha1": "205620f97bc70570de366df0e9abd811032b7198",
+    "keys": [
+      "title",
+      "family",
+      "stocks_covered",
+      "normalization",
+      "units",
+      "source",
+      "uncertainty",
+      "shared_full_curves",
+      "led_wavelengths_nm",
+      "per_stock",
+      "fit_audit"
+    ],
+    "metadata": [
+      {
+        "value": [
+          "Pro Image 100"
+        ],
+        "key": "stocks_covered"
+      },
+      {
+        "value": "Fitted to Kodak Pro Image 100 datasheet E-4L (July 1997) midscale-neutral minus D-min spectral density (see ProImage100_datasheet_curves.json), projected onto the Vision3 ECN-2 image-dye set as surrogate basis",
+        "key": "source"
+      },
+      {
+        "value": {
+          "100": {
+            "dye_density_at_led_wavelengths": {
+              "wavelength_nm": [
+                450,
+                544,
+                640
+              ],
+              "cyan": [
+                0.0492,
+                0.0789,
+                0.6438
+              ],
+              "magenta": [
+                0.0013,
+                1.0,
+                0.0725
+              ],
+              "yellow": [
+                0.9979,
+                0.0895,
+                0.0082
+              ]
+            },
+            "decoupling_matrix_rowmajor_RGB_density": [
+              [
+                1.0,
+                -0.1179,
+                0.0009
+              ],
+              [
+                -0.1862,
+                1.0,
+                -0.0938
+              ],
+              [
+                -0.0934,
+                -0.0085,
+                1.0
+              ]
+            ],
+            "matrix_note": "rows=R/G/B scan density @640/544/450; columns=cyan/magenta/yellow; diag-normalized inverse of the LED-SPD x CFA x 10^-Dmin mixing matrix (scan density per unit peak dye density, read through the base+mask as the roll anchor leaves it); off-diagonals = crosstalk removed"
+          }
+        },
+        "key": "per_stock"
+      }
+    ],
+    "structure": [
+      {
+        "field": "title",
+        "shape": "string"
+      },
+      {
+        "field": "family",
+        "shape": "string"
+      },
+      {
+        "field": "stocks_covered",
+        "shape": "[1]string"
+      },
+      {
+        "field": "normalization",
+        "shape": "string"
+      },
+      {
+        "field": "units",
+        "shape": "string"
+      },
+      {
+        "field": "source",
+        "shape": "string"
+      },
+      {
+        "field": "uncertainty",
+        "shape": "string"
+      },
+      {
+        "field": "shared_full_curves",
+        "shape": "object{cyan,magenta,wavelength_nm,yellow}"
+      },
+      {
+        "field": "led_wavelengths_nm",
+        "shape": "[3]number"
+      },
+      {
+        "field": "per_stock",
+        "shape": "object{100}"
+      },
+      {
+        "field": "fit_audit",
+        "shape": "object{aggregate_maxabs_density,aggregate_rmse_density,basis,basis_held,basis_held_note,basis_support_nm,bounds,bounds_pinned,bounds_pinned_note,decoupling_condition_number,multistart,params,peak_shift_nm,peak_shift_note,statusM_constraint,statusM_of_digitized_curves,statusM_red_truncation}"
+      }
+    ]
+  },
+  {
+    "path": "data/films/ProImage100_spectral_sensitivity.json",
+    "source_url": "https://raw.githubusercontent.com/OwlMightyCh/film-scan-calibration/8d03a0e0c111625b8a88fb8647a35d95b491249d/data/films/ProImage100_spectral_sensitivity.json",
+    "sha256": "b1a6bfe6613b9a6b8430f57fb614edc8c69bb164d35e11c84271029fc94d4ea7",
+    "git_blob_sha1": "3ac70ff65068fc82d621e7cfb1097ac1ad123e0e",
+    "keys": [
+      "source",
+      "measurement_note",
+      "wavelength_nm",
+      "wavelength_note",
+      "log_sensitivity",
+      "digitization_audit"
+    ],
+    "metadata": [
+      {
+        "value": "Kodak Pro Image 100 datasheet E-4L (July 1997), page 4 bottom-left 'Spectral-Sensitivity Curves', digitized from the embedded PDF path geometry",
+        "key": "source"
+      },
+      {
+        "value": "sensitivity = log10(1/H) for the exposure H giving density 0.2 above D-min; daylight; 1/50 s",
+        "key": "measurement_note"
+      },
+      {
+        "value": "1 nm grid over the union support of the three layers; each layer is null (JSON null) outside its own support",
+        "key": "wavelength_note"
+      }
+    ],
+    "structure": [
+      {
+        "field": "source",
+        "shape": "string"
+      },
+      {
+        "field": "measurement_note",
+        "shape": "string"
+      },
+      {
+        "field": "wavelength_nm",
+        "shape": "[293]number"
+      },
+      {
+        "field": "wavelength_note",
+        "shape": "string"
+      },
+      {
+        "field": "log_sensitivity",
+        "shape": "object{cyan,magenta,yellow}"
+      },
+      {
+        "field": "digitization_audit",
+        "shape": "object{calibration_basis,curve_classification,frame_device_bbox,layers,x_axis,y_axis}"
+      }
+    ]
+  },
+  {
+    "path": "data/films/Provia100F_datasheet_curves.json",
+    "source_url": "https://raw.githubusercontent.com/OwlMightyCh/film-scan-calibration/8d03a0e0c111625b8a88fb8647a35d95b491249d/data/films/Provia100F_datasheet_curves.json",
+    "sha256": "e5cde3795e968b67f7767af625a490714ab93f538a9ebb5c8d351137179f55e9",
+    "git_blob_sha1": "17ec2147aac3331524d909ebb1917fcf1e6d39b4",
+    "keys": [
+      "source",
+      "char_curves",
+      "digitization_audit"
+    ],
+    "metadata": [
+      {
+        "value": "Provia 100F datasheet AF3-036E, page index 5, characteristic curves, route stencil-layers; exposure Daylight 1/50 sec; densitometry Fuji FAD-30S (Status A)",
+        "key": "source"
+      }
+    ],
+    "structure": [
+      {
+        "field": "source",
+        "shape": "string"
+      },
+      {
+        "field": "char_curves",
+        "shape": "object{curve_order_note,densitometry,log_exposure,log_exposure_units,statusA_density}"
+      },
+      {
+        "field": "digitization_audit",
+        "shape": "object{characteristic_curves}"
+      }
+    ]
+  },
+  {
+    "path": "data/films/Provia100F_dye_density.json",
+    "source_url": "https://raw.githubusercontent.com/OwlMightyCh/film-scan-calibration/8d03a0e0c111625b8a88fb8647a35d95b491249d/data/films/Provia100F_dye_density.json",
+    "sha256": "297cb1d7ec244d2d1f4745eeffe207db0dcf4304dbf221ecec6f1287b86fb725",
+    "git_blob_sha1": "067f66dfc0003f1428a2fa71b5838711e3f96765",
+    "keys": [
+      "title",
+      "family",
+      "stocks_covered",
+      "normalization",
+      "units",
+      "source",
+      "method",
+      "registration_audit",
+      "uncertainty",
+      "important_note",
+      "peak_wavelengths_nm",
+      "support_nm",
+      "led_wavelengths_nm",
+      "dye_density_at_led_wavelengths",
+      "comparison_note",
+      "shared_full_curves",
+      "fine_curves_1nm"
+    ],
+    "metadata": [
+      {
+        "value": [
+          "Provia 100F (RDP III)"
+        ],
+        "key": "stocks_covered"
+      },
+      {
+        "value": "Fujifilm Provia 100F datasheet AF3-036E p.6, '21. SPECTRAL DYE DENSITY CURVES'. The chart is embedded as FOUR overlaid 300 dpi 1-bit CCITT stencils: xref 55 = frame/gridlines/labels, xref 56 = yellow, 57 = magenta, 58 = cyan. Each curve is its own isolated single connected component, so no crossing/occlusion disambiguation was required.",
+        "key": "source"
+      },
+      {
+        "value": "CYAN TRUNCATION IS THE DOMINANT SYSTEMATIC. All three curves are drawn to the plot's right edge (~718-719 nm), but cyan is still at 0.587 D there and falling; its true behaviour beyond 719 nm is unpublished. Per the project's no-synthesised-spectra rule the data is set to 0 beyond support rather than extrapolated. Consequence: ISO Status A red responsivity carries 0.020% of its weight beyond 719 nm, which the model therefore treats as CLEAR film. At low dye this is negligible (<=0.01 D for cyan<=2.5), but it is strongly NONLINEAR in cyan amount and creates a spurious hard ceiling on modelled Status A red at -log10(0.0002) = 3.708 D. Bracket on Status A red density (model = lower bound; upper bound = cyan held flat at its 718 nm value): cyan 2.5 -> 0.010 D, 3.0 -> 0.024 D, 3.5 -> 0.059 D, 4.0 -> 0.135 D. Sign is known: physical red reads HIGHER than model. NOTE this also applies to the Velvia 100 dataset (edge 710 nm, cyan 0.291 there; bracket 0.015 D at cyan 3.0, 0.081 D at cyan 4.0) - the earlier 'negligible, 0.00004 D per unit cyan' characterisation of that systematic is only valid at low cyan and understates it in deep shadow.",
+        "key": "important_note"
+      },
+      {
+        "value": "Peaks Y 442.8 / M 542.6 / C 657.4 differ from Velvia 100 (445.6/553.0/661.7) and Velvia 50 (447.4/544.4/659.6). Provia's secondary absorptions are larger than Velvia 100's (C@450 0.146 vs 0.05-class, M@450 0.205) - consistent with the datasheet's claim that Velvia 100's X/V/S couplers cut 'auxiliary absorptive components'. Do not substitute dye sets across stocks.",
+        "key": "comparison_note"
+      }
+    ],
+    "structure": [
+      {
+        "field": "title",
+        "shape": "string"
+      },
+      {
+        "field": "family",
+        "shape": "string"
+      },
+      {
+        "field": "stocks_covered",
+        "shape": "[1]string"
+      },
+      {
+        "field": "normalization",
+        "shape": "string"
+      },
+      {
+        "field": "units",
+        "shape": "string"
+      },
+      {
+        "field": "source",
+        "shape": "string"
+      },
+      {
+        "field": "method",
+        "shape": "string"
+      },
+      {
+        "field": "registration_audit",
+        "shape": "string"
+      },
+      {
+        "field": "uncertainty",
+        "shape": "string"
+      },
+      {
+        "field": "important_note",
+        "shape": "string"
+      },
+      {
+        "field": "peak_wavelengths_nm",
+        "shape": "object{cyan,magenta,yellow}"
+      },
+      {
+        "field": "support_nm",
+        "shape": "object{cyan,magenta,yellow}"
+      },
+      {
+        "field": "led_wavelengths_nm",
+        "shape": "[3]number"
+      },
+      {
+        "field": "dye_density_at_led_wavelengths",
+        "shape": "object{cols,matrix,rows}"
+      },
+      {
+        "field": "comparison_note",
+        "shape": "string"
+      },
+      {
+        "field": "shared_full_curves",
+        "shape": "object{cyan,magenta,wavelength_nm,yellow}"
+      },
+      {
+        "field": "fine_curves_1nm",
+        "shape": "object{cyan,magenta,wavelength_nm,yellow}"
+      }
+    ]
+  },
+  {
+    "path": "data/films/Provia100F_mtf.json",
+    "source_url": "https://raw.githubusercontent.com/OwlMightyCh/film-scan-calibration/8d03a0e0c111625b8a88fb8647a35d95b491249d/data/films/Provia100F_mtf.json",
+    "sha256": "b2229fd42d227e6bd5191ffab45d1708297010ab1274ea996a984dca2b0c8ef7",
+    "git_blob_sha1": "050f6539c6111313e0497e9303aeeebbdcba58fb",
+    "keys": [
+      "title",
+      "stock",
+      "family",
+      "source",
+      "units",
+      "grid",
+      "curves",
+      "summary",
+      "digitization_audit"
+    ],
+    "metadata": [
+      {
+        "value": "Provia100F",
+        "key": "stock"
+      },
+      {
+        "value": {
+          "pdf": "Provia 100F.pdf",
+          "page_index": 5,
+          "datasheet_code": "AF3-036E",
+          "revision": "not recorded",
+          "chart": "Modulation Transfer Function",
+          "exposure_as_printed": "Daylight",
+          "process_as_printed": "E-6/CR-56"
+        },
+        "key": "source"
+      }
+    ],
+    "structure": [
+      {
+        "field": "title",
+        "shape": "string"
+      },
+      {
+        "field": "stock",
+        "shape": "string"
+      },
+      {
+        "field": "family",
+        "shape": "string"
+      },
+      {
+        "field": "source",
+        "shape": "object{chart,datasheet_code,exposure_as_printed,page_index,pdf,process_as_printed,revision}"
+      },
+      {
+        "field": "units",
+        "shape": "object{x,y}"
+      },
+      {
+        "field": "grid",
+        "shape": "object{note,per_decade}"
+      },
+      {
+        "field": "curves",
+        "shape": "object{MTF}"
+      },
+      {
+        "field": "summary",
+        "shape": "object{MTF}"
+      },
+      {
+        "field": "digitization_audit",
+        "shape": "object{clip_device_pt,crossing_note,duplicate_fraction,frame_px,glyph_components_removed,gridlines_excluded,ink_level_crossings_cycles_per_mm,label_assignment,label_check,line_width_px,render_dpi,route,trace_start,x_axis,y_axis}"
+      }
+    ]
+  },
+  {
+    "path": "data/films/SuperiaPremium400_datasheet_curves.json",
+    "source_url": "https://raw.githubusercontent.com/OwlMightyCh/film-scan-calibration/8d03a0e0c111625b8a88fb8647a35d95b491249d/data/films/SuperiaPremium400_datasheet_curves.json",
+    "sha256": "9ba8d5cf7747abc66c3f1414e8673bb0bdc0234deb6ba54f12dca90122b719c3",
+    "git_blob_sha1": "8d50b5a8efe42e64c444b6c03ac2affac629adc4",
+    "keys": [
+      "source",
+      "char_curves",
+      "spectral",
+      "spectral_full_support",
+      "digitization_audit"
+    ],
+    "metadata": [
+      {
+        "value": "FUJICOLOR SUPERIA PREMIUM 400 Color Negative Film datasheet, Ref. No. 013AR0324A, page 5 vector charts, digitized from the embedded paths by engine/c41/fuji_digitize.py",
+        "key": "source"
+      }
+    ],
+    "structure": [
+      {
+        "field": "source",
+        "shape": "string"
+      },
+      {
+        "field": "char_curves",
+        "shape": "object{curve_order_note,log_exposure,log_exposure_units,measurement_note,statusM_density}"
+      },
+      {
+        "field": "spectral",
+        "shape": "object{dmin,measurement_note,midscale_neutral,wavelength_nm}"
+      },
+      {
+        "field": "spectral_full_support",
+        "shape": "object{dmin,midscale_neutral,support_note,wavelength_nm}"
+      },
+      {
+        "field": "digitization_audit",
+        "shape": "object{characteristic_curves,spectral_dye_density}"
+      }
+    ]
+  },
+  {
+    "path": "data/films/SuperiaPremium400_dye_density.json",
+    "source_url": "https://raw.githubusercontent.com/OwlMightyCh/film-scan-calibration/8d03a0e0c111625b8a88fb8647a35d95b491249d/data/films/SuperiaPremium400_dye_density.json",
+    "sha256": "c7c7745f5a50b456af57576966509a37bd8a2c7eb5b41e06e1d82d959eec9984",
+    "git_blob_sha1": "834db959f12c2376b55e035b5f22b871bc014ed5",
+    "keys": [
+      "title",
+      "family",
+      "stocks_covered",
+      "normalization",
+      "units",
+      "source",
+      "uncertainty",
+      "shared_full_curves",
+      "led_wavelengths_nm",
+      "per_stock",
+      "fit_audit"
+    ],
+    "metadata": [
+      {
+        "value": [
+          "Superia Premium 400"
+        ],
+        "key": "stocks_covered"
+      },
+      {
+        "value": "Fitted to Kodak Superia Premium 400 datasheet 013AR0324A (2009) midscale-neutral minus D-min spectral density (see SuperiaPremium400_datasheet_curves.json), projected onto the Vision3 ECN-2 image-dye set as surrogate basis",
+        "key": "source"
+      },
+      {
+        "value": {
+          "400": {
+            "dye_density_at_led_wavelengths": {
+              "wavelength_nm": [
+                450,
+                544,
+                640
+              ],
+              "cyan": [
+                0.04,
+                0.0983,
+                0.6908
+              ],
+              "magenta": [
+                -0.0018,
+                0.997,
+                0.1075
+              ],
+              "yellow": [
+                0.9994,
+                0.0563,
+                0.0049
+              ]
+            },
+            "decoupling_matrix_rowmajor_RGB_density": [
+              [
+                1.0,
+                -0.1566,
+                0.003
+              ],
+              [
+                -0.2065,
+                1.0,
+                -0.058
+              ],
+              [
+                -0.0677,
+                -0.0296,
+                1.0
+              ]
+            ],
+            "matrix_note": "rows=R/G/B scan density @640/544/450; columns=cyan/magenta/yellow; diag-normalized inverse of the LED-SPD x CFA x 10^-Dmin mixing matrix (scan density per unit peak dye density, read through the base+mask as the roll anchor leaves it); off-diagonals = crosstalk removed"
+          }
+        },
+        "key": "per_stock"
+      }
+    ],
+    "structure": [
+      {
+        "field": "title",
+        "shape": "string"
+      },
+      {
+        "field": "family",
+        "shape": "string"
+      },
+      {
+        "field": "stocks_covered",
+        "shape": "[1]string"
+      },
+      {
+        "field": "normalization",
+        "shape": "string"
+      },
+      {
+        "field": "units",
+        "shape": "string"
+      },
+      {
+        "field": "source",
+        "shape": "string"
+      },
+      {
+        "field": "uncertainty",
+        "shape": "string"
+      },
+      {
+        "field": "shared_full_curves",
+        "shape": "object{cyan,magenta,wavelength_nm,yellow}"
+      },
+      {
+        "field": "led_wavelengths_nm",
+        "shape": "[3]number"
+      },
+      {
+        "field": "per_stock",
+        "shape": "object{400}"
+      },
+      {
+        "field": "fit_audit",
+        "shape": "object{aggregate_maxabs_density,aggregate_rmse_density,basis,basis_held,basis_held_note,basis_support_nm,bounds,bounds_pinned,bounds_pinned_note,decoupling_condition_number,multistart,params,peak_shift_nm,peak_shift_note,statusM_constraint,statusM_of_digitized_curves,statusM_red_truncation}"
+      }
+    ]
+  },
+  {
+    "path": "data/films/SuperiaPremium400_mtf.json",
+    "source_url": "https://raw.githubusercontent.com/OwlMightyCh/film-scan-calibration/8d03a0e0c111625b8a88fb8647a35d95b491249d/data/films/SuperiaPremium400_mtf.json",
+    "sha256": "167928ad852a1bdd150b440fedb92ce1fc90173b36b60be55723adca585d7699",
+    "git_blob_sha1": "0c034f0534b6dc664dd51c5154700bd7feefb91d",
+    "keys": [
+      "title",
+      "stock",
+      "family",
+      "source",
+      "units",
+      "grid",
+      "curves",
+      "summary",
+      "digitization_audit"
+    ],
+    "metadata": [
+      {
+        "value": "SuperiaPremium400",
+        "key": "stock"
+      },
+      {
+        "value": {
+          "pdf": "Superia Premium 400 [JP].pdf",
+          "page_index": 4,
+          "datasheet_code": "013AR0324A",
+          "revision": "2009",
+          "chart": "Modulation Transfer Function",
+          "exposure_as_printed": "Daylight",
+          "process_as_printed": "CN-16"
+        },
+        "key": "source"
+      }
+    ],
+    "structure": [
+      {
+        "field": "title",
+        "shape": "string"
+      },
+      {
+        "field": "stock",
+        "shape": "string"
+      },
+      {
+        "field": "family",
+        "shape": "string"
+      },
+      {
+        "field": "source",
+        "shape": "object{chart,datasheet_code,exposure_as_printed,page_index,pdf,process_as_printed,revision}"
+      },
+      {
+        "field": "units",
+        "shape": "object{x,y}"
+      },
+      {
+        "field": "grid",
+        "shape": "object{note,per_decade}"
+      },
+      {
+        "field": "curves",
+        "shape": "object{MTF}"
+      },
+      {
+        "field": "summary",
+        "shape": "object{MTF}"
+      },
+      {
+        "field": "digitization_audit",
+        "shape": "object{bezier_note,frame_device_pt,frame_drawn_as,label_assignment,label_check,route,x_axis,y_axis}"
+      }
+    ]
+  },
+  {
+    "path": "data/films/SuperiaPremium400_spectral_sensitivity.json",
+    "source_url": "https://raw.githubusercontent.com/OwlMightyCh/film-scan-calibration/8d03a0e0c111625b8a88fb8647a35d95b491249d/data/films/SuperiaPremium400_spectral_sensitivity.json",
+    "sha256": "dafc0aaa5ac5f502e1ad551528c2704548966d9a1da3d331472cadb2b4733252",
+    "git_blob_sha1": "4badde76fe59b7d41c7f2bc853dc899b89d260d5",
+    "keys": [
+      "source",
+      "measurement_note",
+      "log_sensitivity_origin",
+      "wavelength_nm",
+      "wavelength_note",
+      "log_sensitivity",
+      "digitization_audit"
+    ],
+    "metadata": [
+      {
+        "value": "FUJICOLOR SUPERIA PREMIUM 400 Color Negative Film datasheet, Ref. No. 013AR0324A, page 5 chart 17, spectral-sensitivity, digitized from the embedded paths by engine/c41/fuji_digitize.py",
+        "key": "source"
+      },
+      {
+        "value": "Process: CN-16; Densitometry: Status M; Density: 1.0 Above D-min",
+        "key": "measurement_note"
+      },
+      {
+        "value": "1 nm grid over the union support of the three layers; each layer is null (JSON null) outside its own support",
+        "key": "wavelength_note"
+      }
+    ],
+    "structure": [
+      {
+        "field": "source",
+        "shape": "string"
+      },
+      {
+        "field": "measurement_note",
+        "shape": "string"
+      },
+      {
+        "field": "log_sensitivity_origin",
+        "shape": "string"
+      },
+      {
+        "field": "wavelength_nm",
+        "shape": "[278]number"
+      },
+      {
+        "field": "wavelength_note",
+        "shape": "string"
+      },
+      {
+        "field": "log_sensitivity",
+        "shape": "object{cyan,magenta,yellow}"
+      },
+      {
+        "field": "digitization_audit",
+        "shape": "object{calibration_basis,curve_classification,curve_representation,layers,x_axis,y_axis}"
+      }
+    ]
+  },
+  {
+    "path": "data/films/SuperiaXTra400_mtf.json",
+    "source_url": "https://raw.githubusercontent.com/OwlMightyCh/film-scan-calibration/8d03a0e0c111625b8a88fb8647a35d95b491249d/data/films/SuperiaXTra400_mtf.json",
+    "sha256": "44fe6616e99fbaf25a92e1c201f9884cdb834450b718fd7234fc843c3559081e",
+    "git_blob_sha1": "928d1aef7fb8442b43cb24991ba5bcfc299c21da",
+    "keys": [
+      "title",
+      "stock",
+      "family",
+      "source",
+      "units",
+      "grid",
+      "curves",
+      "summary",
+      "digitization_audit"
+    ],
+    "metadata": [
+      {
+        "value": "SuperiaXTra400",
+        "key": "stock"
+      },
+      {
+        "value": {
+          "pdf": "Superia X-Tra 400.pdf",
+          "page_index": 5,
+          "datasheet_code": "AF3-0217E",
+          "revision": "not recorded",
+          "chart": "Modulation Transfer Function",
+          "exposure_as_printed": "Daylight",
+          "process_as_printed": "CN-16"
+        },
+        "key": "source"
+      }
+    ],
+    "structure": [
+      {
+        "field": "title",
+        "shape": "string"
+      },
+      {
+        "field": "stock",
+        "shape": "string"
+      },
+      {
+        "field": "family",
+        "shape": "string"
+      },
+      {
+        "field": "source",
+        "shape": "object{chart,datasheet_code,exposure_as_printed,page_index,pdf,process_as_printed,revision}"
+      },
+      {
+        "field": "units",
+        "shape": "object{x,y}"
+      },
+      {
+        "field": "grid",
+        "shape": "object{note,per_decade}"
+      },
+      {
+        "field": "curves",
+        "shape": "object{MTF}"
+      },
+      {
+        "field": "summary",
+        "shape": "object{MTF}"
+      },
+      {
+        "field": "digitization_audit",
+        "shape": "object{bezier_note,frame_device_pt,frame_drawn_as,label_assignment,label_check,route,x_axis,y_axis}"
+      }
+    ]
+  },
+  {
+    "path": "data/films/Ultramax400_datasheet_curves.json",
+    "source_url": "https://raw.githubusercontent.com/OwlMightyCh/film-scan-calibration/8d03a0e0c111625b8a88fb8647a35d95b491249d/data/films/Ultramax400_datasheet_curves.json",
+    "sha256": "1daa23da70f6d80a246dfc29610e5e176dcd01607c241fcb94a178e7b18b4ac3",
+    "git_blob_sha1": "9efa3d8ab4cbbc3de93e61ac260f4edfdd6950f8",
+    "keys": [
+      "source",
+      "char_curves",
+      "spectral",
+      "digitization_audit"
+    ],
+    "metadata": [
+      {
+        "value": "Kodak Ultra Max 400 datasheet E-7023 (Feb 2016), page 4 vector charts, digitized from the embedded PDF path geometry",
+        "key": "source"
+      }
+    ],
+    "structure": [
+      {
+        "field": "source",
+        "shape": "string"
+      },
+      {
+        "field": "char_curves",
+        "shape": "object{curve_order_note,log_exposure,log_exposure_units,statusM_density}"
+      },
+      {
+        "field": "spectral",
+        "shape": "object{dmin,midscale_neutral,wavelength_nm}"
+      },
+      {
+        "field": "digitization_audit",
+        "shape": "object{characteristic_curves,spectral_dye_density}"
+      }
+    ]
+  },
+  {
+    "path": "data/films/Ultramax400_dye_density.json",
+    "source_url": "https://raw.githubusercontent.com/OwlMightyCh/film-scan-calibration/8d03a0e0c111625b8a88fb8647a35d95b491249d/data/films/Ultramax400_dye_density.json",
+    "sha256": "541942f3ac3e13c56793b0bb77c70695537624e96cdf53c9881f07be54153e96",
+    "git_blob_sha1": "a9ba06c7f94ff310ad8f84169dd2cf5512f80794",
+    "keys": [
+      "title",
+      "family",
+      "stocks_covered",
+      "normalization",
+      "units",
+      "source",
+      "uncertainty",
+      "shared_full_curves",
+      "led_wavelengths_nm",
+      "per_stock",
+      "fit_audit"
+    ],
+    "metadata": [
+      {
+        "value": [
+          "Ultra Max 400"
+        ],
+        "key": "stocks_covered"
+      },
+      {
+        "value": "Fitted to Kodak Ultra Max 400 datasheet E-7023 (Feb 2016) midscale-neutral minus D-min spectral density (see Ultramax400_datasheet_curves.json), projected onto the Vision3 ECN-2 image-dye set as surrogate basis",
+        "key": "source"
+      },
+      {
+        "value": {
+          "400": {
+            "dye_density_at_led_wavelengths": {
+              "wavelength_nm": [
+                450,
+                544,
+                640
+              ],
+              "cyan": [
+                0.0417,
+                0.0911,
+                0.6737
+              ],
+              "magenta": [
+                0.0075,
+                0.9943,
+                0.0645
+              ],
+              "yellow": [
+                0.9938,
+                0.1247,
+                0.0108
+              ]
+            },
+            "decoupling_matrix_rowmajor_RGB_density": [
+              [
+                1.0,
+                -0.1088,
+                0.0001
+              ],
+              [
+                -0.1952,
+                1.0,
+                -0.1306
+              ],
+              [
+                -0.0791,
+                -0.0134,
+                1.0
+              ]
+            ],
+            "matrix_note": "rows=R/G/B scan density @640/544/450; columns=cyan/magenta/yellow; diag-normalized inverse of the LED-SPD x CFA x 10^-Dmin mixing matrix (scan density per unit peak dye density, read through the base+mask as the roll anchor leaves it); off-diagonals = crosstalk removed"
+          }
+        },
+        "key": "per_stock"
+      }
+    ],
+    "structure": [
+      {
+        "field": "title",
+        "shape": "string"
+      },
+      {
+        "field": "family",
+        "shape": "string"
+      },
+      {
+        "field": "stocks_covered",
+        "shape": "[1]string"
+      },
+      {
+        "field": "normalization",
+        "shape": "string"
+      },
+      {
+        "field": "units",
+        "shape": "string"
+      },
+      {
+        "field": "source",
+        "shape": "string"
+      },
+      {
+        "field": "uncertainty",
+        "shape": "string"
+      },
+      {
+        "field": "shared_full_curves",
+        "shape": "object{cyan,magenta,wavelength_nm,yellow}"
+      },
+      {
+        "field": "led_wavelengths_nm",
+        "shape": "[3]number"
+      },
+      {
+        "field": "per_stock",
+        "shape": "object{400}"
+      },
+      {
+        "field": "fit_audit",
+        "shape": "object{aggregate_maxabs_density,aggregate_rmse_density,basis,basis_held,basis_held_note,basis_support_nm,bounds,bounds_pinned,bounds_pinned_note,decoupling_condition_number,multistart,params,peak_shift_nm,peak_shift_note,statusM_constraint,statusM_of_digitized_curves,statusM_red_truncation}"
+      }
+    ]
+  },
+  {
+    "path": "data/films/Ultramax400_spectral_sensitivity.json",
+    "source_url": "https://raw.githubusercontent.com/OwlMightyCh/film-scan-calibration/8d03a0e0c111625b8a88fb8647a35d95b491249d/data/films/Ultramax400_spectral_sensitivity.json",
+    "sha256": "95fd7191a8060e400e2d03cf325d7e87c377b8209a060a9b16eb8a30900c834a",
+    "git_blob_sha1": "dcbefa743beb4e827dde3ed9b8140f7468b4265b",
+    "keys": [
+      "source",
+      "measurement_note",
+      "wavelength_nm",
+      "wavelength_note",
+      "log_sensitivity",
+      "digitization_audit"
+    ],
+    "metadata": [
+      {
+        "value": "Kodak Ultra Max 400 datasheet E-7023 (Feb 2016), page 4 bottom-left 'Spectral-Sensitivity Curves', digitized from the embedded PDF path geometry",
+        "key": "source"
+      },
+      {
+        "value": "sensitivity = log10(1/H) for the exposure H giving density 0.2 above D-min; daylight; 1/50 s",
+        "key": "measurement_note"
+      },
+      {
+        "value": "1 nm grid over the union support of the three layers; each layer is null (JSON null) outside its own support",
+        "key": "wavelength_note"
+      }
+    ],
+    "structure": [
+      {
+        "field": "source",
+        "shape": "string"
+      },
+      {
+        "field": "measurement_note",
+        "shape": "string"
+      },
+      {
+        "field": "wavelength_nm",
+        "shape": "[336]number"
+      },
+      {
+        "field": "wavelength_note",
+        "shape": "string"
+      },
+      {
+        "field": "log_sensitivity",
+        "shape": "object{cyan,magenta,yellow}"
+      },
+      {
+        "field": "digitization_audit",
+        "shape": "object{calibration_basis,curve_classification,frame_device_bbox,layers,x_axis,y_axis}"
+      }
+    ]
+  },
+  {
+    "path": "data/films/V3200T_mtf.json",
+    "source_url": "https://raw.githubusercontent.com/OwlMightyCh/film-scan-calibration/8d03a0e0c111625b8a88fb8647a35d95b491249d/data/films/V3200T_mtf.json",
+    "sha256": "c292f7b0d36cbda04fdcfc2ef714937c639cca9ab446fc66ae1238a9b3653031",
+    "git_blob_sha1": "07ea48e038d92a656c8535b15e7dbf17aa17e2ce",
+    "keys": [
+      "title",
+      "stock",
+      "family",
+      "source",
+      "units",
+      "grid",
+      "curves",
+      "summary",
+      "digitization_audit"
+    ],
+    "metadata": [
+      {
+        "value": "V3200T",
+        "key": "stock"
+      },
+      {
+        "value": {
+          "pdf": "V3 200T.pdf",
+          "page_index": 2,
+          "datasheet_code": "H-1-5213",
+          "revision": "not recorded",
+          "chart": "Modulation Transfer Function",
+          "exposure_as_printed": "3200K Tungsten",
+          "process_as_printed": "ECN-2"
+        },
+        "key": "source"
+      }
+    ],
+    "structure": [
+      {
+        "field": "title",
+        "shape": "string"
+      },
+      {
+        "field": "stock",
+        "shape": "string"
+      },
+      {
+        "field": "family",
+        "shape": "string"
+      },
+      {
+        "field": "source",
+        "shape": "object{chart,datasheet_code,exposure_as_printed,page_index,pdf,process_as_printed,revision}"
+      },
+      {
+        "field": "units",
+        "shape": "object{x,y}"
+      },
+      {
+        "field": "grid",
+        "shape": "object{note,per_decade}"
+      },
+      {
+        "field": "curves",
+        "shape": "object{B,G,R}"
+      },
+      {
+        "field": "summary",
+        "shape": "object{B,G,R}"
+      },
+      {
+        "field": "digitization_audit",
+        "shape": "object{clip_device_pt,crossing_note,duplicate_fraction,frame_px,glyph_components_removed,gridlines_excluded,ink_level_crossings_cycles_per_mm,label_assignment,label_check,line_width_px,render_dpi,route,trace_start,x_axis,y_axis}"
+      }
+    ]
+  },
+  {
+    "path": "data/films/V3250D_mtf.json",
+    "source_url": "https://raw.githubusercontent.com/OwlMightyCh/film-scan-calibration/8d03a0e0c111625b8a88fb8647a35d95b491249d/data/films/V3250D_mtf.json",
+    "sha256": "c6b1b39271ec4e82fd4554525e79ee2a8f44a073d5921d6bc9f4f4d7aba4ec8c",
+    "git_blob_sha1": "1f217a9870764e9990b57fa4b30c9abe332e3c11",
+    "keys": [
+      "title",
+      "stock",
+      "family",
+      "source",
+      "units",
+      "grid",
+      "curves",
+      "summary",
+      "digitization_audit"
+    ],
+    "metadata": [
+      {
+        "value": "V3250D",
+        "key": "stock"
+      },
+      {
+        "value": {
+          "pdf": "V3 250D.pdf",
+          "page_index": 2,
+          "datasheet_code": "H-1-5207",
+          "revision": "not recorded",
+          "chart": "Modulation Transfer Function",
+          "exposure_as_printed": "5500K Daylight",
+          "process_as_printed": "ECN-2"
+        },
+        "key": "source"
+      }
+    ],
+    "structure": [
+      {
+        "field": "title",
+        "shape": "string"
+      },
+      {
+        "field": "stock",
+        "shape": "string"
+      },
+      {
+        "field": "family",
+        "shape": "string"
+      },
+      {
+        "field": "source",
+        "shape": "object{chart,datasheet_code,exposure_as_printed,page_index,pdf,process_as_printed,revision}"
+      },
+      {
+        "field": "units",
+        "shape": "object{x,y}"
+      },
+      {
+        "field": "grid",
+        "shape": "object{note,per_decade}"
+      },
+      {
+        "field": "curves",
+        "shape": "object{B,G,R}"
+      },
+      {
+        "field": "summary",
+        "shape": "object{B,G,R}"
+      },
+      {
+        "field": "digitization_audit",
+        "shape": "object{clip_device_pt,crossing_note,duplicate_fraction,frame_px,glyph_components_removed,gridlines_excluded,ink_level_crossings_cycles_per_mm,label_assignment,label_check,line_width_px,render_dpi,route,trace_start,x_axis,y_axis}"
+      }
+    ]
+  },
+  {
+    "path": "data/films/V3500T_datasheet_curves.json",
+    "source_url": "https://raw.githubusercontent.com/OwlMightyCh/film-scan-calibration/8d03a0e0c111625b8a88fb8647a35d95b491249d/data/films/V3500T_datasheet_curves.json",
+    "sha256": "9029f4a854ca7bab7c3515a011cba22053bb7e37142f017f8f08e2b719abbdc9",
+    "git_blob_sha1": "cc20241145b550949c339fc8d80cef6339d45d07",
+    "keys": [
+      "source",
+      "char_curves",
+      "provenance",
+      "digitization_audit"
+    ],
+    "metadata": [
+      {
+        "value": "Kodak Vision3 500T datasheet, Sensitometric Curves figure, raster-traced from embedded image Im1 (page index 2)",
+        "key": "source"
+      },
+      {
+        "value": {
+          "source_pdf": "film_datasheet/V3 500T.pdf",
+          "page_index": 2,
+          "image_name": "Im1",
+          "extraction_method": "raster trace",
+          "figure": "Sensitometric Curves, Kodak Vision3 500T",
+          "date": "2026-07-24"
+        },
+        "key": "provenance"
+      }
+    ],
+    "structure": [
+      {
+        "field": "source",
+        "shape": "string"
+      },
+      {
+        "field": "char_curves",
+        "shape": "object{camera_stops_zero_logH,curve_order_note,density,dmin,log_exposure,log_exposure_units}"
+      },
+      {
+        "field": "provenance",
+        "shape": "object{date,extraction_method,figure,image_name,page_index,source_pdf}"
+      },
+      {
+        "field": "digitization_audit",
+        "shape": "object{calibration_note,calibration_residual_logH_rms,coverage_pct,dark_threshold_luminance,frame_box_px_x0y0x1y1,image_px,max_monotonicity_violation_D,median_line_thickness_px,smoothing}"
+      }
+    ]
+  },
+  {
+    "path": "data/films/V3500T_mtf.json",
+    "source_url": "https://raw.githubusercontent.com/OwlMightyCh/film-scan-calibration/8d03a0e0c111625b8a88fb8647a35d95b491249d/data/films/V3500T_mtf.json",
+    "sha256": "982e4f02f13864a0e15e202a861e6cb54f1db7276ab3b7f9592f809aa82125b9",
+    "git_blob_sha1": "a19d642162221b8f4cd2f44c3f6a7c2b06f63d96",
+    "keys": [
+      "title",
+      "stock",
+      "family",
+      "source",
+      "units",
+      "grid",
+      "curves",
+      "summary",
+      "digitization_audit"
+    ],
+    "metadata": [
+      {
+        "value": "V3500T",
+        "key": "stock"
+      },
+      {
+        "value": {
+          "pdf": "V3 500T.pdf",
+          "page_index": 2,
+          "datasheet_code": "H-1-5219",
+          "revision": "not recorded",
+          "chart": "Modulation Transfer Function",
+          "exposure_as_printed": "3200K Tungsten",
+          "process_as_printed": "ECN-2"
+        },
+        "key": "source"
+      }
+    ],
+    "structure": [
+      {
+        "field": "title",
+        "shape": "string"
+      },
+      {
+        "field": "stock",
+        "shape": "string"
+      },
+      {
+        "field": "family",
+        "shape": "string"
+      },
+      {
+        "field": "source",
+        "shape": "object{chart,datasheet_code,exposure_as_printed,page_index,pdf,process_as_printed,revision}"
+      },
+      {
+        "field": "units",
+        "shape": "object{x,y}"
+      },
+      {
+        "field": "grid",
+        "shape": "object{note,per_decade}"
+      },
+      {
+        "field": "curves",
+        "shape": "object{B,G,R}"
+      },
+      {
+        "field": "summary",
+        "shape": "object{B,G,R}"
+      },
+      {
+        "field": "digitization_audit",
+        "shape": "object{clip_device_pt,crossing_note,duplicate_fraction,frame_px,glyph_components_removed,gridlines_excluded,ink_level_crossings_cycles_per_mm,label_assignment,label_check,line_width_px,render_dpi,route,trace_start,x_axis,y_axis}"
+      }
+    ]
+  },
+  {
+    "path": "data/films/V350D_mtf.json",
+    "source_url": "https://raw.githubusercontent.com/OwlMightyCh/film-scan-calibration/8d03a0e0c111625b8a88fb8647a35d95b491249d/data/films/V350D_mtf.json",
+    "sha256": "4c1a8562aa77a0e55108a8f6e750c06aeec61a694ccfb7574f499e3d03e32fb5",
+    "git_blob_sha1": "5ab08529401b288e3d848e38ad6673f54a1bdf41",
+    "keys": [
+      "title",
+      "stock",
+      "family",
+      "source",
+      "units",
+      "grid",
+      "curves",
+      "summary",
+      "digitization_audit",
+      "crossing_bracket"
+    ],
+    "metadata": [
+      {
+        "value": "V350D",
+        "key": "stock"
+      },
+      {
+        "value": {
+          "pdf": "V3 50D.pdf",
+          "page_index": 2,
+          "datasheet_code": "H-1-5203",
+          "revision": "not recorded",
+          "chart": "Modulation Transfer Function",
+          "exposure_as_printed": "5500K Daylight",
+          "process_as_printed": "ECN-2"
+        },
+        "key": "source"
+      }
+    ],
+    "structure": [
+      {
+        "field": "title",
+        "shape": "string"
+      },
+      {
+        "field": "stock",
+        "shape": "string"
+      },
+      {
+        "field": "family",
+        "shape": "string"
+      },
+      {
+        "field": "source",
+        "shape": "object{chart,datasheet_code,exposure_as_printed,page_index,pdf,process_as_printed,revision}"
+      },
+      {
+        "field": "units",
+        "shape": "object{x,y}"
+      },
+      {
+        "field": "grid",
+        "shape": "object{note,per_decade}"
+      },
+      {
+        "field": "curves",
+        "shape": "object{B,G,R}"
+      },
+      {
+        "field": "summary",
+        "shape": "object{B,G,R}"
+      },
+      {
+        "field": "digitization_audit",
+        "shape": "object{clip_device_pt,crossing_note,duplicate_fraction,frame_px,glyph_components_removed,gridlines_excluded,ink_level_crossings_cycles_per_mm,label_assignment,label_check,line_width_px,render_dpi,route,trace_start,x_axis,y_axis}"
+      },
+      {
+        "field": "crossing_bracket",
+        "shape": "object{mtf50_cycles_per_mm,note,printed_lines_crossing_50pct}"
+      }
+    ]
+  },
+  {
+    "path": "data/films/Velvia100_datasheet_curves.json",
+    "source_url": "https://raw.githubusercontent.com/OwlMightyCh/film-scan-calibration/8d03a0e0c111625b8a88fb8647a35d95b491249d/data/films/Velvia100_datasheet_curves.json",
+    "sha256": "2c76b6ec608a008846fa367e5015a9fd645d93637d5da8dce9901e63287d9015",
+    "git_blob_sha1": "906b88fd181980a6f6c5b9e4a485f2c3310b33d6",
+    "keys": [
+      "source",
+      "char_curves",
+      "digitization_audit"
+    ],
+    "metadata": [
+      {
+        "value": "Velvia 100 datasheet AF3-202E, page index 7, characteristic curves, route vector-bezier; exposure Daylight; densitometry Status A",
+        "key": "source"
+      }
+    ],
+    "structure": [
+      {
+        "field": "source",
+        "shape": "string"
+      },
+      {
+        "field": "char_curves",
+        "shape": "object{curve_order_note,densitometry,log_exposure,log_exposure_units,statusA_density}"
+      },
+      {
+        "field": "digitization_audit",
+        "shape": "object{characteristic_curves}"
+      }
+    ]
+  },
+  {
+    "path": "data/films/Velvia100_dye_density.json",
+    "source_url": "https://raw.githubusercontent.com/OwlMightyCh/film-scan-calibration/8d03a0e0c111625b8a88fb8647a35d95b491249d/data/films/Velvia100_dye_density.json",
+    "sha256": "c239e1d6c9970b175901ec45b265d3226a6e9dbcddb8608ff392dc0281f28ad6",
+    "git_blob_sha1": "b69eebc405e948aa36a30507a45d7969fa8d0fae",
+    "keys": [
+      "title",
+      "family",
+      "stocks_covered",
+      "normalization",
+      "units",
+      "source",
+      "important_note",
+      "uncertainty",
+      "peak_wavelengths_nm",
+      "led_wavelengths_nm",
+      "dye_density_at_led_wavelengths",
+      "shared_full_curves",
+      "fine_curves_1nm"
+    ],
+    "metadata": [
+      {
+        "value": [
+          "Velvia 100 (RVP100)"
+        ],
+        "key": "stocks_covered"
+      },
+      {
+        "value": "Fujifilm AF3-202E datasheet, SPECTRAL DYE DENSITY CURVES, p.8 — extracted from embedded vector paths (exact bezier geometry, not raster tracing)",
+        "key": "source"
+      },
+      {
+        "value": "Vector-exact extraction: axis calibration from gridlines at 400/500/600/700 nm and 0/0.5/1.0 D; all three dye peaks touch the 1.0 gridline, confirming per-dye unit normalization. Measured support 397-710 nm; NO data beyond 710 nm (do not extrapolate). No base/Dmin curve is published in this chart; Dmin handling stays with the scan-side anchor.",
+        "key": "important_note"
+      }
+    ],
+    "structure": [
+      {
+        "field": "title",
+        "shape": "string"
+      },
+      {
+        "field": "family",
+        "shape": "string"
+      },
+      {
+        "field": "stocks_covered",
+        "shape": "[1]string"
+      },
+      {
+        "field": "normalization",
+        "shape": "string"
+      },
+      {
+        "field": "units",
+        "shape": "string"
+      },
+      {
+        "field": "source",
+        "shape": "string"
+      },
+      {
+        "field": "important_note",
+        "shape": "string"
+      },
+      {
+        "field": "uncertainty",
+        "shape": "string"
+      },
+      {
+        "field": "peak_wavelengths_nm",
+        "shape": "object{cyan,magenta,yellow}"
+      },
+      {
+        "field": "led_wavelengths_nm",
+        "shape": "[3]number"
+      },
+      {
+        "field": "dye_density_at_led_wavelengths",
+        "shape": "object{cols,matrix,rows}"
+      },
+      {
+        "field": "shared_full_curves",
+        "shape": "object{cyan,magenta,wavelength_nm,yellow}"
+      },
+      {
+        "field": "fine_curves_1nm",
+        "shape": "object{cyan,magenta,wavelength_nm,yellow}"
+      }
+    ]
+  },
+  {
+    "path": "data/films/Velvia100_mtf.json",
+    "source_url": "https://raw.githubusercontent.com/OwlMightyCh/film-scan-calibration/8d03a0e0c111625b8a88fb8647a35d95b491249d/data/films/Velvia100_mtf.json",
+    "sha256": "ce2f4cdc3999e1eb0c96668f469c62794035b5841dbb33b0b4dea6b6a2b2a3a4",
+    "git_blob_sha1": "7687db9c89690d858ca78f85b4a0416e0086a39b",
+    "keys": [
+      "title",
+      "stock",
+      "family",
+      "source",
+      "units",
+      "grid",
+      "curves",
+      "summary",
+      "digitization_audit"
+    ],
+    "metadata": [
+      {
+        "value": "Velvia100",
+        "key": "stock"
+      },
+      {
+        "value": {
+          "pdf": "Velvia 100.pdf",
+          "page_index": 7,
+          "datasheet_code": "AF3-202E",
+          "revision": "not recorded",
+          "chart": "Modulation Transfer Function",
+          "exposure_as_printed": "Daylight",
+          "process_as_printed": "E-6/CR-56"
+        },
+        "key": "source"
+      }
+    ],
+    "structure": [
+      {
+        "field": "title",
+        "shape": "string"
+      },
+      {
+        "field": "stock",
+        "shape": "string"
+      },
+      {
+        "field": "family",
+        "shape": "string"
+      },
+      {
+        "field": "source",
+        "shape": "object{chart,datasheet_code,exposure_as_printed,page_index,pdf,process_as_printed,revision}"
+      },
+      {
+        "field": "units",
+        "shape": "object{x,y}"
+      },
+      {
+        "field": "grid",
+        "shape": "object{note,per_decade}"
+      },
+      {
+        "field": "curves",
+        "shape": "object{MTF}"
+      },
+      {
+        "field": "summary",
+        "shape": "object{MTF}"
+      },
+      {
+        "field": "digitization_audit",
+        "shape": "object{bezier_note,frame_device_pt,frame_drawn_as,label_assignment,label_check,route,x_axis,y_axis}"
+      }
+    ]
+  },
+  {
+    "path": "data/films/Velvia50_datasheet_curves.json",
+    "source_url": "https://raw.githubusercontent.com/OwlMightyCh/film-scan-calibration/8d03a0e0c111625b8a88fb8647a35d95b491249d/data/films/Velvia50_datasheet_curves.json",
+    "sha256": "4f963ec86f831b2509a5f3d817bed16494d0f8a2124c0c8719c7f3d2f6f1c036",
+    "git_blob_sha1": "5cab91cba6ac3098e870e956220aa83d425fb0e1",
+    "keys": [
+      "source",
+      "char_curves",
+      "digitization_audit"
+    ],
+    "metadata": [
+      {
+        "value": "Velvia 50 datasheet AF3-0221E2, page index 7, characteristic curves, route stencil-joint; exposure Daylight; densitometry Status A",
+        "key": "source"
+      }
+    ],
+    "structure": [
+      {
+        "field": "source",
+        "shape": "string"
+      },
+      {
+        "field": "char_curves",
+        "shape": "object{curve_order_note,densitometry,log_exposure,log_exposure_units,statusA_density}"
+      },
+      {
+        "field": "digitization_audit",
+        "shape": "object{characteristic_curves}"
+      }
+    ]
+  },
+  {
+    "path": "data/films/Velvia50_dye_density.json",
+    "source_url": "https://raw.githubusercontent.com/OwlMightyCh/film-scan-calibration/8d03a0e0c111625b8a88fb8647a35d95b491249d/data/films/Velvia50_dye_density.json",
+    "sha256": "b6eaaefcf3f3862ebef8c1fd6f3b21a315bcc5fa383298008a5c897e9dde1c61",
+    "git_blob_sha1": "2cd77e405201c0b026d4ec55aac3027e359f5a0a",
+    "keys": [
+      "title",
+      "family",
+      "stocks_covered",
+      "normalization",
+      "units",
+      "source",
+      "important_note",
+      "uncertainty",
+      "peak_wavelengths_nm",
+      "led_wavelengths_nm",
+      "dye_density_at_led_wavelengths",
+      "shared_full_curves",
+      "fine_curves_1nm"
+    ],
+    "metadata": [
+      {
+        "value": [
+          "Velvia 50 (RVP50)"
+        ],
+        "key": "stocks_covered"
+      },
+      {
+        "value": "Fujifilm Velvia 50 datasheet p.8 SPECTRAL DYE DENSITY CURVES; 600 dpi 1-bit stencil, joint 3-track continuity trace; axis cal from gridlines (400/500/600/700 nm; 0/0.5/1.0 D), labels OCR-verified",
+        "key": "source"
+      },
+      {
+        "value": "Raster-traced (no vector data in this PDF, unlike Velvia 100). Trace-to-ink registration 0-1 px. YELLOW READING FLOOR: yellow unreadable beyond 592 nm (below ~0.013 plot floor, merges with baseline); set to 0 in the data. True value lies in [0, 0.013]; worst case shifts red-channel scan and Status A densities by up to +0.013 D per unit yellow (~0.038 D at yellow amount 3) - physical reads HIGHER than model. This is the largest bounded systematic in this dataset; see README. Peaks Y 447.4 / M 544.4 / C 659.6 nm - distinct from Velvia 100 (445.6/553.0/661.7); larger secondary absorptions than V100 (M@450 0.19 vs 0.05, C@544 0.20 vs 0.10). Do not substitute across stocks.",
+        "key": "important_note"
+      }
+    ],
+    "structure": [
+      {
+        "field": "title",
+        "shape": "string"
+      },
+      {
+        "field": "family",
+        "shape": "string"
+      },
+      {
+        "field": "stocks_covered",
+        "shape": "[1]string"
+      },
+      {
+        "field": "normalization",
+        "shape": "string"
+      },
+      {
+        "field": "units",
+        "shape": "string"
+      },
+      {
+        "field": "source",
+        "shape": "string"
+      },
+      {
+        "field": "important_note",
+        "shape": "string"
+      },
+      {
+        "field": "uncertainty",
+        "shape": "string"
+      },
+      {
+        "field": "peak_wavelengths_nm",
+        "shape": "object{cyan,magenta,yellow}"
+      },
+      {
+        "field": "led_wavelengths_nm",
+        "shape": "[3]number"
+      },
+      {
+        "field": "dye_density_at_led_wavelengths",
+        "shape": "object{cols,matrix,rows}"
+      },
+      {
+        "field": "shared_full_curves",
+        "shape": "object{cyan,magenta,wavelength_nm,yellow}"
+      },
+      {
+        "field": "fine_curves_1nm",
+        "shape": "object{cyan,magenta,wavelength_nm,yellow}"
+      }
+    ]
+  },
+  {
+    "path": "data/films/Velvia50_mtf.json",
+    "source_url": "https://raw.githubusercontent.com/OwlMightyCh/film-scan-calibration/8d03a0e0c111625b8a88fb8647a35d95b491249d/data/films/Velvia50_mtf.json",
+    "sha256": "7444b4a9d0d6b21d8d60013955b97c35fc2613e40e96f157a8b11371e95d9697",
+    "git_blob_sha1": "91a1644d77bdb6f0efb5650a308b35aea688d7cd",
+    "keys": [
+      "title",
+      "stock",
+      "family",
+      "source",
+      "units",
+      "grid",
+      "curves",
+      "summary",
+      "digitization_audit"
+    ],
+    "metadata": [
+      {
+        "value": "Velvia50",
+        "key": "stock"
+      },
+      {
+        "value": {
+          "pdf": "Velvia 50.pdf",
+          "page_index": 7,
+          "datasheet_code": "AF3-0221E2",
+          "revision": "not recorded",
+          "chart": "Modulation Transfer Function",
+          "exposure_as_printed": "Daylight",
+          "process_as_printed": "E-6/CR-56"
+        },
+        "key": "source"
+      }
+    ],
+    "structure": [
+      {
+        "field": "title",
+        "shape": "string"
+      },
+      {
+        "field": "stock",
+        "shape": "string"
+      },
+      {
+        "field": "family",
+        "shape": "string"
+      },
+      {
+        "field": "source",
+        "shape": "object{chart,datasheet_code,exposure_as_printed,page_index,pdf,process_as_printed,revision}"
+      },
+      {
+        "field": "units",
+        "shape": "object{x,y}"
+      },
+      {
+        "field": "grid",
+        "shape": "object{note,per_decade}"
+      },
+      {
+        "field": "curves",
+        "shape": "object{MTF}"
+      },
+      {
+        "field": "summary",
+        "shape": "object{MTF}"
+      },
+      {
+        "field": "digitization_audit",
+        "shape": "object{clip_device_pt,crossing_note,duplicate_fraction,frame_px,glyph_components_removed,gridlines_excluded,ink_level_crossings_cycles_per_mm,label_assignment,label_check,line_width_px,render_dpi,route,trace_start,x_axis,y_axis}"
+      }
+    ]
+  },
+  {
+    "path": "data/films/Vision3_200T_datasheet_curves.json",
+    "source_url": "https://raw.githubusercontent.com/OwlMightyCh/film-scan-calibration/8d03a0e0c111625b8a88fb8647a35d95b491249d/data/films/Vision3_200T_datasheet_curves.json",
+    "sha256": "26224a83ac129525b70bf99b009eecf66ed48477000ef2769939a9df57d7813c",
+    "git_blob_sha1": "d487b78075f3510daf6ea3bc864c5a185c40a004",
+    "keys": [
+      "source",
+      "char_curves",
+      "provenance",
+      "digitization_audit"
+    ],
+    "metadata": [
+      {
+        "value": "Kodak Vision3 200T datasheet, Sensitometric Curves figure, raster-traced from embedded image Im1 (page index 2)",
+        "key": "source"
+      },
+      {
+        "value": {
+          "source_pdf": "film_datasheet/V3 200T.pdf",
+          "page_index": 2,
+          "image_name": "Im1",
+          "extraction_method": "raster trace",
+          "figure": "Sensitometric Curves, Kodak Vision3 200T",
+          "date": "2026-08-24"
+        },
+        "key": "provenance"
+      }
+    ],
+    "structure": [
+      {
+        "field": "source",
+        "shape": "string"
+      },
+      {
+        "field": "char_curves",
+        "shape": "object{camera_stops_zero_logH,curve_order_note,density,dmin,log_exposure,log_exposure_units}"
+      },
+      {
+        "field": "provenance",
+        "shape": "object{date,extraction_method,figure,image_name,page_index,source_pdf}"
+      },
+      {
+        "field": "digitization_audit",
+        "shape": "object{calibration_note,calibration_residual_logH_rms,coverage_pct,dark_threshold_luminance,frame_box_px_x0y0x1y1,image_px,max_monotonicity_violation_D,median_line_thickness_px,smoothing}"
+      }
+    ]
+  },
+  {
+    "path": "data/films/Vision3_200T_dye_density.json",
+    "source_url": "https://raw.githubusercontent.com/OwlMightyCh/film-scan-calibration/8d03a0e0c111625b8a88fb8647a35d95b491249d/data/films/Vision3_200T_dye_density.json",
+    "sha256": "810250c5ea4df27c4091df176b86f7b69a0bec77a94bc423cec6db7916edf685",
+    "git_blob_sha1": "bfc9ebcf547ce29d56f35eb779cd2ccf5990dfcb",
+    "keys": [
+      "title",
+      "family",
+      "stock",
+      "kodak_code",
+      "units",
+      "normalization",
+      "source",
+      "shared_full_curves",
+      "support_note",
+      "digitization_audit",
+      "midscale_neutral",
+      "minimum_density"
+    ],
+    "metadata": [
+      {
+        "value": "200T",
+        "key": "stock"
+      },
+      {
+        "value": "Kodak Vision3 200T datasheet, Spectral Dye-Density Curves (film_datasheet/V3 200T.pdf page 3), raster curve trace at native image resolution by engine/ecn2/v3_dye_digitize.py",
+        "key": "source"
+      },
+      {
+        "value": "null means OUTSIDE the traced support of that dye -- the printed curve does not exist there. Not zero, not held.",
+        "key": "support_note"
+      }
+    ],
+    "structure": [
+      {
+        "field": "title",
+        "shape": "string"
+      },
+      {
+        "field": "family",
+        "shape": "string"
+      },
+      {
+        "field": "stock",
+        "shape": "string"
+      },
+      {
+        "field": "kodak_code",
+        "shape": "string"
+      },
+      {
+        "field": "units",
+        "shape": "string"
+      },
+      {
+        "field": "normalization",
+        "shape": "string"
+      },
+      {
+        "field": "source",
+        "shape": "string"
+      },
+      {
+        "field": "shared_full_curves",
+        "shape": "object{cyan,magenta,wavelength_nm,yellow}"
+      },
+      {
+        "field": "support_note",
+        "shape": "string"
+      },
+      {
+        "field": "digitization_audit",
+        "shape": "object{acceptance_tests,bridged_columns,bridged_columns_note,diagnostics,digitizer,effective_dpi,frame_box_xL_yT_xR_yB,frame_detection,geometry_selfcheck,image_px,image_xref,label_cross_check,median_line_width_px,midscale_neutral_curve,minimum_density_curve,page_index,pdf,text_mask,tick_count_traps_avoided,traced_samples,traced_support_nm,tracing,x_axis,y_axis}"
+      },
+      {
+        "field": "midscale_neutral",
+        "shape": "object{density,note,wavelength_nm}"
+      },
+      {
+        "field": "minimum_density",
+        "shape": "object{density,note,support_nm,units,wavelength_nm}"
+      }
+    ]
+  },
+  {
+    "path": "data/films/Vision3_200T_spectral_sensitivity.json",
+    "source_url": "https://raw.githubusercontent.com/OwlMightyCh/film-scan-calibration/8d03a0e0c111625b8a88fb8647a35d95b491249d/data/films/Vision3_200T_spectral_sensitivity.json",
+    "sha256": "8ea856a0a64933928f49691df22fb2568851750709f9e213ef1472880f053538",
+    "git_blob_sha1": "e2d92640bd3bd20d6ef4ee84916a792b02a4ea77",
+    "keys": [
+      "source",
+      "measurement_note",
+      "wavelength_nm",
+      "wavelength_note",
+      "log_sensitivity",
+      "provenance",
+      "digitization_audit"
+    ],
+    "metadata": [
+      {
+        "value": "Kodak Vision3 200T (5213) datasheet, Spectral Sensitivity Curves figure, raster-traced from the page-index-3 left embedded image",
+        "key": "source"
+      },
+      {
+        "value": "sensitivity = reciprocal of exposure (erg/cm^2) required to produce density 0.2 above D-min; process ECN-2, Status M densitometry, effective exposure 1/25 sec",
+        "key": "measurement_note"
+      },
+      {
+        "value": "1 nm grid clipped to the union of traced support; null outside each layer's own traced support, nothing flat-held or zero-filled",
+        "key": "wavelength_note"
+      },
+      {
+        "value": {
+          "source_pdf": "film_datasheet/V3 200T.pdf",
+          "page_index": 3,
+          "extraction_method": "raster trace (native embedded image, sub-pixel column centroids)",
+          "figure": "Spectral Sensitivity Curves, Kodak Vision3 200T",
+          "date": "2026-08-25"
+        },
+        "key": "provenance"
+      }
+    ],
+    "structure": [
+      {
+        "field": "source",
+        "shape": "string"
+      },
+      {
+        "field": "measurement_note",
+        "shape": "string"
+      },
+      {
+        "field": "wavelength_nm",
+        "shape": "[304]number"
+      },
+      {
+        "field": "wavelength_note",
+        "shape": "string"
+      },
+      {
+        "field": "log_sensitivity",
+        "shape": "object{cyan,magenta,yellow}"
+      },
+      {
+        "field": "provenance",
+        "shape": "object{date,extraction_method,figure,page_index,source_pdf}"
+      },
+      {
+        "field": "digitization_audit",
+        "shape": "object{axis_note,chromatic_px_whitened,effective_dpi,frame_box_px_x0y0x1y1,hgridline_columns_erased,ink_hit,median_line_width_px,peak_nm,predicted_column_pct,steep_end_extension_cols,text_mask,traced_support_nm,truncated_cols}"
+      }
+    ]
+  },
+  {
+    "path": "data/films/Vision3_250D_datasheet_curves.json",
+    "source_url": "https://raw.githubusercontent.com/OwlMightyCh/film-scan-calibration/8d03a0e0c111625b8a88fb8647a35d95b491249d/data/films/Vision3_250D_datasheet_curves.json",
+    "sha256": "99c8d18636d44caa24691fe7a52d4baf6906bc93f76b68130225b89763ed88c8",
+    "git_blob_sha1": "3fcf02c2c3a29bdaba93ddc2bf9b4424c8dbc320",
+    "keys": [
+      "source",
+      "char_curves",
+      "provenance",
+      "digitization_audit"
+    ],
+    "metadata": [
+      {
+        "value": "Kodak Vision3 250D datasheet, Sensitometric Curves figure, raster-traced from embedded image Im1 (page index 2)",
+        "key": "source"
+      },
+      {
+        "value": {
+          "source_pdf": "film_datasheet/V3 250D.pdf",
+          "page_index": 2,
+          "image_name": "Im1",
+          "extraction_method": "raster trace",
+          "figure": "Sensitometric Curves, Kodak Vision3 250D",
+          "date": "2026-08-24"
+        },
+        "key": "provenance"
+      }
+    ],
+    "structure": [
+      {
+        "field": "source",
+        "shape": "string"
+      },
+      {
+        "field": "char_curves",
+        "shape": "object{camera_stops_zero_logH,curve_order_note,density,dmin,log_exposure,log_exposure_units}"
+      },
+      {
+        "field": "provenance",
+        "shape": "object{date,extraction_method,figure,image_name,page_index,source_pdf}"
+      },
+      {
+        "field": "digitization_audit",
+        "shape": "object{calibration_note,calibration_residual_logH_rms,coverage_pct,dark_threshold_luminance,frame_box_px_x0y0x1y1,image_px,max_monotonicity_violation_D,median_line_thickness_px,smoothing}"
+      }
+    ]
+  },
+  {
+    "path": "data/films/Vision3_250D_dye_density.json",
+    "source_url": "https://raw.githubusercontent.com/OwlMightyCh/film-scan-calibration/8d03a0e0c111625b8a88fb8647a35d95b491249d/data/films/Vision3_250D_dye_density.json",
+    "sha256": "2e1daaaea144df387a0db73f91503d731ae1a015e8ef3dc25581d39b0a62cf48",
+    "git_blob_sha1": "4df0b5edac1587a7a4f2a9bce35f5a47e9f6c0ed",
+    "keys": [
+      "title",
+      "family",
+      "stock",
+      "kodak_code",
+      "units",
+      "normalization",
+      "source",
+      "shared_full_curves",
+      "support_note",
+      "digitization_audit",
+      "midscale_neutral",
+      "minimum_density"
+    ],
+    "metadata": [
+      {
+        "value": "250D",
+        "key": "stock"
+      },
+      {
+        "value": "Kodak Vision3 250D datasheet, Spectral Dye-Density Curves (film_datasheet/V3 250D.pdf page 3), raster curve trace at native image resolution by engine/ecn2/v3_dye_digitize.py",
+        "key": "source"
+      },
+      {
+        "value": "null means OUTSIDE the traced support of that dye -- the printed curve does not exist there. Not zero, not held.",
+        "key": "support_note"
+      }
+    ],
+    "structure": [
+      {
+        "field": "title",
+        "shape": "string"
+      },
+      {
+        "field": "family",
+        "shape": "string"
+      },
+      {
+        "field": "stock",
+        "shape": "string"
+      },
+      {
+        "field": "kodak_code",
+        "shape": "string"
+      },
+      {
+        "field": "units",
+        "shape": "string"
+      },
+      {
+        "field": "normalization",
+        "shape": "string"
+      },
+      {
+        "field": "source",
+        "shape": "string"
+      },
+      {
+        "field": "shared_full_curves",
+        "shape": "object{cyan,magenta,wavelength_nm,yellow}"
+      },
+      {
+        "field": "support_note",
+        "shape": "string"
+      },
+      {
+        "field": "digitization_audit",
+        "shape": "object{acceptance_tests,bridged_columns,bridged_columns_note,diagnostics,digitizer,effective_dpi,frame_box_xL_yT_xR_yB,frame_detection,geometry_selfcheck,image_px,image_xref,label_cross_check,median_line_width_px,midscale_neutral_curve,minimum_density_curve,page_index,pdf,text_mask,tick_count_traps_avoided,traced_samples,traced_support_nm,tracing,x_axis,y_axis}"
+      },
+      {
+        "field": "midscale_neutral",
+        "shape": "object{density,note,wavelength_nm}"
+      },
+      {
+        "field": "minimum_density",
+        "shape": "object{density,note,support_nm,units,wavelength_nm}"
+      }
+    ]
+  },
+  {
+    "path": "data/films/Vision3_250D_spectral_sensitivity.json",
+    "source_url": "https://raw.githubusercontent.com/OwlMightyCh/film-scan-calibration/8d03a0e0c111625b8a88fb8647a35d95b491249d/data/films/Vision3_250D_spectral_sensitivity.json",
+    "sha256": "71d8cc6f965663eec0a44c369786859cebb3d4099b06825a667a17f126866e41",
+    "git_blob_sha1": "91c659287b4b58f7c1204b07de62c47bb20fabc3",
+    "keys": [
+      "source",
+      "measurement_note",
+      "wavelength_nm",
+      "wavelength_note",
+      "log_sensitivity",
+      "provenance",
+      "digitization_audit"
+    ],
+    "metadata": [
+      {
+        "value": "Kodak Vision3 250D (5207) datasheet, Spectral Sensitivity Curves figure, raster-traced from the page-index-3 left embedded image",
+        "key": "source"
+      },
+      {
+        "value": "sensitivity = reciprocal of exposure (erg/cm^2) required to produce density 0.2 above D-min; process ECN-2, Status M densitometry, effective exposure 0.02 sec",
+        "key": "measurement_note"
+      },
+      {
+        "value": "1 nm grid clipped to the union of traced support; null outside each layer's own traced support, nothing flat-held or zero-filled",
+        "key": "wavelength_note"
+      },
+      {
+        "value": {
+          "source_pdf": "film_datasheet/V3 250D.pdf",
+          "page_index": 3,
+          "extraction_method": "raster trace (native embedded image, sub-pixel column centroids)",
+          "figure": "Spectral Sensitivity Curves, Kodak Vision3 250D",
+          "date": "2026-08-25"
+        },
+        "key": "provenance"
+      }
+    ],
+    "structure": [
+      {
+        "field": "source",
+        "shape": "string"
+      },
+      {
+        "field": "measurement_note",
+        "shape": "string"
+      },
+      {
+        "field": "wavelength_nm",
+        "shape": "[341]number"
+      },
+      {
+        "field": "wavelength_note",
+        "shape": "string"
+      },
+      {
+        "field": "log_sensitivity",
+        "shape": "object{cyan,magenta,yellow}"
+      },
+      {
+        "field": "provenance",
+        "shape": "object{date,extraction_method,figure,page_index,source_pdf}"
+      },
+      {
+        "field": "digitization_audit",
+        "shape": "object{axis_note,chromatic_px_whitened,effective_dpi,frame_box_px_x0y0x1y1,hgridline_columns_erased,ink_hit,median_line_width_px,peak_nm,predicted_column_pct,steep_end_extension_cols,text_mask,traced_support_nm,truncated_cols}"
+      }
+    ]
+  },
+  {
+    "path": "data/films/Vision3_500T_dye_density.json",
+    "source_url": "https://raw.githubusercontent.com/OwlMightyCh/film-scan-calibration/8d03a0e0c111625b8a88fb8647a35d95b491249d/data/films/Vision3_500T_dye_density.json",
+    "sha256": "aa2caf2c3300baf09b84ba0683d04b07c21951327a90696aeb1e294882d81b39",
+    "git_blob_sha1": "9d69adfff0318451482198e64fc3546916198e7f",
+    "keys": [
+      "title",
+      "family",
+      "stock",
+      "kodak_code",
+      "units",
+      "normalization",
+      "source",
+      "shared_full_curves",
+      "support_note",
+      "digitization_audit",
+      "midscale_neutral",
+      "minimum_density"
+    ],
+    "metadata": [
+      {
+        "value": "500T",
+        "key": "stock"
+      },
+      {
+        "value": "Kodak Vision3 500T datasheet, Spectral Dye-Density Curves (film_datasheet/V3 500T.pdf page 3), raster curve trace at native image resolution by engine/ecn2/v3_dye_digitize.py",
+        "key": "source"
+      },
+      {
+        "value": "null means OUTSIDE the traced support of that dye -- the printed curve does not exist there. Not zero, not held.",
+        "key": "support_note"
+      }
+    ],
+    "structure": [
+      {
+        "field": "title",
+        "shape": "string"
+      },
+      {
+        "field": "family",
+        "shape": "string"
+      },
+      {
+        "field": "stock",
+        "shape": "string"
+      },
+      {
+        "field": "kodak_code",
+        "shape": "string"
+      },
+      {
+        "field": "units",
+        "shape": "string"
+      },
+      {
+        "field": "normalization",
+        "shape": "string"
+      },
+      {
+        "field": "source",
+        "shape": "string"
+      },
+      {
+        "field": "shared_full_curves",
+        "shape": "object{cyan,magenta,wavelength_nm,yellow}"
+      },
+      {
+        "field": "support_note",
+        "shape": "string"
+      },
+      {
+        "field": "digitization_audit",
+        "shape": "object{acceptance_tests,bridged_columns,bridged_columns_note,diagnostics,digitizer,effective_dpi,frame_box_xL_yT_xR_yB,frame_detection,geometry_selfcheck,image_px,image_xref,label_cross_check,median_line_width_px,midscale_neutral_curve,minimum_density_curve,page_index,pdf,text_mask,tick_count_traps_avoided,traced_samples,traced_support_nm,tracing,x_axis,y_axis}"
+      },
+      {
+        "field": "midscale_neutral",
+        "shape": "object{density,note,wavelength_nm}"
+      },
+      {
+        "field": "minimum_density",
+        "shape": "object{density,note,support_nm,units,wavelength_nm}"
+      }
+    ]
+  },
+  {
+    "path": "data/films/Vision3_500T_spectral_sensitivity.json",
+    "source_url": "https://raw.githubusercontent.com/OwlMightyCh/film-scan-calibration/8d03a0e0c111625b8a88fb8647a35d95b491249d/data/films/Vision3_500T_spectral_sensitivity.json",
+    "sha256": "acee129f83148dbc59ef85dc2a71d94f1a071cd369fb54ddfcca87f978523dd4",
+    "git_blob_sha1": "aa18ef27b403391120f8c56f3cd3bfac7272cb70",
+    "keys": [
+      "source",
+      "measurement_note",
+      "wavelength_nm",
+      "wavelength_note",
+      "log_sensitivity",
+      "provenance",
+      "digitization_audit"
+    ],
+    "metadata": [
+      {
+        "value": "Kodak Vision3 500T (5219) datasheet, Spectral Sensitivity Curves figure, raster-traced from the page-index-3 left embedded image",
+        "key": "source"
+      },
+      {
+        "value": "sensitivity = reciprocal of exposure (erg/cm^2) required to produce density 0.2 above D-min; process ECN-2, Status M densitometry, effective exposure 1/25 sec",
+        "key": "measurement_note"
+      },
+      {
+        "value": "1 nm grid clipped to the union of traced support; null outside each layer's own traced support, nothing flat-held or zero-filled",
+        "key": "wavelength_note"
+      },
+      {
+        "value": {
+          "source_pdf": "film_datasheet/V3 500T.pdf",
+          "page_index": 3,
+          "extraction_method": "raster trace (native embedded image, sub-pixel column centroids)",
+          "figure": "Spectral Sensitivity Curves, Kodak Vision3 500T",
+          "date": "2026-08-25"
+        },
+        "key": "provenance"
+      }
+    ],
+    "structure": [
+      {
+        "field": "source",
+        "shape": "string"
+      },
+      {
+        "field": "measurement_note",
+        "shape": "string"
+      },
+      {
+        "field": "wavelength_nm",
+        "shape": "[313]number"
+      },
+      {
+        "field": "wavelength_note",
+        "shape": "string"
+      },
+      {
+        "field": "log_sensitivity",
+        "shape": "object{cyan,magenta,yellow}"
+      },
+      {
+        "field": "provenance",
+        "shape": "object{date,extraction_method,figure,page_index,source_pdf}"
+      },
+      {
+        "field": "digitization_audit",
+        "shape": "object{axis_note,chromatic_px_whitened,effective_dpi,frame_box_px_x0y0x1y1,hgridline_columns_erased,ink_hit,median_line_width_px,peak_nm,predicted_column_pct,steep_end_extension_cols,text_mask,traced_support_nm,truncated_cols}"
+      }
+    ]
+  },
+  {
+    "path": "data/films/Vision3_50D_datasheet_curves.json",
+    "source_url": "https://raw.githubusercontent.com/OwlMightyCh/film-scan-calibration/8d03a0e0c111625b8a88fb8647a35d95b491249d/data/films/Vision3_50D_datasheet_curves.json",
+    "sha256": "32d28a52ba41fec963bda6ccdc23c0460ea82fbafa66ce261f71fc4cbcc85b25",
+    "git_blob_sha1": "133e8cd49c1e10ff310700ee31b26b45bb496be0",
+    "keys": [
+      "source",
+      "char_curves",
+      "provenance",
+      "digitization_audit"
+    ],
+    "metadata": [
+      {
+        "value": "Kodak Vision3 50D datasheet, Sensitometric Curves figure, raster-traced from embedded image Im1 (page index 2)",
+        "key": "source"
+      },
+      {
+        "value": {
+          "source_pdf": "film_datasheet/V3 50D.pdf",
+          "page_index": 2,
+          "image_name": "Im1",
+          "extraction_method": "raster trace",
+          "figure": "Sensitometric Curves, Kodak Vision3 50D",
+          "date": "2026-08-24"
+        },
+        "key": "provenance"
+      }
+    ],
+    "structure": [
+      {
+        "field": "source",
+        "shape": "string"
+      },
+      {
+        "field": "char_curves",
+        "shape": "object{camera_stops_zero_logH,curve_order_note,density,dmin,log_exposure,log_exposure_units}"
+      },
+      {
+        "field": "provenance",
+        "shape": "object{date,extraction_method,figure,image_name,page_index,source_pdf}"
+      },
+      {
+        "field": "digitization_audit",
+        "shape": "object{calibration_note,calibration_residual_logH_rms,camera_stops_note,coverage_pct,dark_threshold_luminance,frame_box_px_x0y0x1y1,image_px,max_monotonicity_violation_D,max_traced_gap_logH,median_line_thickness_px,r_curve_printed_dotted,smoothing}"
+      }
+    ]
+  },
+  {
+    "path": "data/films/Vision3_50D_dye_density.json",
+    "source_url": "https://raw.githubusercontent.com/OwlMightyCh/film-scan-calibration/8d03a0e0c111625b8a88fb8647a35d95b491249d/data/films/Vision3_50D_dye_density.json",
+    "sha256": "ddb9f4633a6de327135ae5aa4ac742786b83cbe42a599e7d567468c987b6fd23",
+    "git_blob_sha1": "961c986843a396bb22c996c03d79a8a4a48acef4",
+    "keys": [
+      "title",
+      "family",
+      "stock",
+      "kodak_code",
+      "units",
+      "normalization",
+      "source",
+      "shared_full_curves",
+      "support_note",
+      "digitization_audit",
+      "midscale_neutral",
+      "minimum_density"
+    ],
+    "metadata": [
+      {
+        "value": "50D",
+        "key": "stock"
+      },
+      {
+        "value": "Kodak Vision3 50D datasheet, Spectral Dye-Density Curves (film_datasheet/V3 50D.pdf page 3), raster curve trace at native image resolution by engine/ecn2/v3_dye_digitize.py",
+        "key": "source"
+      },
+      {
+        "value": "null means OUTSIDE the traced support of that dye -- the printed curve does not exist there. Not zero, not held.",
+        "key": "support_note"
+      }
+    ],
+    "structure": [
+      {
+        "field": "title",
+        "shape": "string"
+      },
+      {
+        "field": "family",
+        "shape": "string"
+      },
+      {
+        "field": "stock",
+        "shape": "string"
+      },
+      {
+        "field": "kodak_code",
+        "shape": "string"
+      },
+      {
+        "field": "units",
+        "shape": "string"
+      },
+      {
+        "field": "normalization",
+        "shape": "string"
+      },
+      {
+        "field": "source",
+        "shape": "string"
+      },
+      {
+        "field": "shared_full_curves",
+        "shape": "object{cyan,magenta,wavelength_nm,yellow}"
+      },
+      {
+        "field": "support_note",
+        "shape": "string"
+      },
+      {
+        "field": "digitization_audit",
+        "shape": "object{acceptance_tests,bridged_columns,bridged_columns_note,diagnostics,digitizer,effective_dpi,frame_box_xL_yT_xR_yB,frame_detection,geometry_selfcheck,image_px,image_xref,label_cross_check,median_line_width_px,midscale_neutral_curve,minimum_density_curve,page_index,pdf,text_mask,tick_count_traps_avoided,traced_samples,traced_support_nm,tracing,x_axis,y_axis}"
+      },
+      {
+        "field": "midscale_neutral",
+        "shape": "object{density,note,wavelength_nm}"
+      },
+      {
+        "field": "minimum_density",
+        "shape": "object{density,note,support_nm,units,wavelength_nm}"
+      }
+    ]
+  },
+  {
+    "path": "data/films/Vision3_50D_spectral_sensitivity.json",
+    "source_url": "https://raw.githubusercontent.com/OwlMightyCh/film-scan-calibration/8d03a0e0c111625b8a88fb8647a35d95b491249d/data/films/Vision3_50D_spectral_sensitivity.json",
+    "sha256": "1c80915a69f34ca52e2921f013912d42550391aecd3c65adf7099fcb730f5d93",
+    "git_blob_sha1": "c742c54c5d4891ecf990c636d78e02fde2883ae8",
+    "keys": [
+      "source",
+      "measurement_note",
+      "wavelength_nm",
+      "wavelength_note",
+      "log_sensitivity",
+      "provenance",
+      "digitization_audit"
+    ],
+    "metadata": [
+      {
+        "value": "Kodak Vision3 50D (5203) datasheet, Spectral Sensitivity Curves figure, raster-traced from the page-index-3 left embedded image",
+        "key": "source"
+      },
+      {
+        "value": "sensitivity = reciprocal of exposure (erg/cm^2) required to produce density 0.2 above D-min; process ECN-2, Status M densitometry, effective exposure 1/10 sec",
+        "key": "measurement_note"
+      },
+      {
+        "value": "1 nm grid clipped to the union of traced support; null outside each layer's own traced support, nothing flat-held or zero-filled",
+        "key": "wavelength_note"
+      },
+      {
+        "value": {
+          "source_pdf": "film_datasheet/V3 50D.pdf",
+          "page_index": 3,
+          "extraction_method": "raster trace (native embedded image, sub-pixel column centroids)",
+          "figure": "Spectral Sensitivity Curves, Kodak Vision3 50D",
+          "date": "2026-08-25"
+        },
+        "key": "provenance"
+      }
+    ],
+    "structure": [
+      {
+        "field": "source",
+        "shape": "string"
+      },
+      {
+        "field": "measurement_note",
+        "shape": "string"
+      },
+      {
+        "field": "wavelength_nm",
+        "shape": "[321]number"
+      },
+      {
+        "field": "wavelength_note",
+        "shape": "string"
+      },
+      {
+        "field": "log_sensitivity",
+        "shape": "object{cyan,magenta,yellow}"
+      },
+      {
+        "field": "provenance",
+        "shape": "object{date,extraction_method,figure,page_index,source_pdf}"
+      },
+      {
+        "field": "digitization_audit",
+        "shape": "object{axis_note,chromatic_px_whitened,effective_dpi,frame_box_px_x0y0x1y1,hgridline_columns_erased,ink_hit,label_defect,median_line_width_px,peak_nm,predicted_column_pct,steep_end_extension_cols,text_mask,traced_support_nm,truncated_cols}"
+      }
+    ]
+  },
+  {
+    "path": "data/films/Vision3_dye_density.json",
+    "source_url": "https://raw.githubusercontent.com/OwlMightyCh/film-scan-calibration/8d03a0e0c111625b8a88fb8647a35d95b491249d/data/films/Vision3_dye_density.json",
+    "sha256": "f286f1a0cd4810e03a0378438cd197fb0073e395fb5073497a681b7fdb0314c2",
+    "git_blob_sha1": "68818bdcaf424fbffc91c7f5ada2c6f73fb18cbb",
+    "keys": [
+      "title",
+      "source",
+      "units",
+      "normalization",
+      "stocks_covered",
+      "replaces",
+      "shared_full_curves",
+      "support_note",
+      "minimum_density",
+      "audit"
+    ],
+    "metadata": [
+      {
+        "value": "Traced from the Spectral Dye-Density chart of each stock's own datasheet (H-1-5203/5213/5207/5219, page 4, embedded raster ~250-260 dpi) by engine/ecn2/v3_dye_digitize.py; averaged by engine/ecn2/v3_basis_build.py",
+        "key": "source"
+      },
+      {
+        "value": [
+          "50D (5203)",
+          "200T (5213)",
+          "250D (5207)",
+          "500T (5219)"
+        ],
+        "key": "stocks_covered"
+      },
+      {
+        "value": "Edge columns (<=3 nm at each frame edge) hold the terminal value -- a line-centring artifact, not absent data. Wider gaps stay null.  50D's printed curves end near 760 nm, so beyond that the average is over the three stocks that reach 800 nm; n_stocks_contributing records the count at every wavelength. Beyond those <=3 nm edge columns nothing is flat-held or zero-filled.",
+        "key": "support_note"
+      }
+    ],
+    "structure": [
+      {
+        "field": "title",
+        "shape": "string"
+      },
+      {
+        "field": "source",
+        "shape": "string"
+      },
+      {
+        "field": "units",
+        "shape": "string"
+      },
+      {
+        "field": "normalization",
+        "shape": "string"
+      },
+      {
+        "field": "stocks_covered",
+        "shape": "[4]string"
+      },
+      {
+        "field": "replaces",
+        "shape": "object{file,reason,retired}"
+      },
+      {
+        "field": "shared_full_curves",
+        "shape": "object{cyan,magenta,wavelength_nm,yellow}"
+      },
+      {
+        "field": "support_note",
+        "shape": "string"
+      },
+      {
+        "field": "minimum_density",
+        "shape": "object{density,inter_stock_spread,n_stocks_contributing,note,units,wavelength_nm}"
+      },
+      {
+        "field": "audit",
+        "shape": "object{inter_stock_spread,midscale_closure,n_stocks_contributing,shared_dye_set_evidence}"
+      }
+    ]
+  },
+  {
+    "path": "data/papers/CrystalArchiveTypeCA_paper.json",
+    "source_url": "https://raw.githubusercontent.com/OwlMightyCh/film-scan-calibration/8d03a0e0c111625b8a88fb8647a35d95b491249d/data/papers/CrystalArchiveTypeCA_paper.json",
+    "sha256": "e2ca05f393ecc05f908e87fd35d5079d9a6827bba756262d527b57cdf9774622",
+    "git_blob_sha1": "dbc6f579e7a97611e51c0a39dee98dbe32ff3406",
+    "keys": [
+      "provenance",
+      "layers",
+      "digitization_audit"
+    ],
+    "metadata": [
+      {
+        "value": {
+          "source": "Fujicolor Crystal Archive Paper Type CA datasheet, document AF3-0250U2 (FUJIFILM North America, November 2018), Page 3 of 6: spectral sensitivity curves and spectral dye density curves.",
+          "product": "FUJICOLOR CRYSTAL ARCHIVE PAPER Type CA (analog + digital RA-4 color paper; Glossy/Lustre surfaces).",
+          "intended_use": "Brand-family surrogate for the Japan-market Fujicolor Professional Paper Pro-G (Glossy) / Pro-L (Lustre) darkroom cut-sheet paper, for which no standalone optical datasheet was found. Type CA is the closest analog-capable Crystal Archive relative; NOT a documented 1:1 equivalent of Pro-G/Pro-L.",
+          "density_measure": "status_a",
+          "process": "RA-4 (dye-density plot labelled process CP-48S)",
+          "curves_included": [
+            "spectral_sensitivity",
+            "spectral_dye_density"
+          ],
+          "curves_absent": [
+            "characteristic_hd_curves (Type CA gives numeric calibration data, not H&D plots)"
+          ],
+          "status": "datasheet-digitized (raster-traced surrogate; lower precision than vector-path digitization)",
+          "date": "2026-07-24"
+        },
+        "key": "provenance"
+      }
+    ],
+    "structure": [
+      {
+        "field": "provenance",
+        "shape": "object{curves_absent,curves_included,date,density_measure,intended_use,process,product,source,status}"
+      },
+      {
+        "field": "layers",
+        "shape": "object{cyan,magenta,yellow}"
+      },
+      {
+        "field": "digitization_audit",
+        "shape": "object{method,spectral_dye_density,spectral_sensitivity}"
+      }
+    ]
+  },
+  {
+    "path": "data/papers/EnduraPremier_paper.json",
+    "source_url": "https://raw.githubusercontent.com/OwlMightyCh/film-scan-calibration/8d03a0e0c111625b8a88fb8647a35d95b491249d/data/papers/EnduraPremier_paper.json",
+    "sha256": "8e887d68a6d86920a4ffbd686ec1a147596384152e88be27336a15deeafe87b0",
+    "git_blob_sha1": "44c5101616864261b020c76012bb104b10443788",
+    "keys": [
+      "provenance",
+      "layers",
+      "digitization_audit"
+    ],
+    "metadata": [
+      {
+        "value": {
+          "source": "Kodak Professional ENDURA Premier Paper datasheet E-4070 (March 2013), pages 4-5 vector charts, digitized from embedded PDF path geometry",
+          "density_measure": "status_a",
+          "status": "datasheet-digitized (authoritative)",
+          "process": "RA-4",
+          "date": "2026-10-29"
+        },
+        "key": "provenance"
+      }
+    ],
+    "structure": [
+      {
+        "field": "provenance",
+        "shape": "object{date,density_measure,process,source,status}"
+      },
+      {
+        "field": "layers",
+        "shape": "object{cyan,magenta,yellow}"
+      },
+      {
+        "field": "digitization_audit",
+        "shape": "object{characteristic_curves,spectral_dye_density,spectral_sensitivity}"
+      }
+    ]
+  },
+  {
+    "path": "data/papers/EnduraTransparency_paper.json",
+    "source_url": "https://raw.githubusercontent.com/OwlMightyCh/film-scan-calibration/8d03a0e0c111625b8a88fb8647a35d95b491249d/data/papers/EnduraTransparency_paper.json",
+    "sha256": "c2baf67f0be8e2150aa575689f3e99b6f93706def410c746c310aa547d21fba9",
+    "git_blob_sha1": "63430a5b67e1e6cb8420655f0adbc0ab4ebec987",
+    "keys": [
+      "provenance",
+      "layers",
+      "digitization_audit"
+    ],
+    "metadata": [
+      {
+        "value": {
+          "source": "Kodak Professional ENDURA Transparency and Clear Display Materials datasheet E-4038 (October 2018), page 5 vector charts, digitized from embedded PDF path geometry",
+          "material": "Transparency Display Material (white-pigmented diffusing base)",
+          "viewing": "transmission",
+          "hd_exposure": "laser exposure (characteristic-curve chart); the sheet also documents optical white-light and tricolor (WRATTEN 25/99/47B) exposure",
+          "density_measure": "status_a",
+          "status": "datasheet-digitized (authoritative)",
+          "process": "RA-4"
+        },
+        "key": "provenance"
+      }
+    ],
+    "structure": [
+      {
+        "field": "provenance",
+        "shape": "object{density_measure,hd_exposure,material,process,source,status,viewing}"
+      },
+      {
+        "field": "layers",
+        "shape": "object{cyan,magenta,yellow}"
+      },
+      {
+        "field": "digitization_audit",
+        "shape": "object{characteristic_curves,spectral_dye_density,spectral_sensitivity}"
+      }
+    ]
+  },
+  {
+    "path": "data/papers/FujiProLaserTypeII_paper.json",
+    "source_url": "https://raw.githubusercontent.com/OwlMightyCh/film-scan-calibration/8d03a0e0c111625b8a88fb8647a35d95b491249d/data/papers/FujiProLaserTypeII_paper.json",
+    "sha256": "ac14709c613ec13f2fac6f5f98d7c6c1fa82121bd0e2db22c816b33a033e40ee",
+    "git_blob_sha1": "dd6d555f937301fbd32c7be61a46363703ce41ae",
+    "keys": [
+      "provenance",
+      "layers",
+      "digitization_audit"
+    ],
+    "metadata": [
+      {
+        "value": {
+          "source": "FUJIFILM Product Information Bulletin -- Fujicolor Professional Paper Pro Laser TYPE II (Frontier QL type), Japan market; page index 3 (printed page 4) vector charts 13/14/15, digitized from embedded PDF path geometry",
+          "density_measure": "status_a",
+          "densitometry_note": "ステータスA相当 (Status A equivalent)",
+          "dye_density_kind": "spectral reflection density (分光反射濃度)",
+          "status": "datasheet-digitized (independent re-trace)",
+          "process": "CP-48S",
+          "exposure": "laser (レーザー露光)",
+          "sensitivity_definition": "reciprocal of the exposure (J/cm2) required to reach density = Dmin + 1.0",
+          "caveat": "※ディープマットは上記特性曲線とは異なります -- the Deep Matte surface does NOT follow these characteristic curves.",
+          "relative_axes": "H&D logE and spectral log-sensitivity both have ARBITRARY origins: the datasheet prints only gridline spacings on those axes, no absolute coordinate. Differences are meaningful, absolute values are not.",
+          "date": "2026-07-25"
+        },
+        "key": "provenance"
+      }
+    ],
+    "structure": [
+      {
+        "field": "provenance",
+        "shape": "object{caveat,date,densitometry_note,density_measure,dye_density_kind,exposure,process,relative_axes,sensitivity_definition,source,status}"
+      },
+      {
+        "field": "layers",
+        "shape": "object{cyan,magenta,yellow}"
+      },
+      {
+        "field": "digitization_audit",
+        "shape": "object{characteristic_curves,layer_mapping,spectral_dye_density,spectral_sensitivity}"
+      }
+    ]
+  },
+  {
+    "path": "data/papers/PortraEndura_paper.json",
+    "source_url": "https://raw.githubusercontent.com/OwlMightyCh/film-scan-calibration/8d03a0e0c111625b8a88fb8647a35d95b491249d/data/papers/PortraEndura_paper.json",
+    "sha256": "a2d24703658ad9dad028c80969d2bf3b7e44dac1113b5e83734c22622df18a4b",
+    "git_blob_sha1": "9a155f0e97adfb6cca0510b4a75fd3b5dfe2792c",
+    "keys": [
+      "provenance",
+      "layers",
+      "digitization_audit"
+    ],
+    "metadata": [
+      {
+        "value": {
+          "source": "Kodak Professional PORTRA ENDURA Paper and SUPRA ENDURA Paper datasheet E-4021 (September 2008), PORTRA ENDURA Paper: characteristic curves = page 7 upper chart (F002_1274AC); spectral sensitivity and spectral dye density = page 8, shared by both papers; digitized from embedded PDF path geometry",
+          "density_measure": "status_a",
+          "status": "datasheet-digitized (authoritative)",
+          "process": "RA-4",
+          "date": "2026-10-29"
+        },
+        "key": "provenance"
+      }
+    ],
+    "structure": [
+      {
+        "field": "provenance",
+        "shape": "object{date,density_measure,process,source,status}"
+      },
+      {
+        "field": "layers",
+        "shape": "object{cyan,magenta,yellow}"
+      },
+      {
+        "field": "digitization_audit",
+        "shape": "object{characteristic_curves,spectral_dye_density,spectral_sensitivity}"
+      }
+    ]
+  }
+]

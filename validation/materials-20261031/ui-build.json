@@ -1,0 +1,10 @@
+{
+  "qt": "6.11.3",
+  "compiler": "MinGW-w64 13.1.0 posix-seh",
+  "source_directory": "C:\\Users\\Strickland\\SpektraLab-work",
+  "build_directory": "C:\\Users\\Strickland\\SpektraLab-work\\build\\qt-20261031-ui",
+  "source_inventory_sha256": "46196816d07e116a1d0c13344811837694ea460fcbb1656f389b4a5b2ed85b08",
+  "utc": "2026-10-31T03:48:13.6178657Z",
+  "ctest_run": true,
+  "executable_sha256": "f4da735429a6486844e35d052975a785fc97249538ded24b098aca368802bbfc"
+}

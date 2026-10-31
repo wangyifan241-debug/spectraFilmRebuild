@@ -1,0 +1,48 @@
+[
+  {
+    "file": "qtbase-everywhere-src-6.11.3.tar.xz",
+    "url": "https://download.qt.io/official_releases/qt/6.11/6.11.3/submodules/qtbase-everywhere-src-6.11.3.tar.xz",
+    "mirror": "https://mirrors.tuna.tsinghua.edu.cn/qt/archive/qt/6.11/6.11.3/submodules/qtbase-everywhere-src-6.11.3.tar.xz",
+    "sha256": "46de0710b594945a5d446ae44354daa386141c6903c53781b2ca547bc62f8f8f",
+    "checksum_origin": "Qt official HTTP Digest SHA-256 header"
+  },
+  {
+    "file": "qtdeclarative-everywhere-src-6.11.3.tar.xz",
+    "url": "https://download.qt.io/official_releases/qt/6.11/6.11.3/submodules/qtdeclarative-everywhere-src-6.11.3.tar.xz",
+    "mirror": "https://mirrors.tuna.tsinghua.edu.cn/qt/archive/qt/6.11/6.11.3/submodules/qtdeclarative-everywhere-src-6.11.3.tar.xz",
+    "sha256": "6d6db328a02ae3bb0b1e6944aeef8dfe44cd6b55ab59b1708bbf0400f5759cb5",
+    "checksum_origin": "Qt official HTTP Digest SHA-256 header"
+  },
+  {
+    "file": "qtsvg-cb69025ce26ced80be7a96b6293fa5333fd42000.tar.gz",
+    "url": "https://codeload.github.com/qt/qtsvg/tar.gz/cb69025ce26ced80be7a96b6293fa5333fd42000",
+    "sha256": "8c3c9e41029b3eafa8e30d9ec1ef7914d48d0120cb6e568adeb8e71d6eafe5b0",
+    "revision_origin": "Qt SDK source SPDX metadata"
+  },
+  {
+    "file": "qttranslations-v6.11.3.tar.gz",
+    "url": "https://codeload.github.com/qt/qttranslations/tar.gz/v6.11.3",
+    "sha256": "dbdb9b19e0bed514c56a1c4a992c9efbb3ce5332bb4390370f80b5112d208aa6"
+  },
+  {
+    "file": "LibRaw-0.22.2.zip",
+    "url": "https://codeload.github.com/LibRaw/LibRaw/zip/refs/tags/0.22.2",
+    "sha256": "02275a04cf0d1477ab9fd7ee231ddea59e7b14497458da6e3ba957517d6655c7"
+  },
+  {
+    "file": "nsis-3.12-src.tar.bz2",
+    "url": "https://distfiles.macports.org/nsis/nsis-3.12-src.tar.bz2",
+    "sha256": "f3ed7a8e4aa2cf4e8cf47d3b563a02559e0cb4934db2662b2f9661b824e2b186",
+    "checksum_origin": "MacPorts nsis Portfile"
+  },
+  {
+    "file": "DXC-LICENSE.TXT",
+    "url": "https://raw.githubusercontent.com/microsoft/DirectXShaderCompiler/e35541826/LICENSE.TXT",
+    "sha256": "27a49e35d1da96eba18fba54bc882667ff0ff8c0254f16f2b6e165d605ba7df8"
+  },
+  {
+    "file": "DXC-ThirdPartyNotices.txt",
+    "url": "https://raw.githubusercontent.com/microsoft/DirectXShaderCompiler/e35541826/ThirdPartyNotices.txt",
+    "sha256": "19512a5d0a015ef16d167272c164da49a604614a786206212a80ad486ed0be6d"
+  }
+]

@@ -1,0 +1,1882 @@
+-- Configuring done
+-- Generating done
+-- Build files have been written to: C:/Users/Strickland/SpektraLab-work/build/qt-20261031-installer
+[  0%] Automatic MOC and UIC for target spk_scan_curve_fit
+[  1%] Building C object engine/CMakeFiles/spk_volk.dir/third_party/volk/volk.c.obj
+[  2%] Built target SpektraLabQt_qmlimportscan
+[  2%] Built target spk_scan_curve_fit_autogen
+[  2%] Building CXX object engine/CMakeFiles/spektralab_core.dir/src/core/blob.cpp.obj
+[  2%] Built target SpektraLabQt_copy_qml
+[  2%] Built target SpektraLabQt_copy_res
+[  3%] Built target generate_qmlls_build_ini_file
+[  3%] Building CXX object engine/CMakeFiles/spektralab_core.dir/src/core/cam16.cpp.obj
+[  4%] Building CXX object engine/CMakeFiles/spektralab_core.dir/src/core/colour.cpp.obj
+[ 16%] Built target spektralab_vulkan_resources
+[ 16%] Building CXX object engine/CMakeFiles/spektralab_core.dir/src/core/curves.cpp.obj
+[ 40%] Built target spk_libraw
+[ 40%] Building CXX object engine/CMakeFiles/spektralab_core.dir/src/core/digital_intermediate.cpp.obj
+[ 40%] Linking C static library libspk_volk.a
+[ 40%] Building CXX object CMakeFiles/spk_scan_curve_fit.dir/spk_scan_curve_fit_autogen/mocs_compilation.cpp.obj
+[ 40%] Building CXX object CMakeFiles/spk_scan_curve_fit.dir/material_fit/CurveFit.cpp.obj
+[ 40%] Built target spk_volk
+[ 41%] Building CXX object engine/CMakeFiles/spektralab_core.dir/src/core/hanatos.cpp.obj
+[ 42%] Building CXX object CMakeFiles/spk_scan_curve_fit.dir/material_fit/SpectralLift.cpp.obj
+[ 42%] Building CXX object engine/CMakeFiles/spk_raw_metadata_link.dir/tests/raw_metadata_link.cpp.obj
+[ 42%] Building CXX object engine/CMakeFiles/spektralab_core.dir/src/core/json.cpp.obj
+[ 42%] Building CXX object engine/CMakeFiles/spektralab_core.dir/src/core/latitude_fit.cpp.obj
+[ 42%] Built target spektralab_qt_resources
+[ 42%] Building CXX object engine/CMakeFiles/spektralab_core.dir/src/core/numeric.cpp.obj
+[ 42%] Building CXX object engine/CMakeFiles/spk_image_io.dir/src/io/raw_decoder.cpp.obj
+[ 43%] Building CXX object engine/CMakeFiles/spk_image_io.dir/src/io/raw_headroom.cpp.obj
+[ 44%] Linking CXX executable spk_raw_metadata_link.exe
+[ 45%] Building CXX object engine/CMakeFiles/spektralab_core.dir/src/core/params.cpp.obj
+[ 45%] Built target spk_raw_metadata_link
+[ 45%] Building CXX object engine/CMakeFiles/spk_image_io.dir/src/io/image_writer.cpp.obj
+[ 45%] Building CXX object engine/CMakeFiles/spektralab_core.dir/src/core/print_lut.cpp.obj
+[ 45%] Building CXX object engine/CMakeFiles/spektralab_core.dir/src/core/printing.cpp.obj
+[ 45%] Linking CXX static library libspk_scan_curve_fit.a
+[ 46%] Building CXX object engine/CMakeFiles/spektralab_core.dir/src/core/profile.cpp.obj
+[ 46%] Built target spk_scan_curve_fit
+[ 46%] Building CXX object engine/CMakeFiles/spektralab_core.dir/src/core/setup_cache.cpp.obj
+[ 46%] Building CXX object engine/CMakeFiles/spektralab_core.dir/src/core/spectral.cpp.obj
+[ 46%] Automatic MOC and UIC for target spk_material_fit
+[ 46%] Built target spk_material_fit_autogen
+[ 46%] Building CXX object CMakeFiles/spk_material_fit.dir/spk_material_fit_autogen/mocs_compilation.cpp.obj
+[ 46%] Building CXX object CMakeFiles/spk_material_fit.dir/material_fit/main.cpp.obj
+[ 46%] Linking CXX static library libspk_image_io.a
+[ 46%] Built target spk_image_io
+[ 46%] Building CXX object engine/CMakeFiles/spk_raw_decoder_errors.dir/tests/raw_decoder_errors.cpp.obj
+[ 46%] Building CXX object engine/CMakeFiles/spk_image_writer_test.dir/tests/image_writer_test.cpp.obj
+[ 47%] Building CXX object engine/CMakeFiles/spk_raw_headroom.dir/tests/raw_headroom.cpp.obj
+[ 48%] Linking CXX static library libspektralab_core.a
+[ 48%] Linking CXX executable spk_raw_headroom.exe
+[ 48%] Built target spektralab_core
+[ 48%] Building CXX object engine/CMakeFiles/spk_dump_json.dir/tests/dump_json.cpp.obj
+[ 48%] Built target spk_raw_headroom
+[ 48%] Building CXX object engine/CMakeFiles/spektralab_pipeline.dir/src/pipeline/blur.cpp.obj
+[ 48%] Building CXX object engine/CMakeFiles/spektralab_pipeline.dir/src/pipeline/engine.cpp.obj
+[ 48%] Linking CXX executable spk_raw_decoder_errors.exe
+[ 48%] Built target spk_raw_decoder_errors
+[ 49%] Building CXX object engine/CMakeFiles/spektralab_pipeline.dir/src/pipeline/pipeline.cpp.obj
+[ 50%] Building CXX object engine/CMakeFiles/spk_dump_setup.dir/tests/dump_setup.cpp.obj
+[ 51%] Linking CXX executable app\spk_material_fit.exe
+[ 51%] Built target spk_material_fit
+[ 51%] Building CXX object engine/CMakeFiles/spektralab_pipeline.dir/src/pipeline/scene_latitude.cpp.obj
+[ 52%] Linking CXX executable spk_image_writer_test.exe
+[ 52%] Linking CXX executable spk_dump_json.exe
+[ 52%] Built target spk_image_writer_test
+[ 52%] Building CXX object engine/CMakeFiles/spektralab_pipeline.dir/src/pipeline/windows_unported.cpp.obj
+[ 52%] Built target spk_dump_json
+[ 53%] Building CXX object engine/CMakeFiles/spektralab_pipeline.dir/src/pipeline/overscan.cpp.obj
+[ 53%] Linking CXX executable spk_dump_setup.exe
+[ 53%] Built target spk_dump_setup
+[ 53%] Built target spektralab_pipeline
+[ 53%] Building CXX object engine/CMakeFiles/spektralab_engine.dir/src/gpu/vulkan_gpu.cpp.obj
+[ 53%] Building CXX object engine/CMakeFiles/spektralab_engine_shared.dir/src/gpu/vulkan_gpu.cpp.obj
+[ 54%] Linking CXX shared library spektrafilm_engine.dll
+[ 54%] Linking CXX static library libspektralab_engine.a
+[ 54%] Built target spektralab_engine
+[ 54%] Built target spektralab_engine_shared
+[ 54%] Building CXX object engine/CMakeFiles/spk_vulkan_smoke.dir/tests/gpu_vulkan_smoke.cpp.obj
+[ 54%] Building CXX object engine/CMakeFiles/spk_vulkan_grain.dir/tests/gpu_vulkan_grain.cpp.obj
+[ 55%] Building CXX object engine/CMakeFiles/spk_output_colour.dir/host/colour_transform.cpp.obj
+[ 55%] Building CXX object engine/CMakeFiles/spk_vulkan_pointwise.dir/tests/gpu_vulkan_pointwise.cpp.obj
+[ 55%] Building CXX object engine/CMakeFiles/spk_raw_render.dir/tools/raw_render.cpp.obj
+[ 56%] Building CXX object engine/CMakeFiles/spk_vulkan_resample.dir/tests/gpu_vulkan_resample.cpp.obj
+[ 56%] Linking CXX executable spk_vulkan_resample.exe
+[ 56%] Built target spk_vulkan_resample
+[ 56%] Building CXX object engine/CMakeFiles/spk_vulkan_transfer.dir/tests/gpu_vulkan_transfer.cpp.obj
+[ 56%] Linking CXX static library libspk_output_colour.a
+[ 56%] Linking CXX executable spk_vulkan_grain.exe
+[ 56%] Built target spk_output_colour
+[ 56%] Built target spk_vulkan_grain
+[ 56%] Linking CXX executable spk_vulkan_pointwise.exe
+[ 56%] Building CXX object engine/CMakeFiles/spk_vulkan_geometry.dir/tests/gpu_vulkan_geometry.cpp.obj
+[ 57%] Building CXX object engine/CMakeFiles/spk_vulkan_lut_di.dir/tests/gpu_vulkan_lut_di.cpp.obj
+[ 57%] Built target spk_vulkan_pointwise
+[ 58%] Linking CXX executable spk_vulkan_smoke.exe
+[ 58%] Building CXX object engine/CMakeFiles/spk_windows_film_edge.dir/tests/windows_film_edge.cpp.obj
+[ 58%] Built target spk_vulkan_smoke
+[ 59%] Building CXX object engine/CMakeFiles/spk_windows_feature_boundaries.dir/tests/windows_feature_boundaries.cpp.obj
+[ 59%] Linking CXX executable spk_vulkan_transfer.exe
+[ 59%] Built target spk_vulkan_transfer
+[ 60%] Linking CXX executable spk_vulkan_geometry.exe
+[ 60%] Building CXX object engine/CMakeFiles/spk_render_fixture.dir/tests/render_fixture.cpp.obj
+[ 61%] Linking CXX executable spk_windows_film_edge.exe
+[ 61%] Built target spk_vulkan_geometry
+[ 61%] Linking CXX executable spk_vulkan_lut_di.exe
+[ 61%] Built target spk_windows_film_edge
+[ 61%] Building CXX object engine/CMakeFiles/spk_desktop_host.dir/src/desktop/preview_host.cpp.obj
+[ 61%] Built target spk_vulkan_lut_di
+[ 61%] Linking CXX executable spk_windows_feature_boundaries.exe
+[ 61%] Built target spk_windows_feature_boundaries
+[ 61%] Linking CXX executable spk_raw_render.exe
+[ 61%] Built target spk_raw_render
+[ 62%] Linking CXX executable spk_render_fixture.exe
+[ 62%] Built target spk_render_fixture
+[ 62%] Linking CXX static library libspk_desktop_host.a
+[ 62%] Built target spk_desktop_host
+[ 62%] Automatic MOC and UIC for target spk_qt_frame_output_test
+[ 62%] Automatic MOC and UIC for target spk_material_library
+[ 63%] Automatic MOC and UIC for target spk_qt_edit_store_test
+[ 63%] Built target spk_qt_frame_output_test_autogen
+[ 63%] Built target spk_material_library_autogen
+[ 63%] Built target spk_qt_edit_store_test_autogen
+[ 63%] Building CXX object engine/CMakeFiles/spk_desktop_preview_test.dir/tests/desktop_preview.cpp.obj
+[ 63%] Building CXX object engine/CMakeFiles/SpektraLab.dir/tools/windows_preview.cpp.obj
+[ 63%] Building CXX object CMakeFiles/spk_material_library.dir/spk_material_library_autogen/mocs_compilation.cpp.obj
+[ 64%] Building CXX object CMakeFiles/spk_material_library.dir/src/MaterialLibrary.cpp.obj
+[ 64%] Building CXX object CMakeFiles/spk_qt_frame_output_test.dir/spk_qt_frame_output_test_autogen/mocs_compilation.cpp.obj
+[ 64%] Building CXX object CMakeFiles/spk_qt_edit_store_test.dir/spk_qt_edit_store_test_autogen/mocs_compilation.cpp.obj
+[ 65%] Building CXX object CMakeFiles/spk_qt_frame_output_test.dir/tests/frame_output.cpp.obj
+[ 66%] Building CXX object CMakeFiles/spk_qt_edit_store_test.dir/tests/edit_store.cpp.obj
+[ 66%] Building CXX object CMakeFiles/spk_qt_frame_output_test.dir/src/FrameOutput.cpp.obj
+[ 67%] Linking CXX executable spk_desktop_preview_test.exe
+[ 67%] Built target spk_desktop_preview_test
+[ 67%] Building CXX object CMakeFiles/spk_qt_edit_store_test.dir/src/EditStore.cpp.obj
+[ 67%] Linking CXX executable SpektraLab.exe
+[ 67%] Building CXX object CMakeFiles/spk_qt_edit_store_test.dir/src/FrameOutput.cpp.obj
+[ 67%] Built target SpektraLab
+[ 67%] Linking CXX executable spk_qt_frame_output_test.exe
+[ 67%] Linking CXX static library libspk_material_library.a
+[ 67%] Built target spk_material_library
+[ 67%] Automatic MOC and UIC for target SpektraLabQt
+[ 68%] Automatic MOC and UIC for target spk_qt_responsiveness_test
+[ 68%] Built target spk_qt_frame_output_test
+[ 68%] Built target spk_qt_responsiveness_test_autogen
+[ 68%] Built target SpektraLabQt_autogen
+[ 68%] Automatic MOC and UIC for target spk_spectral_lift_test
+[ 68%] Automatic MOC and UIC for target spk_material_fit_test
+[ 69%] Automatic MOC and UIC for target spk_qt_stock_policy_test
+[ 69%] Built target spk_spectral_lift_test_autogen
+[ 69%] Built target spk_material_fit_test_autogen
+[ 69%] Built target spk_qt_stock_policy_test_autogen
+[ 69%] Automatic MOC and UIC for target spk_qt_library_workflow_test
+[ 70%] Automatic MOC and UIC for target spk_qt_scene_placement_test
+[ 70%] Automatic MOC and UIC for target spk_qt_film_frame_test
+[ 71%] Automatic MOC and UIC for target spk_qt_half_pair_test
+[ 71%] Built target spk_qt_library_workflow_test_autogen
+[ 71%] Built target spk_qt_scene_placement_test_autogen
+[ 71%] Built target spk_qt_film_frame_test_autogen
+[ 71%] Built target spk_qt_half_pair_test_autogen
+[ 71%] Automatic MOC and UIC for target spk_qt_open_material_test
+[ 71%] Automatic MOC and UIC for target spk_qt_material_library_test
+[ 71%] Automatic MOC and UIC for target spk_qt_material_workflow_test
+[ 71%] Built target spk_qt_material_library_test_autogen
+[ 71%] Automatic MOC and UIC for target spk_qt_editing_workflow_test
+[ 71%] Built target spk_qt_open_material_test_autogen
+[ 71%] Built target spk_qt_material_workflow_test_autogen
+[ 71%] Built target spk_qt_editing_workflow_test_autogen
+[ 72%] Running AUTOMOC file extraction for target SpektraLabQt
+[ 72%] Built target SpektraLabQt_automoc_json_extraction
+[ 73%] Building CXX object CMakeFiles/spk_spectral_lift_test.dir/spk_spectral_lift_test_autogen/mocs_compilation.cpp.obj
+[ 73%] Building CXX object CMakeFiles/spk_material_fit_test.dir/spk_material_fit_test_autogen/mocs_compilation.cpp.obj
+[ 74%] Building CXX object CMakeFiles/spk_qt_responsiveness_test.dir/spk_qt_responsiveness_test_autogen/mocs_compilation.cpp.obj
+[ 74%] Building CXX object CMakeFiles/spk_spectral_lift_test.dir/material_fit/spectral_tests.cpp.obj
+[ 75%] Building CXX object CMakeFiles/spk_material_fit_test.dir/material_fit/tests.cpp.obj
+[ 75%] Building CXX object CMakeFiles/spk_qt_stock_policy_test.dir/spk_qt_stock_policy_test_autogen/mocs_compilation.cpp.obj
+[ 75%] Building CXX object CMakeFiles/spk_qt_responsiveness_test.dir/tests/responsiveness.cpp.obj
+[ 75%] Linking CXX executable spk_material_fit_test.exe
+[ 75%] Built target spk_material_fit_test
+[ 75%] Building CXX object CMakeFiles/spk_qt_stock_policy_test.dir/tests/stock_policy.cpp.obj
+[ 75%] Linking CXX executable spk_qt_edit_store_test.exe
+[ 75%] Building CXX object CMakeFiles/spk_qt_library_workflow_test.dir/spk_qt_library_workflow_test_autogen/mocs_compilation.cpp.obj
+[ 75%] Built target spk_qt_edit_store_test
+[ 75%] Linking CXX executable spk_spectral_lift_test.exe
+[ 76%] Building CXX object CMakeFiles/spk_qt_stock_policy_test.dir/src/PreviewController.cpp.obj
+[ 76%] Building CXX object CMakeFiles/spk_qt_responsiveness_test.dir/src/PreviewController.cpp.obj
+[ 76%] Built target spk_spectral_lift_test
+[ 76%] Building CXX object CMakeFiles/spk_qt_library_workflow_test.dir/tests/library_workflow.cpp.obj
+[ 76%] Building CXX object CMakeFiles/spk_qt_stock_policy_test.dir/src/FrameOutput.cpp.obj
+[ 76%] Building CXX object CMakeFiles/spk_qt_scene_placement_test.dir/spk_qt_scene_placement_test_autogen/mocs_compilation.cpp.obj
+[ 77%] Building CXX object CMakeFiles/spk_qt_library_workflow_test.dir/src/PreviewController.cpp.obj
+[ 78%] Building CXX object CMakeFiles/spk_qt_responsiveness_test.dir/src/FrameOutput.cpp.obj
+[ 78%] Building CXX object CMakeFiles/spk_qt_film_frame_test.dir/spk_qt_film_frame_test_autogen/mocs_compilation.cpp.obj
+[ 78%] Building CXX object CMakeFiles/spk_qt_scene_placement_test.dir/tests/scene_placement.cpp.obj
+[ 78%] Building CXX object CMakeFiles/spk_qt_stock_policy_test.dir/src/EditStore.cpp.obj
+[ 78%] Building CXX object CMakeFiles/spk_qt_library_workflow_test.dir/src/FrameOutput.cpp.obj
+[ 78%] Building CXX object CMakeFiles/spk_qt_responsiveness_test.dir/src/EditStore.cpp.obj
+[ 78%] Building CXX object CMakeFiles/spk_qt_film_frame_test.dir/tests/film_frame.cpp.obj
+[ 78%] Building CXX object CMakeFiles/spk_qt_scene_placement_test.dir/src/PreviewController.cpp.obj
+[ 79%] Building CXX object CMakeFiles/spk_qt_half_pair_test.dir/spk_qt_half_pair_test_autogen/mocs_compilation.cpp.obj
+[ 79%] Linking CXX executable spk_qt_stock_policy_test.exe
+[ 79%] Linking CXX executable spk_qt_responsiveness_test.exe
+[ 79%] Built target spk_qt_stock_policy_test
+[ 79%] Building CXX object CMakeFiles/spk_qt_library_workflow_test.dir/src/EditStore.cpp.obj
+[ 80%] Building CXX object CMakeFiles/spk_qt_film_frame_test.dir/src/PreviewController.cpp.obj
+[ 81%] Building CXX object CMakeFiles/spk_qt_scene_placement_test.dir/src/FrameOutput.cpp.obj
+[ 81%] Built target spk_qt_responsiveness_test
+[ 81%] Building CXX object CMakeFiles/spk_qt_half_pair_test.dir/tests/half_pair.cpp.obj
+[ 81%] Building CXX object CMakeFiles/spk_qt_film_frame_test.dir/src/FrameOutput.cpp.obj
+[ 81%] Building CXX object CMakeFiles/spk_qt_half_pair_test.dir/src/PreviewController.cpp.obj
+[ 82%] Linking CXX executable spk_qt_library_workflow_test.exe
+[ 82%] Building CXX object CMakeFiles/spk_qt_open_material_test.dir/spk_qt_open_material_test_autogen/mocs_compilation.cpp.obj
+[ 82%] Built target spk_qt_library_workflow_test
+[ 82%] Building CXX object CMakeFiles/spk_qt_film_frame_test.dir/src/EditStore.cpp.obj
+[ 82%] Building CXX object CMakeFiles/spk_qt_scene_placement_test.dir/src/EditStore.cpp.obj
+[ 83%] Building CXX object CMakeFiles/spk_qt_half_pair_test.dir/src/FrameOutput.cpp.obj
+[ 84%] Building CXX object CMakeFiles/spk_qt_open_material_test.dir/tests/open_material.cpp.obj
+[ 84%] Building CXX object CMakeFiles/spk_qt_material_library_test.dir/spk_qt_material_library_test_autogen/mocs_compilation.cpp.obj
+[ 84%] Building CXX object CMakeFiles/spk_qt_material_library_test.dir/tests/material_library.cpp.obj
+[ 85%] Linking CXX executable spk_qt_film_frame_test.exe
+[ 85%] Built target spk_qt_film_frame_test
+[ 85%] Building CXX object CMakeFiles/spk_qt_half_pair_test.dir/src/EditStore.cpp.obj
+[ 85%] Linking CXX executable spk_qt_scene_placement_test.exe
+[ 85%] Built target spk_qt_scene_placement_test
+[ 85%] Building CXX object CMakeFiles/spk_qt_open_material_test.dir/src/PreviewController.cpp.obj
+[ 85%] Building CXX object CMakeFiles/spk_qt_material_workflow_test.dir/spk_qt_material_workflow_test_autogen/mocs_compilation.cpp.obj
+[ 85%] Building CXX object CMakeFiles/spk_qt_open_material_test.dir/src/FrameOutput.cpp.obj
+[ 86%] Linking CXX executable spk_qt_material_library_test.exe
+[ 86%] Built target spk_qt_material_library_test
+[ 87%] Building CXX object CMakeFiles/spk_qt_material_workflow_test.dir/tests/material_workflow.cpp.obj
+[ 87%] Building CXX object CMakeFiles/spk_qt_editing_workflow_test.dir/spk_qt_editing_workflow_test_autogen/mocs_compilation.cpp.obj
+[ 87%] Linking CXX executable spk_qt_half_pair_test.exe
+[ 87%] Built target spk_qt_half_pair_test
+[ 88%] Building CXX object CMakeFiles/spk_qt_open_material_test.dir/src/EditStore.cpp.obj
+[ 88%] Building CXX object CMakeFiles/spk_qt_editing_workflow_test.dir/tests/editing_workflow.cpp.obj
+[ 88%] Generating meta_types/qt6spektralabqt_metatypes.json
+[ 89%] Building CXX object CMakeFiles/SpektraLabQt.dir/SpektraLabQt_autogen/mocs_compilation.cpp.obj
+[ 89%] Building CXX object CMakeFiles/spk_qt_material_workflow_test.dir/src/PreviewController.cpp.obj
+[ 90%] Building CXX object CMakeFiles/spk_qt_editing_workflow_test.dir/src/PreviewController.cpp.obj
+[ 90%] Building CXX object CMakeFiles/SpektraLabQt.dir/src/main.cpp.obj
+[ 90%] Linking CXX executable spk_qt_open_material_test.exe
+[ 90%] Building CXX object CMakeFiles/spk_qt_material_workflow_test.dir/src/FrameOutput.cpp.obj
+[ 90%] Built target spk_qt_open_material_test
+[ 90%] Building CXX object CMakeFiles/SpektraLabQt.dir/src/PreviewController.cpp.obj
+[ 90%] Building CXX object CMakeFiles/spk_qt_editing_workflow_test.dir/src/FrameOutput.cpp.obj
+[ 90%] Building CXX object CMakeFiles/SpektraLabQt.dir/src/FrameOutput.cpp.obj
+[ 91%] Building CXX object CMakeFiles/spk_qt_material_workflow_test.dir/src/EditStore.cpp.obj
+[ 92%] Building CXX object CMakeFiles/SpektraLabQt.dir/src/EditStore.cpp.obj
+[ 92%] Building CXX object CMakeFiles/spk_qt_editing_workflow_test.dir/src/EditStore.cpp.obj
+[ 92%] Building CXX object CMakeFiles/SpektraLabQt.dir/src/FrameCanvas.cpp.obj
+[ 93%] Building CXX object CMakeFiles/SpektraLabQt.dir/.qt/rcc/qrc_application_icon.cpp.obj
+[ 93%] Generating meta_types/qt6spektralabqt_metatypes.json
+[ 93%] Building CXX object CMakeFiles/SpektraLabQt.dir/.qt/rcc/qrc_qmake_SpektraLab.cpp.obj
+[ 94%] Building CXX object CMakeFiles/SpektraLabQt.dir/.qt/rcc/qrc_SpektraLabQt_raw_qml_0.cpp.obj
+[ 94%] Building CXX object CMakeFiles/SpektraLabQt.dir/.qt/rcc/qrc_SpektraLabQt_raw_qml_0_extra_qmldirs.cpp.obj
+[ 94%] Building CXX object CMakeFiles/SpektraLabQt.dir/spektralabqt_qmltyperegistrations.cpp.obj
+[ 94%] Linking CXX executable spk_qt_material_workflow_test.exe
+[ 95%] Linking CXX executable spk_qt_editing_workflow_test.exe
+[ 95%] Built target spk_qt_material_workflow_test
+[ 95%] Built target spk_qt_editing_workflow_test
+[ 95%] Linking CXX executable app\SpektraLabQt.exe
+[ 97%] Built target SpektraLabQt
+[ 98%] Automatic MOC and UIC for target spk_qt_icon_test
+[ 98%] Automatic MOC and UIC for target spk_qt_qml_workflow_test
+[ 98%] Built target spk_qt_qml_workflow_test_autogen
+[ 98%] Built target spk_qt_icon_test_autogen
+[100%] Building CXX object CMakeFiles/spk_qt_qml_workflow_test.dir/spk_qt_qml_workflow_test_autogen/mocs_compilation.cpp.obj
+[100%] Building CXX object CMakeFiles/spk_qt_icon_test.dir/spk_qt_icon_test_autogen/mocs_compilation.cpp.obj
+[100%] Building CXX object CMakeFiles/spk_qt_qml_workflow_test.dir/tests/qml_workflow.cpp.obj
+[100%] Building CXX object CMakeFiles/spk_qt_icon_test.dir/tests/application_icon.cpp.obj
+[100%] Linking CXX executable spk_qt_qml_workflow_test.exe
+[100%] Built target spk_qt_qml_workflow_test
+[100%] Linking CXX executable spk_qt_icon_test.exe
+[100%] Built target spk_qt_icon_test
+Adding local dependencyC:/Users/Strickland/SpektraLab-work/build/qt-20261031-installer/app/libgcc_s_seh-1.dll
+Adding local dependencyC:/Users/Strickland/SpektraLab-work/build/qt-20261031-installer/app/libwinpthread-1.dll
+Adding local dependencyC:/Users/Strickland/SpektraLab-work/build/qt-20261031-installer/app/libstdc++-6.dll
+C:\Users\Strickland\SpektraLab-work\build\qt-20261031-installer\app\SpektraLabQt.exe 64 bit, release executable [QML]
+Scanning C:\Users\Strickland\SpektraLab-work\windows_UI\qml:
+QML imports:
+  'QtQuick' C:\Users\Strickland\SpektraLab-deps-20261028\qt-6.11.3\mingw_64\qml\QtQuick
+  'QtQml' C:\Users\Strickland\SpektraLab-deps-20261028\qt-6.11.3\mingw_64\qml\QtQml
+  'QML' C:\Users\Strickland\SpektraLab-deps-20261028\qt-6.11.3\mingw_64\qml\QML
+  'QtQml.Models' C:\Users\Strickland\SpektraLab-deps-20261028\qt-6.11.3\mingw_64\qml\QtQml\Models
+  'QtQml.WorkerScript' C:\Users\Strickland\SpektraLab-deps-20261028\qt-6.11.3\mingw_64\qml\QtQml\WorkerScript
+  'QtQuick.Controls' C:\Users\Strickland\SpektraLab-deps-20261028\qt-6.11.3\mingw_64\qml\QtQuick\Controls
+  'QtQuick.Controls.Fusion' C:\Users\Strickland\SpektraLab-deps-20261028\qt-6.11.3\mingw_64\qml\QtQuick\Controls\Fusion
+  'QtQuick.Controls.Imagine' C:\Users\Strickland\SpektraLab-deps-20261028\qt-6.11.3\mingw_64\qml\QtQuick\Controls\Imagine
+  'QtQuick.Controls.Material' C:\Users\Strickland\SpektraLab-deps-20261028\qt-6.11.3\mingw_64\qml\QtQuick\Controls\Material
+  'QtQuick.Controls.Universal' C:\Users\Strickland\SpektraLab-deps-20261028\qt-6.11.3\mingw_64\qml\QtQuick\Controls\Universal
+  'QtQuick.Controls.FluentWinUI3' C:\Users\Strickland\SpektraLab-deps-20261028\qt-6.11.3\mingw_64\qml\QtQuick\Controls\FluentWinUI3
+  'QtQuick.Controls.Windows' C:\Users\Strickland\SpektraLab-deps-20261028\qt-6.11.3\mingw_64\qml\QtQuick\Controls\Windows
+  'QtQuick.Controls.Basic' C:\Users\Strickland\SpektraLab-deps-20261028\qt-6.11.3\mingw_64\qml\QtQuick\Controls\Basic
+  'QtQuick.Templates' C:\Users\Strickland\SpektraLab-deps-20261028\qt-6.11.3\mingw_64\qml\QtQuick\Templates
+  'QtQuick.Controls.impl' C:\Users\Strickland\SpektraLab-deps-20261028\qt-6.11.3\mingw_64\qml\QtQuick\Controls\impl
+  'QtQuick.Controls.Fusion.impl' C:\Users\Strickland\SpektraLab-deps-20261028\qt-6.11.3\mingw_64\qml\QtQuick\Controls\Fusion\impl
+  'QtQuick.Window' C:\Users\Strickland\SpektraLab-deps-20261028\qt-6.11.3\mingw_64\qml\QtQuick\Window
+  'QtQuick.Controls.Imagine.impl' C:\Users\Strickland\SpektraLab-deps-20261028\qt-6.11.3\mingw_64\qml\QtQuick\Controls\Imagine\impl
+  'QtQuick.Controls.Material.impl' C:\Users\Strickland\SpektraLab-deps-20261028\qt-6.11.3\mingw_64\qml\QtQuick\Controls\Material\impl
+  'QtQuick.Controls.Universal.impl' C:\Users\Strickland\SpektraLab-deps-20261028\qt-6.11.3\mingw_64\qml\QtQuick\Controls\Universal\impl
+  'QtQuick.Controls.FluentWinUI3.impl' C:\Users\Strickland\SpektraLab-deps-20261028\qt-6.11.3\mingw_64\qml\QtQuick\Controls\FluentWinUI3\impl
+  'QtQuick.Effects' C:\Users\Strickland\SpektraLab-deps-20261028\qt-6.11.3\mingw_64\qml\QtQuick\Effects
+  'QtQuick.Layouts' C:\Users\Strickland\SpektraLab-deps-20261028\qt-6.11.3\mingw_64\qml\QtQuick\Layouts
+  'QtQuick.Shapes' C:\Users\Strickland\SpektraLab-deps-20261028\qt-6.11.3\mingw_64\qml\QtQuick\Shapes
+  'QtQuick.NativeStyle' C:\Users\Strickland\SpektraLab-deps-20261028\qt-6.11.3\mingw_64\qml\QtQuick\NativeStyle
+  'QtQuick.Controls.Windows.impl' C:\Users\Strickland\SpektraLab-deps-20261028\qt-6.11.3\mingw_64\qml\QtQuick\Controls\Windows\impl
+  'QtQuick.Controls.Basic.impl' C:\Users\Strickland\SpektraLab-deps-20261028\qt-6.11.3\mingw_64\qml\QtQuick\Controls\Basic\impl
+  'QtQuick.Dialogs' C:\Users\Strickland\SpektraLab-deps-20261028\qt-6.11.3\mingw_64\qml\QtQuick\Dialogs
+  'QtQuick.Dialogs.quickimpl' C:\Users\Strickland\SpektraLab-deps-20261028\qt-6.11.3\mingw_64\qml\QtQuick\Dialogs\quickimpl
+  'Qt.labs.folderlistmodel' C:\Users\Strickland\SpektraLab-deps-20261028\qt-6.11.3\mingw_64\qml\Qt\labs\folderlistmodel
+Adding in plugin type generic for module: Qt6Gui
+Adding in plugin type iconengines for module: Qt6Gui
+Adding Qt6Svg for qsvgicon.dll from plugin type: iconengines
+Adding in plugin type imageformats for module: Qt6Gui
+Adding in plugin type networkinformation for module: Qt6Network
+Adding in plugin type platforms for module: Qt6Gui
+Adding in plugin type qmltooling for module: Qt6Qml
+Adding in plugin type tls for module: Qt6Network
+Skipping plugin qopensslbackend.dll. Use -force-openssl or specify -openssl-root if you want to use it.
+Performing additional pass of finding Qt plugins due to updated Qt module list: Qt6Core Qt6Gui Qt6LabsFolderListModel Qt6Network Qt6OpenGL Qt6Qml Qt6QmlMeta Qt6QmlModels Qt6QmlWorkerScript Qt6Quick Qt6QuickControls2 Qt6QuickControls2Basic Qt6QuickControls2BasicStyleImpl Qt6QuickControls2FluentWinUI3StyleImpl Qt6QuickControls2Fusion Qt6QuickControls2FusionStyleImpl Qt6QuickControls2Imagine Qt6QuickControls2ImagineStyleImpl Qt6QuickControls2Impl Qt6QuickControls2Material Qt6QuickControls2MaterialStyleImpl Qt6QuickControls2Universal Qt6QuickControls2UniversalStyleImpl Qt6QuickControls2WindowsStyleImpl Qt6QuickDialogs2 Qt6QuickDialogs2QuickImpl Qt6QuickDialogs2Utils Qt6QuickEffects Qt6QuickLayouts Qt6QuickShapes Qt6QuickTemplates2 Qt6Svg
+Adding in plugin type generic for module: Qt6Gui
+Adding in plugin type iconengines for module: Qt6Gui
+Adding in plugin type imageformats for module: Qt6Gui
+Adding in plugin type networkinformation for module: Qt6Network
+Adding in plugin type platforms for module: Qt6Gui
+Adding in plugin type qmltooling for module: Qt6Qml
+Adding in plugin type tls for module: Qt6Network
+Skipping plugin qopensslbackend.dll. Use -force-openssl or specify -openssl-root if you want to use it.
+Direct dependencies: Qt6Core Qt6Gui Qt6Network Qt6OpenGL Qt6Qml Qt6QmlMeta Qt6QmlModels Qt6QmlWorkerScript Qt6Quick Qt6QuickControls2 Qt6QuickTemplates2
+All dependencies   : Qt6Core Qt6Gui Qt6LabsFolderListModel Qt6Network Qt6OpenGL Qt6Qml Qt6QmlMeta Qt6QmlModels Qt6QmlWorkerScript Qt6Quick Qt6QuickControls2 Qt6QuickControls2Basic Qt6QuickControls2BasicStyleImpl Qt6QuickControls2FluentWinUI3StyleImpl Qt6QuickControls2Fusion Qt6QuickControls2FusionStyleImpl Qt6QuickControls2Imagine Qt6QuickControls2ImagineStyleImpl Qt6QuickControls2Impl Qt6QuickControls2Material Qt6QuickControls2MaterialStyleImpl Qt6QuickControls2Universal Qt6QuickControls2UniversalStyleImpl Qt6QuickControls2WindowsStyleImpl Qt6QuickDialogs2 Qt6QuickDialogs2QuickImpl Qt6QuickDialogs2Utils Qt6QuickEffects Qt6QuickLayouts Qt6QuickShapes Qt6QuickTemplates2
+To be deployed     : Qt6Core Qt6Gui Qt6LabsFolderListModel Qt6Network Qt6OpenGL Qt6Qml Qt6QmlMeta Qt6QmlModels Qt6QmlWorkerScript Qt6Quick Qt6QuickControls2 Qt6QuickControls2Basic Qt6QuickControls2BasicStyleImpl Qt6QuickControls2FluentWinUI3StyleImpl Qt6QuickControls2Fusion Qt6QuickControls2FusionStyleImpl Qt6QuickControls2Imagine Qt6QuickControls2ImagineStyleImpl Qt6QuickControls2Impl Qt6QuickControls2Material Qt6QuickControls2MaterialStyleImpl Qt6QuickControls2Universal Qt6QuickControls2UniversalStyleImpl Qt6QuickControls2WindowsStyleImpl Qt6QuickDialogs2 Qt6QuickDialogs2QuickImpl Qt6QuickDialogs2Utils Qt6QuickEffects Qt6QuickLayouts Qt6QuickShapes Qt6QuickTemplates2 Qt6Svg
+Warning: Runtime libraries not found in Qt binary folder, defaulting to looking in path
+Qt6Core.dll is up to date.
+Qt6Gui.dll is up to date.
+Qt6LabsFolderListModel.dll is up to date.
+Qt6Network.dll is up to date.
+Qt6OpenGL.dll is up to date.
+Qt6Qml.dll is up to date.
+Qt6QmlMeta.dll is up to date.
+Qt6QmlModels.dll is up to date.
+Qt6QmlWorkerScript.dll is up to date.
+Qt6Quick.dll is up to date.
+Qt6QuickControls2.dll is up to date.
+Qt6QuickControls2Basic.dll is up to date.
+Qt6QuickControls2BasicStyleImpl.dll is up to date.
+Qt6QuickControls2FluentWinUI3StyleImpl.dll is up to date.
+Qt6QuickControls2Fusion.dll is up to date.
+Qt6QuickControls2FusionStyleImpl.dll is up to date.
+Qt6QuickControls2Imagine.dll is up to date.
+Qt6QuickControls2ImagineStyleImpl.dll is up to date.
+Qt6QuickControls2Impl.dll is up to date.
+Qt6QuickControls2Material.dll is up to date.
+Qt6QuickControls2MaterialStyleImpl.dll is up to date.
+Qt6QuickControls2Universal.dll is up to date.
+Qt6QuickControls2UniversalStyleImpl.dll is up to date.
+Qt6QuickControls2WindowsStyleImpl.dll is up to date.
+Qt6QuickDialogs2.dll is up to date.
+Qt6QuickDialogs2QuickImpl.dll is up to date.
+Qt6QuickDialogs2Utils.dll is up to date.
+Qt6QuickEffects.dll is up to date.
+Qt6QuickLayouts.dll is up to date.
+Qt6QuickShapes.dll is up to date.
+Qt6QuickTemplates2.dll is up to date.
+Qt6Svg.dll is up to date.
+Skipping system library C:/Windows/system32/D3Dcompiler_47.dll
+dxcompiler.dll is up to date.
+libgcc_s_seh-1.dll is up to date.
+libstdc++-6.dll is up to date.
+libwinpthread-1.dll is up to date.
+qtuiotouchplugin.dll is up to date.
+qsvgicon.dll is up to date.
+qgif.dll is up to date.
+qico.dll is up to date.
+qjpeg.dll is up to date.
+qsvg.dll is up to date.
+qnetworklistmanager.dll is up to date.
+qwindows.dll is up to date.
+qmldbg_debugger.dll is up to date.
+qmldbg_inspector.dll is up to date.
+qmldbg_local.dll is up to date.
+qmldbg_messages.dll is up to date.
+qmldbg_native.dll is up to date.
+qmldbg_nativedebugger.dll is up to date.
+qmldbg_preview.dll is up to date.
+qmldbg_profiler.dll is up to date.
+qmldbg_quickeventreplay.dll is up to date.
+qmldbg_quickprofiler.dll is up to date.
+qmldbg_server.dll is up to date.
+qmldbg_tcp.dll is up to date.
+qcertonlybackend.dll is up to date.
+qschannelbackend.dll is up to date.
+qtquick2plugin.dll is up to date.
+plugins.qmltypes is up to date.
+qmldir is up to date.
+Skipping C:\Users\Strickland\SpektraLab-deps-20261028\qt-6.11.3\mingw_64\qml\QtQuick\Controls\designer.
+qmlplugin.dll is up to date.
+plugins.qmltypes is up to date.
+qmldir is up to date.
+plugins.qmltypes is up to date.
+qmldir is up to date.
+modelsplugin.dll is up to date.
+plugins.qmltypes is up to date.
+qmldir is up to date.
+workerscriptplugin.dll is up to date.
+plugins.qmltypes is up to date.
+qmldir is up to date.
+qtquickcontrols2plugin.dll is up to date.
+plugins.qmltypes is up to date.
+qmldir is up to date.
+Skipping C:\Users\Strickland\SpektraLab-deps-20261028\qt-6.11.3\mingw_64\qml\QtQuick\Controls\designer.
+qtquickcontrols2fusionstyleplugin.dll is up to date.
+ApplicationWindow.qml is up to date.
+BusyIndicator.qml is up to date.
+Button.qml is up to date.
+CheckBox.qml is up to date.
+CheckDelegate.qml is up to date.
+ComboBox.qml is up to date.
+DelayButton.qml is up to date.
+Dial.qml is up to date.
+Dialog.qml is up to date.
+DialogButtonBox.qml is up to date.
+DoubleSpinBox.qml is up to date.
+Drawer.qml is up to date.
+Frame.qml is up to date.
+GroupBox.qml is up to date.
+HorizontalHeaderView.qml is up to date.
+HorizontalHeaderViewDelegate.qml is up to date.
+ItemDelegate.qml is up to date.
+Label.qml is up to date.
+Menu.qml is up to date.
+MenuBar.qml is up to date.
+MenuBarItem.qml is up to date.
+MenuItem.qml is up to date.
+MenuSeparator.qml is up to date.
+Page.qml is up to date.
+PageIndicator.qml is up to date.
+Pane.qml is up to date.
+plugins.qmltypes is up to date.
+Popup.qml is up to date.
+ProgressBar.qml is up to date.
+qmldir is up to date.
+RadioButton.qml is up to date.
+RadioDelegate.qml is up to date.
+RangeSlider.qml is up to date.
+RoundButton.qml is up to date.
+ScrollBar.qml is up to date.
+ScrollIndicator.qml is up to date.
+ScrollView.qml is up to date.
+SearchField.qml is up to date.
+SelectionRectangle.qml is up to date.
+Slider.qml is up to date.
+SpinBox.qml is up to date.
+SplitView.qml is up to date.
+SwipeDelegate.qml is up to date.
+Switch.qml is up to date.
+SwitchDelegate.qml is up to date.
+TabBar.qml is up to date.
+TabButton.qml is up to date.
+TextArea.qml is up to date.
+TextField.qml is up to date.
+ToolBar.qml is up to date.
+ToolButton.qml is up to date.
+ToolSeparator.qml is up to date.
+ToolTip.qml is up to date.
+TreeViewDelegate.qml is up to date.
+Tumbler.qml is up to date.
+VerticalHeaderView.qml is up to date.
+VerticalHeaderViewDelegate.qml is up to date.
+qtquickcontrols2imaginestyleplugin.dll is up to date.
+ApplicationWindow.qml is up to date.
+BusyIndicator.qml is up to date.
+Button.qml is up to date.
+CheckBox.qml is up to date.
+CheckDelegate.qml is up to date.
+ComboBox.qml is up to date.
+DelayButton.qml is up to date.
+Dial.qml is up to date.
+Dialog.qml is up to date.
+DialogButtonBox.qml is up to date.
+DoubleSpinBox.qml is up to date.
+Drawer.qml is up to date.
+Frame.qml is up to date.
+GroupBox.qml is up to date.
+HorizontalHeaderView.qml is up to date.
+HorizontalHeaderViewDelegate.qml is up to date.
+ItemDelegate.qml is up to date.
+Label.qml is up to date.
+Menu.qml is up to date.
+MenuBar.qml is up to date.
+MenuBarItem.qml is up to date.
+MenuItem.qml is up to date.
+MenuSeparator.qml is up to date.
+Page.qml is up to date.
+PageIndicator.qml is up to date.
+Pane.qml is up to date.
+plugins.qmltypes is up to date.
+Popup.qml is up to date.
+ProgressBar.qml is up to date.
+qmldir is up to date.
+RadioButton.qml is up to date.
+RadioDelegate.qml is up to date.
+RangeSlider.qml is up to date.
+RoundButton.qml is up to date.
+ScrollBar.qml is up to date.
+ScrollIndicator.qml is up to date.
+ScrollView.qml is up to date.
+SearchField.qml is up to date.
+SelectionRectangle.qml is up to date.
+Slider.qml is up to date.
+SpinBox.qml is up to date.
+SplitView.qml is up to date.
+StackView.qml is up to date.
+SwipeDelegate.qml is up to date.
+SwipeView.qml is up to date.
+Switch.qml is up to date.
+SwitchDelegate.qml is up to date.
+TabBar.qml is up to date.
+TabButton.qml is up to date.
+TextArea.qml is up to date.
+TextField.qml is up to date.
+ToolBar.qml is up to date.
+ToolButton.qml is up to date.
+ToolSeparator.qml is up to date.
+ToolTip.qml is up to date.
+Tumbler.qml is up to date.
+VerticalHeaderView.qml is up to date.
+VerticalHeaderViewDelegate.qml is up to date.
+qtquickcontrols2materialstyleplugin.dll is up to date.
+ApplicationWindow.qml is up to date.
+BusyIndicator.qml is up to date.
+Button.qml is up to date.
+CheckBox.qml is up to date.
+CheckDelegate.qml is up to date.
+ComboBox.qml is up to date.
+DelayButton.qml is up to date.
+Dial.qml is up to date.
+Dialog.qml is up to date.
+DialogButtonBox.qml is up to date.
+DoubleSpinBox.qml is up to date.
+Drawer.qml is up to date.
+Frame.qml is up to date.
+GroupBox.qml is up to date.
+HorizontalHeaderView.qml is up to date.
+HorizontalHeaderViewDelegate.qml is up to date.
+ItemDelegate.qml is up to date.
+Label.qml is up to date.
+Menu.qml is up to date.
+MenuBar.qml is up to date.
+MenuBarItem.qml is up to date.
+MenuItem.qml is up to date.
+MenuSeparator.qml is up to date.
+Page.qml is up to date.
+PageIndicator.qml is up to date.
+Pane.qml is up to date.
+plugins.qmltypes is up to date.
+Popup.qml is up to date.
+ProgressBar.qml is up to date.
+qmldir is up to date.
+RadioButton.qml is up to date.
+RadioDelegate.qml is up to date.
+RangeSlider.qml is up to date.
+RoundButton.qml is up to date.
+ScrollBar.qml is up to date.
+ScrollIndicator.qml is up to date.
+ScrollView.qml is up to date.
+SearchField.qml is up to date.
+SelectionRectangle.qml is up to date.
+Slider.qml is up to date.
+SpinBox.qml is up to date.
+SplitView.qml is up to date.
+StackView.qml is up to date.
+SwipeDelegate.qml is up to date.
+SwipeView.qml is up to date.
+Switch.qml is up to date.
+SwitchDelegate.qml is up to date.
+TabBar.qml is up to date.
+TabButton.qml is up to date.
+TextArea.qml is up to date.
+TextField.qml is up to date.
+ToolBar.qml is up to date.
+ToolButton.qml is up to date.
+ToolSeparator.qml is up to date.
+ToolTip.qml is up to date.
+TreeViewDelegate.qml is up to date.
+Tumbler.qml is up to date.
+VerticalHeaderView.qml is up to date.
+VerticalHeaderViewDelegate.qml is up to date.
+qtquickcontrols2universalstyleplugin.dll is up to date.
+ApplicationWindow.qml is up to date.
+BusyIndicator.qml is up to date.
+Button.qml is up to date.
+CheckBox.qml is up to date.
+CheckDelegate.qml is up to date.
+ComboBox.qml is up to date.
+DelayButton.qml is up to date.
+Dial.qml is up to date.
+Dialog.qml is up to date.
+DialogButtonBox.qml is up to date.
+DoubleSpinBox.qml is up to date.
+Drawer.qml is up to date.
+Frame.qml is up to date.
+GroupBox.qml is up to date.
+HorizontalHeaderView.qml is up to date.
+HorizontalHeaderViewDelegate.qml is up to date.
+ItemDelegate.qml is up to date.
+Label.qml is up to date.
+Menu.qml is up to date.
+MenuBar.qml is up to date.
+MenuBarItem.qml is up to date.
+MenuItem.qml is up to date.
+MenuSeparator.qml is up to date.
+Page.qml is up to date.
+PageIndicator.qml is up to date.
+Pane.qml is up to date.
+plugins.qmltypes is up to date.
+Popup.qml is up to date.
+ProgressBar.qml is up to date.
+qmldir is up to date.
+RadioButton.qml is up to date.
+RadioDelegate.qml is up to date.
+RangeSlider.qml is up to date.
+RoundButton.qml is up to date.
+ScrollBar.qml is up to date.
+ScrollIndicator.qml is up to date.
+ScrollView.qml is up to date.
+SearchField.qml is up to date.
+SelectionRectangle.qml is up to date.
+Slider.qml is up to date.
+SpinBox.qml is up to date.
+SplitView.qml is up to date.
+StackView.qml is up to date.
+SwipeDelegate.qml is up to date.
+Switch.qml is up to date.
+SwitchDelegate.qml is up to date.
+TabBar.qml is up to date.
+TabButton.qml is up to date.
+TextArea.qml is up to date.
+TextField.qml is up to date.
+ToolBar.qml is up to date.
+ToolButton.qml is up to date.
+ToolSeparator.qml is up to date.
+ToolTip.qml is up to date.
+Tumbler.qml is up to date.
+VerticalHeaderView.qml is up to date.
+VerticalHeaderViewDelegate.qml is up to date.
+qtquickcontrols2fluentwinui3styleplugin.dll is up to date.
+ApplicationWindow.qml is up to date.
+BusyIndicator.qml is up to date.
+Button.qml is up to date.
+CheckBox.qml is up to date.
+CheckDelegate.qml is up to date.
+ComboBox.qml is up to date.
+Config.qml is up to date.
+DelayButton.qml is up to date.
+Dialog.qml is up to date.
+DialogButtonBox.qml is up to date.
+DoubleSpinBox.qml is up to date.
+FocusFrame.qml is up to date.
+Frame.qml is up to date.
+GroupBox.qml is up to date.
+ItemDelegate.qml is up to date.
+Menu.qml is up to date.
+MenuBar.qml is up to date.
+MenuBarItem.qml is up to date.
+MenuItem.qml is up to date.
+MenuSeparator.qml is up to date.
+PageIndicator.qml is up to date.
+plugins.qmltypes is up to date.
+Popup.qml is up to date.
+ProgressBar.qml is up to date.
+qmldir is up to date.
+RadioButton.qml is up to date.
+RadioDelegate.qml is up to date.
+RangeSlider.qml is up to date.
+RoundButton.qml is up to date.
+SearchField.qml is up to date.
+Slider.qml is up to date.
+SpinBox.qml is up to date.
+StyleImage.qml is up to date.
+SwipeDelegate.qml is up to date.
+Switch.qml is up to date.
+SwitchDelegate.qml is up to date.
+TabBar.qml is up to date.
+TabButton.qml is up to date.
+TextArea.qml is up to date.
+TextField.qml is up to date.
+ToolBar.qml is up to date.
+ToolButton.qml is up to date.
+ToolSeparator.qml is up to date.
+ToolTip.qml is up to date.
+checkbox-indicator-checked-disabled.png is up to date.
+checkbox-indicator-checked-disabled@2x.png is up to date.
+checkbox-indicator-checked-disabled@3x.png is up to date.
+checkbox-indicator-checked-hovered.png is up to date.
+checkbox-indicator-checked-hovered@2x.png is up to date.
+checkbox-indicator-checked-hovered@3x.png is up to date.
+checkbox-indicator-checked-pressed.png is up to date.
+checkbox-indicator-checked-pressed@2x.png is up to date.
+checkbox-indicator-checked-pressed@3x.png is up to date.
+checkbox-indicator-checked.png is up to date.
+checkbox-indicator-checked@2x.png is up to date.
+checkbox-indicator-checked@3x.png is up to date.
+checkbox-indicator-disabled-partiallyChecked.png is up to date.
+checkbox-indicator-disabled-partiallyChecked@2x.png is up to date.
+checkbox-indicator-disabled-partiallyChecked@3x.png is up to date.
+checkbox-indicator-disabled.png is up to date.
+checkbox-indicator-disabled@2x.png is up to date.
+checkbox-indicator-disabled@3x.png is up to date.
+checkbox-indicator-hovered-partiallyChecked.png is up to date.
+checkbox-indicator-hovered-partiallyChecked@2x.png is up to date.
+checkbox-indicator-hovered-partiallyChecked@3x.png is up to date.
+checkbox-indicator-hovered.png is up to date.
+checkbox-indicator-hovered@2x.png is up to date.
+checkbox-indicator-hovered@3x.png is up to date.
+checkbox-indicator-partiallyChecked-pressed.png is up to date.
+checkbox-indicator-partiallyChecked-pressed@2x.png is up to date.
+checkbox-indicator-partiallyChecked-pressed@3x.png is up to date.
+checkbox-indicator-partiallyChecked.png is up to date.
+checkbox-indicator-partiallyChecked@2x.png is up to date.
+checkbox-indicator-partiallyChecked@3x.png is up to date.
+checkbox-indicator-pressed.png is up to date.
+checkbox-indicator-pressed@2x.png is up to date.
+checkbox-indicator-pressed@3x.png is up to date.
+checkbox-indicator.png is up to date.
+checkbox-indicator@2x.png is up to date.
+checkbox-indicator@3x.png is up to date.
+combobox-background-disabled.png is up to date.
+combobox-background-disabled@2x.png is up to date.
+combobox-background-disabled@3x.png is up to date.
+combobox-background-focused.png is up to date.
+combobox-background-focused@2x.png is up to date.
+combobox-background-focused@3x.png is up to date.
+combobox-background-hovered-open.png is up to date.
+combobox-background-hovered-open@2x.png is up to date.
+combobox-background-hovered-open@3x.png is up to date.
+combobox-background-hovered.png is up to date.
+combobox-background-hovered@2x.png is up to date.
+combobox-background-hovered@3x.png is up to date.
+combobox-background-open-pressed.png is up to date.
+combobox-background-open-pressed@2x.png is up to date.
+combobox-background-open-pressed@3x.png is up to date.
+combobox-background-open.png is up to date.
+combobox-background-open@2x.png is up to date.
+combobox-background-open@3x.png is up to date.
+combobox-background-pressed.png is up to date.
+combobox-background-pressed@2x.png is up to date.
+combobox-background-pressed@3x.png is up to date.
+combobox-background.png is up to date.
+combobox-background@2x.png is up to date.
+combobox-background@3x.png is up to date.
+combobox-indicator-disabled.png is up to date.
+combobox-indicator-disabled@2x.png is up to date.
+combobox-indicator-disabled@3x.png is up to date.
+combobox-indicator-focused.png is up to date.
+combobox-indicator-focused@2x.png is up to date.
+combobox-indicator-focused@3x.png is up to date.
+combobox-indicator-hovered-open.png is up to date.
+combobox-indicator-hovered-open@2x.png is up to date.
+combobox-indicator-hovered-open@3x.png is up to date.
+combobox-indicator-hovered.png is up to date.
+combobox-indicator-hovered@2x.png is up to date.
+combobox-indicator-hovered@3x.png is up to date.
+combobox-indicator-open-pressed.png is up to date.
+combobox-indicator-open-pressed@2x.png is up to date.
+combobox-indicator-open-pressed@3x.png is up to date.
+combobox-indicator-open.png is up to date.
+combobox-indicator-open@2x.png is up to date.
+combobox-indicator-open@3x.png is up to date.
+combobox-indicator-pressed.png is up to date.
+combobox-indicator-pressed@2x.png is up to date.
+combobox-indicator-pressed@3x.png is up to date.
+combobox-indicator.png is up to date.
+combobox-indicator@2x.png is up to date.
+combobox-indicator@3x.png is up to date.
+editablecombobox-background-hovered-open.png is up to date.
+editablecombobox-background-hovered-open@2x.png is up to date.
+editablecombobox-background-hovered-open@3x.png is up to date.
+editablecombobox-background-open-pressed.png is up to date.
+editablecombobox-background-open-pressed@2x.png is up to date.
+editablecombobox-background-open-pressed@3x.png is up to date.
+editablecombobox-background-open.png is up to date.
+editablecombobox-background-open@2x.png is up to date.
+editablecombobox-background-open@3x.png is up to date.
+editablecombobox-indicator-hovered-open.png is up to date.
+editablecombobox-indicator-hovered-open@2x.png is up to date.
+editablecombobox-indicator-hovered-open@3x.png is up to date.
+editablecombobox-indicator-open-pressed.png is up to date.
+editablecombobox-indicator-open-pressed@2x.png is up to date.
+editablecombobox-indicator-open-pressed@3x.png is up to date.
+editablecombobox-indicator-open.png is up to date.
+editablecombobox-indicator-open@2x.png is up to date.
+editablecombobox-indicator-open@3x.png is up to date.
+editablecombobox-popup-background-hovered-open.png is up to date.
+editablecombobox-popup-background-hovered-open@2x.png is up to date.
+editablecombobox-popup-background-hovered-open@3x.png is up to date.
+editablecombobox-popup-background-open-pressed.png is up to date.
+editablecombobox-popup-background-open-pressed@2x.png is up to date.
+editablecombobox-popup-background-open-pressed@3x.png is up to date.
+editablecombobox-popup-background-open.png is up to date.
+editablecombobox-popup-background-open@2x.png is up to date.
+editablecombobox-popup-background-open@3x.png is up to date.
+frame-background-disabled.png is up to date.
+frame-background-disabled@2x.png is up to date.
+frame-background-disabled@3x.png is up to date.
+frame-background.png is up to date.
+frame-background@2x.png is up to date.
+frame-background@3x.png is up to date.
+itemdelegate-background-highlighted-hovered.png is up to date.
+itemdelegate-background-highlighted-hovered@2x.png is up to date.
+itemdelegate-background-highlighted-hovered@3x.png is up to date.
+itemdelegate-background-highlighted-pressed.png is up to date.
+itemdelegate-background-highlighted-pressed@2x.png is up to date.
+itemdelegate-background-highlighted-pressed@3x.png is up to date.
+itemdelegate-background-highlighted.png is up to date.
+itemdelegate-background-highlighted@2x.png is up to date.
+itemdelegate-background-highlighted@3x.png is up to date.
+itemdelegate-background-hovered.png is up to date.
+itemdelegate-background-hovered@2x.png is up to date.
+itemdelegate-background-hovered@3x.png is up to date.
+itemdelegate-background-pressed.png is up to date.
+itemdelegate-background-pressed@2x.png is up to date.
+itemdelegate-background-pressed@3x.png is up to date.
+pageindicatordelegate-indicator-delegate-current-hovered.png is up to date.
+pageindicatordelegate-indicator-delegate-current-hovered@2x.png is up to date.
+pageindicatordelegate-indicator-delegate-current-hovered@3x.png is up to date.
+pageindicatordelegate-indicator-delegate-current-pressed.png is up to date.
+pageindicatordelegate-indicator-delegate-current-pressed@2x.png is up to date.
+pageindicatordelegate-indicator-delegate-current-pressed@3x.png is up to date.
+pageindicatordelegate-indicator-delegate-current.png is up to date.
+pageindicatordelegate-indicator-delegate-current@2x.png is up to date.
+pageindicatordelegate-indicator-delegate-current@3x.png is up to date.
+pageindicatordelegate-indicator-delegate-pressed.png is up to date.
+pageindicatordelegate-indicator-delegate-pressed@2x.png is up to date.
+pageindicatordelegate-indicator-delegate-pressed@3x.png is up to date.
+pageindicatordelegate-indicator-disabled.png is up to date.
+pageindicatordelegate-indicator-disabled@2x.png is up to date.
+pageindicatordelegate-indicator-disabled@3x.png is up to date.
+pageindicatordelegate-indicator-hovered.png is up to date.
+pageindicatordelegate-indicator-hovered@2x.png is up to date.
+pageindicatordelegate-indicator-hovered@3x.png is up to date.
+pageindicatordelegate-indicator.png is up to date.
+pageindicatordelegate-indicator@2x.png is up to date.
+pageindicatordelegate-indicator@3x.png is up to date.
+popup-background.png is up to date.
+popup-background@2x.png is up to date.
+popup-background@3x.png is up to date.
+progressbar-groove-disabled.png is up to date.
+progressbar-groove-disabled@2x.png is up to date.
+progressbar-groove-disabled@3x.png is up to date.
+progressbar-groove.png is up to date.
+progressbar-groove@2x.png is up to date.
+progressbar-groove@3x.png is up to date.
+radiobutton-indicator-checked-disabled.png is up to date.
+radiobutton-indicator-checked-disabled@2x.png is up to date.
+radiobutton-indicator-checked-disabled@3x.png is up to date.
+radiobutton-indicator-checked-hovered.png is up to date.
+radiobutton-indicator-checked-hovered@2x.png is up to date.
+radiobutton-indicator-checked-hovered@3x.png is up to date.
+radiobutton-indicator-checked-pressed.png is up to date.
+radiobutton-indicator-checked-pressed@2x.png is up to date.
+radiobutton-indicator-checked-pressed@3x.png is up to date.
+radiobutton-indicator-checked.png is up to date.
+radiobutton-indicator-checked@2x.png is up to date.
+radiobutton-indicator-checked@3x.png is up to date.
+radiobutton-indicator-disabled.png is up to date.
+radiobutton-indicator-disabled@2x.png is up to date.
+radiobutton-indicator-disabled@3x.png is up to date.
+radiobutton-indicator-hovered.png is up to date.
+radiobutton-indicator-hovered@2x.png is up to date.
+radiobutton-indicator-hovered@3x.png is up to date.
+radiobutton-indicator-pressed.png is up to date.
+radiobutton-indicator-pressed@2x.png is up to date.
+radiobutton-indicator-pressed@3x.png is up to date.
+radiobutton-indicator.png is up to date.
+radiobutton-indicator@2x.png is up to date.
+radiobutton-indicator@3x.png is up to date.
+rangeslider-first-handle-disabled.png is up to date.
+rangeslider-first-handle-disabled@2x.png is up to date.
+rangeslider-first-handle-disabled@3x.png is up to date.
+rangeslider-first-handle-handle-pressed.png is up to date.
+rangeslider-first-handle-handle-pressed@2x.png is up to date.
+rangeslider-first-handle-handle-pressed@3x.png is up to date.
+rangeslider-first-handle-hovered.png is up to date.
+rangeslider-first-handle-hovered@2x.png is up to date.
+rangeslider-first-handle-hovered@3x.png is up to date.
+rangeslider-first-handle.png is up to date.
+rangeslider-first-handle@2x.png is up to date.
+rangeslider-first-handle@3x.png is up to date.
+rangeslider-groove-disabled.png is up to date.
+rangeslider-groove-disabled@2x.png is up to date.
+rangeslider-groove-disabled@3x.png is up to date.
+rangeslider-groove-handle-pressed.png is up to date.
+rangeslider-groove-handle-pressed@2x.png is up to date.
+rangeslider-groove-handle-pressed@3x.png is up to date.
+rangeslider-groove-hovered.png is up to date.
+rangeslider-groove-hovered@2x.png is up to date.
+rangeslider-groove-hovered@3x.png is up to date.
+rangeslider-groove.png is up to date.
+rangeslider-groove@2x.png is up to date.
+rangeslider-groove@3x.png is up to date.
+rangeslider-second-handle-disabled.png is up to date.
+rangeslider-second-handle-disabled@2x.png is up to date.
+rangeslider-second-handle-disabled@3x.png is up to date.
+rangeslider-second-handle-handle-pressed.png is up to date.
+rangeslider-second-handle-handle-pressed@2x.png is up to date.
+rangeslider-second-handle-handle-pressed@3x.png is up to date.
+rangeslider-second-handle-hovered.png is up to date.
+rangeslider-second-handle-hovered@2x.png is up to date.
+rangeslider-second-handle-hovered@3x.png is up to date.
+rangeslider-second-handle.png is up to date.
+rangeslider-second-handle@2x.png is up to date.
+rangeslider-second-handle@3x.png is up to date.
+slider-groove-disabled.png is up to date.
+slider-groove-disabled@2x.png is up to date.
+slider-groove-disabled@3x.png is up to date.
+slider-groove-hovered.png is up to date.
+slider-groove-hovered@2x.png is up to date.
+slider-groove-hovered@3x.png is up to date.
+slider-groove-pressed.png is up to date.
+slider-groove-pressed@2x.png is up to date.
+slider-groove-pressed@3x.png is up to date.
+slider-groove.png is up to date.
+slider-groove@2x.png is up to date.
+slider-groove@3x.png is up to date.
+slider-handle-disabled.png is up to date.
+slider-handle-disabled@2x.png is up to date.
+slider-handle-disabled@3x.png is up to date.
+slider-handle-hovered.png is up to date.
+slider-handle-hovered@2x.png is up to date.
+slider-handle-hovered@3x.png is up to date.
+slider-handle-pressed.png is up to date.
+slider-handle-pressed@2x.png is up to date.
+slider-handle-pressed@3x.png is up to date.
+slider-handle.png is up to date.
+slider-handle@2x.png is up to date.
+slider-handle@3x.png is up to date.
+spinbox-background-atlimit.png is up to date.
+spinbox-background-atlimit@2x.png is up to date.
+spinbox-background-atlimit@3x.png is up to date.
+spinbox-background-disabled.png is up to date.
+spinbox-background-disabled@2x.png is up to date.
+spinbox-background-disabled@3x.png is up to date.
+spinbox-background-down-hovered.png is up to date.
+spinbox-background-down-hovered@2x.png is up to date.
+spinbox-background-down-hovered@3x.png is up to date.
+spinbox-background-down-pressed.png is up to date.
+spinbox-background-down-pressed@2x.png is up to date.
+spinbox-background-down-pressed@3x.png is up to date.
+spinbox-background-hovered.png is up to date.
+spinbox-background-hovered@2x.png is up to date.
+spinbox-background-hovered@3x.png is up to date.
+spinbox-background-up-hovered.png is up to date.
+spinbox-background-up-hovered@2x.png is up to date.
+spinbox-background-up-hovered@3x.png is up to date.
+spinbox-background-up-pressed.png is up to date.
+spinbox-background-up-pressed@2x.png is up to date.
+spinbox-background-up-pressed@3x.png is up to date.
+spinbox-background.png is up to date.
+spinbox-background@2x.png is up to date.
+spinbox-background@3x.png is up to date.
+spinbox-indicator-down-background-atlimit.png is up to date.
+spinbox-indicator-down-background-atlimit@2x.png is up to date.
+spinbox-indicator-down-background-atlimit@3x.png is up to date.
+spinbox-indicator-down-background-disabled.png is up to date.
+spinbox-indicator-down-background-disabled@2x.png is up to date.
+spinbox-indicator-down-background-disabled@3x.png is up to date.
+spinbox-indicator-down-background-down-hovered.png is up to date.
+spinbox-indicator-down-background-down-hovered@2x.png is up to date.
+spinbox-indicator-down-background-down-hovered@3x.png is up to date.
+spinbox-indicator-down-background-down-pressed.png is up to date.
+spinbox-indicator-down-background-down-pressed@2x.png is up to date.
+spinbox-indicator-down-background-down-pressed@3x.png is up to date.
+spinbox-indicator-down-background-hovered.png is up to date.
+spinbox-indicator-down-background-hovered@2x.png is up to date.
+spinbox-indicator-down-background-hovered@3x.png is up to date.
+spinbox-indicator-down-background-up-hovered.png is up to date.
+spinbox-indicator-down-background-up-hovered@2x.png is up to date.
+spinbox-indicator-down-background-up-hovered@3x.png is up to date.
+spinbox-indicator-down-background-up-pressed.png is up to date.
+spinbox-indicator-down-background-up-pressed@2x.png is up to date.
+spinbox-indicator-down-background-up-pressed@3x.png is up to date.
+spinbox-indicator-down-background.png is up to date.
+spinbox-indicator-down-background@2x.png is up to date.
+spinbox-indicator-down-background@3x.png is up to date.
+spinbox-indicator-down-icon-atlimit.png is up to date.
+spinbox-indicator-down-icon-atlimit@2x.png is up to date.
+spinbox-indicator-down-icon-atlimit@3x.png is up to date.
+spinbox-indicator-down-icon-disabled.png is up to date.
+spinbox-indicator-down-icon-disabled@2x.png is up to date.
+spinbox-indicator-down-icon-disabled@3x.png is up to date.
+spinbox-indicator-down-icon-down-hovered.png is up to date.
+spinbox-indicator-down-icon-down-hovered@2x.png is up to date.
+spinbox-indicator-down-icon-down-hovered@3x.png is up to date.
+spinbox-indicator-down-icon-down-pressed.png is up to date.
+spinbox-indicator-down-icon-down-pressed@2x.png is up to date.
+spinbox-indicator-down-icon-down-pressed@3x.png is up to date.
+spinbox-indicator-down-icon-hovered.png is up to date.
+spinbox-indicator-down-icon-hovered@2x.png is up to date.
+spinbox-indicator-down-icon-hovered@3x.png is up to date.
+spinbox-indicator-down-icon-up-hovered.png is up to date.
+spinbox-indicator-down-icon-up-hovered@2x.png is up to date.
+spinbox-indicator-down-icon-up-hovered@3x.png is up to date.
+spinbox-indicator-down-icon-up-pressed.png is up to date.
+spinbox-indicator-down-icon-up-pressed@2x.png is up to date.
+spinbox-indicator-down-icon-up-pressed@3x.png is up to date.
+spinbox-indicator-down-icon.png is up to date.
+spinbox-indicator-down-icon@2x.png is up to date.
+spinbox-indicator-down-icon@3x.png is up to date.
+spinbox-indicator-up-background-atlimit.png is up to date.
+spinbox-indicator-up-background-atlimit@2x.png is up to date.
+spinbox-indicator-up-background-atlimit@3x.png is up to date.
+spinbox-indicator-up-background-disabled.png is up to date.
+spinbox-indicator-up-background-disabled@2x.png is up to date.
+spinbox-indicator-up-background-disabled@3x.png is up to date.
+spinbox-indicator-up-background-down-hovered.png is up to date.
+spinbox-indicator-up-background-down-hovered@2x.png is up to date.
+spinbox-indicator-up-background-down-hovered@3x.png is up to date.
+spinbox-indicator-up-background-down-pressed.png is up to date.
+spinbox-indicator-up-background-down-pressed@2x.png is up to date.
+spinbox-indicator-up-background-down-pressed@3x.png is up to date.
+spinbox-indicator-up-background-hovered.png is up to date.
+spinbox-indicator-up-background-hovered@2x.png is up to date.
+spinbox-indicator-up-background-hovered@3x.png is up to date.
+spinbox-indicator-up-background-up-hovered.png is up to date.
+spinbox-indicator-up-background-up-hovered@2x.png is up to date.
+spinbox-indicator-up-background-up-hovered@3x.png is up to date.
+spinbox-indicator-up-background-up-pressed.png is up to date.
+spinbox-indicator-up-background-up-pressed@2x.png is up to date.
+spinbox-indicator-up-background-up-pressed@3x.png is up to date.
+spinbox-indicator-up-background.png is up to date.
+spinbox-indicator-up-background@2x.png is up to date.
+spinbox-indicator-up-background@3x.png is up to date.
+spinbox-indicator-up-icon-atlimit.png is up to date.
+spinbox-indicator-up-icon-atlimit@2x.png is up to date.
+spinbox-indicator-up-icon-atlimit@3x.png is up to date.
+spinbox-indicator-up-icon-disabled.png is up to date.
+spinbox-indicator-up-icon-disabled@2x.png is up to date.
+spinbox-indicator-up-icon-disabled@3x.png is up to date.
+spinbox-indicator-up-icon-down-hovered.png is up to date.
+spinbox-indicator-up-icon-down-hovered@2x.png is up to date.
+spinbox-indicator-up-icon-down-hovered@3x.png is up to date.
+spinbox-indicator-up-icon-down-pressed.png is up to date.
+spinbox-indicator-up-icon-down-pressed@2x.png is up to date.
+spinbox-indicator-up-icon-down-pressed@3x.png is up to date.
+spinbox-indicator-up-icon-hovered.png is up to date.
+spinbox-indicator-up-icon-hovered@2x.png is up to date.
+spinbox-indicator-up-icon-hovered@3x.png is up to date.
+spinbox-indicator-up-icon-up-hovered.png is up to date.
+spinbox-indicator-up-icon-up-hovered@2x.png is up to date.
+spinbox-indicator-up-icon-up-hovered@3x.png is up to date.
+spinbox-indicator-up-icon-up-pressed.png is up to date.
+spinbox-indicator-up-icon-up-pressed@2x.png is up to date.
+spinbox-indicator-up-icon-up-pressed@3x.png is up to date.
+spinbox-indicator-up-icon.png is up to date.
+spinbox-indicator-up-icon@2x.png is up to date.
+spinbox-indicator-up-icon@3x.png is up to date.
+textarea-background-disabled.png is up to date.
+textarea-background-disabled@2x.png is up to date.
+textarea-background-disabled@3x.png is up to date.
+textarea-background-focused.png is up to date.
+textarea-background-focused@2x.png is up to date.
+textarea-background-focused@3x.png is up to date.
+textarea-background-hovered.png is up to date.
+textarea-background-hovered@2x.png is up to date.
+textarea-background-hovered@3x.png is up to date.
+textarea-background.png is up to date.
+textarea-background@2x.png is up to date.
+textarea-background@3x.png is up to date.
+textfield-background-disabled.png is up to date.
+textfield-background-disabled@2x.png is up to date.
+textfield-background-disabled@3x.png is up to date.
+textfield-background-focused.png is up to date.
+textfield-background-focused@2x.png is up to date.
+textfield-background-focused@3x.png is up to date.
+textfield-background-hovered.png is up to date.
+textfield-background-hovered@2x.png is up to date.
+textfield-background-hovered@3x.png is up to date.
+textfield-background.png is up to date.
+textfield-background@2x.png is up to date.
+textfield-background@3x.png is up to date.
+checkmark.png is up to date.
+checkmark@2x.png is up to date.
+checkmark@3x.png is up to date.
+close_big.png is up to date.
+close_big@2x.png is up to date.
+close_big@3x.png is up to date.
+menuarrow.png is up to date.
+menuarrow@2x.png is up to date.
+menuarrow@3x.png is up to date.
+search-magnifier.png is up to date.
+search-magnifier@2x.png is up to date.
+search-magnifier@3x.png is up to date.
+checkbox-indicator-checked-disabled.png is up to date.
+checkbox-indicator-checked-disabled@2x.png is up to date.
+checkbox-indicator-checked-disabled@3x.png is up to date.
+checkbox-indicator-checked-hovered.png is up to date.
+checkbox-indicator-checked-hovered@2x.png is up to date.
+checkbox-indicator-checked-hovered@3x.png is up to date.
+checkbox-indicator-checked-pressed.png is up to date.
+checkbox-indicator-checked-pressed@2x.png is up to date.
+checkbox-indicator-checked-pressed@3x.png is up to date.
+checkbox-indicator-checked.png is up to date.
+checkbox-indicator-checked@2x.png is up to date.
+checkbox-indicator-checked@3x.png is up to date.
+checkbox-indicator-disabled-partiallyChecked.png is up to date.
+checkbox-indicator-disabled-partiallyChecked@2x.png is up to date.
+checkbox-indicator-disabled-partiallyChecked@3x.png is up to date.
+checkbox-indicator-disabled.png is up to date.
+checkbox-indicator-disabled@2x.png is up to date.
+checkbox-indicator-disabled@3x.png is up to date.
+checkbox-indicator-hovered-partiallyChecked.png is up to date.
+checkbox-indicator-hovered-partiallyChecked@2x.png is up to date.
+checkbox-indicator-hovered-partiallyChecked@3x.png is up to date.
+checkbox-indicator-hovered.png is up to date.
+checkbox-indicator-hovered@2x.png is up to date.
+checkbox-indicator-hovered@3x.png is up to date.
+checkbox-indicator-partiallyChecked-pressed.png is up to date.
+checkbox-indicator-partiallyChecked-pressed@2x.png is up to date.
+checkbox-indicator-partiallyChecked-pressed@3x.png is up to date.
+checkbox-indicator-partiallyChecked.png is up to date.
+checkbox-indicator-partiallyChecked@2x.png is up to date.
+checkbox-indicator-partiallyChecked@3x.png is up to date.
+checkbox-indicator-pressed.png is up to date.
+checkbox-indicator-pressed@2x.png is up to date.
+checkbox-indicator-pressed@3x.png is up to date.
+checkbox-indicator.png is up to date.
+checkbox-indicator@2x.png is up to date.
+checkbox-indicator@3x.png is up to date.
+combobox-background-disabled.png is up to date.
+combobox-background-disabled@2x.png is up to date.
+combobox-background-disabled@3x.png is up to date.
+combobox-background-focused.png is up to date.
+combobox-background-focused@2x.png is up to date.
+combobox-background-focused@3x.png is up to date.
+combobox-background-hovered-open.png is up to date.
+combobox-background-hovered-open@2x.png is up to date.
+combobox-background-hovered-open@3x.png is up to date.
+combobox-background-hovered.png is up to date.
+combobox-background-hovered@2x.png is up to date.
+combobox-background-hovered@3x.png is up to date.
+combobox-background-open-pressed.png is up to date.
+combobox-background-open-pressed@2x.png is up to date.
+combobox-background-open-pressed@3x.png is up to date.
+combobox-background-open.png is up to date.
+combobox-background-open@2x.png is up to date.
+combobox-background-open@3x.png is up to date.
+combobox-background-pressed.png is up to date.
+combobox-background-pressed@2x.png is up to date.
+combobox-background-pressed@3x.png is up to date.
+combobox-background.png is up to date.
+combobox-background@2x.png is up to date.
+combobox-background@3x.png is up to date.
+combobox-indicator-disabled.png is up to date.
+combobox-indicator-disabled@2x.png is up to date.
+combobox-indicator-disabled@3x.png is up to date.
+combobox-indicator-focused.png is up to date.
+combobox-indicator-focused@2x.png is up to date.
+combobox-indicator-focused@3x.png is up to date.
+combobox-indicator-hovered-open.png is up to date.
+combobox-indicator-hovered-open@2x.png is up to date.
+combobox-indicator-hovered-open@3x.png is up to date.
+combobox-indicator-hovered.png is up to date.
+combobox-indicator-hovered@2x.png is up to date.
+combobox-indicator-hovered@3x.png is up to date.
+combobox-indicator-open-pressed.png is up to date.
+combobox-indicator-open-pressed@2x.png is up to date.
+combobox-indicator-open-pressed@3x.png is up to date.
+combobox-indicator-open.png is up to date.
+combobox-indicator-open@2x.png is up to date.
+combobox-indicator-open@3x.png is up to date.
+combobox-indicator-pressed.png is up to date.
+combobox-indicator-pressed@2x.png is up to date.
+combobox-indicator-pressed@3x.png is up to date.
+combobox-indicator.png is up to date.
+combobox-indicator@2x.png is up to date.
+combobox-indicator@3x.png is up to date.
+editablecombobox-background-hovered-open.png is up to date.
+editablecombobox-background-hovered-open@2x.png is up to date.
+editablecombobox-background-hovered-open@3x.png is up to date.
+editablecombobox-background-open-pressed.png is up to date.
+editablecombobox-background-open-pressed@2x.png is up to date.
+editablecombobox-background-open-pressed@3x.png is up to date.
+editablecombobox-background-open.png is up to date.
+editablecombobox-background-open@2x.png is up to date.
+editablecombobox-background-open@3x.png is up to date.
+editablecombobox-indicator-hovered-open.png is up to date.
+editablecombobox-indicator-hovered-open@2x.png is up to date.
+editablecombobox-indicator-hovered-open@3x.png is up to date.
+editablecombobox-indicator-open-pressed.png is up to date.
+editablecombobox-indicator-open-pressed@2x.png is up to date.
+editablecombobox-indicator-open-pressed@3x.png is up to date.
+editablecombobox-indicator-open.png is up to date.
+editablecombobox-indicator-open@2x.png is up to date.
+editablecombobox-indicator-open@3x.png is up to date.
+editablecombobox-popup-background-hovered-open.png is up to date.
+editablecombobox-popup-background-hovered-open@2x.png is up to date.
+editablecombobox-popup-background-hovered-open@3x.png is up to date.
+editablecombobox-popup-background-open-pressed.png is up to date.
+editablecombobox-popup-background-open-pressed@2x.png is up to date.
+editablecombobox-popup-background-open-pressed@3x.png is up to date.
+editablecombobox-popup-background-open.png is up to date.
+editablecombobox-popup-background-open@2x.png is up to date.
+editablecombobox-popup-background-open@3x.png is up to date.
+frame-background-disabled.png is up to date.
+frame-background-disabled@2x.png is up to date.
+frame-background-disabled@3x.png is up to date.
+frame-background.png is up to date.
+frame-background@2x.png is up to date.
+frame-background@3x.png is up to date.
+itemdelegate-background-highlighted-hovered.png is up to date.
+itemdelegate-background-highlighted-hovered@2x.png is up to date.
+itemdelegate-background-highlighted-hovered@3x.png is up to date.
+itemdelegate-background-highlighted-pressed.png is up to date.
+itemdelegate-background-highlighted-pressed@2x.png is up to date.
+itemdelegate-background-highlighted-pressed@3x.png is up to date.
+itemdelegate-background-highlighted.png is up to date.
+itemdelegate-background-highlighted@2x.png is up to date.
+itemdelegate-background-highlighted@3x.png is up to date.
+itemdelegate-background-hovered.png is up to date.
+itemdelegate-background-hovered@2x.png is up to date.
+itemdelegate-background-hovered@3x.png is up to date.
+itemdelegate-background-pressed.png is up to date.
+itemdelegate-background-pressed@2x.png is up to date.
+itemdelegate-background-pressed@3x.png is up to date.
+pageindicatordelegate-indicator-delegate-current-hovered.png is up to date.
+pageindicatordelegate-indicator-delegate-current-hovered@2x.png is up to date.
+pageindicatordelegate-indicator-delegate-current-hovered@3x.png is up to date.
+pageindicatordelegate-indicator-delegate-current-pressed.png is up to date.
+pageindicatordelegate-indicator-delegate-current-pressed@2x.png is up to date.
+pageindicatordelegate-indicator-delegate-current-pressed@3x.png is up to date.
+pageindicatordelegate-indicator-delegate-current.png is up to date.
+pageindicatordelegate-indicator-delegate-current@2x.png is up to date.
+pageindicatordelegate-indicator-delegate-current@3x.png is up to date.
+pageindicatordelegate-indicator-delegate-pressed.png is up to date.
+pageindicatordelegate-indicator-delegate-pressed@2x.png is up to date.
+pageindicatordelegate-indicator-delegate-pressed@3x.png is up to date.
+pageindicatordelegate-indicator-disabled.png is up to date.
+pageindicatordelegate-indicator-disabled@2x.png is up to date.
+pageindicatordelegate-indicator-disabled@3x.png is up to date.
+pageindicatordelegate-indicator-hovered.png is up to date.
+pageindicatordelegate-indicator-hovered@2x.png is up to date.
+pageindicatordelegate-indicator-hovered@3x.png is up to date.
+pageindicatordelegate-indicator.png is up to date.
+pageindicatordelegate-indicator@2x.png is up to date.
+pageindicatordelegate-indicator@3x.png is up to date.
+popup-background.png is up to date.
+popup-background@2x.png is up to date.
+popup-background@3x.png is up to date.
+progressbar-groove-disabled.png is up to date.
+progressbar-groove-disabled@2x.png is up to date.
+progressbar-groove-disabled@3x.png is up to date.
+progressbar-groove.png is up to date.
+progressbar-groove@2x.png is up to date.
+progressbar-groove@3x.png is up to date.
+radiobutton-indicator-checked-disabled.png is up to date.
+radiobutton-indicator-checked-disabled@2x.png is up to date.
+radiobutton-indicator-checked-disabled@3x.png is up to date.
+radiobutton-indicator-checked-hovered.png is up to date.
+radiobutton-indicator-checked-hovered@2x.png is up to date.
+radiobutton-indicator-checked-hovered@3x.png is up to date.
+radiobutton-indicator-checked-pressed.png is up to date.
+radiobutton-indicator-checked-pressed@2x.png is up to date.
+radiobutton-indicator-checked-pressed@3x.png is up to date.
+radiobutton-indicator-checked.png is up to date.
+radiobutton-indicator-checked@2x.png is up to date.
+radiobutton-indicator-checked@3x.png is up to date.
+radiobutton-indicator-disabled.png is up to date.
+radiobutton-indicator-disabled@2x.png is up to date.
+radiobutton-indicator-disabled@3x.png is up to date.
+radiobutton-indicator-hovered.png is up to date.
+radiobutton-indicator-hovered@2x.png is up to date.
+radiobutton-indicator-hovered@3x.png is up to date.
+radiobutton-indicator-pressed.png is up to date.
+radiobutton-indicator-pressed@2x.png is up to date.
+radiobutton-indicator-pressed@3x.png is up to date.
+radiobutton-indicator.png is up to date.
+radiobutton-indicator@2x.png is up to date.
+radiobutton-indicator@3x.png is up to date.
+rangeslider-first-handle-disabled.png is up to date.
+rangeslider-first-handle-disabled@2x.png is up to date.
+rangeslider-first-handle-disabled@3x.png is up to date.
+rangeslider-first-handle-handle-pressed.png is up to date.
+rangeslider-first-handle-handle-pressed@2x.png is up to date.
+rangeslider-first-handle-handle-pressed@3x.png is up to date.
+rangeslider-first-handle-hovered.png is up to date.
+rangeslider-first-handle-hovered@2x.png is up to date.
+rangeslider-first-handle-hovered@3x.png is up to date.
+rangeslider-first-handle.png is up to date.
+rangeslider-first-handle@2x.png is up to date.
+rangeslider-first-handle@3x.png is up to date.
+rangeslider-groove-disabled.png is up to date.
+rangeslider-groove-disabled@2x.png is up to date.
+rangeslider-groove-disabled@3x.png is up to date.
+rangeslider-groove-handle-pressed.png is up to date.
+rangeslider-groove-handle-pressed@2x.png is up to date.
+rangeslider-groove-handle-pressed@3x.png is up to date.
+rangeslider-groove-hovered.png is up to date.
+rangeslider-groove-hovered@2x.png is up to date.
+rangeslider-groove-hovered@3x.png is up to date.
+rangeslider-groove.png is up to date.
+rangeslider-groove@2x.png is up to date.
+rangeslider-groove@3x.png is up to date.
+rangeslider-second-handle-disabled.png is up to date.
+rangeslider-second-handle-disabled@2x.png is up to date.
+rangeslider-second-handle-disabled@3x.png is up to date.
+rangeslider-second-handle-handle-pressed.png is up to date.
+rangeslider-second-handle-handle-pressed@2x.png is up to date.
+rangeslider-second-handle-handle-pressed@3x.png is up to date.
+rangeslider-second-handle-hovered.png is up to date.
+rangeslider-second-handle-hovered@2x.png is up to date.
+rangeslider-second-handle-hovered@3x.png is up to date.
+rangeslider-second-handle.png is up to date.
+rangeslider-second-handle@2x.png is up to date.
+rangeslider-second-handle@3x.png is up to date.
+slider-groove-disabled.png is up to date.
+slider-groove-disabled@2x.png is up to date.
+slider-groove-disabled@3x.png is up to date.
+slider-groove-hovered.png is up to date.
+slider-groove-hovered@2x.png is up to date.
+slider-groove-hovered@3x.png is up to date.
+slider-groove-pressed.png is up to date.
+slider-groove-pressed@2x.png is up to date.
+slider-groove-pressed@3x.png is up to date.
+slider-groove.png is up to date.
+slider-groove@2x.png is up to date.
+slider-groove@3x.png is up to date.
+slider-handle-disabled.png is up to date.
+slider-handle-disabled@2x.png is up to date.
+slider-handle-disabled@3x.png is up to date.
+slider-handle-hovered.png is up to date.
+slider-handle-hovered@2x.png is up to date.
+slider-handle-hovered@3x.png is up to date.
+slider-handle-pressed.png is up to date.
+slider-handle-pressed@2x.png is up to date.
+slider-handle-pressed@3x.png is up to date.
+slider-handle.png is up to date.
+slider-handle@2x.png is up to date.
+slider-handle@3x.png is up to date.
+spinbox-background-atlimit.png is up to date.
+spinbox-background-atlimit@2x.png is up to date.
+spinbox-background-atlimit@3x.png is up to date.
+spinbox-background-disabled.png is up to date.
+spinbox-background-disabled@2x.png is up to date.
+spinbox-background-disabled@3x.png is up to date.
+spinbox-background-down-hovered.png is up to date.
+spinbox-background-down-hovered@2x.png is up to date.
+spinbox-background-down-hovered@3x.png is up to date.
+spinbox-background-down-pressed.png is up to date.
+spinbox-background-down-pressed@2x.png is up to date.
+spinbox-background-down-pressed@3x.png is up to date.
+spinbox-background-hovered.png is up to date.
+spinbox-background-hovered@2x.png is up to date.
+spinbox-background-hovered@3x.png is up to date.
+spinbox-background-up-hovered.png is up to date.
+spinbox-background-up-hovered@2x.png is up to date.
+spinbox-background-up-hovered@3x.png is up to date.
+spinbox-background-up-pressed.png is up to date.
+spinbox-background-up-pressed@2x.png is up to date.
+spinbox-background-up-pressed@3x.png is up to date.
+spinbox-background.png is up to date.
+spinbox-background@2x.png is up to date.
+spinbox-background@3x.png is up to date.
+spinbox-indicator-down-background-atlimit.png is up to date.
+spinbox-indicator-down-background-atlimit@2x.png is up to date.
+spinbox-indicator-down-background-atlimit@3x.png is up to date.
+spinbox-indicator-down-background-disabled.png is up to date.
+spinbox-indicator-down-background-disabled@2x.png is up to date.
+spinbox-indicator-down-background-disabled@3x.png is up to date.
+spinbox-indicator-down-background-down-hovered.png is up to date.
+spinbox-indicator-down-background-down-hovered@2x.png is up to date.
+spinbox-indicator-down-background-down-hovered@3x.png is up to date.
+spinbox-indicator-down-background-down-pressed.png is up to date.
+spinbox-indicator-down-background-down-pressed@2x.png is up to date.
+spinbox-indicator-down-background-down-pressed@3x.png is up to date.
+spinbox-indicator-down-background-hovered.png is up to date.
+spinbox-indicator-down-background-hovered@2x.png is up to date.
+spinbox-indicator-down-background-hovered@3x.png is up to date.
+spinbox-indicator-down-background-up-hovered.png is up to date.
+spinbox-indicator-down-background-up-hovered@2x.png is up to date.
+spinbox-indicator-down-background-up-hovered@3x.png is up to date.
+spinbox-indicator-down-background-up-pressed.png is up to date.
+spinbox-indicator-down-background-up-pressed@2x.png is up to date.
+spinbox-indicator-down-background-up-pressed@3x.png is up to date.
+spinbox-indicator-down-background.png is up to date.
+spinbox-indicator-down-background@2x.png is up to date.
+spinbox-indicator-down-background@3x.png is up to date.
+spinbox-indicator-down-icon-atlimit.png is up to date.
+spinbox-indicator-down-icon-atlimit@2x.png is up to date.
+spinbox-indicator-down-icon-atlimit@3x.png is up to date.
+spinbox-indicator-down-icon-disabled.png is up to date.
+spinbox-indicator-down-icon-disabled@2x.png is up to date.
+spinbox-indicator-down-icon-disabled@3x.png is up to date.
+spinbox-indicator-down-icon-down-hovered.png is up to date.
+spinbox-indicator-down-icon-down-hovered@2x.png is up to date.
+spinbox-indicator-down-icon-down-hovered@3x.png is up to date.
+spinbox-indicator-down-icon-down-pressed.png is up to date.
+spinbox-indicator-down-icon-down-pressed@2x.png is up to date.
+spinbox-indicator-down-icon-down-pressed@3x.png is up to date.
+spinbox-indicator-down-icon-hovered.png is up to date.
+spinbox-indicator-down-icon-hovered@2x.png is up to date.
+spinbox-indicator-down-icon-hovered@3x.png is up to date.
+spinbox-indicator-down-icon-up-hovered.png is up to date.
+spinbox-indicator-down-icon-up-hovered@2x.png is up to date.
+spinbox-indicator-down-icon-up-hovered@3x.png is up to date.
+spinbox-indicator-down-icon-up-pressed.png is up to date.
+spinbox-indicator-down-icon-up-pressed@2x.png is up to date.
+spinbox-indicator-down-icon-up-pressed@3x.png is up to date.
+spinbox-indicator-down-icon.png is up to date.
+spinbox-indicator-down-icon@2x.png is up to date.
+spinbox-indicator-down-icon@3x.png is up to date.
+spinbox-indicator-up-background-atlimit.png is up to date.
+spinbox-indicator-up-background-atlimit@2x.png is up to date.
+spinbox-indicator-up-background-atlimit@3x.png is up to date.
+spinbox-indicator-up-background-disabled.png is up to date.
+spinbox-indicator-up-background-disabled@2x.png is up to date.
+spinbox-indicator-up-background-disabled@3x.png is up to date.
+spinbox-indicator-up-background-down-hovered.png is up to date.
+spinbox-indicator-up-background-down-hovered@2x.png is up to date.
+spinbox-indicator-up-background-down-hovered@3x.png is up to date.
+spinbox-indicator-up-background-down-pressed.png is up to date.
+spinbox-indicator-up-background-down-pressed@2x.png is up to date.
+spinbox-indicator-up-background-down-pressed@3x.png is up to date.
+spinbox-indicator-up-background-hovered.png is up to date.
+spinbox-indicator-up-background-hovered@2x.png is up to date.
+spinbox-indicator-up-background-hovered@3x.png is up to date.
+spinbox-indicator-up-background-up-hovered.png is up to date.
+spinbox-indicator-up-background-up-hovered@2x.png is up to date.
+spinbox-indicator-up-background-up-hovered@3x.png is up to date.
+spinbox-indicator-up-background-up-pressed.png is up to date.
+spinbox-indicator-up-background-up-pressed@2x.png is up to date.
+spinbox-indicator-up-background-up-pressed@3x.png is up to date.
+spinbox-indicator-up-background.png is up to date.
+spinbox-indicator-up-background@2x.png is up to date.
+spinbox-indicator-up-background@3x.png is up to date.
+spinbox-indicator-up-icon-atlimit.png is up to date.
+spinbox-indicator-up-icon-atlimit@2x.png is up to date.
+spinbox-indicator-up-icon-atlimit@3x.png is up to date.
+spinbox-indicator-up-icon-disabled.png is up to date.
+spinbox-indicator-up-icon-disabled@2x.png is up to date.
+spinbox-indicator-up-icon-disabled@3x.png is up to date.
+spinbox-indicator-up-icon-down-hovered.png is up to date.
+spinbox-indicator-up-icon-down-hovered@2x.png is up to date.
+spinbox-indicator-up-icon-down-hovered@3x.png is up to date.
+spinbox-indicator-up-icon-down-pressed.png is up to date.
+spinbox-indicator-up-icon-down-pressed@2x.png is up to date.
+spinbox-indicator-up-icon-down-pressed@3x.png is up to date.
+spinbox-indicator-up-icon-hovered.png is up to date.
+spinbox-indicator-up-icon-hovered@2x.png is up to date.
+spinbox-indicator-up-icon-hovered@3x.png is up to date.
+spinbox-indicator-up-icon-up-hovered.png is up to date.
+spinbox-indicator-up-icon-up-hovered@2x.png is up to date.
+spinbox-indicator-up-icon-up-hovered@3x.png is up to date.
+spinbox-indicator-up-icon-up-pressed.png is up to date.
+spinbox-indicator-up-icon-up-pressed@2x.png is up to date.
+spinbox-indicator-up-icon-up-pressed@3x.png is up to date.
+spinbox-indicator-up-icon.png is up to date.
+spinbox-indicator-up-icon@2x.png is up to date.
+spinbox-indicator-up-icon@3x.png is up to date.
+textarea-background-disabled.png is up to date.
+textarea-background-disabled@2x.png is up to date.
+textarea-background-disabled@3x.png is up to date.
+textarea-background-focused.png is up to date.
+textarea-background-focused@2x.png is up to date.
+textarea-background-focused@3x.png is up to date.
+textarea-background-hovered.png is up to date.
+textarea-background-hovered@2x.png is up to date.
+textarea-background-hovered@3x.png is up to date.
+textarea-background.png is up to date.
+textarea-background@2x.png is up to date.
+textarea-background@3x.png is up to date.
+textfield-background-disabled.png is up to date.
+textfield-background-disabled@2x.png is up to date.
+textfield-background-disabled@3x.png is up to date.
+textfield-background-focused.png is up to date.
+textfield-background-focused@2x.png is up to date.
+textfield-background-focused@3x.png is up to date.
+textfield-background-hovered.png is up to date.
+textfield-background-hovered@2x.png is up to date.
+textfield-background-hovered@3x.png is up to date.
+textfield-background.png is up to date.
+textfield-background@2x.png is up to date.
+textfield-background@3x.png is up to date.
+qtquickcontrols2windowsstyleplugin.dll is up to date.
+ApplicationWindow.qml is up to date.
+Button.qml is up to date.
+CheckBox.qml is up to date.
+CheckDelegate.qml is up to date.
+ComboBox.qml is up to date.
+DelayButton.qml is up to date.
+DoubleSpinBox.qml is up to date.
+Frame.qml is up to date.
+GroupBox.qml is up to date.
+ItemDelegate.qml is up to date.
+Menu.qml is up to date.
+MenuBar.qml is up to date.
+MenuBarItem.qml is up to date.
+MenuItem.qml is up to date.
+MenuSeparator.qml is up to date.
+plugins.qmltypes is up to date.
+ProgressBar.qml is up to date.
+qmldir is up to date.
+RadioButton.qml is up to date.
+RadioDelegate.qml is up to date.
+RangeSlider.qml is up to date.
+ScrollBar.qml is up to date.
+ScrollIndicator.qml is up to date.
+ScrollView.qml is up to date.
+SearchField.qml is up to date.
+SelectionRectangle.qml is up to date.
+Slider.qml is up to date.
+SpinBox.qml is up to date.
+Switch.qml is up to date.
+SwitchDelegate.qml is up to date.
+TextArea.qml is up to date.
+TextField.qml is up to date.
+checkmark.png is up to date.
+checkmark@2x.png is up to date.
+checkmark@3x.png is up to date.
+close_big.png is up to date.
+close_big@2x.png is up to date.
+close_big@3x.png is up to date.
+menuarrow.png is up to date.
+menuarrow@2x.png is up to date.
+menuarrow@3x.png is up to date.
+search-magnifier.png is up to date.
+search-magnifier@2x.png is up to date.
+search-magnifier@3x.png is up to date.
+qtquickcontrols2basicstyleplugin.dll is up to date.
+AbstractButton.qml is up to date.
+Action.qml is up to date.
+ActionGroup.qml is up to date.
+ApplicationWindow.qml is up to date.
+BusyIndicator.qml is up to date.
+Button.qml is up to date.
+ButtonGroup.qml is up to date.
+Calendar.qml is up to date.
+CalendarModel.qml is up to date.
+CheckBox.qml is up to date.
+CheckDelegate.qml is up to date.
+ComboBox.qml is up to date.
+Container.qml is up to date.
+Control.qml is up to date.
+DayOfWeekRow.qml is up to date.
+DelayButton.qml is up to date.
+Dial.qml is up to date.
+Dialog.qml is up to date.
+DialogButtonBox.qml is up to date.
+DoubleSpinBox.qml is up to date.
+Drawer.qml is up to date.
+Frame.qml is up to date.
+GroupBox.qml is up to date.
+HorizontalHeaderView.qml is up to date.
+HorizontalHeaderViewDelegate.qml is up to date.
+ItemDelegate.qml is up to date.
+Label.qml is up to date.
+Menu.qml is up to date.
+MenuBar.qml is up to date.
+MenuBarItem.qml is up to date.
+MenuItem.qml is up to date.
+MenuSeparator.qml is up to date.
+MonthGrid.qml is up to date.
+Page.qml is up to date.
+PageIndicator.qml is up to date.
+Pane.qml is up to date.
+plugins.qmltypes is up to date.
+Popup.qml is up to date.
+ProgressBar.qml is up to date.
+qmldir is up to date.
+RadioButton.qml is up to date.
+RadioDelegate.qml is up to date.
+RangeSlider.qml is up to date.
+RoundButton.qml is up to date.
+ScrollBar.qml is up to date.
+ScrollIndicator.qml is up to date.
+ScrollView.qml is up to date.
+SearchField.qml is up to date.
+SelectionRectangle.qml is up to date.
+Slider.qml is up to date.
+SpinBox.qml is up to date.
+SplitView.qml is up to date.
+StackView.qml is up to date.
+SwipeDelegate.qml is up to date.
+SwipeView.qml is up to date.
+Switch.qml is up to date.
+SwitchDelegate.qml is up to date.
+TabBar.qml is up to date.
+TabButton.qml is up to date.
+TableViewDelegate.qml is up to date.
+TextArea.qml is up to date.
+TextField.qml is up to date.
+ToolBar.qml is up to date.
+ToolButton.qml is up to date.
+ToolSeparator.qml is up to date.
+ToolTip.qml is up to date.
+TreeViewDelegate.qml is up to date.
+Tumbler.qml is up to date.
+VerticalHeaderView.qml is up to date.
+VerticalHeaderViewDelegate.qml is up to date.
+WeekNumberColumn.qml is up to date.
+qtquicktemplates2plugin.dll is up to date.
+plugins.qmltypes is up to date.
+qmldir is up to date.
+qtquickcontrols2implplugin.dll is up to date.
+CopyAction.qml is up to date.
+CutAction.qml is up to date.
+DeleteAction.qml is up to date.
+PasteAction.qml is up to date.
+plugins.qmltypes is up to date.
+qmldir is up to date.
+RedoAction.qml is up to date.
+SelectAllAction.qml is up to date.
+UndoAction.qml is up to date.
+qtquickcontrols2fusionstyleimplplugin.dll is up to date.
+ButtonPanel.qml is up to date.
+CheckIndicator.qml is up to date.
+CopyAction.qml is up to date.
+CutAction.qml is up to date.
+DeleteAction.qml is up to date.
+PasteAction.qml is up to date.
+plugins.qmltypes is up to date.
+qmldir is up to date.
+RadioIndicator.qml is up to date.
+RedoAction.qml is up to date.
+SelectAllAction.qml is up to date.
+SliderGroove.qml is up to date.
+SliderHandle.qml is up to date.
+SwitchIndicator.qml is up to date.
+TextEditingContextMenu.qml is up to date.
+TextFieldBackground.qml is up to date.
+UndoAction.qml is up to date.
+quickwindowplugin.dll is up to date.
+qmldir is up to date.
+quickwindow.qmltypes is up to date.
+qtquickcontrols2imaginestyleimplplugin.dll is up to date.
+OpacityMask.qml is up to date.
+qmldir is up to date.
+QuickControls2ImagineStyleImpl.qmltypes is up to date.
+TextEditingContextMenu.qml is up to date.
+qtquickcontrols2materialstyleimplplugin.dll is up to date.
+BoxShadow.qml is up to date.
+CheckIndicator.qml is up to date.
+CursorDelegate.qml is up to date.
+ElevationEffect.qml is up to date.
+plugins.qmltypes is up to date.
+qmldir is up to date.
+RadioIndicator.qml is up to date.
+RectangularGlow.qml is up to date.
+RoundedElevationEffect.qml is up to date.
+SliderHandle.qml is up to date.
+SwitchIndicator.qml is up to date.
+TextEditingContextMenu.qml is up to date.
+qtquickcontrols2universalstyleimplplugin.dll is up to date.
+CheckIndicator.qml is up to date.
+CopyAction.qml is up to date.
+CutAction.qml is up to date.
+DeleteAction.qml is up to date.
+PasteAction.qml is up to date.
+plugins.qmltypes is up to date.
+qmldir is up to date.
+RadioIndicator.qml is up to date.
+RedoAction.qml is up to date.
+SelectAllAction.qml is up to date.
+SwitchIndicator.qml is up to date.
+TextEditingContextMenu.qml is up to date.
+UndoAction.qml is up to date.
+qtquickcontrols2fluentwinui3styleimplplugin.dll is up to date.
+ButtonBackground.qml is up to date.
+CheckIndicator.qml is up to date.
+CopyAction.qml is up to date.
+CutAction.qml is up to date.
+DeleteAction.qml is up to date.
+FocusFrame.qml is up to date.
+PasteAction.qml is up to date.
+plugins.qmltypes is up to date.
+qmldir is up to date.
+RadioIndicator.qml is up to date.
+RedoAction.qml is up to date.
+SelectAllAction.qml is up to date.
+StyleImage.qml is up to date.
+SwitchIndicator.qml is up to date.
+TextEditingContextMenu.qml is up to date.
+UndoAction.qml is up to date.
+effectsplugin.dll is up to date.
+plugins.qmltypes is up to date.
+qmldir is up to date.
+qquicklayoutsplugin.dll is up to date.
+plugins.qmltypes is up to date.
+qmldir is up to date.
+qmlshapesplugin.dll is up to date.
+plugins.qmltypes is up to date.
+qmldir is up to date.
+qtquickcontrols2nativestyleplugin.dll is up to date.
+plugins.qmltypes is up to date.
+qmldir is up to date.
+qtquickcontrols2windowsstyleimplplugin.dll is up to date.
+CheckIndicator.qml is up to date.
+CopyAction.qml is up to date.
+CutAction.qml is up to date.
+DeleteAction.qml is up to date.
+PasteAction.qml is up to date.
+qmldir is up to date.
+QuickControls2WindowsStyleImpl.qmltypes is up to date.
+RedoAction.qml is up to date.
+SelectAllAction.qml is up to date.
+SwitchIndicator.qml is up to date.
+TextEditingContextMenu.qml is up to date.
+UndoAction.qml is up to date.
+qtquickcontrols2basicstyleimplplugin.dll is up to date.
+plugins.qmltypes is up to date.
+qmldir is up to date.
+TextEditingContextMenu.qml is up to date.
+qtquickdialogsplugin.dll is up to date.
+plugins.qmltypes is up to date.
+qmldir is up to date.
+qtquickdialogs2quickimplplugin.dll is up to date.
+plugins.qmltypes is up to date.
+qmldir is up to date.
+ColorDialog.qml is up to date.
+ColorInputs.qml is up to date.
+DelegateBackground.qml is up to date.
+FileDialog.qml is up to date.
+FileDialogDelegate.qml is up to date.
+FileDialogDelegateLabel.qml is up to date.
+FolderBreadcrumbBar.qml is up to date.
+FolderDialog.qml is up to date.
+FolderDialogDelegate.qml is up to date.
+FolderDialogDelegateLabel.qml is up to date.
+FontDialog.qml is up to date.
+FontDialogContent.qml is up to date.
+HueGradient.qml is up to date.
+MessageDialog.qml is up to date.
+PickerHandle.qml is up to date.
+SaturationLightnessPicker.qml is up to date.
+SideBar.qml is up to date.
+ColorDialog.qml is up to date.
+ColorInputs.qml is up to date.
+FileDialog.qml is up to date.
+FileDialogDelegate.qml is up to date.
+FolderBreadcrumbBar.qml is up to date.
+FolderDialog.qml is up to date.
+FolderDialogDelegate.qml is up to date.
+FontDialog.qml is up to date.
+MessageDialog.qml is up to date.
+SideBar.qml is up to date.
+ColorDialog.qml is up to date.
+ColorInputs.qml is up to date.
+FileDialog.qml is up to date.
+FileDialogDelegate.qml is up to date.
+FolderBreadcrumbBar.qml is up to date.
+FolderDialog.qml is up to date.
+FolderDialogDelegate.qml is up to date.
+FontDialog.qml is up to date.
+MessageDialog.qml is up to date.
+SideBar.qml is up to date.
+ColorDialog.qml is up to date.
+ColorInputs.qml is up to date.
+FileDialog.qml is up to date.
+FileDialogDelegate.qml is up to date.
+FolderBreadcrumbBar.qml is up to date.
+FolderDialog.qml is up to date.
+FolderDialogDelegate.qml is up to date.
+FontDialog.qml is up to date.
+MessageDialog.qml is up to date.
+SideBar.qml is up to date.
+ColorDialog.qml is up to date.
+ColorInputs.qml is up to date.
+FileDialog.qml is up to date.
+FileDialogDelegate.qml is up to date.
+FolderBreadcrumbBar.qml is up to date.
+FolderDialog.qml is up to date.
+FolderDialogDelegate.qml is up to date.
+FontDialog.qml is up to date.
+MessageDialog.qml is up to date.
+SideBar.qml is up to date.
+qmlfolderlistmodelplugin.dll is up to date.
+plugins.qmltypes is up to date.
+qmldir is up to date.
+Creating qt_ar.qm...
+Creating qt_bg.qm...
+Creating qt_ca.qm...
+Creating qt_cs.qm...
+Creating qt_da.qm...
+Creating qt_de.qm...
+Creating qt_en.qm...
+Creating qt_es.qm...
+Creating qt_fa.qm...
+Creating qt_fi.qm...
+Creating qt_fr.qm...
+Creating qt_gd.qm...
+Creating qt_he.qm...
+Creating qt_hr.qm...
+Creating qt_hu.qm...
+Creating qt_it.qm...
+Creating qt_ja.qm...
+Creating qt_ka.qm...
+Creating qt_kk.qm...
+Creating qt_ko.qm...
+Creating qt_lg.qm...
+Creating qt_lv.qm...
+Creating qt_nl.qm...
+Creating qt_nn.qm...
+Creating qt_pl.qm...
+Creating qt_pt_BR.qm...
+Creating qt_ru.qm...
+Creating qt_sk.qm...
+Creating qt_sv.qm...
+Creating qt_tr.qm...
+Creating qt_uk.qm...
+Creating qt_zh_CN.qm...
+Creating qt_zh_TW.qm...
+Internal ctest changing into directory: C:/Users/Strickland/SpektraLab-work/build/qt-20261031-installer
+Test project C:/Users/Strickland/SpektraLab-work/build/qt-20261031-installer
+      Start  1: spk_qt_application_icon
+ 1/32 Test  #1: spk_qt_application_icon ..........   Passed    0.06 sec
+      Start  2: spk_qt_responsiveness
+ 2/32 Test  #2: spk_qt_responsiveness ............   Passed    2.81 sec
+      Start  3: spk_spectral_lift
+ 3/32 Test  #3: spk_spectral_lift ................   Passed    1.13 sec
+      Start  4: spk_scan_curve_fit
+ 4/32 Test  #4: spk_scan_curve_fit ...............   Passed    0.63 sec
+      Start  5: spk_qt_qml_workflow
+ 5/32 Test  #5: spk_qt_qml_workflow ..............   Passed   71.24 sec
+      Start  6: spk_qt_stock_policy
+ 6/32 Test  #6: spk_qt_stock_policy ..............   Passed   14.34 sec
+      Start  7: spk_qt_frame_output
+ 7/32 Test  #7: spk_qt_frame_output ..............   Passed    1.13 sec
+      Start  8: spk_qt_edit_store
+ 8/32 Test  #8: spk_qt_edit_store ................   Passed    0.89 sec
+      Start  9: spk_qt_scene_placement
+ 9/32 Test  #9: spk_qt_scene_placement ...........   Passed    9.65 sec
+      Start 10: spk_qt_film_frame
+10/32 Test #10: spk_qt_film_frame ................   Passed   16.01 sec
+      Start 11: spk_qt_half_pair
+11/32 Test #11: spk_qt_half_pair .................   Passed   20.35 sec
+      Start 12: spk_qt_open_material
+12/32 Test #12: spk_qt_open_material .............   Passed   46.57 sec
+      Start 13: spk_qt_material_library
+13/32 Test #13: spk_qt_material_library ..........   Passed    6.85 sec
+      Start 14: spk_qt_material_workflow
+14/32 Test #14: spk_qt_material_workflow .........   Passed   20.73 sec
+      Start 15: spk_core_schema
+15/32 Test #15: spk_core_schema ..................   Passed    0.24 sec
+      Start 16: spk_core_setup
+16/32 Test #16: spk_core_setup ...................   Passed    1.69 sec
+      Start 17: spk_desktop_preview
+17/32 Test #17: spk_desktop_preview ..............   Passed    0.12 sec
+      Start 18: spk_image_writer
+18/32 Test #18: spk_image_writer .................   Passed    0.06 sec
+      Start 19: spk_raw_decoder_errors
+19/32 Test #19: spk_raw_decoder_errors ...........   Passed    0.08 sec
+      Start 20: spk_raw_metadata_link
+20/32 Test #20: spk_raw_metadata_link ............   Passed    0.06 sec
+      Start 21: spk_raw_headroom
+21/32 Test #21: spk_raw_headroom .................   Passed    0.06 sec
+      Start 22: spk_vulkan_smoke
+22/32 Test #22: spk_vulkan_smoke .................   Passed    1.51 sec
+      Start 23: spk_vulkan_grain
+23/32 Test #23: spk_vulkan_grain .................   Passed    0.49 sec
+      Start 24: spk_vulkan_pointwise
+24/32 Test #24: spk_vulkan_pointwise .............   Passed    0.42 sec
+      Start 25: spk_vulkan_resample
+25/32 Test #25: spk_vulkan_resample ..............   Passed    0.47 sec
+      Start 26: spk_vulkan_transfer
+26/32 Test #26: spk_vulkan_transfer ..............   Passed    0.27 sec
+      Start 27: spk_vulkan_geometry
+27/32 Test #27: spk_vulkan_geometry ..............   Passed    0.39 sec
+      Start 28: spk_vulkan_lut_di
+28/32 Test #28: spk_vulkan_lut_di ................   Passed    0.30 sec
+      Start 29: spk_vulkan_transfer_device_oom
+29/32 Test #29: spk_vulkan_transfer_device_oom ...   Passed    0.22 sec
+      Start 30: spk_windows_film_edge
+30/32 Test #30: spk_windows_film_edge ............   Passed    2.27 sec
+      Start 31: spk_windows_feature_boundaries
+31/32 Test #31: spk_windows_feature_boundaries ...   Passed    1.10 sec
+      Start 32: spk_windows_c_abi
+32/32 Test #32: spk_windows_c_abi ................   Passed    0.99 sec
+
+100% tests passed, 0 tests failed out of 32
+
+Total Test time (real) = 223.16 sec
+Ready: C:\Users\Strickland\SpektraLab-work\build\qt-20261031-installer\app/SpektraLabQt.exe

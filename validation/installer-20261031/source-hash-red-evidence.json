@@ -1,0 +1,10 @@
+{
+  "test": "Non-UTF8 LF/CRLF equivalence",
+  "expected_replacement_files": 0,
+  "actual_old_replacement_files": 1,
+  "old_gate_passed": false,
+  "old_download_required": true,
+  "expected_sha1": "0293116d283e58a5dd594eeb0adc97046fe20316",
+  "release_fixture_base64": "/+kKYQo=",
+  "fixed_gate_log": "installer-source-hash-green.log"
+}

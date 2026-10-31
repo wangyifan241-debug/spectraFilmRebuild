@@ -1,0 +1,23 @@
+#version 450
+#extension GL_GOOGLE_include_directive : require
+layout(local_size_x=256) in;
+layout(set=0,binding=0,std430) readonly buffer Input { float f[]; };
+layout(set=0,binding=1,std430) readonly buffer Parameters { float P[]; };
+layout(set=0,binding=2,std430) readonly buffer Count { uint n[]; };
+layout(set=0,binding=3,std430) writeonly buffer Output { float dst[]; };
+uint spk_global_index() {
+    return gl_GlobalInvocationID.y*(gl_NumWorkGroups.x*gl_WorkGroupSize.x)+gl_GlobalInvocationID.x;
+}
+#include "overscan.glsl"
+void main() {
+    const uint i = spk_global_index();
+    if (i >= n[0]) return;
+    const uint cw = uint(P[P_CW]);
+    precise float a = film_alpha(canvas_to_film(float(i % cw), float(i / cw)));
+    precise vec3 c = vec3(f[3u * i], f[3u * i + 1u], f[3u * i + 2u]);
+    precise vec3 hole = vec3(P[P_HOLE_C], P[P_HOLE_M], P[P_HOLE_Y]);
+    precise vec3 r3 = a * c + (1.0f - a) * hole;
+    dst[3u * i] = r3.x;
+    dst[3u * i + 1u] = r3.y;
+    dst[3u * i + 2u] = r3.z;
+}

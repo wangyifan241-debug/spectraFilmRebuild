@@ -1,0 +1,5689 @@
+{
+    "algorithm": "log-transmission-analytic-jacobian-bounded-lm-v1",
+    "blocking_gates": [
+        "Every target must reconstruct within the declared error/conditioning gate",
+        "Full spectral support and surrogate dye/base uncertainty remain unresolved",
+        "Instrument-density inversion does not establish absolute sensitivity/exposure calibration",
+        "Independent photographic colour validation required before any Profile registration"
+    ],
+    "dye_source": "Fitted to Kodak Pro Image 100 datasheet E-4L (July 1997) midscale-neutral minus D-min spectral density (see ProImage100_datasheet_curves.json), projected onto the Vision3 ECN-2 image-dye set as surrogate basis",
+    "dye_uncertainty": "Surrogate-basis method: Portra's actual couplers are not published, so the mid-minus-min aggregate was decomposed onto warped Vision3 dyes (shift parameter +/-25 nm, width-scale cyan 0.85-1.15, magenta and yellow 0.5-2; the peak moves by shift x width, see peak_shift_nm). Aggregate reconstruction RMSE 0.0135 D, max abs 0.1243 D over the MEASURED support. Per-layer separation is model-dependent; treat off-peak/crosstalk values as ~+/-0.05 and the whole set as provisional.",
+    "feasibility_certificate": {
+        "density_lower_bounds_RGB": [
+            0.27350494152397736,
+            0.6770506155389754,
+            0.893145444343175
+        ],
+        "method": "per-wavelength box relaxation of transmission; stable log-sum-exp",
+        "proved_unreachable_rows": [
+            {
+                "log_exposure": -3.14,
+                "minimum_density_minus_target_RGB": [
+                    0.02680494152397736,
+                    -0.026649384461024606,
+                    -0.061554555656824994
+                ],
+                "row": 0
+            },
+            {
+                "log_exposure": -3.12,
+                "minimum_density_minus_target_RGB": [
+                    0.026004941523977365,
+                    -0.026949384461024573,
+                    -0.06235455565682502
+                ],
+                "row": 1
+            },
+            {
+                "log_exposure": -3.1,
+                "minimum_density_minus_target_RGB": [
+                    0.02520494152397737,
+                    -0.02734938446102464,
+                    -0.06315455565682504
+                ],
+                "row": 2
+            },
+            {
+                "log_exposure": -3.08,
+                "minimum_density_minus_target_RGB": [
+                    0.024404941523977375,
+                    -0.027749384461024595,
+                    -0.06395455565682495
+                ],
+                "row": 3
+            },
+            {
+                "log_exposure": -3.06,
+                "minimum_density_minus_target_RGB": [
+                    0.023604941523977352,
+                    -0.028149384461024662,
+                    -0.06475455565682497
+                ],
+                "row": 4
+            },
+            {
+                "log_exposure": -3.04,
+                "minimum_density_minus_target_RGB": [
+                    0.022904941523977373,
+                    -0.02854938446102462,
+                    -0.06545455565682501
+                ],
+                "row": 5
+            },
+            {
+                "log_exposure": -3.02,
+                "minimum_density_minus_target_RGB": [
+                    0.02210494152397735,
+                    -0.029049384461024563,
+                    -0.06625455565682503
+                ],
+                "row": 6
+            },
+            {
+                "log_exposure": -3,
+                "minimum_density_minus_target_RGB": [
+                    0.021404941523977372,
+                    -0.02954938446102462,
+                    -0.06695455565682495
+                ],
+                "row": 7
+            },
+            {
+                "log_exposure": -2.98,
+                "minimum_density_minus_target_RGB": [
+                    0.02060494152397735,
+                    -0.030149384461024664,
+                    -0.06775455565682498
+                ],
+                "row": 8
+            }
+        ],
+        "scope": "Necessary bound only, within supplied/truncated operator and dye amounts 0..8. Passing this bound does not prove feasibility or calibrate a Profile. No fitted baseline/offset.",
+        "targets_below_bound_RGB": [
+            25,
+            0,
+            0
+        ],
+        "targets_beyond_error_gate_RGB": [
+            9,
+            0,
+            0
+        ]
+    },
+    "format": "SpektraLab.SpectralLift",
+    "input_attribution": "Film Scan Calibration by OwlMightyCh; digitized Kodak Pro Image 100 datasheet curves",
+    "input_license": "CC-BY-4.0",
+    "input_license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "inputs": {
+        "curves": {
+            "attribution": "Film Scan Calibration by OwlMightyCh",
+            "license": "CC-BY-4.0",
+            "license_url": "https://creativecommons.org/licenses/by/4.0/",
+            "sha256": "ec23f1756de5597a86ed779676ba8546595c6e590b9749b53abb41809ee0e75e",
+            "source": "Kodak Pro Image 100 datasheet E-4L (July 1997), page 4 vector charts, digitized from the embedded PDF path geometry",
+            "source_url": "https://github.com/OwlMightyCh/film-scan-calibration/blob/8d03a0e0c111625b8a88fb8647a35d95b491249d/data/films/ProImage100_datasheet_curves.json"
+        },
+        "dyes": {
+            "attribution": "Film Scan Calibration by OwlMightyCh",
+            "license": "CC-BY-4.0",
+            "license_url": "https://creativecommons.org/licenses/by/4.0/",
+            "sha256": "342ad845bd70f0f70ea008e8ac670db43e15352260ca12244c14a89baf34c968",
+            "source": "Fitted to Kodak Pro Image 100 datasheet E-4L (July 1997) midscale-neutral minus D-min spectral density (see ProImage100_datasheet_curves.json), projected onto the Vision3 ECN-2 image-dye set as surrogate basis",
+            "source_url": "https://github.com/OwlMightyCh/film-scan-calibration/blob/8d03a0e0c111625b8a88fb8647a35d95b491249d/data/films/ProImage100_dye_density.json"
+        },
+        "responsivity": {
+            "license": "Not certified by this tool; third-party rights retained. Input is not redistributed by the program.",
+            "sha256": "b296756ebe973d523de62ba2c5d2801f1ecb7f2394d95cf53961746d504c2a32",
+            "source": "ISO 5-3 / ANSI CGATS.5-1993 Status M, values as embedded in ArgyllCMS xspect.c (denM), cross-validated: same file's Status A table matches this project's StatusA_ISO5-3.json exactly. Verified 2026-09-09 against Table 4 of ANSI/ISO 5-3-1995 (ANSI/NAPM IT2.18-1996, law.resource.org/pub/us/cfr/ibr/001/aimm.it2.18.1996.pdf): all 42 explicitly tabulated log-product entries match; the 2009 edition and the extrapolated tails are not covered by that check."
+        },
+        "sensitivity": {
+            "attribution": "Film Scan Calibration by OwlMightyCh",
+            "license": "CC-BY-4.0",
+            "license_url": "https://creativecommons.org/licenses/by/4.0/",
+            "sha256": "b1a6bfe6613b9a6b8430f57fb614edc8c69bb164d35e11c84271029fc94d4ea7",
+            "source": "Kodak Pro Image 100 datasheet E-4L (July 1997), page 4 bottom-left 'Spectral-Sensitivity Curves', digitized from the embedded PDF path geometry",
+            "source_url": "https://github.com/OwlMightyCh/film-scan-calibration/blob/8d03a0e0c111625b8a88fb8647a35d95b491249d/data/films/ProImage100_spectral_sensitivity.json"
+        }
+    },
+    "integration": {
+        "band_nm": [
+            400,
+            700
+        ],
+        "base_status_m_RGB": [
+            0.27350494152397736,
+            0.6770508272839869,
+            0.9199037513884045
+        ],
+        "negative_surrogate_dye_samples_CMY": [
+            0,
+            51,
+            0
+        ],
+        "omitted_operator_weight_fraction_RGB": [
+            0.0048750829059926535,
+            0,
+            0
+        ],
+        "rule": "uniform point sum, inclusive endpoints; linear responsivity interpolation within its supplied support",
+        "step_nm": 1
+    },
+    "manufacturer_unit_audit": {
+        "absolute_exposure_anchor_calibrated": false,
+        "characteristic_exposure_unit": "lux seconds",
+        "one_erg_per_cm2_in_J_per_m2": 0.001,
+        "pdf_sha256": "f2d1a1faa32bbbc96ab4f69ffa5ee7d99f8bc554392dcec42f715fb934d92700",
+        "publication": "Kodak E-4L, July 1997, printed page 3",
+        "scope": "Units verified in the manufacturer-authored historical sheet; not a calibration of missing spectral support, radiometric illuminant or dye-layer exposure response.",
+        "sensitivity_density_above_Dmin": 0.2,
+        "sensitivity_energy_exposure_unit": "erg/cm^2",
+        "sensitivity_exposure_seconds": 0.02,
+        "source_url": "https://analogfilm.space/assets/kodak-proimage-100.n3IH3y40.pdf"
+    },
+    "mathematical_fit_passed": false,
+    "modifications": "New SpektraLab spectral forward/inverse and coverage diagnostics on supplied data/operator. Failed measurements retained, spectra and exposure axes unmodified. Not an emulsion Profile.",
+    "operator_attestation": "Caller-supplied instrument table; not certified by this tool as an ISO standard; not relicensed or redistributed by the program.",
+    "operator_source": "ISO 5-3 / ANSI CGATS.5-1993 Status M, values as embedded in ArgyllCMS xspect.c (denM), cross-validated: same file's Status A table matches this project's StatusA_ISO5-3.json exactly. Verified 2026-09-09 against Table 4 of ANSI/ISO 5-3-1995 (ANSI/NAPM IT2.18-1996, law.resource.org/pub/us/cfr/ibr/001/aimm.it2.18.1996.pdf): all 42 explicitly tabulated log-product entries match; the 2009 edition and the extrapolated tails are not covered by that check.",
+    "profile_ready": false,
+    "rows": [
+        {
+            "amounts_CMY": [
+                0,
+                0.02423550942509365,
+                0.037839306403183795
+            ],
+            "bound_hits": 1,
+            "condition_inf": 1.640084748770111,
+            "identifiable": true,
+            "log_exposure": -3.14,
+            "passed": false,
+            "predicted_status_m_RGB": [
+                0.2754450511002214,
+                0.7018536647026563,
+                0.9548649166817244
+            ],
+            "residual_RGB": [
+                0.02874505110022138,
+                -0.001846335297343682,
+                0.00016491668172435858
+            ],
+            "target_status_m_RGB": [
+                0.2467,
+                0.7037,
+                0.9547
+            ]
+        },
+        {
+            "amounts_CMY": [
+                0,
+                0.024534800907053782,
+                0.03870481380325132
+            ],
+            "bound_hits": 1,
+            "condition_inf": 1.6400637114231147,
+            "identifiable": true,
+            "log_exposure": -3.12,
+            "passed": false,
+            "predicted_status_m_RGB": [
+                0.2754719994410106,
+                0.7022033135648605,
+                0.9556604661462683
+            ],
+            "residual_RGB": [
+                0.027971999441010587,
+                -0.0017966864351394163,
+                0.00016046614626830102
+            ],
+            "target_status_m_RGB": [
+                0.2475,
+                0.704,
+                0.9555
+            ]
+        },
+        {
+            "amounts_CMY": [
+                0,
+                0.024951147767975683,
+                0.03956844631075499
+            ],
+            "bound_hits": 1,
+            "condition_inf": 1.6400346778547308,
+            "identifiable": true,
+            "log_exposure": -3.1,
+            "passed": false,
+            "predicted_status_m_RGB": [
+                0.27550693122503334,
+                0.7026524348426181,
+                0.9564560664558981
+            ],
+            "residual_RGB": [
+                0.027206931225033343,
+                -0.0017475651573819473,
+                0.0001560664558980518
+            ],
+            "target_status_m_RGB": [
+                0.2483,
+                0.7044,
+                0.9563
+            ]
+        },
+        {
+            "amounts_CMY": [
+                0,
+                0.025367510624321982,
+                0.04043209314513749
+            ],
+            "bound_hits": 1,
+            "condition_inf": 1.6400056327375339,
+            "identifiable": true,
+            "log_exposure": -3.08,
+            "passed": false,
+            "predicted_status_m_RGB": [
+                0.275541864145803,
+                0.7031015571709046,
+                0.9572516673747993
+            ],
+            "residual_RGB": [
+                0.026441864145803018,
+                -0.0016984428290953701,
+                0.00015166737479932468
+            ],
+            "target_status_m_RGB": [
+                0.2491,
+                0.7048,
+                0.9571
+            ]
+        },
+        {
+            "amounts_CMY": [
+                0,
+                0.02577102747418337,
+                0.04129571839367778
+            ],
+            "bound_hits": 1,
+            "condition_inf": 1.6399774544599455,
+            "identifiable": true,
+            "log_exposure": -3.06,
+            "passed": false,
+            "predicted_status_m_RGB": [
+                0.275575919167668,
+                0.7035397234422617,
+                0.9580470405138708
+            ],
+            "residual_RGB": [
+                0.025675919167667982,
+                -0.0016602765577383716,
+                0.00014704051387082195
+            ],
+            "target_status_m_RGB": [
+                0.2499,
+                0.7052,
+                0.9579
+            ]
+        },
+        {
+            "amounts_CMY": [
+                0,
+                0.026194231600415254,
+                0.042050488007517206
+            ],
+            "bound_hits": 1,
+            "condition_inf": 1.6399480008237899,
+            "identifiable": true,
+            "log_exposure": -3.04,
+            "passed": false,
+            "predicted_status_m_RGB": [
+                0.27561050173087487,
+                0.7039827271407126,
+                0.9587432233423818
+            ],
+            "residual_RGB": [
+                0.02501050173087488,
+                -0.0016172728592873664,
+                0.00014322334238181522
+            ],
+            "target_status_m_RGB": [
+                0.2506,
+                0.7056,
+                0.9586
+            ]
+        },
+        {
+            "amounts_CMY": [
+                0,
+                0.026728078665559322,
+                0.042912282233494206
+            ],
+            "bound_hits": 1,
+            "condition_inf": 1.6399108994054903,
+            "identifiable": true,
+            "log_exposure": -3.02,
+            "passed": false,
+            "predicted_status_m_RGB": [
+                0.27565344735252634,
+                0.7045316486419926,
+                0.9595388825036337
+            ],
+            "residual_RGB": [
+                0.024253447352526325,
+                -0.0015683513580073694,
+                0.00013888250363369714
+            ],
+            "target_status_m_RGB": [
+                0.2514,
+                0.7061,
+                0.9594
+            ]
+        },
+        {
+            "amounts_CMY": [
+                0,
+                0.02726837609693293,
+                0.04366517774372934
+            ],
+            "bound_hits": 1,
+            "condition_inf": 1.6398734232797652,
+            "identifiable": true,
+            "log_exposure": -3,
+            "passed": false,
+            "predicted_status_m_RGB": [
+                0.2756960157809655,
+                0.7050741256145057,
+                0.9602351154353673
+            ],
+            "residual_RGB": [
+                0.023596015780965485,
+                -0.0015258743854943413,
+                0.00013511543536737225
+            ],
+            "target_status_m_RGB": [
+                0.2521,
+                0.7066,
+                0.9601
+            ]
+        },
+        {
+            "amounts_CMY": [
+                0,
+                0.02791933414353928,
+                0.04452509852356506
+            ],
+            "bound_hits": 1,
+            "condition_inf": 1.6398282885619797,
+            "identifiable": true,
+            "log_exposure": -2.98,
+            "passed": false,
+            "predicted_status_m_RGB": [
+                0.27574694841016567,
+                0.7057225218658626,
+                0.9610308244700903
+            ],
+            "residual_RGB": [
+                0.022846948410165657,
+                -0.0014774781341374554,
+                0.00013082447009027387
+            ],
+            "target_status_m_RGB": [
+                0.2529,
+                0.7072,
+                0.9609
+            ]
+        },
+        {
+            "amounts_CMY": [
+                0,
+                0.028584403515285222,
+                0.04527536469451845
+            ],
+            "bound_hits": 1,
+            "condition_inf": 1.6397822517364478,
+            "identifiable": true,
+            "log_exposure": -2.96,
+            "passed": false,
+            "predicted_status_m_RGB": [
+                0.2757980215462864,
+                0.7063709070982597,
+                0.9617265374132475
+            ],
+            "residual_RGB": [
+                0.022098021546286428,
+                -0.0014290929017403142,
+                0.00012653741324752943
+            ],
+            "target_status_m_RGB": [
+                0.2537,
+                0.7078,
+                0.9616
+            ]
+        },
+        {
+            "amounts_CMY": [
+                0,
+                0.029469580976461754,
+                0.04613150980355444
+            ],
+            "bound_hits": 1,
+            "condition_inf": 1.6397210572426633,
+            "identifiable": true,
+            "log_exposure": -2.94,
+            "passed": false,
+            "predicted_status_m_RGB": [
+                0.2758649278233372,
+                0.7072182521970098,
+                0.9625223447054964
+            ],
+            "residual_RGB": [
+                0.02136492782333721,
+                -0.001381747802990163,
+                0.00012234470549632448
+            ],
+            "target_status_m_RGB": [
+                0.2545,
+                0.7086,
+                0.9624
+            ]
+        },
+        {
+            "amounts_CMY": [
+                0,
+                0.03036889680438391,
+                0.04687799434399146
+            ],
+            "bound_hits": 1,
+            "condition_inf": 1.6396589468106317,
+            "identifiable": true,
+            "log_exposure": -2.92,
+            "passed": false,
+            "predicted_status_m_RGB": [
+                0.2759319763171889,
+                0.7080655880412672,
+                0.9632181552601614
+            ],
+            "residual_RGB": [
+                0.020631976317188883,
+                -0.0013344119587328507,
+                0.00011815526016145661
+            ],
+            "target_status_m_RGB": [
+                0.2553,
+                0.7094,
+                0.9631
+            ]
+        },
+        {
+            "amounts_CMY": [
+                0,
+                0.03126827281689368,
+                0.04762448372446532
+            ],
+            "bound_hits": 1,
+            "condition_inf": 1.6395968009787867,
+            "identifiable": true,
+            "log_exposure": -2.9,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                0.2759990287341949,
+                0.7089129283294431,
+                0.9639139652881031
+            ],
+            "residual_RGB": [
+                0.019899028734194912,
+                -0.0012870716705569718,
+                0.0001139652881031461
+            ],
+            "target_status_m_RGB": [
+                0.2561,
+                0.7102,
+                0.9638
+            ]
+        },
+        {
+            "amounts_CMY": [
+                0,
+                0.032292464962894875,
+                0.04836832791419163
+            ],
+            "bound_hits": 1,
+            "condition_inf": 1.639526074376135,
+            "identifiable": true,
+            "log_exposure": -2.88,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                0.2760745886215033,
+                0.709866180038672,
+                0.9646092539010239
+            ],
+            "residual_RGB": [
+                0.019074588621503297,
+                -0.0012338199613279865,
+                0.00010925390102389798
+            ],
+            "target_status_m_RGB": [
+                0.257,
+                0.7111,
+                0.9645
+            ]
+        },
+        {
+            "amounts_CMY": [
+                0,
+                0.033412105605600935,
+                0.049220699722171156
+            ],
+            "bound_hits": 1,
+            "condition_inf": 1.6394486809358673,
+            "identifiable": true,
+            "log_exposure": -2.86,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                0.27615748432423065,
+                0.7109124889710653,
+                0.9654051566787285
+            ],
+            "residual_RGB": [
+                0.018357484324230677,
+                -0.0011875110289346624,
+                0.00010515667872845746
+            ],
+            "target_status_m_RGB": [
+                0.2578,
+                0.7121,
+                0.9653
+            ]
+        },
+        {
+            "amounts_CMY": [
+                0,
+                0.03464253087212001,
+                0.05018009976752903
+            ],
+            "bound_hits": 1,
+            "condition_inf": 1.639363557003364,
+            "identifiable": true,
+            "log_exposure": -2.84,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                0.2762487522610143,
+                0.7120647247396406,
+                0.9663005342737591
+            ],
+            "residual_RGB": [
+                0.017548752261014322,
+                -0.0011352752603593919,
+                0.00010053427375911195
+            ],
+            "target_status_m_RGB": [
+                0.2587,
+                0.7132,
+                0.9662
+            ]
+        },
+        {
+            "amounts_CMY": [
+                0,
+                0.035997857959981915,
+                0.051136855308690964
+            ],
+            "bound_hits": 1,
+            "condition_inf": 1.6392698043673641,
+            "identifiable": true,
+            "log_exposure": -2.82,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                0.2763485332218184,
+                0.7133228768033305,
+                0.9671953895243631
+            ],
+            "residual_RGB": [
+                0.016648533221818418,
+                -0.0010771231966695272,
+                9.538952436316528e-05
+            ],
+            "target_status_m_RGB": [
+                0.2597,
+                0.7144,
+                0.9671
+            ]
+        },
+        {
+            "amounts_CMY": [
+                0,
+                0.0377124173737402,
+                0.05208716269553757
+            ],
+            "bound_hits": 1,
+            "condition_inf": 1.639151312076686,
+            "identifiable": true,
+            "log_exposure": -2.8,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                0.27647280789640083,
+                0.7148858965289056,
+                0.9680898182717715
+            ],
+            "residual_RGB": [
+                0.015672807896400853,
+                -0.0010141034710944297,
+                8.981827177156898e-05
+            ],
+            "target_status_m_RGB": [
+                0.2608,
+                0.7159,
+                0.968
+            ]
+        },
+        {
+            "amounts_CMY": [
+                0,
+                0.039413102340644726,
+                0.053147151277083936
+            ],
+            "bound_hits": 1,
+            "condition_inf": 1.6390335794624236,
+            "identifiable": true,
+            "log_exposure": -2.78,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                0.2765969575486721,
+                0.7164489407648993,
+                0.9690842419170176
+            ],
+            "residual_RGB": [
+                0.014696957548672063,
+                -0.0009510592351007485,
+                8.424191701761341e-05
+            ],
+            "target_status_m_RGB": [
+                0.2619,
+                0.7174,
+                0.969
+            ]
+        },
+        {
+            "amounts_CMY": [
+                0,
+                0.04111523469906891,
+                0.05431532151334976
+            ],
+            "bound_hits": 1,
+            "condition_inf": 1.6389155529427402,
+            "identifiable": true,
+            "log_exposure": -2.76,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                0.2767220176868182,
+                0.7180248845341034,
+                0.9701775204669412
+            ],
+            "residual_RGB": [
+                0.01352201768681821,
+                -0.000875115465896581,
+                7.752046694120551e-05
+            ],
+            "target_status_m_RGB": [
+                0.2632,
+                0.7189,
+                0.9701
+            ]
+        },
+        {
+            "amounts_CMY": [
+                0,
+                0.0430314388017876,
+                0.05569830649194998
+            ],
+            "bound_hits": 1,
+            "condition_inf": 1.638782497093154,
+            "identifiable": true,
+            "log_exposure": -2.74,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                0.27686331516615503,
+                0.719806256020063,
+                0.9714703170685485
+            ],
+            "residual_RGB": [
+                0.012263315166155031,
+                -0.0007937439799370338,
+                7.031706854843112e-05
+            ],
+            "target_status_m_RGB": [
+                0.2646,
+                0.7206,
+                0.9714
+            ]
+        },
+        {
+            "amounts_CMY": [
+                0,
+                0.04504459432971506,
+                0.05729801790820241
+            ],
+            "bound_hits": 1,
+            "condition_inf": 1.638642436885365,
+            "identifiable": true,
+            "log_exposure": -2.72,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                0.2770128625946275,
+                0.7216935830141805,
+                0.9729625837481616
+            ],
+            "residual_RGB": [
+                0.010912862594627482,
+                -0.0007064169858195246,
+                6.258374816159318e-05
+            ],
+            "target_status_m_RGB": [
+                0.2661,
+                0.7224,
+                0.9729
+            ]
+        },
+        {
+            "amounts_CMY": [
+                0,
+                0.04729374360141421,
+                0.05900212409350844
+            ],
+            "bound_hits": 1,
+            "condition_inf": 1.638485843862666,
+            "identifiable": true,
+            "log_exposure": -2.7,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                0.2771793152655026,
+                0.7237927742715632,
+                0.9745537996038113
+            ],
+            "residual_RGB": [
+                0.009379315265502619,
+                -0.0006072257284368554,
+                5.379960381124427e-05
+            ],
+            "target_status_m_RGB": [
+                0.2678,
+                0.7244,
+                0.9745
+            ]
+        },
+        {
+            "amounts_CMY": [
+                0,
+                0.04966299953173776,
+                0.06092071474000349
+            ],
+            "bound_hits": 1,
+            "condition_inf": 1.6383205726474837,
+            "identifiable": true,
+            "log_exposure": -2.68,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                0.2773555824068702,
+                0.7260172532101447,
+                0.9763427706240324
+            ],
+            "residual_RGB": [
+                0.00745558240687022,
+                -0.00048274678985538166,
+                4.2770624032462123e-05
+            ],
+            "target_status_m_RGB": [
+                0.2699,
+                0.7265,
+                0.9763
+            ]
+        },
+        {
+            "amounts_CMY": [
+                0,
+                0.05234513736718298,
+                0.06315951147420834
+            ],
+            "bound_hits": 1,
+            "condition_inf": 1.6381331535605377,
+            "identifiable": true,
+            "log_exposure": -2.66,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                0.27755562724601834,
+                0.7285424072113426,
+                0.9784290069256484
+            ],
+            "residual_RGB": [
+                0.005455627246018335,
+                -0.0003575927886574348,
+                2.9006925648333848e-05
+            ],
+            "target_status_m_RGB": [
+                0.2721,
+                0.7289,
+                0.9784
+            ]
+        },
+        {
+            "amounts_CMY": [
+                0,
+                0.05503556910272955,
+                0.06551000081258403
+            ],
+            "bound_hits": 1,
+            "condition_inf": 1.6379447772338553,
+            "identifiable": true,
+            "log_exposure": -2.64,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                0.27775707536253663,
+                0.7310864034787861,
+                0.9806173517490473
+            ],
+            "residual_RGB": [
+                0.00325707536253661,
+                -0.00021359652121388795,
+                1.735174904726744e-05
+            ],
+            "target_status_m_RGB": [
+                0.2745,
+                0.7313,
+                0.9806
+            ]
+        },
+        {
+            "amounts_CMY": [
+                0,
+                0.05816038376334383,
+                0.06828680992481952
+            ],
+            "bound_hits": 1,
+            "condition_inf": 1.637725582220637,
+            "identifiable": true,
+            "log_exposure": -2.62,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                0.2779913972505043,
+                0.7340457207122018,
+                0.9832017114610442
+            ],
+            "residual_RGB": [
+                0.000791397250504311,
+                -5.427928779822011e-05,
+                1.7114610442181544e-06
+            ],
+            "target_status_m_RGB": [
+                0.2772,
+                0.7341,
+                0.9832
+            ]
+        },
+        {
+            "amounts_CMY": [
+                0.0028404745388267423,
+                0.06106088858972234,
+                0.07135868321363116
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.6377129839094338,
+            "identifiable": true,
+            "log_exposure": -2.6,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                0.28020000000003165,
+                0.737099999999918,
+                0.9862000000000148
+            ],
+            "residual_RGB": [
+                3.164135620181696e-14,
+                -8.193445921733655e-14,
+                1.4876988529977098e-14
+            ],
+            "target_status_m_RGB": [
+                0.2802,
+                0.7371,
+                0.9862
+            ]
+        },
+        {
+            "amounts_CMY": [
+                0.007240941013303213,
+                0.06393805461498614,
+                0.07467243577806168
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.6378068030010142,
+            "identifiable": true,
+            "log_exposure": -2.58,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                0.2835000000000273,
+                0.7402999999999231,
+                0.9895000000000154
+            ],
+            "residual_RGB": [
+                2.731148640577885e-14,
+                -7.682743330406083e-14,
+                1.532107773982716e-14
+            ],
+            "target_status_m_RGB": [
+                0.2835,
+                0.7403,
+                0.9895
+            ]
+        },
+        {
+            "amounts_CMY": [
+                0.01219702778484756,
+                0.0669545934198939,
+                0.0782807676751273
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.6379279105090423,
+            "identifiable": true,
+            "log_exposure": -2.56,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                0.2872000000000259,
+                0.743699999999924,
+                0.9931000000000153
+            ],
+            "residual_RGB": [
+                2.5868196473766147e-14,
+                -7.605027718682322e-14,
+                1.532107773982716e-14
+            ],
+            "target_status_m_RGB": [
+                0.2872,
+                0.7437,
+                0.9931
+            ]
+        },
+        {
+            "amounts_CMY": [
+                0.017396572178853282,
+                0.07039133721285172,
+                0.0820873096027223
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.638035717089738,
+            "identifiable": true,
+            "log_exposure": -2.54,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                0.2911000000000257,
+                0.7474999999999247,
+                0.9969000000000149
+            ],
+            "residual_RGB": [
+                2.5701663020072374e-14,
+                -7.538414337204813e-14,
+                1.4876988529977098e-14
+            ],
+            "target_status_m_RGB": [
+                0.2911,
+                0.7475,
+                0.9969
+            ]
+        },
+        {
+            "amounts_CMY": [
+                0.023008231111969833,
+                0.07393926602311572,
+                0.08652566870745748
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.6381626448450832,
+            "identifiable": true,
+            "log_exposure": -2.52,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                0.29530000000002504,
+                0.7514999999999251,
+                1.0013000000000147
+            ],
+            "residual_RGB": [
+                2.503552920529728e-14,
+                -7.482903185973555e-14,
+                1.4654943925052066e-14
+            ],
+            "target_status_m_RGB": [
+                0.2953,
+                0.7515,
+                1.0013
+            ]
+        },
+        {
+            "amounts_CMY": [
+                0.02916465825054654,
+                0.07773170680687072,
+                0.09136714430524637
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.638308507728173,
+            "identifiable": true,
+            "log_exposure": -2.5,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                0.29990000000002515,
+                0.7557999999999261,
+                1.0061000000000149
+            ],
+            "residual_RGB": [
+                2.5146551507759796e-14,
+                -7.394085344003543e-14,
+                1.4876988529977098e-14
+            ],
+            "target_status_m_RGB": [
+                0.2999,
+                0.7558,
+                1.0061
+            ]
+        },
+        {
+            "amounts_CMY": [
+                0.03585406234127497,
+                0.08191629533447696,
+                0.09639094903406337
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.6384623154512146,
+            "identifiable": true,
+            "log_exposure": -2.48,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                0.3049000000000255,
+                0.7604999999999263,
+                1.011100000000015
+            ],
+            "residual_RGB": [
+                2.5479618415147343e-14,
+                -7.360778653264788e-14,
+                1.4876988529977098e-14
+            ],
+            "target_status_m_RGB": [
+                0.3049,
+                0.7605,
+                1.0111
+            ]
+        },
+        {
+            "amounts_CMY": [
+                0.04282295070264416,
+                0.08613549475277961,
+                0.1018366752277954
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.6386316599518083,
+            "identifiable": true,
+            "log_exposure": -2.46,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                0.31010000000002474,
+                0.7652999999999278,
+                1.0165000000000142
+            ],
+            "residual_RGB": [
+                2.475797344914099e-14,
+                -7.216449660063518e-14,
+                1.4210854715202004e-14
+            ],
+            "target_status_m_RGB": [
+                0.3101,
+                0.7653,
+                1.0165
+            ]
+        },
+        {
+            "amounts_CMY": [
+                0.05019297412758747,
+                0.09059942836844004,
+                0.10780348566247162
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.638809864746946,
+            "identifiable": true,
+            "log_exposure": -2.44,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                0.3156000000000247,
+                0.7703999999999286,
+                1.0224000000000144
+            ],
+            "residual_RGB": [
+                2.4702462297909733e-14,
+                -7.138734048339757e-14,
+                1.4432899320127035e-14
+            ],
+            "target_status_m_RGB": [
+                0.3156,
+                0.7704,
+                1.0224
+            ]
+        },
+        {
+            "amounts_CMY": [
+                0.057807628596672815,
+                0.09547012552682564,
+                0.11407857642777414
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.6389750706010517,
+            "identifiable": true,
+            "log_exposure": -2.42,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                0.3213000000000245,
+                0.7758999999999291,
+                1.0286000000000142
+            ],
+            "residual_RGB": [
+                2.453592884421596e-14,
+                -7.09432512735475e-14,
+                1.4210854715202004e-14
+            ],
+            "target_status_m_RGB": [
+                0.3213,
+                0.7759,
+                1.0286
+            ]
+        },
+        {
+            "amounts_CMY": [
+                0.06596826922857249,
+                0.1005857742288462,
+                0.12075714261261782
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.6391587828321392,
+            "identifiable": true,
+            "log_exposure": -2.4,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                0.32740000000002406,
+                0.7816999999999299,
+                1.0352000000000137
+            ],
+            "residual_RGB": [
+                2.403632848313464e-14,
+                -7.005507285384738e-14,
+                1.3766765505351941e-14
+            ],
+            "target_status_m_RGB": [
+                0.3274,
+                0.7817,
+                1.0352
+            ]
+        },
+        {
+            "amounts_CMY": [
+                0.07468653168944887,
+                0.1058554601303693,
+                0.1276210185190036
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.6393683509297021,
+            "identifiable": true,
+            "log_exposure": -2.38,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                0.3339000000000239,
+                0.7876999999999312,
+                1.0420000000000138
+            ],
+            "residual_RGB": [
+                2.3925306180672123e-14,
+                -6.872280522429719e-14,
+                1.3766765505351941e-14
+            ],
+            "target_status_m_RGB": [
+                0.3339,
+                0.7877,
+                1.042
+            ]
+        },
+        {
+            "amounts_CMY": [
+                0.08367393580525766,
+                0.11126513826465192,
+                0.13501576606709945
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.6395848162320055,
+            "identifiable": true,
+            "log_exposure": -2.36,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                0.3406000000000236,
+                0.7938999999999322,
+                1.0493000000000134
+            ],
+            "residual_RGB": [
+                2.3592239273284576e-14,
+                -6.783462680459706e-14,
+                1.354472090042691e-14
+            ],
+            "target_status_m_RGB": [
+                0.3406,
+                0.7939,
+                1.0493
+            ]
+        },
+        {
+            "amounts_CMY": [
+                0.09306375611580452,
+                0.11692000779785415,
+                0.14293216774403603
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.639809644518774,
+            "identifiable": true,
+            "log_exposure": -2.34,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                0.3476000000000236,
+                0.8003999999999328,
+                1.0571000000000135
+            ],
+            "residual_RGB": [
+                2.3592239273284576e-14,
+                -6.716849298982197e-14,
+                1.354472090042691e-14
+            ],
+            "target_status_m_RGB": [
+                0.3476,
+                0.8004,
+                1.0571
+            ]
+        },
+        {
+            "amounts_CMY": [
+                0.10298877447344727,
+                0.12296802151633167,
+                0.1510313733360004
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.6400415575305387,
+            "identifiable": true,
+            "log_exposure": -2.32,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                0.3550000000000236,
+                0.8072999999999338,
+                1.0651000000000128
+            ],
+            "residual_RGB": [
+                2.3592239273284576e-14,
+                -6.616929226765933e-14,
+                1.2878587085651816e-14
+            ],
+            "target_status_m_RGB": [
+                0.355,
+                0.8073,
+                1.0651
+            ]
+        },
+        {
+            "amounts_CMY": [
+                0.11317176961707281,
+                0.12929009376755818,
+                0.1595506044720136
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.6402698174047385,
+            "identifiable": true,
+            "log_exposure": -2.3,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                0.36260000000002296,
+                0.8144999999999347,
+                1.0735000000000128
+            ],
+            "residual_RGB": [
+                2.298161660974074e-14,
+                -6.52811138479592e-14,
+                1.2878587085651816e-14
+            ],
+            "target_status_m_RGB": [
+                0.3626,
+                0.8145,
+                1.0735
+            ]
+        },
+        {
+            "amounts_CMY": [
+                0.12363619808521525,
+                0.13566147721309627,
+                0.16838291854458318
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.6405120483813365,
+            "identifiable": true,
+            "log_exposure": -2.28,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                0.3704000000000028,
+                0.8217999999999906,
+                1.0821999999999994
+            ],
+            "residual_RGB": [
+                2.7755575615628914e-15,
+                -9.325873406851315e-15,
+                -6.661338147750939e-16
+            ],
+            "target_status_m_RGB": [
+                0.3704,
+                0.8218,
+                1.0822
+            ]
+        },
+        {
+            "amounts_CMY": [
+                0.13450398787303344,
+                0.14229278524894792,
+                0.17762751285696882
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.640761238997495,
+            "identifiable": true,
+            "log_exposure": -2.26,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                0.3785000000000028,
+                0.8293999999999903,
+                1.091299999999999
+            ],
+            "residual_RGB": [
+                2.7755575615628914e-15,
+                -9.769962616701378e-15,
+                -8.881784197001252e-16
+            ],
+            "target_status_m_RGB": [
+                0.3785,
+                0.8294,
+                1.0913
+            ]
+        },
+        {
+            "amounts_CMY": [
+                0.14563001576122903,
+                0.1492270573191534,
+                0.18707267204734285
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.6410045842501058,
+            "identifiable": true,
+            "log_exposure": -2.24,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                0.3868000000000026,
+                0.8372999999999897,
+                1.100599999999999
+            ],
+            "residual_RGB": [
+                2.609024107869118e-15,
+                -1.0325074129013956e-14,
+                -1.1102230246251565e-15
+            ],
+            "target_status_m_RGB": [
+                0.3868,
+                0.8373,
+                1.1006
+            ]
+        },
+        {
+            "amounts_CMY": [
+                0.1571717590662232,
+                0.15630190737394292,
+                0.19693177261380918
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.6412639864351892,
+            "identifiable": true,
+            "log_exposure": -2.22,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                0.3954000000000023,
+                0.8453999999999887,
+                1.1102999999999987
+            ],
+            "residual_RGB": [
+                2.3314683517128287e-15,
+                -1.1324274851176597e-14,
+                -1.3322676295501878e-15
+            ],
+            "target_status_m_RGB": [
+                0.3954,
+                0.8454,
+                1.1103
+            ]
+        },
+        {
+            "amounts_CMY": [
+                0.1689724645623398,
+                0.16366582601524543,
+                0.2071016032330609
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.6415181295169827,
+            "identifiable": true,
+            "log_exposure": -2.2,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                0.4042000000000007,
+                0.8537999999999887,
+                1.1202999999999987
+            ],
+            "residual_RGB": [
+                7.216449660063518e-16,
+                -1.1324274851176597e-14,
+                -1.3322676295501878e-15
+            ],
+            "target_status_m_RGB": [
+                0.4042,
+                0.8538,
+                1.1203
+            ]
+        },
+        {
+            "amounts_CMY": [
+                0.1810439267877712,
+                0.17121351976426838,
+                0.21747370801750357
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.6417754016990194,
+            "identifiable": true,
+            "log_exposure": -2.18,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                0.41320000000000096,
+                0.8623999999999881,
+                1.1304999999999983
+            ],
+            "residual_RGB": [
+                9.43689570931383e-16,
+                -1.199040866595169e-14,
+                -1.7763568394002505e-15
+            ],
+            "target_status_m_RGB": [
+                0.4132,
+                0.8624,
+                1.1305
+            ]
+        },
+        {
+            "amounts_CMY": [
+                0.193386602161768,
+                0.17893084693141204,
+                0.22815819704043538
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.642036575688829,
+            "identifiable": true,
+            "log_exposure": -2.16,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                0.42240000000000066,
+                0.8711999999999872,
+                1.1409999999999976
+            ],
+            "residual_RGB": [
+                6.661338147750939e-16,
+                -1.27675647831893e-14,
+                -2.4424906541753444e-15
+            ],
+            "target_status_m_RGB": [
+                0.4224,
+                0.8712,
+                1.141
+            ]
+        },
+        {
+            "amounts_CMY": [
+                0.20600052527691026,
+                0.18683221534326114,
+                0.23904514632690033
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.6423006359657213,
+            "identifiable": true,
+            "log_exposure": -2.14,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                0.4318000000000001,
+                0.8801999999999859,
+                1.1516999999999977
+            ],
+            "residual_RGB": [
+                5.551115123125783e-17,
+                -1.4099832412739488e-14,
+                -2.220446049250313e-15
+            ],
+            "target_status_m_RGB": [
+                0.4318,
+                0.8802,
+                1.1517
+            ]
+        },
+        {
+            "amounts_CMY": [
+                0.21888616380641807,
+                0.19490347534769054,
+                0.2502447205328812
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.642568346544061,
+            "identifiable": true,
+            "log_exposure": -2.12,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                0.4413999999999991,
+                0.8893999999999856,
+                1.1626999999999976
+            ],
+            "residual_RGB": [
+                -8.881784197001252e-16,
+                -1.432187701766452e-14,
+                -2.4424906541753444e-15
+            ],
+            "target_status_m_RGB": [
+                0.4414,
+                0.8894,
+                1.1627
+            ]
+        },
+        {
+            "amounts_CMY": [
+                0.23205542441498184,
+                0.20303901825690326,
+                0.2616484466558546
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.642848299383249,
+            "identifiable": true,
+            "log_exposure": -2.1,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                0.45119999999999866,
+                0.8986999999999848,
+                1.1738999999999973
+            ],
+            "residual_RGB": [
+                -1.3322676295501878e-15,
+                -1.5210055437364645e-14,
+                -2.6645352591003757e-15
+            ],
+            "target_status_m_RGB": [
+                0.4512,
+                0.8987,
+                1.1739
+            ]
+        },
+        {
+            "amounts_CMY": [
+                0.24533916841635411,
+                0.2115079067843685,
+                0.2731513414989613
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.6431093104664165,
+            "identifiable": true,
+            "log_exposure": -2.08,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                0.4610999999999978,
+                0.9082999999999845,
+                1.1851999999999967
+            ],
+            "residual_RGB": [
+                -2.220446049250313e-15,
+                -1.554312234475219e-14,
+                -3.3306690738754696e-15
+            ],
+            "target_status_m_RGB": [
+                0.4611,
+                0.9083,
+                1.1852
+            ]
+        },
+        {
+            "amounts_CMY": [
+                0.25874976486960033,
+                0.2201617716439561,
+                0.28497524221513093
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.6433625584805032,
+            "identifiable": true,
+            "log_exposure": -2.06,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                0.47109999999999624,
+                0.9180999999999836,
+                1.1967999999999963
+            ],
+            "residual_RGB": [
+                -3.774758283725532e-15,
+                -1.6431300764452317e-14,
+                -3.774758283725532e-15
+            ],
+            "target_status_m_RGB": [
+                0.4711,
+                0.9181,
+                1.1968
+            ]
+        },
+        {
+            "amounts_CMY": [
+                0.2724448034978896,
+                0.22886599454810724,
+                0.2971137771508868
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.6436285708424352,
+            "identifiable": true,
+            "log_exposure": -2.04,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                0.48129999999999606,
+                0.927999999999983,
+                1.2086999999999957
+            ],
+            "residual_RGB": [
+                -3.941291737419306e-15,
+                -1.709743457922741e-14,
+                -4.440892098500626e-15
+            ],
+            "target_status_m_RGB": [
+                0.4813,
+                0.928,
+                1.2087
+            ]
+        },
+        {
+            "amounts_CMY": [
+                0.2862665891409161,
+                0.23778414605905707,
+                0.3093532270187685
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.6438847667845509,
+            "identifiable": true,
+            "log_exposure": -2.02,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                0.49159999999999454,
+                0.9380999999999817,
+                1.2206999999999957
+            ],
+            "residual_RGB": [
+                -5.440092820663267e-15,
+                -1.8318679906315083e-14,
+                -4.218847493575595e-15
+            ],
+            "target_status_m_RGB": [
+                0.4916,
+                0.9381,
+                1.2207
+            ]
+        },
+        {
+            "amounts_CMY": [
+                0.3003611433562293,
+                0.2468874909131841,
+                0.3217957809868103
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.6441428654545194,
+            "identifiable": true,
+            "log_exposure": -2,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                0.5020999999999933,
+                0.948399999999981,
+                1.2328999999999954
+            ],
+            "residual_RGB": [
+                -6.661338147750939e-15,
+                -1.8984813721090177e-14,
+                -4.6629367034256575e-15
+            ],
+            "target_status_m_RGB": [
+                0.5021,
+                0.9484,
+                1.2329
+            ]
+        },
+        {
+            "amounts_CMY": [
+                0.31458274549284615,
+                0.25620527120298464,
+                0.3343393213301055
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.6443907854230544,
+            "identifiable": true,
+            "log_exposure": -1.98,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                0.5126999999999923,
+                0.9588999999999795,
+                1.2451999999999952
+            ],
+            "residual_RGB": [
+                -7.771561172376096e-15,
+                -2.042810365310288e-14,
+                -4.884981308350689e-15
+            ],
+            "target_status_m_RGB": [
+                0.5127,
+                0.9589,
+                1.2452
+            ]
+        },
+        {
+            "amounts_CMY": [
+                0.32880958783793207,
+                0.2655115520273796,
+                0.3469950922041774
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.644637013292098,
+            "identifiable": true,
+            "log_exposure": -1.96,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                0.5232999999999909,
+                0.9693999999999784,
+                1.2575999999999943
+            ],
+            "residual_RGB": [
+                -9.103828801926284e-15,
+                -2.1649348980190553e-14,
+                -5.773159728050814e-15
+            ],
+            "target_status_m_RGB": [
+                0.5233,
+                0.9694,
+                1.2576
+            ]
+        },
+        {
+            "amounts_CMY": [
+                0.34317580422834776,
+                0.2748977369624586,
+                0.35986385791561776
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.6448835752887165,
+            "identifiable": true,
+            "log_exposure": -1.94,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                0.5339999999999895,
+                0.9799999999999779,
+                1.2701999999999936
+            ],
+            "residual_RGB": [
+                -1.0547118733938987e-14,
+                -2.2093438190040615e-14,
+                -6.439293542825908e-15
+            ],
+            "target_status_m_RGB": [
+                0.534,
+                0.98,
+                1.2702
+            ]
+        },
+        {
+            "amounts_CMY": [
+                0.35752334099599864,
+                0.28451369225899653,
+                0.372841879430515
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.6451084531586628,
+            "identifiable": true,
+            "log_exposure": -1.92,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                0.5446999999999883,
+                0.9907999999999768,
+                1.282899999999993
+            ],
+            "residual_RGB": [
+                -1.1657341758564144e-14,
+                -2.3203661214665772e-14,
+                -6.8833827526759706e-15
+            ],
+            "target_status_m_RGB": [
+                0.5447,
+                0.9908,
+                1.2829
+            ]
+        },
+        {
+            "amounts_CMY": [
+                0.37214437841648934,
+                0.29431580742689234,
+                0.38602338840322054
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.6453344751611292,
+            "identifiable": true,
+            "log_exposure": -1.9,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                0.5555999999999869,
+                1.0017999999999754,
+                1.2957999999999927
+            ],
+            "residual_RGB": [
+                -1.3100631690576847e-14,
+                -2.4646951146678475e-14,
+                -7.327471962526033e-15
+            ],
+            "target_status_m_RGB": [
+                0.5556,
+                1.0018,
+                1.2958
+            ]
+        },
+        {
+            "amounts_CMY": [
+                0.3867710867681401,
+                0.3040924499770127,
+                0.3994279305575353
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.6455592985572431,
+            "identifiable": true,
+            "log_exposure": -1.88,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                0.5664999999999851,
+                1.0127999999999735,
+                1.3088999999999924
+            ],
+            "residual_RGB": [
+                -1.4876988529977098e-14,
+                -2.6423307986078726e-14,
+                -7.549516567451064e-15
+            ],
+            "target_status_m_RGB": [
+                0.5665,
+                1.0128,
+                1.3089
+            ]
+        },
+        {
+            "amounts_CMY": [
+                0.4015252879796771,
+                0.31408480283989837,
+                0.4129338533022213
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.6457729969668469,
+            "identifiable": true,
+            "log_exposure": -1.86,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                0.5774999999999841,
+                1.0239999999999725,
+                1.3220999999999918
+            ],
+            "residual_RGB": [
+                -1.587618925213974e-14,
+                -2.7533531010703882e-14,
+                -8.215650382226158e-15
+            ],
+            "target_status_m_RGB": [
+                0.5775,
+                1.024,
+                1.3221
+            ]
+        },
+        {
+            "amounts_CMY": [
+                0.4162726934907177,
+                0.3242016340670597,
+                0.4264404279754006
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.6459734316461514,
+            "identifiable": true,
+            "log_exposure": -1.84,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                0.588499999999982,
+                1.0352999999999712,
+                1.3352999999999913
+            ],
+            "residual_RGB": [
+                -1.7985612998927536e-14,
+                -2.886579864025407e-14,
+                -8.659739592076221e-15
+            ],
+            "target_status_m_RGB": [
+                0.5885,
+                1.0353,
+                1.3353
+            ]
+        },
+        {
+            "amounts_CMY": [
+                0.43117230306049387,
+                0.3342639457692947,
+                0.4402727739450356
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.6461844277356026,
+            "identifiable": true,
+            "log_exposure": -1.82,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                0.5995999999999805,
+                1.0465999999999696,
+                1.34879999999999
+            ],
+            "residual_RGB": [
+                -1.9539925233402755e-14,
+                -3.042011087472929e-14,
+                -9.992007221626409e-15
+            ],
+            "target_status_m_RGB": [
+                0.5996,
+                1.0466,
+                1.3488
+            ]
+        },
+        {
+            "amounts_CMY": [
+                0.44619941599092844,
+                0.34455706240070016,
+                0.4540961247381483
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.6463829513335293,
+            "identifiable": true,
+            "log_exposure": -1.8,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                0.6108000000000138,
+                1.058099999999966,
+                1.3623000000000072
+            ],
+            "residual_RGB": [
+                1.3766765505351941e-14,
+                -3.397282455352979e-14,
+                7.105427357601002e-15
+            ],
+            "target_status_m_RGB": [
+                0.6108,
+                1.0581,
+                1.3623
+            ]
+        },
+        {
+            "amounts_CMY": [
+                0.4610855285895083,
+                0.3548690886038802,
+                0.4679300245158993
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.6465668644754454,
+            "identifiable": true,
+            "log_exposure": -1.78,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                0.6219000000000131,
+                1.069599999999968,
+                1.3758000000000061
+            ],
+            "residual_RGB": [
+                1.3100631690576847e-14,
+                -3.219646771412954e-14,
+                6.217248937900877e-15
+            ],
+            "target_status_m_RGB": [
+                0.6219,
+                1.0696,
+                1.3758
+            ]
+        },
+        {
+            "amounts_CMY": [
+                0.4761357838303946,
+                0.36503439496483275,
+                0.4818705711809925
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.646769739275761,
+            "identifiable": true,
+            "log_exposure": -1.76,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                0.633100000000013,
+                1.0809999999999684,
+                1.3894000000000064
+            ],
+            "residual_RGB": [
+                1.2989609388114332e-14,
+                -3.1530333899354446e-14,
+                6.439293542825908e-15
+            ],
+            "target_status_m_RGB": [
+                0.6331,
+                1.081,
+                1.3894
+            ]
+        },
+        {
+            "amounts_CMY": [
+                0.49100890132716485,
+                0.3755534807003912,
+                0.4960379787929097
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.6469286849760474,
+            "identifiable": true,
+            "log_exposure": -1.74,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                0.6442000000000122,
+                1.0926999999999696,
+                1.403200000000006
+            ],
+            "residual_RGB": [
+                1.2212453270876722e-14,
+                -3.042011087472929e-14,
+                5.995204332975845e-15
+            ],
+            "target_status_m_RGB": [
+                0.6442,
+                1.0927,
+                1.4032
+            ]
+        },
+        {
+            "amounts_CMY": [
+                0.5063273046548268,
+                0.386017101177396,
+                0.5102942764157496
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.647118621590332,
+            "identifiable": true,
+            "log_exposure": -1.72,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                0.6556000000000121,
+                1.1043999999999712,
+                1.417100000000006
+            ],
+            "residual_RGB": [
+                1.2101430968414206e-14,
+                -2.886579864025407e-14,
+                5.995204332975845e-15
+            ],
+            "target_status_m_RGB": [
+                0.6556,
+                1.1044,
+                1.4171
+            ]
+        },
+        {
+            "amounts_CMY": [
+                0.5214924170622209,
+                0.39662144308189967,
+                0.5245596290280343
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.6472832140076525,
+            "identifiable": true,
+            "log_exposure": -1.7,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                0.6669000000000118,
+                1.1161999999999723,
+                1.4310000000000058
+            ],
+            "residual_RGB": [
+                1.176836406102666e-14,
+                -2.7755575615628914e-14,
+                5.773159728050814e-15
+            ],
+            "target_status_m_RGB": [
+                0.6669,
+                1.1162,
+                1.431
+            ]
+        },
+        {
+            "amounts_CMY": [
+                0.5366753963961987,
+                0.4070941105059732,
+                0.5389401613969189
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.6474554164288182,
+            "identifiable": true,
+            "log_exposure": -1.68,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                0.6782000000000111,
+                1.1278999999999733,
+                1.4450000000000054
+            ],
+            "residual_RGB": [
+                1.1102230246251565e-14,
+                -2.6645352591003757e-14,
+                5.329070518200751e-15
+            ],
+            "target_status_m_RGB": [
+                0.6782,
+                1.1279,
+                1.445
+            ]
+        },
+        {
+            "amounts_CMY": [
+                0.5519986377328585,
+                0.41766291399527383,
+                0.5534243313908183
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.647625576736634,
+            "identifiable": true,
+            "log_exposure": -1.66,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                0.689599999999999,
+                1.1396999999999984,
+                1.4590999999999994
+            ],
+            "residual_RGB": [
+                -9.992007221626409e-16,
+                -1.5543122344752192e-15,
+                -6.661338147750939e-16
+            ],
+            "target_status_m_RGB": [
+                0.6896,
+                1.1397,
+                1.4591
+            ]
+        },
+        {
+            "amounts_CMY": [
+                0.5671682779988589,
+                0.4283730074945154,
+                0.5679176666060809
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.647770018328446,
+            "identifiable": true,
+            "log_exposure": -1.64,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                0.7008999999999987,
+                1.1515999999999982,
+                1.4731999999999994
+            ],
+            "residual_RGB": [
+                -1.2212453270876722e-15,
+                -1.7763568394002505e-15,
+                -6.661338147750939e-16
+            ],
+            "target_status_m_RGB": [
+                0.7009,
+                1.1516,
+                1.4732
+            ]
+        },
+        {
+            "amounts_CMY": [
+                0.5823553215618225,
+                0.43898046528971313,
+                0.5823047081431182
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.647920323140055,
+            "identifiable": true,
+            "log_exposure": -1.62,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                0.7121999999999988,
+                1.1633999999999982,
+                1.4871999999999992
+            ],
+            "residual_RGB": [
+                -1.2212453270876722e-15,
+                -1.7763568394002505e-15,
+                -8.881784197001252e-16
+            ],
+            "target_status_m_RGB": [
+                0.7122,
+                1.1634,
+                1.4872
+            ]
+        },
+        {
+            "amounts_CMY": [
+                0.5978299669232404,
+                0.44965457181654106,
+                0.596898188468329
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.6480805761218493,
+            "identifiable": true,
+            "log_exposure": -1.6,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                0.7236999999999988,
+                1.175299999999998,
+                1.5013999999999996
+            ],
+            "residual_RGB": [
+                -1.2212453270876722e-15,
+                -1.9984014443252818e-15,
+                -4.440892098500626e-16
+            ],
+            "target_status_m_RGB": [
+                0.7237,
+                1.1753,
+                1.5014
+            ]
+        },
+        {
+            "amounts_CMY": [
+                0.6132981511838826,
+                0.4604405939646757,
+                0.6116036500924026
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.6482270358707858,
+            "identifiable": true,
+            "log_exposure": -1.58,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                0.7351999999999986,
+                1.1872999999999985,
+                1.515699999999999
+            ],
+            "residual_RGB": [
+                -1.3322676295501878e-15,
+                -1.5543122344752192e-15,
+                -1.1102230246251565e-15
+            ],
+            "target_status_m_RGB": [
+                0.7352,
+                1.1873,
+                1.5157
+            ]
+        },
+        {
+            "amounts_CMY": [
+                0.6287716723768854,
+                0.47124590042227416,
+                0.6262010306849164
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.648368618833718,
+            "identifiable": true,
+            "log_exposure": -1.56,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                0.7466999999999984,
+                1.1992999999999976,
+                1.5298999999999994
+            ],
+            "residual_RGB": [
+                -1.6653345369377348e-15,
+                -2.4424906541753444e-15,
+                -6.661338147750939e-16
+            ],
+            "target_status_m_RGB": [
+                0.7467,
+                1.1993,
+                1.5299
+            ]
+        },
+        {
+            "amounts_CMY": [
+                0.644250993414471,
+                0.4820413730154311,
+                0.6409122901177292
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.6485070079801654,
+            "identifiable": true,
+            "log_exposure": -1.54,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                0.7581999999999983,
+                1.2112999999999978,
+                1.544199999999999
+            ],
+            "residual_RGB": [
+                -1.6653345369377348e-15,
+                -2.220446049250313e-15,
+                -1.1102230246251565e-15
+            ],
+            "target_status_m_RGB": [
+                0.7582,
+                1.2113,
+                1.5442
+            ]
+        },
+        {
+            "amounts_CMY": [
+                0.6597235008089313,
+                0.4929638547749171,
+                0.6556246009091531
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.6486304192227959,
+            "identifiable": true,
+            "log_exposure": -1.52,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                0.7696999999999982,
+                1.2233999999999974,
+                1.5584999999999993
+            ],
+            "residual_RGB": [
+                -1.887379141862766e-15,
+                -2.6645352591003757e-15,
+                -6.661338147750939e-16
+            ],
+            "target_status_m_RGB": [
+                0.7697,
+                1.2234,
+                1.5585
+            ]
+        },
+        {
+            "amounts_CMY": [
+                0.6751893660640116,
+                0.5039990377866916,
+                0.670449031118068
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.6487395162620746,
+            "identifiable": true,
+            "log_exposure": -1.5,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                0.7811999999999982,
+                1.2355999999999971,
+                1.572899999999999
+            ],
+            "residual_RGB": [
+                -1.7763568394002505e-15,
+                -2.886579864025407e-15,
+                -8.881784197001252e-16
+            ],
+            "target_status_m_RGB": [
+                0.7812,
+                1.2356,
+                1.5729
+            ]
+        },
+        {
+            "amounts_CMY": [
+                0.6908205305944778,
+                0.514901457837548,
+                0.6852701447209216
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.6488668118310386,
+            "identifiable": true,
+            "log_exposure": -1.48,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                0.792799999999998,
+                1.2476999999999971,
+                1.5872999999999995
+            ],
+            "residual_RGB": [
+                -1.9984014443252818e-15,
+                -2.886579864025407e-15,
+                -4.440892098500626e-16
+            ],
+            "target_status_m_RGB": [
+                0.7928,
+                1.2477,
+                1.5873
+            ]
+        },
+        {
+            "amounts_CMY": [
+                0.7063095946778808,
+                0.5258390514899436,
+                0.6999912736932447
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.6489775146278027,
+            "identifiable": true,
+            "log_exposure": -1.46,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                0.804299999999998,
+                1.2597999999999974,
+                1.6015999999999988
+            ],
+            "residual_RGB": [
+                -1.9984014443252818e-15,
+                -2.6645352591003757e-15,
+                -1.1102230246251565e-15
+            ],
+            "target_status_m_RGB": [
+                0.8043,
+                1.2598,
+                1.6016
+            ]
+        },
+        {
+            "amounts_CMY": [
+                0.7218165948627631,
+                0.5366591469650401,
+                0.714717288794912
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.6490950640268567,
+            "identifiable": true,
+            "log_exposure": -1.44,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                0.8157999999999981,
+                1.271799999999997,
+                1.6158999999999994
+            ],
+            "residual_RGB": [
+                -1.887379141862766e-15,
+                -3.1086244689504383e-15,
+                -4.440892098500626e-16
+            ],
+            "target_status_m_RGB": [
+                0.8158,
+                1.2718,
+                1.6159
+            ]
+        },
+        {
+            "amounts_CMY": [
+                0.7374395718898372,
+                0.54782197925365,
+                0.7295434523087986
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.6491873247860456,
+            "identifiable": true,
+            "log_exposure": -1.42,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                0.8273999999999981,
+                1.2840999999999967,
+                1.6302999999999994
+            ],
+            "residual_RGB": [
+                -1.887379141862766e-15,
+                -3.3306690738754696e-15,
+                -6.661338147750939e-16
+            ],
+            "target_status_m_RGB": [
+                0.8274,
+                1.2841,
+                1.6303
+            ]
+        },
+        {
+            "amounts_CMY": [
+                0.7530808077596333,
+                0.5588528068201507,
+                0.744485851870769
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.6492871479820013,
+            "identifiable": true,
+            "log_exposure": -1.4,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                0.8389999999999979,
+                1.2962999999999962,
+                1.6447999999999994
+            ],
+            "residual_RGB": [
+                -2.1094237467877974e-15,
+                -3.774758283725532e-15,
+                -6.661338147750939e-16
+            ],
+            "target_status_m_RGB": [
+                0.839,
+                1.2963,
+                1.6448
+            ]
+        },
+        {
+            "amounts_CMY": [
+                0.7687150931048446,
+                0.5700118077336226,
+                0.7594293399720463
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.6493712654259194,
+            "identifiable": true,
+            "log_exposure": -1.38,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                0.8505999999999977,
+                1.308599999999996,
+                1.6592999999999993
+            ],
+            "residual_RGB": [
+                -2.3314683517128287e-15,
+                -3.9968028886505635e-15,
+                -6.661338147750939e-16
+            ],
+            "target_status_m_RGB": [
+                0.8506,
+                1.3086,
+                1.6593
+            ]
+        },
+        {
+            "amounts_CMY": [
+                0.7842195881339903,
+                0.58106911328364,
+                0.7743861206133418
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.6494505100290362,
+            "identifiable": true,
+            "log_exposure": -1.36,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                0.8620999999999976,
+                1.3207999999999955,
+                1.6737999999999993
+            ],
+            "residual_RGB": [
+                -2.3314683517128287e-15,
+                -4.440892098500626e-15,
+                -6.661338147750939e-16
+            ],
+            "target_status_m_RGB": [
+                0.8621,
+                1.3208,
+                1.6738
+            ]
+        },
+        {
+            "amounts_CMY": [
+                0.7998648382553177,
+                0.5922391409860507,
+                0.7893357602055222
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.6495255186129647,
+            "identifiable": true,
+            "log_exposure": -1.34,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                0.873699999999997,
+                1.333099999999995,
+                1.6882999999999992
+            ],
+            "residual_RGB": [
+                -2.9976021664879227e-15,
+                -4.884981308350689e-15,
+                -6.661338147750939e-16
+            ],
+            "target_status_m_RGB": [
+                0.8737,
+                1.3331,
+                1.6883
+            ]
+        },
+        {
+            "amounts_CMY": [
+                0.8153801854994458,
+                0.6033074470818623,
+                0.804298755503338
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.6495956676396581,
+            "identifiable": true,
+            "log_exposure": -1.32,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                0.8851999999999974,
+                1.345299999999995,
+                1.702799999999999
+            ],
+            "residual_RGB": [
+                -2.55351295663786e-15,
+                -4.884981308350689e-15,
+                -1.1102230246251565e-15
+            ],
+            "target_status_m_RGB": [
+                0.8852,
+                1.3453,
+                1.7028
+            ]
+        },
+        {
+            "amounts_CMY": [
+                0.8309006759568913,
+                0.6143960172393469,
+                0.8191533930271602
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.6496604260022782,
+            "identifiable": true,
+            "log_exposure": -1.3,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                0.896699999999997,
+                1.3574999999999948,
+                1.7171999999999994
+            ],
+            "residual_RGB": [
+                -2.9976021664879227e-15,
+                -5.10702591327572e-15,
+                -6.661338147750939e-16
+            ],
+            "target_status_m_RGB": [
+                0.8967,
+                1.3575,
+                1.7172
+            ]
+        },
+        {
+            "amounts_CMY": [
+                0.8464267920314084,
+                0.6254754510086133,
+                0.8341226262201692
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.649721411174495,
+            "identifiable": true,
+            "log_exposure": -1.28,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                0.9081999999999968,
+                1.3696999999999948,
+                1.7316999999999994
+            ],
+            "residual_RGB": [
+                -3.219646771412954e-15,
+                -5.10702591327572e-15,
+                -6.661338147750939e-16
+            ],
+            "target_status_m_RGB": [
+                0.9082,
+                1.3697,
+                1.7317
+            ]
+        },
+        {
+            "amounts_CMY": [
+                0.8620940638432708,
+                0.63665325683557,
+                0.8491962443505737
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.6497787389083096,
+            "identifiable": true,
+            "log_exposure": -1.26,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                0.9197999999999966,
+                1.381999999999994,
+                1.746299999999999
+            ],
+            "residual_RGB": [
+                -3.3306690738754696e-15,
+                -5.995204332975845e-15,
+                -8.881784197001252e-16
+            ],
+            "target_status_m_RGB": [
+                0.9198,
+                1.382,
+                1.7463
+            ]
+        },
+        {
+            "amounts_CMY": [
+                0.877605652704043,
+                0.6479911773261358,
+                0.864167586765625
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.6498070537294423,
+            "identifiable": true,
+            "log_exposure": -1.24,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                0.9312999999999972,
+                1.394399999999994,
+                1.7607999999999997
+            ],
+            "residual_RGB": [
+                -2.7755575615628914e-15,
+                -5.995204332975845e-15,
+                -2.220446049250313e-16
+            ],
+            "target_status_m_RGB": [
+                0.9313,
+                1.3944,
+                1.7608
+            ]
+        },
+        {
+            "amounts_CMY": [
+                0.8931481110796807,
+                0.6590730885911766,
+                0.8792579483511747
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.6498547509645638,
+            "identifiable": true,
+            "log_exposure": -1.22,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                0.9427999999999966,
+                1.4065999999999936,
+                1.7753999999999994
+            ],
+            "residual_RGB": [
+                -3.3306690738754696e-15,
+                -6.439293542825908e-15,
+                -6.661338147750939e-16
+            ],
+            "target_status_m_RGB": [
+                0.9428,
+                1.4066,
+                1.7754
+            ]
+        },
+        {
+            "amounts_CMY": [
+                0.9086702723479864,
+                0.6704230774095825,
+                0.8942355858679818
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.6498733373491068,
+            "identifiable": true,
+            "log_exposure": -1.2,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                0.9542999999999967,
+                1.4189999999999932,
+                1.7898999999999994
+            ],
+            "residual_RGB": [
+                -3.3306690738754696e-15,
+                -6.8833827526759706e-15,
+                -6.661338147750939e-16
+            ],
+            "target_status_m_RGB": [
+                0.9543,
+                1.419,
+                1.7899
+            ]
+        },
+        {
+            "amounts_CMY": [
+                0.924210652287497,
+                0.681640602625256,
+                0.909330247243121
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.6498996218388635,
+            "identifiable": true,
+            "log_exposure": -1.18,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                0.9658000000000031,
+                1.431299999999994,
+                1.8045000000000015
+            ],
+            "residual_RGB": [
+                3.1086244689504383e-15,
+                -5.995204332975845e-15,
+                1.5543122344752192e-15
+            ],
+            "target_status_m_RGB": [
+                0.9658,
+                1.4313,
+                1.8045
+            ]
+        },
+        {
+            "amounts_CMY": [
+                0.9395950705012052,
+                0.6930043427216167,
+                0.9244342412800334
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.649897211634343,
+            "identifiable": true,
+            "log_exposure": -1.16,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                0.9772000000000031,
+                1.4436999999999942,
+                1.8191000000000013
+            ],
+            "residual_RGB": [
+                3.1086244689504383e-15,
+                -5.773159728050814e-15,
+                1.3322676295501878e-15
+            ],
+            "target_status_m_RGB": [
+                0.9772,
+                1.4437,
+                1.8191
+            ]
+        },
+        {
+            "amounts_CMY": [
+                0.9551454159251356,
+                0.7042637688665273,
+                0.9393117750961508
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.649912034848565,
+            "identifiable": true,
+            "log_exposure": -1.14,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                0.9887000000000027,
+                1.4559999999999942,
+                1.8335000000000015
+            ],
+            "residual_RGB": [
+                2.6645352591003757e-15,
+                -5.773159728050814e-15,
+                1.5543122344752192e-15
+            ],
+            "target_status_m_RGB": [
+                0.9887,
+                1.456,
+                1.8335
+            ]
+        },
+        {
+            "amounts_CMY": [
+                0.9708371375615333,
+                0.7156224607643661,
+                0.9542937763663903
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.6499226394584452,
+            "identifiable": true,
+            "log_exposure": -1.12,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                1.000300000000003,
+                1.468399999999995,
+                1.8480000000000012
+            ],
+            "residual_RGB": [
+                3.1086244689504383e-15,
+                -4.884981308350689e-15,
+                1.1102230246251565e-15
+            ],
+            "target_status_m_RGB": [
+                1.0003,
+                1.4684,
+                1.848
+            ]
+        },
+        {
+            "amounts_CMY": [
+                0.986385494698788,
+                0.7270038062107864,
+                0.9692872118700557
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.6499162458352408,
+            "identifiable": true,
+            "log_exposure": -1.1,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                1.011800000000002,
+                1.4807999999999948,
+                1.862500000000001
+            ],
+            "residual_RGB": [
+                1.9984014443252818e-15,
+                -5.10702591327572e-15,
+                8.881784197001252e-16
+            ],
+            "target_status_m_RGB": [
+                1.0118,
+                1.4808,
+                1.8625
+            ]
+        },
+        {
+            "amounts_CMY": [
+                1.00195162205014,
+                0.7382820563603858,
+                0.9841741421210278
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.6499161238776503,
+            "identifiable": true,
+            "log_exposure": -1.08,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                1.0233000000000019,
+                1.4930999999999959,
+                1.8769000000000007
+            ],
+            "residual_RGB": [
+                1.7763568394002505e-15,
+                -4.218847493575595e-15,
+                6.661338147750939e-16
+            ],
+            "target_status_m_RGB": [
+                1.0233,
+                1.4931,
+                1.8769
+            ]
+        },
+        {
+            "amounts_CMY": [
+                1.0175101347593782,
+                0.7496911574307492,
+                0.9990619348175891
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.6498987768070483,
+            "identifiable": true,
+            "log_exposure": -1.06,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                1.034800000000002,
+                1.5054999999999958,
+                1.8913000000000009
+            ],
+            "residual_RGB": [
+                1.9984014443252818e-15,
+                -4.218847493575595e-15,
+                8.881784197001252e-16
+            ],
+            "target_status_m_RGB": [
+                1.0348,
+                1.5055,
+                1.8913
+            ]
+        },
+        {
+            "amounts_CMY": [
+                1.032925169911299,
+                0.7611084420256703,
+                1.014073147174211
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.6498650045383656,
+            "identifiable": true,
+            "log_exposure": -1.04,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                1.0462000000000018,
+                1.5178999999999965,
+                1.9058000000000006
+            ],
+            "residual_RGB": [
+                1.7763568394002505e-15,
+                -3.552713678800501e-15,
+                6.661338147750939e-16
+            ],
+            "target_status_m_RGB": [
+                1.0462,
+                1.5179,
+                1.9058
+            ]
+        },
+        {
+            "amounts_CMY": [
+                1.0484939620946852,
+                0.7725308212758091,
+                1.0289672148227937
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.649837293828649,
+            "identifiable": true,
+            "log_exposure": -1.02,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                1.0577000000000016,
+                1.5302999999999967,
+                1.9202000000000004
+            ],
+            "residual_RGB": [
+                1.5543122344752192e-15,
+                -3.3306690738754696e-15,
+                4.440892098500626e-16
+            ],
+            "target_status_m_RGB": [
+                1.0577,
+                1.5303,
+                1.9202
+            ]
+        },
+        {
+            "amounts_CMY": [
+                1.0640937368516579,
+                0.7837101868935819,
+                1.043869071720303
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.649829194188985,
+            "identifiable": true,
+            "log_exposure": -1,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                1.0691999999999957,
+                1.5424999999999869,
+                1.9346
+            ],
+            "residual_RGB": [
+                -4.218847493575595e-15,
+                -1.3100631690576847e-14,
+                0
+            ],
+            "target_status_m_RGB": [
+                1.0692,
+                1.5425,
+                1.9346
+            ]
+        },
+        {
+            "amounts_CMY": [
+                1.079536178556387,
+                0.7950672606960747,
+                1.0585558150681167
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.6497899650071615,
+            "identifiable": true,
+            "log_exposure": -0.98,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                1.0805999999999967,
+                1.5547999999999862,
+                1.9488000000000005
+            ],
+            "residual_RGB": [
+                -3.3306690738754696e-15,
+                -1.3766765505351941e-14,
+                4.440892098500626e-16
+            ],
+            "target_status_m_RGB": [
+                1.0806,
+                1.5548,
+                1.9488
+            ]
+        },
+        {
+            "amounts_CMY": [
+                1.0948344818204754,
+                0.8064477133515886,
+                1.0732538957716768
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.6497333996622565,
+            "identifiable": true,
+            "log_exposure": -0.96,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                1.0918999999999959,
+                1.5670999999999855,
+                1.9630000000000007
+            ],
+            "residual_RGB": [
+                -4.218847493575595e-15,
+                -1.4432899320127035e-14,
+                6.661338147750939e-16
+            ],
+            "target_status_m_RGB": [
+                1.0919,
+                1.5671,
+                1.963
+            ]
+        },
+        {
+            "amounts_CMY": [
+                1.110274214043662,
+                0.8179285984389062,
+                1.088056544107255
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.6496719236422375,
+            "identifiable": true,
+            "log_exposure": -0.94,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                1.1032999999999962,
+                1.5794999999999848,
+                1.9773000000000005
+            ],
+            "residual_RGB": [
+                -3.774758283725532e-15,
+                -1.509903313490213e-14,
+                4.440892098500626e-16
+            ],
+            "target_status_m_RGB": [
+                1.1033,
+                1.5795,
+                1.9773
+            ]
+        },
+        {
+            "amounts_CMY": [
+                1.1255823497434492,
+                0.8293229102996477,
+                1.1027607408396123
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.6496047714317152,
+            "identifiable": true,
+            "log_exposure": -0.92,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                1.1145999999999958,
+                1.5917999999999841,
+                1.9915000000000005
+            ],
+            "residual_RGB": [
+                -4.218847493575595e-15,
+                -1.5987211554602254e-14,
+                4.440892098500626e-16
+            ],
+            "target_status_m_RGB": [
+                1.1146,
+                1.5918,
+                1.9915
+            ]
+        },
+        {
+            "amounts_CMY": [
+                1.140908649832496,
+                0.8405838216354938,
+                1.1175827266145653
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.6495457861918636,
+            "identifiable": true,
+            "log_exposure": -0.9,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                1.125899999999996,
+                1.6039999999999832,
+                2.005800000000001
+            ],
+            "residual_RGB": [
+                -3.9968028886505635e-15,
+                -1.687538997430238e-14,
+                1.3322676295501878e-15
+            ],
+            "target_status_m_RGB": [
+                1.1259,
+                1.604,
+                2.0058
+            ]
+        },
+        {
+            "amounts_CMY": [
+                1.1562265536866836,
+                0.8519920328313122,
+                1.1322931141951165
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.649468036329207,
+            "identifiable": true,
+            "log_exposure": -0.88,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                1.1371999999999964,
+                1.6162999999999819,
+                2.0200000000000014
+            ],
+            "residual_RGB": [
+                -3.552713678800501e-15,
+                -1.8207657603852567e-14,
+                1.3322676295501878e-15
+            ],
+            "target_status_m_RGB": [
+                1.1372,
+                1.6163,
+                2.02
+            ]
+        },
+        {
+            "amounts_CMY": [
+                1.1715621176667468,
+                0.8632966675640953,
+                1.1468966532731029
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.6493970240798648,
+            "identifiable": true,
+            "log_exposure": -0.86,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                1.1484999999999963,
+                1.628499999999981,
+                2.034100000000001
+            ],
+            "residual_RGB": [
+                -3.774758283725532e-15,
+                -1.9095836023552692e-14,
+                8.881784197001252e-16
+            ],
+            "target_status_m_RGB": [
+                1.1485,
+                1.6285,
+                2.0341
+            ]
+        },
+        {
+            "amounts_CMY": [
+                1.1869028362648955,
+                0.8745932501851383,
+                1.161615662426925
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.6493214942006358,
+            "identifiable": true,
+            "log_exposure": -0.84,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                1.1597999999999962,
+                1.6406999999999794,
+                2.048300000000001
+            ],
+            "residual_RGB": [
+                -3.774758283725532e-15,
+                -2.0650148258027912e-14,
+                1.3322676295501878e-15
+            ],
+            "target_status_m_RGB": [
+                1.1598,
+                1.6407,
+                2.0483
+            ]
+        },
+        {
+            "amounts_CMY": [
+                1.2020985221238627,
+                0.8859288120320244,
+                1.1762336715684778
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.6492275781338583,
+            "identifiable": true,
+            "log_exposure": -0.82,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                1.170999999999996,
+                1.6528999999999785,
+                2.062400000000001
+            ],
+            "residual_RGB": [
+                -3.9968028886505635e-15,
+                -2.1538326677728037e-14,
+                1.3322676295501878e-15
+            ],
+            "target_status_m_RGB": [
+                1.171,
+                1.6529,
+                2.0624
+            ]
+        },
+        {
+            "amounts_CMY": [
+                1.217298943162005,
+                0.8972715288423765,
+                1.1908547460579268
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.6491282910859477,
+            "identifiable": true,
+            "log_exposure": -0.8,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                1.1821999999999966,
+                1.6650999999999778,
+                2.076500000000002
+            ],
+            "residual_RGB": [
+                -3.3306690738754696e-15,
+                -2.220446049250313e-14,
+                2.220446049250313e-15
+            ],
+            "target_status_m_RGB": [
+                1.1822,
+                1.6651,
+                2.0765
+            ]
+        },
+        {
+            "amounts_CMY": [
+                1.2326538665672182,
+                0.9086043602317067,
+                1.2054705472975764
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.6490360128243613,
+            "identifiable": true,
+            "log_exposure": -0.78,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                1.1934999999999967,
+                1.6772999999999763,
+                2.090600000000002
+            ],
+            "residual_RGB": [
+                -3.3306690738754696e-15,
+                -2.375877272697835e-14,
+                2.220446049250313e-15
+            ],
+            "target_status_m_RGB": [
+                1.1935,
+                1.6773,
+                2.0906
+            ]
+        },
+        {
+            "amounts_CMY": [
+                1.2478635220146532,
+                0.9199765514225137,
+                1.2199851762570757
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.6489252027446093,
+            "identifiable": true,
+            "log_exposure": -0.76,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                1.2046999999999972,
+                1.689499999999975,
+                2.104600000000003
+            ],
+            "residual_RGB": [
+                -2.886579864025407e-15,
+                -2.5091040356528538e-14,
+                3.1086244689504383e-15
+            ],
+            "target_status_m_RGB": [
+                1.2047,
+                1.6895,
+                2.1046
+            ]
+        },
+        {
+            "amounts_CMY": [
+                1.2632412640233024,
+                0.9311974677270543,
+                1.2346096701457698
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.6488353837518677,
+            "identifiable": true,
+            "log_exposure": -0.74,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                1.2159999999999973,
+                1.7015999999999731,
+                2.118700000000003
+            ],
+            "residual_RGB": [
+                -2.6645352591003757e-15,
+                -2.6867397195928788e-14,
+                3.1086244689504383e-15
+            ],
+            "target_status_m_RGB": [
+                1.216,
+                1.7016,
+                2.1187
+            ]
+        },
+        {
+            "amounts_CMY": [
+                1.278460399582048,
+                0.9425842344232213,
+                1.2491303739952173
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.6487137494479918,
+            "identifiable": true,
+            "log_exposure": -0.72,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                1.2271999999999976,
+                1.713799999999972,
+                2.1327000000000034
+            ],
+            "residual_RGB": [
+                -2.4424906541753444e-15,
+                -2.7977620220553945e-14,
+                3.552713678800501e-15
+            ],
+            "target_status_m_RGB": [
+                1.2272,
+                1.7138,
+                2.1327
+            ]
+        },
+        {
+            "amounts_CMY": [
+                1.2938345285961748,
+                0.9539460863632873,
+                1.2637584570684057
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.648599854217435,
+            "identifiable": true,
+            "log_exposure": -0.7,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                1.2384999999999973,
+                1.7259999999999702,
+                2.146800000000003
+            ],
+            "residual_RGB": [
+                -2.6645352591003757e-15,
+                -2.9753977059954195e-14,
+                3.1086244689504383e-15
+            ],
+            "target_status_m_RGB": [
+                1.2385,
+                1.726,
+                2.1468
+            ]
+        },
+        {
+            "amounts_CMY": [
+                1.3090766244912586,
+                0.9652059550029967,
+                1.278400646826774
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.6484813809323848,
+            "identifiable": true,
+            "log_exposure": -0.68,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                1.2496999999999976,
+                1.738099999999969,
+                2.1609000000000034
+            ],
+            "residual_RGB": [
+                -2.4424906541753444e-15,
+                -3.108624468950438e-14,
+                3.552713678800501e-15
+            ],
+            "target_status_m_RGB": [
+                1.2497,
+                1.7381,
+                2.1609
+            ]
+        },
+        {
+            "amounts_CMY": [
+                1.324473053398694,
+                0.9764859372074354,
+                1.2928120119592923
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.6483686472701455,
+            "identifiable": true,
+            "log_exposure": -0.66,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                1.2609999999999977,
+                1.7501999999999671,
+                2.174800000000004
+            ],
+            "residual_RGB": [
+                -2.220446049250313e-15,
+                -3.2862601528904634e-14,
+                3.9968028886505635e-15
+            ],
+            "target_status_m_RGB": [
+                1.261,
+                1.7502,
+                2.1748
+            ]
+        },
+        {
+            "amounts_CMY": [
+                1.339874304870407,
+                0.987773235270979,
+                1.307226366869353
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.6482505373362308,
+            "identifiable": true,
+            "log_exposure": -0.64,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                1.2722999999999982,
+                1.7622999999999651,
+                2.1887000000000043
+            ],
+            "residual_RGB": [
+                -1.7763568394002505e-15,
+                -3.4861002973229915e-14,
+                4.440892098500626e-15
+            ],
+            "target_status_m_RGB": [
+                1.2723,
+                1.7623,
+                2.1887
+            ]
+        },
+        {
+            "amounts_CMY": [
+                1.3551436794250034,
+                0.9989431850197441,
+                1.3217676841413084
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.648128734319758,
+            "identifiable": true,
+            "log_exposure": -0.62,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                1.283499999999998,
+                1.7742999999999638,
+                2.2027000000000045
+            ],
+            "residual_RGB": [
+                -1.9984014443252818e-15,
+                -3.6193270602780103e-14,
+                4.440892098500626e-15
+            ],
+            "target_status_m_RGB": [
+                1.2835,
+                1.7743,
+                2.2027
+            ]
+        },
+        {
+            "amounts_CMY": [
+                1.370718798270431,
+                1.010070127378084,
+                1.33640831026353
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.6480275984502266,
+            "identifiable": true,
+            "log_exposure": -0.6,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                1.2948999999999984,
+                1.786299999999962,
+                2.216800000000005
+            ],
+            "residual_RGB": [
+                -1.5543122344752192e-15,
+                -3.7969627442180354e-14,
+                4.884981308350689e-15
+            ],
+            "target_status_m_RGB": [
+                1.2949,
+                1.7863,
+                2.2168
+            ]
+        },
+        {
+            "amounts_CMY": [
+                1.386135055276675,
+                1.0213491289695944,
+                1.3510578010854633
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.6478947102492396,
+            "identifiable": true,
+            "log_exposure": -0.58,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                1.306199999999999,
+                1.7983999999999598,
+                2.2309000000000063
+            ],
+            "residual_RGB": [
+                -1.1102230246251565e-15,
+                -4.0190073491430667e-14,
+                6.217248937900877e-15
+            ],
+            "target_status_m_RGB": [
+                1.3062,
+                1.7984,
+                2.2309
+            ]
+        },
+        {
+            "amounts_CMY": [
+                1.4015692321884803,
+                1.0325233094581752,
+                1.3656002199365473
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.6477694913730185,
+            "identifiable": true,
+            "log_exposure": -0.56,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                1.3174999999999988,
+                1.8103999999999578,
+                2.2449000000000057
+            ],
+            "residual_RGB": [
+                -1.1102230246251565e-15,
+                -4.218847493575595e-14,
+                5.773159728050814e-15
+            ],
+            "target_status_m_RGB": [
+                1.3175,
+                1.8104,
+                2.2449
+            ]
+        },
+        {
+            "amounts_CMY": [
+                1.4170082252421274,
+                1.0437048177127406,
+                1.3801457924136529
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.6476388979435828,
+            "identifiable": true,
+            "log_exposure": -0.54,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                1.328799999999999,
+                1.822399999999956,
+                2.258900000000007
+            ],
+            "residual_RGB": [
+                -8.881784197001252e-16,
+                -4.39648317751562e-14,
+                6.661338147750939e-15
+            ],
+            "target_status_m_RGB": [
+                1.3288,
+                1.8224,
+                2.2589
+            ]
+        },
+        {
+            "amounts_CMY": [
+                1.4324520232556963,
+                1.054893710903207,
+                1.3946945262387747
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.647502905795132,
+            "identifiable": true,
+            "log_exposure": -0.52,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                1.3400999999999978,
+                1.834400000000002,
+                2.272899999999998
+            ],
+            "residual_RGB": [
+                -2.220446049250313e-15,
+                1.9984014443252818e-15,
+                -1.7763568394002505e-15
+            ],
+            "target_status_m_RGB": [
+                1.3401,
+                1.8344,
+                2.2729
+            ]
+        },
+        {
+            "amounts_CMY": [
+                1.4479003343493415,
+                1.0661052436313325,
+                1.4091332760417508
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.6473608197418905,
+            "identifiable": true,
+            "log_exposure": -0.5,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                1.3513999999999975,
+                1.8464000000000014,
+                2.2867999999999977
+            ],
+            "residual_RGB": [
+                -2.4424906541753444e-15,
+                1.3322676295501878e-15,
+                -2.220446049250313e-15
+            ],
+            "target_status_m_RGB": [
+                1.3514,
+                1.8464,
+                2.2868
+            ]
+        },
+        {
+            "amounts_CMY": [
+                1.463367220112677,
+                1.0771811021909845,
+                1.4236911550803222
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.6472280819917238,
+            "identifiable": true,
+            "log_exposure": -0.48,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                1.362699999999998,
+                1.858300000000002,
+                2.300799999999997
+            ],
+            "residual_RGB": [
+                -1.9984014443252818e-15,
+                1.9984014443252818e-15,
+                -3.1086244689504383e-15
+            ],
+            "target_status_m_RGB": [
+                1.3627,
+                1.8583,
+                2.3008
+            ]
+        },
+        {
+            "amounts_CMY": [
+                1.4786745443323266,
+                1.0884103296688747,
+                1.4382578043404282
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.6470629475906182,
+            "identifiable": true,
+            "log_exposure": -0.46,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                1.3738999999999977,
+                1.8703000000000023,
+                2.3147999999999977
+            ],
+            "residual_RGB": [
+                -2.220446049250313e-15,
+                2.220446049250313e-15,
+                -2.220446049250313e-15
+            ],
+            "target_status_m_RGB": [
+                1.3739,
+                1.8703,
+                2.3148
+            ]
+        },
+        {
+            "amounts_CMY": [
+                1.4943018777610877,
+                1.0994830279357148,
+                1.4528137159450545
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.6469323252824963,
+            "identifiable": true,
+            "log_exposure": -0.44,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                1.3852999999999978,
+                1.8822000000000028,
+                2.3287999999999967
+            ],
+            "residual_RGB": [
+                -2.220446049250313e-15,
+                2.6645352591003757e-15,
+                -3.552713678800501e-15
+            ],
+            "target_status_m_RGB": [
+                1.3853,
+                1.8822,
+                2.3288
+            ]
+        },
+        {
+            "amounts_CMY": [
+                1.5097695783517113,
+                1.1107094691314547,
+                1.4673783698843277
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.6467691227188785,
+            "identifiable": true,
+            "log_exposure": -0.42,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                1.3965999999999976,
+                1.8942000000000025,
+                2.3427999999999973
+            ],
+            "residual_RGB": [
+                -2.4424906541753444e-15,
+                2.4424906541753444e-15,
+                -2.6645352591003757e-15
+            ],
+            "target_status_m_RGB": [
+                1.3966,
+                1.8942,
+                2.3428
+            ]
+        },
+        {
+            "amounts_CMY": [
+                1.5251045802440097,
+                1.1218332562755489,
+                1.4819575805968164
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.6466018058176646,
+            "identifiable": true,
+            "log_exposure": -0.4,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                1.407799999999997,
+                1.9061000000000023,
+                2.3567999999999967
+            ],
+            "residual_RGB": [
+                -2.886579864025407e-15,
+                2.4424906541753444e-15,
+                -3.1086244689504383e-15
+            ],
+            "target_status_m_RGB": [
+                1.4078,
+                1.9061,
+                2.3568
+            ]
+        },
+        {
+            "amounts_CMY": [
+                1.5405953344503873,
+                1.132946514160844,
+                1.4965316344199258
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.6464419983112288,
+            "identifiable": true,
+            "log_exposure": -0.38,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                1.4190999999999971,
+                1.9180000000000021,
+                2.370799999999997
+            ],
+            "residual_RGB": [
+                -2.886579864025407e-15,
+                2.220446049250313e-15,
+                -3.1086244689504383e-15
+            ],
+            "target_status_m_RGB": [
+                1.4191,
+                1.918,
+                2.3708
+            ]
+        },
+        {
+            "amounts_CMY": [
+                1.556242317183183,
+                1.1440338526504958,
+                1.5112139944500065
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.6462904063114805,
+            "identifiable": true,
+            "log_exposure": -0.36,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                1.430499999999997,
+                1.9299000000000026,
+                2.3848999999999965
+            ],
+            "residual_RGB": [
+                -3.1086244689504383e-15,
+                2.6645352591003757e-15,
+                -3.552713678800501e-15
+            ],
+            "target_status_m_RGB": [
+                1.4305,
+                1.9299,
+                2.3849
+            ]
+        },
+        {
+            "amounts_CMY": [
+                1.571439873212344,
+                1.1552141544242274,
+                1.5256979786431615
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.6460929527481307,
+            "identifiable": true,
+            "log_exposure": -0.34,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                1.4415999999999967,
+                1.941800000000003,
+                2.398799999999997
+            ],
+            "residual_RGB": [
+                -3.3306690738754696e-15,
+                3.1086244689504383e-15,
+                -3.1086244689504383e-15
+            ],
+            "target_status_m_RGB": [
+                1.4416,
+                1.9418,
+                2.3988
+            ]
+        },
+        {
+            "amounts_CMY": [
+                1.5871098353876465,
+                1.1662030334175084,
+                1.5402764458481206
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.6459444597126935,
+            "identifiable": true,
+            "log_exposure": -0.32,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                1.4529999999999963,
+                1.9536000000000033,
+                2.412799999999996
+            ],
+            "residual_RGB": [
+                -3.774758283725532e-15,
+                3.3306690738754696e-15,
+                -3.9968028886505635e-15
+            ],
+            "target_status_m_RGB": [
+                1.453,
+                1.9536,
+                2.4128
+            ]
+        },
+        {
+            "amounts_CMY": [
+                1.6026195954998599,
+                1.17734687646074,
+                1.5548636341817577
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.645762789087674,
+            "identifiable": true,
+            "log_exposure": -0.3,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                1.4642999999999964,
+                1.9655000000000034,
+                2.4267999999999965
+            ],
+            "residual_RGB": [
+                -3.552713678800501e-15,
+                3.3306690738754696e-15,
+                -3.552713678800501e-15
+            ],
+            "target_status_m_RGB": [
+                1.4643,
+                1.9655,
+                2.4268
+            ]
+        },
+        {
+            "amounts_CMY": [
+                1.618134071695161,
+                1.1884985480242496,
+                1.5694541196637681
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.6455755793148148,
+            "identifiable": true,
+            "log_exposure": -0.28,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                1.475599999999996,
+                1.9774000000000032,
+                2.440799999999996
+            ],
+            "residual_RGB": [
+                -3.9968028886505635e-15,
+                3.1086244689504383e-15,
+                -3.9968028886505635e-15
+            ],
+            "target_status_m_RGB": [
+                1.4756,
+                1.9774,
+                2.4408
+            ]
+        },
+        {
+            "amounts_CMY": [
+                1.6336394676573274,
+                1.1997875539963638,
+                1.5840448199454813
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.6453679259174248,
+            "identifiable": true,
+            "log_exposure": -0.26,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                1.4868999999999963,
+                1.9894000000000034,
+                2.4547999999999965
+            ],
+            "residual_RGB": [
+                -3.774758283725532e-15,
+                3.3306690738754696e-15,
+                -3.552713678800501e-15
+            ],
+            "target_status_m_RGB": [
+                1.4869,
+                1.9894,
+                2.4548
+            ]
+        },
+        {
+            "amounts_CMY": [
+                1.6491633149513198,
+                1.2109552030300759,
+                1.5986418989579845
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.645169500216422,
+            "identifiable": true,
+            "log_exposure": -0.24,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                1.4981999999999955,
+                2.001300000000003,
+                2.468799999999996
+            ],
+            "residual_RGB": [
+                -4.440892098500626e-15,
+                3.1086244689504383e-15,
+                -3.9968028886505635e-15
+            ],
+            "target_status_m_RGB": [
+                1.4982,
+                2.0013,
+                2.4688
+            ]
+        },
+        {
+            "amounts_CMY": [
+                1.6648434920706432,
+                1.2221122163000722,
+                1.6132338469851095
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.644978718249286,
+            "identifiable": true,
+            "log_exposure": -0.22,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                1.5095999999999952,
+                2.0132000000000034,
+                2.4827999999999957
+            ],
+            "residual_RGB": [
+                -4.884981308350689e-15,
+                3.552713678800501e-15,
+                -4.440892098500626e-15
+            ],
+            "target_status_m_RGB": [
+                1.5096,
+                2.0132,
+                2.4828
+            ]
+        },
+        {
+            "amounts_CMY": [
+                1.6803903229078907,
+                1.2331814005410329,
+                1.6277268953765518
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.6447835928759207,
+            "identifiable": true,
+            "log_exposure": -0.2,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                1.5208999999999955,
+                2.0250000000000035,
+                2.4966999999999953
+            ],
+            "residual_RGB": [
+                -4.440892098500626e-15,
+                3.552713678800501e-15,
+                -4.884981308350689e-15
+            ],
+            "target_status_m_RGB": [
+                1.5209,
+                2.025,
+                2.4967
+            ]
+        },
+        {
+            "amounts_CMY": [
+                1.695776188374623,
+                1.2444072362822676,
+                1.6422285055773973
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.6445544915152397,
+            "identifiable": true,
+            "log_exposure": -0.18,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                1.532099999999995,
+                2.036900000000004,
+                2.5105999999999953
+            ],
+            "residual_RGB": [
+                -5.10702591327572e-15,
+                3.9968028886505635e-15,
+                -4.884981308350689e-15
+            ],
+            "target_status_m_RGB": [
+                1.5321,
+                2.0369,
+                2.5106
+            ]
+        },
+        {
+            "amounts_CMY": [
+                1.7110425365610487,
+                1.2553999693013163,
+                1.6567482453683282
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.6443367964722122,
+            "identifiable": true,
+            "log_exposure": -0.16,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                1.5431999999999952,
+                2.048600000000004,
+                2.5244999999999953
+            ],
+            "residual_RGB": [
+                -4.6629367034256575e-15,
+                3.9968028886505635e-15,
+                -4.884981308350689e-15
+            ],
+            "target_status_m_RGB": [
+                1.5432,
+                2.0486,
+                2.5245
+            ]
+        },
+        {
+            "amounts_CMY": [
+                1.7266032464823409,
+                1.2664931645036883,
+                1.6712511902120526
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.644125024920701,
+            "identifiable": true,
+            "log_exposure": -0.14,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                1.5544999999999947,
+                2.060400000000004,
+                2.538399999999995
+            ],
+            "residual_RGB": [
+                -5.329070518200751e-15,
+                3.9968028886505635e-15,
+                -5.329070518200751e-15
+            ],
+            "target_status_m_RGB": [
+                1.5545,
+                2.0604,
+                2.5384
+            ]
+        },
+        {
+            "amounts_CMY": [
+                1.7421549581883962,
+                1.277709435112937,
+                1.6858682096119384
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.6438928849111092,
+            "identifiable": true,
+            "log_exposure": -0.12,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                1.5657999999999948,
+                2.0723000000000034,
+                2.5523999999999947
+            ],
+            "residual_RGB": [
+                -5.329070518200751e-15,
+                3.552713678800501e-15,
+                -5.329070518200751e-15
+            ],
+            "target_status_m_RGB": [
+                1.5658,
+                2.0723,
+                2.5524
+            ]
+        },
+        {
+            "amounts_CMY": [
+                1.7575729181051303,
+                1.288837974471881,
+                1.7003862738766424
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.6436564549632793,
+            "identifiable": true,
+            "log_exposure": -0.1,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                1.5769999999999944,
+                2.084100000000004,
+                2.5662999999999947
+            ],
+            "residual_RGB": [
+                -5.551115123125783e-15,
+                3.9968028886505635e-15,
+                -5.329070518200751e-15
+            ],
+            "target_status_m_RGB": [
+                1.577,
+                2.0841,
+                2.5663
+            ]
+        },
+        {
+            "amounts_CMY": [
+                1.773161226299312,
+                1.299840472763889,
+                1.7147883847907683
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.6434428045797367,
+            "identifiable": true,
+            "log_exposure": -0.08,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                1.5882999999999938,
+                2.0958000000000045,
+                2.5800999999999945
+            ],
+            "residual_RGB": [
+                -6.217248937900877e-15,
+                4.440892098500626e-15,
+                -5.329070518200751e-15
+            ],
+            "target_status_m_RGB": [
+                1.5883,
+                2.0958,
+                2.5801
+            ]
+        },
+        {
+            "amounts_CMY": [
+                1.7886020320108809,
+                1.3108701064408887,
+                1.7292022571811736
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.6432101809525153,
+            "identifiable": true,
+            "log_exposure": -0.06,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                1.5994999999999937,
+                2.1075000000000044,
+                2.5938999999999943
+            ],
+            "residual_RGB": [
+                -6.217248937900877e-15,
+                4.440892098500626e-15,
+                -5.773159728050814e-15
+            ],
+            "target_status_m_RGB": [
+                1.5995,
+                2.1075,
+                2.5939
+            ]
+        },
+        {
+            "amounts_CMY": [
+                1.8041855594293112,
+                1.3220197035528845,
+                1.7436075955838166
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.6429698823398196,
+            "identifiable": true,
+            "log_exposure": -0.04,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                1.6107999999999933,
+                2.119300000000005,
+                2.6076999999999937
+            ],
+            "residual_RGB": [
+                -6.661338147750939e-15,
+                4.884981308350689e-15,
+                -6.217248937900877e-15
+            ],
+            "target_status_m_RGB": [
+                1.6108,
+                2.1193,
+                2.6077
+            ]
+        },
+        {
+            "amounts_CMY": [
+                1.8194831482537086,
+                1.33308510904697,
+                1.758036525819518
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.642712527443977,
+            "identifiable": true,
+            "log_exposure": -0.02,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                1.6218999999999932,
+                2.1310000000000042,
+                2.6214999999999935
+            ],
+            "residual_RGB": [
+                -6.661338147750939e-15,
+                4.440892098500626e-15,
+                -6.661338147750939e-15
+            ],
+            "target_status_m_RGB": [
+                1.6219,
+                2.131,
+                2.6215
+            ]
+        },
+        {
+            "amounts_CMY": [
+                1.834951624885443,
+                1.3440083182626044,
+                1.7724636909705789
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.642478943841949,
+            "identifiable": true,
+            "log_exposure": 0,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                1.633099999999993,
+                2.1426000000000047,
+                2.6352999999999938
+            ],
+            "residual_RGB": [
+                -7.105427357601002e-15,
+                4.884981308350689e-15,
+                -6.217248937900877e-15
+            ],
+            "target_status_m_RGB": [
+                1.6331,
+                2.1426,
+                2.6353
+            ]
+        },
+        {
+            "amounts_CMY": [
+                1.8504105070318126,
+                1.355071035248122,
+                1.786890796623246
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.6422240120936302,
+            "identifiable": true,
+            "log_exposure": 0.02,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                1.644299999999993,
+                2.1543000000000054,
+                2.649099999999993
+            ],
+            "residual_RGB": [
+                -7.105427357601002e-15,
+                5.329070518200751e-15,
+                -6.661338147750939e-15
+            ],
+            "target_status_m_RGB": [
+                1.6443,
+                2.1543,
+                2.6491
+            ]
+        },
+        {
+            "amounts_CMY": [
+                1.8658735749079174,
+                1.3661576829246544,
+                1.8012068279928486
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.641962932338355,
+            "identifiable": true,
+            "log_exposure": 0.04,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                1.655499999999992,
+                2.166000000000005,
+                2.662799999999993
+            ],
+            "residual_RGB": [
+                -7.993605777301127e-15,
+                4.884981308350689e-15,
+                -6.661338147750939e-15
+            ],
+            "target_status_m_RGB": [
+                1.6555,
+                2.166,
+                2.6628
+            ]
+        },
+        {
+            "amounts_CMY": [
+                1.8814798065474911,
+                1.3773495306398578,
+                1.8156285694990855
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.6416944152301232,
+            "identifiable": true,
+            "log_exposure": 0.06,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                1.6667999999999918,
+                2.1778000000000053,
+                2.676599999999993
+            ],
+            "residual_RGB": [
+                -8.215650382226158e-15,
+                5.329070518200751e-15,
+                -7.105427357601002e-15
+            ],
+            "target_status_m_RGB": [
+                1.6668,
+                2.1778,
+                2.6766
+            ]
+        },
+        {
+            "amounts_CMY": [
+                1.8969663847348717,
+                1.3883059400315785,
+                1.8300690957912062
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.6414386276851478,
+            "identifiable": true,
+            "log_exposure": 0.08,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                1.677999999999992,
+                2.189400000000006,
+                2.6903999999999924
+            ],
+            "residual_RGB": [
+                -7.993605777301127e-15,
+                5.773159728050814e-15,
+                -7.549516567451064e-15
+            ],
+            "target_status_m_RGB": [
+                1.678,
+                2.1894,
+                2.6904
+            ]
+        },
+        {
+            "amounts_CMY": [
+                1.9124429065603774,
+                1.3994182404462392,
+                1.8443949448276422
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.6411606215426116,
+            "identifiable": true,
+            "log_exposure": 0.1,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                1.6891999999999916,
+                2.201100000000005,
+                2.704099999999993
+            ],
+            "residual_RGB": [
+                -8.43769498715119e-15,
+                5.329070518200751e-15,
+                -7.105427357601002e-15
+            ],
+            "target_status_m_RGB": [
+                1.6892,
+                2.2011,
+                2.7041
+            ]
+        },
+        {
+            "amounts_CMY": [
+                1.9277567918505552,
+                1.410691177887671,
+                1.8587289956787372
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.6417839810274268,
+            "identifiable": true,
+            "log_exposure": 0.12,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                1.700299999999991,
+                2.212900000000005,
+                2.7177999999999924
+            ],
+            "residual_RGB": [
+                -8.881784197001252e-15,
+                5.329070518200751e-15,
+                -7.549516567451064e-15
+            ],
+            "target_status_m_RGB": [
+                1.7003,
+                2.2129,
+                2.7178
+            ]
+        },
+        {
+            "amounts_CMY": [
+                1.9432420792559617,
+                1.4218211892192556,
+                1.8730613348531018
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.6428426958886462,
+            "identifiable": true,
+            "log_exposure": 0.14,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                1.711499999999991,
+                2.2246000000000055,
+                2.731499999999993
+            ],
+            "residual_RGB": [
+                -9.103828801926284e-15,
+                5.329070518200751e-15,
+                -7.105427357601002e-15
+            ],
+            "target_status_m_RGB": [
+                1.7115,
+                2.2246,
+                2.7315
+            ]
+        },
+        {
+            "amounts_CMY": [
+                1.9586069165112374,
+                1.4327460662576492,
+                1.8871832862377835
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.6438854298719763,
+            "identifiable": true,
+            "log_exposure": 0.16,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                1.7225999999999904,
+                2.2361000000000057,
+                2.744999999999992
+            ],
+            "residual_RGB": [
+                -9.547918011776346e-15,
+                5.773159728050814e-15,
+                -7.993605777301127e-15
+            ],
+            "target_status_m_RGB": [
+                1.7226,
+                2.2361,
+                2.745
+            ]
+        },
+        {
+            "amounts_CMY": [
+                1.9737950202705714,
+                1.4439335042317814,
+                1.901539140430357
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.6449621765004503,
+            "identifiable": true,
+            "log_exposure": 0.18,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                1.7335999999999907,
+                2.2478000000000056,
+                2.758699999999992
+            ],
+            "residual_RGB": [
+                -9.325873406851315e-15,
+                5.773159728050814e-15,
+                -7.993605777301127e-15
+            ],
+            "target_status_m_RGB": [
+                1.7336,
+                2.2478,
+                2.7587
+            ]
+        },
+        {
+            "amounts_CMY": [
+                1.9891399884916467,
+                1.455125779359276,
+                1.915774985225672
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.6460452843496634,
+            "identifiable": true,
+            "log_exposure": 0.2,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                1.7446999999999901,
+                2.259500000000006,
+                2.772299999999991
+            ],
+            "residual_RGB": [
+                -9.769962616701378e-15,
+                5.773159728050814e-15,
+                -8.881784197001252e-15
+            ],
+            "target_status_m_RGB": [
+                1.7447,
+                2.2595,
+                2.7723
+            ]
+        },
+        {
+            "amounts_CMY": [
+                2.0044888830241963,
+                1.466342869683349,
+                1.9298991900434654
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.6471377776313958,
+            "identifiable": true,
+            "log_exposure": 0.22,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                1.75579999999999,
+                2.2712000000000057,
+                2.7857999999999925
+            ],
+            "residual_RGB": [
+                -9.992007221626409e-15,
+                5.773159728050814e-15,
+                -7.549516567451064e-15
+            ],
+            "target_status_m_RGB": [
+                1.7558,
+                2.2712,
+                2.7858
+            ]
+        },
+        {
+            "amounts_CMY": [
+                2.0195500728313616,
+                1.4774764474570523,
+                1.9440472404521907
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.6482268252282362,
+            "identifiable": true,
+            "log_exposure": 0.24,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                1.76669999999999,
+                2.2828000000000053,
+                2.799299999999991
+            ],
+            "residual_RGB": [
+                -9.992007221626409e-15,
+                5.329070518200751e-15,
+                -9.325873406851315e-15
+            ],
+            "target_status_m_RGB": [
+                1.7667,
+                2.2828,
+                2.7993
+            ]
+        },
+        {
+            "amounts_CMY": [
+                2.03462974036341,
+                1.4884860777484346,
+                1.9582021919163322
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.6493061086533967,
+            "identifiable": true,
+            "log_exposure": 0.26,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                1.77759999999999,
+                2.294300000000005,
+                2.8127999999999913
+            ],
+            "residual_RGB": [
+                -9.992007221626409e-15,
+                5.329070518200751e-15,
+                -8.881784197001252e-15
+            ],
+            "target_status_m_RGB": [
+                1.7776,
+                2.2943,
+                2.8128
+            ]
+        },
+        {
+            "amounts_CMY": [
+                2.049559507947207,
+                1.499556366918605,
+                1.972138943012875
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.6504010231337733,
+            "identifiable": true,
+            "log_exposure": 0.28,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                1.7883999999999889,
+                2.3058000000000054,
+                2.8260999999999905
+            ],
+            "residual_RGB": [
+                -1.1102230246251565e-14,
+                5.329070518200751e-15,
+                -9.325873406851315e-15
+            ],
+            "target_status_m_RGB": [
+                1.7884,
+                2.3058,
+                2.8261
+            ]
+        },
+        {
+            "amounts_CMY": [
+                2.0643397893010933,
+                1.5106563730727125,
+                1.9860872611288525
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.6515054632383028,
+            "identifiable": true,
+            "log_exposure": 0.3,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                1.7990999999999882,
+                2.3173000000000052,
+                2.839399999999991
+            ],
+            "residual_RGB": [
+                -1.176836406102666e-14,
+                5.329070518200751e-15,
+                -8.881784197001252e-15
+            ],
+            "target_status_m_RGB": [
+                1.7991,
+                2.3173,
+                2.8394
+            ]
+        },
+        {
+            "amounts_CMY": [
+                2.078984940035163,
+                1.5216526112363598,
+                2.0000509707968033
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.652603228576046,
+            "identifiable": true,
+            "log_exposure": 0.32,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                1.8096999999999892,
+                2.3287000000000053,
+                2.852699999999991
+            ],
+            "residual_RGB": [
+                -1.0880185641326534e-14,
+                5.329070518200751e-15,
+                -8.881784197001252e-15
+            ],
+            "target_status_m_RGB": [
+                1.8097,
+                2.3287,
+                2.8527
+            ]
+        },
+        {
+            "amounts_CMY": [
+                2.09347962090686,
+                1.5327101545465298,
+                2.0137960915285484
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.6537169297540284,
+            "identifiable": true,
+            "log_exposure": 0.34,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                1.8201999999999885,
+                2.340100000000005,
+                2.8657999999999912
+            ],
+            "residual_RGB": [
+                -1.1546319456101628e-14,
+                4.884981308350689e-15,
+                -8.881784197001252e-15
+            ],
+            "target_status_m_RGB": [
+                1.8202,
+                2.3401,
+                2.8658
+            ]
+        },
+        {
+            "amounts_CMY": [
+                2.107698973204254,
+                1.543597421662241,
+                2.027223455777581
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.654820137213132,
+            "identifiable": true,
+            "log_exposure": 0.36,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                1.8304999999999882,
+                2.3513000000000055,
+                2.8785999999999903
+            ],
+            "residual_RGB": [
+                -1.176836406102666e-14,
+                5.329070518200751e-15,
+                -9.769962616701378e-15
+            ],
+            "target_status_m_RGB": [
+                1.8305,
+                2.3513,
+                2.8786
+            ]
+        },
+        {
+            "amounts_CMY": [
+                2.1217827077936655,
+                1.5543805716867365,
+                2.0406660121635656
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.6559163952411458,
+            "identifiable": true,
+            "log_exposure": 0.38,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                1.8406999999999885,
+                2.362400000000005,
+                2.8913999999999906
+            ],
+            "residual_RGB": [
+                -1.1546319456101628e-14,
+                4.884981308350689e-15,
+                -9.325873406851315e-15
+            ],
+            "target_status_m_RGB": [
+                1.8407,
+                2.3624,
+                2.8914
+            ]
+        },
+        {
+            "amounts_CMY": [
+                2.1357160381929625,
+                1.5651938307274453,
+                2.054119931107018
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.6570223098977594,
+            "identifiable": true,
+            "log_exposure": 0.4,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                1.8507999999999878,
+                2.3735000000000044,
+                2.9041999999999906
+            ],
+            "residual_RGB": [
+                -1.2212453270876722e-14,
+                4.440892098500626e-15,
+                -9.325873406851315e-15
+            ],
+            "target_status_m_RGB": [
+                1.8508,
+                2.3735,
+                2.9042
+            ]
+        },
+        {
+            "amounts_CMY": [
+                2.149512516913758,
+                1.5759500254068242,
+                2.0672432703511845
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.6581306741261332,
+            "identifiable": true,
+            "log_exposure": 0.42,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                1.8607999999999878,
+                2.3845000000000045,
+                2.91669999999999
+            ],
+            "residual_RGB": [
+                -1.2212453270876722e-14,
+                4.440892098500626e-15,
+                -1.021405182655144e-14
+            ],
+            "target_status_m_RGB": [
+                1.8608,
+                2.3845,
+                2.9167
+            ]
+        },
+        {
+            "amounts_CMY": [
+                2.1630332604878673,
+                1.5865194462396253,
+                2.0801635587738585
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.6592247953981782,
+            "identifiable": true,
+            "log_exposure": 0.44,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                1.8705999999999876,
+                2.395300000000004,
+                2.9289999999999896
+            ],
+            "residual_RGB": [
+                -1.2434497875801753e-14,
+                3.9968028886505635e-15,
+                -1.021405182655144e-14
+            ],
+            "target_status_m_RGB": [
+                1.8706,
+                2.3953,
+                2.929
+            ]
+        },
+        {
+            "amounts_CMY": [
+                2.1762491902217995,
+                1.5971400588415043,
+                2.0931034842564036
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.6603321068264818,
+            "identifiable": true,
+            "log_exposure": 0.46,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                1.8801999999999874,
+                2.4061000000000035,
+                2.9412999999999903
+            ],
+            "residual_RGB": [
+                -1.2656542480726785e-14,
+                3.552713678800501e-15,
+                -9.769962616701378e-15
+            ],
+            "target_status_m_RGB": [
+                1.8802,
+                2.4061,
+                2.9413
+            ]
+        },
+        {
+            "amounts_CMY": [
+                2.1894819455546957,
+                1.6076667151341244,
+                2.1058191256449286
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.6614349592984428,
+            "identifiable": true,
+            "log_exposure": 0.48,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                1.8897999999999873,
+                2.4168000000000025,
+                2.95339999999999
+            ],
+            "residual_RGB": [
+                -1.2656542480726785e-14,
+                2.6645352591003757e-15,
+                -9.769962616701378e-15
+            ],
+            "target_status_m_RGB": [
+                1.8898,
+                2.4168,
+                2.9534
+            ]
+        },
+        {
+            "amounts_CMY": [
+                2.2022992545373143,
+                1.6178918408710419,
+                2.118344018090786
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.6625095216719814,
+            "identifiable": true,
+            "log_exposure": 0.5,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                1.8990999999999874,
+                2.427200000000002,
+                2.96529999999999
+            ],
+            "residual_RGB": [
+                -1.2656542480726785e-14,
+                1.7763568394002505e-15,
+                -1.021405182655144e-14
+            ],
+            "target_status_m_RGB": [
+                1.8991,
+                2.4272,
+                2.9653
+            ]
+        },
+        {
+            "amounts_CMY": [
+                2.2149647302299615,
+                1.6281628856893113,
+                2.130764367245905
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.663596798023824,
+            "identifiable": true,
+            "log_exposure": 0.52,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                1.9082999999999875,
+                2.4376000000000015,
+                2.9770999999999894
+            ],
+            "residual_RGB": [
+                -1.2656542480726785e-14,
+                1.3322676295501878e-15,
+                -1.0658141036401503e-14
+            ],
+            "target_status_m_RGB": [
+                1.9083,
+                2.4376,
+                2.9771
+            ]
+        },
+        {
+            "amounts_CMY": [
+                2.227493055756939,
+                1.6383445845655675,
+                2.1430841383813757
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.6646795513016377,
+            "identifiable": true,
+            "log_exposure": 0.54,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                1.9173999999999871,
+                2.4479000000000015,
+                2.98879999999999
+            ],
+            "residual_RGB": [
+                -1.2878587085651816e-14,
+                1.3322676295501878e-15,
+                -9.769962616701378e-15
+            ],
+            "target_status_m_RGB": [
+                1.9174,
+                2.4479,
+                2.9888
+            ]
+        },
+        {
+            "amounts_CMY": [
+                2.2393109144164396,
+                1.6481779196367612,
+                2.154887438672558
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.6657327665664434,
+            "identifiable": true,
+            "log_exposure": 0.56,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                1.9259999999999875,
+                2.457800000000001,
+                2.9999999999999902
+            ],
+            "residual_RGB": [
+                -1.2434497875801753e-14,
+                8.881784197001252e-16,
+                -9.769962616701378e-15
+            ],
+            "target_status_m_RGB": [
+                1.926,
+                2.4578,
+                3
+            ]
+        },
+        {
+            "amounts_CMY": [
+                2.25113044298967,
+                1.658035744031724,
+                2.1665772032337154
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.6667948075198284,
+            "identifiable": true,
+            "log_exposure": 0.58,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                1.934599999999988,
+                2.4677000000000002,
+                3.0110999999999897
+            ],
+            "residual_RGB": [
+                -1.199040866595169e-14,
+                4.440892098500626e-16,
+                -1.021405182655144e-14
+            ],
+            "target_status_m_RGB": [
+                1.9346,
+                2.4677,
+                3.0111
+            ]
+        },
+        {
+            "amounts_CMY": [
+                2.2623937398897533,
+                1.667491339055331,
+                2.177972807742661
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.6678165501613431,
+            "identifiable": true,
+            "log_exposure": 0.6,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                1.9427999999999888,
+                2.4771999999999985,
+                3.0218999999999903
+            ],
+            "residual_RGB": [
+                -1.1324274851176597e-14,
+                -1.3322676295501878e-15,
+                -9.769962616701378e-15
+            ],
+            "target_status_m_RGB": [
+                1.9428,
+                2.4772,
+                3.0219
+            ]
+        },
+        {
+            "amounts_CMY": [
+                2.273658478109347,
+                1.6769709252591976,
+                2.189254675692768
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.6688467776853364,
+            "identifiable": true,
+            "log_exposure": 0.62,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                1.950999999999988,
+                2.486699999999998,
+                3.032599999999991
+            ],
+            "residual_RGB": [
+                -1.199040866595169e-14,
+                -1.7763568394002505e-15,
+                -8.881784197001252e-15
+            ],
+            "target_status_m_RGB": [
+                1.951,
+                2.4867,
+                3.0326
+            ]
+        },
+        {
+            "amounts_CMY": [
+                2.284351574479872,
+                1.6861834902209676,
+                2.200238023029704
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.6698538031759795,
+            "identifiable": true,
+            "log_exposure": 0.64,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                1.9587999999999883,
+                2.4958999999999967,
+                3.0429999999999913
+            ],
+            "residual_RGB": [
+                -1.176836406102666e-14,
+                -3.1086244689504383e-15,
+                -8.881784197001252e-15
+            ],
+            "target_status_m_RGB": [
+                1.9588,
+                2.4959,
+                3.043
+            ]
+        },
+        {
+            "amounts_CMY": [
+                2.29507555005919,
+                1.6951626500614512,
+                2.2110000458764576
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.670836456960597,
+            "identifiable": true,
+            "log_exposure": 0.66,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                1.966599999999988,
+                2.504899999999996,
+                3.05319999999999
+            ],
+            "residual_RGB": [
+                -1.199040866595169e-14,
+                -3.9968028886505635e-15,
+                -9.769962616701378e-15
+            ],
+            "target_status_m_RGB": [
+                1.9666,
+                2.5049,
+                3.0532
+            ]
+        },
+        {
+            "amounts_CMY": [
+                2.305491909350943,
+                1.7042085491274366,
+                2.2216651203161186
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.6718350006308416,
+            "identifiable": true,
+            "log_exposure": 0.68,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                1.9741999999999882,
+                2.513899999999996,
+                3.063299999999991
+            ],
+            "residual_RGB": [
+                -1.176836406102666e-14,
+                -3.9968028886505635e-15,
+                -8.881784197001252e-15
+            ],
+            "target_status_m_RGB": [
+                1.9742,
+                2.5139,
+                3.0633
+            ]
+        },
+        {
+            "amounts_CMY": [
+                2.315505470316841,
+                1.71282787233106,
+                2.2320270323500164
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.6727875743248877,
+            "identifiable": true,
+            "log_exposure": 0.7,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                1.981499999999989,
+                2.5224999999999946,
+                3.073099999999991
+            ],
+            "residual_RGB": [
+                -1.1102230246251565e-14,
+                -5.329070518200751e-15,
+                -9.325873406851315e-15
+            ],
+            "target_status_m_RGB": [
+                1.9815,
+                2.5225,
+                3.0731
+            ]
+        },
+        {
+            "amounts_CMY": [
+                2.32550524973193,
+                1.7215912407830751,
+                2.2423863035356266
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.6737629075400324,
+            "identifiable": true,
+            "log_exposure": 0.72,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                1.9887999999999897,
+                2.531199999999993,
+                3.082899999999991
+            ],
+            "residual_RGB": [
+                -1.021405182655144e-14,
+                -7.105427357601002e-15,
+                -8.881784197001252e-15
+            ],
+            "target_status_m_RGB": [
+                1.9888,
+                2.5312,
+                3.0829
+            ]
+        },
+        {
+            "amounts_CMY": [
+                2.335381262609737,
+                1.7301414468716911,
+                2.2525324815262366
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.6747168602152498,
+            "identifiable": true,
+            "log_exposure": 0.74,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                1.9959999999999896,
+                2.539699999999992,
+                3.092499999999991
+            ],
+            "residual_RGB": [
+                -1.0436096431476471e-14,
+                -7.993605777301127e-15,
+                -8.881784197001252e-15
+            ],
+            "target_status_m_RGB": [
+                1.996,
+                2.5397,
+                3.0925
+            ]
+        },
+        {
+            "amounts_CMY": [
+                2.3448242753286346,
+                1.7385218757770724,
+                2.2624826189288596
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.675657219990922,
+            "identifiable": true,
+            "log_exposure": 0.76,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                2.0028999999999892,
+                2.547999999999991,
+                3.101899999999992
+            ],
+            "residual_RGB": [
+                -1.0658141036401503e-14,
+                -8.881784197001252e-15,
+                -7.993605777301127e-15
+            ],
+            "target_status_m_RGB": [
+                2.0029,
+                2.548,
+                3.1019
+            ]
+        },
+        {
+            "amounts_CMY": [
+                2.354407862321753,
+                1.7470245670932942,
+                2.2724213355453866
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.6766163447115139,
+            "identifiable": true,
+            "log_exposure": 0.78,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                2.0098999999999907,
+                2.55639999999999,
+                3.111299999999992
+            ],
+            "residual_RGB": [
+                -9.325873406851315e-15,
+                -1.021405182655144e-14,
+                -7.993605777301127e-15
+            ],
+            "target_status_m_RGB": [
+                2.0099,
+                2.5564,
+                3.1113
+            ]
+        },
+        {
+            "amounts_CMY": [
+                2.3637128436953745,
+                1.7553352777497697,
+                2.2821552976654584
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.6775576348354055,
+            "identifiable": true,
+            "log_exposure": 0.8,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                2.016699999999991,
+                2.5645999999999884,
+                3.1204999999999914
+            ],
+            "residual_RGB": [
+                -9.325873406851315e-15,
+                -1.1546319456101628e-14,
+                -8.43769498715119e-15
+            ],
+            "target_status_m_RGB": [
+                2.0167,
+                2.5646,
+                3.1205
+            ]
+        },
+        {
+            "amounts_CMY": [
+                2.3728941658594254,
+                1.7634155420046762,
+                2.2917919243417915
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.6784734365510212,
+            "identifiable": true,
+            "log_exposure": 0.82,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                2.0233999999999916,
+                2.5725999999999867,
+                3.129599999999992
+            ],
+            "residual_RGB": [
+                -8.43769498715119e-15,
+                -1.3322676295501878e-14,
+                -7.993605777301127e-15
+            ],
+            "target_status_m_RGB": [
+                2.0234,
+                2.5726,
+                3.1296
+            ]
+        },
+        {
+            "amounts_CMY": [
+                2.38190650461616,
+                1.771662362927211,
+                2.3014341331900483
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.6794163023328148,
+            "identifiable": true,
+            "log_exposure": 0.84,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                2.029999999999992,
+                2.5806999999999847,
+                3.1386999999999934
+            ],
+            "residual_RGB": [
+                -7.993605777301127e-15,
+                -1.554312234475219e-14,
+                -6.661338147750939e-15
+            ],
+            "target_status_m_RGB": [
+                2.03,
+                2.5807,
+                3.1387
+            ]
+        },
+        {
+            "amounts_CMY": [
+                2.3910745486365252,
+                1.7798937993290531,
+                2.3110691402742893
+            ],
+            "bound_hits": 0,
+            "condition_inf": 1.6803593135172197,
+            "identifiable": true,
+            "log_exposure": 0.86,
+            "passed": true,
+            "predicted_status_m_RGB": [
+                2.0366999999999926,
+                2.588799999999983,
+                3.147799999999993
+            ],
+            "residual_RGB": [
+                -7.549516567451064e-15,
+                -1.687538997430238e-14,
+                -7.105427357601002e-15
+            ],
+            "target_status_m_RGB": [
+                2.0367,
+                2.5888,
+                3.1478
+            ]
+        }
+    ],
+    "scope": "Reconstruction closes the specified truncated spectral operator only, not independent photographic validation. All failed targets retained; no offsets, clipping of measured samples, exposure shifts or spectral tail invention.",
+    "sensitivity_audit": {
+        "channels": {
+            "cyan": {
+                "internal_missing_samples": false,
+                "log_lux_seconds_at_model_base_plus_0_2_D": -2.055284428384358,
+                "measured_samples": 130,
+                "native_81_grid_measured_samples": 26,
+                "support_nm": [
+                    531,
+                    660
+                ]
+            },
+            "magenta": {
+                "internal_missing_samples": false,
+                "log_lux_seconds_at_model_base_plus_0_2_D": -2.14699816159114,
+                "measured_samples": 150,
+                "native_81_grid_measured_samples": 30,
+                "support_nm": [
+                    441,
+                    590
+                ]
+            },
+            "yellow": {
+                "internal_missing_samples": false,
+                "log_lux_seconds_at_model_base_plus_0_2_D": -2.2007924972231914,
+                "measured_samples": 141,
+                "native_81_grid_measured_samples": 27,
+                "support_nm": [
+                    370,
+                    510
+                ]
+            }
+        },
+        "exposure_anchor_calibrated": false,
+        "measurement_note": "sensitivity = log10(1/H) for the exposure H giving density 0.2 above D-min; daylight; 1/50 s",
+        "scope": "Coverage and instrument-density crossing diagnostics only; no absolute sensitivity/photometric-to-radiometric calibration inferred.",
+        "source": "Kodak Pro Image 100 datasheet E-4L (July 1997), page 4 bottom-left 'Spectral-Sensitivity Curves', digitized from the embedded PDF path geometry",
+        "unknown_samples_are_not_zero": true
+    },
+    "source": "Kodak Pro Image 100 datasheet E-4L (July 1997), page 4 vector charts, digitized from the embedded PDF path geometry",
+    "source_sha256": "ec23f1756de5597a86ed779676ba8546595c6e590b9749b53abb41809ee0e75e",
+    "source_url": "https://github.com/OwlMightyCh/film-scan-calibration/blob/8d03a0e0c111625b8a88fb8647a35d95b491249d/data/films/ProImage100_datasheet_curves.json",
+    "summary": {
+        "max_abs_RGB_D": [
+            0.02874505110022138,
+            0.001846335297343682,
+            0.00016491668172435858
+        ],
+        "rejected_rows": 12,
+        "rmse_RGB_D": [
+            0.0071064341391164606,
+            0.0004587191221983286,
+            4.071091978482886e-05
+        ],
+        "rows": 201,
+        "targets_below_model_base_RGB": [
+            25,
+            0,
+            0
+        ],
+        "unidentifiable_rows": 0
+    },
+    "thresholds": {
+        "dye_amount_bounds": [
+            0,
+            8
+        ],
+        "max_local_condition_inf": 10000,
+        "max_reconstruction_error_D": 0.02
+    },
+    "version": 2
+}

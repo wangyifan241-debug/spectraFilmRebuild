@@ -1,0 +1,14 @@
+Internal ctest changing into directory: C:/Users/Strickland/SpektraLab-work/build/qt-20261031-spectral
+Test project C:/Users/Strickland/SpektraLab-work/build/qt-20261031-spectral
+    Start 1: spk_qt_responsiveness
+1/1 Test #1: spk_qt_responsiveness ............***Failed    3.84 sec
+Presentation conversion still executes on the GUI thread
+
+
+0% tests passed, 1 tests failed out of 1
+
+Total Test time (real) =   3.85 sec
+
+The following tests FAILED:
+	  1 - spk_qt_responsiveness (Failed)
+Errors while running CTest

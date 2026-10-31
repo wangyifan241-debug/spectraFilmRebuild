@@ -1,0 +1,15 @@
+{
+  "passed": true,
+  "archived_source_files_checked": 475,
+  "regression_fixture_included": true,
+  "raw_photos_not_in_source": true,
+  "installed_native_raw_render": true,
+  "developer_path_removed": true,
+  "native_stderr_empty": true,
+  "uninstalled": true,
+  "recipient_content_preserved": true,
+  "clean_recipient_machine": false,
+  "installer_sha256": "e6953fa38f4d81d1a7652ce17668caa3c7ea0104ddcde428a2e6a653f1cb8d2f",
+  "render_sha256": "6d79dbf47275a4e8acd93c8425790630f23693b802d4b9cc5054863c43aa59d2",
+  "snapshot": "C:\\Users\\Strickland\\SpektraLab-work\\build\\installer-20261031-preview-2\\render-test-38eda95ea23a4d95a2f81996557789ac\\installed-real-raw.png"
+}

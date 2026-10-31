@@ -1,0 +1,1581 @@
+{
+  "qt": "6.11.3",
+  "revision": "5a1194b2d368e2d72c230205c464b04a2f23eccd",
+  "source_spdx_sha256": "b2c2ebd3c7ab1ab35d24eba5d6b7c6028c53660c34374234c032525a23464b7f",
+  "checked_files": 22517,
+  "equivalent_files": 22125,
+  "overlay_files": 392,
+  "sdk_line_endings": "Original bytes, or byte-preserving LF/CRLF normalization only",
+  "all_verified": true,
+  "overlay_sha256": "f72e2092c65cd1403fda2cf637fd4fde4b3d56f52416c8872525a6fb686a06ff",
+  "files": [
+    {
+      "path": ".gitattributes",
+      "expected_sdk_sha1": "53f6787d4ea2099b16faa773101265f17b6d7d0e"
+    },
+    {
+      "path": ".gitignore",
+      "expected_sdk_sha1": "c8ce8a7fb70e83ce9dfeaf64927101cce2e476f4"
+    },
+    {
+      "path": ".tag",
+      "expected_sdk_sha1": "8eb01c346a92a2321c358ae8327d3b48c163b1b0"
+    },
+    {
+      "path": "config.tests/.gitignore",
+      "expected_sdk_sha1": "29f6c8589122309f1adafe026aeddab87d431a70"
+    },
+    {
+      "path": "src/3rdparty/.gitattributes",
+      "expected_sdk_sha1": "3b318f71067b36580ff8a9bbcc4882698ac5a821"
+    },
+    {
+      "path": "src/3rdparty/freetype/CMakeLists.txt",
+      "expected_sdk_sha1": "e65a553186ff5d0c5afec7c2bee08fd65861162c"
+    },
+    {
+      "path": "src/3rdparty/freetype/README",
+      "expected_sdk_sha1": "b7b58b9f9929652f01d990c7570d52284bd5f80b"
+    },
+    {
+      "path": "src/3rdparty/freetype/docs/CHANGES",
+      "expected_sdk_sha1": "85cada3a35b35628f3f29929c808a0ac658d488b"
+    },
+    {
+      "path": "src/3rdparty/freetype/include/freetype/config/ftconfig.h",
+      "expected_sdk_sha1": "9d5bd2276d704a2f7434af82a7e71fac25f2a762"
+    },
+    {
+      "path": "src/3rdparty/freetype/include/freetype/config/ftheader.h",
+      "expected_sdk_sha1": "c35ad3cd10c053136d0469371b7f5e8454243b46"
+    },
+    {
+      "path": "src/3rdparty/freetype/include/freetype/config/ftmodule.h",
+      "expected_sdk_sha1": "ecd5127b8afdfd0ca414fea88fa6e54ac249651d"
+    },
+    {
+      "path": "src/3rdparty/freetype/include/freetype/config/ftoption.h",
+      "expected_sdk_sha1": "38abc4795104fd79c698bfa04eca104f3195c0b5"
+    },
+    {
+      "path": "src/3rdparty/freetype/include/freetype/config/ftstdlib.h",
+      "expected_sdk_sha1": "8487349594ea2d3139da7fcf63c0a8ed8ebbde98"
+    },
+    {
+      "path": "src/3rdparty/freetype/include/freetype/config/integer-types.h",
+      "expected_sdk_sha1": "0497fd554072ac030441f347822059aac5771602"
+    },
+    {
+      "path": "src/3rdparty/freetype/include/freetype/config/mac-support.h",
+      "expected_sdk_sha1": "9797b9d1b8385704ae4650053f7dceb03cd68bf2"
+    },
+    {
+      "path": "src/3rdparty/freetype/include/freetype/config/public-macros.h",
+      "expected_sdk_sha1": "cbb54e0ba317e4e5013bd014a321cbb0683dfbb9"
+    },
+    {
+      "path": "src/3rdparty/freetype/include/freetype/freetype.h",
+      "expected_sdk_sha1": "6b07d86d69fb629bb88445c971a30292f1a66214"
+    },
+    {
+      "path": "src/3rdparty/freetype/include/freetype/ftadvanc.h",
+      "expected_sdk_sha1": "09fb5075e347c5f546e83c579744e3961453bc0c"
+    },
+    {
+      "path": "src/3rdparty/freetype/include/freetype/ftbbox.h",
+      "expected_sdk_sha1": "8f569400f08d816adf0ec6449f9e2360686ac937"
+    },
+    {
+      "path": "src/3rdparty/freetype/include/freetype/ftbdf.h",
+      "expected_sdk_sha1": "7ad6da999a59201102b7cdee4b326a699be89561"
+    },
+    {
+      "path": "src/3rdparty/freetype/include/freetype/ftbitmap.h",
+      "expected_sdk_sha1": "037c08e8bb5a733793548c1b6c058341848b3ac4"
+    },
+    {
+      "path": "src/3rdparty/freetype/include/freetype/ftbzip2.h",
+      "expected_sdk_sha1": "f7bbe98e5f67617b9c19d63699bef95d55a3e950"
+    },
+    {
+      "path": "src/3rdparty/freetype/include/freetype/ftcache.h",
+      "expected_sdk_sha1": "fc7e69c51be9bfb64fb40a4a745e6d2471f516a4"
+    },
+    {
+      "path": "src/3rdparty/freetype/include/freetype/ftcid.h",
+      "expected_sdk_sha1": "3e6d838470952fc3069da45ebc4f19d6983b0906"
+    },
+    {
+      "path": "src/3rdparty/freetype/include/freetype/ftcolor.h",
+      "expected_sdk_sha1": "009299bf246fd7824bbd4e4ace0c78579037fbfb"
+    },
+    {
+      "path": "src/3rdparty/freetype/include/freetype/ftdriver.h",
+      "expected_sdk_sha1": "725568b7dfd221b9f3196b92b9ec8d333794611a"
+    },
+    {
+      "path": "src/3rdparty/freetype/include/freetype/fterrdef.h",
+      "expected_sdk_sha1": "f2a1dec982e07c72be1d7b447b750b94972d21b3"
+    },
+    {
+      "path": "src/3rdparty/freetype/include/freetype/fterrors.h",
+      "expected_sdk_sha1": "c6a8c2c394d820da2967fca24ac5b946836d4c3d"
+    },
+    {
+      "path": "src/3rdparty/freetype/include/freetype/ftfntfmt.h",
+      "expected_sdk_sha1": "ade31a1fec6c185a523b00472b44dd4272c8dabc"
+    },
+    {
+      "path": "src/3rdparty/freetype/include/freetype/ftgasp.h",
+      "expected_sdk_sha1": "766902fe05a50c8a8c467b7e806b68c2b4db78ba"
+    },
+    {
+      "path": "src/3rdparty/freetype/include/freetype/ftglyph.h",
+      "expected_sdk_sha1": "a006022053f3b2ebd5aeebc60269e745464a21ed"
+    },
+    {
+      "path": "src/3rdparty/freetype/include/freetype/ftgxval.h",
+      "expected_sdk_sha1": "d5697367bc1f86aef9a7345389700a12ef726e90"
+    },
+    {
+      "path": "src/3rdparty/freetype/include/freetype/ftgzip.h",
+      "expected_sdk_sha1": "f8d1c95b1b24e059ab2f9a2082b5339f487618bf"
+    },
+    {
+      "path": "src/3rdparty/freetype/include/freetype/ftimage.h",
+      "expected_sdk_sha1": "efb30c83a95111a7120e8c2664bef030eba547cd"
+    },
+    {
+      "path": "src/3rdparty/freetype/include/freetype/ftincrem.h",
+      "expected_sdk_sha1": "f0ea5daf60748550de02285a872d4ed865e3ba3a"
+    },
+    {
+      "path": "src/3rdparty/freetype/include/freetype/ftlcdfil.h",
+      "expected_sdk_sha1": "04177976b40b36a43142c287bec2147e1ce721b8"
+    },
+    {
+      "path": "src/3rdparty/freetype/include/freetype/ftlist.h",
+      "expected_sdk_sha1": "dd1303c028e25b2624f221a601b9057db520f7bd"
+    },
+    {
+      "path": "src/3rdparty/freetype/include/freetype/ftlogging.h",
+      "expected_sdk_sha1": "2ce63c1bd05025dfe0b02d878e2445fdd858b29b"
+    },
+    {
+      "path": "src/3rdparty/freetype/include/freetype/ftlzw.h",
+      "expected_sdk_sha1": "d826911ec01cdeef30c660fc681d897a28388939"
+    },
+    {
+      "path": "src/3rdparty/freetype/include/freetype/ftmac.h",
+      "expected_sdk_sha1": "a1d8805db429755d1e5d76cee9c3cd0176f15853"
+    },
+    {
+      "path": "src/3rdparty/freetype/include/freetype/ftmm.h",
+      "expected_sdk_sha1": "15a00554f24cb6aa2294a08a53a72609e143998a"
+    },
+    {
+      "path": "src/3rdparty/freetype/include/freetype/ftmodapi.h",
+      "expected_sdk_sha1": "0c3c48d7fda87f464261621f9bbd946500c2a142"
+    },
+    {
+      "path": "src/3rdparty/freetype/include/freetype/ftmoderr.h",
+      "expected_sdk_sha1": "0a74ee470105e3b77961386a018e5f2d0eafe622"
+    },
+    {
+      "path": "src/3rdparty/freetype/include/freetype/ftotval.h",
+      "expected_sdk_sha1": "82c38ea52f99336708ba8682c630aff7f534043a"
+    },
+    {
+      "path": "src/3rdparty/freetype/include/freetype/ftoutln.h",
+      "expected_sdk_sha1": "738daf9af18e188d481699049c5cd0e044f2c6a5"
+    },
+    {
+      "path": "src/3rdparty/freetype/include/freetype/ftparams.h",
+      "expected_sdk_sha1": "03adddf98036ed94cd1432f6d095c22726c0a963"
+    },
+    {
+      "path": "src/3rdparty/freetype/include/freetype/ftpfr.h",
+      "expected_sdk_sha1": "f990fddac46d85207fff86d5e0c71af820f6302a"
+    },
+    {
+      "path": "src/3rdparty/freetype/include/freetype/ftrender.h",
+      "expected_sdk_sha1": "a2ae53b2042dbbf6b6dd2c62ee8efca287b7ac8a"
+    },
+    {
+      "path": "src/3rdparty/freetype/include/freetype/ftsizes.h",
+      "expected_sdk_sha1": "170d163ac8358831d2bc7373ece4f4e77294835d"
+    },
+    {
+      "path": "src/3rdparty/freetype/include/freetype/ftsnames.h",
+      "expected_sdk_sha1": "889a4fea5c6175de798b35db2622f4e51b7d7532"
+    },
+    {
+      "path": "src/3rdparty/freetype/include/freetype/ftstroke.h",
+      "expected_sdk_sha1": "a3506b036b9a1f29170b55785aa9f57e14941b56"
+    },
+    {
+      "path": "src/3rdparty/freetype/include/freetype/ftsynth.h",
+      "expected_sdk_sha1": "b7d52d260ab7b963959faad8a1574b67eba8f367"
+    },
+    {
+      "path": "src/3rdparty/freetype/include/freetype/ftsystem.h",
+      "expected_sdk_sha1": "8fa18094231f46230ad82cd7796a01089448bace"
+    },
+    {
+      "path": "src/3rdparty/freetype/include/freetype/fttrigon.h",
+      "expected_sdk_sha1": "395802b37efd1f90835cf9d3dcb988af03247f11"
+    },
+    {
+      "path": "src/3rdparty/freetype/include/freetype/fttypes.h",
+      "expected_sdk_sha1": "c476984cc73264f3a8cb10aa21abb6eaf185e1a4"
+    },
+    {
+      "path": "src/3rdparty/freetype/include/freetype/ftwinfnt.h",
+      "expected_sdk_sha1": "a21b1e1062b336069b0fed715037efc22c4f6f02"
+    },
+    {
+      "path": "src/3rdparty/freetype/include/freetype/internal/autohint.h",
+      "expected_sdk_sha1": "f3bb519c7edecfeee36955025aa5a01302ec0a55"
+    },
+    {
+      "path": "src/3rdparty/freetype/include/freetype/internal/cffotypes.h",
+      "expected_sdk_sha1": "6390c825a8546698f31b9a329a3486143fa5d69d"
+    },
+    {
+      "path": "src/3rdparty/freetype/include/freetype/internal/cfftypes.h",
+      "expected_sdk_sha1": "fc6b45d1dfe7b9bddc29f65d528b6f8b2351d83e"
+    },
+    {
+      "path": "src/3rdparty/freetype/include/freetype/internal/compiler-macros.h",
+      "expected_sdk_sha1": "e64d7e79a1f50a79759368d221e76c26e394805a"
+    },
+    {
+      "path": "src/3rdparty/freetype/include/freetype/internal/ftcalc.h",
+      "expected_sdk_sha1": "be667c287ff25fbe8431f9245260e1cd50d0ffa7"
+    },
+    {
+      "path": "src/3rdparty/freetype/include/freetype/internal/ftdebug.h",
+      "expected_sdk_sha1": "b1aa20dd8ec13639c3c77e247731dd5d954c96ac"
+    },
+    {
+      "path": "src/3rdparty/freetype/include/freetype/internal/ftdrv.h",
+      "expected_sdk_sha1": "1a6acd0b05226397f751f13379b654071f245a56"
+    },
+    {
+      "path": "src/3rdparty/freetype/include/freetype/internal/ftgloadr.h",
+      "expected_sdk_sha1": "7794a25409b22a9b0dd3ab653df3c82f714d9d5b"
+    },
+    {
+      "path": "src/3rdparty/freetype/include/freetype/internal/ftmemory.h",
+      "expected_sdk_sha1": "b15c5cb55a48fd1e0ec98c832e39f8d8640eb1a6"
+    },
+    {
+      "path": "src/3rdparty/freetype/include/freetype/internal/ftmmtypes.h",
+      "expected_sdk_sha1": "1dbfd05c1867ca28b1ad806e5147ee293bf682aa"
+    },
+    {
+      "path": "src/3rdparty/freetype/include/freetype/internal/ftobjs.h",
+      "expected_sdk_sha1": "8260f990eb1b55b2759a9b3798f8fa1b58e6d142"
+    },
+    {
+      "path": "src/3rdparty/freetype/include/freetype/internal/ftpsprop.h",
+      "expected_sdk_sha1": "31d1e4219abe842579f6df5cf138bf29b445173e"
+    },
+    {
+      "path": "src/3rdparty/freetype/include/freetype/internal/ftrfork.h",
+      "expected_sdk_sha1": "593935d101b37b348cd5fdc0e5d78faea7722528"
+    },
+    {
+      "path": "src/3rdparty/freetype/include/freetype/internal/ftserv.h",
+      "expected_sdk_sha1": "7e785614a8db11fa6216eb76a1d7f0d5f81776c7"
+    },
+    {
+      "path": "src/3rdparty/freetype/include/freetype/internal/ftstream.h",
+      "expected_sdk_sha1": "b2420225a793a439416874a0f5e93f00b20db215"
+    },
+    {
+      "path": "src/3rdparty/freetype/include/freetype/internal/fttrace.h",
+      "expected_sdk_sha1": "88a18b1a7dcb18ce1ec9725d4a69d10be3e91892"
+    },
+    {
+      "path": "src/3rdparty/freetype/include/freetype/internal/ftvalid.h",
+      "expected_sdk_sha1": "772264675b99807aa22f2cb5141ac81e132241ea"
+    },
+    {
+      "path": "src/3rdparty/freetype/include/freetype/internal/psaux.h",
+      "expected_sdk_sha1": "8a5d8d7413193b3f26c41916bd4cda7df7e499b6"
+    },
+    {
+      "path": "src/3rdparty/freetype/include/freetype/internal/pshints.h",
+      "expected_sdk_sha1": "293041db398ae4a900c9c82d914105943ad907fa"
+    },
+    {
+      "path": "src/3rdparty/freetype/include/freetype/internal/services/svbdf.h",
+      "expected_sdk_sha1": "42dc484b02fbc535eda137efaa2937285877c0e5"
+    },
+    {
+      "path": "src/3rdparty/freetype/include/freetype/internal/services/svcfftl.h",
+      "expected_sdk_sha1": "0fdd1e5d11ce88361ba4c47e92b83d22e3e33ca7"
+    },
+    {
+      "path": "src/3rdparty/freetype/include/freetype/internal/services/svcid.h",
+      "expected_sdk_sha1": "522a4f4e8d0f3641dc4d7a79a73d62ddc1652d92"
+    },
+    {
+      "path": "src/3rdparty/freetype/include/freetype/internal/services/svfntfmt.h",
+      "expected_sdk_sha1": "8c83b71f21b08d077a6e09aea011ae74a2352088"
+    },
+    {
+      "path": "src/3rdparty/freetype/include/freetype/internal/services/svgldict.h",
+      "expected_sdk_sha1": "0f90235d37a12defde5a1104dce77c820772cb0f"
+    },
+    {
+      "path": "src/3rdparty/freetype/include/freetype/internal/services/svgxval.h",
+      "expected_sdk_sha1": "d81da26569e5f62693cfca862c8dc292feb5277d"
+    },
+    {
+      "path": "src/3rdparty/freetype/include/freetype/internal/services/svkern.h",
+      "expected_sdk_sha1": "599a70de126dd9870accb853d568ccd239f52ecb"
+    },
+    {
+      "path": "src/3rdparty/freetype/include/freetype/internal/services/svmetric.h",
+      "expected_sdk_sha1": "0033a01491509febe6e8691c0b16cdaa2f32d95b"
+    },
+    {
+      "path": "src/3rdparty/freetype/include/freetype/internal/services/svmm.h",
+      "expected_sdk_sha1": "a005f3d3d323883e29d54a0dfe8c07751cc70dfd"
+    },
+    {
+      "path": "src/3rdparty/freetype/include/freetype/internal/services/svotval.h",
+      "expected_sdk_sha1": "4c454d920d8da52bdfaf4bccefe5c5cfd26cc8a9"
+    },
+    {
+      "path": "src/3rdparty/freetype/include/freetype/internal/services/svpfr.h",
+      "expected_sdk_sha1": "0b1ca1d921d30473173f74c42644c7b8de48ec0c"
+    },
+    {
+      "path": "src/3rdparty/freetype/include/freetype/internal/services/svpostnm.h",
+      "expected_sdk_sha1": "15e1bd3640c3f985df9d4b457455ceea3054ee3e"
+    },
+    {
+      "path": "src/3rdparty/freetype/include/freetype/internal/services/svprop.h",
+      "expected_sdk_sha1": "e4c4f6612a97540831d122222607de476969459d"
+    },
+    {
+      "path": "src/3rdparty/freetype/include/freetype/internal/services/svpscmap.h",
+      "expected_sdk_sha1": "0f5982c342ec01680d702ceff5d2ab4ec8472bb8"
+    },
+    {
+      "path": "src/3rdparty/freetype/include/freetype/internal/services/svpsinfo.h",
+      "expected_sdk_sha1": "e89766ea2f06074f91c79b8cdca866215f17e35d"
+    },
+    {
+      "path": "src/3rdparty/freetype/include/freetype/internal/services/svsfnt.h",
+      "expected_sdk_sha1": "8d0488d4ecdb485c59851cee1cc84337a11527e1"
+    },
+    {
+      "path": "src/3rdparty/freetype/include/freetype/internal/services/svttcmap.h",
+      "expected_sdk_sha1": "9b0236e7ba9cb32930c9d72caafb79243de386f8"
+    },
+    {
+      "path": "src/3rdparty/freetype/include/freetype/internal/services/svtteng.h",
+      "expected_sdk_sha1": "47fc0d769ae67c8630ae44166bde5c3ce18d7cda"
+    },
+    {
+      "path": "src/3rdparty/freetype/include/freetype/internal/services/svttglyf.h",
+      "expected_sdk_sha1": "3c92f8f6c90f784d0ba2a70213ce1f1580120804"
+    },
+    {
+      "path": "src/3rdparty/freetype/include/freetype/internal/services/svwinfnt.h",
+      "expected_sdk_sha1": "5e9b66d9dd0332e13e8e0995e20a49f35c6b3da9"
+    },
+    {
+      "path": "src/3rdparty/freetype/include/freetype/internal/sfnt.h",
+      "expected_sdk_sha1": "7a209c03895d7a692a17b3f838e53063e7c02c38"
+    },
+    {
+      "path": "src/3rdparty/freetype/include/freetype/internal/svginterface.h",
+      "expected_sdk_sha1": "860b370b412b00094411f10ef5132c0feff06335"
+    },
+    {
+      "path": "src/3rdparty/freetype/include/freetype/internal/t1types.h",
+      "expected_sdk_sha1": "49d18b5e5b02443bff6ae42a81ba4f82e93f39ee"
+    },
+    {
+      "path": "src/3rdparty/freetype/include/freetype/internal/tttypes.h",
+      "expected_sdk_sha1": "bdc41ad9fe7d90e99b545e272525ae8a56337d79"
+    },
+    {
+      "path": "src/3rdparty/freetype/include/freetype/internal/wofftypes.h",
+      "expected_sdk_sha1": "231b0b5e7e354544ffe84f1f95a1fa6cb4f250ee"
+    },
+    {
+      "path": "src/3rdparty/freetype/include/freetype/otsvg.h",
+      "expected_sdk_sha1": "8b84899438690e2e2dbf35cba959e14a41884285"
+    },
+    {
+      "path": "src/3rdparty/freetype/include/freetype/t1tables.h",
+      "expected_sdk_sha1": "39f28c55970e704337e7507030dd05eccf41743f"
+    },
+    {
+      "path": "src/3rdparty/freetype/include/freetype/ttnameid.h",
+      "expected_sdk_sha1": "a98fb324e58753f77c5cfb654c5849e81f06f7eb"
+    },
+    {
+      "path": "src/3rdparty/freetype/include/freetype/tttables.h",
+      "expected_sdk_sha1": "59de02f2a83391a8b4c06871d8b4d59901065906"
+    },
+    {
+      "path": "src/3rdparty/freetype/include/freetype/tttags.h",
+      "expected_sdk_sha1": "da31f82a6aeddd46b3c9eac784528b9d9a2fba7d"
+    },
+    {
+      "path": "src/3rdparty/freetype/include/ft2build.h",
+      "expected_sdk_sha1": "3ff10523717b88d2f8dfadfbd7f5a563012deb17"
+    },
+    {
+      "path": "src/3rdparty/freetype/qt_attribution.json",
+      "expected_sdk_sha1": "b566e699931aca8796308396942807d4540080fb"
+    },
+    {
+      "path": "src/3rdparty/freetype/src/autofit/afgsub.c",
+      "expected_sdk_sha1": "33047b16f5d00de2cb9e8c54b5634ca35795ee35"
+    },
+    {
+      "path": "src/3rdparty/freetype/src/autofit/aflatin.c",
+      "expected_sdk_sha1": "ad1d47a9e63f9ac6d0007c6f46e24ecbb41dc6a4"
+    },
+    {
+      "path": "src/3rdparty/freetype/src/autofit/afranges.c",
+      "expected_sdk_sha1": "b42bc35d04a578e81d01de0ea4ebc85686ca3867"
+    },
+    {
+      "path": "src/3rdparty/freetype/src/autofit/afshaper.c",
+      "expected_sdk_sha1": "c41326c6771e3bbafa2805c1c6912cf6ba472708"
+    },
+    {
+      "path": "src/3rdparty/freetype/src/autofit/ft-hb-decls.h",
+      "expected_sdk_sha1": "dc154a4c5cd1187f31aa3240f4cd928858b9a4a5"
+    },
+    {
+      "path": "src/3rdparty/freetype/src/autofit/hb-script-list.h",
+      "expected_sdk_sha1": "2062a25f7e8ca9cb88222fe0cdb076d8fdff3c7a"
+    },
+    {
+      "path": "src/3rdparty/freetype/src/base/ftbbox.c",
+      "expected_sdk_sha1": "15af5386f129611bee47e34118c0b22144211374"
+    },
+    {
+      "path": "src/3rdparty/freetype/src/base/ftbitmap.c",
+      "expected_sdk_sha1": "c6a695df9f6e8e4d135f22afe885515a600c7734"
+    },
+    {
+      "path": "src/3rdparty/freetype/src/base/ftcalc.c",
+      "expected_sdk_sha1": "7c1d0dcad1d2f970233f380db82102aeef04855e"
+    },
+    {
+      "path": "src/3rdparty/freetype/src/base/ftobjs.c",
+      "expected_sdk_sha1": "8a21faee0b2ddbaa91d407e281adc4a2599f2e24"
+    },
+    {
+      "path": "src/3rdparty/freetype/src/base/ftoutln.c",
+      "expected_sdk_sha1": "4ef286c448ac3d7cfad66a16328e2cda0feb048f"
+    },
+    {
+      "path": "src/3rdparty/freetype/src/base/ftstroke.c",
+      "expected_sdk_sha1": "a3aeec30fddd0de2bf2b16179fd1323d2bc4c9ed"
+    },
+    {
+      "path": "src/3rdparty/freetype/src/base/ftver.rc",
+      "expected_sdk_sha1": "5d0793068a5611a009036c881f2eda304c46b111"
+    },
+    {
+      "path": "src/3rdparty/freetype/src/cff/cffdrivr.c",
+      "expected_sdk_sha1": "f620473e9a7ebc568503ba756fc333885ef4ba3a"
+    },
+    {
+      "path": "src/3rdparty/freetype/src/cff/cffgload.c",
+      "expected_sdk_sha1": "c5c8c4a13354cc8adab561b7e7e29e91101ff099"
+    },
+    {
+      "path": "src/3rdparty/freetype/src/cff/cffload.c",
+      "expected_sdk_sha1": "67cd5560cea045df2349e1d936f06593f27fd5b3"
+    },
+    {
+      "path": "src/3rdparty/freetype/src/cff/cffobjs.c",
+      "expected_sdk_sha1": "06daa1920d7bf571b769296103af4e07b32bc67c"
+    },
+    {
+      "path": "src/3rdparty/freetype/src/cid/cidload.c",
+      "expected_sdk_sha1": "639eec8bbed03e07f9c4610527a2de2e072056af"
+    },
+    {
+      "path": "src/3rdparty/freetype/src/gzip/README.freetype",
+      "expected_sdk_sha1": "0fb8b25b1882c54b26cc71dd7ad3c1027bafafd0"
+    },
+    {
+      "path": "src/3rdparty/freetype/src/gzip/crc32.c",
+      "expected_sdk_sha1": "502ba3ad3bfc23a8b1085de7776fd0dbfc53cade"
+    },
+    {
+      "path": "src/3rdparty/freetype/src/gzip/zlib.h",
+      "expected_sdk_sha1": "bb30c66d6166b87dd75f5ae60660cdc8e9662d4d"
+    },
+    {
+      "path": "src/3rdparty/freetype/src/otvalid/otvmath.c",
+      "expected_sdk_sha1": "da34fecb7b27ca01dfc5f3b5ef9f4ae64bf0dd67"
+    },
+    {
+      "path": "src/3rdparty/freetype/src/pcf/pcfdrivr.c",
+      "expected_sdk_sha1": "79b8377b149bd7572d9fd90142d268b8600f2f77"
+    },
+    {
+      "path": "src/3rdparty/freetype/src/pcf/pcfread.c",
+      "expected_sdk_sha1": "43c21777050f8e8307027fd642bf86522ac4da48"
+    },
+    {
+      "path": "src/3rdparty/freetype/src/pfr/pfrobjs.c",
+      "expected_sdk_sha1": "1b7089d838a6a07186860d8c27bb042ef990ac81"
+    },
+    {
+      "path": "src/3rdparty/freetype/src/psaux/psintrp.c",
+      "expected_sdk_sha1": "3fd075259d75fef968cfb6bf902f1408f20c8bcf"
+    },
+    {
+      "path": "src/3rdparty/freetype/src/psaux/psstack.c",
+      "expected_sdk_sha1": "1da3559b50bf5add50e141dd3e8b5b64d16a366d"
+    },
+    {
+      "path": "src/3rdparty/freetype/src/raster/ftraster.c",
+      "expected_sdk_sha1": "53983d9c3b3fdebebab15d1ce41b5e4a0971b3aa"
+    },
+    {
+      "path": "src/3rdparty/freetype/src/sdf/ftsdf.c",
+      "expected_sdk_sha1": "8adc09042e08d143a815886dc77b6676e9512cb0"
+    },
+    {
+      "path": "src/3rdparty/freetype/src/sfnt/sfobjs.c",
+      "expected_sdk_sha1": "d92ddf635b3c06b49bdbdc66d2e8e2428455c6a6"
+    },
+    {
+      "path": "src/3rdparty/freetype/src/sfnt/sfwoff.c",
+      "expected_sdk_sha1": "b7540945d81d7e4a1127a7c28eff4949c9f07dfa"
+    },
+    {
+      "path": "src/3rdparty/freetype/src/sfnt/ttbdf.c",
+      "expected_sdk_sha1": "a2d7cbee58748c30ace062a988c9d7fbd23174b6"
+    },
+    {
+      "path": "src/3rdparty/freetype/src/sfnt/ttcmap.c",
+      "expected_sdk_sha1": "35017cea7609cda2192d35918f7610c00cbfed89"
+    },
+    {
+      "path": "src/3rdparty/freetype/src/sfnt/ttcmap.h",
+      "expected_sdk_sha1": "0637782f2d46b483f664b2559cb4755ccfd8a3ba"
+    },
+    {
+      "path": "src/3rdparty/freetype/src/sfnt/ttcmapc.h",
+      "expected_sdk_sha1": "17c19a8076898cace81f5439269411637368c46d"
+    },
+    {
+      "path": "src/3rdparty/freetype/src/sfnt/ttcolr.c",
+      "expected_sdk_sha1": "ecaa611ddc5039c3166edc4cc9da80f4520595f9"
+    },
+    {
+      "path": "src/3rdparty/freetype/src/sfnt/ttload.c",
+      "expected_sdk_sha1": "dd80d17893835fdd2cb728b498193b82c2ee2046"
+    },
+    {
+      "path": "src/3rdparty/freetype/src/sfnt/ttmtx.c",
+      "expected_sdk_sha1": "08007dfb2ed5de31f721c8ebf060913c06cc1352"
+    },
+    {
+      "path": "src/3rdparty/freetype/src/sfnt/ttpost.c",
+      "expected_sdk_sha1": "a5676d1550889bf40d77844ff812ff9e28bb9328"
+    },
+    {
+      "path": "src/3rdparty/freetype/src/sfnt/ttsbit.c",
+      "expected_sdk_sha1": "d8603383f64e648d3e046aa0ea1926d1cc8f4540"
+    },
+    {
+      "path": "src/3rdparty/freetype/src/smooth/ftgrays.c",
+      "expected_sdk_sha1": "979182a25412c760e4c1906d6092ee45f995aba6"
+    },
+    {
+      "path": "src/3rdparty/freetype/src/smooth/ftsmooth.c",
+      "expected_sdk_sha1": "cf47381190c55ec9752c1c3fa29c22ce9a7b2113"
+    },
+    {
+      "path": "src/3rdparty/freetype/src/truetype/rules.mk",
+      "expected_sdk_sha1": "128d827f9fea8d786cb77cc34cd77bf6aef8de5b"
+    },
+    {
+      "path": "src/3rdparty/freetype/src/truetype/truetype.c",
+      "expected_sdk_sha1": "adc45233b7d8c3bed0ad85a6d190e2a3929fc8dd"
+    },
+    {
+      "path": "src/3rdparty/freetype/src/truetype/ttdriver.c",
+      "expected_sdk_sha1": "7ffdf97875d2edff29e7e53a8ee1841989082698"
+    },
+    {
+      "path": "src/3rdparty/freetype/src/truetype/ttgload.c",
+      "expected_sdk_sha1": "8fdbed25078fd7283615380c604a00ce7f0948d1"
+    },
+    {
+      "path": "src/3rdparty/freetype/src/truetype/ttgxvar.c",
+      "expected_sdk_sha1": "b58b7d5806fdb38eac44bd37f09863102cdb23e5"
+    },
+    {
+      "path": "src/3rdparty/freetype/src/truetype/ttgxvar.h",
+      "expected_sdk_sha1": "7d2e22eaf92223a86485920442cef66e5249a54e"
+    },
+    {
+      "path": "src/3rdparty/freetype/src/truetype/ttinterp.c",
+      "expected_sdk_sha1": "ace3f52d6076db6b3c423685017c381bc907e442"
+    },
+    {
+      "path": "src/3rdparty/freetype/src/truetype/ttinterp.h",
+      "expected_sdk_sha1": "c75d9c0c8a9dfa002ace69cf91e2d225ec131b0f"
+    },
+    {
+      "path": "src/3rdparty/freetype/src/truetype/ttobjs.c",
+      "expected_sdk_sha1": "9fb12c15be583c9f25b7813262df7dc6c7ad437d"
+    },
+    {
+      "path": "src/3rdparty/freetype/src/truetype/ttobjs.h",
+      "expected_sdk_sha1": "89dc1813c72f38d29f90f742811bbd4b74bc4c87"
+    },
+    {
+      "path": "src/3rdparty/freetype/src/truetype/ttpload.c",
+      "expected_sdk_sha1": "1d20e3c17aebd45998278f2fb1d9613e8a532045"
+    },
+    {
+      "path": "src/3rdparty/freetype/src/type1/t1load.c",
+      "expected_sdk_sha1": "c8afd0767da728e3563da906d6a38b7a8f1aabc1"
+    },
+    {
+      "path": "src/3rdparty/freetype/src/type1/t1parse.c",
+      "expected_sdk_sha1": "24590c0d100023deba7678fc5f0e98da2a655962"
+    },
+    {
+      "path": "src/3rdparty/freetype/src/winfonts/winfnt.c",
+      "expected_sdk_sha1": "3e5ef19d8549c3fcde533791b1e899e4593a9871"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/qt_attribution.json",
+      "expected_sdk_sha1": "692f24d9256c41f2b9ce533c4a6bef48e6bac861"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/OT/Color/COLR/COLR.hh",
+      "expected_sdk_sha1": "dfbe88aeb14816b96ece719a25d655f075c6c603"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/OT/Color/COLR/colrv1-closure.hh",
+      "expected_sdk_sha1": "14f5a31096282b9c4c0d8e316e1fcabcba6e3884"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/OT/Color/COLR/colrv1-depend.hh",
+      "expected_sdk_sha1": "3e8cd44e0728ce9aed3f0e51a3ec2f6e505bcebc"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/OT/Color/CPAL/CPAL.hh",
+      "expected_sdk_sha1": "4620e8a7784563939db7706a8f726a922a9c80b1"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/OT/Layout/Common/Coverage.hh",
+      "expected_sdk_sha1": "d400db4040c86b72e8c8f354154292f62fc7bdf4"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/OT/Layout/Common/CoverageFormat1.hh",
+      "expected_sdk_sha1": "327afa415bb8e17055d48d21104d5409e1f9a21f"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/OT/Layout/Common/CoverageFormat2.hh",
+      "expected_sdk_sha1": "b4dab857c1b7803811f904b698694b471109876f"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/OT/Layout/Common/RangeRecord.hh",
+      "expected_sdk_sha1": "2a788e59c28d5064e9ac8df27120c45c0b38311c"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/OT/Layout/GDEF/GDEF.hh",
+      "expected_sdk_sha1": "58bb32b69dfba84035c579b475f49603e57b8791"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/OT/Layout/GPOS/AnchorMatrix.hh",
+      "expected_sdk_sha1": "84396691df4d62a03dcf913ff09d8c4605fd0363"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/OT/Layout/GPOS/CursivePos.hh",
+      "expected_sdk_sha1": "bf2f6e58b3ec0e22345f1d36ec0d33bea2684f82"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/OT/Layout/GPOS/CursivePosFormat1.hh",
+      "expected_sdk_sha1": "fe890d1743211bf567acf5c77915ce962a653abd"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/OT/Layout/GPOS/LigatureArray.hh",
+      "expected_sdk_sha1": "ebb58cc964ae931009d301afc64c128ed6d10215"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/OT/Layout/GPOS/MarkArray.hh",
+      "expected_sdk_sha1": "0a783bbe14f1096183a93d7d6e7b37dea849fb36"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/OT/Layout/GPOS/MarkBasePosFormat1.hh",
+      "expected_sdk_sha1": "427b023ba147a6833c5db5e6948a0a828128eded"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/OT/Layout/GPOS/MarkLigPosFormat1.hh",
+      "expected_sdk_sha1": "050a27d496be99f39a66baa7e4d32e3af1aa0170"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/OT/Layout/GPOS/MarkMarkPosFormat1.hh",
+      "expected_sdk_sha1": "8e6c1fec8e293112cda1b9bcdab2acde2689b8d0"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/OT/Layout/GPOS/MarkRecord.hh",
+      "expected_sdk_sha1": "57fd42199ef3582b72403ab4bc3de80148cbb8e7"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/OT/Layout/GPOS/PairPosFormat1.hh",
+      "expected_sdk_sha1": "1ed2f1c5371e63c7bd61d669fdac07da9bf7d212"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/OT/Layout/GPOS/PairPosFormat2.hh",
+      "expected_sdk_sha1": "2d5ede1a03cb37d741952c0f686c4e6df518bf96"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/OT/Layout/GPOS/PairSet.hh",
+      "expected_sdk_sha1": "fc862b8d140db50a71ea78e1e2a1b10485193402"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/OT/Layout/GPOS/SinglePos.hh",
+      "expected_sdk_sha1": "1df7af73dae8ad3cf3d1e21fdda78f7b4741de75"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/OT/Layout/GPOS/SinglePosFormat1.hh",
+      "expected_sdk_sha1": "aad0f31ee9c7bc817946afea957a5427c6d037e3"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/OT/Layout/GPOS/SinglePosFormat2.hh",
+      "expected_sdk_sha1": "1e32af6026f075736cf81083afc48c8d837be98e"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/OT/Layout/GSUB/AlternateSubst.hh",
+      "expected_sdk_sha1": "3f8538863ba58319842248a26e93952720798973"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/OT/Layout/GSUB/AlternateSubstFormat1.hh",
+      "expected_sdk_sha1": "b4cd1efbdbfea180068c94605a91beb0620e81c1"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/OT/Layout/GSUB/LigatureSet.hh",
+      "expected_sdk_sha1": "ec8c97a95f6516c1a521a5cdff04fb60d62c85a3"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/OT/Layout/GSUB/LigatureSubst.hh",
+      "expected_sdk_sha1": "69ff2bd627c0c38946043bb2467edc82dbb5e28c"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/OT/Layout/GSUB/LigatureSubstFormat1.hh",
+      "expected_sdk_sha1": "05a152ae68903fa7c23898f8f8ea37d17e10cfce"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/OT/Layout/GSUB/MultipleSubstFormat1.hh",
+      "expected_sdk_sha1": "fca0edeb7820068c58c9088ddf8c39bd3ce09e8f"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/OT/Layout/GSUB/ReverseChainSingleSubst.hh",
+      "expected_sdk_sha1": "02b250a192d58e30fc4ebad5db96e13ab0132b41"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/OT/Layout/GSUB/ReverseChainSingleSubstFormat1.hh",
+      "expected_sdk_sha1": "2922d7427ebab4538c355db42e57195de5e8c116"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/OT/Layout/GSUB/SingleSubstFormat1.hh",
+      "expected_sdk_sha1": "3914c9cfb9a1652ccd1266c1afb68e0da16e4809"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/OT/Layout/GSUB/SingleSubstFormat2.hh",
+      "expected_sdk_sha1": "056f6f2bc67364375711e983a9def42f8b023d71"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/OT/Layout/GSUB/SubstLookup.hh",
+      "expected_sdk_sha1": "91b83200f2b1291c707168cded499dc20ac58bbd"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/OT/Layout/types.hh",
+      "expected_sdk_sha1": "1407e27f94d7784585c05e2b9d962153f635af8a"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/OT/Var/VARC/VARC.cc",
+      "expected_sdk_sha1": "92709cba60548038b51a893a60efafaefdc3311b"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/OT/Var/VARC/VARC.hh",
+      "expected_sdk_sha1": "dad87f48d94645016bf1a5ef1f50e4f443fda247"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/OT/glyf/CompositeGlyph.hh",
+      "expected_sdk_sha1": "7dfa8c29cfe1ea0bd43c0658fd81e5b67f02ead5"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/OT/glyf/Glyph.hh",
+      "expected_sdk_sha1": "087b33db73016d38080e267fcf1f21cbed7b4766"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/OT/glyf/SimpleGlyph.hh",
+      "expected_sdk_sha1": "9f5b80c71fbd91975d8a77a5a6791fc6b61e93c9"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/OT/glyf/SubsetGlyph.hh",
+      "expected_sdk_sha1": "8d209703cd2e83b13c1811430c893794a83b0d54"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/OT/glyf/composite-iter.hh",
+      "expected_sdk_sha1": "9e73e0657d5e64e992a81469f67bcabd0d771f0c"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/OT/glyf/glyf-helpers.hh",
+      "expected_sdk_sha1": "36155ad8c0d8ffbbb0bedd96434fed2a4daa62bc"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/OT/glyf/glyf.hh",
+      "expected_sdk_sha1": "957084ccfcd4fbe4b014840433c4fc9af79bcb6c"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/OT/glyf/loca.hh",
+      "expected_sdk_sha1": "c5a88f8aa5bbc303f9bbe460cf648e3707714a95"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/OT/glyf/path-builder.hh",
+      "expected_sdk_sha1": "548f8227e535d04ed47dfc79e9a162999217676d"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/graph/classdef-graph.hh",
+      "expected_sdk_sha1": "59614593cfff3257797002e7f6216b50e75f6cfa"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/graph/coverage-graph.hh",
+      "expected_sdk_sha1": "5f7ba4f9771146a4552a7d27766cf4d280816d27"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/graph/graph.hh",
+      "expected_sdk_sha1": "367411df736b049ef0b0e29b3b24b8961bc93f4b"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/graph/gsubgpos-context.cc",
+      "expected_sdk_sha1": "0e6470a8bef9b5e480c413718492af0ab2917d40"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/graph/gsubgpos-context.hh",
+      "expected_sdk_sha1": "7a9e06527667eacb157fc65329cebcb49b5184f1"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/graph/gsubgpos-graph.hh",
+      "expected_sdk_sha1": "2783aa2e72cd3165ed3aad4d492a46a35966cae6"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/graph/ligature-graph.hh",
+      "expected_sdk_sha1": "b4297099ecd8a8631cd24c6e62462852c35115d7"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/graph/markbasepos-graph.hh",
+      "expected_sdk_sha1": "ce45682ba74f0557f6e763c792a1aabed6e49ffe"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/graph/pairpos-graph.hh",
+      "expected_sdk_sha1": "5625717ac1c4260c5d912c5f17c6c935d12a5493"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/graph/serialize.hh",
+      "expected_sdk_sha1": "e27d78e8f69c7d03e522601cc0256b222d824f9f"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/graph/split-helpers.hh",
+      "expected_sdk_sha1": "d678a41b7fa12085f29a45fd8118fb9b85e64200"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/graph/test-classdef-graph.cc",
+      "expected_sdk_sha1": "54dedf8996e4a9ecfeca3f4c07ed2f8eb453942c"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/harfbuzz-world.cc",
+      "expected_sdk_sha1": "6bc3d17fb62a146128de3bb7c965d7794d850380"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/hb-algs.hh",
+      "expected_sdk_sha1": "13b401f5994d1ba57ec1af5a5493948dad97c46e"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/hb-bit-set.hh",
+      "expected_sdk_sha1": "4b70a64592c35cdcb569de3c908c925d727f74df"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/hb-buffer.hh",
+      "expected_sdk_sha1": "8aacdf9d4720aecda974a61e143981185d87d276"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/hb-cache.hh",
+      "expected_sdk_sha1": "4c5275fa3ba9a4e4bb585ecb431ed55d866059da"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/hb-cairo-utils.hh",
+      "expected_sdk_sha1": "2ef65d62a9359d658618b78fb43e035875ccf715"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/hb-cairo.cc",
+      "expected_sdk_sha1": "6c8002cc889f8543dab6e4e4f4fe2ca68f4aea28"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/hb-cff-interp-common.hh",
+      "expected_sdk_sha1": "eee86702c68ae7ed5be505f95bb0d20e7b472544"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/hb-cff-interp-cs-common.hh",
+      "expected_sdk_sha1": "83ebfda3ca8cf8cd65b2b0e35ebd9dcab8167dd9"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/hb-cff2-interp-cs.hh",
+      "expected_sdk_sha1": "8e84b1fca030acca8eb1024b79534ec7b36bdd52"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/hb-common.cc",
+      "expected_sdk_sha1": "af559c15c3d7f1eeded24d5a9c1362c41d45978e"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/hb-common.h",
+      "expected_sdk_sha1": "28819dccf5a004a3a9bdc26b35b0e53c832083ae"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/hb-coretext-font.cc",
+      "expected_sdk_sha1": "80f4f0602afeefb34dfa60622494a19c1abc28e6"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/hb-coretext-shape.cc",
+      "expected_sdk_sha1": "ba1b45fa556bd714e0f8de21ea10567d247f72ec"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/hb-coretext.cc",
+      "expected_sdk_sha1": "7390952b0af19b5c2796b08e34f506c3736f98ec"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/hb-coretext.hh",
+      "expected_sdk_sha1": "a378ba5014dd70b323dadd2d15e851d1c00fea41"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/hb-depend-data.hh",
+      "expected_sdk_sha1": "09e3b0a41995b4ebdc1c715fb8bc328294a5f859"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/hb-depend.cc",
+      "expected_sdk_sha1": "8f24cb9720754ddf8fe1c8e4f3b4dcf360829be1"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/hb-directwrite-shape.cc",
+      "expected_sdk_sha1": "50fb98e00f5481a8cb7b4ccc884feee18c15e61a"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/hb-draw.cc",
+      "expected_sdk_sha1": "5557912448bfcae37563d53dc05d0e66d46ef7c9"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/hb-draw.h",
+      "expected_sdk_sha1": "e9315d163f879767532a435681a2b388636f9888"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/hb-draw.hh",
+      "expected_sdk_sha1": "1b6c9f9c125dec7368fd00b6de955939846d9736"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/hb-font.cc",
+      "expected_sdk_sha1": "3571423bde4b7b04558f3f42834f45403051b735"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/hb-font.hh",
+      "expected_sdk_sha1": "5f9bbee710b28a2ff5840a23662a0db837b44e92"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/hb-ft.cc",
+      "expected_sdk_sha1": "3583852af6510d63f0b9311a4b769ea204449a40"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/hb-gpu-draw.cc",
+      "expected_sdk_sha1": "7e6fdcedd21422df1382fad4cf019ac1a2cbdde1"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/hb-gpu-draw.hh",
+      "expected_sdk_sha1": "db82607ad6dc182191ac712a09f138ebb58bd0ae"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/hb-gpu-paint.cc",
+      "expected_sdk_sha1": "37d1ffe5f125c412e27b7749dc0a11e8ef457320"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/hb-gpu-paint.hh",
+      "expected_sdk_sha1": "35e6d66beb766b73807aa53c1f4b9eb1638e500a"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/hb-graphite2.cc",
+      "expected_sdk_sha1": "3fb8f1ea823dc2094e8b0b6ca15ad0985827eb65"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/hb-limits.hh",
+      "expected_sdk_sha1": "18532b030d96f6a61bf0131c94f98c5e9850b4b1"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/hb-machinery.hh",
+      "expected_sdk_sha1": "fc143d322d2b112d0dee208089c366b9c1e211a6"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/hb-open-file.hh",
+      "expected_sdk_sha1": "100f47c0720eb258f97f4c3709fec325ed7d46f7"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/hb-open-type.hh",
+      "expected_sdk_sha1": "e499b513c6090ec2643aeccbf10b6e6670c3ecc8"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/hb-ot-cff-common.hh",
+      "expected_sdk_sha1": "769ecbd0a1e9c0fe8ff44acfd7a15932091ab771"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/hb-ot-cff1-table.cc",
+      "expected_sdk_sha1": "7701cacdbb80ee2245f231de101acda7e1258a6a"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/hb-ot-cff2-table.cc",
+      "expected_sdk_sha1": "1c7ed3c4165294cd4c3724f26381bbbdb51874e0"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/hb-ot-cff2-table.hh",
+      "expected_sdk_sha1": "a7dd29d62950e2959a316d0b660868adfbd0e588"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/hb-ot-cmap-table.hh",
+      "expected_sdk_sha1": "d389acf402c9d8b220fe46d5e6c594522fa25261"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/hb-ot-face-table-list.hh",
+      "expected_sdk_sha1": "cd1d70e01e3a59df2bb9f4cdcb782f361a8865bf"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/hb-ot-face.hh",
+      "expected_sdk_sha1": "702cb722cc3cdce3a0a1a86565e342ee4035b100"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/hb-ot-font.cc",
+      "expected_sdk_sha1": "6550c3d404268f440815f377ac597a861bbadb50"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/hb-ot-hhea-table.hh",
+      "expected_sdk_sha1": "2a3d51377fe9d1849d1e25e3d18ff250efb8cbe7"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/hb-ot-hmtx-table.hh",
+      "expected_sdk_sha1": "cf20143b447296a83f1bb1bff568b77f83ea2869"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/hb-ot-layout-base-table.hh",
+      "expected_sdk_sha1": "7460a5cf122ac6e4824c2ec94660d8d1b9dbf280"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/hb-ot-layout-common.hh",
+      "expected_sdk_sha1": "3406f98f720571b8afe02ad8ae65bacd92c0097f"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/hb-ot-layout-gsub-table.hh",
+      "expected_sdk_sha1": "fe6411f6778217dbeb9acafd839c0754359da000"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/hb-ot-layout-gsubgpos.hh",
+      "expected_sdk_sha1": "dccd20ca7f41b64e7a6b417bd4478a075e8d4aea"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/hb-ot-layout-jstf-table.hh",
+      "expected_sdk_sha1": "4f2ef19cde573d253bab8e6e29d96008cff9d61f"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/hb-ot-layout.cc",
+      "expected_sdk_sha1": "470dce3e8b3fd9f221674e3a08c1a0175e344a8c"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/hb-ot-layout.hh",
+      "expected_sdk_sha1": "1073dc57918475028e65fa5945050812f22599f0"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/hb-ot-map.cc",
+      "expected_sdk_sha1": "cbef1b9fba550aef1c2c0632ba8e18f56cb63d6d"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/hb-ot-map.hh",
+      "expected_sdk_sha1": "8bb794052a86d6f5df7ee0b855557ed613076dc5"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/hb-ot-maxp-table.hh",
+      "expected_sdk_sha1": "87845b346ee8c3a0fcacaefa42cf72b22630300f"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/hb-ot-metrics.cc",
+      "expected_sdk_sha1": "563be64d2655a07d8d9aeb3e06b275c2c36e12e1"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/hb-ot-shape.cc",
+      "expected_sdk_sha1": "34d3c1205c3eb8d70e0ba398c8a793002cebf048"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/hb-ot-shape.hh",
+      "expected_sdk_sha1": "1ee3c3ab8dfb83285181b5e3cd4c00b25445331c"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/hb-ot-shaper-arabic-joining-list.hh",
+      "expected_sdk_sha1": "7db38dd0af81dab62a87cf46dcbd06cc5048c0b8"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/hb-ot-shaper-arabic-table.hh",
+      "expected_sdk_sha1": "1af528f50256122a83b21b8957dad21f1f106f24"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/hb-ot-shaper-indic-table.cc",
+      "expected_sdk_sha1": "0776f4a11a2f73bb6cb074d41d3cd903c98fd657"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/hb-ot-shaper-use-table.hh",
+      "expected_sdk_sha1": "446b0a31216f2a34ad73d80a415054418447df05"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/hb-ot-shaper-vowel-constraints.cc",
+      "expected_sdk_sha1": "b8ef3bc0078b3530237fb00138ed490b3f8a1ba2"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/hb-ot-shaper.hh",
+      "expected_sdk_sha1": "38a62fa6f562a65879a502d5424b83e40521a3f4"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/hb-ot-tag-table.hh",
+      "expected_sdk_sha1": "2f35bbcfa70e9920ba886fcaa4849c9e6e46eef0"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/hb-ot-var-avar-table.hh",
+      "expected_sdk_sha1": "7352b0ce7521e21eddb40521d74bcb772c571521"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/hb-ot-var-gvar-table.hh",
+      "expected_sdk_sha1": "70612c4fe589a52704bf7afddb2292157e1892fa"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/hb-ot-var-hvar-table.hh",
+      "expected_sdk_sha1": "33ac115c1ad9b7fded5e13037d286e6ff6921fb0"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/hb-ot-vorg-table.hh",
+      "expected_sdk_sha1": "1f9cc7dcddf608bbba316917accf34c70f4ad4a5"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/hb-outline.cc",
+      "expected_sdk_sha1": "e0b2b1eccf0be1d6082922c7e6207ec9f0f447da"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/hb-outline.hh",
+      "expected_sdk_sha1": "ddb4ddcdacc1849deb2661341c898a91cb30250b"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/hb-paint-extents.cc",
+      "expected_sdk_sha1": "a0bfc38e3754db817149b2732ef9bd0b5245ae64"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/hb-paint-extents.hh",
+      "expected_sdk_sha1": "b34357a734ef459b4e1302261a9c3fffb674fe4e"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/hb-paint.cc",
+      "expected_sdk_sha1": "72f8986f1136c440b152fa4f2cf5387e59328fc3"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/hb-paint.h",
+      "expected_sdk_sha1": "bded07969c250ce9727c9be36884d9f39819877b"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/hb-paint.hh",
+      "expected_sdk_sha1": "d1379e1681ba6e556c7f8e28d6fdffddba866254"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/hb-raster-draw.cc",
+      "expected_sdk_sha1": "0f53505194804a8e1535ddeaef0ee21a3cf76d77"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/hb-raster-paint.cc",
+      "expected_sdk_sha1": "693065e1b943b8909bcde5b5eba38f0d6a6141a8"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/hb-raster-paint.hh",
+      "expected_sdk_sha1": "fd6d0022d1e127fa0bbfc3f02e65d9634e40e2f6"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/hb-raster.hh",
+      "expected_sdk_sha1": "ec8e91f5de59ae6569fab1bcf0ca2dc6dc670cc3"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/hb-repacker.hh",
+      "expected_sdk_sha1": "204d97b511524029c2d2832dfa4ec98680fabdb3"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/hb-script-list.h",
+      "expected_sdk_sha1": "84b81e4a595b205a1f9be60e0f1e4c48b91d3904"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/hb-serialize.hh",
+      "expected_sdk_sha1": "36cf2c98c266e9ed64dad14c54bc754a0997b48e"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/hb-shape-plan.cc",
+      "expected_sdk_sha1": "029294662de487103c2bcc85f9bd6fe5dfa7066c"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/hb-shape-plan.hh",
+      "expected_sdk_sha1": "9c6dca9255e85274945383216868d8515b7fbf7f"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/hb-static.cc",
+      "expected_sdk_sha1": "3af88181a022d1ae6b136a4aeca06209ff2d63cd"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/hb-subset-plan-layout.cc",
+      "expected_sdk_sha1": "8f18cab3d832454f023f1658a942d0d81d46b5f4"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/hb-subset-plan-member-list.hh",
+      "expected_sdk_sha1": "cfb6ec7fc639e492a769ad06e82294bf00672a0a"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/hb-subset-plan.cc",
+      "expected_sdk_sha1": "c95aa1c12f1e1ef6e3c3e5dda01576730b789063"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/hb-subset-plan.hh",
+      "expected_sdk_sha1": "3bf5987f9dda8aca3d23055401951530046c7575"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/hb-subset-table-other.cc",
+      "expected_sdk_sha1": "19281a80bce6c663ae8e495c2976f42b32d4c2e5"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/hb-subset-table-var.cc",
+      "expected_sdk_sha1": "6b002a2e6166ef83f8072739a74d02ec61827e51"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/hb-subset.cc",
+      "expected_sdk_sha1": "bbad2d6b33bbf67947494ab146891eaf851722ee"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/hb-ucd-table.hh",
+      "expected_sdk_sha1": "04ab65f492524a5bfb539c4bd744dd5b12f6f840"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/hb-unicode-emoji-table.hh",
+      "expected_sdk_sha1": "13c6579604cc6ad48ee13d04ac5f8e2cfc4f9848"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/hb-unicode.hh",
+      "expected_sdk_sha1": "52d6b63215b691251119019808fb04726fdb5ed6"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/hb-vector-buf.hh",
+      "expected_sdk_sha1": "53302c9a08fdd3fc469680e16cd83ec1a5289c35"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/hb-vector-draw.cc",
+      "expected_sdk_sha1": "59faceb7872e8fca7676a1828f2a7c87629ab026"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/hb-vector-draw.hh",
+      "expected_sdk_sha1": "de139ba43879c2088bd5c386144d005633e2b9b8"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/hb-vector-paint-pdf.cc",
+      "expected_sdk_sha1": "dbefac43904bb7591064b83ef55e09ebd816e869"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/hb-vector-paint-svg.cc",
+      "expected_sdk_sha1": "9041d0467b357b637589f74f1fb6e8ca666587db"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/hb-vector-paint.cc",
+      "expected_sdk_sha1": "087f407af4f6f5590508b1d22f7dfa42f4c7fbad"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/hb-vector-paint.hh",
+      "expected_sdk_sha1": "be2ded9f65ca861cf46315cc5ce86241918f92d5"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/hb-vector-path.cc",
+      "expected_sdk_sha1": "9db29551b08bce1de7b8d2ca68f514e953ba42db"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/hb-vector-path.hh",
+      "expected_sdk_sha1": "c35fa332e8cf355f13bca36ba917cc419ae0dbcc"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/hb-version.h",
+      "expected_sdk_sha1": "cc3bda51049859944eee20bf21bed5e989f323a8"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/hb-wasm-shape.cc",
+      "expected_sdk_sha1": "490476e6182c482de702a25ed788052933ca7027"
+    },
+    {
+      "path": "src/3rdparty/harfbuzz-ng/src/hb.hh",
+      "expected_sdk_sha1": "4306c3783db25736807bac357c80940d06437080"
+    },
+    {
+      "path": "src/3rdparty/libpng/ANNOUNCE",
+      "expected_sdk_sha1": "b89362b3fde65b78b96276a2823df6f2d7d64908"
+    },
+    {
+      "path": "src/3rdparty/libpng/CHANGES",
+      "expected_sdk_sha1": "7c0909ad4b6237c5b7c3a968bc7ba5883dbb15a4"
+    },
+    {
+      "path": "src/3rdparty/libpng/README",
+      "expected_sdk_sha1": "cc4f9acf47ef2a63714149dfb86387674c570058"
+    },
+    {
+      "path": "src/3rdparty/libpng/libpng-manual.txt",
+      "expected_sdk_sha1": "a0febc25a399e1ca931d2612c97d6d3bad0cbca4"
+    },
+    {
+      "path": "src/3rdparty/libpng/png.c",
+      "expected_sdk_sha1": "f7fe084d69c05a90d4fbad7e5b0c99a78bdff690"
+    },
+    {
+      "path": "src/3rdparty/libpng/png.h",
+      "expected_sdk_sha1": "77c0346dac93dd7e25a417c9913eb1ad560cd1c9"
+    },
+    {
+      "path": "src/3rdparty/libpng/pngconf.h",
+      "expected_sdk_sha1": "8b78aa034233473621fa0f926399412a5671785b"
+    },
+    {
+      "path": "src/3rdparty/libpng/pnglibconf.h",
+      "expected_sdk_sha1": "30e4ae78389f05410eba6dc24f789e27fe821fff"
+    },
+    {
+      "path": "src/3rdparty/libpng/pngread.c",
+      "expected_sdk_sha1": "d4fe3671d7e18a7c536b2124678f2045767b684c"
+    },
+    {
+      "path": "src/3rdparty/libpng/pngrtran.c",
+      "expected_sdk_sha1": "5d66316c0d9d693e2a3ab41c7fe551f606796741"
+    },
+    {
+      "path": "src/3rdparty/libpng/pngrutil.c",
+      "expected_sdk_sha1": "557b96f53d1faeea39db8be6a9ac255b2351175c"
+    },
+    {
+      "path": "src/3rdparty/libpng/pngset.c",
+      "expected_sdk_sha1": "220d99c7d86e64f471df703abde89b4876bca421"
+    },
+    {
+      "path": "src/3rdparty/libpng/qt_attribution.json",
+      "expected_sdk_sha1": "c688a2b6f0f558e2dc6a657d860e4c12b8e862ce"
+    },
+    {
+      "path": "src/3rdparty/md4c/md4c.c",
+      "expected_sdk_sha1": "459a8f911e5f064ece0a33fcb0ec9316f6670a67"
+    },
+    {
+      "path": "src/3rdparty/md4c/md4c.h",
+      "expected_sdk_sha1": "3a8fb4d110e12932753f74c03be5e645b80c30ac"
+    },
+    {
+      "path": "src/3rdparty/md4c/qt_attribution.json",
+      "expected_sdk_sha1": "8504576f23b0cc8b2876d0cbe9730fad1c28fcd8"
+    },
+    {
+      "path": "src/3rdparty/pcre2/qt_attribution.json",
+      "expected_sdk_sha1": "42b48b0197b6b28e797cb78b51d223e97cd5554b"
+    },
+    {
+      "path": "src/3rdparty/pcre2/src/pcre2.h",
+      "expected_sdk_sha1": "af7f5988ee7717b83213c8356159ceb0c782669e"
+    },
+    {
+      "path": "src/3rdparty/pcre2/src/pcre2_jit_compile.c",
+      "expected_sdk_sha1": "fb34528f42bfba32c9017adf6485faa6efb0168e"
+    },
+    {
+      "path": "src/3rdparty/sqlite/qt_attribution.json",
+      "expected_sdk_sha1": "56a907054aebe41e567f22b6ab5be188c1a08834"
+    },
+    {
+      "path": "src/3rdparty/sqlite/sqlite3.c",
+      "expected_sdk_sha1": "ed0844e7ffb9f60e09bc00b281d392db2b76285b"
+    },
+    {
+      "path": "src/3rdparty/sqlite/sqlite3.h",
+      "expected_sdk_sha1": "34befc96c2ca7d1e93c5d6c9e2ad5114be1fd3a3"
+    },
+    {
+      "path": "src/3rdparty/sqlite/update_sqlite.sh",
+      "expected_sdk_sha1": "263ec8219d32fcfb2dd40dbe6fb4589d615d03ca"
+    },
+    {
+      "path": "src/3rdparty/tinycbor/.gitignore",
+      "expected_sdk_sha1": "c53c52b3a379eefc26cce99b2a07faca59801865"
+    },
+    {
+      "path": "src/3rdparty/tinycbor/tests/.gitignore",
+      "expected_sdk_sha1": "fa03c5f400b6b8cbecab4e0d0f28a8bc4d7b0a19"
+    },
+    {
+      "path": "src/android/jar/.gitignore",
+      "expected_sdk_sha1": "70ffb4a71fe4d187c524d0803bd6ebc5b8c3d139"
+    },
+    {
+      "path": "src/android/templates/.gitignore",
+      "expected_sdk_sha1": "e13cdc1830dedafb6f8d184ecf746843e75412de"
+    },
+    {
+      "path": "src/corelib/serialization/.gitignore",
+      "expected_sdk_sha1": "59ba17633238eec2367b6edd3f790adb55545d63"
+    },
+    {
+      "path": "src/corelib/serialization/qjsoncbor.cpp",
+      "expected_sdk_sha1": "0e7f7a8e48f42745eae712a09b976c3f0f135e46"
+    },
+    {
+      "path": "src/gui/text/qtextmarkdownimporter.cpp",
+      "expected_sdk_sha1": "d4e66d9b75400477a2d28955731fceef73b87282"
+    },
+    {
+      "path": "src/gui/text/qtextmarkdownimporter_p.h",
+      "expected_sdk_sha1": "884664b9b349c47c6b1d7cd3136fe6c07b4eaaf9"
+    },
+    {
+      "path": "src/network/android/jar/.gitignore",
+      "expected_sdk_sha1": "5aca36996faf1c8912a4a7a72ab1f2ffed20e513"
+    },
+    {
+      "path": "src/network/kernel/qauthenticator.cpp",
+      "expected_sdk_sha1": "ca549f0a851f3a72f023cb7f49eaf94eeb3c1949"
+    },
+    {
+      "path": "src/plugins/networkinformation/android/jar/.gitignore",
+      "expected_sdk_sha1": "5aca36996faf1c8912a4a7a72ab1f2ffed20e513"
+    },
+    {
+      "path": "src/plugins/sqldrivers/sqlite/CMakeLists.txt",
+      "expected_sdk_sha1": "5d12995f81616ea448b23d6bc9e47cf1b7829a2c"
+    },
+    {
+      "path": "tests/auto/cmake/test_qt_extract_metatypes/test_qt_extract_metatypes_project/testdata/.gitattributes",
+      "expected_sdk_sha1": "dbc8489e85547cd1faaae8469265423c8041048b"
+    },
+    {
+      "path": "tests/auto/corelib/io/qfile/.gitattributes",
+      "expected_sdk_sha1": "5d7250cbcfd032d0b25bbdaf289e4529abce9753"
+    },
+    {
+      "path": "tests/auto/corelib/io/qresourceengine/.gitattributes",
+      "expected_sdk_sha1": "49eb64a3d647f0a86a01d8aecede3bdfe503aafa"
+    },
+    {
+      "path": "tests/auto/corelib/io/qsettings/.gitattributes",
+      "expected_sdk_sha1": "7091b2673b53c78f9016dc14beba6b795ab14248"
+    },
+    {
+      "path": "tests/auto/corelib/io/qzip/.gitignore",
+      "expected_sdk_sha1": "e99b324a11a364690ca170aca9d58016f9352f07"
+    },
+    {
+      "path": "tests/auto/corelib/plugin/qpluginloader/elftest/.gitattributes",
+      "expected_sdk_sha1": "63edbe3b9624dd7cd9946eb0d18a678ddf95be3e"
+    },
+    {
+      "path": "tests/auto/corelib/serialization/qcborvalue_json/tst_qcborvalue_json.cpp",
+      "expected_sdk_sha1": "c5e2ea1a8deddfbce0af881fc68a524ba390facc"
+    },
+    {
+      "path": "tests/auto/corelib/serialization/qtextstream/.gitattributes",
+      "expected_sdk_sha1": "0e37107ce59fd937b098a5fd78e6637915117185"
+    },
+    {
+      "path": "tests/auto/corelib/serialization/qxmlstream/.gitattributes",
+      "expected_sdk_sha1": "1396de821c79017bbda8b3ca76c369f0eda4a0e2"
+    },
+    {
+      "path": "tests/auto/corelib/text/qbytearray_large/.gitattributes",
+      "expected_sdk_sha1": "07adfd290de6ae7c2a1bc09f57f50411dd4cdf90"
+    },
+    {
+      "path": "tests/auto/gui/text/qtextmarkdownimporter/tst_qtextmarkdownimporter.cpp",
+      "expected_sdk_sha1": "8731e973fc7a38f9e256fa620adefbdfc208c0a6"
+    },
+    {
+      "path": "tests/auto/network/access/qnetworkreply/.gitattributes",
+      "expected_sdk_sha1": "934d1c6194aa38a36eb7e80fee453d7dad5ba17d"
+    },
+    {
+      "path": "tests/auto/tools/moc/.gitattributes",
+      "expected_sdk_sha1": "d22acfb48cecc61b5e11f8f07ae67bdce2857c0f"
+    },
+    {
+      "path": "tests/auto/tools/rcc/data/.gitattributes",
+      "expected_sdk_sha1": "61dba6ce4a6f84c15e216e7820078dcbd7494988"
+    },
+    {
+      "path": "tests/auto/tools/uic/baseline/.gitattributes",
+      "expected_sdk_sha1": "bddcaf9331489c4229f0e377363ebbd5cbca0d74"
+    },
+    {
+      "path": "tests/auto/xml/dom/qdom/.gitattributes",
+      "expected_sdk_sha1": "08b45c327e853a477f1484e56eaadb7324cceacb"
+    },
+    {
+      "path": "tests/testserver/apache2/.gitattributes",
+      "expected_sdk_sha1": "093fe731b05611b766649cc903d4d20c94964139"
+    },
+    {
+      "path": "tests/testserver/apache2/testdata/www/htdocs/rfcs/.gitattributes",
+      "expected_sdk_sha1": "8b9f5d8a9499e4ed45ba5136e14c6ec6415ee48b"
+    },
+    {
+      "path": "tests/testserver/common/.gitattributes",
+      "expected_sdk_sha1": "53c7192f8f2373e57aade0d68de76c3f9b0d340a"
+    },
+    {
+      "path": "tests/testserver/danted/.gitattributes",
+      "expected_sdk_sha1": "53c7192f8f2373e57aade0d68de76c3f9b0d340a"
+    },
+    {
+      "path": "tests/testserver/ftp-proxy/.gitattributes",
+      "expected_sdk_sha1": "53c7192f8f2373e57aade0d68de76c3f9b0d340a"
+    },
+    {
+      "path": "tests/testserver/squid/.gitattributes",
+      "expected_sdk_sha1": "53c7192f8f2373e57aade0d68de76c3f9b0d340a"
+    },
+    {
+      "path": "tests/testserver/vsftpd/.gitattributes",
+      "expected_sdk_sha1": "093fe731b05611b766649cc903d4d20c94964139"
+    },
+    {
+      "path": "util/gradientgen/.gitignore",
+      "expected_sdk_sha1": "891b44829fb28b991f6502c35526c361e5a9a09f"
+    },
+    {
+      "path": "util/sbom/cyclonedx/.gitignore",
+      "expected_sdk_sha1": "453c2791963e238c43eac40361bd5436cff2ded6"
+    },
+    {
+      "path": "util/unicode/.gitattributes",
+      "expected_sdk_sha1": "4f26ad018b1798a59a093318808070758d109571"
+    },
+    {
+      "path": "util/x86simdgen/.gitignore",
+      "expected_sdk_sha1": "516408ef46336460a5340a78df92d3a149fc993b"
+    }
+  ]
+}

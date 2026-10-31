@@ -1,0 +1,42 @@
+Internal ctest changing into directory: C:/Users/Strickland/SpektraLab-work/build/qt-20261031-2302-scan
+UpdateCTestConfiguration  from :C:/Users/Strickland/SpektraLab-work/build/qt-20261031-2302-scan/DartConfiguration.tcl
+Parse Config file:C:/Users/Strickland/SpektraLab-work/build/qt-20261031-2302-scan/DartConfiguration.tcl
+UpdateCTestConfiguration  from :C:/Users/Strickland/SpektraLab-work/build/qt-20261031-2302-scan/DartConfiguration.tcl
+Parse Config file:C:/Users/Strickland/SpektraLab-work/build/qt-20261031-2302-scan/DartConfiguration.tcl
+Test project C:/Users/Strickland/SpektraLab-work/build/qt-20261031-2302-scan
+Constructing a list of tests
+Done constructing a list of tests
+Updating test list for fixtures
+Added 0 tests to meet fixture requirements
+Checking test dependency graph...
+Checking test dependency graph end
+test 1
+    Start 1: spk_spectral_lift
+
+1: Test command: C:\Users\Strickland\SpektraLab-work\build\qt-20261031-2302-scan\spk_spectral_lift_test.exe "C:/Users/Strickland/SpektraLab-work/build/qt-20261031-2302-scan/app/spk_material_fit.exe"
+1: Working Directory: C:/Users/Strickland/SpektraLab-work/build/qt-20261031-2302-scan
+1: Environment variable modifications: 
+1:  PATH=path_list_prepend:C:/Users/Strickland/SpektraLab-deps-20261028/qt-6.11.3/mingw_64/bin
+1:  PATH=path_list_prepend:C:/Users/Strickland/SpektraLab-deps-20261028/qt-6.11.3/Tools/mingw1310_64/bin
+1: Test timeout computed to be: 90
+1: Spectral lift: 511 checks; independent transmission/Jacobian, nonlinear CMY recovery, rank/bounds, explicit operator/provenance and safe CLI refusal passed
+1/2 Test #1: spk_spectral_lift ................   Passed    0.81 sec
+test 2
+    Start 2: spk_scan_curve_fit
+
+2: Test command: C:\Users\Strickland\SpektraLab-work\build\qt-20261031-2302-scan\spk_material_fit_test.exe "C:/Users/Strickland/SpektraLab-work/engine/resources_research/scan/ProImage100_datasheet_curves.json" "C:/Users/Strickland/SpektraLab-work/build/qt-20261031-2302-scan/app/spk_material_fit.exe" "C:/Users/Strickland/SpektraLab-work/validation/materials-20261031/proimage100-statusm-fit.json"
+2: Working Directory: C:/Users/Strickland/SpektraLab-work/build/qt-20261031-2302-scan
+2: Environment variable modifications: 
+2:  PATH=path_list_prepend:C:/Users/Strickland/SpektraLab-deps-20261028/qt-6.11.3/mingw_64/bin
+2:  PATH=path_list_prepend:C:/Users/Strickland/SpektraLab-deps-20261028/qt-6.11.3/Tools/mingw1310_64/bin
+2: Test timeout computed to be: 90
+2: Scan curve fit: 125 checks; synthetic recovery, withheld samples, pinned Pro Image data, determinism and non-Profile refusal passed
+2/2 Test #2: spk_scan_curve_fit ...............   Passed    0.60 sec
+
+The following tests passed:
+	spk_spectral_lift
+	spk_scan_curve_fit
+
+100% tests passed, 0 tests failed out of 2
+
+Total Test time (real) =   1.42 sec

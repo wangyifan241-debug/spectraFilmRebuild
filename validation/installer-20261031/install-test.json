@@ -1,0 +1,12 @@
+{
+  "passed": true,
+  "installed_files_checked": 1721,
+  "executable_sha256": "83516afde561a8a6a681162aec3560181ea877a434d30cb6dcf3a086f8ec2fb7",
+  "isolated_path": "C:\\Users\\Strickland\\SpektraLab-work\\build\\installer-20261031-preview-2\\install-test-ddf154f07064457188f1d1c75372d086\\安装 测试",
+  "overwrite_refused": true,
+  "installed_app_smoke": true,
+  "uninstalled": true,
+  "recipient_file_preserved": true,
+  "user_registration_unchanged": true,
+  "clean_machine": false
+}

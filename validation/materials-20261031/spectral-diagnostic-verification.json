@@ -1,0 +1,18 @@
+{
+  "diagnostic_regression_passed": true,
+  "research_quality_gate_passed": false,
+  "profile_ready": false,
+  "spectral_cli_exit": 3,
+  "rejected_rows": 12,
+  "total_rows": 201,
+  "max_abs_RGB_D": [
+    0.02874505110022138,
+    0.001846335297343682,
+    0.00016491668172435858
+  ],
+  "tool_sha256": "4207e7f8af31504b88b7eddc9ba93c4101e390c48c6563312b5ff5cb752312c2",
+  "operator_sha256": "b296756ebe973d523de62ba2c5d2801f1ecb7f2394d95cf53961746d504c2a32",
+  "spectral_report_sha256": "59cc7095c750463b75e73e08a6c99edf6aa486e969aeb13c8b2bf326e2a70b93",
+  "existing_curve_report_sha256": "79da47609407b5f0c569855d2e067999ba25689d2d3e5dc7057821aa1c3fb0db",
+  "results_directory": "D:\\学习资料\\SpektraLab\\build\\spectral-diagnostic-fc96cf1f8b8f48ed8824ac7268c1ce05"
+}
