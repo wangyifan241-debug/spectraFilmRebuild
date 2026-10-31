@@ -30,6 +30,30 @@ int main(int argc, char** argv) {
             spk_open(engine.get(), &image,
                 "{\"grain_active\":false,\"glare_active\":false,\"halation_active\":false}", nullptr), spk_session_release);
         check(bool(session), spk_last_error(engine.get()));
+#ifndef _WIN32
+        // Linux intentionally has no native coverage rasteriser. Exercise its
+        // refusal transaction rather than asking it to implement Windows text.
+        char* before=nullptr;
+        check(spk_get_params(session.get(),&before)==SPK_OK&&before,"get params");
+        const std::string original(before);spk_string_free(before);
+        for(const char* key : {"date_imprint_active","overscan_active"}) {
+            const auto delta=std::string("{\"")+key+"\":true,\"print_exposure\":1.25}";
+            check(spk_set_params(session.get(),delta.c_str(),nullptr)==SPK_ERR_USER,
+                  std::string("unsupported feature accepted: ")+key);
+            check(std::string(spk_last_error(engine.get())).find("not implemented")!=std::string::npos,
+                  "unclear platform refusal");
+            char* after=nullptr;
+            check(spk_get_params(session.get(),&after)==SPK_OK&&after,"get params after refusal");
+            const std::string current(after);spk_string_free(after);
+            check(current==original,"unsupported request partially mutated session");
+        }
+        spk_result result{};
+        const auto status=spk_render(session.get(),"full",&result);
+        const bool valid=status==SPK_OK&&result.rgba16&&result.width==w&&result.height==h;
+        spk_result_free(&result);check(valid,"session unusable after feature refusal");
+        std::cout<<"Film edge/date unsupported on Linux: refusal and session recovery verified (no skip)\n";
+        return 0;
+#endif
         auto set=[&](const char* json) {const auto status=spk_set_params(session.get(),json,nullptr);
             check(status==SPK_OK,std::string("set: ")+spk_last_error(engine.get()));};
         auto render=[&] {

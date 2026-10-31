@@ -231,12 +231,35 @@ def extras(host, sid, path, tmp, label, raw, probe):
     check(h["ok"] and h["result"].get("valid") is False, f"{label}: overscan_geometry (refused feature -> invalid)")
     h, _ = host.call("progress", {"session": sid})
     check(h["ok"] and "pct" in h["result"], f"{label}: progress", h.get("error"))
-    # The five refused features are refused by name, and leave the session usable.
-    for field in ("contrast_mask_active", "scene_latitude_active", "overscan_active", "date_imprint_active",
-                  "digital_intermediate"):
+    # Pin the platform contract independently of the capability announcement.
+    # Restore each supported toggle: a boundary probe must not leave overscan
+    # enabled on arbitrary-aspect fixtures used by later LUT/cancel tests.
+    hello, _ = host.call("hello")
+    caps = hello["result"]["capabilities"]["backend"]
+    # resources may follow the executable, so inspect the complete command.
+    windows = any(str(arg).lower().endswith(".exe") for arg in host.p.args)
+    expected = {"contrast_mask", "digital_intermediate"}
+    if not windows:
+        expected.update(("overscan", "date_imprint"))
+    check(set(caps["unsupported_features"]) == expected,
+          f"{label}: advertised platform feature boundary")
+    for field, feature in (("contrast_mask_active", "contrast_mask"),
+                           ("scene_latitude_active", "scene_latitude"),
+                           ("overscan_active", "overscan"),
+                           ("date_imprint_active", "date_imprint"),
+                           ("digital_intermediate", "digital_intermediate")):
+        before, _ = host.call("get_params", {"session": sid})
         h, _ = host.call("set_params", {"session": sid, "delta": {field: True}})
-        check(not h["ok"] and h["error"]["code"] == "bad_request" and "not implemented" in h["error"]["message"],
-              f"{label}: {field} refused", h.get("error", {}).get("message", "accepted?!"))
+        if feature in expected:
+            check(not h["ok"] and h["error"]["code"] == "bad_request" and "not implemented" in h["error"]["message"],
+                  f"{label}: {field} refused", h.get("error", {}).get("message", "accepted?!"))
+            after, _ = host.call("get_params", {"session": sid})
+            check(after["result"]["params"] == before["result"]["params"],
+                  f"{label}: refused {field} preserves params")
+        else:
+            check(h["ok"], f"{label}: {field} supported", h.get("error"))
+        restored, _ = host.call("set_params", {"session": sid, "delta": {field: False}})
+        check(restored["ok"], f"{label}: restore {field}", restored.get("error"))
     h, _ = host.call("print_lut_catalog")
     stock = sorted(h["result"].keys())[0]
     h, px = host.call("preview_stock_lut", {"session": sid, "print_stock": stock, "tier": "live",
