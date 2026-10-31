@@ -80,6 +80,7 @@ ApplicationWindow {
     onClosing: function(event) {
         if (preview.batchExporting) preview.cancelExport()
         if (preview.busy) { closePending = true; event.accepted = false }
+        else { closePending = false; if (!preview.prepareToClose()) { event.accepted = false; unsavedDialog.open() } }
     }
     Connections {
         target: preview
@@ -87,6 +88,13 @@ ApplicationWindow {
         function onSourceOpened() { window.cropMode = false; canvas.resetView(true) }
         function onCatalogChanged() { Qt.callLater(function() { filmQuickSelect.currentIndex = preview.filmIndex }) }
         function onSettingsChanged() { Qt.callLater(function() { filmQuickSelect.currentIndex = preview.filmIndex }) }
+    }
+    MessageDialog {
+        id: unsavedDialog
+        title: "编辑设置尚未保存"
+        text: "本次关闭已取消。请释放文件锁或修复保存目录后，点击“重试保存设置”。"
+        informativeText: preview.persistenceWarning
+        buttons: MessageDialog.Ok
     }
     MaterialManager { id: materialManager; anchors.centerIn: parent; width: Math.min(920,window.width-40); height: Math.min(760,window.height-40) }
     FileDialog {
@@ -696,6 +704,7 @@ ApplicationWindow {
                             Note { text: window.closePending ? "等待当前操作完成后关闭…" : preview.status; color: preview.failed ? "#ffb39f" : Theme.muted }
                             Note { objectName: "savedStatusNote"; text: preview.savedStatus; visible: text.length > 0 }
                             Note { objectName: "persistenceWarningNote"; text: preview.persistenceWarning; visible: text.length > 0; color: "#ffb39f" }
+                            Button { text: "重试保存设置"; visible: preview.persistenceWarning.length > 0; onClicked: preview.retrySave() }
                             ProgressBar { Layout.fillWidth: true; visible: preview.batchExporting; from: 0; to: Math.max(1, preview.batchTotal); value: preview.batchProgress }
                             ActionButton { Layout.fillWidth: true; text: "当前照片完成后停止"; visible: preview.batchExporting; onClicked: preview.cancelExport() }
                             ActionButton { Layout.fillWidth: true; text: "重新尝试预览"; visible: preview.failed && preview.hasFrame && !preview.batchExporting; enabled: !preview.busy; onClicked: preview.apply() }

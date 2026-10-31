@@ -144,6 +144,8 @@ public:
     Q_INVOKABLE void beginEditGesture(const QString& key);
     Q_INVOKABLE void endEditGesture();
     Q_INVOKABLE void flushEdits();
+    Q_INVOKABLE void retrySave();
+    Q_INVOKABLE bool prepareToClose();
     Q_INVOKABLE void apply();
     Q_INVOKABLE void exportTiff(const QUrl& path);
     Q_INVOKABLE void exportImage(const QUrl& path, int format, int quality, int maxLongEdge);
@@ -167,6 +169,7 @@ signals:
     void initialized(bool success);
     void operationFinished(const QString& operation, bool success);
 private:
+    friend struct PreviewControllerReviewTest;
     struct Reply {
         quint64 generation=0;
         quint64 settings_revision=0;
@@ -182,6 +185,7 @@ private:
         bool apply_scene=false;
     };
     using Job = std::function<Reply(spk::desktop::PreviewHost&)>;
+    struct Task { Job job; quint64 generation=0,revision=0; QString operation; };
     void workerLoop(std::filesystem::path resources);
     void deliver(Reply reply);
     void accept(Reply reply);
@@ -231,6 +235,7 @@ private:
         bool selected=true;
         std::vector<spk::desktop::editing::State> undo,redo;
         bool pending_save=false,save_blocked=false,has_stored=false;
+        unsigned save_failures=0;
         bool material_blocked=false;
         QString save_warning;
     };
@@ -256,7 +261,7 @@ private:
     bool dialog_open_=false;
     std::mutex mutex_;
     std::condition_variable wake_;
-    std::deque<Job> jobs_;
+    std::deque<Task> jobs_;
     bool stopping_=false;
     std::thread worker_;
 };

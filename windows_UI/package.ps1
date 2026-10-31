@@ -26,6 +26,10 @@ if (-not $record.source_inventory_sha256 -or (Get-SpektraLabInventoryDigest $sou
 }
 $exeHash = (Get-FileHash -LiteralPath "$app/SpektraLabQt.exe" -Algorithm SHA256).Hash.ToLowerInvariant()
 if ($exeHash -ne $record.executable_sha256) { throw 'Executable no longer matches qt-build.json.' }
+$payloadDigest=Get-SpektraLabInventoryDigest @(Get-SpektraLabPayloadInventory $app)
+if(-not $record.payload_inventory_sha256 -or $payloadDigest -ne $record.payload_inventory_sha256) {
+    throw 'Tested deployment changed (DLL/plugin/resource/file set). Rebuild before packaging.'
+}
 foreach ($file in @($makensis, "$app/platforms/qwindows.dll", "$app/resources/spektrafilm_constants.bin",
         "$app/licenses/LICENSE", "$app/licenses/SPEKTRAFILM_LICENSE.txt", "$app/licenses/Qt/manifest.json")) {
     if (-not (Test-Path -LiteralPath $file -PathType Leaf)) { throw "Required package input missing: $file" }
@@ -59,6 +63,9 @@ if (-not $overlay.all_verified -or $overlay.checked_files -ne 22517 -or $overlay
 New-Item -ItemType Directory -Path $destination | Out-Null
 $payload = Join-Path $destination 'payload'
 Copy-Item -LiteralPath $app -Destination $payload -Recurse
+if((Get-SpektraLabInventoryDigest @(Get-SpektraLabPayloadInventory $payload)) -ne $payloadDigest){
+    throw 'Deployment changed during packaging; copied payload is not the tested deployment.'
+}
 New-Item -ItemType Directory -Path "$payload/Source", "$payload/licenses/DXC" | Out-Null
 Copy-Item -LiteralPath "$PSScriptRoot/installer/READ-ME-FIRST.txt" -Destination "$payload/READ-ME-FIRST.txt"
 Copy-Item -LiteralPath "$PSScriptRoot/installer/REBUILD.md" -Destination "$payload/Source/REBUILD.md"
@@ -109,6 +116,15 @@ $manifest | ConvertTo-Json -Depth 6 | Set-Content -LiteralPath "$payload/package
 # are removed only if empty; files a recipient added to the app are preserved.
 function Escape-Nsis([string]$value) { $value.Replace('$','$$').Replace('"','$\"') }
 $uninstall = [Collections.Generic.List[string]]::new()
+# Refuse redirection before deleting any managed file, including ancestors of
+# the installation. A recipient may replace a shipped directory with a link.
+$uninstall.Add('Push "$INSTDIR"')
+$uninstall.Add('Call un.ValidatePath')
+foreach ($dir in (Get-ChildItem -LiteralPath $payload -Directory -Recurse)) {
+    $relative = Escape-Nsis ([IO.Path]::GetRelativePath($payload, $dir.FullName))
+    $uninstall.Add('Push "$INSTDIR\' + $relative + '"')
+    $uninstall.Add('Call un.ValidatePath')
+}
 foreach ($file in Get-ChildItem -LiteralPath $payload -File -Recurse) {
     $relative = Escape-Nsis ([IO.Path]::GetRelativePath($payload, $file.FullName))
     $uninstall.Add('Delete "$INSTDIR\' + $relative + '"')

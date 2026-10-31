@@ -22,6 +22,7 @@ struct ColorZone {
 struct Develop {
     bool enabled = true;
     bool legacySrgb = false; // preserve v2 edits, never silently reinterpret
+    bool legacyExposure = false; // v1-v8 recipes used gamma 2.2 in either space
     double temperature=0, tint=0, exposure=0, contrast=0, brightness=0;
     double saturation=0, highlights=0, shadows=0, blackPoint=0, whitePoint=0;
     // rgb, luma, red, green, blue; Fritsch–Carlson, 256 samples (Mac).
@@ -30,7 +31,7 @@ struct Develop {
     std::array<ColorZone,4> zones{};
     double vignetteAmount=0,vignetteMidpoint=50;
     bool operator==(const Develop&) const = default;
-    bool neutral() const { auto copy=*this;copy.enabled=true;return !enabled||copy==Develop{}; }
+    bool neutral() const { auto copy=*this;copy.enabled=true;copy.legacySrgb=false;copy.legacyExposure=false;return !enabled||copy==Develop{}; }
 };
 void validateDevelop(const Develop& develop);
 QImage applyDevelop(const QImage& rgba64, const Develop& develop);

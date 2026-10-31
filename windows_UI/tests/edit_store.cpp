@@ -102,6 +102,9 @@ int main(int argc, char** argv) {
         state.develop.contrast=21;state.develop.brightness=-13;state.develop.saturation=32;
         state.develop.highlights=-44;state.develop.shadows=55;state.develop.blackPoint=3;state.develop.whitePoint=4;
         store.save(url, state);
+        check(store.load(url,catalog).state==std::optional(state),"v9 linear exposure did not roundtrip");
+        state.develop.legacyExposure=true;
+        store.save(url,state);
         const auto path = store.filePath(url);
         const auto result = store.load(url, catalog);
         check(result.state && *result.state == state && result.warning.isEmpty() && !result.blocked,
@@ -129,7 +132,9 @@ int main(int argc, char** argv) {
         store.save(url, state);
         check(store.load(url, catalog).state == std::optional(state), "atomic update did not replace prior state");
         const auto validBytes = read(path);
-        const auto validJson = QJsonDocument::fromJson(validBytes).object();
+        auto validJson = QJsonDocument::fromJson(validBytes).object();
+        validJson["version"]=8;
+        mutateObject(validJson,"state",[](auto& s){mutateObject(s,"develop",[](auto& d){d.remove("exposureModel");});});
         rejects([&] { reopened.save(url, state); },
                 "second instance overwrote edits saved since its load");
         check(read(path) == validBytes, "optimistic conflict changed existing edits");
@@ -146,7 +151,7 @@ int main(int argc, char** argv) {
         const auto migrated=store.load(url,catalog);
         check(migrated.state==std::optional(legacyExpected),"version 1 edits did not restore with neutral post-develop");
         store.save(url,*migrated.state);
-        check(QJsonDocument::fromJson(read(path)).object()["version"].toInt()==8,"legacy save did not migrate version");
+        check(QJsonDocument::fromJson(read(path)).object()["version"].toInt()==9,"legacy save did not migrate version");
         write(path,validBytes);
         check(store.load(url,catalog).state==std::optional(state),"restoring migration fixture failed");
         auto version2=validJson;version2["version"]=2;
@@ -192,7 +197,9 @@ int main(int argc, char** argv) {
             check(read(path) == bytes, "rejected save changed existing edit history");
             write(path, validBytes);
         };
-        corrupt([](auto& d) { d["version"] = 9; });
+        corrupt([](auto& d) { d["version"] = 10; });
+        corrupt([](auto& d) { d["version"] = 9; }); // missing model must fail
+        corrupt([](auto& d) { d["version"] = 9;mutateObject(d,"state",[](auto& s){mutateObject(s,"develop",[](auto& v){v["exposureModel"]="unknown";});}); });
         corrupt([](auto& d) { mutateObject(d,"state",[](auto& s){mutateObject(s,"materialVersions",[](auto& m){m["filmSha256"]="not-a-sha";});}); });
         corrupt([](auto& d) { mutateObject(d,"state",[](auto& s){mutateObject(s,"halfPair",[](auto& p){p["spacing"]=0;});}); });
         corrupt([](auto& d) { mutateObject(d,"state",[](auto& s){s.remove("filmEdge");}); });

@@ -71,12 +71,16 @@ QImage applyDevelop(const QImage& source,const Develop& d) {
     const double mid=source.colorSpace()==QColorSpace(QColorSpace::ProPhotoRgb)?0.3857:0.4614;
     const double wb[]={1+0.18*d.temperature/100,1-0.12*d.tint/100,1-0.18*d.temperature/100};
     const double exposure=std::exp2(d.exposure),contrast=1+d.contrast/100*1.2;
+    const unsigned mode=source.colorSpace()==QColorSpace(QColorSpace::ProPhotoRgb)?1:0;
     std::array<std::vector<double>,3> tone;
     for(unsigned c=0;c<3;++c) {
         tone[c].resize(65536);
         for(unsigned i=0;i<65536;++i) {
             double v=double(i)/65535*wb[c];
-            if(d.exposure!=0)v=std::pow(std::pow(std::max(v,0.0),2.2)*exposure,1/2.2);
+            if(d.exposure!=0) {
+                if(d.legacyExposure)v=std::pow(std::pow(std::max(v,0.0),2.2)*exposure,1/2.2);
+                else v=spkhost::cctf_encode_mode(float(spkhost::cctf_decode_mode(float(std::max(v,0.0)),mode)*exposure),mode);
+            }
             if(d.contrast!=0)v=(v-mid)*contrast+mid;
             if(d.brightness!=0)v=std::pow(std::max(v,0.0),1/(1+d.brightness/100*0.8));
             tone[c][i]=v;
@@ -488,8 +492,12 @@ void exportFrame(const FramePtr& frame,const fs::path& destination,const Geometr
     // The caller's immutable FramePtr stays alive throughout this synchronous
     // function; crop/downsize/detach cannot modify its retained RGBA16 result.
     auto workingOptions=options;workingOptions.develop={};workingOptions.format=Format::TIFF16;
-    const auto working=exportImage(developedWorking(frame,options.develop),frame->input_cut()?Geometry{}:geometry,workingOptions);
+    QImage pixels;
+    {
+        const auto working=exportImage(developedWorking(frame,options.develop),frame->input_cut()?Geometry{}:geometry,workingOptions);
+        pixels=displaySpace(working,frame);
+    } // release the full-size working intermediate before the encoder allocates
     auto resolved=options;resolved.develop={};resolved.maxLongEdge=0;
-    exportImageFile(displaySpace(working,frame),destination,Geometry{},resolved,resources);
+    exportImageFile(pixels,destination,Geometry{},resolved,resources);
 }
 } // namespace spk::desktop::output

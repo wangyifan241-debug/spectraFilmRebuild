@@ -223,7 +223,11 @@ int main(int argc,char** argv) {
         output::Develop develop;develop.exposure=1;
         QImage grey(1,1,QImage::Format_RGBA64);grey.fill(QColor::fromRgba64(16384,16384,16384,65535));
         const auto lifted=output::applyDevelop(grey,develop).pixelColor(0,0).rgba64();
-        check(std::abs(int(lifted.red())-int(std::lround(16384*std::exp2(1/2.2))))<=1,"post exposure does not follow Mac pseudo-linear gain");
+        const double linear=std::pow((16384/65535.+.055)/1.055,2.4)*2;
+        check(std::abs(int(lifted.red())-int(std::lround((1.055*std::pow(linear,1/2.4)-.055)*65535)))<=1,"new exposure is not linear sRGB EV");
+        develop.legacyExposure=true;
+        const auto legacyLifted=output::applyDevelop(grey,develop).pixelColor(0,0).rgba64();
+        check(std::abs(int(legacyLifted.red())-int(std::lround(16384*std::exp2(1/2.2))))<=1,"legacy post exposure does not follow Mac pseudo-linear gain");
         develop.enabled=false;compare64(output::applyDevelop(original,develop),original);
         develop={};develop.saturation=-100;
         const auto mono=output::applyDevelop(original,develop);

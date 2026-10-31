@@ -83,9 +83,12 @@ try {
         throw 'Source changed during this build/test run. Rebuild the settled tree before recording a distributable build.'
     }
     $inputInventory | ConvertTo-Json -Depth 4 | Set-Content -LiteralPath "$BuildDirectory/build-source-files.json" -Encoding UTF8
+    $payloadInventory=@(Get-SpektraLabPayloadInventory $app)
+    $payloadInventory | ConvertTo-Json -Depth 4 | Set-Content -LiteralPath "$BuildDirectory/build-payload-files.json" -Encoding UTF8
     [ordered]@{ qt = '6.11.3'; compiler = 'MinGW-w64 13.1.0 posix-seh';
         source_directory = $SourceDirectory; build_directory = $BuildDirectory;
         source_inventory_sha256 = $inputDigest;
+        payload_inventory_sha256 = (Get-SpektraLabInventoryDigest $payloadInventory);
         utc = [DateTime]::UtcNow.ToString('o'); ctest_run = [bool]$RunTests;
         executable_sha256 = (Get-FileHash -LiteralPath "$app/SpektraLabQt.exe" -Algorithm SHA256).Hash.ToLowerInvariant() } |
         ConvertTo-Json | Set-Content -LiteralPath "$BuildDirectory/qt-build.json" -Encoding UTF8

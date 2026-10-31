@@ -122,7 +122,7 @@ QJsonObject stateJson(const State& state) {
             {"exposure",d.exposure},{"contrast",d.contrast},{"brightness",d.brightness},
             {"saturation",d.saturation},{"highlights",d.highlights},{"shadows",d.shadows},
             {"blackPoint",d.blackPoint},{"whitePoint",d.whitePoint},
-            {"workingSpace",d.legacySrgb?"sRGB":"ProPhoto RGB"},{"curves",curves},{"zones",zones},
+            {"workingSpace",d.legacySrgb?"sRGB":"ProPhoto RGB"},{"exposureModel",d.legacyExposure?"gamma22-v1":"linear-v1"},{"curves",curves},{"zones",zones},
             {"vignetteAmount",d.vignetteAmount},{"vignetteMidpoint",d.vignetteMidpoint}}},
         {"placement",QJsonObject{{"active",p.active},{"norm",QString::fromStdString(p.norm)},
             {"highlightKnee",p.highlight_knee},{"highlightRoom",p.highlight_room},
@@ -235,11 +235,18 @@ State parseState(const QJsonObject& value, const Catalog* catalog) {
     if(value.contains("develop")) {
         const auto d=object(value,"develop");
         const bool extended=d.contains("workingSpace");
-        if(extended)keys(d,{"enabled","temperature","tint","exposure","contrast","brightness","saturation",
+        auto fields=d;fields.remove("exposureModel");
+        if(extended)keys(fields,{"enabled","temperature","tint","exposure","contrast","brightness","saturation",
                 "highlights","shadows","blackPoint","whitePoint","workingSpace","curves","zones","vignetteAmount","vignetteMidpoint"},QStringLiteral("develop"));
         else keys(d,{"enabled","temperature","tint","exposure","contrast","brightness","saturation",
                 "highlights","shadows","blackPoint","whitePoint"},QStringLiteral("develop"));
         auto& p=state.develop;
+        p.legacyExposure=true;
+        if(d.contains("exposureModel")) {
+            const auto model=string(d,"exposureModel");
+            require(model=="gamma22-v1"||model=="linear-v1",QStringLiteral("Unknown exposure model; saved edits preserved"));
+            p.legacyExposure=model=="gamma22-v1";
+        }
         p.enabled=boolean(d,"enabled");p.temperature=number(d,"temperature",-100,100);p.tint=number(d,"tint",-100,100);
         p.exposure=number(d,"exposure",-3,3);p.contrast=number(d,"contrast",-50,50);p.brightness=number(d,"brightness",-50,50);
         p.saturation=number(d,"saturation",-100,100);p.highlights=number(d,"highlights",-100,100);p.shadows=number(d,"shadows",-100,100);
@@ -352,11 +359,12 @@ QJsonObject readDocument(const QString& path, QByteArray* digest = nullptr) {
     require(string(result, "format") == "SpektraLab.Windows.Editor",
             QStringLiteral("Saved edits use an unsupported document format"));
     const auto version = result.value("version");
-    require(version.isDouble() && (version.toDouble() == 1.0 || version.toDouble() == 2.0 || version.toDouble() == 3.0 || version.toDouble()==4.0 || version.toDouble()==5.0 || version.toDouble()==6.0 || version.toDouble()==7.0 || version.toDouble()==8.0),
+    require(version.isDouble() && (version.toDouble() == 1.0 || version.toDouble() == 2.0 || version.toDouble() == 3.0 || version.toDouble()==4.0 || version.toDouble()==5.0 || version.toDouble()==6.0 || version.toDouble()==7.0 || version.toDouble()==8.0 || version.toDouble()==9.0),
             QStringLiteral("Saved edits use an unsupported version; existing file was preserved"));
     require(object(result,"state").contains("develop") == (version.toDouble()>=2.0),
             QStringLiteral("Saved edit fields do not match their document version"));
     if(version.toDouble()>=2)require(object(object(result,"state"),"develop").contains("workingSpace")== (version.toDouble()>=3),QStringLiteral("Saved develop fields do not match document version"));
+    if(version.toDouble()>=2)require(object(object(result,"state"),"develop").contains("exposureModel")== (version.toDouble()>=9),QStringLiteral("Saved exposure model does not match document version"));
     require(object(result,"state").contains("placement")== (version.toDouble()>=4),QStringLiteral("Saved placement fields do not match document version"));
     require(object(result,"state").contains("filmEdge")== (version.toDouble()>=5)&&object(result,"state").contains("dateBack")== (version.toDouble()>=5),QStringLiteral("Saved film/date fields do not match document version"));
     require(object(result,"state").contains("halfPair")== (version.toDouble()>=6),QStringLiteral("Saved pair fields do not match document version"));
@@ -438,7 +446,7 @@ void Store::save(const QUrl& source, const State& state) const {
         require(observed->record == previousDigest,
                 QStringLiteral("Saved edits changed in another instance; restart the app and reopen the photo before saving"));
     const auto bytes = QJsonDocument(QJsonObject{{"format", "SpektraLab.Windows.Editor"},
-        {"version", 8}, {"source", identityJson(sourceId)}, {"state", value}}).toJson(QJsonDocument::Indented);
+        {"version", 9}, {"source", identityJson(sourceId)}, {"state", value}}).toJson(QJsonDocument::Indented);
     require(bytes.size() <= maximumDocumentBytes, QStringLiteral("Saved edit document exceeds the 64 KiB limit"));
     QSaveFile file(path);
     file.setDirectWriteFallback(false);

@@ -91,13 +91,19 @@ void PreviewController::workerLoop(std::filesystem::path resources) {
     Reply init;init.operation="init";
     try {host=std::make_unique<desktop::PreviewHost>(resources,true);init.catalog=host->catalog();}
     catch(const std::exception& e){init.error=text(e.what());}
+    catch(...){init.error=QStringLiteral("Unknown exception while initializing render engine");}
     deliver(std::move(init));
     if(!host)return;
     for(;;) {
-        Job job;
+        Task task;
         {std::unique_lock lock(mutex_);wake_.wait(lock,[&]{return stopping_||!jobs_.empty();});
-         if(stopping_)break;job=std::move(jobs_.front());jobs_.pop_front();}
-        deliver(job(*host));
+         if(stopping_)break;task=std::move(jobs_.front());jobs_.pop_front();}
+        Reply reply;reply.generation=task.generation;reply.settings_revision=task.revision;reply.operation=task.operation;
+        try { reply=task.job(*host); }
+        catch(const std::exception& e){reply.error=task.operation+": "+text(e.what());}
+        catch(...){reply.error=task.operation+QStringLiteral(": Unknown background exception");}
+        reply.generation=task.generation;reply.settings_revision=task.revision;reply.operation=task.operation;
+        deliver(std::move(reply));
     }
 }
 void PreviewController::deliver(Reply reply) {
@@ -110,13 +116,14 @@ void PreviewController::deliver(Reply reply) {
             if(reply.full_image.isNull())throw std::runtime_error("Cannot create the display image");
             reply.visible_image=visibleImage(reply.frame,reply.full_image,reply.geometry,reply.develop);
         }catch(const std::exception& e){reply.error=text(e.what());}
+        catch(...){reply.error=reply.operation+QStringLiteral(": Unknown presentation exception");}
     }
     QMetaObject::invokeMethod(this,[this,reply=std::move(reply)]() mutable {accept(std::move(reply));},Qt::QueuedConnection);
 }
 void PreviewController::submit(Job job,QString status,QString operation) {
     auto_apply_.stop();active_operation_=std::move(operation);
     busy_=true;failed_=false;status_=std::move(status);emit stateChanged();emit historyChanged();
-    {std::lock_guard lock(mutex_);jobs_.push_back(std::move(job));}
+    {std::lock_guard lock(mutex_);jobs_.push_back({std::move(job),generation_,settings_revision_,active_operation_});}
     wake_.notify_one();
 }
 void PreviewController::accept(Reply reply) {
@@ -369,6 +376,7 @@ QVariantMap PreviewController::postAdjustments() const {
         curves.append(QVariant(points));tables.append(QVariant(samples));
     }
     result["curves"]=curves;result["curveTables"]=tables;
+    result["exposureModel"]=d.legacyExposure?"gamma22-v1":"linear-v1";
     for(unsigned i=0;i<4;++i) {
         const auto prefix=QString("zone%1").arg(i);
         result[prefix+"Hue"]=d.zones[i].hue;result[prefix+"Saturation"]=d.zones[i].saturation;result[prefix+"Luminance"]=d.zones[i].luminance;
@@ -797,15 +805,30 @@ void PreviewController::restoreHistory(bool redo) {
     }catch(const std::exception& e){failed_=true;status_=text(e.what());emit stateChanged();}
 }
 void PreviewController::scheduleSave() {
-    save_timer_.start();emit stateChanged();
+    for(auto& item:library_)if(item.pending_save)item.save_failures=0;
+    save_timer_.start(350);emit stateChanged();
 }
 void PreviewController::flushEdits() {
     save_timer_.stop();
+    int retryDelay=0;
     for(auto& item:library_)if(item.pending_save&&!item.save_blocked) {
-        try {edit_store_.save(item.url,itemState(item));item.pending_save=false;item.has_stored=true;item.save_warning.clear();}
-        catch(const std::exception& e){item.save_warning=text(e.what());}
+        try {edit_store_.save(item.url,itemState(item));item.pending_save=false;item.has_stored=true;item.save_warning.clear();item.save_failures=0;}
+        catch(const std::exception& e){
+            item.save_warning=text(e.what());
+            if(++item.save_failures<=3)retryDelay=std::max(retryDelay,500*(1<<item.save_failures));
+        }
     }
+    if(retryDelay)save_timer_.start(retryDelay);
     emit stateChanged();
+}
+void PreviewController::retrySave() {
+    for(auto& item:library_)if(item.pending_save)item.save_failures=0;
+    flushEdits();
+}
+bool PreviewController::prepareToClose() {
+    endEditGesture();flushEdits();
+    for(const auto& item:library_)if(item.pending_save)return false;
+    return true;
 }
 QString PreviewController::persistenceWarning() const {
     QStringList warnings;
