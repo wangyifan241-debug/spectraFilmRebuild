@@ -45,6 +45,14 @@ struct PreviewControllerReviewTest {
         until([&]{return started->load();});c.cancelExport();check(c.cancel_batch_->load(),"cancel not delivered");*release=true;
         until([&]{return !c.busy();});check(c.failed()&&!c.cancel_batch_&&c.status().contains("batch-export"),"non-standard exception/cancel did not retire");
         queue("export",[](auto&){});until([&]{return !c.busy();});check(!c.failed(),"worker did not survive exception");
+        bool reentered=false;
+        QObject observer;
+        const auto connection=QObject::connect(&c,&PreviewController::stateChanged,&observer,[&]{
+            if(!reentered&&c.busy()&&c.active_operation_=="render"){reentered=true;++c.settings_revision_;}
+        });
+        queue("render",[](auto&){});until([&]{return !c.busy();});
+        QObject::disconnect(connection);
+        check(reentered&&c.status()!="review","reentrant edit relabelled an old job as the newest revision");
 
         const auto source=root+"/owned.ARW";QFile file(source);check(file.open(QIODevice::WriteOnly),"source fixture failed");file.write("owned source identity");file.close();
         PreviewController::LibraryItem item;item.url=QUrl::fromLocalFile(source);item.pending_save=true;

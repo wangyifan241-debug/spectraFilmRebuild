@@ -121,9 +121,12 @@ void PreviewController::deliver(Reply reply) {
     QMetaObject::invokeMethod(this,[this,reply=std::move(reply)]() mutable {accept(std::move(reply));},Qt::QueuedConnection);
 }
 void PreviewController::submit(Job job,QString status,QString operation) {
+    // Direct signal handlers may edit controls synchronously. The envelope
+    // must describe the captured job, not settings after stateChanged returns.
+    Task task{std::move(job),generation_,settings_revision_,operation};
     auto_apply_.stop();active_operation_=std::move(operation);
     busy_=true;failed_=false;status_=std::move(status);emit stateChanged();emit historyChanged();
-    {std::lock_guard lock(mutex_);jobs_.push_back({std::move(job),generation_,settings_revision_,active_operation_});}
+    {std::lock_guard lock(mutex_);jobs_.push_back(std::move(task));}
     wake_.notify_one();
 }
 void PreviewController::accept(Reply reply) {
