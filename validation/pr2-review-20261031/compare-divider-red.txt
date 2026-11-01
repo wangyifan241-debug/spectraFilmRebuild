@@ -1,0 +1,1 @@
+QML workflow failed: compare_viewport_1_no_pixels_outside_canvas: 已重做当前照片调整

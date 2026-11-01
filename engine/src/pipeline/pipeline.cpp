@@ -8,6 +8,8 @@
 #include <chrono>
 #include <cmath>
 #include <cstring>
+#include <cstdio>
+#include <cstdlib>
 
 namespace spk {
 
@@ -916,7 +918,8 @@ bool Pipeline::node_boost(const Image& in, Image& out, std::string& error) {
     // normalised by the frame's own maximum -- so it is image-global, which is
     // why it cannot be baked into a LUT and why the maximum is reduced here.
     double max_raw = 0.0;
-    if (!device_max(in, max_raw, error)) return false;
+    if(boost_reference_)max_raw=*boost_reference_;
+    else if (!device_max(in, max_raw, error)) return false;
     if (max_raw == 0.0) {
         double s[3], t0[3];
         fill3(s, 0.0);
@@ -969,7 +972,9 @@ bool Pipeline::node_headroom(const Image& in, Image& out, std::string& error) {
     }
     Timer t(this, "filming.expose.headroom");
     double clip = 0.0;
-    if (!device_max(in, clip, error)) return false;
+    if(highlight_reference_)clip=*highlight_reference_;
+    else if (!device_max(in, clip, error)) return false;
+    if(std::getenv("SPEKTRALAB_HEADROOM_LOG"))std::fprintf(stderr,"headroom %ux%u clip=%.10g pitch=%.10g ev=%.3f\n",in.w,in.h,clip,pixel_size_um_,hal.headroom_ev);
     if (!(clip > 0.0)) { out = in; return true; }
     const float p[7] = {float(1.0 / clip), float(kHeadroomClipFromEv),
                         float(1.0 / (kHeadroomClipToEv - kHeadroomClipFromEv)),
@@ -983,6 +988,45 @@ bool Pipeline::node_headroom(const Image& in, Image& out, std::string& error) {
                           {gpu::Arg::buf(in.buf), gpu::Arg::buf(p_buf), gpu::Arg::inline_bytes(n, 1),
                            gpu::Arg::buf(out.buf)},
                           in.pixels(), error);
+}
+
+bool Pipeline::needs_highlight_reference() const {
+    const auto& h=params_.film_render.halation;
+    return h.active&&h.back_reflection&&h.headroom_ev>0&&h.halation_amount>0&&h.headroom_to_ev>h.headroom_from_ev;
+}
+
+bool Pipeline::measure_highlight_reference(const Image& source,double& clip,std::string& error) {
+    // The statistic belongs to the source frame, not to its display tier.
+    // Decode/geometry stay whole-frame. All later operations here are pointwise;
+    // full-width bands preserve pair/split x coordinates and bound temporaries.
+    Image cast,decoded,prefix;
+    if(!node_input_cast(source,cast,error)||!node_decode_input(cast,decoded,error)||
+       !node_geometry(decoded,prefix,error))return false;
+    auto measure=[&](bool boost,double& maximum){
+        maximum=0;
+        const size_t rowBytes=prefix.bytes()/prefix.h;
+        for(uint32_t first=0;first<prefix.h;first+=128){
+            Image band;band.h=std::min(128u,prefix.h-first);band.w=prefix.w;band.c=prefix.c;
+            band.buf=gpu_->alloc(band.bytes(),error);
+            if(!band.buf||!gpu_->copy(band.buf.get(),0,prefix.buf.get(),size_t(first)*rowBytes,band.bytes(),error))return false;
+            Image exposed;
+            if(!node_auto_exposure(band,exposed,error))return false;
+            Chain in,out;in.cur=exposed;
+            if(!film_scale_and_expose(in,out,error))return false;
+            Image value=out.cur;
+            if(boost){Image lifted;if(!node_boost(value,lifted,error))return false;value=lifted;}
+            double local=0;if(!device_max(value,local,error))return false;
+            maximum=std::max(maximum,local);
+        }
+        return true;
+    };
+    boost_reference_.reset();
+    if(!measure(false,clip))return false;
+    if(params_.film_render.halation.boost_ev!=0){
+        boost_reference_=clip;
+        const bool ok=measure(true,clip);boost_reference_.reset();if(!ok)return false;
+    }
+    return true;
 }
 
 // --- the sigmas, in one place, because a demand must agree with its node ----

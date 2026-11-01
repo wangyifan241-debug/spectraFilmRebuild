@@ -1,5 +1,6 @@
 #include "preview_host.hpp"
 #include "io/image_writer.hpp"
+#include "image_io.hpp"
 #include "json.hpp"
 #include "core/profile.hpp"
 
@@ -21,6 +22,21 @@ using SessionPtr = std::unique_ptr<spk_session, decltype(&spk_session_release)>;
 
 double elapsed(Clock::time_point start) {
     return std::chrono::duration<double, std::milli>(Clock::now() - start).count();
+}
+
+bool decode_photo(const fs::path& path,DecodeMode mode,io::DecodedRaw& out,std::string& error) {
+    const auto kind=spkhost::sniff_kind(path);
+    if(kind!=spkhost::FileKind::Jpeg&&kind!=spkhost::FileKind::Png)
+        return mode==DecodeMode::headroom?io::decode_raw_headroom(path,out,error):io::decode_raw_compatible(path,out,error);
+    if(mode!=DecodeMode::compatible16){error="RAW headroom decoding is not available for JPEG/PNG";return false;}
+    const auto start=Clock::now();spkhost::FloatImage image;spkhost::Probe probe;spkhost::DecodeOptions options;
+    options.strict_icc=true;
+    if(!spkhost::decode_linear_prophoto(path,options,image,probe,error))return false;
+    io::DecodedRaw next;next.width=image.width;next.height=image.height;next.rgb=std::move(image.rgb);
+    next.metadata.input_kind=spkhost::kind_name(kind);next.metadata.input_profile=probe.colour_description;
+    next.metadata.make=probe.metadata.make;next.metadata.model=probe.metadata.model;
+    next.metadata.decoder_name=kind==spkhost::FileKind::Jpeg?"JPEG / ICC":"PNG / ICC";
+    next.timings.total_ms=elapsed(start);out=std::move(next);return true;
 }
 
 void require(bool condition, const std::string& message) {
@@ -495,7 +511,7 @@ FramePtr PreviewHost::open_raw(const fs::path& source, DecodeMode mode, const Re
     require(!settings.pair.active,"A paired project must open both sources");
     require(mode == DecodeMode::compatible16 || mode == DecodeMode::headroom, "Unknown RAW decode mode");
     const auto path = fs::absolute(source);
-    require(fs::is_regular_file(path), "RAW input is missing: " + utf8(path));
+    require(fs::is_regular_file(path), "Photo input is missing: " + utf8(path));
     auto next = std::shared_ptr<Frame>(new Frame());
     next->source = path;
     next->decode_mode = mode;
@@ -504,10 +520,8 @@ FramePtr PreviewHost::open_raw(const fs::path& source, DecodeMode mode, const Re
     auto decoded = std::make_shared<io::DecodedRaw>();
     std::string error;
     auto t = Clock::now();
-    const bool decoded_ok = mode == DecodeMode::headroom
-        ? io::decode_raw_headroom(path, *decoded, error)
-        : io::decode_raw_compatible(path, *decoded, error);
-    require(decoded_ok, "RAW decode: " + error);
+    const bool decoded_ok = decode_photo(path,mode,*decoded,error);
+    require(decoded_ok, "Photo decode: " + error);
     next->timings.decode_ms = elapsed(t);
     next->metadata = decoded->metadata;
     next->decode_timings = decoded->timings;
@@ -547,7 +561,7 @@ FramePtr PreviewHost::open_pair(const fs::path& identity,const std::array<fs::pa
     for(size_t i=0;i<2;++i) {
         require(modes[i]==DecodeMode::compatible16||modes[i]==DecodeMode::headroom,"Unknown pair RAW decode mode");
         auto raw=std::make_shared<io::DecodedRaw>();
-        const bool ok=modes[i]==DecodeMode::headroom?io::decode_raw_headroom(paths[i],*raw,error):io::decode_raw_compatible(paths[i],*raw,error);
+        const bool ok=decode_photo(paths[i],modes[i],*raw,error);
         require(ok,"Pair source "+std::to_string(i+1)+": "+error);next->pair_sources_[i]=std::move(raw);
     }
     next->timings.decode_ms=elapsed(t);

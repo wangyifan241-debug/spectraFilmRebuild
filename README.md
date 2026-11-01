@@ -9,7 +9,7 @@ feature-complete or officially endorsed macOS release**.
 
 ## Current functionality
 
-- RAW import, per-photo editing, undo/redo, cropping and geometry.
+- RAW, JPG/JPEG and PNG (8/16-bit) import, per-photo editing, undo/redo, cropping and geometry.
 - Film and print-material selection, enlarger filters, grain, halation and glare;
   slide-film direct scanning and black-and-white material pairing.
 - Scene measurement/fitting, post-develop adjustments, original/split comparison,

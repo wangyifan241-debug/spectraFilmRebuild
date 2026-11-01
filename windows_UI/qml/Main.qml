@@ -30,6 +30,8 @@ ApplicationWindow {
     property int exportFormat: 0
     property int exportQuality: 95
     property int exportLongEdge: 0
+    property string exportDestination: ""
+    property string exportResultMessage: ""
     readonly property bool canEditCrop: preview.hasFrame && !preview.busy && !preview.batchExporting && !preview.filmFrame.pairActive
     readonly property bool canBrowse: preview.ready && !preview.busy && !preview.batchExporting && !cropMode
     // Text controls keep their own undo stack while they own keyboard focus.
@@ -37,7 +39,7 @@ ApplicationWindow {
     onCropModeChanged: updateDialogState()
 
     function updateDialogState() {
-        preview.setDialogOpen(cropMode || openDialog.visible || saveDialog.visible || batchDialog.visible || exportPopup.visible)
+        preview.setDialogOpen(cropMode || openDialog.visible || saveDialog.visible || batchDialog.visible || exportPopup.visible || exportDestination !== "")
     }
     function startCrop() {
         if (!canEditCrop) return
@@ -60,7 +62,8 @@ ApplicationWindow {
                 rows.push({ "name": preview.films[i].name, "catalogIndex": i, "enabled": preview.films[i].enabled, "cine": preview.films[i].cine, "custom": preview.films[i].custom })
         return rows
     }
-    function openExport() { if (preview.hasFrame && !preview.busy && !cropMode) exportPopup.open() }
+    function openExport() { if (preview.hasFrame && !preview.busy && !preview.dirty && !cropMode) exportPopup.open() }
+    function chooseExportDestination(kind) { exportDestination = kind; exportPopup.close() }
     function showExportOptions() { openExport() }
     function showSceneFit() {
         postMode = false
@@ -80,6 +83,7 @@ ApplicationWindow {
     onClosing: function(event) {
         if (preview.batchExporting) preview.cancelExport()
         if (preview.busy) { closePending = true; event.accepted = false }
+        else { closePending = false; if (!preview.prepareToClose()) { event.accepted = false; unsavedDialog.open() } }
     }
     Connections {
         target: preview
@@ -87,18 +91,29 @@ ApplicationWindow {
         function onSourceOpened() { window.cropMode = false; canvas.resetView(true) }
         function onCatalogChanged() { Qt.callLater(function() { filmQuickSelect.currentIndex = preview.filmIndex }) }
         function onSettingsChanged() { Qt.callLater(function() { filmQuickSelect.currentIndex = preview.filmIndex }) }
+        function onOperationFinished(operation, ok) {
+            if (operation === "export" || operation === "batch-export") window.exportResultMessage = preview.status
+        }
+    }
+    MessageDialog {
+        id: unsavedDialog
+        title: "编辑设置尚未保存"
+        text: "本次关闭已取消。请释放文件锁或修复保存目录后，点击“重试保存设置”。"
+        informativeText: preview.persistenceWarning
+        buttons: MessageDialog.Ok
     }
     MaterialManager { id: materialManager; anchors.centerIn: parent; width: Math.min(920,window.width-40); height: Math.min(760,window.height-40) }
     FileDialog {
         id: openDialog
-        title: "导入一张或多张 RAW 照片"
+        title: "导入一张或多张照片"
         fileMode: FileDialog.OpenFiles
-        nameFilters: ["RAW 与双拼项目 (*.arw *.nef *.nrw *.dng *.cr2 *.cr3 *.raf *.rw2 *.orf *.pef *.srw *.spektrapair)", "所有文件 (*)"]
+        nameFilters: ["照片与双拼项目 (*.arw *.nef *.nrw *.dng *.cr2 *.cr3 *.raf *.rw2 *.orf *.pef *.srw *.jpg *.jpeg *.png *.spektrapair)", "JPG / PNG 图片 (*.jpg *.jpeg *.png)", "所有文件 (*)"]
         onVisibleChanged: window.updateDialogState()
         onAccepted: preview.openFiles(selectedFiles)
     }
     FileDialog {
         id: saveDialog
+        objectName: "singleExportDialog"
         title: "导出当前画面 · 不覆盖现有文件"
         fileMode: FileDialog.SaveFile
         nameFilters: window.formatFilter()
@@ -109,13 +124,14 @@ ApplicationWindow {
     }
     FolderDialog {
         id: batchDialog
+        objectName: "batchExportDialog"
         title: "选择批量导出文件夹 · 跳过已有文件"
         currentFolder: preview.sourceFolder
         onVisibleChanged: window.updateDialogState()
         onAccepted: preview.exportBatch(selectedFolder, window.exportFormat, window.exportQuality, window.exportLongEdge)
     }
     Shortcut { sequences: [StandardKey.Open]; enabled: window.canBrowse; onActivated: openDialog.open() }
-    Shortcut { sequence: "Ctrl+E"; enabled: preview.hasFrame && !preview.busy && !window.cropMode; onActivated: window.openExport() }
+    Shortcut { sequence: "Ctrl+E"; enabled: preview.hasFrame && !preview.busy && !preview.dirty && !window.cropMode; onActivated: window.openExport() }
     Shortcut { sequence: "Ctrl+0"; enabled: preview.hasFrame; onActivated: canvas.resetView(true) }
     Shortcut { sequence: "Ctrl+1"; enabled: preview.hasFrame && !window.cropMode; onActivated: canvas.resetView(false) }
     Shortcut { sequence: "Ctrl+Z"; enabled: preview.settingsEditable && preview.canUndo && !window.cropMode && !window.editingText; onActivated: preview.undo() }
@@ -158,7 +174,7 @@ ApplicationWindow {
             live: !adjustment.post
             from: adjustment.from; to: adjustment.to; stepSize: adjustment.step
             value: adjustment.current
-            enabled: preview.settingsEditable && adjustment.available && (!adjustment.post || (preview.hasFrame && !preview.busy))
+            enabled: preview.settingsEditable && adjustment.available && (!adjustment.post || (preview.hasFrame && preview.postEditable))
             onPressedChanged: {
                 if (pressed) preview.beginEditGesture(adjustment.setting)
                 else {
@@ -320,7 +336,7 @@ ApplicationWindow {
                                 ActionButton { text: "重置"; enabled: window.canEditCrop; onClicked: { window.cropMode = false; preview.resetCrop(); canvas.resetView(true) } }
                             }
                             ActionButton { Layout.fillWidth: true; text: window.cropMode ? "完成裁切" : "在画面中拖选裁切"; accented: window.cropMode; enabled: window.canEditCrop; onClicked: window.cropMode ? window.finishCrop() : window.startCrop() }
-                            Note { text: window.cropMode ? "在未旋转原图上拖出矩形；完成后恢复方向与拉直。Enter 确认，Esc 取消。" : "预览与导出使用同一裁切与方向；原始 RAW 不变。" }
+                            Note { text: window.cropMode ? "在未旋转原图上拖出矩形；完成后恢复方向与拉直。Enter 确认，Esc 取消。" : "预览与导出使用同一裁切与方向；原始照片不变。" }
                             RowLayout {
                                 Layout.fillWidth: true
                                 ActionButton { objectName: "rotateLeftButton"; Layout.fillWidth: true; text: "左转 90°"; enabled: window.canEditCrop && !window.cropMode; onClicked: { preview.rotateCounterClockwise(); canvas.resetView(true) } }
@@ -384,9 +400,9 @@ ApplicationWindow {
                     Layout.fillWidth: true; implicitHeight: Theme.topHeight; color: Theme.card
                     RowLayout {
                         anchors.fill: parent; anchors.leftMargin: 8; anchors.rightMargin: 8; spacing: 6
-                        ActionButton { text: "导入 RAW"; enabled: window.canBrowse; onClicked: openDialog.open(); implicitHeight: 27 }
+                        ActionButton { text: "导入照片"; enabled: window.canBrowse; onClicked: openDialog.open(); implicitHeight: 27 }
                         ActionButton { objectName: "openMaterialManagerButton"; text: "材料库"; enabled: window.canBrowse; onClicked: materialManager.open(); implicitHeight: 27 }
-                        ActionButton { text: "导出"; enabled: preview.hasFrame && !preview.busy && !window.cropMode; onClicked: window.openExport(); implicitHeight: 27 }
+                        ActionButton { text: "导出"; enabled: preview.hasFrame && !preview.busy && !preview.dirty && !window.cropMode; onClicked: window.openExport(); implicitHeight: 27 }
                         ActionButton { text: "裁切"; accented: window.cropMode; enabled: window.canEditCrop; onClicked: window.cropMode ? window.finishCrop() : window.startCrop(); implicitHeight: 27 }
                         ActionButton { objectName: "undoButton"; text: "撤销"; enabled: preview.settingsEditable && preview.canUndo && !window.cropMode; onClicked: preview.undo(); implicitHeight: 27; ToolTip.visible: hovered; ToolTip.text: "撤销当前照片的上一步调整 · Ctrl+Z" }
                         ActionButton { objectName: "redoButton"; text: "重做"; enabled: preview.settingsEditable && preview.canRedo && !window.cropMode; onClicked: preview.redo(); implicitHeight: 27; ToolTip.visible: hovered; ToolTip.text: "重做当前照片的调整 · Ctrl+Shift+Z / Ctrl+Y" }
@@ -422,16 +438,19 @@ ApplicationWindow {
                         Keys.onPressed: function(event) { if(event.key===Qt.Key_Space && !event.isAutoRepeat) { heldOriginal=true;event.accepted=true } }
                         Keys.onReleased: function(event) { if(event.key===Qt.Key_Space) { heldOriginal=false;event.accepted=true } }
                         onActiveFocusChanged: if(!activeFocus)heldOriginal=false
-                    }
-                    Rectangle {
-                        visible: canvas.compare && !canvas.showOriginal && preview.hasFrame
-                        x: canvas.x + canvas.imageRect.x + canvas.imageRect.width * canvas.splitPosition
-                        y: canvas.y + canvas.imageRect.y; width: 1; height: canvas.imageRect.height
-                        color: Theme.text
-                        MouseArea {
-                            anchors.fill: parent; anchors.leftMargin: -7; anchors.rightMargin: -7
-                            cursorShape: Qt.SplitHCursor
-                            onPositionChanged: function(mouse) { if(pressed) { var p=mapToItem(canvas,mouse.x,mouse.y);canvas.splitPosition=(p.x-canvas.imageRect.x)/canvas.imageRect.width } }
+                        // Clip the divider and its hit area with the textures.
+                        // At 100% imageRect may extend far beyond the viewport.
+                        Rectangle {
+                            objectName: "compareDivider"
+                            visible: canvas.compare && !canvas.showOriginal && preview.hasFrame
+                            x: canvas.imageRect.x + canvas.imageRect.width * canvas.splitPosition
+                            y: canvas.imageRect.y; width: 1; height: canvas.imageRect.height
+                            color: Theme.text
+                            MouseArea {
+                                anchors.fill: parent; anchors.leftMargin: -7; anchors.rightMargin: -7
+                                cursorShape: Qt.SplitHCursor
+                                onPositionChanged: function(mouse) { if(pressed) { var p=mapToItem(canvas,mouse.x,mouse.y);canvas.splitPosition=(p.x-canvas.imageRect.x)/canvas.imageRect.width } }
+                            }
                         }
                     }
                     Item {
@@ -482,7 +501,7 @@ ApplicationWindow {
                     Column {
                         anchors.centerIn: parent; spacing: 16; visible: !preview.hasFrame
                         Text { anchors.horizontalCenter: parent.horizontalCenter; text: "SpektraLab"; color: "#e5e2dc"; font.pixelSize: 32; font.letterSpacing: 1 }
-                        Text { anchors.horizontalCenter: parent.horizontalCenter; text: "导入 RAW，逐张选择胶片与相纸"; color: "#d0cdc6"; font.pixelSize: 13 }
+                        Text { anchors.horizontalCenter: parent.horizontalCenter; text: "导入 RAW / JPG / PNG，逐张选择胶片与相纸"; color: "#d0cdc6"; font.pixelSize: 13 }
                         Text { anchors.horizontalCenter: parent.horizontalCenter; text: "支持一次拖入多张照片"; color: "#c0bdb7"; font.pixelSize: 11 }
                     }
                     DropArea { anchors.fill: parent; enabled: window.canBrowse; onDropped: function(drop) { if (drop.hasUrls) preview.openFiles(drop.urls) } }
@@ -492,6 +511,17 @@ ApplicationWindow {
                         Text { anchors.centerIn: parent; text: window.cropMode ? "裁切原图" : "PREVIEW"; color: Theme.text; font.pixelSize: 9; font.letterSpacing: 1 }
                     }
                     BusyIndicator { anchors.centerIn: parent; running: preview.busy; visible: running; width: 44; height: 44 }
+                }
+                Rectangle {
+                    objectName: "exportResultBanner"
+                    visible: window.exportResultMessage.length > 0
+                    Layout.fillWidth: true; implicitHeight: exportResultText.implicitHeight + 18
+                    color: Theme.card
+                    RowLayout {
+                        anchors.fill: parent; anchors.margins: 9
+                        Text { id: exportResultText; Layout.fillWidth: true; text: window.exportResultMessage; color: Theme.text; font.pixelSize: 11; wrapMode: Text.Wrap }
+                        ActionButton { text: "关闭提示"; implicitHeight: 25; onClicked: window.exportResultMessage = "" }
+                    }
                 }
                 Rectangle {
                     Layout.fillWidth: true; implicitHeight: 28; color: Theme.card
@@ -506,7 +536,7 @@ ApplicationWindow {
                             Layout.fillWidth: true; spacing: 6
                             Text { text: preview.libraryItems.length + " 张照片 · 已选 " + preview.selectedCount; color: Theme.muted; font.pixelSize: 10 }
                             Item { Layout.fillWidth: true }
-                            ActionButton { objectName: "createPairButton"; text: "半格双拼"; implicitHeight: 23; font.pixelSize: 10; enabled: window.canBrowse && preview.hasFrame && preview.selectedCount === 2; onClicked: preview.createSelectedPair(); ToolTip.visible: hovered; ToolTip.text: "选两张 RAW 创建独立项目，原片与各自裁切保留。" }
+                            ActionButton { objectName: "createPairButton"; text: "半格双拼"; implicitHeight: 23; font.pixelSize: 10; enabled: window.canBrowse && preview.hasFrame && preview.selectedCount === 2; onClicked: preview.createSelectedPair(); ToolTip.visible: hovered; ToolTip.text: "选两张照片创建独立项目，原片与各自裁切保留。" }
                             ActionButton { text: "全选"; implicitHeight: 23; font.pixelSize: 10; enabled: window.canBrowse && preview.libraryItems.length > 0; onClicked: preview.selectAllPhotos(true) }
                             ActionButton { text: "清除选择"; implicitHeight: 23; font.pixelSize: 10; enabled: window.canBrowse && preview.selectedCount > 0; onClicked: preview.selectAllPhotos(false) }
                             ActionButton { text: "同步设置"; implicitHeight: 23; font.pixelSize: 10; enabled: window.canBrowse && preview.hasFrame && preview.selectedCount > 0; onClicked: preview.syncSelectedSettings(false); ToolTip.visible: hovered; ToolTip.text: "将当前照片的胶片、相纸、解码和效果同步到所选照片，不同步裁切。" }
@@ -602,7 +632,7 @@ ApplicationWindow {
                             EditorCheckBox {
                                 text: "启用显影后调整"; palette.windowText: Theme.text
                                 checked: preview.postAdjustments.enabled !== false
-                                enabled: preview.hasFrame && preview.settingsEditable && !preview.busy
+                                enabled: preview.hasFrame && preview.postEditable
                                 onToggled: preview.setPostAdjustment("enabled", checked)
                             }
                             Note { text: "工作色域：" + preview.postAdjustments.workingSpace + "。调色后转换至 sRGB 显示/输出，不改变胶片材料或重新生成颗粒。画布按住空格查看原图。" }
@@ -616,7 +646,7 @@ ApplicationWindow {
                             Adjustment { post: true; label: "阴影"; setting: "shadows"; from: -100; to: 100; step: 1; decimals: 0; available: preview.postAdjustments.enabled !== false }
                             Adjustment { post: true; label: "黑场"; setting: "blackPoint"; from: 0; to: 50; step: 1; decimals: 0; available: preview.postAdjustments.enabled !== false }
                             Adjustment { post: true; label: "白场"; setting: "whitePoint"; from: 0; to: 50; step: 1; decimals: 0; available: preview.postAdjustments.enabled !== false }
-                            ActionButton { Layout.fillWidth: true; text: "重置显影后调整"; enabled: preview.hasFrame && preview.settingsEditable && !preview.busy; onClicked: preview.resetPostAdjustments() }
+                            ActionButton { Layout.fillWidth: true; text: "重置显影后调整"; enabled: preview.hasFrame && preview.postEditable; onClicked: preview.resetPostAdjustments() }
                         }
                         Section { visible: window.postMode; title: "曲线"; ToneCurve {} }
                         Section {
@@ -681,13 +711,13 @@ ApplicationWindow {
                         Section {
                             visible: !window.postMode
                             title: "RAW 解码"
-                            EditorComboBox { id: decode; Layout.fillWidth: true; model: ["兼容模式（默认）", "高光扩展（实验）"]; currentIndex: preview.decodeMode; enabled: preview.settingsEditable && !preview.filmFrame.pairActive; onActivated: preview.decodeMode = currentIndex }
-                            Note { text: preview.decodeMode ? "保留去马赛克后的部分高光及负值；仍使用整数去马赛克。" : "与已验证的原生 RAW 流程保持一致。" }
+                            EditorComboBox { id: decode; objectName: "rawDecodeOptions"; Layout.fillWidth: true; model: ["兼容模式（默认）", "高光扩展（实验）"]; currentIndex: preview.decodeMode; enabled: preview.settingsEditable && !preview.filmFrame.pairActive && preview.metadata.inputKind === "raw"; onActivated: preview.decodeMode = currentIndex }
+                            Note { text: preview.hasFrame && preview.metadata.inputKind !== "raw" ? "JPG / PNG 使用图片色彩配置转换，不进行 RAW 去马赛克；透明区域合成到白底。" : preview.decodeMode ? "保留去马赛克后的部分高光及负值；仍使用整数去马赛克。" : "与已验证的原生 RAW 流程保持一致。" }
                         }
                         Section {
                             title: "照片信息"
                             Note { text: preview.hasFrame ? preview.metadata.camera : "尚未打开照片"; color: Theme.text }
-                            Note { text: preview.hasFrame ? "原图 " + preview.metadata.sourceWidth + " × " + preview.metadata.sourceHeight + " 像素\n编辑预览 " + preview.metadata.previewWidth + " × " + preview.metadata.previewHeight + "\n" + (preview.metadata.mode === "headroom" ? "高光扩展解码" : "兼容解码") : "" }
+                            Note { text: preview.hasFrame ? "原图 " + preview.metadata.sourceWidth + " × " + preview.metadata.sourceHeight + " 像素\n编辑预览 " + preview.metadata.previewWidth + " × " + preview.metadata.previewHeight + "\n" + (preview.metadata.inputKind !== "raw" ? preview.metadata.inputProfile : preview.metadata.mode === "headroom" ? "高光扩展解码" : "兼容解码") : "" }
                             Note { text: preview.hasFrame ? "本次渲染 " + (preview.metadata.renderMs / 1000).toFixed(2) + " 秒 · " + (preview.metadata.cached ? "复用负片" : "完整渲染") : "" }
                             ActionButton { Layout.fillWidth: true; text: "重置当前照片设置"; enabled: preview.settingsEditable; onClicked: preview.resetSettings() }
                         }
@@ -696,6 +726,7 @@ ApplicationWindow {
                             Note { text: window.closePending ? "等待当前操作完成后关闭…" : preview.status; color: preview.failed ? "#ffb39f" : Theme.muted }
                             Note { objectName: "savedStatusNote"; text: preview.savedStatus; visible: text.length > 0 }
                             Note { objectName: "persistenceWarningNote"; text: preview.persistenceWarning; visible: text.length > 0; color: "#ffb39f" }
+                            Button { text: "重试保存设置"; visible: preview.persistenceWarning.length > 0; onClicked: preview.retrySave() }
                             ProgressBar { Layout.fillWidth: true; visible: preview.batchExporting; from: 0; to: Math.max(1, preview.batchTotal); value: preview.batchProgress }
                             ActionButton { Layout.fillWidth: true; text: "当前照片完成后停止"; visible: preview.batchExporting; onClicked: preview.cancelExport() }
                             ActionButton { Layout.fillWidth: true; text: "重新尝试预览"; visible: preview.failed && preview.hasFrame && !preview.batchExporting; enabled: !preview.busy; onClicked: preview.apply() }
@@ -713,6 +744,14 @@ ApplicationWindow {
         modal: true; focus: true
         closePolicy: Popup.CloseOnEscape | Popup.CloseOnPressOutside
         onVisibleChanged: window.updateDialogState()
+        onClosed: {
+            if (window.exportDestination !== "") Qt.callLater(function() {
+                if (window.exportDestination === "batch") batchDialog.open()
+                else if (window.exportDestination === "single") saveDialog.open()
+                window.exportDestination = ""
+                window.updateDialogState()
+            })
+        }
         background: Rectangle { color: Theme.card; border.color: Theme.line; radius: 7 }
         contentItem: ColumnLayout {
             spacing: 14
@@ -740,8 +779,8 @@ ApplicationWindow {
             }
             Note { text: "保持长宽比例，不放大图像。PNG 无损保存，JPEG 为有损压缩。" }
             Rectangle { Layout.fillWidth: true; implicitHeight: 1; color: Theme.line; opacity: 0.5 }
-            ActionButton { Layout.fillWidth: true; accented: true; text: "导出当前已显示画面…"; enabled: preview.hasFrame && !preview.busy; onClicked: { saveDialog.open(); exportPopup.close() } }
-            ActionButton { Layout.fillWidth: true; text: "导出所选 " + preview.selectedCount + " 张到文件夹…"; enabled: preview.selectedCount > 0 && !preview.busy; onClicked: { batchDialog.open(); exportPopup.close() } }
+            ActionButton { objectName: "exportCurrentButton"; Layout.fillWidth: true; accented: true; text: "导出当前照片…"; enabled: preview.hasFrame && !preview.busy && !preview.dirty; onClicked: window.chooseExportDestination("single") }
+            ActionButton { objectName: "exportSelectedButton"; Layout.fillWidth: true; text: "导出所选 " + preview.selectedCount + " 张到文件夹…"; enabled: preview.selectedCount > 0 && !preview.busy; onClicked: window.chooseExportDestination("batch") }
             Note { text: "当前画面导出不覆盖已有文件。批量导出逐张处理，自动跳过同名文件；未访问的照片也按各自设置渲染。" }
             ActionButton { Layout.alignment: Qt.AlignRight; text: "取消"; onClicked: exportPopup.close() }
         }

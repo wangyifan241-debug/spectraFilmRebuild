@@ -15,3 +15,16 @@ function Get-SpektraLabInventoryDigest($Inventory) {
     $canonical = (($Inventory | ForEach-Object { "$($_.sha256)  $($_.path)" }) -join "`n") + "`n"
     [Convert]::ToHexString([Security.Cryptography.SHA256]::HashData([Text.Encoding]::UTF8.GetBytes($canonical))).ToLowerInvariant()
 }
+
+# The tested EXE alone cannot attest to a deployment: DLLs, plugins and baked
+# resources are executable inputs too. Refuse links and inventory the exact set.
+function Get-SpektraLabPayloadInventory([string]$Root) {
+    $rootItem=Get-Item -LiteralPath $Root -Force
+    $items=@($rootItem)+@(Get-ChildItem -LiteralPath $Root -Force -Recurse)
+    foreach($item in $items){
+        if($item.Attributes -band [IO.FileAttributes]::ReparsePoint){throw "Package input is a reparse point: $($item.FullName)"}
+    }
+    foreach($item in ($items | Where-Object { -not $_.PSIsContainer } | Sort-Object FullName)) {
+        [pscustomobject]@{path=[IO.Path]::GetRelativePath($Root,$item.FullName).Replace('\','/');sha256=(Get-FileHash -LiteralPath $item.FullName -Algorithm SHA256).Hash.ToLowerInvariant()}
+    }
+}

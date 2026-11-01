@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "native_windows": true,
+  "non_admin": true,
+  "unicode_path": true,
+  "malformed_marker_refused": true,
+  "copied_binding_refused": true,
+  "junction_refused": true,
+  "overwrite_refused": true,
+  "recipient_file_preserved": true,
+  "write_failure_refused": true,
+  "clean_vm": false
+}

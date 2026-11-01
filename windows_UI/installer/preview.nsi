@@ -29,6 +29,36 @@ ShowUninstDetails show
 !insertmacro MUI_LANGUAGE "SimpChinese"
 !insertmacro MUI_LANGUAGE "English"
 
+; Check every existing ancestor, not just the leaf. Exact filenames alone do
+; not protect a recipient directory reached through a junction or symlink.
+!macro ValidatePathFunction NAME
+Function ${NAME}
+  Exch $0
+  Push $1
+  Push $2
+  path_loop:
+    System::Call 'kernel32::GetFileAttributesW(w "$0") i .r1'
+    IntCmp $1 -1 path_parent
+    IntOp $1 $1 & 0x400
+    IntCmp $1 0 path_parent
+      MessageBox MB_ICONSTOP "A managed path is a junction or symbolic link; refusing to change files." /SD IDOK
+      SetErrorLevel 2
+      Abort
+  path_parent:
+    ${GetParent} "$0" $2
+    StrCmp $2 "" path_done
+    StrCmp $2 $0 path_done
+    StrCpy $0 $2
+    Goto path_loop
+  path_done:
+  Pop $2
+  Pop $1
+  Pop $0
+FunctionEnd
+!macroend
+!insertmacro ValidatePathFunction ValidatePath
+!insertmacro ValidatePathFunction un.ValidatePath
+
 Function .onInit
   SetShellVarContext current
   ${IfNot} ${RunningX64}
@@ -47,6 +77,12 @@ Function .onInit
     SetErrorLevel 2
     Abort
   registration_ok:
+  StrCmp $R9 "test" init_done
+  IfFileExists "$SMPROGRAMS\SpektraLab Preview\*.*" 0 init_done
+    MessageBox MB_ICONSTOP "An existing Start menu folder belongs to another installation. Refusing to overwrite its shortcuts." /SD IDOK
+    SetErrorLevel 2
+    Abort
+  init_done:
 FunctionEnd
 
 Section "SpektraLab Preview" SEC_APP
@@ -57,12 +93,23 @@ Section "SpektraLab Preview" SEC_APP
     SetErrorLevel 2
     Abort
   destination_ok:
+  Push $INSTDIR
+  Call ValidatePath
+  ClearErrors
   SetOutPath "$INSTDIR"
+  IfErrors install_failed
+  GetFullPathName $R3 "$INSTDIR"
+  StrCmp $R3 "" install_failed
+  StrCpy $INSTDIR $R3
   File /r "${PAYLOAD}\*.*"
+  IfErrors install_failed
   WriteUninstaller "$INSTDIR\Uninstall.exe"
+  IfErrors install_failed
   FileOpen $R0 "$INSTDIR\spektralab-install.marker" w
-  FileWrite $R0 "SpektraLabWindowsPreview-${BUILD_LABEL}"
+  IfErrors install_failed
+  FileWriteUTF16LE $R0 "SpektraLabWindowsPreview-${BUILD_LABEL}$\r$\n$INSTDIR"
   FileClose $R0
+  IfErrors install_failed
   StrCmp $R9 "test" skip_registration
   CreateDirectory "$SMPROGRAMS\SpektraLab Preview"
   CreateShortcut "$SMPROGRAMS\SpektraLab Preview\SpektraLab.lnk" "$INSTDIR\SpektraLabQt.exe" "" "$INSTDIR\SpektraLabQt.exe" 0
@@ -76,14 +123,43 @@ Section "SpektraLab Preview" SEC_APP
   WriteRegStr HKCU "${REGKEY}" "QuietUninstallString" '$\"$INSTDIR\Uninstall.exe$\" /S'
   WriteRegDWORD HKCU "${REGKEY}" "NoModify" 1
   WriteRegDWORD HKCU "${REGKEY}" "NoRepair" 1
+  IfErrors install_failed
   skip_registration:
+  Goto install_done
+  install_failed:
+    ; Never recursively roll back a destination into which a recipient may
+    ; have added files. Leave an explicit failure, no launch and no ownership
+    ; claim. The next installation must use a fresh empty directory.
+    ReadRegStr $R0 HKCU "${REGKEY}" "InstallLocation"
+    StrCmp $R0 $INSTDIR 0 +2
+      DeleteRegKey HKCU "${REGKEY}"
+    Delete "$INSTDIR\spektralab-install.marker"
+    MessageBox MB_ICONSTOP "Installation failed. No application will be launched. Partial files may remain in the selected directory; preserve personal files and use a fresh empty directory to retry." /SD IDOK
+    SetErrorLevel 3
+    Abort
+  install_done:
 SectionEnd
 
 Function un.onInit
   SetShellVarContext current
-  IfFileExists "$INSTDIR\spektralab-install.marker" +3
-    MessageBox MB_ICONSTOP "Installation marker is missing; refusing to remove files." /SD IDOK
+  GetFullPathName $R3 "$INSTDIR"
+  StrCmp $R3 "" marker_invalid
+  StrCpy $INSTDIR $R3
+  Push $INSTDIR
+  Call un.ValidatePath
+  ClearErrors
+  FileOpen $R0 "$INSTDIR\spektralab-install.marker" r
+  IfErrors marker_invalid
+  FileReadUTF16LE $R0 $R1
+  FileReadUTF16LE $R0 $R2
+  FileClose $R0
+  StrCmp $R1 "SpektraLabWindowsPreview-${BUILD_LABEL}$\r$\n" 0 marker_invalid
+  StrCmp $R2 $INSTDIR marker_valid
+  marker_invalid:
+    MessageBox MB_ICONSTOP "Installation marker is missing, invalid or belongs to another location; refusing to remove files." /SD IDOK
+    SetErrorLevel 2
     Abort
+  marker_valid:
 FunctionEnd
 
 Section "Uninstall"

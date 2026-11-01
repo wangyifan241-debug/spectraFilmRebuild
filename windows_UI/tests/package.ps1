@@ -8,6 +8,8 @@ $installer=@(Get-ChildItem -LiteralPath $package -Filter '*-setup.exe')
 if($installer.Count -ne 1){throw 'Expected exactly one installer'}
 $manifest=Get-Content -LiteralPath "$package/payload/package-manifest.json" -Raw | ConvertFrom-Json
 $testRoot=Join-Path $package ('install-test-'+[Guid]::NewGuid().ToString('N'))
+$physicalRepo=(Get-Item -LiteralPath $repo).ResolveLinkTarget($true)
+if($physicalRepo){$testRoot=Join-Path $physicalRepo.FullName ([IO.Path]::GetRelativePath($repo,$testRoot))}
 $target=Join-Path $testRoot '安装 测试'
 New-Item -ItemType Directory -Path $testRoot | Out-Null
 $registry='HKCU:\Software\Microsoft\Windows\CurrentVersion\Uninstall\SpektraLabWindowsPreview'

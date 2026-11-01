@@ -188,6 +188,14 @@ if(NOT APPLE)
                 add_subdirectory(host)
             endif()
             if(WIN32 AND SPEKTRALAB_BUILD_DESKTOP)
+                # Share the host's ICC-aware raster reader with the desktop;
+                # JPEG/PNG must enter the same linear ProPhoto boundary as RAW.
+                add_library(spk_raster_io STATIC host/image_io.cpp host/platform.cpp
+                    host/white_balance.cpp host/tiff_ifd.cpp host/stb_impl.cpp)
+                target_compile_features(spk_raster_io PUBLIC cxx_std_20)
+                target_include_directories(spk_raster_io PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/host"
+                    PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/third_party/stb")
+                target_link_libraries(spk_raster_io PUBLIC spk_image_io spk_libraw)
                 add_library(spk_output_colour STATIC host/colour_transform.cpp)
                 target_compile_features(spk_output_colour PUBLIC cxx_std_20)
                 target_include_directories(spk_output_colour PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/host" "${CMAKE_CURRENT_SOURCE_DIR}/include")
@@ -196,7 +204,7 @@ if(NOT APPLE)
                 target_compile_features(spk_desktop_host PUBLIC cxx_std_20)
                 target_include_directories(spk_desktop_host PUBLIC
                     "${CMAKE_CURRENT_SOURCE_DIR}/src" "${CMAKE_CURRENT_SOURCE_DIR}/include")
-                target_link_libraries(spk_desktop_host PUBLIC spk_image_io spektralab_engine spk_output_colour)
+                target_link_libraries(spk_desktop_host PUBLIC spk_image_io spektralab_engine spk_output_colour spk_raster_io)
                 add_executable(SpektraLab WIN32 tools/windows_preview.cpp)
                 target_link_libraries(SpektraLab PRIVATE spk_desktop_host comctl32 comdlg32 shell32 gdi32 user32)
                 file(MAKE_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/licenses")

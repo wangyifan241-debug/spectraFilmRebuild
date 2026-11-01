@@ -42,6 +42,7 @@ struct Probe {
     FileKind kind = FileKind::Unknown;
     uint32_t width = 0, height = 0;   // as displayed (orientation applied)
     Metadata metadata;
+    std::string colour_description;
 };
 bool probe_file(const std::filesystem::path& path, Probe& out, std::string& error);
 
@@ -61,6 +62,7 @@ struct DecodeOptions {
     std::string raw_mode = "compatible16";   // or "headroom"
     // R2: a custom white balance at decode (RAW, compatible16 only).
     std::optional<double> temperature_k, tint;
+    bool strict_icc = false; // Desktop refuses unsupported ICC instead of relabelling pixels.
 };
 // Thrown as a plain error string prefixed "unsupported:" when a decode option
 // cannot be honoured for this file.

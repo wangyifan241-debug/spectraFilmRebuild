@@ -70,6 +70,41 @@ add_dependencies(SpektraLabQt spektralab_qt_resources)
 add_dependencies(SpektraLabQt spk_material_fit)
 
 if(BUILD_TESTING)
+    qt_add_executable(spk_highlight_reference_test tests/highlight_reference.cpp)
+    target_link_libraries(spk_highlight_reference_test PRIVATE spk_desktop_host Qt6::Core)
+    add_dependencies(spk_highlight_reference_test spektralab_qt_resources)
+    add_test(NAME spk_highlight_reference COMMAND spk_highlight_reference_test "${CMAKE_BINARY_DIR}/app/resources")
+    set_tests_properties(spk_highlight_reference PROPERTIES TIMEOUT 90)
+    qt_add_executable(spk_qt_raster_input_test tests/raster_input.cpp src/PreviewController.hpp src/PreviewController.cpp src/FrameOutput.cpp src/EditStore.cpp)
+    target_link_libraries(spk_qt_raster_input_test PRIVATE spk_material_library Qt6::Gui)
+    add_dependencies(spk_qt_raster_input_test spektralab_qt_resources)
+    add_test(NAME spk_qt_raster_input COMMAND spk_qt_raster_input_test "${CMAKE_BINARY_DIR}/app/resources" "${CMAKE_BINARY_DIR}/raster-input-evidence")
+    set_tests_properties(spk_qt_raster_input PROPERTIES TIMEOUT 180 ENVIRONMENT "QT_QPA_PLATFORM=offscreen")
+    if(WIN32)
+        find_program(SPEKTRALAB_PWSH pwsh REQUIRED)
+        add_test(NAME spk_payload_inventory COMMAND "${SPEKTRALAB_PWSH}" -NoProfile -File "${CMAKE_CURRENT_SOURCE_DIR}/tests/payload_inventory.ps1" -BuildDirectory "${CMAKE_BINARY_DIR}")
+    endif()
+    qt_add_executable(spk_qt_review_memory_probe tests/review_memory.cpp src/FrameOutput.cpp)
+    target_include_directories(spk_qt_review_memory_probe PRIVATE src)
+    target_link_libraries(spk_qt_review_memory_probe PRIVATE spk_desktop_host Qt6::Gui)
+    if(WIN32)
+        target_link_libraries(spk_qt_review_memory_probe PRIVATE psapi)
+    endif()
+    qt_add_executable(spk_qt_review_controller_test tests/review_controller.cpp src/PreviewController.hpp src/PreviewController.cpp src/FrameOutput.cpp src/EditStore.cpp)
+    target_link_libraries(spk_qt_review_controller_test PRIVATE spk_material_library Qt6::Gui)
+    add_dependencies(spk_qt_review_controller_test spektralab_qt_resources)
+    add_test(NAME spk_qt_review_controller COMMAND spk_qt_review_controller_test "${CMAKE_BINARY_DIR}/app/resources")
+    set_tests_properties(spk_qt_review_controller PROPERTIES TIMEOUT 90 ENVIRONMENT "QT_QPA_PLATFORM=offscreen")
+    qt_add_executable(spk_qt_review_colour_test tests/review_colour.cpp src/FrameOutput.cpp
+        "${SPEKTRALAB_SOURCE_ROOT}/engine/host/output.cpp"
+        "${SPEKTRALAB_SOURCE_ROOT}/engine/host/image_io.cpp"
+        "${SPEKTRALAB_SOURCE_ROOT}/engine/host/stb_impl.cpp"
+        "${SPEKTRALAB_SOURCE_ROOT}/engine/host/platform.cpp"
+        "${SPEKTRALAB_SOURCE_ROOT}/engine/host/white_balance.cpp"
+        "${SPEKTRALAB_SOURCE_ROOT}/engine/host/tiff_ifd.cpp")
+    target_include_directories(spk_qt_review_colour_test PRIVATE src "${SPEKTRALAB_SOURCE_ROOT}/engine" "${SPEKTRALAB_SOURCE_ROOT}/engine/third_party/stb")
+    target_link_libraries(spk_qt_review_colour_test PRIVATE spk_desktop_host spk_libraw Qt6::Gui)
+    add_test(NAME spk_qt_review_colour COMMAND spk_qt_review_colour_test "${CMAKE_BINARY_DIR}/app/resources")
     qt_add_executable(spk_qt_icon_test tests/application_icon.cpp)
     target_compile_features(spk_qt_icon_test PRIVATE cxx_std_20)
     target_link_libraries(spk_qt_icon_test PRIVATE Qt6::Gui)
@@ -172,7 +207,7 @@ if(BUILD_TESTING)
             get_filename_component(qt_test_compiler_directory "${CMAKE_CXX_COMPILER}" DIRECTORY)
             list(APPEND qt_test_runtime_path "PATH=path_list_prepend:${qt_test_compiler_directory}")
         endif()
-        set_tests_properties(spk_qt_application_icon spk_qt_responsiveness spk_spectral_lift spk_scan_curve_fit spk_qt_frame_output spk_qt_edit_store spk_qt_stock_policy spk_qt_qml_workflow spk_qt_scene_placement spk_qt_film_frame spk_qt_half_pair spk_qt_open_material spk_qt_material_library spk_qt_material_workflow PROPERTIES
+        set_tests_properties(spk_highlight_reference spk_qt_raster_input spk_qt_review_controller spk_qt_review_colour spk_qt_application_icon spk_qt_responsiveness spk_spectral_lift spk_scan_curve_fit spk_qt_frame_output spk_qt_edit_store spk_qt_stock_policy spk_qt_qml_workflow spk_qt_scene_placement spk_qt_film_frame spk_qt_half_pair spk_qt_open_material spk_qt_material_library spk_qt_material_workflow PROPERTIES
             ENVIRONMENT_MODIFICATION "${qt_test_runtime_path}")
     endif()
     qt_add_executable(spk_qt_editing_workflow_test tests/editing_workflow.cpp

@@ -1,0 +1,646 @@
+Start testing: Nov 01 11:13 中国标准时间
+----------------------------------------------------------
+1/36 Testing: spk_qt_raster_input
+1/36 Test: spk_qt_raster_input
+Command: "C:/Users/Strickland/SpektraLab-work/build/qt-raster-input/spk_qt_raster_input_test.exe" "C:/Users/Strickland/SpektraLab-work/build/qt-raster-input/app/resources" "C:/Users/Strickland/SpektraLab-work/build/qt-raster-input/raster-input-evidence"
+Directory: C:/Users/Strickland/SpektraLab-work/build/qt-raster-input
+"spk_qt_raster_input" start time: Nov 01 11:13 中国标准时间
+Output:
+----------------------------------------------------------
+P3 linear ProPhoto host=0.149557,0.0638272,0.0160569 Qt=0.149508,0.0637217,0.0161746
+Raster input: 55399 checks; JPEG/PNG8/PNG16, sRGB/P3 ICC, EXIF, alpha, rejection, Vulkan, edits, reopen and TIFF/PNG/JPEG passed; max gray linear error=8.17841e-10; owned evidence=C:/Users/Strickland/SpektraLab-work/build/qt-raster-input/raster-input-evidence/run-lMChml
+<end of output>
+Test time =   8.13 sec
+----------------------------------------------------------
+Test Passed.
+"spk_qt_raster_input" end time: Nov 01 11:13 中国标准时间
+"spk_qt_raster_input" time elapsed: 00:00:08
+----------------------------------------------------------
+
+2/36 Testing: spk_payload_inventory
+2/36 Test: spk_payload_inventory
+Command: "C:/Users/Strickland/.cache/codex-runtimes/codex-primary-runtime/dependencies/native/powershell/pwsh.exe" "-NoProfile" "-File" "C:/Users/Strickland/SpektraLab-work/windows_UI/tests/payload_inventory.ps1" "-BuildDirectory" "C:/Users/Strickland/SpektraLab-work/build/qt-raster-input"
+Directory: C:/Users/Strickland/SpektraLab-work/build/qt-raster-input
+"spk_payload_inventory" start time: Nov 01 11:13 中国标准时间
+Output:
+----------------------------------------------------------
+PASS deployment identity: stable bytes, DLL mutation, extra file, reparse rejection
+<end of output>
+Test time =   0.92 sec
+----------------------------------------------------------
+Test Passed.
+"spk_payload_inventory" end time: Nov 01 11:13 中国标准时间
+"spk_payload_inventory" time elapsed: 00:00:00
+----------------------------------------------------------
+
+3/36 Testing: spk_qt_review_controller
+3/36 Test: spk_qt_review_controller
+Command: "C:/Users/Strickland/SpektraLab-work/build/qt-raster-input/spk_qt_review_controller_test.exe" "C:/Users/Strickland/SpektraLab-work/build/qt-raster-input/app/resources"
+Directory: C:/Users/Strickland/SpektraLab-work/build/qt-raster-input
+"spk_qt_review_controller" start time: Nov 01 11:13 中国标准时间
+Output:
+----------------------------------------------------------
+PASS retired generation, superseded edit, export/cancel, std/nonstd exception recovery, save retry/reopen/bound/close
+<end of output>
+Test time =   3.03 sec
+----------------------------------------------------------
+Test Passed.
+"spk_qt_review_controller" end time: Nov 01 11:13 中国标准时间
+"spk_qt_review_controller" time elapsed: 00:00:03
+----------------------------------------------------------
+
+4/36 Testing: spk_qt_review_colour
+4/36 Test: spk_qt_review_colour
+Command: "C:/Users/Strickland/SpektraLab-work/build/qt-raster-input/spk_qt_review_colour_test.exe" "C:/Users/Strickland/SpektraLab-work/build/qt-raster-input/app/resources"
+Directory: C:/Users/Strickland/SpektraLab-work/build/qt-raster-input
+"spk_qt_review_colour" start time: Nov 01 11:13 中国标准时间
+Output:
+----------------------------------------------------------
+sRGB,0.00999466,old22=898,linear=1310,actual=1310
+sRGB,0.179995,old22=16165,linear=16953,actual=16953
+sRGB,0.459998,old22=41311,linear=41447,actual=41447
+sRGB,0.700008,old22=62865,linear=62443,actual=62443
+sRGB,0.820005,old22=65535,linear=65535,actual=65535
+sRGB,0.949996,old22=65535,linear=65535,actual=65535
+ROMM,0.00999466,old22=898,linear=1310,actual=1310
+ROMM,0.179995,old22=16165,linear=17337,actual=17337
+ROMM,0.459998,old22=41311,linear=44307,actual=44307
+ROMM,0.700008,old22=62865,linear=65535,actual=65535
+ROMM,0.820005,old22=65535,linear=65535,actual=65535
+ROMM,0.949996,old22=65535,linear=65535,actual=65535
+sRGB ICC TRC max absolute error=7.60396e-06
+Display P3 ICC TRC max absolute error=7.60396e-06
+ProPhoto RGB ICC TRC max absolute error=1.32181e-05
+sRGB host/Qt in-gamut max absolute error=0.000381476
+Display P3 host/Qt in-gamut max absolute error=0.00030518
+ProPhoto RGB host/Qt in-gamut max absolute error=0.000976577
+PASS linear EV, neutral identity
+<end of output>
+Test time =   3.21 sec
+----------------------------------------------------------
+Test Passed.
+"spk_qt_review_colour" end time: Nov 01 11:13 中国标准时间
+"spk_qt_review_colour" time elapsed: 00:00:03
+----------------------------------------------------------
+
+5/36 Testing: spk_qt_application_icon
+5/36 Test: spk_qt_application_icon
+Command: "C:/Users/Strickland/SpektraLab-work/build/qt-raster-input/spk_qt_icon_test.exe" "C:/Users/Strickland/SpektraLab-work/build/qt-raster-input/app/SpektraLabQt.exe" "C:/Users/Strickland/SpektraLab-work/windows_UI/assets/film.ico"
+Directory: C:/Users/Strickland/SpektraLab-work/build/qt-raster-input
+"spk_qt_application_icon" start time: Nov 01 11:13 中国标准时间
+Output:
+----------------------------------------------------------
+PASS: nine transparent icon resolutions; PE icon bytes match original artwork
+<end of output>
+Test time =   0.06 sec
+----------------------------------------------------------
+Test Passed.
+"spk_qt_application_icon" end time: Nov 01 11:13 中国标准时间
+"spk_qt_application_icon" time elapsed: 00:00:00
+----------------------------------------------------------
+
+6/36 Testing: spk_qt_responsiveness
+6/36 Test: spk_qt_responsiveness
+Command: "C:/Users/Strickland/SpektraLab-work/build/qt-raster-input/spk_qt_responsiveness_test.exe" "C:/Users/Strickland/SpektraLab-work/build/qt-raster-input/app/resources"
+Directory: C:/Users/Strickland/SpektraLab-work/build/qt-raster-input
+"spk_qt_responsiveness" start time: Nov 01 11:13 中国标准时间
+Output:
+----------------------------------------------------------
+Presentation worker gate passed; GUI heartbeats during injected 120 ms work: 26; CINE/still metadata correct
+<end of output>
+Test time =   2.84 sec
+----------------------------------------------------------
+Test Passed.
+"spk_qt_responsiveness" end time: Nov 01 11:13 中国标准时间
+"spk_qt_responsiveness" time elapsed: 00:00:02
+----------------------------------------------------------
+
+7/36 Testing: spk_spectral_lift
+7/36 Test: spk_spectral_lift
+Command: "C:/Users/Strickland/SpektraLab-work/build/qt-raster-input/spk_spectral_lift_test.exe" "C:/Users/Strickland/SpektraLab-work/build/qt-raster-input/app/spk_material_fit.exe"
+Directory: C:/Users/Strickland/SpektraLab-work/build/qt-raster-input
+"spk_spectral_lift" start time: Nov 01 11:13 中国标准时间
+Output:
+----------------------------------------------------------
+Spectral lift: 552 checks; independent transmission/Jacobian, nonlinear CMY recovery, rank/bounds, explicit operator/provenance and safe CLI refusal passed
+<end of output>
+Test time =   1.56 sec
+----------------------------------------------------------
+Test Passed.
+"spk_spectral_lift" end time: Nov 01 11:13 中国标准时间
+"spk_spectral_lift" time elapsed: 00:00:01
+----------------------------------------------------------
+
+8/36 Testing: spk_scan_curve_fit
+8/36 Test: spk_scan_curve_fit
+Command: "C:/Users/Strickland/SpektraLab-work/build/qt-raster-input/spk_material_fit_test.exe" "C:/Users/Strickland/SpektraLab-work/engine/resources_research/scan/ProImage100_datasheet_curves.json" "C:/Users/Strickland/SpektraLab-work/build/qt-raster-input/app/spk_material_fit.exe" "C:/Users/Strickland/SpektraLab-work/windows_UI/material_fit/fixtures/proimage100-statusm-fit-v1.json"
+Directory: C:/Users/Strickland/SpektraLab-work/build/qt-raster-input
+"spk_scan_curve_fit" start time: Nov 01 11:13 中国标准时间
+Output:
+----------------------------------------------------------
+Scan curve fit: 125 checks; synthetic recovery, withheld samples, pinned Pro Image data, determinism and non-Profile refusal passed
+<end of output>
+Test time =   0.70 sec
+----------------------------------------------------------
+Test Passed.
+"spk_scan_curve_fit" end time: Nov 01 11:13 中国标准时间
+"spk_scan_curve_fit" time elapsed: 00:00:00
+----------------------------------------------------------
+
+9/36 Testing: spk_qt_qml_workflow
+9/36 Test: spk_qt_qml_workflow
+Command: "C:/Users/Strickland/SpektraLab-work/build/qt-raster-input/spk_qt_qml_workflow_test.exe" "C:/Users/Strickland/SpektraLab-work/build/qt-raster-input/app/SpektraLabQt.exe"
+Directory: C:/Users/Strickland/SpektraLab-work/build/qt-raster-input
+"spk_qt_qml_workflow" start time: Nov 01 11:13 中国标准时间
+Output:
+----------------------------------------------------------
+QML workflow: 222 report fields; actual scene captures, original/split/Space, curves, geometry, native export and isolated persistence passed
+<end of output>
+Test time = 128.34 sec
+----------------------------------------------------------
+Test Passed.
+"spk_qt_qml_workflow" end time: Nov 01 11:16 中国标准时间
+"spk_qt_qml_workflow" time elapsed: 00:02:08
+----------------------------------------------------------
+
+10/36 Testing: spk_qt_stock_policy
+10/36 Test: spk_qt_stock_policy
+Command: "C:/Users/Strickland/SpektraLab-work/build/qt-raster-input/spk_qt_stock_policy_test.exe" "C:/Users/Strickland/SpektraLab-work/build/qt-raster-input/app/resources"
+Directory: C:/Users/Strickland/SpektraLab-work/build/qt-raster-input
+"spk_qt_stock_policy" start time: Nov 01 11:16 中国标准时间
+Output:
+----------------------------------------------------------
+Strip agreement: Portra/CineStill, effects off/on, rows 128/129; max RGBA16 error 0
+Stock policy: four B&W films, compatible paper selection and cross-process refusal passed
+Vulkan: four silver charts rendered with neutral RGB and non-flat tone response
+Vulkan: CineStill -> Portra -> CineStill rendered with default halation enabled
+<end of output>
+Test time =  27.72 sec
+----------------------------------------------------------
+Test Passed.
+"spk_qt_stock_policy" end time: Nov 01 11:16 中国标准时间
+"spk_qt_stock_policy" time elapsed: 00:00:27
+----------------------------------------------------------
+
+11/36 Testing: spk_qt_frame_output
+11/36 Test: spk_qt_frame_output
+Command: "C:/Users/Strickland/SpektraLab-work/build/qt-raster-input/spk_qt_frame_output_test.exe" "C:/Users/Strickland/SpektraLab-work/build/qt-raster-input/app/resources"
+Directory: C:/Users/Strickland/SpektraLab-work/build/qt-raster-input
+"spk_qt_frame_output" start time: Nov 01 11:16 中国标准时间
+Output:
+----------------------------------------------------------
+JPEG quality95 rms=0.745356 max_channel_error=3
+PASS crop/geometry-order/quarter-turns/flips/straighten/zoom-fill/16-bit-interpolation/display/PNG8/PNG16/TIFF16/ICC/JPEG/resize/no-overwrite/race/cleanup/extensions/source-immutability
+<end of output>
+Test time =   2.42 sec
+----------------------------------------------------------
+Test Passed.
+"spk_qt_frame_output" end time: Nov 01 11:16 中国标准时间
+"spk_qt_frame_output" time elapsed: 00:00:02
+----------------------------------------------------------
+
+12/36 Testing: spk_qt_edit_store
+12/36 Test: spk_qt_edit_store
+Command: "C:/Users/Strickland/SpektraLab-work/build/qt-raster-input/spk_qt_edit_store_test.exe"
+Directory: C:/Users/Strickland/SpektraLab-work/build/qt-raster-input
+"spk_qt_edit_store" start time: Nov 01 11:16 中国标准时间
+Output:
+----------------------------------------------------------
+Edit store: 410 checks passed; explicit temporary files only.
+<end of output>
+Test time =   0.91 sec
+----------------------------------------------------------
+Test Passed.
+"spk_qt_edit_store" end time: Nov 01 11:16 中国标准时间
+"spk_qt_edit_store" time elapsed: 00:00:00
+----------------------------------------------------------
+
+13/36 Testing: spk_qt_scene_placement
+13/36 Test: spk_qt_scene_placement
+Command: "C:/Users/Strickland/SpektraLab-work/build/qt-raster-input/spk_qt_scene_placement_test.exe" "C:/Users/Strickland/SpektraLab-work/build/qt-raster-input/app/resources"
+Directory: C:/Users/Strickland/SpektraLab-work/build/qt-raster-input
+"spk_qt_scene_placement" start time: Nov 01 11:16 中国标准时间
+Output:
+----------------------------------------------------------
+Scene placement: 162 checks; actual Vulkan measurement, fit/refusal, history, v4 persistence, export and immutable source passed
+<end of output>
+Test time =  12.16 sec
+----------------------------------------------------------
+Test Passed.
+"spk_qt_scene_placement" end time: Nov 01 11:16 中国标准时间
+"spk_qt_scene_placement" time elapsed: 00:00:12
+----------------------------------------------------------
+
+14/36 Testing: spk_qt_film_frame
+14/36 Test: spk_qt_film_frame
+Command: "C:/Users/Strickland/SpektraLab-work/build/qt-raster-input/spk_qt_film_frame_test.exe" "C:/Users/Strickland/SpektraLab-work/build/qt-raster-input/app/resources"
+Directory: C:/Users/Strickland/SpektraLab-work/build/qt-raster-input
+"spk_qt_film_frame" start time: Nov 01 11:16 中国标准时间
+Output:
+----------------------------------------------------------
+Film frame: 55 checks; real Vulkan date/film, pre-film geometry, original compare, export, history and v5 restore passed
+<end of output>
+Test time =  27.67 sec
+----------------------------------------------------------
+Test Passed.
+"spk_qt_film_frame" end time: Nov 01 11:17 中国标准时间
+"spk_qt_film_frame" time elapsed: 00:00:27
+----------------------------------------------------------
+
+15/36 Testing: spk_qt_half_pair
+15/36 Test: spk_qt_half_pair
+Command: "C:/Users/Strickland/SpektraLab-work/build/qt-raster-input/spk_qt_half_pair_test.exe" "C:/Users/Strickland/SpektraLab-work/build/qt-raster-input/app/resources"
+Directory: C:/Users/Strickland/SpektraLab-work/build/qt-raster-input
+"spk_qt_half_pair" start time: Nov 01 11:17 中国标准时间
+Output:
+----------------------------------------------------------
+Half pair: 154 checks; held RAW composition, geometry, exposure, border/date, restore and export passed
+<end of output>
+Test time =  21.80 sec
+----------------------------------------------------------
+Test Passed.
+"spk_qt_half_pair" end time: Nov 01 11:17 中国标准时间
+"spk_qt_half_pair" time elapsed: 00:00:21
+----------------------------------------------------------
+
+16/36 Testing: spk_qt_open_material
+16/36 Test: spk_qt_open_material
+Command: "C:/Users/Strickland/SpektraLab-work/build/qt-raster-input/spk_qt_open_material_test.exe" "C:/Users/Strickland/SpektraLab-work/build/qt-raster-input/app/resources"
+Directory: C:/Users/Strickland/SpektraLab-work/build/qt-raster-input
+"spk_qt_open_material" start time: Nov 01 11:17 中国标准时间
+Output:
+----------------------------------------------------------
+Open material: 9368 checks; original/converted conservation, actual Vulkan selection/effects, old Portra invariance, persistence and three encoders passed
+<end of output>
+Test time =  49.06 sec
+----------------------------------------------------------
+Test Passed.
+"spk_qt_open_material" end time: Nov 01 11:18 中国标准时间
+"spk_qt_open_material" time elapsed: 00:00:49
+----------------------------------------------------------
+
+17/36 Testing: spk_qt_material_library
+17/36 Test: spk_qt_material_library
+Command: "C:/Users/Strickland/SpektraLab-work/build/qt-raster-input/spk_qt_material_library_test.exe" "C:/Users/Strickland/SpektraLab-work/build/qt-raster-input/app/resources"
+Directory: C:/Users/Strickland/SpektraLab-work/build/qt-raster-input
+"spk_qt_material_library" start time: Nov 01 11:18 中国标准时间
+Output:
+----------------------------------------------------------
+Material library: 100 checks; immutable imports/packs, provenance/shape negatives, history archive and actual Vulkan passed
+<end of output>
+Test time =   6.89 sec
+----------------------------------------------------------
+Test Passed.
+"spk_qt_material_library" end time: Nov 01 11:18 中国标准时间
+"spk_qt_material_library" time elapsed: 00:00:06
+----------------------------------------------------------
+
+18/36 Testing: spk_qt_material_workflow
+18/36 Test: spk_qt_material_workflow
+Command: "C:/Users/Strickland/SpektraLab-work/build/qt-raster-input/spk_qt_material_workflow_test.exe" "C:/Users/Strickland/SpektraLab-work/build/qt-raster-input/app/resources"
+Directory: C:/Users/Strickland/SpektraLab-work/build/qt-raster-input
+"spk_qt_material_workflow" start time: Nov 01 11:18 中国标准时间
+Output:
+----------------------------------------------------------
+Material workflow: 37 checks; actual Vulkan imports, v9 exposure/profile/resource pins, legacy reads, history restore/exports and safe missing-version refusal passed
+<end of output>
+Test time =  38.02 sec
+----------------------------------------------------------
+Test Passed.
+"spk_qt_material_workflow" end time: Nov 01 11:19 中国标准时间
+"spk_qt_material_workflow" time elapsed: 00:00:38
+----------------------------------------------------------
+
+19/36 Testing: spk_core_schema
+19/36 Test: spk_core_schema
+Command: "C:/Users/Strickland/SpektraLab-work/build/qt-raster-input/engine/spk_dump_json.exe" "C:/Users/Strickland/SpektraLab-work/engine/resources"
+Directory: C:/Users/Strickland/SpektraLab-work/build/qt-raster-input/engine
+"spk_core_schema" start time: Nov 01 11:19 中国标准时间
+Output:
+----------------------------------------------------------
+{"pairs":{"fujifilm_provia_100f|kodak_portra_endura":{"internals":{"dir_couplers.gamma_interlayer_b_to_rg":[0.078,0.078],"dir_couplers.gamma_interlayer_g_to_rb":[0.104,0.078],"dir_couplers.gamma_interlayer_r_to_gb":[0.156,0.078],"dir_couplers.gamma_samelayer_rgb":[0.156,0.104,0.078],"enlarger.c_filter_neutral":0,"enlarger.m_filter_neutral":50,"enlarger.y_filter_neutral":50,"grain.micro_structure":[0.20000000000000001,30],"halation.halation_first_sigma_um":[65,65,65],"halation.halation_strength":[0.014999999999999999,0.0050000000000000001,0],"profile.film.antihalation":"strong","profile.film.density_max":[2.5572113191326951,2.5458753307017821,2.0765413738861414],"profile.film.density_min":[-0.0015595326213980784,-0.0013643558010510764,-0.00084712939759905542],"profile.film.reference_illuminant":"D55","profile.film.type":"positive","profile.film.use":"still","profile.print.density_max":[2.4638993546794801,2.0698273537973431,1.8230963368488782],"profile.print.density_min":[-0.00082207297848073987,-0.0010368303875072067,-0.00082780236012352203],"profile.print.viewing_illuminant":"D50","scanner.unsharp_mask":[0.69999999999999996,0.69999999999999996]},"params":{"antihalation_removed":false,"auto_exposure":true,"auto_exposure_method":"center_weighted","c_filter_neutral":0,"camera_filter":"","contrast_mask_active":false,"contrast_mask_core":1,"contrast_mask_highlights":0,"contrast_mask_scale":0.029999999999999999,"contrast_mask_scheme":"gaussian","contrast_mask_shadows":0,"date_imprint_active":false,"date_imprint_corner":"br","date_imprint_data_text":"","date_imprint_ev":3.5,"date_imprint_inset_x":3,"date_imprint_inset_y":2.3999999999999999,"date_imprint_placement":"frame","date_imprint_size":1,"date_imprint_style":"lcd","date_imprint_text":"","date_imprint_text_b":"","density_curve_gamma":1,"digital_intermediate":false,"digital_intermediate_blue_compensation":false,"dir_couplers_active":true,"dir_couplers_amount":1,"enlarger_illuminant":"TH-KG3","exposure_compensation_ev":0,"extended_dynamic_range":false,"film_format_mm":35,"film_stock":"fujifilm_provia_100f","filter_shift_scale":1,"geometry_crop_h":1,"geometry_crop_w":1,"geometry_crop_x":0,"geometry_crop_y":0,"geometry_flip_h":false,"geometry_flip_v":false,"geometry_quarter_turns":0,"geometry_rotation_deg":0,"glare_active":true,"glare_amount":1,"grain_active":true,"grain_amount":1,"grain_sublayers_active":true,"halation_active":true,"halation_amount":1,"halation_boost_ev":0,"halation_headroom_ev":4,"halation_scatter_amount":1,"input_cctf_decoding":false,"input_color_space":"ProPhoto RGB","lens_blur_um":0,"m_filter_neutral":50,"m_filter_shift":0,"output_cctf_encoding":true,"output_color_space":"ProPhoto RGB","overscan_active":false,"overscan_camera_seed":1,"overscan_carrier":"none","overscan_edge_text":"","overscan_f_number":0,"overscan_fog":1,"overscan_format":"135","overscan_frame_number":0,"overscan_frame_seed":1,"overscan_gate":"auto","overscan_holes":"white","overscan_leaks":0,"overscan_mode":"strip","overscan_pair":false,"preflash_exposure":0,"preview_long_edge":1600,"print_exposure":1,"print_stock":"kodak_portra_endura","scan_film":false,"scanner_black_correction":false,"scanner_lens_blur":0,"scanner_white_correction":false,"scene_latitude_active":false,"scene_latitude_b_active":false,"scene_latitude_b_highlight_knee":2,"scene_latitude_b_highlight_room":0,"scene_latitude_b_shadow_knee":-2,"scene_latitude_b_shadow_room":0,"scene_latitude_highlight_knee":2,"scene_latitude_highlight_room":0,"scene_latitude_max_lift":4,"scene_latitude_norm":"power","scene_latitude_rolloff":2,"scene_latitude_shadow_knee":-2,"scene_latitude_shadow_room":0,"scene_latitude_split":0,"strip_budget_bytes":0,"strip_rows":0,"striped":false,"y_filter_neutral":50,"y_filter_shift":0}},"fujifilm_velvia_100|kodak_portra_endura":{"internals":{"dir_couplers.gamma_interlayer_b_to_rg":[0.053999999999999999,0.053999999999999999],"dir_couplers.gamma_interlayer_g_to_rb":[0.071999999999999995,0.053999999999999999],"dir_couplers.gamma_interlayer_r_to_gb":[0.108,0.053999999999999999],"dir_couplers.gamma_samelayer_rgb":[0.108,0.071999999999999995,0.053999999999999999],"enlarger.c_filter_neutral":0,"enlarger.m_filter_neutral":50,"enlarger.y_filter_neutral":50,"grain.micro_structure":[0.20000000000000001,30],"halation.halation_first_sigma_um":[65,65,65],"halation.halation_strength":[0.014999999999999999,0.0050000000000000001,0],"profile.film.antihalation":"strong","profile.film.density_max":[2.7325435275422594,3.5745396731921408,2.8597863792285509],"profile.film.density_min":[-0.0015595480767851989,-0.0013643558120395749,-0.00091851212588168519],"profile.film.reference_illuminant":"D55","profile.film.type":"positive","profile.film.use":"still","profile.print.density_max":[2.4638993546794801,2.0698273537973431,1.8230963368488782],"profile.print.density_min":[-0.00082207297848073987,-0.0010368303875072067,-0.00082780236012352203],"profile.print.viewing_illuminant":"D50","scanner.unsharp_mask":[0.69999999999999996,0.69999999999999996]},"params":{"antihalation_removed":false,"auto_exposure":true,"auto_exposure_method":"center_weighted","c_filter_neutral":0,"camera_filter":"","contrast_mask_active":false,"contrast_mask_core":1,"contrast_mask_highlights":0,"contrast_mask_scale":0.029999999999999999,"contrast_mask_scheme":"gaussian","contrast_mask_shadows":0,"date_imprint_active":false,"date_imprint_corner":"br","date_imprint_data_text":"","date_imprint_ev":3.5,"date_imprint_inset_x":3,"date_imprint_inset_y":2.3999999999999999,"date_imprint_placement":"frame","date_imprint_size":1,"date_imprint_style":"lcd","date_imprint_text":"","date_imprint_text_b":"","density_curve_gamma":1,"digital_intermediate":false,"digital_intermediate_blue_compensation":false,"dir_couplers_active":true,"dir_couplers_amount":1,"enlarger_illuminant":"TH-KG3","exposure_compensation_ev":0,"extended_dynamic_range":false,"film_format_mm":35,"film_stock":"fujifilm_velvia_100","filter_shift_scale":1,"geometry_crop_h":1,"geometry_crop_w":1,"geometry_crop_x":0,"geometry_crop_y":0,"geometry_flip_h":false,"geometry_flip_v":false,"geometry_quarter_turns":0,"geometry_rotation_deg":0,"glare_active":true,"glare_amount":1,"grain_active":true,"grain_amount":1,"grain_sublayers_active":true,"halation_active":true,"halation_amount":1,"halation_boost_ev":0,"halation_headroom_ev":4,"halation_scatter_amount":1,"input_cctf_decoding":false,"input_color_space":"ProPhoto RGB","lens_blur_um":0,"m_filter_neutral":50,"m_filter_shift":0,"output_cctf_encoding":true,"output_color_space":"ProPhoto RGB","overscan_active":false,"overscan_camera_seed":1,"overscan_carrier":"none","overscan_edge_text":"","overscan_f_number":0,"overscan_fog":1,"overscan_format":"135","overscan_frame_number":0,"overscan_frame_seed":1,"overscan_gate":"auto","overscan_holes":"white","overscan_leaks":0,"overscan_mode":"strip","overscan_pair":false,"preflash_exposure":0,"preview_long_edge":1600,"print_exposure":1,"print_stock":"kodak_portra_endura","scan_film":false,"scanner_black_correction":false,"scanner_lens_blur":0,"scanner_white_correction":false,"scene_latitude_active":false,"scene_latitude_b_active":false,"scene_latitude_b_highlight_knee":2,"scene_latitude_b_highlight_room":0,"scene_latitude_b_shadow_knee":-2,"scene_latitude_b_shadow_room":0,"scene_latitude_highlight_knee":2,"scene_latitude_highlight_room":0,"scene_latitude_max_lift":4,"scene_latitude_norm":"power","scene_latitude_rolloff":2,"scene_latitude_shadow_knee":-2,"scene_latitude_shadow_room":0,"scene_latitude_split":0,"strip_budget_bytes":0,"strip_rows":0,"striped":false,"y_filter_neutral":50,"y_filter_shift":0}},"kodak_ektachrome_100|kodak_ektacolor_edge":{"internals":{"dir_couplers.gamma_interlayer_b_to_rg":[0.059999999999999998,0.059999999999999998],"dir_couplers.gamma_interlayer_g_to_rb":[0.080000000000000002,0.059999999999999998],"dir_couplers.gamma_interlayer_r_to_gb":[0.12,0.059999999999999998],"dir_couplers.gamma_samelayer_rgb":[0.12,0.080000000000000002,0.059999999999999998],"enlarger.c_filter_neutral":0,"enlarger.m_filter_neutral":50,"enlarger.y_filter_neutral":50,"grain.micro_structure":[0.20000000000000001,30],"halation.halation_first_sigma_um":[65,65,65],"halation.halation_strength":[0.014999999999999999,0.0050000000000000001,0],"profile.film.antihalation":"strong","profile.film.density_max":[2.5123476655326238,2.8061845930606037,2.8125635857007785],"profile.film.density_min":[-0.001558206375449202,-0.001364351794458731,-0.00084712935074168923],"profile.film.reference_illuminant":"D55","profile.film.type":"positive","profile.film.use":"still","profile.print.density_max":[2.2531898377438222,2.0200174117705147,1.8455913136326334],"profile.print.density_min":[-0.00082207297848101461,-0.0010363771030407294,-0.00082780236012344342],"profile.print.viewing_illuminant":"D50","scanner.unsharp_mask":[0.69999999999999996,0.69999999999999996]},"params":{"antihalation_removed":false,"auto_exposure":true,"auto_exposure_method":"center_weighted","c_filter_neutral":0,"camera_filter":"","contrast_mask_active":false,"contrast_mask_core":1,"contrast_mask_highlights":0,"contrast_mask_scale":0.029999999999999999,"contrast_mask_scheme":"gaussian","contrast_mask_shadows":0,"date_imprint_active":false,"date_imprint_corner":"br","date_imprint_data_text":"","date_imprint_ev":3.5,"date_imprint_inset_x":3,"date_imprint_inset_y":2.3999999999999999,"date_imprint_placement":"frame","date_imprint_size":1,"date_imprint_style":"lcd","date_imprint_text":"","date_imprint_text_b":"","density_curve_gamma":1,"digital_intermediate":false,"digital_intermediate_blue_compensation":false,"dir_couplers_active":true,"dir_couplers_amount":1,"enlarger_illuminant":"TH-KG3","exposure_compensation_ev":0,"extended_dynamic_range":false,"film_format_mm":35,"film_stock":"kodak_ektachrome_100","filter_shift_scale":1,"geometry_crop_h":1,"geometry_crop_w":1,"geometry_crop_x":0,"geometry_crop_y":0,"geometry_flip_h":false,"geometry_flip_v":false,"geometry_quarter_turns":0,"geometry_rotation_deg":0,"glare_active":true,"glare_amount":1,"grain_active":true,"grain_amount":1,"grain_sublayers_active":true,"halation_active":true,"halation_amount":1,"halation_boost_ev":0,"halation_headroom_ev":4,"halation_scatter_amount":1,"input_cctf_decoding":false,"input_color_space":"ProPhoto RGB","lens_blur_um":0,"m_filter_neutral":50,"m_filter_shift":0,"output_cctf_encoding":true,"output_color_space":"ProPhoto RGB","overscan_active":false,"overscan_camera_seed":1,"overscan_carrier":"none","overscan_edge_text":"","overscan_f_number":0,"overscan_fog":1,"overscan_format":"135","overscan_frame_number":0,"overscan_frame_seed":1,"overscan_gate":"auto","overscan_holes":"white","overscan_leaks":0,"overscan_mode":"strip","overscan_pair":false,"preflash_exposure":0,"preview_long_edge":1600,"print_exposure":1,"print_stock":"kodak_ektacolor_edge","scan_film":false,"scanner_black_correction":false,"scanner_lens_blur":0,"scanner_white_correction":false,"scene_latitude_active":false,"scene_latitude_b_active":false,"scene_latitude_b_highlight_knee":2,"scene_latitude_b_highlight_room":0,"scene_latitude_b_shadow_knee":-2,"scene_latitude_b_shadow_room":0,"scene_latitude_highlight_knee":2,"scene_latitude_highlight_room":0,"scene_latitude_max_lift":4,"scene_latitude_norm":"power","scene_latitude_rolloff":2,"scene_latitude_shadow_knee":-2,"scene_latitude_shadow_room":0,"scene_latitude_split":0,"strip_budget_bytes":0,"strip_rows":0,"striped":false,"y_filter_neutral":50,"y_filter_shift":0}},"kodak_gold_200|kodak_endura_premier":{"internals":{"dir_couplers.gamma_interlayer_b_to_rg":[0.16800000000000001,0.22600000000000001],"dir_couplers.gamma_interlayer_g_to_rb":[0.154,0.35299999999999998],"dir_couplers.gamma_interlayer_r_to_gb":[0.35299999999999998,0.30199999999999999],"dir_couplers.gamma_samelayer_rgb":[0.33600000000000002,0.31900000000000001,0.27300000000000002],"enlarger.c_filter_neutral":0,"enlarger.m_filter_neutral":62.006563465462065,"enlarger.y_filter_neutral":58.506814133646813,"grain.micro_structure":[0.20000000000000001,30],"halation.halation_first_sigma_um":[65,65,65],"halation.halation_strength":[0.080000000000000002,0.02,0],"profile.film.antihalation":"weak","profile.film.density_max":[1.627895335404784,1.5144094243835815,1.6873796666710414],"profile.film.density_min":[-0.00065891185229329885,-0.00053001805081956974,-0.00057800660989523907],"profile.film.reference_illuminant":"D55","profile.film.type":"negative","profile.film.use":"still","profile.print.density_max":[2.4266659698543052,1.8917186287802965,1.9210981557684872],"profile.print.density_min":[-0.00084397497748397911,-0.0010369970234380284,-0.00082780236012336493],"profile.print.viewing_illuminant":"D50","scanner.unsharp_mask":[0.69999999999999996,0.69999999999999996]},"params":{"antihalation_removed":false,"auto_exposure":true,"auto_exposure_method":"center_weighted","c_filter_neutral":0,"camera_filter":"","contrast_mask_active":false,"contrast_mask_core":1,"contrast_mask_highlights":0,"contrast_mask_scale":0.029999999999999999,"contrast_mask_scheme":"gaussian","contrast_mask_shadows":0,"date_imprint_active":false,"date_imprint_corner":"br","date_imprint_data_text":"","date_imprint_ev":3.5,"date_imprint_inset_x":3,"date_imprint_inset_y":2.3999999999999999,"date_imprint_placement":"frame","date_imprint_size":1,"date_imprint_style":"lcd","date_imprint_text":"","date_imprint_text_b":"","density_curve_gamma":1,"digital_intermediate":false,"digital_intermediate_blue_compensation":false,"dir_couplers_active":true,"dir_couplers_amount":1,"enlarger_illuminant":"TH-KG3","exposure_compensation_ev":0,"extended_dynamic_range":false,"film_format_mm":35,"film_stock":"kodak_gold_200","filter_shift_scale":1,"geometry_crop_h":1,"geometry_crop_w":1,"geometry_crop_x":0,"geometry_crop_y":0,"geometry_flip_h":false,"geometry_flip_v":false,"geometry_quarter_turns":0,"geometry_rotation_deg":0,"glare_active":true,"glare_amount":1,"grain_active":true,"grain_amount":1,"grain_sublayers_active":true,"halation_active":true,"halation_amount":1,"halation_boost_ev":0,"halation_headroom_ev":4,"halation_scatter_amount":1,"input_cctf_decoding":false,"input_color_space":"ProPhoto RGB","lens_blur_um":0,"m_filter_neutral":62.006563465462065,"m_filter_shift":0,"output_cctf_encoding":true,"output_color_space":"ProPhoto RGB","overscan_active":false,"overscan_camera_seed":1,"overscan_carrier":"none","overscan_edge_text":"","overscan_f_number":0,"overscan_fog":1,"overscan_format":"135","overscan_frame_number":0,"overscan_frame_seed":1,"overscan_gate":"auto","overscan_holes":"white","overscan_leaks":0,"overscan_mode":"strip","overscan_pair":false,"preflash_exposure":0,"preview_long_edge":1600,"print_exposure":1,"print_stock":"kodak_endura_premier","scan_film":false,"scanner_black_correction":false,"scanner_lens_blur":0,"scanner_white_correction":false,"scene_latitude_active":false,"scene_latitude_b_active":false,"scene_latitude_b_highlight_knee":2,"scene_latitude_b_highlight_room":0,"scene_latitude_b_shadow_knee":-2,"scene_latitude_b_shadow_room":0,"scene_latitude_highlight_knee":2,"scene_latitude_highlight_room":0,"scene_latitude_max_lift":4,"scene_latitude_norm":"power","scene_latitude_rolloff":2,"scene_latitude_shadow_knee":-2,"scene_latitude_shadow_room":0,"scene_latitude_split":0,"strip_budget_bytes":0,"strip_rows":0,"striped":false,"y_filter_neutral":58.506814133646813,"y_filter_shift":0}},"kodak_portra_400|kodak_portra_endura":{"internals":{"dir_couplers.gamma_interlayer_b_to_rg":[0.16800000000000001,0.22600000000000001],"dir_couplers.gamma_interlayer_g_to_rb":[0.154,0.35299999999999998],"dir_couplers.gamma_interlayer_r_to_gb":[0.35299999999999998,0.30199999999999999],"dir_couplers.gamma_samelayer_rgb":[0.33600000000000002,0.31900000000000001,0.27300000000000002],"enlarger.c_filter_neutral":0,"enlarger.m_filter_neutral":51.56801468495496,"enlarger.y_filter_neutral":52.534004223495963,"grain.micro_structure":[0.20000000000000001,30],"halation.halation_first_sigma_um":[65,65,65],"halation.halation_strength":[0.014999999999999999,0.0050000000000000001,0],"profile.film.antihalation":"strong","profile.film.density_max":[1.9917963795382201,1.7988370707022954,2.1639109464828126],"profile.film.density_min":[-0.00073111383822692605,-0.00065213359055292476,-0.00069304203474504164],"profile.film.reference_illuminant":"D55","profile.film.type":"negative","profile.film.use":"still","profile.print.density_max":[2.4638993546794801,2.0698273537973431,1.8230963368488782],"profile.print.density_min":[-0.00082207297848073987,-0.0010368303875072067,-0.00082780236012352203],"profile.print.viewing_illuminant":"D50","scanner.unsharp_mask":[0.69999999999999996,0.69999999999999996]},"params":{"antihalation_removed":false,"auto_exposure":true,"auto_exposure_method":"center_weighted","c_filter_neutral":0,"camera_filter":"","contrast_mask_active":false,"contrast_mask_core":1,"contrast_mask_highlights":0,"contrast_mask_scale":0.029999999999999999,"contrast_mask_scheme":"gaussian","contrast_mask_shadows":0,"date_imprint_active":false,"date_imprint_corner":"br","date_imprint_data_text":"","date_imprint_ev":3.5,"date_imprint_inset_x":3,"date_imprint_inset_y":2.3999999999999999,"date_imprint_placement":"frame","date_imprint_size":1,"date_imprint_style":"lcd","date_imprint_text":"","date_imprint_text_b":"","density_curve_gamma":1,"digital_intermediate":false,"digital_intermediate_blue_compensation":false,"dir_couplers_active":true,"dir_couplers_amount":1,"enlarger_illuminant":"TH-KG3","exposure_compensation_ev":0,"extended_dynamic_range":false,"film_format_mm":35,"film_stock":"kodak_portra_400","filter_shift_scale":1,"geometry_crop_h":1,"geometry_crop_w":1,"geometry_crop_x":0,"geometry_crop_y":0,"geometry_flip_h":false,"geometry_flip_v":false,"geometry_quarter_turns":0,"geometry_rotation_deg":0,"glare_active":true,"glare_amount":1,"grain_active":true,"grain_amount":1,"grain_sublayers_active":true,"halation_active":true,"halation_amount":1,"halation_boost_ev":0,"halation_headroom_ev":4,"halation_scatter_amount":1,"input_cctf_decoding":false,"input_color_space":"ProPhoto RGB","lens_blur_um":0,"m_filter_neutral":51.56801468495496,"m_filter_shift":0,"output_cctf_encoding":true,"output_color_space":"ProPhoto RGB","overscan_active":false,"overscan_camera_seed":1,"overscan_carrier":"none","overscan_edge_text":"","overscan_f_number":0,"overscan_fog":1,"overscan_format":"135","overscan_frame_number":0,"overscan_frame_seed":1,"overscan_gate":"auto","overscan_holes":"white","overscan_leaks":0,"overscan_mode":"strip","overscan_pair":false,"preflash_exposure":0,"preview_long_edge":1600,"print_exposure":1,"print_stock":"kodak_portra_endura","scan_film":false,"scanner_black_correction":false,"scanner_lens_blur":0,"scanner_white_correction":false,"scene_latitude_active":false,"scene_latitude_b_active":false,"scene_latitude_b_highlight_knee":2,"scene_latitude_b_highlight_room":0,"scene_latitude_b_shadow_knee":-2,"scene_latitude_b_shadow_room":0,"scene_latitude_highlight_knee":2,"scene_latitude_highlight_room":0,"scene_latitude_max_lift":4,"scene_latitude_norm":"power","scene_latitude_rolloff":2,"scene_latitude_shadow_knee":-2,"scene_latitude_shadow_room":0,"scene_latitude_split":0,"strip_budget_bytes":0,"strip_rows":0,"striped":false,"y_filter_neutral":52.534004223495963,"y_filter_shift":0}},"kodak_portra_800|kodak_portra_endura":{"internals":{"dir_couplers.gamma_interlayer_b_to_rg":[0.16800000000000001,0.22600000000000001],"dir_couplers.gamma_interlayer_g_to_rb":[0.154,0.35299999999999998],"dir_couplers.gamma_interlayer_r_to_gb":[0.35299999999999998,0.30199999999999999],"dir_couplers.gamma_samelayer_rgb":[0.33600000000000002,0.31900000000000001,0.27300000000000002],"enlarger.c_filter_neutral":0,"enlarger.m_filter_neutral":65.888030308756356,"enlarger.y_filter_neutral":66.083363780196265,"grain.micro_structure":[0.20000000000000001,30],"halation.halation_first_sigma_um":[65,65,65],"halation.halation_strength":[0.014999999999999999,0.0050000000000000001,0],"profile.film.antihalation":"strong","profile.film.density_max":[1.8987394930336976,1.7314819641028589,2.0255250839659222],"profile.film.density_min":[-0.00077970550130991741,-0.00061240549568949488,-0.00060892862773853391],"profile.film.reference_illuminant":"D55","profile.film.type":"negative","profile.film.use":"still","profile.print.density_max":[2.4638993546794801,2.0698273537973431,1.8230963368488782],"profile.print.density_min":[-0.00082207297848073987,-0.0010368303875072067,-0.00082780236012352203],"profile.print.viewing_illuminant":"D50","scanner.unsharp_mask":[0.69999999999999996,0.69999999999999996]},"params":{"antihalation_removed":false,"auto_exposure":true,"auto_exposure_method":"center_weighted","c_filter_neutral":0,"camera_filter":"","contrast_mask_active":false,"contrast_mask_core":1,"contrast_mask_highlights":0,"contrast_mask_scale":0.029999999999999999,"contrast_mask_scheme":"gaussian","contrast_mask_shadows":0,"date_imprint_active":false,"date_imprint_corner":"br","date_imprint_data_text":"","date_imprint_ev":3.5,"date_imprint_inset_x":3,"date_imprint_inset_y":2.3999999999999999,"date_imprint_placement":"frame","date_imprint_size":1,"date_imprint_style":"lcd","date_imprint_text":"","date_imprint_text_b":"","density_curve_gamma":1,"digital_intermediate":false,"digital_intermediate_blue_compensation":false,"dir_couplers_active":true,"dir_couplers_amount":1,"enlarger_illuminant":"TH-KG3","exposure_compensation_ev":0,"extended_dynamic_range":false,"film_format_mm":35,"film_stock":"kodak_portra_800","filter_shift_scale":1,"geometry_crop_h":1,"geometry_crop_w":1,"geometry_crop_x":0,"geometry_crop_y":0,"geometry_flip_h":false,"geometry_flip_v":false,"geometry_quarter_turns":0,"geometry_rotation_deg":0,"glare_active":true,"glare_amount":1,"grain_active":true,"grain_amount":1,"grain_sublayers_active":true,"halation_active":true,"halation_amount":1,"halation_boost_ev":0,"halation_headroom_ev":4,"halation_scatter_amount":1,"input_cctf_decoding":false,"input_color_space":"ProPhoto RGB","lens_blur_um":0,"m_filter_neutral":65.888030308756356,"m_filter_shift":0,"output_cctf_encoding":true,"output_color_space":"ProPhoto RGB","overscan_active":false,"overscan_camera_seed":1,"overscan_carrier":"none","overscan_edge_text":"","overscan_f_number":0,"overscan_fog":1,"overscan_format":"135","overscan_frame_number":0,"overscan_frame_seed":1,"overscan_gate":"auto","overscan_holes":"white","overscan_leaks":0,"overscan_mode":"strip","overscan_pair":false,"preflash_exposure":0,"preview_long_edge":1600,"print_exposure":1,"print_stock":"kodak_portra_endura","scan_film":false,"scanner_black_correction":false,"scanner_lens_blur":0,"scanner_white_correction":false,"scene_latitude_active":false,"scene_latitude_b_active":false,"scene_latitude_b_highlight_knee":2,"scene_latitude_b_highlight_room":0,"scene_latitude_b_shadow_knee":-2,"scene_latitude_b_shadow_room":0,"scene_latitude_highlight_knee":2,"scene_latitude_highlight_room":0,"scene_latitude_max_lift":4,"scene_latitude_norm":"power","scene_latitude_rolloff":2,"scene_latitude_shadow_knee":-2,"scene_latitude_shadow_room":0,"scene_latitude_split":0,"strip_budget_bytes":0,"strip_rows":0,"striped":false,"y_filter_neutral":66.083363780196265,"y_filter_shift":0}}},"schema":{"fields":[{"default":"kodak_portra_400","layer":"shoot","live":false,"name":"film_stock","path":"film.info.stock","type":"str"},{"default":"kodak_portra_endura","layer":"print","live":false,"name":"print_stock","path":"print.info.stock","type":"str"},{"default":0,"layer":"shoot","live":false,"name":"exposure_compensation_ev","path":"camera.exposure_compensation_ev","range":[-8,8],"type":"float"},{"default":true,"layer":"shoot","live":false,"name":"auto_exposure","path":"camera.auto_exposure","type":"bool"},{"default":"center_weighted","layer":"shoot","live":false,"name":"auto_exposure_method","path":"camera.auto_exposure_method","type":"str"},{"default":35,"layer":"shoot","live":false,"name":"film_format_mm","path":"camera.film_format_mm","range":[4,200],"type":"float"},{"default":0,"layer":"shoot","live":false,"name":"lens_blur_um","path":"camera.lens_blur_um","range":[0,200],"type":"float"},{"default":true,"layer":"shoot","live":false,"name":"halation_active","path":"film_render.halation.active","type":"bool"},{"default":1,"layer":"shoot","live":false,"name":"halation_amount","path":"film_render.halation.halation_amount","range":[0,4],"type":"float"},{"default":0,"layer":"shoot","live":false,"name":"halation_boost_ev","path":"film_render.halation.boost_ev","range":[0,8],"type":"float"},{"default":true,"layer":"shoot","live":false,"name":"grain_active","path":"film_render.grain.active","type":"bool"},{"default":true,"layer":"shoot","live":false,"name":"grain_sublayers_active","path":"film_render.grain.sublayers_active","type":"bool"},{"default":true,"layer":"shoot","live":false,"name":"dir_couplers_active","path":"film_render.dir_couplers.active","type":"bool"},{"default":1,"layer":"shoot","live":false,"name":"dir_couplers_amount","path":"film_render.dir_couplers.amount","range":[0,4],"type":"float"},{"default":1,"layer":"shoot","live":false,"name":"density_curve_gamma","path":"film_render.density_curve_gamma","range":[0.20000000000000001,4],"type":"float"},{"default":"ProPhoto RGB","layer":"shoot","live":false,"name":"input_color_space","path":"io.input_color_space","type":"str"},{"default":false,"layer":"shoot","live":false,"name":"input_cctf_decoding","path":"io.input_cctf_decoding","type":"bool"},{"default":0,"layer":"shoot","live":false,"name":"geometry_crop_x","path":"io.geometry.crop_x","range":[0,1],"type":"float"},{"default":0,"layer":"shoot","live":false,"name":"geometry_crop_y","path":"io.geometry.crop_y","range":[0,1],"type":"float"},{"default":1,"layer":"shoot","live":false,"name":"geometry_crop_w","path":"io.geometry.crop_w","range":[0.0001,1],"type":"float"},{"default":1,"layer":"shoot","live":false,"name":"geometry_crop_h","path":"io.geometry.crop_h","range":[0.0001,1],"type":"float"},{"default":0,"layer":"shoot","live":false,"name":"geometry_rotation_deg","path":"io.geometry.rotation_deg","range":[-45,45],"type":"float"},{"default":0,"layer":"shoot","live":false,"name":"geometry_quarter_turns","path":"io.geometry.quarter_turns","range":[0,3],"type":"int"},{"default":false,"layer":"shoot","live":false,"name":"geometry_flip_h","path":"io.geometry.flip_h","type":"bool"},{"default":false,"layer":"shoot","live":false,"name":"geometry_flip_v","path":"io.geometry.flip_v","type":"bool"},{"default":1,"layer":"print","live":true,"name":"print_exposure","path":"enlarger.print_exposure","range":[0.050000000000000003,20],"type":"float"},{"default":0,"layer":"print","live":true,"name":"m_filter_shift","path":"enlarger.m_filter_shift","range":[-1,1],"type":"float"},{"default":0,"layer":"print","live":true,"name":"y_filter_shift","path":"enlarger.y_filter_shift","range":[-1,1],"type":"float"},{"default":0,"layer":"print","live":false,"name":"c_filter_neutral","path":"enlarger.c_filter_neutral","range":[0,200],"type":"float"},{"default":65,"layer":"print","live":false,"name":"m_filter_neutral","path":"enlarger.m_filter_neutral","range":[0,200],"type":"float"},{"default":55,"layer":"print","live":false,"name":"y_filter_neutral","path":"enlarger.y_filter_neutral","range":[0,200],"type":"float"},{"default":0,"layer":"print","live":true,"name":"preflash_exposure","path":"enlarger.preflash_exposure","range":[0,1],"type":"float"},{"default":"TH-KG3","layer":"print","live":false,"name":"enlarger_illuminant","path":"enlarger.illuminant","type":"str"},{"default":true,"layer":"print","live":false,"name":"glare_active","path":"print_render.glare.active","type":"bool"},{"default":false,"layer":"print","live":false,"name":"scanner_white_correction","path":"scanner.white_correction","type":"bool"},{"default":false,"layer":"print","live":false,"name":"scanner_black_correction","path":"scanner.black_correction","type":"bool"},{"default":0,"layer":"print","live":false,"name":"scanner_lens_blur","path":"scanner.lens_blur","range":[0,20],"type":"float"},{"default":"ProPhoto RGB","layer":"print","live":false,"name":"output_color_space","path":"io.output_color_space","type":"str"},{"default":true,"layer":"print","live":false,"name":"output_cctf_encoding","path":"io.output_cctf_encoding","type":"bool"},{"default":false,"layer":"print","live":false,"name":"scan_film","path":"io.scan_film","type":"bool"},{"default":false,"layer":"print","live":false,"name":"extended_dynamic_range","path":"print_render.edr_enabled","type":"bool"},{"default":false,"layer":"print","live":true,"name":"striped","path":"settings.striped","type":"bool"},{"default":0,"layer":"print","live":true,"name":"strip_rows","path":"settings.strip_rows","range":[0,16384],"type":"int"},{"default":0,"layer":"print","live":true,"name":"strip_budget_bytes","path":"settings.strip_budget_bytes","range":[0,8000000000],"type":"int"},{"default":false,"layer":"print","live":false,"name":"contrast_mask_active","path":"print_render.contrast_mask.active","type":"bool"},{"default":0,"layer":"print","live":false,"name":"contrast_mask_highlights","path":"print_render.contrast_mask.highlights","range":[0,3],"type":"float"},{"default":0,"layer":"print","live":false,"name":"contrast_mask_shadows","path":"print_render.contrast_mask.shadows","range":[0,3],"type":"float"},{"default":1,"layer":"print","live":false,"name":"contrast_mask_core","path":"print_render.contrast_mask.core","range":[0,3],"type":"float"},{"default":0.029999999999999999,"layer":"print","live":false,"name":"contrast_mask_scale","path":"print_render.contrast_mask.scale","range":[0.002,0.12],"type":"float"},{"default":"gaussian","layer":"print","live":false,"name":"contrast_mask_scheme","path":"print_render.contrast_mask.scheme","type":"str"},{"default":false,"layer":"shoot","live":false,"name":"scene_latitude_active","path":"camera.scene_latitude.active","type":"bool"},{"default":"power","layer":"shoot","live":false,"name":"scene_latitude_norm","path":"camera.scene_latitude.norm","type":"str"},{"default":2,"layer":"shoot","live":false,"name":"scene_latitude_highlight_knee","path":"camera.scene_latitude.highlight_knee","range":[-24,24],"type":"float"},{"default":0,"layer":"shoot","live":false,"name":"scene_latitude_highlight_room","path":"camera.scene_latitude.highlight_room","range":[0,24],"type":"float"},{"default":-2,"layer":"shoot","live":false,"name":"scene_latitude_shadow_knee","path":"camera.scene_latitude.shadow_knee","range":[-24,24],"type":"float"},{"default":0,"layer":"shoot","live":false,"name":"scene_latitude_shadow_room","path":"camera.scene_latitude.shadow_room","range":[0,24],"type":"float"},{"default":2,"layer":"shoot","live":false,"name":"scene_latitude_rolloff","path":"camera.scene_latitude.rolloff","range":[1,4],"type":"float"},{"default":4,"layer":"shoot","live":false,"name":"scene_latitude_max_lift","path":"camera.scene_latitude.max_lift","range":[0.25,12],"type":"float"},{"default":1,"layer":"shoot","live":false,"name":"halation_scatter_amount","path":"film_render.halation.scatter_amount","range":[0,1],"type":"float"},{"default":1,"layer":"shoot","live":false,"name":"grain_amount","path":"film_render.grain.amount","range":[0,2],"type":"float"},{"default":1,"layer":"print","live":false,"name":"glare_amount","path":"print_render.glare.amount","range":[0,30],"type":"float"},{"default":false,"layer":"print","live":false,"name":"digital_intermediate","path":"io.digital_intermediate","type":"bool"},{"default":false,"layer":"print","live":false,"name":"digital_intermediate_blue_compensation","path":"io.digital_intermediate_blue_compensation","type":"bool"},{"default":false,"layer":"shoot","live":false,"name":"overscan_active","path":"film_render.overscan.active","type":"bool"},{"default":"135","layer":"shoot","live":false,"name":"overscan_format","path":"film_render.overscan.format","type":"str"},{"default":"strip","layer":"shoot","live":false,"name":"overscan_mode","path":"film_render.overscan.mode","type":"str"},{"default":1,"layer":"shoot","live":false,"name":"overscan_camera_seed","path":"film_render.overscan.camera_seed","range":[0,2147483647],"type":"int"},{"default":1,"layer":"shoot","live":false,"name":"overscan_frame_seed","path":"film_render.overscan.frame_seed","range":[0,2147483647],"type":"int"},{"default":1,"layer":"shoot","live":false,"name":"overscan_fog","path":"film_render.overscan.fog","range":[0,4],"type":"float"},{"default":0,"layer":"shoot","live":false,"name":"overscan_leaks","path":"film_render.overscan.leaks","range":[0,4],"type":"float"},{"default":"","layer":"shoot","live":false,"name":"overscan_edge_text","path":"film_render.overscan.edge_text","type":"str"},{"default":0,"layer":"shoot","live":false,"name":"overscan_f_number","path":"film_render.overscan.f_number","range":[0,64],"type":"float"},{"default":"auto","layer":"shoot","live":false,"name":"overscan_gate","path":"film_render.overscan.gate","type":"str"},{"default":"white","layer":"shoot","live":false,"name":"overscan_holes","path":"film_render.overscan.holes","type":"str"},{"default":false,"layer":"shoot","live":false,"name":"date_imprint_active","path":"film_render.date_imprint.active","type":"bool"},{"default":"","layer":"shoot","live":false,"name":"date_imprint_text","path":"film_render.date_imprint.text","type":"str"},{"default":"frame","layer":"shoot","live":false,"name":"date_imprint_placement","path":"film_render.date_imprint.placement","type":"str"},{"default":3.5,"layer":"shoot","live":false,"name":"date_imprint_ev","path":"film_render.date_imprint.exposure_ev","range":[-2,8],"type":"float"},{"default":"lcd","layer":"shoot","live":false,"name":"date_imprint_style","path":"film_render.date_imprint.style","type":"str"},{"default":1,"layer":"shoot","live":false,"name":"date_imprint_size","path":"film_render.date_imprint.size","range":[0.40000000000000002,3],"type":"float"},{"default":"br","layer":"shoot","live":false,"name":"date_imprint_corner","path":"film_render.date_imprint.corner","type":"str"},{"default":3,"layer":"shoot","live":false,"name":"date_imprint_inset_x","path":"film_render.date_imprint.inset_x","range":[0,30],"type":"float"},{"default":2.3999999999999999,"layer":"shoot","live":false,"name":"date_imprint_inset_y","path":"film_render.date_imprint.inset_y","range":[0,30],"type":"float"},{"default":false,"layer":"shoot","live":false,"name":"antihalation_removed","path":"film_render.halation.antihalation_removed","type":"bool"},{"default":0,"layer":"shoot","live":false,"name":"overscan_frame_number","path":"film_render.overscan.frame_number","range":[0,99],"type":"int"},{"default":"none","layer":"shoot","live":false,"name":"overscan_carrier","path":"film_render.overscan.carrier","type":"str"},{"default":false,"layer":"shoot","live":false,"name":"overscan_pair","path":"film_render.overscan.pair","type":"bool"},{"default":"","layer":"shoot","live":false,"name":"date_imprint_text_b","path":"film_render.date_imprint.text_b","type":"str"},{"default":"","layer":"shoot","live":false,"name":"date_imprint_data_text","path":"film_render.date_imprint.data_text","type":"str"},{"default":0,"layer":"shoot","live":false,"name":"scene_latitude_split","path":"camera.scene_latitude.split","range":[0,1],"type":"float"},{"default":false,"layer":"shoot","live":false,"name":"scene_latitude_b_active","path":"camera.scene_latitude.b_active","type":"bool"},{"default":2,"layer":"shoot","live":false,"name":"scene_latitude_b_highlight_knee","path":"camera.scene_latitude.b_highlight_knee","range":[-24,24],"type":"float"},{"default":0,"layer":"shoot","live":false,"name":"scene_latitude_b_highlight_room","path":"camera.scene_latitude.b_highlight_room","range":[0,24],"type":"float"},{"default":-2,"layer":"shoot","live":false,"name":"scene_latitude_b_shadow_knee","path":"camera.scene_latitude.b_shadow_knee","range":[-24,24],"type":"float"},{"default":0,"layer":"shoot","live":false,"name":"scene_latitude_b_shadow_room","path":"camera.scene_latitude.b_shadow_room","range":[0,24],"type":"float"},{"default":1,"layer":"print","live":true,"name":"filter_shift_scale","path":"enlarger.filter_shift_scale","range":[1,60],"type":"float"},{"default":"","layer":"shoot","live":false,"name":"camera_filter","path":"camera.filter","type":"str"},{"default":4,"layer":"shoot","live":false,"name":"halation_headroom_ev","path":"film_render.halation.headroom_ev","range":[0,8],"type":"float"},{"default":1600,"layer":"print","live":false,"name":"preview_long_edge","path":"io.preview_long_edge","range":[800,8192],"type":"int"}],"schema_version":1}}
+<end of output>
+Test time =   0.30 sec
+----------------------------------------------------------
+Test Passed.
+"spk_core_schema" end time: Nov 01 11:19 中国标准时间
+"spk_core_schema" time elapsed: 00:00:00
+----------------------------------------------------------
+
+20/36 Testing: spk_core_setup
+20/36 Test: spk_core_setup
+Command: "C:/Users/Strickland/SpektraLab-work/build/qt-raster-input/engine/spk_dump_setup.exe" "C:/Users/Strickland/SpektraLab-work/engine/resources" "C:/Users/Strickland/SpektraLab-work/build/qt-raster-input/engine/setup.dat" "C:/Users/Strickland/SpektraLab-work/build/qt-raster-input/engine/setup.idx"
+Directory: C:/Users/Strickland/SpektraLab-work/build/qt-raster-input/engine
+"spk_core_setup" start time: Nov 01 11:19 中国标准时间
+Output:
+----------------------------------------------------------
+dump_setup: ok
+<end of output>
+Test time =   1.82 sec
+----------------------------------------------------------
+Test Passed.
+"spk_core_setup" end time: Nov 01 11:19 中国标准时间
+"spk_core_setup" time elapsed: 00:00:01
+----------------------------------------------------------
+
+21/36 Testing: spk_desktop_preview
+21/36 Test: spk_desktop_preview
+Command: "C:/Users/Strickland/SpektraLab-work/build/qt-raster-input/engine/spk_desktop_preview_test.exe"
+Directory: C:/Users/Strickland/SpektraLab-work/build/qt-raster-input/engine
+"spk_desktop_preview" start time: Nov 01 11:19 中国标准时间
+Output:
+----------------------------------------------------------
+Desktop preview boundary: 262173 checks passed
+<end of output>
+Test time =   0.20 sec
+----------------------------------------------------------
+Test Passed.
+"spk_desktop_preview" end time: Nov 01 11:19 中国标准时间
+"spk_desktop_preview" time elapsed: 00:00:00
+----------------------------------------------------------
+
+22/36 Testing: spk_image_writer
+22/36 Test: spk_image_writer
+Command: "C:/Users/Strickland/SpektraLab-work/build/qt-raster-input/engine/spk_image_writer_test.exe" "C:/Users/Strickland/SpektraLab-work/engine/resources/io/sRGB.icc" "C:/Users/Strickland/SpektraLab-work/build/qt-raster-input/engine/writer-test"
+Directory: C:/Users/Strickland/SpektraLab-work/build/qt-raster-input/engine
+"spk_image_writer" start time: Nov 01 11:19 中国标准时间
+Output:
+----------------------------------------------------------
+TIFF writer passed: RGB16 exact decode, strips/stride/Unicode, valid embedded ICC, exclusive handle transfer/read/write/rollback, no overwrite, partial cleanup, invalid inputs
+test output: C:/Users/Strickland/SpektraLab-work/build/qt-raster-input/engine/writer-test\鑹插僵-test-3528-346859781
+<end of output>
+Test time =   0.23 sec
+----------------------------------------------------------
+Test Passed.
+"spk_image_writer" end time: Nov 01 11:19 中国标准时间
+"spk_image_writer" time elapsed: 00:00:00
+----------------------------------------------------------
+
+23/36 Testing: spk_raw_decoder_errors
+23/36 Test: spk_raw_decoder_errors
+Command: "C:/Users/Strickland/SpektraLab-work/build/qt-raster-input/engine/spk_raw_decoder_errors.exe" "C:/Users/Strickland/SpektraLab-work/build/qt-raster-input/engine/raw-errors"
+Directory: C:/Users/Strickland/SpektraLab-work/build/qt-raster-input/engine
+"spk_raw_decoder_errors" start time: Nov 01 11:19 中国标准时间
+Output:
+----------------------------------------------------------
+RAW decoder error contract: 10 cases passed (5 per mode)
+<end of output>
+Test time =   0.12 sec
+----------------------------------------------------------
+Test Passed.
+"spk_raw_decoder_errors" end time: Nov 01 11:19 中国标准时间
+"spk_raw_decoder_errors" time elapsed: 00:00:00
+----------------------------------------------------------
+
+24/36 Testing: spk_raw_metadata_link
+24/36 Test: spk_raw_metadata_link
+Command: "C:/Users/Strickland/SpektraLab-work/build/qt-raster-input/engine/spk_raw_metadata_link.exe"
+Directory: C:/Users/Strickland/SpektraLab-work/build/qt-raster-input/engine
+"spk_raw_metadata_link" start time: Nov 01 11:19 中国标准时间
+Output:
+----------------------------------------------------------
+metadata-only LibRaw consumer linked: 0.22.2-Release
+<end of output>
+Test time =   0.06 sec
+----------------------------------------------------------
+Test Passed.
+"spk_raw_metadata_link" end time: Nov 01 11:19 中国标准时间
+"spk_raw_metadata_link" time elapsed: 00:00:00
+----------------------------------------------------------
+
+25/36 Testing: spk_raw_headroom
+25/36 Test: spk_raw_headroom
+Command: "C:/Users/Strickland/SpektraLab-work/build/qt-raster-input/engine/spk_raw_headroom.exe"
+Directory: C:/Users/Strickland/SpektraLab-work/build/qt-raster-input/engine
+"spk_raw_headroom" start time: Nov 01 11:19 中国标准时间
+Output:
+----------------------------------------------------------
+RAW headroom mathematical contract: 225 checks passed
+<end of output>
+Test time =   0.07 sec
+----------------------------------------------------------
+Test Passed.
+"spk_raw_headroom" end time: Nov 01 11:19 中国标准时间
+"spk_raw_headroom" time elapsed: 00:00:00
+----------------------------------------------------------
+
+26/36 Testing: spk_vulkan_smoke
+26/36 Test: spk_vulkan_smoke
+Command: "C:/Users/Strickland/SpektraLab-work/build/qt-raster-input/engine/spk_vulkan_smoke.exe" "C:/Users/Strickland/SpektraLab-work/build/qt-raster-input/engine/resources"
+Directory: C:/Users/Strickland/SpektraLab-work/build/qt-raster-input/engine
+"spk_vulkan_smoke" start time: Nov 01 11:19 中国标准时间
+Output:
+----------------------------------------------------------
+Vulkan device: NVIDIA GeForce RTX 3050 Laptop GPU
+math mode: Vulkan probe passed (precise product + fused fma; full shader parity pending)
+FMA residual: 6 exact known-bit vectors
+FIR boundary oracle: 144 exact cases, odd/singleton dimensions, both axes and edge modes, long radii and accumulation
+iir_df_acc: 576 float64/analytic cases, max abs error 1.49011612e-08
+headless engine/session: ok
+headless default render: grain and glare enabled, 2x1 RGBA16
+headless deterministic image: 2x2 RGBA16, first RGB = 0,15554,33494
+<end of output>
+Test time =   8.71 sec
+----------------------------------------------------------
+Test Passed.
+"spk_vulkan_smoke" end time: Nov 01 11:19 中国标准时间
+"spk_vulkan_smoke" time elapsed: 00:00:08
+----------------------------------------------------------
+
+27/36 Testing: spk_vulkan_grain
+27/36 Test: spk_vulkan_grain
+Command: "C:/Users/Strickland/SpektraLab-work/build/qt-raster-input/engine/spk_vulkan_grain.exe" "C:/Users/Strickland/SpektraLab-work/build/qt-raster-input/engine/resources"
+Directory: C:/Users/Strickland/SpektraLab-work/build/qt-raster-input/engine
+"spk_vulkan_grain" start time: Nov 01 11:19 中国标准时间
+Output:
+----------------------------------------------------------
+Vulkan grain device: NVIDIA GeForce RTX 3050 Laptop GPU
+Philox: 259 exact integer vectors; uniform N=524288 mean=0.499645 variance=0.083440 chi2=24.303
+Poisson mu=0 N=524288: mean=0.000000 variance=0.000000 skew=0.000000
+Poisson mu=0.1 N=524288: mean=0.099308 variance=0.099612 skew=3.186865
+Poisson mu=1 N=524288: mean=0.999760 variance=0.999256 skew=0.999314
+Poisson mu=9.9 N=524288: mean=9.899759 variance=9.901525 skew=0.322539
+Poisson mu=10 N=524288: mean=9.993759 variance=9.980479 skew=0.320166
+Poisson mu=36 N=524288: mean=35.995872 variance=35.902460 skew=0.171173
+Poisson mu=1000 N=524288: mean=999.964376 variance=995.483920 skew=0.030647
+layer_draw d=0.01 u=0: mean=0.010058 variance=0.00027906 skew=1.654486
+layer_draw d=0.01 u=0.7: mean=0.010059 variance=0.00027715 skew=1.647809
+layer_draw d=0.01 u=1: mean=0.010058 variance=0.00027625 skew=1.644730
+layer_draw d=0.3 u=0: mean=0.300220 variance=0.00834536 skew=0.304722
+layer_draw d=0.3 u=0.7: mean=0.300168 variance=0.00659801 skew=0.269565
+layer_draw d=0.3 u=1: mean=0.300147 variance=0.00584194 skew=0.254284
+layer_draw d=0.8 u=0: mean=0.800311 variance=0.02223684 skew=0.184390
+layer_draw d=0.8 u=0.7: mean=0.800205 variance=0.00981012 skew=0.122519
+layer_draw d=0.8 u=1: mean=0.800177 variance=0.00445680 skew=0.082045
+grain: 1031 pixels, 9 endpoint/exact-knot/interior queries, positive sign, fused/layer/simple branches passed
+lognormal m=1 s=0.2 N=524291: mean=0.999882 std=0.199902, seed/channel contracts passed
+lognormal m=0.04 s=0.06 N=524291: mean=0.039944 std=0.059462, seed/channel contracts passed
+lognormal m=1.5 s=0 N=524291: mean=1.500000 std=0.000000, seed/channel contracts passed
+Windows Vulkan grain local gates passed; whole-frame Python/Metal parity remains unverified.
+<end of output>
+Test time =   1.45 sec
+----------------------------------------------------------
+Test Passed.
+"spk_vulkan_grain" end time: Nov 01 11:19 中国标准时间
+"spk_vulkan_grain" time elapsed: 00:00:01
+----------------------------------------------------------
+
+28/36 Testing: spk_vulkan_pointwise
+28/36 Test: spk_vulkan_pointwise
+Command: "C:/Users/Strickland/SpektraLab-work/build/qt-raster-input/engine/spk_vulkan_pointwise.exe" "C:/Users/Strickland/SpektraLab-work/build/qt-raster-input/engine/resources"
+Directory: C:/Users/Strickland/SpektraLab-work/build/qt-raster-input/engine
+"spk_vulkan_pointwise" start time: Nov 01 11:19 中国标准时间
+Output:
+----------------------------------------------------------
+Vulkan device: NVIDIA GeForce RTX 3050 Laptop GPU
+pointwise: 327 analytic/float64 cases, max abs error 3.53745407e-05, max error/max(1,abs(reference)) 1.24982852e-06, all guards intact
+<end of output>
+Test time =   1.16 sec
+----------------------------------------------------------
+Test Passed.
+"spk_vulkan_pointwise" end time: Nov 01 11:19 中国标准时间
+"spk_vulkan_pointwise" time elapsed: 00:00:01
+----------------------------------------------------------
+
+29/36 Testing: spk_vulkan_resample
+29/36 Test: spk_vulkan_resample
+Command: "C:/Users/Strickland/SpektraLab-work/build/qt-raster-input/engine/spk_vulkan_resample.exe" "C:/Users/Strickland/SpektraLab-work/build/qt-raster-input/engine/resources"
+Directory: C:/Users/Strickland/SpektraLab-work/build/qt-raster-input/engine
+"spk_vulkan_resample" start time: Nov 01 11:19 中国标准时间
+Output:
+----------------------------------------------------------
+Vulkan resample device: NVIDIA GeForce RTX 3050 Laptop GPU
+mirror bilinear: 60 GPU cases, singleton/mirror edges/noninteger scales/RAW-tier dimensions/large axes, max abs error 3.14712524e-07
+<end of output>
+Test time =   1.47 sec
+----------------------------------------------------------
+Test Passed.
+"spk_vulkan_resample" end time: Nov 01 11:19 中国标准时间
+"spk_vulkan_resample" time elapsed: 00:00:01
+----------------------------------------------------------
+
+30/36 Testing: spk_vulkan_transfer
+30/36 Test: spk_vulkan_transfer
+Command: "C:/Users/Strickland/SpektraLab-work/build/qt-raster-input/engine/spk_vulkan_transfer.exe" "C:/Users/Strickland/SpektraLab-work/build/qt-raster-input/engine/resources"
+Directory: C:/Users/Strickland/SpektraLab-work/build/qt-raster-input/engine
+"spk_vulkan_transfer" start time: Nov 01 11:19 中国标准时间
+Output:
+----------------------------------------------------------
+Vulkan device: NVIDIA GeForce RTX 3050 Laptop GPU
+Pool size classes: parameters do not pin image planes; full-size reuse preserved
+Host compute: owned upload -> cached plane -> device output is bit-exact
+transfer ranges: upload/read, guards, aliases, zero length, 23 rejected invalid requests
+transfer dependencies: upload -> compute -> copy -> compute -> read passed
+transfer lifetimes: zero fill, pool reuse, retained stability, trim, persistent release passed
+<end of output>
+Test time =   0.87 sec
+----------------------------------------------------------
+Test Passed.
+"spk_vulkan_transfer" end time: Nov 01 11:19 中国标准时间
+"spk_vulkan_transfer" time elapsed: 00:00:00
+----------------------------------------------------------
+
+31/36 Testing: spk_vulkan_geometry
+31/36 Test: spk_vulkan_geometry
+Command: "C:/Users/Strickland/SpektraLab-work/build/qt-raster-input/engine/spk_vulkan_geometry.exe" "C:/Users/Strickland/SpektraLab-work/build/qt-raster-input/engine/resources"
+Directory: C:/Users/Strickland/SpektraLab-work/build/qt-raster-input/engine
+"spk_vulkan_geometry" start time: Nov 01 11:19 中国标准时间
+Output:
+----------------------------------------------------------
+Vulkan geometry device: NVIDIA GeForce RTX 3050 Laptop GPU
+geometry: 192 GPU cases; float64 mapping, exact rotations/flips, fractional crops, arbitrary angles, edge clamp, long axes, guards; max abs error 8.16198319e-07
+<end of output>
+Test time =   1.07 sec
+----------------------------------------------------------
+Test Passed.
+"spk_vulkan_geometry" end time: Nov 01 11:19 中国标准时间
+"spk_vulkan_geometry" time elapsed: 00:00:01
+----------------------------------------------------------
+
+32/36 Testing: spk_vulkan_lut_di
+32/36 Test: spk_vulkan_lut_di
+Command: "C:/Users/Strickland/SpektraLab-work/build/qt-raster-input/engine/spk_vulkan_lut_di.exe" "C:/Users/Strickland/SpektraLab-work/build/qt-raster-input/engine/resources"
+Directory: C:/Users/Strickland/SpektraLab-work/build/qt-raster-input/engine
+"spk_vulkan_lut_di" start time: Nov 01 11:19 中国标准时间
+Output:
+----------------------------------------------------------
+Vulkan device: NVIDIA GeForce RTX 3050 Laptop GPU
+LUT/DI: 96 analytic/float64 cases, max abs error 6.96505159e-07; NaN/Inf and guards passed
+<end of output>
+Test time =   0.98 sec
+----------------------------------------------------------
+Test Passed.
+"spk_vulkan_lut_di" end time: Nov 01 11:19 中国标准时间
+"spk_vulkan_lut_di" time elapsed: 00:00:00
+----------------------------------------------------------
+
+33/36 Testing: spk_vulkan_transfer_device_oom
+33/36 Test: spk_vulkan_transfer_device_oom
+Command: "C:/Users/Strickland/SpektraLab-work/build/qt-raster-input/engine/spk_vulkan_transfer.exe" "C:/Users/Strickland/SpektraLab-work/build/qt-raster-input/engine/resources"
+Directory: C:/Users/Strickland/SpektraLab-work/build/qt-raster-input/engine
+"spk_vulkan_transfer_device_oom" start time: Nov 01 11:19 中国标准时间
+Output:
+----------------------------------------------------------
+Vulkan device: NVIDIA GeForce RTX 3050 Laptop GPU
+Pool size classes: parameters do not pin image planes; full-size reuse preserved
+Host compute: owned upload -> cached plane -> device output is bit-exact
+transfer ranges: upload/read, guards, aliases, zero length, 23 rejected invalid requests
+transfer dependencies: upload -> compute -> copy -> compute -> read passed
+transfer lifetimes: zero fill, pool reuse, retained stability, trim, persistent release passed
+<end of output>
+Test time =   0.65 sec
+----------------------------------------------------------
+Test Passed.
+"spk_vulkan_transfer_device_oom" end time: Nov 01 11:19 中国标准时间
+"spk_vulkan_transfer_device_oom" time elapsed: 00:00:00
+----------------------------------------------------------
+
+34/36 Testing: spk_windows_film_edge
+34/36 Test: spk_windows_film_edge
+Command: "C:/Users/Strickland/SpektraLab-work/build/qt-raster-input/engine/spk_windows_film_edge.exe" "C:/Users/Strickland/SpektraLab-work/build/qt-raster-input/engine/resources"
+Directory: C:/Users/Strickland/SpektraLab-work/build/qt-raster-input/engine
+"spk_windows_film_edge" start time: Nov 01 11:19 中国标准时间
+Output:
+----------------------------------------------------------
+Film edge/date/pair engine checks passed; 135 canvas 536x494
+<end of output>
+Test time =   4.89 sec
+----------------------------------------------------------
+Test Passed.
+"spk_windows_film_edge" end time: Nov 01 11:19 中国标准时间
+"spk_windows_film_edge" time elapsed: 00:00:04
+----------------------------------------------------------
+
+35/36 Testing: spk_windows_feature_boundaries
+35/36 Test: spk_windows_feature_boundaries
+Command: "C:/Users/Strickland/SpektraLab-work/build/qt-raster-input/engine/spk_windows_feature_boundaries.exe" "C:/Users/Strickland/SpektraLab-work/build/qt-raster-input/engine/resources"
+Directory: C:/Users/Strickland/SpektraLab-work/build/qt-raster-input/engine
+"spk_windows_feature_boundaries" start time: Nov 01 11:19 中国标准时间
+Output:
+----------------------------------------------------------
+Vulkan feature boundaries passed (unported flags, DI refusal, mask off, active/bypassed latitude and analysis)
+<end of output>
+Test time =   1.63 sec
+----------------------------------------------------------
+Test Passed.
+"spk_windows_feature_boundaries" end time: Nov 01 11:19 中国标准时间
+"spk_windows_feature_boundaries" time elapsed: 00:00:01
+----------------------------------------------------------
+
+36/36 Testing: spk_windows_c_abi
+36/36 Test: spk_windows_c_abi
+Command: "C:/Users/Strickland/SpektraLab-work/build/qt-raster-input/engine/spk_render_fixture.exe" "resources" "fixtures/abi_probe.f32" "3" "2" "fixtures/abi_probe_params.json" "fixtures/abi_probe.rgba16" "fixtures/abi_probe_report.json"
+Directory: C:/Users/Strickland/SpektraLab-work/build/qt-raster-input/engine
+"spk_windows_c_abi" start time: Nov 01 11:19 中国标准时间
+Output:
+----------------------------------------------------------
+3x2 RGBA16; full renders bit-exact; results survived session and engine release
+<end of output>
+Test time =   1.24 sec
+----------------------------------------------------------
+Test Passed.
+"spk_windows_c_abi" end time: Nov 01 11:19 中国标准时间
+"spk_windows_c_abi" time elapsed: 00:00:01
+----------------------------------------------------------
+
+End testing: Nov 01 11:19 中国标准时间

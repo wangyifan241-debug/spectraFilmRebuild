@@ -220,6 +220,7 @@ struct spk_session {
         std::optional<double> applied_ev;   // what the node applied to `negative`
     };
     std::unordered_map<std::string, TierState> tiers;
+    std::optional<double> highlight_reference;
 
     // The frame's one auto-exposure meter, all seven methods (RFC-015 P.1),
     // valid while the upstream fields in `key` are unchanged.
@@ -1098,6 +1099,21 @@ bool negative_for(spk_session* session, const Tier& tier, Progress* progress, Im
     session->pipeline->set_auto_exposure_ev(
         camera.auto_exposure ? std::optional<double>(session->meter.evs.of(camera.auto_exposure_method))
                              : std::nullopt);
+    // A small-tier maximum loses isolated clipped highlights. Using it as the
+    // no-antihalation headroom reference visibly changes the whole lamp/halo.
+    // Full renders keep their original computation and therefore their pixels.
+    const bool downscaled=source.w!=session->source.w||source.h!=session->source.h;
+    session->pipeline->set_highlight_reference(std::nullopt);
+    if(downscaled&&session->pipeline->needs_highlight_reference()){
+        if(!session->highlight_reference){
+            Pipeline reference(session->engine->gpu,&session->engine->colour,&session->engine->blob,&session->engine->setup_cache);
+            if(!reference.build(session->params,error))return false;
+            reference.set_auto_exposure_ev(camera.auto_exposure?std::optional<double>(session->meter.evs.of(camera.auto_exposure_method)):std::nullopt);
+            double clip=0;if(!reference.measure_highlight_reference(session->source,clip,error))return false;
+            session->highlight_reference=clip;
+        }
+        session->pipeline->set_highlight_reference(session->highlight_reference);
+    }
     Image negative;
     if (!run_film_for(session, source, negative, progress, error)) return false;
     state.applied_ev = session->pipeline->last_auto_exposure_ev();
@@ -1784,6 +1800,7 @@ spk_status spk_set_params(spk_session* session, const char* params_delta_json, c
     }
 
     if (shoot || (stock_change && delta.has("film_stock"))) {
+        session->highlight_reference.reset();
         for (auto& kv : session->tiers) {
             if (kv.second.has_negative) {
                 // Dropping the handle is the whole of it: the buffer goes back

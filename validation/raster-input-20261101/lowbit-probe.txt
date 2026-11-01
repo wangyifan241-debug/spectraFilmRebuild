@@ -1,0 +1,1 @@
+PNG16 adjacent codes: linear delta=1.412630081e-05 max TRC/white-point error=6.769178079e-09

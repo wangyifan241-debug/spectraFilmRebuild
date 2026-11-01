@@ -6,6 +6,7 @@
 #include <QImage>
 #include <QObject>
 #include <QTimer>
+#include <optional>
 #include <QUrl>
 #include <QVariantList>
 #include <QVariantMap>
@@ -24,6 +25,7 @@ class PreviewController final : public QObject {
     Q_PROPERTY(bool failed READ failed NOTIFY stateChanged)
     Q_PROPERTY(bool dirty READ dirty NOTIFY settingsChanged)
     Q_PROPERTY(bool settingsEditable READ settingsEditable NOTIFY stateChanged)
+    Q_PROPERTY(bool postEditable READ postEditable NOTIFY stateChanged)
     Q_PROPERTY(bool filmIsPositive READ filmIsPositive NOTIFY settingsChanged)
     Q_PROPERTY(bool filmIsMonochrome READ filmIsMonochrome NOTIFY settingsChanged)
     Q_PROPERTY(QString status READ status NOTIFY stateChanged)
@@ -63,15 +65,17 @@ class PreviewController final : public QObject {
 public:
     // Runs on the presentation/engine worker. Must not access GUI objects.
     using ImageFactory=std::function<QImage(const spk::desktop::FramePtr&)>;
-    explicit PreviewController(std::filesystem::path resources, QObject* parent=nullptr, ImageFactory imageFactory={}, QString editDirectory={});
+    using ViewFactory=std::function<QImage(const spk::desktop::FramePtr&,const QImage&,const spk::desktop::output::Geometry&,const spk::desktop::output::Develop&)>;
+    explicit PreviewController(std::filesystem::path resources, QObject* parent=nullptr, ImageFactory imageFactory={}, QString editDirectory={},ViewFactory viewFactory={});
     static QImage imageFromFrame(const spk::desktop::FramePtr&);
     ~PreviewController() override;
     bool ready() const { return ready_; }
-    bool busy() const { return busy_; }
+    bool busy() const { return busy_||view_busy_; }
     bool hasFrame() const { return bool(frame_); }
     bool failed() const { return failed_; }
     bool dirty() const;
     bool settingsEditable() const { return ready_&&!dialog_open_&&(!busy_||active_operation_=="render"); }
+    bool postEditable() const { return settingsEditable()&&!busy_; }
     bool filmIsPositive() const;
     bool filmIsMonochrome() const;
     QString status() const { return status_; }
@@ -144,6 +148,8 @@ public:
     Q_INVOKABLE void beginEditGesture(const QString& key);
     Q_INVOKABLE void endEditGesture();
     Q_INVOKABLE void flushEdits();
+    Q_INVOKABLE void retrySave();
+    Q_INVOKABLE bool prepareToClose();
     Q_INVOKABLE void apply();
     Q_INVOKABLE void exportTiff(const QUrl& path);
     Q_INVOKABLE void exportImage(const QUrl& path, int format, int quality, int maxLongEdge);
@@ -167,6 +173,7 @@ signals:
     void initialized(bool success);
     void operationFinished(const QString& operation, bool success);
 private:
+    friend struct PreviewControllerReviewTest;
     struct Reply {
         quint64 generation=0;
         quint64 settings_revision=0;
@@ -176,14 +183,20 @@ private:
         spk::desktop::output::Geometry geometry;
         spk::desktop::output::Develop develop;
         spk::desktop::FramePtr frame;
-        QImage full_image,visible_image;
+        QImage full_image,visible_image,original_image,uncropped_image;
+        spk::desktop::FramePtr view_frame;
+        quint64 view_revision=0;
         spk::desktop::Catalog catalog;
         QVariantMap scene;
         bool apply_scene=false;
     };
     using Job = std::function<Reply(spk::desktop::PreviewHost&)>;
+    struct Task { Job job; quint64 generation=0,revision=0; QString operation; };
     void workerLoop(std::filesystem::path resources);
     void deliver(Reply reply);
+    void prepareView(Reply& reply,const spk::desktop::FramePtr& frame,const QImage& full);
+    void requestView();
+    void acceptView(Reply reply);
     void accept(Reply reply);
     void submit(Job job, QString status, QString operation);
     spk::desktop::RenderSettings settings() const;
@@ -211,9 +224,22 @@ private:
     spk::desktop::FramePtr frame_;
     QImage image_;
     QImage full_image_;
-    mutable QImage original_image_;
-    mutable spk::desktop::FramePtr original_reference_;
-    mutable spk::desktop::output::Geometry original_geometry_;
+    QImage original_image_,uncropped_image_;
+    // Only the render worker reads/writes this cache. Weak ownership avoids
+    // retaining an obsolete full frame merely for a comparison image.
+    std::weak_ptr<const spk::desktop::Frame> worker_original_reference_;
+    QImage worker_original_image_,worker_original_working_,worker_original_neutral_;
+    spk::desktop::output::Geometry worker_original_geometry_;
+    std::weak_ptr<const spk::desktop::Frame> worker_uncropped_reference_;
+    spk::desktop::output::Develop worker_uncropped_develop_;
+    QImage worker_uncropped_image_;
+    bool view_busy_=false,view_pending_=false;
+    quint64 view_revision_=0;
+    ViewFactory view_factory_;
+    mutable qint64 histogram_key_=0;
+    mutable QVariantMap histogram_cache_;
+    mutable std::optional<spk::desktop::output::Develop> post_cache_key_;
+    mutable QVariantMap post_cache_;
     spk::desktop::output::Geometry geometry_;
     spk::desktop::output::Develop develop_;
     spk::desktop::RenderSettings extra_settings_;
@@ -231,6 +257,7 @@ private:
         bool selected=true;
         std::vector<spk::desktop::editing::State> undo,redo;
         bool pending_save=false,save_blocked=false,has_stored=false;
+        unsigned save_failures=0;
         bool material_blocked=false;
         QString save_warning;
     };
@@ -256,7 +283,7 @@ private:
     bool dialog_open_=false;
     std::mutex mutex_;
     std::condition_variable wake_;
-    std::deque<Job> jobs_;
+    std::deque<Task> jobs_;
     bool stopping_=false;
     std::thread worker_;
 };

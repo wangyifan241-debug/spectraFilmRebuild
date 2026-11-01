@@ -62,10 +62,11 @@ QImage PreviewController::imageFromFrame(const desktop::FramePtr& frame) {
     return image;
 }
 
-PreviewController::PreviewController(std::filesystem::path resources,QObject* parent,ImageFactory factory,QString editDirectory)
+PreviewController::PreviewController(std::filesystem::path resources,QObject* parent,ImageFactory factory,QString editDirectory,ViewFactory viewFactory)
     :QObject(parent),resources_(resources),
      edit_store_(editDirectory.isEmpty()?QStandardPaths::writableLocation(QStandardPaths::AppLocalDataLocation)+"/Edits":editDirectory),
      image_factory_(factory?std::move(factory):ImageFactory(imageFromFrame)) {
+    view_factory_=std::move(viewFactory);
     auto_apply_.setSingleShot(true);auto_apply_.setInterval(180);
     connect(&auto_apply_,&QTimer::timeout,this,[this]{if(dirty())apply();});
     save_timer_.setSingleShot(true);save_timer_.setInterval(350);
@@ -91,13 +92,19 @@ void PreviewController::workerLoop(std::filesystem::path resources) {
     Reply init;init.operation="init";
     try {host=std::make_unique<desktop::PreviewHost>(resources,true);init.catalog=host->catalog();}
     catch(const std::exception& e){init.error=text(e.what());}
+    catch(...){init.error=QStringLiteral("Unknown exception while initializing render engine");}
     deliver(std::move(init));
     if(!host)return;
     for(;;) {
-        Job job;
+        Task task;
         {std::unique_lock lock(mutex_);wake_.wait(lock,[&]{return stopping_||!jobs_.empty();});
-         if(stopping_)break;job=std::move(jobs_.front());jobs_.pop_front();}
-        deliver(job(*host));
+         if(stopping_)break;task=std::move(jobs_.front());jobs_.pop_front();}
+        Reply reply;reply.generation=task.generation;reply.settings_revision=task.revision;reply.operation=task.operation;
+        try { reply=task.job(*host); }
+        catch(const std::exception& e){reply.error=task.operation+": "+text(e.what());}
+        catch(...){reply.error=task.operation+QStringLiteral(": Unknown background exception");}
+        reply.generation=task.generation;reply.settings_revision=task.revision;reply.operation=task.operation;
+        deliver(std::move(reply));
     }
 }
 void PreviewController::deliver(Reply reply) {
@@ -108,18 +115,23 @@ void PreviewController::deliver(Reply reply) {
         try {
             reply.full_image=image_factory_(reply.frame);
             if(reply.full_image.isNull())throw std::runtime_error("Cannot create the display image");
-            reply.visible_image=visibleImage(reply.frame,reply.full_image,reply.geometry,reply.develop);
+            prepareView(reply,reply.frame,reply.full_image);
         }catch(const std::exception& e){reply.error=text(e.what());}
+        catch(...){reply.error=reply.operation+QStringLiteral(": Unknown presentation exception");}
     }
     QMetaObject::invokeMethod(this,[this,reply=std::move(reply)]() mutable {accept(std::move(reply));},Qt::QueuedConnection);
 }
 void PreviewController::submit(Job job,QString status,QString operation) {
+    // Direct signal handlers may edit controls synchronously. The envelope
+    // must describe the captured job, not settings after stateChanged returns.
+    Task task{std::move(job),generation_,settings_revision_,operation};
     auto_apply_.stop();active_operation_=std::move(operation);
     busy_=true;failed_=false;status_=std::move(status);emit stateChanged();emit historyChanged();
-    {std::lock_guard lock(mutex_);jobs_.push_back(std::move(job));}
+    {std::lock_guard lock(mutex_);jobs_.push_back(std::move(task));}
     wake_.notify_one();
 }
 void PreviewController::accept(Reply reply) {
+    if(reply.operation=="view"){acceptView(std::move(reply));return;}
     if(reply.generation!=generation_)return; // a retired generation never replaces the canvas
     const bool superseded=reply.operation=="render"&&reply.settings_revision!=settings_revision_;
     busy_=false;active_operation_.clear();failed_=!superseded&&!reply.error.isEmpty();
@@ -133,7 +145,7 @@ void PreviewController::accept(Reply reply) {
         if(frame_&&reply.operation!="export"&&reply.operation!="batch-export")restoreSettings();
     } else if(reply.operation=="init") {
         ready_=true;catalog_=std::move(reply.catalog);decorateCatalog(catalog_);films_=list(catalog_.films,materials_.get());papers_=list(catalog_.papers,materials_.get());
-        restoreSettings();emit catalogChanged();status_=QStringLiteral("就绪 · 打开 RAW 开始");
+        restoreSettings();emit catalogChanged();status_=QStringLiteral("就绪 · 打开 RAW、JPG 或 PNG 开始");
         emit materialsChanged();
     } else if(reply.operation=="materials") {
         const auto desired=settings();const auto mode=decode_mode_?desktop::DecodeMode::headroom:desktop::DecodeMode::compatible16;
@@ -170,6 +182,8 @@ void PreviewController::accept(Reply reply) {
             const auto develop=reply.operation=="open"?reply.develop:develop_;
             auto visible=std::move(reply.visible_image);
             frame_=std::move(reply.frame);full_image_=std::move(next);image_=std::move(visible);
+            original_image_=std::move(reply.original_image);uncropped_image_=std::move(reply.uncropped_image);
+            view_pending_=false;
             geometry_=geometry;
             develop_=develop;
             if(reply.operation=="open")active_index_=reply.library_index;
@@ -183,7 +197,7 @@ void PreviewController::accept(Reply reply) {
                 .arg(frame_->reprint()?QStringLiteral(" · 已复用胶片"):QString());
             emit frameChanged();emit geometryChanged();if(reply.operation=="open")emit sourceOpened();
         }
-    } else if(reply.operation=="export") status_=QStringLiteral("已导出当前画面");
+    } else if(reply.operation=="export") status_=reply.message.isEmpty()?QStringLiteral("已导出当前照片"):reply.message;
     else if(reply.operation=="batch-export")status_=reply.message;
     if(failed_&&reply.operation=="open"&&reply.library_index>=0&&reply.library_index<int(library_.size()))
         library_[reply.library_index].error=status_;
@@ -200,6 +214,73 @@ void PreviewController::accept(Reply reply) {
     // Export holds an immutable displayed frame. An edit made just before it
     // began still needs applying, including after an overwrite refusal.
     if((superseded||reply.operation=="export"||reply.operation=="batch-export"||reply.operation=="materials")&&!busy_)schedulePreview();
+    if(view_pending_&&!busy_&&!view_busy_)requestView();
+}
+
+void PreviewController::prepareView(Reply& reply,const desktop::FramePtr& frame,const QImage& full) {
+    const auto before=worker_uncropped_reference_.lock();
+    const bool sourceUnchanged=before&&&before->original()==&frame->original();
+    const bool reuse=frame->input_cut()?(sourceUnchanged&&before->input_cut()):
+        before==frame&&worker_uncropped_develop_==reply.develop;
+    if(!reuse||worker_uncropped_image_.isNull()){
+        if(frame->input_cut())worker_uncropped_image_=output::originalFrame(frame,{},true);
+        else if(reply.develop.neutral())worker_uncropped_image_=full;
+        else worker_uncropped_image_=output::displayFrame(frame,{},reply.develop);
+    }
+    worker_uncropped_reference_=frame;worker_uncropped_develop_=reply.develop;
+    reply.uncropped_image=worker_uncropped_image_;
+    if(view_factory_)reply.visible_image=view_factory_(frame,full,reply.geometry,reply.develop);
+    else if(!frame->input_cut()&&reply.geometry.straightenDegrees==0)
+        // Crop/orthogonal permutations commute exactly with a pointwise
+        // colour transform and quantization. Bilinear straighten does not.
+        reply.visible_image=output::displayImage(reply.uncropped_image,reply.geometry);
+    else reply.visible_image=visibleImage(frame,full,reply.geometry,reply.develop);
+    const auto previous=worker_original_reference_.lock();
+    const bool newSource=!previous||&previous->original()!=&frame->original()||
+        previous->input_cut()!=frame->input_cut()||(frame->input_cut()&&previous!=frame);
+    if(newSource){worker_original_working_=output::originalWorkingFrame(frame);worker_original_neutral_={};}
+    if(newSource||worker_original_geometry_!=reply.geometry||worker_original_image_.isNull()) {
+        if(!frame->input_cut()&&reply.geometry.straightenDegrees==0){
+            if(worker_original_neutral_.isNull())worker_original_neutral_=output::displayWorkingImage(worker_original_working_,frame,{});
+            worker_original_image_=output::displayImage(worker_original_neutral_,reply.geometry);
+        }else worker_original_image_=output::displayWorkingImage(worker_original_working_,frame,frame->input_cut()?output::Geometry{}:reply.geometry);
+        worker_original_geometry_=reply.geometry;
+    }
+    worker_original_reference_=frame;reply.original_image=worker_original_image_;
+}
+
+void PreviewController::requestView() {
+    view_pending_=true;++view_revision_;
+    if(view_busy_||busy_||!frame_)return;
+    const auto held=frame_;const auto full=full_image_;const auto geometry=geometry_;const auto develop=develop_;
+    const auto generation=generation_,revision=view_revision_;
+    Task task{[this,held,full,geometry,develop,revision](auto&){
+        Reply reply;reply.view_frame=held;reply.geometry=geometry;reply.develop=develop;reply.view_revision=revision;
+        try{prepareView(reply,held,full);}
+        catch(const std::exception& e){reply.error=text(e.what());}
+        catch(...){reply.error=QStringLiteral("Unknown background view exception");}
+        return reply;
+    },generation,settings_revision_,"view"};
+    {std::lock_guard lock(mutex_);jobs_.push_back(std::move(task));}
+    view_busy_=true;view_pending_=false;wake_.notify_one();
+    emit stateChanged();
+}
+void PreviewController::acceptView(Reply reply) {
+    view_busy_=false;
+    // Export changes the engine generation without replacing the displayed
+    // frame. The immutable frame identity and view revision own this lane.
+    const bool current=reply.view_frame==frame_&&reply.view_revision==view_revision_;
+    if(current) {
+        if(reply.error.isEmpty()) {
+            image_=std::move(reply.visible_image);original_image_=std::move(reply.original_image);uncropped_image_=std::move(reply.uncropped_image);
+            if(!busy_&&!failed_)status_=QStringLiteral("预览已更新");
+            updateThumbnail();emit frameChanged();
+        }else{failed_=true;status_=reply.error;}
+    }
+    // A newer desired view replaces the obsolete one; it never flashes an
+    // intermediate image, clears an engine job, or starts a second engine render.
+    if(view_pending_&&!busy_&&!view_busy_)requestView();
+    emit stateChanged();
 }
 desktop::RenderSettings PreviewController::settings() const {
     desktop::RenderSettings s=extra_settings_;
@@ -240,12 +321,14 @@ QVariantMap PreviewController::metadata() const {
     return {{"width",image_.width()},{"height",image_.height()},
         {"sourceWidth",frame_->source_width()},{"sourceHeight",frame_->source_height()},
         {"previewWidth",frame_->width()},{"previewHeight",frame_->height()},
-        {"camera",text(frame_->metadata.make+" "+frame_->metadata.model)},
+        {"camera",frame_->metadata.input_kind=="raw"?text(frame_->metadata.make+" "+frame_->metadata.model):text(frame_->metadata.input_kind).toUpper()+QStringLiteral(" 图片")},
+        {"inputKind",text(frame_->metadata.input_kind)},{"inputProfile",text(frame_->metadata.input_profile)},
         {"decodeMs",frame_->timings.decode_ms},{"renderMs",frame_->timings.render_ms},
         {"totalMs",frame_->timings.total_ms},{"cached",frame_->reprint()},{"scanFilm",frame_->scan_film},
         {"mode",frame_->decode_mode==desktop::DecodeMode::headroom?"headroom":"compatible16"}};
 }
 QVariantMap PreviewController::histogram() const {
+    if(histogram_key_==image_.cacheKey()&&!histogram_cache_.isEmpty())return histogram_cache_;
     const auto counts=output::displayHistogram(image_);
     QVariantList channels;
     for(const auto& row:counts.bins) {
@@ -253,8 +336,9 @@ QVariantMap PreviewController::histogram() const {
         for(auto count:row)bins.push_back(QVariant::fromValue<qulonglong>(count));
         channels.push_back(QVariant(bins));
     }
-    return {{"channels",channels},{"samples",QVariant::fromValue<qulonglong>(counts.samples)},
-            {"stride",counts.stride}};
+    histogram_key_=image_.cacheKey();
+    histogram_cache_={{"channels",channels},{"samples",QVariant::fromValue<qulonglong>(counts.samples)},{"stride",counts.stride}};
+    return histogram_cache_;
 }
 void PreviewController::schedulePreview(){if(!dialog_open_&&gesture_key_!="straightenDegrees"&&frame_&&dirty()&&!auto_apply_.isActive())auto_apply_.start();}
 void PreviewController::setDialogOpen(bool open){
@@ -295,7 +379,7 @@ void PreviewController::setPaperIndex(int v){
         catalog_.papers[v].is_monochrome!=filmIsMonochrome()||!papers_[v].toMap().value("enabled",true).toBool())return;
     paper_index_=v;changed("paperIndex");
 }
-void PreviewController::setDecodeMode(int v){if(!settingsEditable()||extra_settings_.pair.active||v<0||v>1||v==decode_mode_)return;decode_mode_=v;changed("decodeMode");}
+void PreviewController::setDecodeMode(int v){if(!settingsEditable()||extra_settings_.pair.active||(frame_&&frame_->metadata.input_kind!="raw")||v<0||v>1||v==decode_mode_)return;decode_mode_=v;changed("decodeMode");}
 void PreviewController::setExposureEv(double v){if(!settingsEditable()||filmIsPositive()||!std::isfinite(v)||v< -2||v>2||v==exposure_ev_)return;exposure_ev_=v;changed("exposureEv");}
 void PreviewController::resetSettings(){if(!settingsEditable())return;resetPostAdjustments();desktop::RenderSettings reset;reset.pair=extra_settings_.pair;if(reset.pair.active)reset.edge.format="135_half";const auto mode=reset.pair.active&&decode_mode_?desktop::DecodeMode::headroom:desktop::DecodeMode::compatible16;loadSettings(reset,mode);changed();}
 void PreviewController::openRaw(const QUrl& url) {
@@ -313,7 +397,7 @@ void PreviewController::openItem(int index) {
     const auto item=library_.at(index);const auto p=path(item.url);
     const auto gen=++generation_;
     submit([p,item,gen,index](auto& host){Reply r;r.generation=gen;r.operation="open";r.library_index=index;r.geometry=item.geometry;r.develop=item.develop;
-        try{if(item.material_blocked)throw std::runtime_error((QStringLiteral("材料缺失或版本不匹配，不会替换成其他胶片：")+item.save_warning).toStdString());r.frame=desktop::pair_project::open(host,p,item.mode,item.settings,filmGeometry(item.geometry));}catch(const std::exception& e){r.error=text(e.what());}return r;},QStringLiteral("正在解码并渲染 RAW…"),"open");
+        try{if(item.material_blocked)throw std::runtime_error((QStringLiteral("材料缺失或版本不匹配，不会替换成其他胶片：")+item.save_warning).toStdString());r.frame=desktop::pair_project::open(host,p,item.mode,item.settings,filmGeometry(item.geometry));}catch(const std::exception& e){r.error=text(e.what());}return r;},QStringLiteral("正在解码并渲染照片…"),"open");
 }
 void PreviewController::apply() {
     if(!frame_||busy_||dialog_open_)return;
@@ -340,22 +424,18 @@ void PreviewController::exportImage(const QUrl& url,int format,int quality,int m
         try{auto options=exportOptions(format,quality,maxLongEdge);options.develop=develop;
             if(std::filesystem::exists(p))throw std::runtime_error("The export file already exists");
             output::exportFrame(host.render_original(held),p,geometry,options,resources);
+            r.message=QStringLiteral("已导出：")+QString::fromStdWString(p.wstring());
         }catch(const std::exception& e){r.error=text(e.what());}return r;},QStringLiteral("正在按原尺寸渲染并导出…"),"export");
 }
 
 QImage PreviewController::uncroppedImage() const {
-    if(frame_&&frame_->input_cut())return output::originalFrame(frame_,{},true);
-    return !frame_||develop_.neutral()?full_image_:output::displayFrame(frame_,output::Geometry{},develop_);
+    return uncropped_image_;
 }
 QImage PreviewController::originalImage() const {
-    if(!frame_)return {};
-    if(!original_reference_||&original_reference_->original()!=&frame_->original()||(frame_->input_cut()&&frame_!=original_reference_)||original_geometry_!=geometry_||original_image_.isNull()) {
-        auto next=output::originalFrame(frame_,geometry_);
-        original_image_=std::move(next);original_reference_=frame_;original_geometry_=geometry_;
-    }
     return original_image_;
 }
 QVariantMap PreviewController::postAdjustments() const {
+    if(post_cache_key_&&*post_cache_key_==develop_)return post_cache_;
     const auto& d=develop_;
     QVariantMap result{{"enabled",d.enabled},{"temperature",d.temperature},{"tint",d.tint},{"exposure",d.exposure},
         {"contrast",d.contrast},{"brightness",d.brightness},{"saturation",d.saturation},
@@ -369,11 +449,12 @@ QVariantMap PreviewController::postAdjustments() const {
         curves.append(QVariant(points));tables.append(QVariant(samples));
     }
     result["curves"]=curves;result["curveTables"]=tables;
+    result["exposureModel"]=d.legacyExposure?"gamma22-v1":"linear-v1";
     for(unsigned i=0;i<4;++i) {
         const auto prefix=QString("zone%1").arg(i);
         result[prefix+"Hue"]=d.zones[i].hue;result[prefix+"Saturation"]=d.zones[i].saturation;result[prefix+"Luminance"]=d.zones[i].luminance;
     }
-    return result;
+    post_cache_key_=d;post_cache_=result;return post_cache_;
 }
 void PreviewController::setPostAdjustment(const QString& name,const QVariant& value) {
     if(!settingsEditable()||busy_||!frame_)return;
@@ -411,11 +492,10 @@ void PreviewController::setPostAdjustment(const QString& name,const QVariant& va
     if(next==develop_)return;
     try {
         output::validateDevelop(next);
-        auto visible=visibleImage(frame_,full_image_,geometry_,next);
         if(gesture_index_>=0&&gesture_key_!=name)endEditGesture();
-        develop_=next;image_=std::move(visible);saveActiveSettings(true);updateThumbnail();
-        failed_=false;status_=QStringLiteral("显影后调整已更新 · 不重新生成胶片颗粒");
-        emit settingsChanged();emit frameChanged();emit stateChanged();
+        develop_=next;saveActiveSettings(true);requestView();
+        failed_=false;status_=QStringLiteral("正在更新显影后预览…");
+        emit settingsChanged();emit stateChanged();
     }catch(const std::exception& e){failed_=true;status_=text(e.what());emit stateChanged();}
 }
 void PreviewController::setCurve(int channel,const QVariantList& points) {
@@ -425,9 +505,8 @@ void PreviewController::setCurve(int channel,const QVariantList& points) {
 void PreviewController::resetPostAdjustments() {
     if(!settingsEditable()||busy_||develop_==output::Develop{})return;
     try {
-        auto visible=frame_?visibleImage(frame_,full_image_,geometry_):QImage{};
-        endEditGesture();develop_={};image_=std::move(visible);saveActiveSettings(true);updateThumbnail();
-        emit settingsChanged();emit frameChanged();emit stateChanged();
+        endEditGesture();develop_={};saveActiveSettings(true);if(frame_)requestView();
+        emit settingsChanged();emit stateChanged();
     }catch(const std::exception& e){failed_=true;status_=text(e.what());emit stateChanged();}
 }
 
@@ -515,7 +594,7 @@ QVariantMap PreviewController::sceneReport() const {
     result["active"]=extra_settings_.placement.active;
     result["highlightPullBack"]=extra_settings_.placement.highlight_pull_back;
     result["shadowPullBack"]=extra_settings_.placement.shadow_pull_back;
-    result["reason"]=!frame_?QStringLiteral("导入 RAW 后测量场景"):
+    result["reason"]=!frame_?QStringLiteral("导入照片后测量场景"):
         available?QString():QStringLiteral("请测量当前照片与胶片/相纸；设置改变后需重新测量");
     // Same readout as macOS LatitudeReadout: bin-centre shares and the
     // neutral chain's CIE L* change per stop, relative to its own white.
@@ -600,7 +679,7 @@ void PreviewController::saveActiveSettings(bool recordHistory) {
 void PreviewController::updateThumbnail() {
     if(active_index_<0||active_index_>=int(library_.size()))return;
     auto& item=library_[active_index_];
-    item.thumbnail=dirty()?QImage{}:image_.scaled(180,120,Qt::KeepAspectRatio,Qt::SmoothTransformation);
+    item.thumbnail=(dirty()||view_busy_||view_pending_)?QImage{}:image_.scaled(180,120,Qt::KeepAspectRatio,Qt::SmoothTransformation);
     item.error.clear();emit libraryChanged();
 }
 int PreviewController::addFile(const QUrl& url) {
@@ -615,6 +694,9 @@ int PreviewController::addFile(const QUrl& url) {
     const auto stored=edit_store_.load(local,catalog_);
     item.save_blocked=stored.blocked;item.save_warning=stored.warning;item.material_blocked=stored.material_unavailable;
     if(stored.state){item.settings=stored.state->settings;item.mode=stored.state->mode;item.geometry=stored.state->geometry;item.develop=stored.state->develop;item.has_stored=true;}
+    // A new raster must not inherit the previous RAW's headroom preset.
+    const auto suffix=info.suffix().toLower();
+    if(!stored.state&&(suffix=="jpg"||suffix=="jpeg"||suffix=="png"))item.mode=desktop::DecodeMode::compatible16;
     // Legacy records did not pin these fields. Resolve their existing IDs at
     // open, before producing a Frame, without rewriting the record on read.
     if(item.settings.film_profile_sha256.empty())for(const auto& stock:catalog_.films)if(stock.id==item.settings.film_stock)item.settings.film_profile_sha256=stock.profile_sha256;
@@ -649,10 +731,10 @@ void PreviewController::createSelectedPair() {
     try {
         saveActiveSettings();std::array<QString,2> paths;std::array<desktop::DecodeMode,2> modes;desktop::HalfPair pair;pair.active=true;unsigned n=0;
         for(const auto& item:library_)if(item.selected){
-            if(n>=2||item.settings.pair.active||desktop::pair_project::isPair(item.url.toLocalFile()))throw std::runtime_error("Select exactly two RAW sources, not existing pairs");
+            if(n>=2||item.settings.pair.active||desktop::pair_project::isPair(item.url.toLocalFile()))throw std::runtime_error("Select exactly two source photos, not existing pairs");
             paths[n]=item.url.toLocalFile();modes[n]=item.mode;pair.holes[n].geometry=filmGeometry(item.geometry);++n;
         }
-        if(n!=2)throw std::runtime_error("Select exactly two RAW sources");
+        if(n!=2)throw std::runtime_error("Select exactly two source photos");
         const auto directory=QFileInfo(edit_store_.filePath(library_[active_index_].url)).absolutePath()+"/Pairs";
         const auto project=desktop::pair_project::create(directory,paths,modes,pair);
         const int index=addFile(QUrl::fromLocalFile(project));if(index<0)throw std::runtime_error("Cannot import pair project");
@@ -667,6 +749,8 @@ void PreviewController::syncSelectedSettings(bool includeCrop) {
         auto& item=library_[i];auto next=currentState();
         next.settings.pair=item.settings.pair;if(next.settings.pair.active)next.settings.edge.format="135_half";
         if(item.settings.pair.active){next.geometry={};next.mode=item.mode;}
+        const auto suffix=QFileInfo(item.url.toLocalFile()).suffix().toLower();
+        if(suffix=="jpg"||suffix=="jpeg"||suffix=="png")next.mode=desktop::DecodeMode::compatible16;
         if(!includeCrop||item.settings.pair.active)next.geometry=item.geometry;
         if(sameState(itemState(item),next))continue;
         // Each recipient owns its own undo history, just like its settings.
@@ -684,11 +768,11 @@ void PreviewController::setCropRect(const QRectF& crop) {
 void PreviewController::setGeometry(const output::Geometry& geometry,const QString& editKey) {
     if(!frame_||busy_||dialog_open_||extra_settings_.pair.active||geometry==geometry_)return;
     try {
-        auto next=visibleImage(frame_,full_image_,geometry,develop_);
+        output::validateGeometry(full_image_.size(),geometry);
         if(gesture_index_>=0&&gesture_key_!=editKey)endEditGesture();
-        image_=std::move(next);geometry_=geometry;saveActiveSettings(true);updateThumbnail();
+        geometry_=geometry;saveActiveSettings(true);requestView();
         if(settings().edge.active||settings().date.active){++settings_revision_;schedulePreview();}
-        failed_=false;emit geometryChanged();emit frameChanged();emit stateChanged();
+        failed_=false;emit geometryChanged();emit stateChanged();
     } catch(const std::exception& e){failed_=true;status_=text(e.what());emit stateChanged();}
 }
 void PreviewController::resetCrop(){setCropRect(QRectF(0,0,1,1));}
@@ -785,27 +869,42 @@ void PreviewController::restoreHistory(bool redo) {
         // validation failure leaves the frame and both stacks intact.
         const bool geometryChangedNow=target.geometry!=geometry_;
         const bool pictureChanged=geometryChangedNow||target.develop!=develop_;
-        auto next=pictureChanged?visibleImage(frame_,full_image_,target.geometry,target.develop):image_;
+        output::validateGeometry(full_image_.size(),target.geometry);output::validateDevelop(target.develop);
         to.push_back(currentState());if(to.size()>64)to.erase(to.begin());from.pop_back();
-        geometry_=target.geometry;develop_=target.develop;image_=std::move(next);
+        geometry_=target.geometry;develop_=target.develop;
         loadSettings(target.settings,target.mode);saveActiveSettings();
         ++settings_revision_;auto_apply_.stop();schedulePreview();updateThumbnail();
         failed_=false;status_=redo?QStringLiteral("已重做当前照片调整"):QStringLiteral("已撤销当前照片调整");
         if(geometryChangedNow)emit geometryChanged();
-        if(pictureChanged)emit frameChanged();
+        if(pictureChanged)requestView();
         emit settingsChanged();emit stateChanged();emit historyChanged();
     }catch(const std::exception& e){failed_=true;status_=text(e.what());emit stateChanged();}
 }
 void PreviewController::scheduleSave() {
-    save_timer_.start();emit stateChanged();
+    for(auto& item:library_)if(item.pending_save)item.save_failures=0;
+    save_timer_.start(350);emit stateChanged();
 }
 void PreviewController::flushEdits() {
     save_timer_.stop();
+    int retryDelay=0;
     for(auto& item:library_)if(item.pending_save&&!item.save_blocked) {
-        try {edit_store_.save(item.url,itemState(item));item.pending_save=false;item.has_stored=true;item.save_warning.clear();}
-        catch(const std::exception& e){item.save_warning=text(e.what());}
+        try {edit_store_.save(item.url,itemState(item));item.pending_save=false;item.has_stored=true;item.save_warning.clear();item.save_failures=0;}
+        catch(const std::exception& e){
+            item.save_warning=text(e.what());
+            if(++item.save_failures<=3)retryDelay=std::max(retryDelay,500*(1<<item.save_failures));
+        }
     }
+    if(retryDelay)save_timer_.start(retryDelay);
     emit stateChanged();
+}
+void PreviewController::retrySave() {
+    for(auto& item:library_)if(item.pending_save)item.save_failures=0;
+    flushEdits();
+}
+bool PreviewController::prepareToClose() {
+    endEditGesture();flushEdits();
+    for(const auto& item:library_)if(item.pending_save)return false;
+    return true;
 }
 QString PreviewController::persistenceWarning() const {
     QStringList warnings;
@@ -829,7 +928,10 @@ void PreviewController::setStraightenDegrees(double value){auto next=geometry_;n
 void PreviewController::resetGeometry(){setGeometry(output::Geometry{});}
 
 void PreviewController::exportBatch(const QUrl& folder,int format,int quality,int maxLongEdge) {
-    if(!ready_||busy_||!folder.isLocalFile()||!selectedCount())return;
+    if(!ready_||busy_)return;
+    if(!folder.isLocalFile()||!selectedCount()){
+        failed_=true;status_=!selectedCount()?QStringLiteral("请先选择要导出的照片"):QStringLiteral("请选择本地导出文件夹");emit stateChanged();return;
+    }
     saveActiveSettings();
     std::vector<LibraryItem> items;
     for(const auto& item:library_)if(item.selected)items.push_back(item);
@@ -870,6 +972,8 @@ void PreviewController::exportBatch(const QUrl& folder,int format,int quality,in
             }
             r.message=QStringLiteral("%1：导出 %2 张，跳过已有 %3 张，失败 %4 张")
                 .arg(cancel->load()?QStringLiteral("批量导出已取消"):QStringLiteral("批量导出完成")).arg(done).arg(skipped).arg(errors);
+            if(!done&&skipped&&!errors)r.message+=QStringLiteral("。已有同名文件，请选择空文件夹后重试。");
+            r.message+=QStringLiteral("\n文件夹：")+QString::fromStdWString(destination.wstring());
             if(errors)r.error=r.message+"\n"+details.join("\n");
         }catch(const std::exception& e){r.error=text(e.what());}
         return r;

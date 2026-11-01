@@ -375,6 +375,9 @@ public:
     // exposed alike; empty (a standalone pipeline, `warm_up`) meters the
     // input as the reference does.
     void set_auto_exposure_ev(std::optional<double> ev) { injected_ev_ = ev; }
+    bool needs_highlight_reference() const;
+    bool measure_highlight_reference(const Image& source,double& clip,std::string& error);
+    void set_highlight_reference(std::optional<double> clip){highlight_reference_=clip;}
     // What the node applied in the last `run_film`; empty with the meter off.
     std::optional<double> last_auto_exposure_ev() const { return last_ae_ev_; }
 
@@ -566,6 +569,7 @@ public:
 
 private:
     struct Timer;
+    std::optional<double> highlight_reference_,boost_reference_;
 
     // The meter's sample: the frame strided down, read back, and turned into
     // luminance by the auto-exposure Y row. Shared so the three legacy meters
