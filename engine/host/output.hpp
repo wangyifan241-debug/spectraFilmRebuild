@@ -47,6 +47,7 @@ private:
     uint32_t nl_ = 0, nh_ = 0;
     // Own the table: immutable frame snapshots may outlive their engine.
     std::vector<float> cmax_;
+    std::vector<float> decode_; // immutable 16-bit source CCTF table, reused by every band
 };
 
 float cctf_decode_mode(float v, uint32_t mode);

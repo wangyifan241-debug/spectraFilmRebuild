@@ -1,4 +1,5 @@
 #include "output.hpp"
+#include "row_workers.hpp"
 #include "json.hpp"
 #include <algorithm>
 #include <cmath>
@@ -83,6 +84,8 @@ bool OutputTransform::fetch(spk_engine* engine, const std::string& src, const st
     // Same space in and out: the engine already compressed into it, so the
     // pixels pass through untouched (only quantisation can change them).
     identity_ = src == dst;
+    decode_.resize(65536);
+    for(uint32_t i=0;i<65536;++i)decode_[i]=cctf_decode_mode(float(i)/65535.0f,src_mode_);
     return true;
 }
 
@@ -225,30 +228,19 @@ static inline void cam16ucs_into(float rgb[3], const std::array<float, 9>& m2x, 
 
 template <typename F>
 static void parallel(uint32_t rows, F&& body) {
-    const unsigned threads = std::min<unsigned>(std::max(1u, std::thread::hardware_concurrency()), std::max<uint32_t>(1, rows / 8));
-    if (threads <= 1) { body(0u, rows); return; }
-    std::vector<std::thread> pool;
-    const uint32_t step = (rows + threads - 1) / threads;
-    for (unsigned t = 0; t < threads; ++t) {
-        const uint32_t y0 = t * step, y1 = std::min(rows, y0 + step);
-        if (y0 >= y1) break;
-        pool.emplace_back([&body, y0, y1] { body(y0, y1); });
-    }
-    for (auto& th : pool) th.join();
+    parallel_output_rows(rows,std::forward<F>(body));
 }
 
 void OutputTransform::to_linear(const uint16_t* rgba16, uint32_t w, uint32_t h, uint32_t stride,
                                 std::vector<float>& rgb) const {
     rgb.resize(size_t(w) * h * 3);
     // One decode per code value: the source is 16-bit.
-    std::vector<float> decode(65536);
-    for (uint32_t i = 0; i < 65536; ++i) decode[i] = cctf_decode_mode(float(i) / 65535.0f, src_mode_);
     parallel(h, [&](uint32_t y0, uint32_t y1) {
         for (uint32_t y = y0; y < y1; ++y) {
             const uint16_t* row = rgba16 + size_t(y) * stride * 4;
             float* out = &rgb[size_t(y) * w * 3];
             for (uint32_t x = 0; x < w; ++x) {
-                float v[3] = {decode[row[x * 4]], decode[row[x * 4 + 1]], decode[row[x * 4 + 2]]};
+                float v[3] = {decode_[row[x * 4]], decode_[row[x * 4 + 1]], decode_[row[x * 4 + 2]]};
                 float lin[3];
                 if (identity_) {
                     lin[0] = v[0]; lin[1] = v[1]; lin[2] = v[2];

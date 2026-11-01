@@ -1,4 +1,5 @@
 #include "FrameOutput.hpp"
+#include "row_workers.hpp"
 #include "host/output.hpp"
 #include <QCoreApplication>
 #include <QColorSpace>
@@ -18,6 +19,22 @@ static double encode(double v,bool romm) {
         (v<=.0031308?v*12.92:1.055*std::pow(v,1/2.4)-.055);
 }
 static void require(bool ok,const char* message){if(!ok)throw std::runtime_error(message);}
+static void workerChecks(){
+    spkhost::RowWorkers team;
+    std::vector<std::future<void>> callers;
+    for(unsigned n=0;n<4;++n)callers.push_back(std::async(std::launch::async,[&team,n]{
+        std::vector<unsigned> rows(257);
+        team.run(rows.size(),[&](unsigned first,unsigned last){for(auto i=first;i<last;++i)rows[i]=i+n+1;});
+        for(unsigned i=0;i<rows.size();++i)require(rows[i]==i+n+1,"shared row team lost or repeated output rows");
+    }));
+    for(auto& caller:callers)caller.get();
+    bool rejected=false;
+    try{team.run(256,[](unsigned first,unsigned){if(first>0)throw std::runtime_error("injected row failure");});}
+    catch(const std::runtime_error&){rejected=true;}
+    require(rejected,"row worker exception was not transported");
+    std::vector<int> rows(256);team.run(256,[&](unsigned first,unsigned last){for(auto i=first;i<last;++i)++rows[i];});
+    for(auto value:rows)require(value==1,"row team did not recover after exception");
+}
 static void iccChecks(const std::filesystem::path& resources) {
     for(const auto& name:{"sRGB","Display P3","ProPhoto RGB"}) {
         std::vector<uint8_t> bytes;std::string error;
@@ -66,6 +83,7 @@ int main(int argc,char** argv) {
     QCoreApplication app(argc,argv);
     try {
         if(argc!=2)throw std::runtime_error("resources argument required");
+        workerChecks();
         bool good=true;
         for(bool romm:{false,true}) {
             QImage image(6,1,QImage::Format_RGBA64);

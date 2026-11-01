@@ -142,6 +142,7 @@ int main(int argc,char** argv) {
             const auto uncropped=controller.uncroppedImage();
             const auto fullFrame=controller.frame();
             controller.setCropRect(cropA);
+            idle(controller,"asynchronous crop presentation");
             check(controller.frame()==fullFrame&&!controller.busy(),"Crop unnecessarily re-rendered the film");
             check(samePixels(controller.previewImage(),uncropped.copy(output::cropPixels(uncropped.size(),cropA))),
                   "Crop preview disagrees with the original frame's pixel rectangle");

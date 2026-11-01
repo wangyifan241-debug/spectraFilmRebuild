@@ -387,7 +387,7 @@ QImage displayFrame(const FramePtr& frame,const Geometry& geometry,const Develop
     return output;
 }
 
-QImage originalFrame(const FramePtr& frame,const Geometry& geometry,bool sourceOnly) {
+QImage originalWorkingFrame(const FramePtr& frame,bool sourceOnly) {
     if(!frame||!frame->prophoto())fail(QStringLiteral("Original comparison requires a working-space frame"));
     const auto& raw=frame->input_cut()&&!sourceOnly?frame->prepared():frame->original();
     const double previewScale=std::min(1.,3400./std::max(raw.width,raw.height));
@@ -426,7 +426,13 @@ QImage originalFrame(const FramePtr& frame,const Geometry& geometry,bool sourceO
         }
     }
     image.setColorSpace(QColorSpace::ProPhotoRgb);
-    return displaySpace(exportImage(image,frame->input_cut()&&!sourceOnly?Geometry{}:geometry,{}),frame).convertToFormat(QImage::Format_ARGB32);
+    return image;
+}
+QImage displayWorkingImage(const QImage& working,const FramePtr& frame,const Geometry& geometry) {
+    return displaySpace(exportImage(working,geometry,{}),frame).convertToFormat(QImage::Format_ARGB32);
+}
+QImage originalFrame(const FramePtr& frame,const Geometry& geometry,bool sourceOnly) {
+    return displayWorkingImage(originalWorkingFrame(frame,sourceOnly),frame,frame->input_cut()&&!sourceOnly?Geometry{}:geometry);
 }
 
 bool formatAvailable(Format format) {

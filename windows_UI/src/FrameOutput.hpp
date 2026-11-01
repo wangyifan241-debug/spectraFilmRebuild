@@ -77,6 +77,10 @@ QImage displayImage(const QImage& full8, const Geometry& geometry);
 // original RGBA16 before quantization, as it is for an 8-bit exported file.
 QImage displayFrame(const FramePtr& frame, const Geometry& geometry, const Develop& develop = {});
 QImage originalFrame(const FramePtr& frame, const Geometry& geometry, bool sourceOnly=false);
+// Immutable working-space comparison pixels allow geometry changes to reuse
+// the RAW resample/CCTF work. The destination transform stays identical.
+QImage originalWorkingFrame(const FramePtr& frame,bool sourceOnly=false);
+QImage displayWorkingImage(const QImage& working,const FramePtr& frame,const Geometry& geometry);
 
 // The source is opaque encoded working-space RGBA64. Processing order is
 // original-space crop -> bilinear straighten with zoom-to-fill (fixed crop

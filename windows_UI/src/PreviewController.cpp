@@ -62,10 +62,11 @@ QImage PreviewController::imageFromFrame(const desktop::FramePtr& frame) {
     return image;
 }
 
-PreviewController::PreviewController(std::filesystem::path resources,QObject* parent,ImageFactory factory,QString editDirectory)
+PreviewController::PreviewController(std::filesystem::path resources,QObject* parent,ImageFactory factory,QString editDirectory,ViewFactory viewFactory)
     :QObject(parent),resources_(resources),
      edit_store_(editDirectory.isEmpty()?QStandardPaths::writableLocation(QStandardPaths::AppLocalDataLocation)+"/Edits":editDirectory),
      image_factory_(factory?std::move(factory):ImageFactory(imageFromFrame)) {
+    view_factory_=std::move(viewFactory);
     auto_apply_.setSingleShot(true);auto_apply_.setInterval(180);
     connect(&auto_apply_,&QTimer::timeout,this,[this]{if(dirty())apply();});
     save_timer_.setSingleShot(true);save_timer_.setInterval(350);
@@ -114,7 +115,7 @@ void PreviewController::deliver(Reply reply) {
         try {
             reply.full_image=image_factory_(reply.frame);
             if(reply.full_image.isNull())throw std::runtime_error("Cannot create the display image");
-            reply.visible_image=visibleImage(reply.frame,reply.full_image,reply.geometry,reply.develop);
+            prepareView(reply,reply.frame,reply.full_image);
         }catch(const std::exception& e){reply.error=text(e.what());}
         catch(...){reply.error=reply.operation+QStringLiteral(": Unknown presentation exception");}
     }
@@ -130,6 +131,7 @@ void PreviewController::submit(Job job,QString status,QString operation) {
     wake_.notify_one();
 }
 void PreviewController::accept(Reply reply) {
+    if(reply.operation=="view"){acceptView(std::move(reply));return;}
     if(reply.generation!=generation_)return; // a retired generation never replaces the canvas
     const bool superseded=reply.operation=="render"&&reply.settings_revision!=settings_revision_;
     busy_=false;active_operation_.clear();failed_=!superseded&&!reply.error.isEmpty();
@@ -180,6 +182,8 @@ void PreviewController::accept(Reply reply) {
             const auto develop=reply.operation=="open"?reply.develop:develop_;
             auto visible=std::move(reply.visible_image);
             frame_=std::move(reply.frame);full_image_=std::move(next);image_=std::move(visible);
+            original_image_=std::move(reply.original_image);uncropped_image_=std::move(reply.uncropped_image);
+            view_pending_=false;
             geometry_=geometry;
             develop_=develop;
             if(reply.operation=="open")active_index_=reply.library_index;
@@ -193,7 +197,7 @@ void PreviewController::accept(Reply reply) {
                 .arg(frame_->reprint()?QStringLiteral(" · 已复用胶片"):QString());
             emit frameChanged();emit geometryChanged();if(reply.operation=="open")emit sourceOpened();
         }
-    } else if(reply.operation=="export") status_=QStringLiteral("已导出当前画面");
+    } else if(reply.operation=="export") status_=reply.message.isEmpty()?QStringLiteral("已导出当前照片"):reply.message;
     else if(reply.operation=="batch-export")status_=reply.message;
     if(failed_&&reply.operation=="open"&&reply.library_index>=0&&reply.library_index<int(library_.size()))
         library_[reply.library_index].error=status_;
@@ -210,6 +214,73 @@ void PreviewController::accept(Reply reply) {
     // Export holds an immutable displayed frame. An edit made just before it
     // began still needs applying, including after an overwrite refusal.
     if((superseded||reply.operation=="export"||reply.operation=="batch-export"||reply.operation=="materials")&&!busy_)schedulePreview();
+    if(view_pending_&&!busy_&&!view_busy_)requestView();
+}
+
+void PreviewController::prepareView(Reply& reply,const desktop::FramePtr& frame,const QImage& full) {
+    const auto before=worker_uncropped_reference_.lock();
+    const bool sourceUnchanged=before&&&before->original()==&frame->original();
+    const bool reuse=frame->input_cut()?(sourceUnchanged&&before->input_cut()):
+        before==frame&&worker_uncropped_develop_==reply.develop;
+    if(!reuse||worker_uncropped_image_.isNull()){
+        if(frame->input_cut())worker_uncropped_image_=output::originalFrame(frame,{},true);
+        else if(reply.develop.neutral())worker_uncropped_image_=full;
+        else worker_uncropped_image_=output::displayFrame(frame,{},reply.develop);
+    }
+    worker_uncropped_reference_=frame;worker_uncropped_develop_=reply.develop;
+    reply.uncropped_image=worker_uncropped_image_;
+    if(view_factory_)reply.visible_image=view_factory_(frame,full,reply.geometry,reply.develop);
+    else if(!frame->input_cut()&&reply.geometry.straightenDegrees==0)
+        // Crop/orthogonal permutations commute exactly with a pointwise
+        // colour transform and quantization. Bilinear straighten does not.
+        reply.visible_image=output::displayImage(reply.uncropped_image,reply.geometry);
+    else reply.visible_image=visibleImage(frame,full,reply.geometry,reply.develop);
+    const auto previous=worker_original_reference_.lock();
+    const bool newSource=!previous||&previous->original()!=&frame->original()||
+        previous->input_cut()!=frame->input_cut()||(frame->input_cut()&&previous!=frame);
+    if(newSource){worker_original_working_=output::originalWorkingFrame(frame);worker_original_neutral_={};}
+    if(newSource||worker_original_geometry_!=reply.geometry||worker_original_image_.isNull()) {
+        if(!frame->input_cut()&&reply.geometry.straightenDegrees==0){
+            if(worker_original_neutral_.isNull())worker_original_neutral_=output::displayWorkingImage(worker_original_working_,frame,{});
+            worker_original_image_=output::displayImage(worker_original_neutral_,reply.geometry);
+        }else worker_original_image_=output::displayWorkingImage(worker_original_working_,frame,frame->input_cut()?output::Geometry{}:reply.geometry);
+        worker_original_geometry_=reply.geometry;
+    }
+    worker_original_reference_=frame;reply.original_image=worker_original_image_;
+}
+
+void PreviewController::requestView() {
+    view_pending_=true;++view_revision_;
+    if(view_busy_||busy_||!frame_)return;
+    const auto held=frame_;const auto full=full_image_;const auto geometry=geometry_;const auto develop=develop_;
+    const auto generation=generation_,revision=view_revision_;
+    Task task{[this,held,full,geometry,develop,revision](auto&){
+        Reply reply;reply.view_frame=held;reply.geometry=geometry;reply.develop=develop;reply.view_revision=revision;
+        try{prepareView(reply,held,full);}
+        catch(const std::exception& e){reply.error=text(e.what());}
+        catch(...){reply.error=QStringLiteral("Unknown background view exception");}
+        return reply;
+    },generation,settings_revision_,"view"};
+    {std::lock_guard lock(mutex_);jobs_.push_back(std::move(task));}
+    view_busy_=true;view_pending_=false;wake_.notify_one();
+    emit stateChanged();
+}
+void PreviewController::acceptView(Reply reply) {
+    view_busy_=false;
+    // Export changes the engine generation without replacing the displayed
+    // frame. The immutable frame identity and view revision own this lane.
+    const bool current=reply.view_frame==frame_&&reply.view_revision==view_revision_;
+    if(current) {
+        if(reply.error.isEmpty()) {
+            image_=std::move(reply.visible_image);original_image_=std::move(reply.original_image);uncropped_image_=std::move(reply.uncropped_image);
+            if(!busy_&&!failed_)status_=QStringLiteral("预览已更新");
+            updateThumbnail();emit frameChanged();
+        }else{failed_=true;status_=reply.error;}
+    }
+    // A newer desired view replaces the obsolete one; it never flashes an
+    // intermediate image, clears an engine job, or starts a second engine render.
+    if(view_pending_&&!busy_&&!view_busy_)requestView();
+    emit stateChanged();
 }
 desktop::RenderSettings PreviewController::settings() const {
     desktop::RenderSettings s=extra_settings_;
@@ -257,6 +328,7 @@ QVariantMap PreviewController::metadata() const {
         {"mode",frame_->decode_mode==desktop::DecodeMode::headroom?"headroom":"compatible16"}};
 }
 QVariantMap PreviewController::histogram() const {
+    if(histogram_key_==image_.cacheKey()&&!histogram_cache_.isEmpty())return histogram_cache_;
     const auto counts=output::displayHistogram(image_);
     QVariantList channels;
     for(const auto& row:counts.bins) {
@@ -264,8 +336,9 @@ QVariantMap PreviewController::histogram() const {
         for(auto count:row)bins.push_back(QVariant::fromValue<qulonglong>(count));
         channels.push_back(QVariant(bins));
     }
-    return {{"channels",channels},{"samples",QVariant::fromValue<qulonglong>(counts.samples)},
-            {"stride",counts.stride}};
+    histogram_key_=image_.cacheKey();
+    histogram_cache_={{"channels",channels},{"samples",QVariant::fromValue<qulonglong>(counts.samples)},{"stride",counts.stride}};
+    return histogram_cache_;
 }
 void PreviewController::schedulePreview(){if(!dialog_open_&&gesture_key_!="straightenDegrees"&&frame_&&dirty()&&!auto_apply_.isActive())auto_apply_.start();}
 void PreviewController::setDialogOpen(bool open){
@@ -351,22 +424,18 @@ void PreviewController::exportImage(const QUrl& url,int format,int quality,int m
         try{auto options=exportOptions(format,quality,maxLongEdge);options.develop=develop;
             if(std::filesystem::exists(p))throw std::runtime_error("The export file already exists");
             output::exportFrame(host.render_original(held),p,geometry,options,resources);
+            r.message=QStringLiteral("已导出：")+QString::fromStdWString(p.wstring());
         }catch(const std::exception& e){r.error=text(e.what());}return r;},QStringLiteral("正在按原尺寸渲染并导出…"),"export");
 }
 
 QImage PreviewController::uncroppedImage() const {
-    if(frame_&&frame_->input_cut())return output::originalFrame(frame_,{},true);
-    return !frame_||develop_.neutral()?full_image_:output::displayFrame(frame_,output::Geometry{},develop_);
+    return uncropped_image_;
 }
 QImage PreviewController::originalImage() const {
-    if(!frame_)return {};
-    if(!original_reference_||&original_reference_->original()!=&frame_->original()||(frame_->input_cut()&&frame_!=original_reference_)||original_geometry_!=geometry_||original_image_.isNull()) {
-        auto next=output::originalFrame(frame_,geometry_);
-        original_image_=std::move(next);original_reference_=frame_;original_geometry_=geometry_;
-    }
     return original_image_;
 }
 QVariantMap PreviewController::postAdjustments() const {
+    if(post_cache_key_&&*post_cache_key_==develop_)return post_cache_;
     const auto& d=develop_;
     QVariantMap result{{"enabled",d.enabled},{"temperature",d.temperature},{"tint",d.tint},{"exposure",d.exposure},
         {"contrast",d.contrast},{"brightness",d.brightness},{"saturation",d.saturation},
@@ -385,7 +454,7 @@ QVariantMap PreviewController::postAdjustments() const {
         const auto prefix=QString("zone%1").arg(i);
         result[prefix+"Hue"]=d.zones[i].hue;result[prefix+"Saturation"]=d.zones[i].saturation;result[prefix+"Luminance"]=d.zones[i].luminance;
     }
-    return result;
+    post_cache_key_=d;post_cache_=result;return post_cache_;
 }
 void PreviewController::setPostAdjustment(const QString& name,const QVariant& value) {
     if(!settingsEditable()||busy_||!frame_)return;
@@ -423,11 +492,10 @@ void PreviewController::setPostAdjustment(const QString& name,const QVariant& va
     if(next==develop_)return;
     try {
         output::validateDevelop(next);
-        auto visible=visibleImage(frame_,full_image_,geometry_,next);
         if(gesture_index_>=0&&gesture_key_!=name)endEditGesture();
-        develop_=next;image_=std::move(visible);saveActiveSettings(true);updateThumbnail();
-        failed_=false;status_=QStringLiteral("显影后调整已更新 · 不重新生成胶片颗粒");
-        emit settingsChanged();emit frameChanged();emit stateChanged();
+        develop_=next;saveActiveSettings(true);requestView();
+        failed_=false;status_=QStringLiteral("正在更新显影后预览…");
+        emit settingsChanged();emit stateChanged();
     }catch(const std::exception& e){failed_=true;status_=text(e.what());emit stateChanged();}
 }
 void PreviewController::setCurve(int channel,const QVariantList& points) {
@@ -437,9 +505,8 @@ void PreviewController::setCurve(int channel,const QVariantList& points) {
 void PreviewController::resetPostAdjustments() {
     if(!settingsEditable()||busy_||develop_==output::Develop{})return;
     try {
-        auto visible=frame_?visibleImage(frame_,full_image_,geometry_):QImage{};
-        endEditGesture();develop_={};image_=std::move(visible);saveActiveSettings(true);updateThumbnail();
-        emit settingsChanged();emit frameChanged();emit stateChanged();
+        endEditGesture();develop_={};saveActiveSettings(true);if(frame_)requestView();
+        emit settingsChanged();emit stateChanged();
     }catch(const std::exception& e){failed_=true;status_=text(e.what());emit stateChanged();}
 }
 
@@ -612,7 +679,7 @@ void PreviewController::saveActiveSettings(bool recordHistory) {
 void PreviewController::updateThumbnail() {
     if(active_index_<0||active_index_>=int(library_.size()))return;
     auto& item=library_[active_index_];
-    item.thumbnail=dirty()?QImage{}:image_.scaled(180,120,Qt::KeepAspectRatio,Qt::SmoothTransformation);
+    item.thumbnail=(dirty()||view_busy_||view_pending_)?QImage{}:image_.scaled(180,120,Qt::KeepAspectRatio,Qt::SmoothTransformation);
     item.error.clear();emit libraryChanged();
 }
 int PreviewController::addFile(const QUrl& url) {
@@ -701,11 +768,11 @@ void PreviewController::setCropRect(const QRectF& crop) {
 void PreviewController::setGeometry(const output::Geometry& geometry,const QString& editKey) {
     if(!frame_||busy_||dialog_open_||extra_settings_.pair.active||geometry==geometry_)return;
     try {
-        auto next=visibleImage(frame_,full_image_,geometry,develop_);
+        output::validateGeometry(full_image_.size(),geometry);
         if(gesture_index_>=0&&gesture_key_!=editKey)endEditGesture();
-        image_=std::move(next);geometry_=geometry;saveActiveSettings(true);updateThumbnail();
+        geometry_=geometry;saveActiveSettings(true);requestView();
         if(settings().edge.active||settings().date.active){++settings_revision_;schedulePreview();}
-        failed_=false;emit geometryChanged();emit frameChanged();emit stateChanged();
+        failed_=false;emit geometryChanged();emit stateChanged();
     } catch(const std::exception& e){failed_=true;status_=text(e.what());emit stateChanged();}
 }
 void PreviewController::resetCrop(){setCropRect(QRectF(0,0,1,1));}
@@ -802,14 +869,14 @@ void PreviewController::restoreHistory(bool redo) {
         // validation failure leaves the frame and both stacks intact.
         const bool geometryChangedNow=target.geometry!=geometry_;
         const bool pictureChanged=geometryChangedNow||target.develop!=develop_;
-        auto next=pictureChanged?visibleImage(frame_,full_image_,target.geometry,target.develop):image_;
+        output::validateGeometry(full_image_.size(),target.geometry);output::validateDevelop(target.develop);
         to.push_back(currentState());if(to.size()>64)to.erase(to.begin());from.pop_back();
-        geometry_=target.geometry;develop_=target.develop;image_=std::move(next);
+        geometry_=target.geometry;develop_=target.develop;
         loadSettings(target.settings,target.mode);saveActiveSettings();
         ++settings_revision_;auto_apply_.stop();schedulePreview();updateThumbnail();
         failed_=false;status_=redo?QStringLiteral("已重做当前照片调整"):QStringLiteral("已撤销当前照片调整");
         if(geometryChangedNow)emit geometryChanged();
-        if(pictureChanged)emit frameChanged();
+        if(pictureChanged)requestView();
         emit settingsChanged();emit stateChanged();emit historyChanged();
     }catch(const std::exception& e){failed_=true;status_=text(e.what());emit stateChanged();}
 }
@@ -861,7 +928,10 @@ void PreviewController::setStraightenDegrees(double value){auto next=geometry_;n
 void PreviewController::resetGeometry(){setGeometry(output::Geometry{});}
 
 void PreviewController::exportBatch(const QUrl& folder,int format,int quality,int maxLongEdge) {
-    if(!ready_||busy_||!folder.isLocalFile()||!selectedCount())return;
+    if(!ready_||busy_)return;
+    if(!folder.isLocalFile()||!selectedCount()){
+        failed_=true;status_=!selectedCount()?QStringLiteral("请先选择要导出的照片"):QStringLiteral("请选择本地导出文件夹");emit stateChanged();return;
+    }
     saveActiveSettings();
     std::vector<LibraryItem> items;
     for(const auto& item:library_)if(item.selected)items.push_back(item);
@@ -902,6 +972,8 @@ void PreviewController::exportBatch(const QUrl& folder,int format,int quality,in
             }
             r.message=QStringLiteral("%1：导出 %2 张，跳过已有 %3 张，失败 %4 张")
                 .arg(cancel->load()?QStringLiteral("批量导出已取消"):QStringLiteral("批量导出完成")).arg(done).arg(skipped).arg(errors);
+            if(!done&&skipped&&!errors)r.message+=QStringLiteral("。已有同名文件，请选择空文件夹后重试。");
+            r.message+=QStringLiteral("\n文件夹：")+QString::fromStdWString(destination.wstring());
             if(errors)r.error=r.message+"\n"+details.join("\n");
         }catch(const std::exception& e){r.error=text(e.what());}
         return r;

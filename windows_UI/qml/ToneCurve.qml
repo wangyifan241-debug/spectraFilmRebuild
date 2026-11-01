@@ -27,7 +27,7 @@ ColumnLayout {
         }
         MouseArea {
             anchors.fill: parent; acceptedButtons: Qt.LeftButton | Qt.RightButton
-            enabled: preview.hasFrame && preview.settingsEditable && !preview.busy
+            enabled: preview.hasFrame && preview.postEditable
             property int selected: -1
             function copyPoints() { var p=[];for(var i=0;i<editor.points.length;++i)p.push({x:editor.points[i].x,y:editor.points[i].y});return p }
             function commit(p) { preview.setCurve(editor.channel,p) }
@@ -56,5 +56,5 @@ ColumnLayout {
         }
     }
     Text { Layout.fillWidth: true; text: "单击添加，拖动调整，右键删除中间点"; color: Theme.muted; font.pixelSize: 10; wrapMode: Text.Wrap }
-    ActionButton { Layout.fillWidth: true; text: "重置此曲线"; enabled: preview.hasFrame && !preview.busy; onClicked: preview.setCurve(editor.channel,[{x:0,y:0},{x:1,y:1}]) }
+    ActionButton { Layout.fillWidth: true; text: "重置此曲线"; enabled: preview.hasFrame && preview.postEditable; onClicked: preview.setCurve(editor.channel,[{x:0,y:0},{x:1,y:1}]) }
 }

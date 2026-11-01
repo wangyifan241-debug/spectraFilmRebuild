@@ -149,18 +149,21 @@ int main(int argc,char** argv) {
             {
                 const auto retained=c.frame();const int operationsBefore=operations.size();
                 c.setCropRect(QRectF(.13,.17,.11,.15));c.setFlipHorizontal(true);
-                const auto mirrored=c.previewImage().copy();c.rotateClockwise();
+                idle(c,"Prepare mirrored view");
+                const auto mirrored=c.previewImage().copy();c.rotateClockwise();idle(c,"Present clockwise view");
                 check(samePixels(c.previewImage(),mirrored.transformed(QTransform().rotate(90),Qt::FastTransformation))&&
                       !c.flipHorizontal()&&c.flipVertical(),"Clockwise rotation stays visually clockwise after a mirror");
                 c.rotateCounterClockwise();
+                idle(c,"Present counterclockwise view");
                 check(samePixels(c.previewImage(),mirrored)&&c.flipHorizontal()&&!c.flipVertical()&&c.frame()==retained,
                       "Counterclockwise rotation restores mirrored pixels and final-axis flip flags");
                 c.setFlipHorizontal(false);c.rotateClockwise();c.setFlipHorizontal(true);c.setFlipVertical(true);c.setStraightenDegrees(6.5);
+                idle(c,"Present combined geometry");
                 const auto transformed=geometry(c);const auto shown=c.previewImage().copy();
                 check(c.frame()==retained&&!c.busy()&&operations.size()==operationsBefore,"Crop rotation flips and straighten do not rerender film");
                 check(samePixels(shown,output::displayFrame(retained,transformed)),"Preview uses shared full-precision geometry output");
-                c.undo();check(near(c.straightenDegrees(),0)&&c.frame()==retained,"Undo geometry changes no engine frame");
-                c.redo();check(geometry(c)==transformed&&samePixels(c.previewImage(),shown),"Redo geometry restores exact displayed pixels");
+                c.undo();idle(c,"Present geometry undo");check(near(c.straightenDegrees(),0)&&c.frame()==retained,"Undo geometry changes no engine frame");
+                c.redo();idle(c,"Present geometry redo");check(geometry(c)==transformed&&samePixels(c.previewImage(),shown),"Redo geometry restores exact displayed pixels");
                 const QString png=destination+"/transformed.png";
                 const auto native=originalReference(resources,retained,transformed);
                 c.exportImage(QUrl::fromLocalFile(png),1,95,0);idle(c,"Export transformed PNG8");
@@ -207,7 +210,7 @@ int main(int argc,char** argv) {
             c.setAdjustment("grainAmount",.45);c.setAdjustment("halationActive",false);c.setAdjustment("halationAmount",1.65);
             c.setAdjustment("glareAmount",.35);c.setAdjustment("yFilterShift",.05);c.setAdjustment("mFilterShift",-.07);
             c.rotateCounterClockwise();savedFirst=desired(c);
-            check(c.dirty()&&!c.busy(),"Persistence checkpoint contains pending unrendered edits");
+            check(c.dirty()&&c.postEditable(),"Persistence checkpoint contains pending unrendered engine edits");
             check(c.persistenceWarning().isEmpty(),"No persistence warnings before destruction");
         }
         editing::Store store(editDirectory);

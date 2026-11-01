@@ -70,6 +70,11 @@ add_dependencies(SpektraLabQt spektralab_qt_resources)
 add_dependencies(SpektraLabQt spk_material_fit)
 
 if(BUILD_TESTING)
+    qt_add_executable(spk_highlight_reference_test tests/highlight_reference.cpp)
+    target_link_libraries(spk_highlight_reference_test PRIVATE spk_desktop_host Qt6::Core)
+    add_dependencies(spk_highlight_reference_test spektralab_qt_resources)
+    add_test(NAME spk_highlight_reference COMMAND spk_highlight_reference_test "${CMAKE_BINARY_DIR}/app/resources")
+    set_tests_properties(spk_highlight_reference PROPERTIES TIMEOUT 90)
     qt_add_executable(spk_qt_raster_input_test tests/raster_input.cpp src/PreviewController.hpp src/PreviewController.cpp src/FrameOutput.cpp src/EditStore.cpp)
     target_link_libraries(spk_qt_raster_input_test PRIVATE spk_material_library Qt6::Gui)
     add_dependencies(spk_qt_raster_input_test spektralab_qt_resources)
@@ -202,7 +207,7 @@ if(BUILD_TESTING)
             get_filename_component(qt_test_compiler_directory "${CMAKE_CXX_COMPILER}" DIRECTORY)
             list(APPEND qt_test_runtime_path "PATH=path_list_prepend:${qt_test_compiler_directory}")
         endif()
-        set_tests_properties(spk_qt_raster_input spk_qt_review_controller spk_qt_review_colour spk_qt_application_icon spk_qt_responsiveness spk_spectral_lift spk_scan_curve_fit spk_qt_frame_output spk_qt_edit_store spk_qt_stock_policy spk_qt_qml_workflow spk_qt_scene_placement spk_qt_film_frame spk_qt_half_pair spk_qt_open_material spk_qt_material_library spk_qt_material_workflow PROPERTIES
+        set_tests_properties(spk_highlight_reference spk_qt_raster_input spk_qt_review_controller spk_qt_review_colour spk_qt_application_icon spk_qt_responsiveness spk_spectral_lift spk_scan_curve_fit spk_qt_frame_output spk_qt_edit_store spk_qt_stock_policy spk_qt_qml_workflow spk_qt_scene_placement spk_qt_film_frame spk_qt_half_pair spk_qt_open_material spk_qt_material_library spk_qt_material_workflow PROPERTIES
             ENVIRONMENT_MODIFICATION "${qt_test_runtime_path}")
     endif()
     qt_add_executable(spk_qt_editing_workflow_test tests/editing_workflow.cpp

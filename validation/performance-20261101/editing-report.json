@@ -1,0 +1,545 @@
+{
+    "checkCount": 114,
+    "checks": [
+        {
+            "name": "Both input fixtures exist",
+            "passed": true
+        },
+        {
+            "name": "Output directory is new",
+            "passed": true
+        },
+        {
+            "name": "Create owned fixture directory",
+            "passed": true
+        },
+        {
+            "name": "Copy all fixtures before opening",
+            "passed": true
+        },
+        {
+            "name": "Completed: engine initialization",
+            "passed": true
+        },
+        {
+            "name": "Engine initializes: 就绪 · 打开 RAW、JPG 或 PNG 开始",
+            "passed": true
+        },
+        {
+            "name": "Completed: Initial multiple RAW import",
+            "passed": true
+        },
+        {
+            "name": "Initial multiple RAW import: 渲染完成 0.93 秒",
+            "passed": true
+        },
+        {
+            "name": "Active index and displayed source agree",
+            "passed": true
+        },
+        {
+            "name": "Imported photographs begin with empty history",
+            "passed": true
+        },
+        {
+            "name": "Grouped slider retains final value",
+            "passed": true
+        },
+        {
+            "name": "One undo restores whole slider gesture",
+            "passed": true
+        },
+        {
+            "name": "One redo restores whole slider gesture",
+            "passed": true
+        },
+        {
+            "name": "Diverging edit retires redo branch",
+            "passed": true
+        },
+        {
+            "name": "Prepare redo branch for zero-net drag",
+            "passed": true
+        },
+        {
+            "name": "Zero-net slider drag preserves prior redo history",
+            "passed": true
+        },
+        {
+            "name": "Preserved redo still restores its value",
+            "passed": true
+        },
+        {
+            "name": "Toggle is a separate undo step from active slider",
+            "passed": true
+        },
+        {
+            "name": "Slider still has its own undo step after toggle",
+            "passed": true
+        },
+        {
+            "name": "Separate slider and toggle redo in order",
+            "passed": true
+        },
+        {
+            "name": "Explicit apply starts an in-flight render",
+            "passed": true
+        },
+        {
+            "name": "Undo applies while older render is in flight",
+            "passed": true
+        },
+        {
+            "name": "Redo applies while older render is in flight",
+            "passed": true
+        },
+        {
+            "name": "Completed: Newest history state wins in-flight render",
+            "passed": true
+        },
+        {
+            "name": "Newest history state wins in-flight render: 渲染完成 0.05 秒 · 已复用胶片",
+            "passed": true
+        },
+        {
+            "name": "Displayed engine parameters match newest undo state",
+            "passed": true
+        },
+        {
+            "name": "Superseded render never publishes a stale frame",
+            "passed": true
+        },
+        {
+            "name": "Completed: Prepare mirrored view",
+            "passed": true
+        },
+        {
+            "name": "Prepare mirrored view: 预览已更新",
+            "passed": true
+        },
+        {
+            "name": "Completed: Present clockwise view",
+            "passed": true
+        },
+        {
+            "name": "Present clockwise view: 预览已更新",
+            "passed": true
+        },
+        {
+            "name": "Clockwise rotation stays visually clockwise after a mirror",
+            "passed": true
+        },
+        {
+            "name": "Completed: Present counterclockwise view",
+            "passed": true
+        },
+        {
+            "name": "Present counterclockwise view: 预览已更新",
+            "passed": true
+        },
+        {
+            "name": "Counterclockwise rotation restores mirrored pixels and final-axis flip flags",
+            "passed": true
+        },
+        {
+            "name": "Completed: Present combined geometry",
+            "passed": true
+        },
+        {
+            "name": "Present combined geometry: 预览已更新",
+            "passed": true
+        },
+        {
+            "name": "Crop rotation flips and straighten do not rerender film",
+            "passed": true
+        },
+        {
+            "name": "Preview uses shared full-precision geometry output",
+            "passed": true
+        },
+        {
+            "name": "Completed: Present geometry undo",
+            "passed": true
+        },
+        {
+            "name": "Present geometry undo: 预览已更新",
+            "passed": true
+        },
+        {
+            "name": "Undo geometry changes no engine frame",
+            "passed": true
+        },
+        {
+            "name": "Completed: Present geometry redo",
+            "passed": true
+        },
+        {
+            "name": "Present geometry redo: 预览已更新",
+            "passed": true
+        },
+        {
+            "name": "Redo geometry restores exact displayed pixels",
+            "passed": true
+        },
+        {
+            "name": "Completed: Export transformed PNG8",
+            "passed": true
+        },
+        {
+            "name": "Export transformed PNG8: 已导出：C:/Users/Strickland/SpektraLab-work/build/editing-responsive-evidence/transformed.png",
+            "passed": true
+        },
+        {
+            "name": "Read exported image: Unknown error",
+            "passed": true
+        },
+        {
+            "name": "Actual PNG8 export matches original-size transformed pixels exactly",
+            "passed": true
+        },
+        {
+            "name": "Geometry export retains the editor frame",
+            "passed": true
+        },
+        {
+            "name": "Holding straighten pauses a pending parameter render",
+            "passed": true
+        },
+        {
+            "name": "Completed: Release straighten resumes pending parameter render",
+            "passed": true
+        },
+        {
+            "name": "Release straighten resumes pending parameter render: 渲染完成 0.24 秒 · 已复用胶片",
+            "passed": true
+        },
+        {
+            "name": "Released straighten and pending exposure both survive rendering",
+            "passed": true
+        },
+        {
+            "name": "Completed: Restore geometry checkpoint parameters",
+            "passed": true
+        },
+        {
+            "name": "Restore geometry checkpoint parameters: 渲染完成 0.05 秒 · 已复用胶片",
+            "passed": true
+        },
+        {
+            "name": "Completed: Select untouched second photograph",
+            "passed": true
+        },
+        {
+            "name": "Select untouched second photograph: 渲染完成 0.57 秒",
+            "passed": true
+        },
+        {
+            "name": "Active index and displayed source agree",
+            "passed": true
+        },
+        {
+            "name": "Second photograph has independent empty history and geometry",
+            "passed": true
+        },
+        {
+            "name": "Completed: Restore first photograph with second edit pending",
+            "passed": true
+        },
+        {
+            "name": "Restore first photograph with second edit pending: 渲染完成 0.55 秒",
+            "passed": true
+        },
+        {
+            "name": "Photo switch restores first independent state and history",
+            "passed": true
+        },
+        {
+            "name": "Completed: Open synchronized recipient",
+            "passed": true
+        },
+        {
+            "name": "Open synchronized recipient: 渲染完成 0.51 秒",
+            "passed": true
+        },
+        {
+            "name": "Synchronization retains recipient geometry",
+            "passed": true
+        },
+        {
+            "name": "Recipient independently undoes synchronized parameters",
+            "passed": true
+        },
+        {
+            "name": "Pending history render does not republish old thumbnail",
+            "passed": true
+        },
+        {
+            "name": "Recipient can redo synchronized parameters",
+            "passed": true
+        },
+        {
+            "name": "Completed: Return to first before persistence checkpoint",
+            "passed": true
+        },
+        {
+            "name": "Return to first before persistence checkpoint: 渲染完成 0.55 秒",
+            "passed": true
+        },
+        {
+            "name": "Catalog provides independent persistence choices",
+            "passed": true
+        },
+        {
+            "name": "Persistence checkpoint contains pending unrendered engine edits",
+            "passed": true
+        },
+        {
+            "name": "No persistence warnings before destruction",
+            "passed": true
+        },
+        {
+            "name": "Destruction saved both photographs in private store",
+            "passed": true
+        },
+        {
+            "name": "No edit sidecars were written beside RAW fixtures",
+            "passed": true
+        },
+        {
+            "name": "Completed: engine initialization",
+            "passed": true
+        },
+        {
+            "name": "Engine initializes: 就绪 · 打开 RAW、JPG 或 PNG 开始",
+            "passed": true
+        },
+        {
+            "name": "Completed: Recreated controller opens saved second photograph",
+            "passed": true
+        },
+        {
+            "name": "Recreated controller opens saved second photograph: 渲染完成 0.61 秒",
+            "passed": true
+        },
+        {
+            "name": "Active index and displayed source agree",
+            "passed": true
+        },
+        {
+            "name": "Second saved photograph restores independently",
+            "passed": true
+        },
+        {
+            "name": "Completed: Recreated controller restores first photograph",
+            "passed": true
+        },
+        {
+            "name": "Recreated controller restores first photograph: 渲染完成 0.56 秒",
+            "passed": true
+        },
+        {
+            "name": "Active index and displayed source agree",
+            "passed": true
+        },
+        {
+            "name": "All controls and geometry survive controller destruction and reopening",
+            "passed": true
+        },
+        {
+            "name": "Restart restores edits without inventing undo history",
+            "passed": true
+        },
+        {
+            "name": "Restored records have no persistence warnings",
+            "passed": true
+        },
+        {
+            "name": "Completed: Open known photo while another preset is pending",
+            "passed": true
+        },
+        {
+            "name": "Open known photo while another preset is pending: 渲染完成 0.58 秒",
+            "passed": true
+        },
+        {
+            "name": "Active index and displayed source agree",
+            "passed": true
+        },
+        {
+            "name": "Opening known photo does not inherit other photo preset",
+            "passed": true
+        },
+        {
+            "name": "Batch lock test begins with an actual undo step",
+            "passed": true
+        },
+        {
+            "name": "Create batch destination",
+            "passed": true
+        },
+        {
+            "name": "Batch disables edit history",
+            "passed": true
+        },
+        {
+            "name": "Batch rejects history geometry and parameter changes",
+            "passed": true
+        },
+        {
+            "name": "Completed: Single selected batch export",
+            "passed": true
+        },
+        {
+            "name": "Single selected batch export: 批量导出完成：导出 1 张，跳过已有 0 张，失败 0 张\n文件夹：C:/Users/Strickland/SpektraLab-work/build/editing-responsive-evidence/batch",
+            "passed": true
+        },
+        {
+            "name": "Batch releases history and writes selected image",
+            "passed": true
+        },
+        {
+            "name": "Completed: Unsupported RAW rejected",
+            "passed": true
+        },
+        {
+            "name": "Unsupported RAW rejected: Photo decode: RAW open: Input/output error (-100009)",
+            "passed": true
+        },
+        {
+            "name": "Failed open preserves frame settings geometry and valid history",
+            "passed": true
+        },
+        {
+            "name": "Read file: 9c7abe514f552e5af825083d103f27d115668e56f2fba676ac4eb2f399a7ac45.json",
+            "passed": true
+        },
+        {
+            "name": "Modify only owned fixture record",
+            "passed": true
+        },
+        {
+            "name": "Write future-version fixture",
+            "passed": true
+        },
+        {
+            "name": "Completed: engine initialization",
+            "passed": true
+        },
+        {
+            "name": "Engine initializes: 就绪 · 打开 RAW、JPG 或 PNG 开始",
+            "passed": true
+        },
+        {
+            "name": "Completed: Open RAW with future-version record",
+            "passed": true
+        },
+        {
+            "name": "Open RAW with future-version record: 渲染完成 0.70 秒",
+            "passed": true
+        },
+        {
+            "name": "Controller exposes blocked saved-edit warning",
+            "passed": true
+        },
+        {
+            "name": "Read file: 9c7abe514f552e5af825083d103f27d115668e56f2fba676ac4eb2f399a7ac45.json",
+            "passed": true
+        },
+        {
+            "name": "Explicit flush preserves unsupported future record",
+            "passed": true
+        },
+        {
+            "name": "Read file: 9c7abe514f552e5af825083d103f27d115668e56f2fba676ac4eb2f399a7ac45.json",
+            "passed": true
+        },
+        {
+            "name": "Destructor flush also preserves future record",
+            "passed": true
+        }
+    ],
+    "elapsedMs": 46942,
+    "operations": [
+        {
+            "operation": "open",
+            "status": "渲染完成 0.93 秒",
+            "success": true
+        },
+        {
+            "operation": "render",
+            "status": "正在更新预览…",
+            "success": true
+        },
+        {
+            "operation": "render",
+            "status": "渲染完成 0.05 秒 · 已复用胶片",
+            "success": true
+        },
+        {
+            "operation": "export",
+            "status": "已导出：C:/Users/Strickland/SpektraLab-work/build/editing-responsive-evidence/transformed.png",
+            "success": true
+        },
+        {
+            "operation": "render",
+            "status": "渲染完成 0.24 秒 · 已复用胶片",
+            "success": true
+        },
+        {
+            "operation": "render",
+            "status": "渲染完成 0.05 秒 · 已复用胶片",
+            "success": true
+        },
+        {
+            "operation": "open",
+            "status": "渲染完成 0.57 秒",
+            "success": true
+        },
+        {
+            "operation": "open",
+            "status": "渲染完成 0.55 秒",
+            "success": true
+        },
+        {
+            "operation": "open",
+            "status": "渲染完成 0.51 秒",
+            "success": true
+        },
+        {
+            "operation": "open",
+            "status": "渲染完成 0.55 秒",
+            "success": true
+        },
+        {
+            "operation": "open",
+            "status": "渲染完成 0.61 秒",
+            "success": true
+        },
+        {
+            "operation": "open",
+            "status": "渲染完成 0.56 秒",
+            "success": true
+        },
+        {
+            "operation": "open",
+            "status": "渲染完成 0.58 秒",
+            "success": true
+        },
+        {
+            "operation": "batch-export",
+            "status": "批量导出完成：导出 1 张，跳过已有 0 张，失败 0 张\n文件夹：C:/Users/Strickland/SpektraLab-work/build/editing-responsive-evidence/batch",
+            "success": true
+        },
+        {
+            "operation": "open",
+            "status": "Photo decode: RAW open: Input/output error (-100009)",
+            "success": false
+        },
+        {
+            "operation": "open",
+            "status": "渲染完成 0.70 秒",
+            "success": true
+        }
+    ],
+    "passed": true
+}

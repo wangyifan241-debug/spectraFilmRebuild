@@ -75,6 +75,12 @@ private:
         checks_[name]=value;if(!value){finish(false,name+": "+controller_.status());return false;}return true;
     }
     void later(std::function<void()> action,int delayMs=180){QTimer::singleShot(delayMs,this,[this,action=std::move(action)]{if(!done_)action();});}
+    void whenIdle(std::function<void()> action,unsigned attempts=0){
+        if(controller_.busy()||controller_.dirty()){
+            if(attempts>=1500){require(false,"presentation_settle_timeout");return;}
+            later([this,action=std::move(action),attempts]{whenIdle(action,attempts+1);},20);
+        }else later(std::move(action),20); // allow the scene graph to draw the publication
+    }
     int filmIndex(const QString& id) const {
         const auto films=controller_.films();
         for(int i=0;i<films.size();++i)if(films[i].toMap().value("id").toString()==id)return i;
@@ -317,9 +323,10 @@ private:
                 if(!capture("library"))return;
                 const auto unchanged=controller_.frame();
                 controller_.setCropAspect(1);
-                if(!require(controller_.frame()==unchanged&&controller_.previewImage().width()==controller_.previewImage().height(),
-                            "crop_changes_display_without_redeveloping"))return;
-                later([this]{
+                if(!require(controller_.frame()==unchanged,"crop_does_not_queue_film_redevelopment"))return;
+                whenIdle([this,unchanged]{
+                    if(!require(controller_.frame()==unchanged&&controller_.previewImage().width()==controller_.previewImage().height(),
+                                "crop_changes_display_without_redeveloping"))return;
                     if(!require(canvas_->image().cacheKey()==controller_.previewImage().cacheKey(),"cropped_canvas_matches_output")||!capture("cropped"))return;
                     if(!require(QMetaObject::invokeMethod(&window_,"startCrop"),"crop_editor_opens"))return;
                     later([this]{
@@ -342,6 +349,7 @@ private:
                         if(!require(!window_.property("cropMode").toBool()&&std::abs(crop.x()-0.2)<1e-5&&
                                     std::abs(crop.y()-0.3)<1e-5&&std::abs(crop.width()-0.5)<1e-5&&
                                     std::abs(crop.height()-0.4)<1e-5,"qml_crop_pointer_gesture_applies_geometry"))return;
+                        whenIdle([this]{
                         if(!require(QMetaObject::invokeMethod(&window_,"openExport"),"export_options_open"))return;
                         later([this]{
                             if(!require(!controller_.settingsEditable(),"export_options_suspend_edits")||!capture("export-options"))return;
@@ -357,16 +365,17 @@ private:
                                 if(!require(controller_.straightenDegrees()==0&&controller_.canRedo(),"geometry_undo"))return;
                                 controller_.redo();controller_.flushEdits();
                                 if(!require(controller_.straightenDegrees()==3.5&&controller_.persistenceWarning().isEmpty(),"geometry_redo_and_persist"))return;
-                                later([this]{
+                                whenIdle([this]{
                                     if(!require(canvas_->image().cacheKey()==controller_.previewImage().cacheKey(),"transformed_canvas_matches_output")||!capture("geometry"))return;
                                     auto* undoButton=window_.findChild<QObject*>("undoButton");
                                     if(!require(undoButton&&undoButton->property("enabled").toBool()&&QMetaObject::invokeMethod(undoButton,"clicked"),"qml_undo_button"))return;
                                     if(!require(controller_.straightenDegrees()==0,"qml_undo_reaches_geometry"))return;
                                     auto* redoButton=window_.findChild<QObject*>("redoButton");
                                     if(!require(redoButton&&QMetaObject::invokeMethod(redoButton,"clicked")&&controller_.straightenDegrees()==3.5,"qml_redo_button"))return;
-                                    testComparisons();
+                                    whenIdle([this]{testComparisons();});
                                 });
                             });
+                        });
                         });
                     });
                 });
@@ -473,10 +482,47 @@ private:
         } else if(stage_==33) {
             if(!require(operation=="render"&&ok&&controller_.frame()->settings.print_stock=="open_kodak_2302_5m_033"&&!controller_.frame()->scan_film,"qml_2302_real_vulkan_print"))return;
             later([this]{auto* manager=window_.findChild<QObject*>("materialManager");if(!require(manager&&QMetaObject::invokeMethod(manager,"close"),"qml_2302_manager_closes"))return;
-                auto* note=window_.findChild<QObject*>("printMaterialPolicyNote");if(require(note&&note->property("text").toString().contains(QStringLiteral("电影印片")),"qml_2302_not_mislabeled_as_multigrade_paper")&&capture("material-2302"))finish(true,{});});
+                auto* note=window_.findChild<QObject*>("printMaterialPolicyNote");if(require(note&&note->property("text").toString().contains(QStringLiteral("电影印片")),"qml_2302_not_mislabeled_as_multigrade_paper")&&capture("material-2302"))testBatchDialog(false);});
+        } else if(stage_==34||stage_==35) {
+            const auto files=QDir(output_+"/qml-selected-export").entryList({"*.png"},QDir::Files);
+            if(!require(operation=="batch-export"&&ok&&files.size()==1,"qml_folder_export_writes_selected_photo"))return;
+            QFile file(output_+"/qml-selected-export/"+files.first());
+            if(!require(file.open(QIODevice::ReadOnly),"qml_folder_export_readback"))return;
+            const auto hash=QCryptographicHash::hash(file.readAll(),QCryptographicHash::Sha256);
+            if(stage_==34){
+                batch_export_hash_=hash;
+                if(!require(controller_.status().contains(QStringLiteral("导出 1 张")),"qml_batch_result_reports_written_file"))return;
+                later([this]{testBatchDialog(true);});
+            }else{
+                if(!require(hash==batch_export_hash_&&controller_.status().contains(QStringLiteral("跳过已有 1 张"))&&
+                            controller_.status().contains(QStringLiteral("空文件夹")),"qml_batch_skip_preserves_file_and_explains_result"))return;
+                later([this]{
+                    if(require(window_.property("exportResultMessage").toString().contains(QStringLiteral("跳过已有 1 张")),"qml_batch_result_stays_visible")&&capture("batch-result"))finish(true,{});
+                });
+            }
         } else {
             require(false,"unexpected_operation_during_settle");
         }
+    }
+    void testBatchDialog(bool repeat) {
+        const auto destination=output_+"/qml-selected-export";
+        if(!require(repeat||QDir().mkdir(destination),"qml_batch_owned_destination"))return;
+        controller_.selectAllPhotos(false);controller_.setItemSelected(controller_.activeIndex(),true);
+        window_.setProperty("exportFormat",1);window_.setProperty("exportLongEdge",1080);
+        QQmlExpression options(QQmlEngine::contextForObject(&window_),&window_,QStringLiteral("batchDialog.options = FolderDialog.DontUseNativeDialog"));options.evaluate();
+        if(!require(!options.hasError()&&QMetaObject::invokeMethod(&window_,"openExport"),"qml_batch_export_options_open"))return;
+        later([this,destination,repeat]{
+            auto* button=window_.findChild<QObject*>("exportSelectedButton");
+            if(!require(button&&button->property("enabled").toBool()&&QMetaObject::invokeMethod(button,"clicked"),"qml_batch_export_button"))return;
+            later([this,destination,repeat]{
+                auto* dialog=window_.findChild<QObject*>("batchExportDialog");
+                auto* popup=window_.findChild<QObject*>("exportPopup");
+                if(!require(dialog&&dialog->property("visible").toBool()&&popup&&!popup->property("visible").toBool(),"qml_folder_dialog_opens_after_export_popup_closes"))return;
+                if(!require(dialog->setProperty("selectedFolder",QUrl::fromLocalFile(destination)),"qml_folder_destination_selected"))return;
+                stage_=repeat?35:34;
+                require(QMetaObject::invokeMethod(dialog,"accept"),"qml_folder_accept_starts_batch");
+            });
+        });
     }
     void testComparisonViewport(int view,std::function<void()> complete) {
         if(view==6) {
@@ -568,7 +614,7 @@ private:
                         if(!require(!edit.hasError()&&controller_.postAdjustments()["curves"].toList()[0].toList().size()==3,"qml_curve_array_reaches_edit_state"))return;
                         controller_.setPostAdjustment("zone2Hue",215);controller_.setPostAdjustment("zone2Saturation",.2);
                         controller_.setPostAdjustment("vignetteAmount",-25);controller_.flushEdits();
-                        later([this]{
+                        whenIdle([this]{
                             auto* slider=window_.findChild<QObject*>("postAdjustmentSlider_exposure");
                             if(!require(slider&&!slider->property("live").toBool(),"post_slider_defers_full_precision_until_release"))return;
                             const auto before=controller_.postAdjustments()["exposure"].toDouble();
@@ -579,11 +625,13 @@ private:
                             if(!require(std::abs(controller_.postAdjustments()["exposure"].toDouble()-.4)<1e-9,"released_post_slider_commits_value"))return;
                             controller_.undo();
                             if(!require(std::abs(controller_.postAdjustments()["exposure"].toDouble()-before)<1e-9,"post_slider_release_is_one_undo_step"))return;
+                            whenIdle([this]{
                             if(!capture("post-develop"))return;
                             if(!require(QMetaObject::invokeMethod(&window_,"showSceneFit"),"qml_scene_section_scrolls_into_view"))return;
                             held_=controller_.frame();scene_before_=controller_.previewImage();stage_=22;
                             auto* button=window_.findChild<QObject*>("measureSceneButton");
                             require(button&&QMetaObject::invokeMethod(button,"clicked"),"qml_scene_measure_button");
+                            });
                         });
                     });
                 });
@@ -612,6 +660,7 @@ private:
     bool headroom_slides_=false;
     QImage capture_;
     QImage comparison_base_;
+    QByteArray batch_export_hash_;
     QImage scene_before_;
 };
 }
