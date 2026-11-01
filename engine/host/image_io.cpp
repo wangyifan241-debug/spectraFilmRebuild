@@ -355,6 +355,7 @@ void to_linear_prophoto(const RgbSpace& space, std::vector<float>& rgb) {
 struct Raster {
     uint32_t width = 0, height = 0;
     std::vector<float> rgb;   // 3 channels
+    std::vector<float> alpha; // PNG coverage, 0..1; flattened on white in linear light
     uint32_t codes = 0;       // 256 / 65536 for integer sources, 0 for float
     std::vector<uint8_t> icc;
     Metadata meta;
@@ -610,6 +611,7 @@ static void jpeg_segments(const std::vector<uint8_t>& f, std::vector<uint8_t>& i
     std::sort(icc_parts.begin(), icc_parts.end(), [](auto& a, auto& b) { return a.first < b.first; });
     icc.clear();
     for (auto& p : icc_parts) icc.insert(icc.end(), p.second.begin(), p.second.end());
+    if(!icc_parts.empty()&&icc.empty())icc.push_back(0); // declared but empty is not untagged
 }
 
 static void png_chunks(const std::vector<uint8_t>& f, std::vector<uint8_t>& icc, Metadata& meta) {
@@ -620,6 +622,7 @@ static void png_chunks(const std::vector<uint8_t>& f, std::vector<uint8_t>& icc,
         const uint8_t* type = &f[i + 4];
         const uint8_t* body = &f[i + 8];
         if (std::memcmp(type, "iCCP", 4) == 0) {
+            icc.assign(1,0); // preserve an invalid declaration for strict callers
             size_t name = 0;
             while (name < len && body[name]) ++name;
             if (name + 2 < len) {
@@ -650,16 +653,25 @@ static bool decode_stb(const std::vector<uint8_t>& f, FileKind kind, Raster& out
     out.height = uint32_t(h);
     if (header_only) return true;
     const bool deep = stbi_is_16_bit_from_memory(f.data(), int(f.size()));
+    const bool alpha = comp == 2 || comp == 4;
+    const int channels = alpha ? 4 : 3;
+    if(alpha)out.alpha.resize(size_t(w)*h);
     out.rgb.resize(size_t(w) * h * 3);
     if (deep) {
-        std::unique_ptr<stbi_us, void (*)(void*)> px(stbi_load_16_from_memory(f.data(), int(f.size()), &w, &h, &comp, 3), stbi_image_free);
+        std::unique_ptr<stbi_us, void (*)(void*)> px(stbi_load_16_from_memory(f.data(), int(f.size()), &w, &h, &comp, channels), stbi_image_free);
         if (!px) { error = std::string("decode failed: ") + stbi_failure_reason(); return false; }
-        for (size_t i = 0; i < out.rgb.size(); ++i) out.rgb[i] = px.get()[i];
+        for(size_t p=0;p<size_t(w)*h;++p) {
+            for(int c=0;c<3;++c)out.rgb[p*3+c]=px.get()[p*channels+c];
+            if(alpha)out.alpha[p]=px.get()[p*4+3]/65535.f;
+        }
         out.codes = 65536;
     } else {
-        std::unique_ptr<stbi_uc, void (*)(void*)> px(stbi_load_from_memory(f.data(), int(f.size()), &w, &h, &comp, 3), stbi_image_free);
+        std::unique_ptr<stbi_uc, void (*)(void*)> px(stbi_load_from_memory(f.data(), int(f.size()), &w, &h, &comp, channels), stbi_image_free);
         if (!px) { error = std::string("decode failed: ") + stbi_failure_reason(); return false; }
-        for (size_t i = 0; i < out.rgb.size(); ++i) out.rgb[i] = px.get()[i];
+        for(size_t p=0;p<size_t(w)*h;++p) {
+            for(int c=0;c<3;++c)out.rgb[p*3+c]=px.get()[p*channels+c];
+            if(alpha)out.alpha[p]=px.get()[p*4+3]/255.f;
+        }
         out.codes = 256;
     }
     return true;
@@ -672,7 +684,7 @@ static bool read_raster(const fs::path& path, FileKind kind, Raster& out, bool h
     return decode_stb(file, kind, out, header_only, error);
 }
 
-static RgbSpace raster_space(const Raster& r, std::string* note) {
+static RgbSpace raster_space(const Raster& r, FileKind kind, std::string* note) {
     if (!r.icc.empty()) {
         RgbSpace s;
         std::string why;
@@ -681,7 +693,7 @@ static RgbSpace raster_space(const Raster& r, std::string* note) {
         return srgb_space();
     }
     // An untagged deep TIFF is linear ProPhoto (the macOS decoder's rule).
-    if (r.codes != 256) return linear_prophoto_space();
+    if (kind == FileKind::Tiff && r.codes != 256) return linear_prophoto_space();
     return srgb_space();
 }
 
@@ -810,8 +822,15 @@ bool decode_linear_prophoto(const fs::path& path, const DecodeOptions& options, 
     Raster r;
     if (!read_raster(path, probe.kind, r, false, error)) return false;
     std::string note;
-    const RgbSpace space = raster_space(r, &note);
+    const RgbSpace space = raster_space(r, probe.kind, &note);
+    if(options.strict_icc&&!note.empty()){
+        RgbSpace ignored;parse_icc(r.icc,ignored,error);
+        error="Unsupported embedded ICC profile: "+error;return false;
+    }
+    probe.colour_description=space.description;
     encoded_to_linear_prophoto(space, r.rgb, r.codes);
+    for(size_t p=0;p<r.alpha.size();++p)
+        for(int c=0;c<3;++c)r.rgb[p*3+c]=r.rgb[p*3+c]*r.alpha[p]+(1-r.alpha[p]);
     uint32_t w = r.width, h = r.height;
     apply_orientation(r.rgb, w, h, 3, r.meta.orientation);
     out.width = w;
@@ -936,8 +955,17 @@ bool thumbnail(const fs::path& path, uint32_t long_edge, Rgba8& out, std::string
     }
     Raster r;
     if (!read_raster(path, probe.kind, r, false, error)) return false;
-    const RgbSpace space = raster_space(r, nullptr);
+    const RgbSpace space = raster_space(r, probe.kind, nullptr);
     uint32_t w = r.width, h = r.height;
+    // Match the full decode's white backing before averaging the thumbnail.
+    if(!r.alpha.empty()) {
+        encoded_to_linear_prophoto(space,r.rgb,r.codes);
+        for(size_t p=0;p<r.alpha.size();++p)for(int c=0;c<3;++c)r.rgb[p*3+c]=r.rgb[p*3+c]*r.alpha[p]+(1-r.alpha[p]);
+        shrink_rgb(r.rgb,w,h,long_edge);
+        to_rgba8_srgb(linear_prophoto_space(),r.rgb,0,out.rgba);
+        apply_orientation(out.rgba,w,h,4,r.meta.orientation);
+        out.width=w;out.height=h;source="decode";return true;
+    }
     shrink_rgb(r.rgb, w, h, long_edge);
     std::vector<uint8_t> rgba;
     to_rgba8_srgb(space, r.rgb, r.codes, rgba);

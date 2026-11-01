@@ -99,9 +99,9 @@ ApplicationWindow {
     MaterialManager { id: materialManager; anchors.centerIn: parent; width: Math.min(920,window.width-40); height: Math.min(760,window.height-40) }
     FileDialog {
         id: openDialog
-        title: "导入一张或多张 RAW 照片"
+        title: "导入一张或多张照片"
         fileMode: FileDialog.OpenFiles
-        nameFilters: ["RAW 与双拼项目 (*.arw *.nef *.nrw *.dng *.cr2 *.cr3 *.raf *.rw2 *.orf *.pef *.srw *.spektrapair)", "所有文件 (*)"]
+        nameFilters: ["照片与双拼项目 (*.arw *.nef *.nrw *.dng *.cr2 *.cr3 *.raf *.rw2 *.orf *.pef *.srw *.jpg *.jpeg *.png *.spektrapair)", "JPG / PNG 图片 (*.jpg *.jpeg *.png)", "所有文件 (*)"]
         onVisibleChanged: window.updateDialogState()
         onAccepted: preview.openFiles(selectedFiles)
     }
@@ -328,7 +328,7 @@ ApplicationWindow {
                                 ActionButton { text: "重置"; enabled: window.canEditCrop; onClicked: { window.cropMode = false; preview.resetCrop(); canvas.resetView(true) } }
                             }
                             ActionButton { Layout.fillWidth: true; text: window.cropMode ? "完成裁切" : "在画面中拖选裁切"; accented: window.cropMode; enabled: window.canEditCrop; onClicked: window.cropMode ? window.finishCrop() : window.startCrop() }
-                            Note { text: window.cropMode ? "在未旋转原图上拖出矩形；完成后恢复方向与拉直。Enter 确认，Esc 取消。" : "预览与导出使用同一裁切与方向；原始 RAW 不变。" }
+                            Note { text: window.cropMode ? "在未旋转原图上拖出矩形；完成后恢复方向与拉直。Enter 确认，Esc 取消。" : "预览与导出使用同一裁切与方向；原始照片不变。" }
                             RowLayout {
                                 Layout.fillWidth: true
                                 ActionButton { objectName: "rotateLeftButton"; Layout.fillWidth: true; text: "左转 90°"; enabled: window.canEditCrop && !window.cropMode; onClicked: { preview.rotateCounterClockwise(); canvas.resetView(true) } }
@@ -392,7 +392,7 @@ ApplicationWindow {
                     Layout.fillWidth: true; implicitHeight: Theme.topHeight; color: Theme.card
                     RowLayout {
                         anchors.fill: parent; anchors.leftMargin: 8; anchors.rightMargin: 8; spacing: 6
-                        ActionButton { text: "导入 RAW"; enabled: window.canBrowse; onClicked: openDialog.open(); implicitHeight: 27 }
+                        ActionButton { text: "导入照片"; enabled: window.canBrowse; onClicked: openDialog.open(); implicitHeight: 27 }
                         ActionButton { objectName: "openMaterialManagerButton"; text: "材料库"; enabled: window.canBrowse; onClicked: materialManager.open(); implicitHeight: 27 }
                         ActionButton { text: "导出"; enabled: preview.hasFrame && !preview.busy && !window.cropMode; onClicked: window.openExport(); implicitHeight: 27 }
                         ActionButton { text: "裁切"; accented: window.cropMode; enabled: window.canEditCrop; onClicked: window.cropMode ? window.finishCrop() : window.startCrop(); implicitHeight: 27 }
@@ -493,7 +493,7 @@ ApplicationWindow {
                     Column {
                         anchors.centerIn: parent; spacing: 16; visible: !preview.hasFrame
                         Text { anchors.horizontalCenter: parent.horizontalCenter; text: "SpektraLab"; color: "#e5e2dc"; font.pixelSize: 32; font.letterSpacing: 1 }
-                        Text { anchors.horizontalCenter: parent.horizontalCenter; text: "导入 RAW，逐张选择胶片与相纸"; color: "#d0cdc6"; font.pixelSize: 13 }
+                        Text { anchors.horizontalCenter: parent.horizontalCenter; text: "导入 RAW / JPG / PNG，逐张选择胶片与相纸"; color: "#d0cdc6"; font.pixelSize: 13 }
                         Text { anchors.horizontalCenter: parent.horizontalCenter; text: "支持一次拖入多张照片"; color: "#c0bdb7"; font.pixelSize: 11 }
                     }
                     DropArea { anchors.fill: parent; enabled: window.canBrowse; onDropped: function(drop) { if (drop.hasUrls) preview.openFiles(drop.urls) } }
@@ -517,7 +517,7 @@ ApplicationWindow {
                             Layout.fillWidth: true; spacing: 6
                             Text { text: preview.libraryItems.length + " 张照片 · 已选 " + preview.selectedCount; color: Theme.muted; font.pixelSize: 10 }
                             Item { Layout.fillWidth: true }
-                            ActionButton { objectName: "createPairButton"; text: "半格双拼"; implicitHeight: 23; font.pixelSize: 10; enabled: window.canBrowse && preview.hasFrame && preview.selectedCount === 2; onClicked: preview.createSelectedPair(); ToolTip.visible: hovered; ToolTip.text: "选两张 RAW 创建独立项目，原片与各自裁切保留。" }
+                            ActionButton { objectName: "createPairButton"; text: "半格双拼"; implicitHeight: 23; font.pixelSize: 10; enabled: window.canBrowse && preview.hasFrame && preview.selectedCount === 2; onClicked: preview.createSelectedPair(); ToolTip.visible: hovered; ToolTip.text: "选两张照片创建独立项目，原片与各自裁切保留。" }
                             ActionButton { text: "全选"; implicitHeight: 23; font.pixelSize: 10; enabled: window.canBrowse && preview.libraryItems.length > 0; onClicked: preview.selectAllPhotos(true) }
                             ActionButton { text: "清除选择"; implicitHeight: 23; font.pixelSize: 10; enabled: window.canBrowse && preview.selectedCount > 0; onClicked: preview.selectAllPhotos(false) }
                             ActionButton { text: "同步设置"; implicitHeight: 23; font.pixelSize: 10; enabled: window.canBrowse && preview.hasFrame && preview.selectedCount > 0; onClicked: preview.syncSelectedSettings(false); ToolTip.visible: hovered; ToolTip.text: "将当前照片的胶片、相纸、解码和效果同步到所选照片，不同步裁切。" }
@@ -692,13 +692,13 @@ ApplicationWindow {
                         Section {
                             visible: !window.postMode
                             title: "RAW 解码"
-                            EditorComboBox { id: decode; Layout.fillWidth: true; model: ["兼容模式（默认）", "高光扩展（实验）"]; currentIndex: preview.decodeMode; enabled: preview.settingsEditable && !preview.filmFrame.pairActive; onActivated: preview.decodeMode = currentIndex }
-                            Note { text: preview.decodeMode ? "保留去马赛克后的部分高光及负值；仍使用整数去马赛克。" : "与已验证的原生 RAW 流程保持一致。" }
+                            EditorComboBox { id: decode; objectName: "rawDecodeOptions"; Layout.fillWidth: true; model: ["兼容模式（默认）", "高光扩展（实验）"]; currentIndex: preview.decodeMode; enabled: preview.settingsEditable && !preview.filmFrame.pairActive && preview.metadata.inputKind === "raw"; onActivated: preview.decodeMode = currentIndex }
+                            Note { text: preview.hasFrame && preview.metadata.inputKind !== "raw" ? "JPG / PNG 使用图片色彩配置转换，不进行 RAW 去马赛克；透明区域合成到白底。" : preview.decodeMode ? "保留去马赛克后的部分高光及负值；仍使用整数去马赛克。" : "与已验证的原生 RAW 流程保持一致。" }
                         }
                         Section {
                             title: "照片信息"
                             Note { text: preview.hasFrame ? preview.metadata.camera : "尚未打开照片"; color: Theme.text }
-                            Note { text: preview.hasFrame ? "原图 " + preview.metadata.sourceWidth + " × " + preview.metadata.sourceHeight + " 像素\n编辑预览 " + preview.metadata.previewWidth + " × " + preview.metadata.previewHeight + "\n" + (preview.metadata.mode === "headroom" ? "高光扩展解码" : "兼容解码") : "" }
+                            Note { text: preview.hasFrame ? "原图 " + preview.metadata.sourceWidth + " × " + preview.metadata.sourceHeight + " 像素\n编辑预览 " + preview.metadata.previewWidth + " × " + preview.metadata.previewHeight + "\n" + (preview.metadata.inputKind !== "raw" ? preview.metadata.inputProfile : preview.metadata.mode === "headroom" ? "高光扩展解码" : "兼容解码") : "" }
                             Note { text: preview.hasFrame ? "本次渲染 " + (preview.metadata.renderMs / 1000).toFixed(2) + " 秒 · " + (preview.metadata.cached ? "复用负片" : "完整渲染") : "" }
                             ActionButton { Layout.fillWidth: true; text: "重置当前照片设置"; enabled: preview.settingsEditable; onClicked: preview.resetSettings() }
                         }

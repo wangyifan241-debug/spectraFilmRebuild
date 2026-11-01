@@ -70,7 +70,25 @@ This is a native Qt Quick/C++ application using the existing synchronous
 runtime. The upstream SwiftUI theme supplied the grey rails, centre canvas,
 warm accent and bottom strip; unsupported controls are omitted deliberately.
 
-Implemented: multi-file RAW import and drag/drop; independent per-photo
+### JPEG and PNG input
+
+Use **导入照片** or drag files into the editor. JPEG (`.jpg`/`.jpeg`) and
+8/16-bit PNG share the existing host reader: encoded samples are decoded
+through the embedded RGB matrix/TRC ICC profile into scene-linear ProPhoto
+before entering the unchanged film pipeline. Untagged JPEG/PNG, including
+16-bit PNG, assume sRGB. Unsupported or malformed embedded ICC profiles are
+rejected with an error, preserving the previous successful frame.
+
+PNG transparency is composited onto white in linear light before film
+exposure; this editor does not preserve transparent output. JPEG EXIF
+orientation is applied once. The RAW decode selector is disabled for raster
+photos. Edits, comparison, geometry, half-frame pairs and TIFF/PNG/JPEG export
+use the same controller and persistence path. Importing a JPEG does not undo
+the camera/developer's existing tone mapping, so it is not equivalent to RAW.
+Sources are never rewritten. The historical C++/Qt `open_raw`/`openRaw` names
+remain compatible; no C API or material-profile fields changed.
+
+Implemented: multi-file RAW/JPEG/PNG import and drag/drop; independent per-photo
 film/paper, decode, exposure, grain, halation, glare, film format and filter
 settings; a navigator and selected-photo strip; free/ratio cropping; and
 TIFF16, PNG8/16, JPEG8 export with JPEG quality and optional downsize. Batch
@@ -306,11 +324,11 @@ Date backs expose LCD/dot-matrix/data lettering, position, size and exposure.
 Text accepts digits and date separators. The default is **today, not EXIF**;
 enter the capture date manually. Panoramic formats do not offer date backs.
 
-Select exactly two RAW items in the strip and choose **半格双拼**. A new
+Select exactly two RAW/JPEG/PNG photos in the strip and choose **半格双拼**. A new
 `.spektrapair` project is created under the app's Edits/Pairs directory. It
 references two absolute source paths, full SHA-256 fingerprints, decode modes
 and their initial source crops; original files are neither changed nor moved.
-Open this project through Import RAW to restore it. Missing/changed sources
+Open this project through **导入照片** to restore it. Missing/changed sources
 are rejected, preserving existing edits and the previous canvas. These Windows
 project files are not the Mac pair-file format and are not portable packages:
 moving the originals currently requires recreating the pair.

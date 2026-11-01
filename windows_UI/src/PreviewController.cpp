@@ -143,7 +143,7 @@ void PreviewController::accept(Reply reply) {
         if(frame_&&reply.operation!="export"&&reply.operation!="batch-export")restoreSettings();
     } else if(reply.operation=="init") {
         ready_=true;catalog_=std::move(reply.catalog);decorateCatalog(catalog_);films_=list(catalog_.films,materials_.get());papers_=list(catalog_.papers,materials_.get());
-        restoreSettings();emit catalogChanged();status_=QStringLiteral("就绪 · 打开 RAW 开始");
+        restoreSettings();emit catalogChanged();status_=QStringLiteral("就绪 · 打开 RAW、JPG 或 PNG 开始");
         emit materialsChanged();
     } else if(reply.operation=="materials") {
         const auto desired=settings();const auto mode=decode_mode_?desktop::DecodeMode::headroom:desktop::DecodeMode::compatible16;
@@ -250,7 +250,8 @@ QVariantMap PreviewController::metadata() const {
     return {{"width",image_.width()},{"height",image_.height()},
         {"sourceWidth",frame_->source_width()},{"sourceHeight",frame_->source_height()},
         {"previewWidth",frame_->width()},{"previewHeight",frame_->height()},
-        {"camera",text(frame_->metadata.make+" "+frame_->metadata.model)},
+        {"camera",frame_->metadata.input_kind=="raw"?text(frame_->metadata.make+" "+frame_->metadata.model):text(frame_->metadata.input_kind).toUpper()+QStringLiteral(" 图片")},
+        {"inputKind",text(frame_->metadata.input_kind)},{"inputProfile",text(frame_->metadata.input_profile)},
         {"decodeMs",frame_->timings.decode_ms},{"renderMs",frame_->timings.render_ms},
         {"totalMs",frame_->timings.total_ms},{"cached",frame_->reprint()},{"scanFilm",frame_->scan_film},
         {"mode",frame_->decode_mode==desktop::DecodeMode::headroom?"headroom":"compatible16"}};
@@ -305,7 +306,7 @@ void PreviewController::setPaperIndex(int v){
         catalog_.papers[v].is_monochrome!=filmIsMonochrome()||!papers_[v].toMap().value("enabled",true).toBool())return;
     paper_index_=v;changed("paperIndex");
 }
-void PreviewController::setDecodeMode(int v){if(!settingsEditable()||extra_settings_.pair.active||v<0||v>1||v==decode_mode_)return;decode_mode_=v;changed("decodeMode");}
+void PreviewController::setDecodeMode(int v){if(!settingsEditable()||extra_settings_.pair.active||(frame_&&frame_->metadata.input_kind!="raw")||v<0||v>1||v==decode_mode_)return;decode_mode_=v;changed("decodeMode");}
 void PreviewController::setExposureEv(double v){if(!settingsEditable()||filmIsPositive()||!std::isfinite(v)||v< -2||v>2||v==exposure_ev_)return;exposure_ev_=v;changed("exposureEv");}
 void PreviewController::resetSettings(){if(!settingsEditable())return;resetPostAdjustments();desktop::RenderSettings reset;reset.pair=extra_settings_.pair;if(reset.pair.active)reset.edge.format="135_half";const auto mode=reset.pair.active&&decode_mode_?desktop::DecodeMode::headroom:desktop::DecodeMode::compatible16;loadSettings(reset,mode);changed();}
 void PreviewController::openRaw(const QUrl& url) {
@@ -323,7 +324,7 @@ void PreviewController::openItem(int index) {
     const auto item=library_.at(index);const auto p=path(item.url);
     const auto gen=++generation_;
     submit([p,item,gen,index](auto& host){Reply r;r.generation=gen;r.operation="open";r.library_index=index;r.geometry=item.geometry;r.develop=item.develop;
-        try{if(item.material_blocked)throw std::runtime_error((QStringLiteral("材料缺失或版本不匹配，不会替换成其他胶片：")+item.save_warning).toStdString());r.frame=desktop::pair_project::open(host,p,item.mode,item.settings,filmGeometry(item.geometry));}catch(const std::exception& e){r.error=text(e.what());}return r;},QStringLiteral("正在解码并渲染 RAW…"),"open");
+        try{if(item.material_blocked)throw std::runtime_error((QStringLiteral("材料缺失或版本不匹配，不会替换成其他胶片：")+item.save_warning).toStdString());r.frame=desktop::pair_project::open(host,p,item.mode,item.settings,filmGeometry(item.geometry));}catch(const std::exception& e){r.error=text(e.what());}return r;},QStringLiteral("正在解码并渲染照片…"),"open");
 }
 void PreviewController::apply() {
     if(!frame_||busy_||dialog_open_)return;
@@ -526,7 +527,7 @@ QVariantMap PreviewController::sceneReport() const {
     result["active"]=extra_settings_.placement.active;
     result["highlightPullBack"]=extra_settings_.placement.highlight_pull_back;
     result["shadowPullBack"]=extra_settings_.placement.shadow_pull_back;
-    result["reason"]=!frame_?QStringLiteral("导入 RAW 后测量场景"):
+    result["reason"]=!frame_?QStringLiteral("导入照片后测量场景"):
         available?QString():QStringLiteral("请测量当前照片与胶片/相纸；设置改变后需重新测量");
     // Same readout as macOS LatitudeReadout: bin-centre shares and the
     // neutral chain's CIE L* change per stop, relative to its own white.
@@ -626,6 +627,9 @@ int PreviewController::addFile(const QUrl& url) {
     const auto stored=edit_store_.load(local,catalog_);
     item.save_blocked=stored.blocked;item.save_warning=stored.warning;item.material_blocked=stored.material_unavailable;
     if(stored.state){item.settings=stored.state->settings;item.mode=stored.state->mode;item.geometry=stored.state->geometry;item.develop=stored.state->develop;item.has_stored=true;}
+    // A new raster must not inherit the previous RAW's headroom preset.
+    const auto suffix=info.suffix().toLower();
+    if(!stored.state&&(suffix=="jpg"||suffix=="jpeg"||suffix=="png"))item.mode=desktop::DecodeMode::compatible16;
     // Legacy records did not pin these fields. Resolve their existing IDs at
     // open, before producing a Frame, without rewriting the record on read.
     if(item.settings.film_profile_sha256.empty())for(const auto& stock:catalog_.films)if(stock.id==item.settings.film_stock)item.settings.film_profile_sha256=stock.profile_sha256;
@@ -660,10 +664,10 @@ void PreviewController::createSelectedPair() {
     try {
         saveActiveSettings();std::array<QString,2> paths;std::array<desktop::DecodeMode,2> modes;desktop::HalfPair pair;pair.active=true;unsigned n=0;
         for(const auto& item:library_)if(item.selected){
-            if(n>=2||item.settings.pair.active||desktop::pair_project::isPair(item.url.toLocalFile()))throw std::runtime_error("Select exactly two RAW sources, not existing pairs");
+            if(n>=2||item.settings.pair.active||desktop::pair_project::isPair(item.url.toLocalFile()))throw std::runtime_error("Select exactly two source photos, not existing pairs");
             paths[n]=item.url.toLocalFile();modes[n]=item.mode;pair.holes[n].geometry=filmGeometry(item.geometry);++n;
         }
-        if(n!=2)throw std::runtime_error("Select exactly two RAW sources");
+        if(n!=2)throw std::runtime_error("Select exactly two source photos");
         const auto directory=QFileInfo(edit_store_.filePath(library_[active_index_].url)).absolutePath()+"/Pairs";
         const auto project=desktop::pair_project::create(directory,paths,modes,pair);
         const int index=addFile(QUrl::fromLocalFile(project));if(index<0)throw std::runtime_error("Cannot import pair project");
@@ -678,6 +682,8 @@ void PreviewController::syncSelectedSettings(bool includeCrop) {
         auto& item=library_[i];auto next=currentState();
         next.settings.pair=item.settings.pair;if(next.settings.pair.active)next.settings.edge.format="135_half";
         if(item.settings.pair.active){next.geometry={};next.mode=item.mode;}
+        const auto suffix=QFileInfo(item.url.toLocalFile()).suffix().toLower();
+        if(suffix=="jpg"||suffix=="jpeg"||suffix=="png")next.mode=desktop::DecodeMode::compatible16;
         if(!includeCrop||item.settings.pair.active)next.geometry=item.geometry;
         if(sameState(itemState(item),next))continue;
         // Each recipient owns its own undo history, just like its settings.

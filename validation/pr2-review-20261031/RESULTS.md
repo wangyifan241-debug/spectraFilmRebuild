@@ -131,3 +131,7 @@ $p=Start-Process -FilePath D:/学习资料/SpektraLab/build/qt-pr2-review-final/
 ## 后续用户复测：分屏线越界
 
 修复 100% 和平移时分屏线及其拖动区域超出画布的问题。新增六种视图状态的像素回归及四种位置的拖动测试，先红后绿；Windows Release 完整 CTest 再次 35/35 通过，0 失败、0 跳过，210.37 秒。细节、测试范围和新启动路径见 [COMPARE-DIVIDER.md](COMPARE-DIVIDER.md)。此次独立构建位于 `build/qt-compare-divider/app/`；上文 `review.2` 安装包未重打包，不包含本次 UI 修复。
+
+## 后续请求：JPG / PNG 导入（2026-11-01）
+
+新增 ICC 感知的 JPG/JPEG、PNG8/16 导入，复用 host reader 与原胶片管线。Windows Release CTest 36/36 通过，0 失败/跳过；新启动路径、数值、范围和剩余限制见 [导入验证](../raster-input-20261101/RESULTS.md)。review.2 安装包未重打包，不包含此功能。

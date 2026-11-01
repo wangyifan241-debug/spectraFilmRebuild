@@ -1,0 +1,11 @@
+{
+  "qt": "6.11.3",
+  "compiler": "MinGW-w64 13.1.0 posix-seh",
+  "source_directory": "C:\\Users\\Strickland\\SpektraLab-work",
+  "build_directory": "C:\\Users\\Strickland\\SpektraLab-work\\build\\qt-raster-input",
+  "source_inventory_sha256": "51d692036cbca1443e19f8e45f7245d2c81d4552041c35be9fb03112478864df",
+  "payload_inventory_sha256": "ac1c633f76a9fdcea01944e521f960fff92b0f046f7ea9e2f6794d811d0dc261",
+  "utc": "2026-11-01T03:19:56.3941032Z",
+  "ctest_run": true,
+  "executable_sha256": "cb5dbc80e840cb2e58c51b9f3472605052f58a64404ce2fb6ddc29e9eb87f80a"
+}

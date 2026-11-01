@@ -25,6 +25,9 @@ struct RawSourceSizes {
 };
 
 struct RawMetadata {
+    // The desktop also carries decoded raster input through this immutable
+    // frame container. Defaults preserve the RAW decoder's existing contract.
+    std::string input_kind = "raw", input_profile;
     std::string libraw_version;
     std::uint32_t libraw_capabilities = 0;
     std::string make, model, decoder_name;

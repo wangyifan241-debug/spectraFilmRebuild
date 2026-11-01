@@ -189,6 +189,8 @@ public:
 
     // New-file open is transactional: decode/open/render/display conversion
     // must all succeed before replacing the previous session and frame.
+    // Historical C++ name retained for callers: accepts RAW and ICC-aware
+    // JPEG/PNG. Raster inputs use compatible16; headroom remains RAW-only.
     FramePtr open_raw(const std::filesystem::path& source, DecodeMode mode,
                       const RenderSettings& settings = {}, const InputGeometry& geometry = {});
     FramePtr open_pair(const std::filesystem::path& identity,
