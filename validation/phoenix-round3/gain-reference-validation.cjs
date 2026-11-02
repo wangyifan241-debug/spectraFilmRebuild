@@ -1,0 +1,3 @@
+'use strict';
+const a=require('assert/strict');
+exports.validate=function(refs,baseline,constants){const ids=['harman_phoenix_200_exp_v1','harman_phoenix_ii_200_exp_v1'];a.equal(refs.records.length,2);for(const id of ids){const r=refs.records.find(x=>x.id===id);a.ok(r,'Missing frozen parent reference');const expected=baseline.records.find(x=>x.id===id&&x.mode==='Frozen Print'&&x.ev===0);a.deepEqual(r.reference.parameters,expected.parameters,'Parent gain reference conditions changed');a.deepEqual(r.gain,r.reference.constants.slice(567,570),'Frozen gain overwritten after reference measurement');a.deepEqual(r.gain,constants[id+' Frozen Print 0'].slice(567,570),'Parent gain differs from independently frozen EV0 constants');}};

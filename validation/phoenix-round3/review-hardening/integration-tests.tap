@@ -1,0 +1,50 @@
+TAP version 13
+# Subtest: 546 three-mode runs preserve 364 normal outputs and 182 family-fixed gain triples
+ok 1 - 546 three-mode runs preserve 364 normal outputs and 182 family-fixed gain triples
+  ---
+  duration_ms: 391.8084
+  ...
+# Subtest: all 16536 spectral samples independently checked, and 4368 layer coefficients unchanged by gain
+ok 2 - all 16536 spectral samples independently checked, and 4368 layer coefficients unchanged by gain
+  ---
+  duration_ms: 21.2341
+  ...
+# Subtest: every original event has paired fixed-gain evidence and residual events have stage snapshots
+ok 3 - every original event has paired fixed-gain evidence and residual events have stage snapshots
+  ---
+  duration_ms: 25.375
+  ...
+# Subtest: deep tracing preserves fixed output, isolates residual scanner stage and records bypass intervention
+ok 4 - deep tracing preserves fixed output, isolates residual scanner stage and records bypass intervention
+  ---
+  duration_ms: 6.9789
+  ...
+# Subtest: real launcher rejects another DLL before rendering and rejects mismatched checkpoint parameters
+ok 5 - real launcher rejects another DLL before rendering and rejects mismatched checkpoint parameters
+  ---
+  duration_ms: 1528.1251
+  ...
+# Subtest: product source and materials unchanged from PR9 audit baseline
+ok 6 - product source and materials unchanged from PR9 audit baseline
+  ---
+  duration_ms: 26.8367
+  ...
+# Subtest: adaptive replay preflight binds explicitly configured paths and rejects unbound legacy data
+ok 7 - adaptive replay preflight binds explicitly configured paths and rejects unbound legacy data
+  ---
+  duration_ms: 1790.4293
+  ...
+# Subtest: portable preparation reproduces accepted private input and filter bytes and refuses stale input
+ok 8 - portable preparation reproduces accepted private input and filter bytes and refuses stale input
+  ---
+  duration_ms: 769.4385
+  ...
+1..8
+# tests 8
+# suites 0
+# pass 8
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 4651.8758

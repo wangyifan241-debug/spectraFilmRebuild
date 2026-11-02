@@ -1,0 +1,12 @@
+{
+  "cxx": "path/to/mingw/bin/g++.exe",
+  "clean_build": "build/review-clean/engine",
+  "trace_build": "build/round3-trace",
+  "fixed_build": "build/round3-fixed-gain",
+  "round2_build": "build/round2",
+  "run_build": "build/round3-run",
+  "ui_build": "build/round3-ui",
+  "result_dir": "validation/phoenix-round3/review-hardening",
+  "qt_core": "path/to/Qt/bin/Qt6Core.dll",
+  "libraw_header": "path/to/LibRaw/libraw/libraw_version.h"
+}

@@ -1,0 +1,40 @@
+TAP version 13
+# Subtest: checkpoint rejects changed binary, input, resources, script and experiment parameters
+ok 1 - checkpoint rejects changed binary, input, resources, script and experiment parameters
+  ---
+  duration_ms: 6.9989
+  ...
+# Subtest: legacy unbound output cannot become a fresh checkpoint
+ok 2 - legacy unbound output cannot become a fresh checkpoint
+  ---
+  duration_ms: 1.4523
+  ...
+# Subtest: foreign checkpoint signature, wrong parameters and overwritten fixed gain rejected
+ok 3 - foreign checkpoint signature, wrong parameters and overwritten fixed gain rejected
+  ---
+  duration_ms: 1.7046
+  ...
+# Subtest: Gold negative basis is separated from composite absolute density and transmittance
+ok 4 - Gold negative basis is separated from composite absolute density and transmittance
+  ---
+  duration_ms: 0.4442
+  ...
+# Subtest: frozen parent gain file cannot be changed through candidate reference metadata
+ok 5 - frozen parent gain file cannot be changed through candidate reference metadata
+  ---
+  duration_ms: 192.8878
+  ...
+# Subtest: basis normalization requires inverse coefficient scaling; nonnegative projection changes total density
+ok 6 - basis normalization requires inverse coefficient scaling; nonnegative projection changes total density
+  ---
+  duration_ms: 1.3851
+  ...
+1..6
+# tests 6
+# suites 0
+# pass 6
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 270.3261

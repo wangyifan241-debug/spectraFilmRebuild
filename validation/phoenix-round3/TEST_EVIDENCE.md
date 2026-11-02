@@ -28,3 +28,35 @@
 复现顺序和依赖见README.md。执行工具/源/二进制身份见execution-provenance.json与evidence-manifest.json；清单不包含自身哈希。
 
 全部8736色块另完成固定D50理想负片观察与三组归一合成密度计积分，见candidate-negative-observers.json；不执行反转，不将其当成光学印相正片。
+
+## PR9 最终审查补强：本次重新运行
+
+审核基线9940ca3f。以下为本次执行，不沿用旧UI suite的Pass计数。
+
+| 本次验证 | 通过 | 失败/限制 | 原始证据 |
+|---|---|---|---|
+| 补强单元测试 | 6/6 | 0；含旧checkpoint、二进制/输入/参数/脚本不匹配、gain篡改拒绝和基函数标度不变性 | review-hardening/unit-tests.tap |
+| 补强集成测试 | 8/8 | 0；含真实启动器错DLL/参数拒绝和adaptive旧checkpoint拒绝 | integration-tests.tap |
+| 原第三轮测试 | 7/7 | 0 | baseline-tests.tap |
+| 色彩观测 | 6/6 | 0 | color-tests.tap |
+| PR6基础设施 | 39/39 | 0 | infrastructure-tests.tap |
+| provenance | 2/2 | 0 | provenance-tests.tap |
+| 三模式渲染 | 546组完成 | Frozen/Recal内部gain仍动态；Fixed仅为因果诊断 | three-mode-results.json |
+| 正常算法输出未变 | 364/364 SHA相同，旧材料另11/11 EV0相同 | 不外推为全部真实RAW或macOS通过 | three-mode-comparison.json、legacy-fixed-gain.json |
+| 原1729事件固定gain对照 | 143组完成 | 1720消失，9仍存；另新增23项 | legacy-causal-pairs.json |
+| 独立光谱积分 | 16536/16536采样通过，最大log误差3.79075e-7 | 24点采样，不是全帧全GPU有限性 | three-mode-comparison.json |
+| 负片阶段隔离 | 4368/4368层密度与Frozen相同 | 不能证明真实染料测量正确 | three-mode-comparison.json |
+| 深层扫描跟踪 | 54/54固定gain帧SHA相同 | 两域78项事件记录有重叠，不能当作78个独立场景 | deep-scanner-results.json |
+| 研究unsharp旁路 | 78/78记录的下降消失 | 不修改或推荐产品旁路；不是第四种产品印相模式 | deep-scanner-results.json |
+
+本次JS测试共68/68通过，0失败。负对照的预期拒绝计为测试通过，不冒充正常渲染成功。原始条件仍有失败：第三轮Frozen/Recal/Fixed分别2168/2159/46个全色块Y下降事件（其中灰阶548/546/8）；Gold基函数非负性不满足。两类失败与软件测试分开报告。
+
+本次没有重跑Qt/LibRaw预览导出22925项、macOS/Metal、真实胶片对照；此前Qt/ICC结果属于审核基线历史，不贡献本次测试通过数。产品engine/windows_UI源码和材料对9940ca3f无差异。
+
+恢复测试：review-run.cjs先验证checkpoint记录与冻结参数、输出、父gain，再由内部运行器验证session身份；legacy-review-run.cjs保留跨恢复的正常输出凭据。错误DLL在运行前被真实拒绝；篡改参数、gain或无身份旧checkpoint也拒绝。会改变数学或二进制身份的升级必须使用全新结果目录，不自动迁移旧数据。
+
+构建调试中曾出现一次仓库根路径多退一级的研究配置错误，已修正；没有把那次失败计入任何成功渲染。深层和固定gain源码只生成于独立build目录，真实产品输出不变性如上验证。
+
+空目录输入准备另发现一次滤镜JSON键顺序导致的字节身份不一致，已保留preparation-first-attempt.json。新增私有研究滤镜表快照只为复现字节序，生成参数必须与它深相等；从空目录准备的输入、材料和表SHA一致，过期输入拒绝测试通过，不改产品表。
+
+Checkpoint回归已证明能变红：在独立Node进程中故意禁用身份守卫，6项单元测试变为4通过/2失败（预期红，exit1），原始TAP为review-hardening/unit-tests-deliberately-broken.tap。恢复正常实现后6/6通过。该反例不改变产品文件，不计入正常实现的68/68通过数。

@@ -1,0 +1,26 @@
+{
+  "review_baseline": "9940ca3f0fa0d5ad1b6355503ed0ed1b5bb0d34e",
+  "files": [
+    {
+      "path": "build/round3-fixed-gain/pipeline-trace.cpp",
+      "sha256": "18c39b8aa6699f70b610a323d419baa64cd56d6d1f3294ab2b9ae8ce897868d4"
+    },
+    {
+      "path": "build/round3-fixed-gain/spektrafilm_engine.dll",
+      "sha256": "027386102a5b105bab3e41080abbaf13c7092dff9724d822f18a6abbe041cce7"
+    },
+    {
+      "path": "build/round3-fixed-gain/spk_render_fixture.exe",
+      "sha256": "1ad42423d55708058513be03adc73cffd6ac8730d9c45ae603f1013fd48de7c4"
+    },
+    {
+      "path": "build/round3-fixed-gain-deep/pipeline-deep.cpp",
+      "sha256": "228fa0d88a8e23db45d2a700d59c92bad716c4bf4d02a98656aa73917820af84"
+    },
+    {
+      "path": "build/round3-fixed-gain-deep/spektrafilm_engine.dll",
+      "sha256": "be889afab95d4ca7dc64df21491820d7292bf67bea0ef80454b3a43416fff30c"
+    }
+  ],
+  "scope": "research pipeline objects only; disabled normal controls and deep fixed output equality recorded; product sources unchanged"
+}
