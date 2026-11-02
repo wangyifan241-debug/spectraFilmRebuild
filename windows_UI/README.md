@@ -393,3 +393,24 @@ cropped/turned batch result and a JSON report in a NEW directory. It owns a
 copy of the input and its edit store. Recorded results and remaining limits
 are in [the validation record](VALIDATION_2026-10-30.md); these are not Mac
 whole-image parity or live-monitor acceptance.
+
+## 16-bit negative scan export
+
+For an entirely internal workflow, enable **自动负片翻转 · 去色罩** under
+film format/effects. It generates the negative, removes the orange base using
+the film data and reverses it without writing or reimporting a file. The
+canvas and normal exports show the same positive, with a soft output
+highlight shoulder. Post-Dev adjustments still apply. Disable it to restore
+the existing optical print. Slides and monochrome films retain their existing
+paths; the option is saved
+per photograph (sidecar version 10, older edits default off).
+
+In the export dialog select **负片扫描 TIFF · 16 位** for a negative film.
+The TIFF contains a simulated negative scan with the colour mask retained,
+encoded as ProPhoto RGB with an embedded ICC profile. Invert and remove the
+mask in an external negative conversion workflow. Printing and Post-Dev
+grading are bypassed; film exposure/effects and crop geometry remain.
+The size selector still applies; choose original cropped size for grading.
+This option is available for both single and batch export. Positive film
+stocks are rejected rather than exported under a misleading negative label.
+It does not change existing print rendering or the measured film profiles.

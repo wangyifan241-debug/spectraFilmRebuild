@@ -256,6 +256,8 @@ double silver_print_y_filter(const std::string& id) {
     return logical=="open_kodak_2302_5m_033"?0.0:68.0;
 }
 Json opening_params(const RenderSettings& settings, bool scan_film, bool mono, bool prophoto) {
+    require(!settings.auto_negative || scan_film || mono || prophoto,
+            "Automatic negative inversion requires ProPhoto working output");
     // Unexposed effects keep their engine defaults. The exposed settings
     // start at those same defaults, so opening an unedited image retains
     // the existing look, including the physical 35 mm grain/halation scale.
@@ -280,6 +282,7 @@ Json opening_params(const RenderSettings& settings, bool scan_film, bool mono, b
     // positive and must bypass negative-to-paper printing. The generic
     // engine API still permits deliberate positive-to-paper experiments.
     params.set("scan_film", Json(scan_film));
+    params.set("digital_intermediate", Json(settings.auto_negative && !scan_film && !mono));
     params.set("print_stock", Json(settings.print_stock));
     params.set("print_exposure", Json(settings.print_exposure));
     params.set("exposure_compensation_ev", Json(settings.film_exposure_ev));
@@ -307,6 +310,8 @@ Json opening_params(const RenderSettings& settings, bool scan_film, bool mono, b
 
 Json changed_params(const RenderSettings& before, const RenderSettings& after, bool scan_film, bool mono) {
     Json delta = Json::object();
+    if(before.auto_negative!=after.auto_negative || before.film_stock!=after.film_stock)
+        delta.set("digital_intermediate", Json(after.auto_negative && !scan_film && !mono));
     // Sending an unchanged film_stock still invalidates the negative in the
     // C API. A print-only edit must never include it incidentally.
     if (before.film_stock != after.film_stock) {
@@ -536,6 +541,7 @@ FramePtr PreviewHost::open_raw(const fs::path& source, DecodeMode mode, const Re
     t = Clock::now();
     const auto status = spk_render(session.get(), "live", &next->result_);
     require(status == SPK_OK, "Render: " + std::string(spk_last_error(impl_->engine.get())));
+    next->auto_negative_active=next->settings.auto_negative && !next->scan_film && !monochrome(next->settings,impl_->catalog);
     read_film_geometry(session.get(),*next);
     next->timings.render_ms = elapsed(t);
     next->timings.engine_render_ms = next->result_.elapsed_ms;
@@ -574,6 +580,7 @@ FramePtr PreviewHost::open_pair(const fs::path& identity,const std::array<fs::pa
     next->timings.open_ms=elapsed(t);t=Clock::now();
     const auto status=spk_render(session.get(),"live",&next->result_);
     require(status==SPK_OK,"Pair render: "+std::string(spk_last_error(impl_->engine.get())));
+    next->auto_negative_active=next->settings.auto_negative && !next->scan_film && !monochrome(next->settings,impl_->catalog);
     read_film_geometry(session.get(),*next);next->timings.render_ms=elapsed(t);next->timings.engine_render_ms=next->result_.elapsed_ms;
     if(!next->prophoto())next->bgra8=rgba16_to_bgra8(next->result_);
     impl_->session=std::move(session);impl_->decoded=next->decoded_;impl_->frame=next;
@@ -584,6 +591,8 @@ FramePtr PreviewHost::render(const RenderSettings& settings,const InputGeometry&
     const auto started = Clock::now();
     require(bool(impl_->frame), "Open a RAW image before rendering");
     const bool scan_film = validate_settings(settings, impl_->catalog);
+    require(!settings.auto_negative || scan_film || monochrome(settings,impl_->catalog) || impl_->display_transform,
+            "Automatic negative inversion requires ProPhoto working output");
     auto next = std::shared_ptr<Frame>(new Frame());
     next->source = impl_->frame->source;
     next->decode_mode = impl_->frame->decode_mode;
@@ -625,6 +634,7 @@ FramePtr PreviewHost::render(const RenderSettings& settings,const InputGeometry&
         t = Clock::now();
         const auto status = spk_reprint(impl_->session.get(), "live", &next->result_);
         require(status == SPK_OK, "Render: " + std::string(spk_last_error(impl_->engine.get())));
+        next->auto_negative_active=next->settings.auto_negative && !next->scan_film && !monochrome(next->settings,impl_->catalog);
         read_film_geometry(impl_->session.get(),*next);
         next->timings.render_ms = elapsed(t);
         next->timings.engine_render_ms = next->result_.elapsed_ms;
@@ -641,12 +651,16 @@ FramePtr PreviewHost::render(const RenderSettings& settings,const InputGeometry&
     return next;
 }
 
-FramePtr PreviewHost::render_original(const FramePtr& snapshot) {
+FramePtr PreviewHost::render_original(const FramePtr& snapshot, bool negative_scan) {
     require(snapshot && snapshot->decoded_, "Original export requires a decoded frame snapshot");
-    if(snapshot->native_)
+    if(negative_scan) {
+        require(!validate_settings(snapshot->settings,impl_->catalog), "Negative scan export requires a negative film");
+        require(snapshot->prophoto(), "Negative scan export requires ProPhoto working pixels");
+    }
+    if(snapshot->native_ && !negative_scan)
         return snapshot;
     const auto started=Clock::now();
-    const bool scan_film=validate_settings(snapshot->settings,impl_->catalog);
+    const bool scan_film=negative_scan || validate_settings(snapshot->settings,impl_->catalog);
     auto next=std::shared_ptr<Frame>(new Frame());
     next->source=snapshot->source;next->decode_mode=snapshot->decode_mode;
     next->settings=snapshot->settings;next->scan_film=scan_film;
@@ -665,6 +679,7 @@ FramePtr PreviewHost::render_original(const FramePtr& snapshot) {
     next->timings.open_ms=elapsed(t);t=Clock::now();
     const auto status=spk_render(original.get(),"full",&next->result_);
     require(status==SPK_OK,"Original render: "+std::string(spk_last_error(impl_->engine.get())));
+    next->auto_negative_active=next->settings.auto_negative && !next->scan_film && !monochrome(next->settings,impl_->catalog);
     read_film_geometry(original.get(),*next);
     require(next->settings.edge.active||(next->width()==next->prepared_->width && next->height()==next->prepared_->height),
             "Original render returned preview dimensions");

@@ -192,6 +192,28 @@ bool check_di(Gpu* gpu, std::string& error) {
     }
     return true;
 }
+bool check_di_encode(Gpu* gpu, std::string& error) {
+    // Identity matrix, unequal live gains and a nonzero clear-base floor.
+    // Independent double arithmetic checks the log convention before any UI curve.
+    const std::vector<float> input{-4,-3,-2,-1,-.5f,0, .5f,1,2};
+    float p[42]={}; p[0]=p[4]=p[8]=1;
+    p[9]=.1f;p[10]=-.2f;p[11]=.3f;
+    p[37]=685;p[38]=300;p[39]=1023;p[40]=.00001f;
+    p[41]=float(std::pow(10.,(95.-685.)/300.));
+    std::vector<double> expected;
+    for(size_t i=0;i<input.size();++i) {
+        const double gain=std::pow(10.,p[9+i%3]);
+        const double lin=std::max(0.,(std::pow(10.,input[i])-p[40])*gain);
+        expected.push_back(std::clamp((685.+300.*std::log10(lin*(1.-p[41])+p[41]))/1023.,0.,1.));
+    }
+    std::vector<float> initial(input.size()+kGuards,kGuard);
+    auto src=gpu->upload(input.data(),input.size()*sizeof(float),error);
+    auto params=gpu->upload(p,sizeof(p),error);
+    auto output=gpu->upload(initial.data(),initial.size()*sizeof(float),error);
+    const uint32_t n[1]={3};
+    return src&&params&&output&&gpu->dispatch("spk_di_encode",{Arg::buf(src),Arg::buf(params),Arg::inline_bytes(n,1),Arg::buf(output)},3,error)
+        &&check_result(gpu,output,expected,2e-6,"DI Cineon encoding",error);
+}
 }  // namespace
 
 int main(int argc, char** argv) {
@@ -200,7 +222,7 @@ int main(int argc, char** argv) {
     std::unique_ptr<Gpu> gpu(Gpu::create_vulkan(std::string(argv[1]) + "/vulkan", error));
     if (!gpu) { std::fprintf(stderr, "Vulkan device: %s\n", error.c_str()); return 1; }
     std::printf("Vulkan device: %s\n", gpu->device_name().c_str());
-    if (!check_lut(gpu.get(), error) || !check_di(gpu.get(), error)) {
+    if (!check_lut(gpu.get(), error) || !check_di(gpu.get(), error) || !check_di_encode(gpu.get(),error)) {
         std::fprintf(stderr, "LUT/DI: %s\n", error.c_str()); return 1;
     }
     std::printf("LUT/DI: %zu analytic/float64 cases, max abs error %.9g; NaN/Inf and guards passed\n",

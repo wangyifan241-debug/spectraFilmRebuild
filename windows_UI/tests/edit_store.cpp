@@ -131,6 +131,9 @@ int main(int argc, char** argv) {
         state.develop.vignetteAmount=-35;state.develop.vignetteMidpoint=42;
         store.save(url, state);
         check(store.load(url, catalog).state == std::optional(state), "atomic update did not replace prior state");
+        state.settings.auto_negative=true;store.save(url,state);
+        check(store.load(url,catalog).state==std::optional(state),"Automatic inversion did not survive save/load");
+        state.settings.auto_negative=false;store.save(url,state);
         const auto validBytes = read(path);
         auto validJson = QJsonDocument::fromJson(validBytes).object();
         validJson["version"]=8;
@@ -151,7 +154,7 @@ int main(int argc, char** argv) {
         const auto migrated=store.load(url,catalog);
         check(migrated.state==std::optional(legacyExpected),"version 1 edits did not restore with neutral post-develop");
         store.save(url,*migrated.state);
-        check(QJsonDocument::fromJson(read(path)).object()["version"].toInt()==9,"legacy save did not migrate version");
+        check(QJsonDocument::fromJson(read(path)).object()["version"].toInt()==10,"legacy save did not migrate version");
         write(path,validBytes);
         check(store.load(url,catalog).state==std::optional(state),"restoring migration fixture failed");
         auto version2=validJson;version2["version"]=2;

@@ -41,6 +41,7 @@ struct ExportOptions {
     int jpegQuality = 95;
     int maxLongEdge = 0; // zero preserves the cropped size; never upscale
     Develop develop;
+    bool negativeScan = false; // TIFF16, ProPhoto; bypass print-side grading
 };
 
 struct Geometry {
@@ -93,7 +94,8 @@ QImage exportImage(const QImage& fullRgba64, const Geometry& geometry,
                    const ExportOptions& options);
 bool formatAvailable(Format format);
 
-// File inputs must already be sRGB (or the legacy untagged-sRGB contract).
+// File inputs must already be sRGB (or the legacy untagged-sRGB contract),
+// except negativeScan TIFFs, which require tagged ProPhoto RGB pixels.
 // Frame overloads grade/resample ProPhoto and convert using the frame's owned
 // engine transform before writing. Uses resources/io/sRGB.icc. Writes a file
 // in a private temporary directory beside the destination, then publishes it

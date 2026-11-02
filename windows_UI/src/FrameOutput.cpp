@@ -176,6 +176,8 @@ fs::path nativePath(const QString& path) {
 #endif
 }
 void validateOptions(const ExportOptions& options) {
+    if(options.negativeScan && options.format!=Format::TIFF16)
+        fail(QStringLiteral("Negative scan export requires 16-bit TIFF"));
     switch(options.format) {
     case Format::TIFF16: case Format::PNG8: case Format::PNG16: case Format::JPEG8: break;
     default: fail(QStringLiteral("Unsupported export format"));
@@ -229,6 +231,31 @@ QImage framePixels(const FramePtr& frame) {
     QImage image(reinterpret_cast<const uchar*>(result.rgba16),int(result.width),int(result.height),
                   qsizetype(result.row_stride_px)*8,QImage::Format_RGBA64);
     image.setColorSpace(frame->prophoto()?QColorSpace::ProPhotoRgb:QColorSpace::SRgb);
+    if(frame->auto_negative_active) {
+        // Engine DI pixels are Cineon printing-density log, never display RGB.
+        // Decode before grading, then apply a luminance shoulder in the output
+        // stage. This preserves the measured film and keeps neutral greys neutral.
+        image=image.copy();
+        const double black=std::pow(10.0,(95.0-685.0)/300.0);
+        for(int y=0;y<image.height();++y) {
+            auto* row=reinterpret_cast<QRgba64*>(image.scanLine(y));
+            for(int x=0;x<image.width();++x) {
+                const auto px=row[x];double rgb[3];
+                const quint16 codes[3]={px.red(),px.green(),px.blue()};
+                for(int c=0;c<3;++c)rgb[c]=std::max(0.0,(std::pow(10.0,(codes[c]/65535.0*1023.0-685.0)/300.0)-black)/(1.0-black));
+                const double lum=.28804*rgb[0]+.71187*rgb[1]+.00009*rgb[2];
+                const double above=std::max(0.0,lum-.184);
+                const double mapped=lum<=.184?lum:.184+.816*above/(.816+above);
+                const double scale=lum>0?mapped/lum:0;
+                quint16 encoded[3];
+                for(int c=0;c<3;++c) {
+                    const double v=std::clamp(rgb[c]*scale,0.0,1.0);
+                    encoded[c]=quint16(std::lround((v<1.0/512?v*16:std::pow(v,1.0/1.8))*65535));
+                }
+                row[x]=QRgba64::fromRgba64(encoded[0],encoded[1],encoded[2],65535);
+            }
+        }
+    }
     return image;
 }
 
@@ -453,7 +480,10 @@ void exportImageFile(const QImage& fullRgba64,const fs::path& destination,
 void exportImageFile(const QImage& fullRgba64,const fs::path& destination,
                      const Geometry& geometry,const ExportOptions& options,const fs::path& resources) {
     validateOptions(options);
-    if(fullRgba64.colorSpace().isValid()&&fullRgba64.colorSpace()!=QColorSpace(QColorSpace::SRgb))
+    const auto outputSpace=options.negativeScan?QColorSpace(QColorSpace::ProPhotoRgb):QColorSpace(QColorSpace::SRgb);
+    if(options.negativeScan && fullRgba64.colorSpace()!=outputSpace)
+        fail(QStringLiteral("Negative scan pixels must be ProPhoto RGB"));
+    if(fullRgba64.colorSpace().isValid()&&fullRgba64.colorSpace()!=outputSpace)
         fail(QStringLiteral("File pixels must be converted to the selected output space, not merely tagged"));
     if(!formatAvailable(options.format))fail(QStringLiteral("This export format is not installed"));
     if(destination.empty() || destination.filename().empty())fail(QStringLiteral("Choose an export file name"));
@@ -462,15 +492,23 @@ void exportImageFile(const QImage& fullRgba64,const fs::path& destination,
     if(target.exists() || target.isSymLink())fail(QStringLiteral("The export file already exists"));
     if(!target.absoluteDir().exists())fail(QStringLiteral("The export folder does not exist"));
     auto pixels=exportImage(fullRgba64,geometry,options);
-    pixels.setColorSpace(profile(resources));
+    pixels.setColorSpace(options.negativeScan?outputSpace:profile(resources));
     QTemporaryDir staging(target.absoluteDir().filePath(QStringLiteral(".spektralab-export-XXXXXX")));
     if(!staging.isValid())fail(QStringLiteral("Cannot create an export temporary file in this folder"));
     const auto partial=nativePath(staging.filePath(QStringLiteral("output.partial")));
+    auto iccPath=resources/"io"/"sRGB.icc";
+    if(options.negativeScan) {
+        const auto name=staging.filePath(QStringLiteral("prophoto.icc"));
+        QFile icc(name);const auto bytes=outputSpace.iccProfile();
+        if(bytes.isEmpty()||!icc.open(QIODevice::WriteOnly)||icc.write(bytes)!=bytes.size())
+            fail(QStringLiteral("Cannot write the negative scan ICC profile"));
+        icc.close();iccPath=nativePath(name);
+    }
     if(options.format==Format::TIFF16) {
         std::string error;
         if(!io::write_srgb_tiff(partial,reinterpret_cast<const std::uint16_t*>(pixels.constBits()),
                 std::uint32_t(pixels.width()),std::uint32_t(pixels.height()),
-                std::uint32_t(pixels.bytesPerLine()/8),resources/"io"/"sRGB.icc",error))
+                std::uint32_t(pixels.bytesPerLine()/8),iccPath,error))
             throw std::runtime_error(error);
     } else {
         const auto format=options.format==Format::JPEG8?QByteArray("jpeg"):QByteArray("png");
@@ -495,13 +533,15 @@ void exportFrame(const FramePtr& frame,const fs::path& destination,QRectF crop,
 void exportFrame(const FramePtr& frame,const fs::path& destination,const Geometry& geometry,
                  const ExportOptions& options,const fs::path& resources) {
     if(!frame)fail(QStringLiteral("Export requires a frame"));
+    if(options.negativeScan && (!frame->scan_film || !frame->prophoto()))
+        fail(QStringLiteral("Negative export requires a directly scanned ProPhoto frame"));
     // The caller's immutable FramePtr stays alive throughout this synchronous
     // function; crop/downsize/detach cannot modify its retained RGBA16 result.
     auto workingOptions=options;workingOptions.develop={};workingOptions.format=Format::TIFF16;
     QImage pixels;
     {
-        const auto working=exportImage(developedWorking(frame,options.develop),frame->input_cut()?Geometry{}:geometry,workingOptions);
-        pixels=displaySpace(working,frame);
+        const auto working=exportImage(developedWorking(frame,options.negativeScan?Develop{}:options.develop),frame->input_cut()?Geometry{}:geometry,workingOptions);
+        pixels=options.negativeScan?working:displaySpace(working,frame);
     } // release the full-size working intermediate before the encoder allocates
     auto resolved=options;resolved.develop={};resolved.maxLongEdge=0;
     exportImageFile(pixels,destination,Geometry{},resolved,resources);

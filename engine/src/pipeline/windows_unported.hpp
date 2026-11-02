@@ -7,7 +7,7 @@ namespace spk {
 
 inline const char* windows_unported_error(bool di, bool latitude, bool mask,
                                          bool overscan, bool date) {
-    if (di) return "digital intermediate is not implemented by the Windows Vulkan backend yet";
+    (void)di; // spectral demasking, reversal and Cineon encode are portable Vulkan kernels
     // Scene latitude is now a portable Vulkan pointwise stage.
     (void)latitude;
     if (mask) return "contrast mask is not implemented by the Windows Vulkan backend yet";
