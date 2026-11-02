@@ -1,0 +1,35 @@
+{
+    "entries": {
+        "harman_phoenix_200_exp_v1": {
+            "CMY": [
+                0,
+                57.09484117761733,
+                79.04972127770415
+            ],
+            "converged": true,
+            "log_rgb_ratio_residual": [
+                0,
+                0
+            ],
+            "source_profile_sha256": "f748850ead1925865f896aac3cce9d7f248918d1b0f4240fa947817001f0f69d"
+        },
+        "harman_phoenix_ii_200_exp_v1": {
+            "CMY": [
+                0,
+                85.57272263769815,
+                96.63273370455258
+            ],
+            "converged": true,
+            "log_rgb_ratio_residual": [
+                0,
+                0
+            ],
+            "source_profile_sha256": "39a8c1cd3b0fe0a09db01f1873306948c5361f528d30de1d8dbce3fc3ee3dd0e"
+        }
+    },
+    "evidence": "C: neutral model-grey through actual Vulkan renderer; NOT physical film measurements",
+    "format": "SpektraLab.PhoenixPrintCalibration",
+    "illuminant": "TH-KG3",
+    "paper": "kodak_portra_endura",
+    "version": 1
+}

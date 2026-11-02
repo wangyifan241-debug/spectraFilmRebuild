@@ -1,0 +1,68 @@
+{
+  "format": "SpektraLab.PhoenixChartDigitization",
+  "version": 1,
+  "profile_ready": false,
+  "source": {
+    "author": "HARMAN technology Limited",
+    "edition": "November 2023",
+    "sha256": "9c5c63e8e0123f66edf0165a0246beb98e0e872ca2748b0f6267d33ae334472d",
+    "download_url": "https://www.revelab.es/fichas-carretes/harman-phoenix-200-datasheet.pdf"
+  },
+  "spectral": {
+    "page": 2,
+    "method": "PDF cubic Bezier centerlines, inversion by monotonic x, 1 nm sampling",
+    "calibration": {
+      "x0": 68.168,
+      "x1": 307.77,
+      "y0": 571.42,
+      "y1": 719.49
+    },
+    "channels": [
+      {
+        "channel": "red",
+        "offset_x": 187.97,
+        "segments": 21
+      },
+      {
+        "channel": "green",
+        "offset_x": 140.05,
+        "segments": 15
+      },
+      {
+        "channel": "blue",
+        "offset_x": 96.92,
+        "segments": 16
+      }
+    ],
+    "ordinate": "Relative Sensitivity as printed; linear/log meaning unresolved",
+    "illumination": "Wedge spectrogram to tungsten light (2856 K)",
+    "missing": "empty CSV field means outside plotted path; not zero sensitivity",
+    "uncertainty": "Path extraction removes tracing error, not source measurement or interpretation uncertainty"
+  },
+  "characteristic": {
+    "page": 3,
+    "method": "native 795x559 RGB image, black-ink vertical runs; no interpolation",
+    "rectangle": {
+      "left": 34,
+      "right": 703,
+      "top": 36,
+      "bottom": 452
+    },
+    "threshold": 65,
+    "density_standard": null,
+    "absolute_exposure_anchor": null,
+    "x_unit": "Relative Log Exposure as printed",
+    "y_unit": "Density as printed",
+    "process": "standard C41",
+    "fully_resolved_columns": 441,
+    "partially_or_fully_unresolved_columns": 225,
+    "uncertainty": "At least pixel/line-width quantization; no certified measurement accuracy. R/B unavailable when merged.",
+    "identity": "Right-edge labels establish Green upper, Blue middle, Red lower; unresolved crossings not assigned"
+  },
+  "gates": {
+    "digitized": true,
+    "physical_calibration": false,
+    "dye_base_reconstruction": false,
+    "independent_photographic_validation": false
+  }
+}

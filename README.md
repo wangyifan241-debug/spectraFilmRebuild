@@ -19,10 +19,18 @@ feature-complete or officially endorsed macOS release**.
 - Full-size TIFF/JPEG/PNG export and selected-photo batch export.
 - A dark Windows interface and an original film-strip application icon.
 
-There are currently 37 runtime material profiles (27 shooting films and 10 print
+There are currently 39 runtime material profiles (29 shooting films and 10 print
 materials). Pro Image 100 is **not a selectable film**: density consistency and
 exposure calibration remain unresolved behind quality gates. Research data and
 manufacturer names do not imply completed profiles or brand endorsement.
+
+HARMAN Phoenix 200 and Phoenix II 200 are independently versioned **Experimental
+v1** materials. They use the spectral film pipeline, physical grain and halation,
+with explicitly documented proxies for missing measurements. Select them in
+Film; use the existing film exposure, grain and halation controls, and inspect
+their evidence statement in the material manager. Software regression coverage
+does not certify photographic fidelity. See
+[the model record](engine/resources_research/PHOENIX_MODELS.md).
 
 ## Run on Windows
 

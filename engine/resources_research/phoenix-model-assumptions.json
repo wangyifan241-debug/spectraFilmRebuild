@@ -1,0 +1,27 @@
+{
+  "version": 1,
+  "material_version": "0.1.0",
+  "dye_proxy": "kodak_gold_200",
+  "spectral_ordinate_interpretation": "log10_relative_sensitivity_assumed",
+  "sensitivity_outside_support_log10": -8,
+  "reference_blackbody_kelvin": 5500,
+  "relative_exposure_anchor": 1.5,
+  "neutral_print_filter_pack_CMY": [0, 65, 55],
+  "base": {"floor_density": 0.18, "green_absorption": 0.20, "center_nm": 550, "sigma_nm": 65},
+  "synthetic_densitometer": {"centers_nm": [650, 550, 450], "sigmas_nm": [35, 30, 25]},
+  "phoenix_200": {"grain_particle_area_um2": 0.38, "halation_strength_rgb": [0.15, 0.045, 0.005], "halation_sigma_um": 65, "dir_couplers_scale": 0.15},
+  "phoenix_ii": {"grain_particle_area_um2": 0.26, "halation_strength_rgb": [0.10, 0.025, 0.002], "halation_sigma_um": 55, "dir_couplers_scale": 0.15},
+  "evidence": {
+    "A": "Manufacturer chart/explicit product statement; digitization retains original interpretation limits",
+    "B": "Secondary published chart; provenance/generation not fully verified",
+    "C": "Explicit mathematical proxy, parameter estimate or borrowed other-stock measurement",
+    "spectral": "A chart; C ordinate interpretation and channel normalization",
+    "characteristic_200": "A chart; C unresolved shadow completion and exposure anchor",
+    "characteristic_ii": "B JCH candidate with Phoenix I caption conflict; provisional II assignment is an explicit hypothesis",
+    "dyes": "C Gold 200 proxy, not measured Phoenix dyes; missing tails neutralized by assumption",
+    "base": "C unmasked purple base model, no measured base spectrum",
+    "densitometry": "C synthetic Gaussian instrument, NOT Status M; closure only to this assumed instrument",
+    "grain_halation": "C engine-model estimates; II finer grain qualitative ordering follows manufacturer, numbers unmeasured",
+    "dir_couplers": "C material baseline 0.15 of generic negative-film coupling. Full generic coupling folds the transformed exposure axis for this high-contrast reconstruction; reduced estimated coupling preserves monotonic development, not measured HARMAN chemistry."
+  }
+}

@@ -1,0 +1,251 @@
+{
+  "format": "SpektraLab.PhoenixChartDigitization",
+  "version": 1,
+  "stock": "HARMAN Phoenix II 200",
+  "profile_ready": false,
+  "source": {
+    "edition": "July 2025",
+    "author": "HARMAN technology Limited",
+    "sha256": "020260790a3b705d38ded5573abcb2af43b228b5e3440bc23463273cf78bff08",
+    "download_url": "https://www.fotoimpex.com/shop/images/products/media/72015_5_PDF-Datasheet.pdf",
+    "official_url": "https://www.harmanphoto.co.uk/amfile/file/download/file/1968/product/2208/"
+  },
+  "spectral": {
+    "page": 2,
+    "method": "native indexed raster, black-ink centers selected by audited branch guides; no output interpolation",
+    "width": 795,
+    "height": 559,
+    "rectangle": {
+      "left": 34,
+      "right": 703,
+      "top": 37,
+      "bottom": 452
+    },
+    "black_threshold": 65,
+    "max_ink_run_px": 40,
+    "guide_corridor_px": 24,
+    "crossing_exclusion_px": 7,
+    "guides": {
+      "blue": [
+        [
+          115,
+          384
+        ],
+        [
+          130,
+          361
+        ],
+        [
+          144,
+          326
+        ],
+        [
+          155,
+          284
+        ],
+        [
+          169,
+          266
+        ],
+        [
+          200,
+          253
+        ],
+        [
+          225,
+          242
+        ],
+        [
+          238,
+          232
+        ],
+        [
+          247,
+          220
+        ],
+        [
+          260,
+          239
+        ],
+        [
+          280,
+          269
+        ],
+        [
+          300,
+          298
+        ],
+        [
+          310,
+          335
+        ],
+        [
+          320,
+          387
+        ],
+        [
+          329,
+          426
+        ]
+      ],
+      "green": [
+        [
+          275,
+          416
+        ],
+        [
+          286,
+          380
+        ],
+        [
+          300,
+          330
+        ],
+        [
+          307,
+          306
+        ],
+        [
+          315,
+          280
+        ],
+        [
+          335,
+          247
+        ],
+        [
+          352,
+          231
+        ],
+        [
+          365,
+          244
+        ],
+        [
+          375,
+          278
+        ],
+        [
+          390,
+          330
+        ],
+        [
+          404,
+          369
+        ],
+        [
+          420,
+          408
+        ],
+        [
+          436,
+          447
+        ]
+      ],
+      "red": [
+        [
+          368,
+          434
+        ],
+        [
+          385,
+          407
+        ],
+        [
+          400,
+          370
+        ],
+        [
+          410,
+          349
+        ],
+        [
+          435,
+          325
+        ],
+        [
+          455,
+          304
+        ],
+        [
+          474,
+          280
+        ],
+        [
+          491,
+          240
+        ],
+        [
+          503,
+          227
+        ],
+        [
+          513,
+          240
+        ],
+        [
+          523,
+          273
+        ],
+        [
+          531,
+          316
+        ],
+        [
+          538,
+          359
+        ],
+        [
+          545,
+          394
+        ],
+        [
+          552,
+          416
+        ],
+        [
+          560,
+          438
+        ],
+        [
+          568,
+          450
+        ]
+      ]
+    },
+    "counts": {
+      "red": {
+        "traced": 198,
+        "ambiguous": 2,
+        "missing": 470
+      },
+      "green": {
+        "traced": 158,
+        "ambiguous": 4,
+        "missing": 508
+      },
+      "blue": {
+        "traced": 205,
+        "ambiguous": 2,
+        "missing": 463
+      }
+    },
+    "ordinate": "Relative Sensitivity as printed; linear/log meaning unresolved",
+    "illumination": "Wedge spectrogram to daylight (D55)",
+    "missing": "Empty fields are unknown, not zero. Trace endpoints are not proven physical cutoffs.",
+    "uncertainty": "Pixel and source stroke quantization, branch/crossing ambiguity; no certified measurement bound"
+  },
+  "characteristic": {
+    "status": "not_present_in_downloaded_July_2025_datasheet",
+    "curves": null,
+    "absolute_exposure_anchor": null,
+    "density_standard": null
+  },
+  "gates": {
+    "spectral_digitized": true,
+    "characteristic_digitized": false,
+    "physical_calibration": false,
+    "dye_base_reconstruction": false,
+    "independent_photographic_validation": false
+  }
+}

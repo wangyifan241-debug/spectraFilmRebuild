@@ -149,6 +149,12 @@ if(NOT APPLE)
                     "${CMAKE_CURRENT_SOURCE_DIR}/resources_open/profiles" "${vulkan_resource_dir}/profiles"
             COMMAND "${CMAKE_COMMAND}" -E copy_directory
                     "${CMAKE_CURRENT_SOURCE_DIR}/resources_open" "${vulkan_resource_dir}/open-materials"
+            COMMAND "${CMAKE_COMMAND}" -E copy_directory
+                    "${CMAKE_CURRENT_SOURCE_DIR}/resources_experimental/profiles" "${vulkan_resource_dir}/profiles"
+            COMMAND "${CMAKE_COMMAND}" -E copy_if_different
+                    "${CMAKE_CURRENT_SOURCE_DIR}/resources_experimental/NOTICE.md" "${vulkan_resource_dir}/PHOENIX_EXPERIMENTAL_NOTICE.md"
+            COMMAND "${CMAKE_COMMAND}" -E copy_if_different
+                    "${CMAKE_CURRENT_SOURCE_DIR}/resources_experimental/neutral_print_filters.json" "${vulkan_resource_dir}/neutral_print_filters.json"
             DEPENDS ${vulkan_spirv}
             VERBATIM)
 

@@ -704,3 +704,26 @@ engine/tests/         parity harnesses (§8.6), gpu_smoke, check_math_guard.sh
   `CAMetalLayer`; `Tools/capture-live.sh` photographs the real window and is
   the only capture that proves the canvas draws. Neither sees a stall; the
   canvas log (`SPEKTRAFILM_CANVAS_LOG=1`) does.
+
+## 10. Windows experimental Phoenix materials (2026-11-02)
+
+`engine/resources_experimental/` supplies two independent v0.1.0 spectral
+profiles and explicit print-filter starting packs; CMake overlays these into
+the existing resource catalogue. `engine/resources/` remains unchanged.
+The Windows material manager displays Experimental names, evidence levels and
+unvalidated photographic fidelity. Existing exposure/grain/halation controls,
+immutable frame ownership, color conversion and export paths are reused.
+
+`ProfileInfo` optionally reads `info.render_model` v1 for grain particle area
+and halation strengths/sigma, plus an estimated DIR coupling scale; `digest` applies these before preview/debug
+bypasses and keeps user effect amounts separate. Missing extension preserves
+the legacy presets. The material-file contract is API-SPEC §17.
+No new film shader or style LUT is introduced.
+
+Offline extraction, assumptions, a synthetic-densitometer inversion and CDF fit
+are documented in `engine/resources_research/PHOENIX_MODELS.md`; the bundled
+profiles need no Node/Python at runtime or normal build time. Original sources,
+digitized samples, hashes and scripts are retained independently for upgrades.
+The second-generation characteristic is a labelled secondary-source hypothesis,
+not authenticated official data. Functional tests must not be described as
+validation against photographed HARMAN film.
