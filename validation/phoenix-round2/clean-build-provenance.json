@@ -14,7 +14,6 @@
     }
   ],
   "trace_binary_sha256": "019f71340db0b1392be76768f009055fa661a7aab3727f3b1cd2c16f94adf939",
-  "vulkan_headers_commit": "",
   "shaders": [
     {
       "name": "spk_affine3.spv",
@@ -179,5 +178,14 @@
   ],
   "limits": "clean native engine/driver only; no Qt GUI rebuild or RAW decoder (disabled); trace DLL test-only replaces pipeline object",
   "glslang": "Glslang Version: 11:16.2.0\r\nESSL Version: OpenGL ES GLSL 3.20 glslang Khronos. 16.2.0\r\nGLSL Version: 4.60 glslang Khronos. 16.2.0\r\nSPIR-V Version 0x00010600, Revision 1\r\nGLSL.std.450 Version 100, Revision 1\r\nKhronos Tool ID 8\r\nSPIR-V Generator Version 11\r\nGL_KHR_vulkan_glsl version 100\r\nARB_GL_gl_spirv version 100\r\n",
-  "cmake": "cmake version 3.25.0\n\nCMake suite maintained and supported by Kitware (kitware.com/cmake).\n"
+  "cmake": "cmake version 3.25.0\n\nCMake suite maintained and supported by Kitware (kitware.com/cmake).\n",
+  "vulkan_headers": {
+    "git_commit": null,
+    "reason": "installed source directory is not a Git checkout",
+    "version_macros": [
+      "#define VK_HEADER_VERSION 341",
+      "#define VK_HEADER_VERSION_COMPLETE VK_MAKE_API_VERSION(0, 1, 4, VK_HEADER_VERSION)"
+    ],
+    "core_header_sha256": "dc340d0561e1eb333af35b4766d36f96445e451479839276f3412fb275f4623a"
+  }
 }
