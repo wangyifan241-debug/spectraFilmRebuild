@@ -1,0 +1,23 @@
+{
+  "format": "SpektraLab.PhoenixCandidate",
+  "version": 1,
+  "id": "phx_200_d55_r2",
+  "parent_commit": "ba076b2befe6586ad3095f897ebf40ea7e9ffd6c",
+  "renderer_commit": "ba076b2befe6586ad3095f897ebf40ea7e9ffd6c",
+  "hypothesis": {
+    "category": "spectral_response",
+    "rationale": "D55 weighting only",
+    "evidence_level": "C",
+    "source_record": "validation/phoenix-round2/D55.json"
+  },
+  "profiles": [
+    {
+      "parent_stock": "harman_phoenix_200_exp_v1",
+      "parent_path": "validation/phoenix-round2/parents/harman_phoenix_200_exp_v1.json",
+      "file": {
+        "path": "validation/phoenix-round2/profiles/phx_200_d55_r2.json",
+        "sha256": "d0ba0b2272022a967ffdc26dffe6f78e83463bf02dbabf0a543b298f83c7f8ca"
+      }
+    }
+  ]
+}

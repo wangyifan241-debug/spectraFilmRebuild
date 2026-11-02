@@ -1,0 +1,14 @@
+{"exit":0}
+harman_phoenix_200_exp_v1 reopened=harman_phoenix_200_exp_v1 preview difference=0 saved settings equal=1
+harman_phoenix_ii_200_exp_v1 reopened=harman_phoenix_ii_200_exp_v1 preview difference=0 saved settings equal=1
+phx_200_d55_r2 reopened=phx_200_d55_r2 preview difference=0 saved settings equal=1
+phx_200_linear_r2 reopened=phx_200_linear_r2 preview difference=0 saved settings equal=1
+phx_200_no_tungsten_r2 reopened=phx_200_no_tungsten_r2 preview difference=0 saved settings equal=1
+phx_200_shared_r2 reopened=phx_200_shared_r2 preview difference=0 saved settings equal=1
+phx_ii_d55_r2 reopened=phx_ii_d55_r2 preview difference=0 saved settings equal=1
+phx_ii_linear_r2 reopened=phx_ii_linear_r2 preview difference=0 saved settings equal=1
+phx_ii_shared_r2 reopened=phx_ii_shared_r2 preview difference=0 saved settings equal=1
+phx_ii_width115_r2 reopened=phx_ii_width115_r2 preview difference=0 saved settings equal=1
+phx_ii_width130_r2 reopened=phx_ii_width130_r2 preview difference=0 saved settings equal=1
+Phoenix: 18014 checks; SOFTWARE ONLY. Photographic fidelity NOT validated.
+
