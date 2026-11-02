@@ -1,0 +1,32 @@
+{
+  "format": "SpektraLab.PhoenixRenderRecipe",
+  "version": 1,
+  "renderer_commit": "ba076b2befe6586ad3095f897ebf40ea7e9ffd6c",
+  "basis": "Reconstructed explicit controls from PR4 phoenix_material.cpp; historical PNG hashes are authoritative. Not a historical full parameter dump.",
+  "input": {
+    "fixture": "validation/phoenix-review-20261102/images/input.png",
+    "color_model": "embedded sRGB",
+    "host_decode": "compatible16; existing host converts to linear working input"
+  },
+  "print": {
+    "stock": "kodak_portra_endura",
+    "pack": "engine/resources_experimental/neutral_print_filters.json",
+    "sha256": "2830aca2477154107fc08d57c058f2fa0a3dfe933b931a946deca30186d43004",
+    "automatic_recalibration": false
+  },
+  "engine_parameters": {
+    "print_stock": "kodak_portra_endura",
+    "print_exposure": 1,
+    "film_exposure_ev": 0,
+    "film_format_mm": 35,
+    "grain_active": false,
+    "grain_amount": 1,
+    "halation_active": false,
+    "halation_amount": 1,
+    "glare_active": false,
+    "glare_amount": 1,
+    "y_filter_shift": 0,
+    "m_filter_shift": 0
+  },
+  "effects": "Deterministic color fixture only. Spatial validation requires a separately frozen recipe with effects active and independently calibrated scale; never compare across recipe hashes."
+}

@@ -1,0 +1,12 @@
+{
+  "format": "SpektraLab.PhoenixCandidate",
+  "version": 1,
+  "id": "replace-with-new-candidate-id",
+  "parent_commit": "ba076b2befe6586ad3095f897ebf40ea7e9ffd6c",
+  "renderer_commit": "ba076b2befe6586ad3095f897ebf40ea7e9ffd6c",
+  "hypothesis": {"category": null, "rationale": null, "evidence_level": null, "source_record": null},
+  "profiles": [{"parent_stock": "harman_phoenix_200_exp_v1", "file": null}],
+  "recipe": null,
+  "fixed_inputs": [{"id": "frozen-input", "file": null}],
+  "renderer": {"executable": null, "sha256": null, "resources": null, "assets": [], "args": ["--resources", "{resources}", "--input", "{input}", "--output", "{output}", "--stock", "{stock}", "--params", "{params}"], "timeout_ms": 120000}
+}

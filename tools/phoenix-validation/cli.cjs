@@ -1,0 +1,32 @@
+#!/usr/bin/env node
+'use strict';
+const {fs,path,json,writeJson,fileHash,requireThat,binding}=require('./common.cjs');
+const root=path.resolve(__dirname,'../..'),dir=path.join(root,'validation/phoenix-accuracy');
+function options(argv){const o={};for(let i=0;i<argv.length;i+=2){requireThat(argv[i].startsWith('--')&&argv[i+1]!==undefined,'Expected --key value');o[argv[i].slice(2)]=argv[i+1];}return o;}
+function execute(argv){const command=argv.shift()??'help',o=options(argv),lock=json(o.lock??path.join(dir,'baseline-lock.v1.json'));
+ if(command==='verify'){const result=require('./baseline.cjs').verifyLock(root,lock);console.log(JSON.stringify(result,null,2));return result.status==='Pass'?0:1;}
+ if(command==='split'){const m=require('./references.cjs');console.log(JSON.stringify(m.splits(m.manifest(json(o.manifest??path.join(dir,'references.v1.json')))),null,2));return 0;}
+ if(command==='extract'){requireThat(o.input&&o.spec&&o.out,'extract needs --input --spec --out');writeJson(o.out,require('./observations.cjs').extract(fs.readFileSync(o.input),json(o.spec)));return 0;}
+ if(command==='candidate'){requireThat(o.plan,'candidate needs --plan');const plan=json(o.plan);console.log(JSON.stringify(require('./candidates.cjs').validateCandidate(root,plan,lock),null,2));
+  if(o['render-out']){const run=require('./candidates.cjs').runRenders(root,plan,lock,path.resolve(o['render-out']));const comparisons=[];
+   for(const row of run.records.filter(r=>r.model_id===plan.id)){const entry=plan.profiles.find(p=>json(binding(root,p.file).file).info.stock===row.stock),old=run.records.find(r=>r.model_id==='experimental-v1'&&r.stock===entry.parent_stock&&r.input_id===row.input_id);requireThat(old&&old.input_sha256===row.input_sha256,'Missing identical parent render input');comparisons.push({candidate:row.stock,parent:old.stock,input_id:row.input_id,...require('./png.cjs').compare(fs.readFileSync(old.output_path),fs.readFileSync(row.output_path))});}
+   writeJson(path.join(o['render-out'],'comparison.json'),{format:'SpektraLab.PhoenixCandidateComparison',version:1,plan_sha256:fileHash(o.plan),run,comparisons,photographic_gate:{status:'Not Verified',metrics:null,reason:'Fixed input renders are engineering evidence only; run paired reference report separately'}});
+   const relative=p=>path.relative(root,path.resolve(p)).replaceAll('\\','/');
+   if(!relative(o['render-out']).startsWith('../')&&!relative(o.plan).startsWith('../')){
+    const material=(p,parent)=>{const v=json(binding(root,p).file);return {...p,stock:v.info.stock,version:v.metadata.version,...(parent?{parent_stock:parent}:{})};};
+    const candidates=plan.profiles.map(p=>material(p.file,p.parent_stock));
+    const parents=lock.profiles.map(p=>({path:p.path,sha256:p.sha256,stock:p.stock,version:p.version}));
+    const frozenInput=lock.renderings.find(f=>f.path.endsWith('/input.png')).sha256;
+    const fixedRenders=id=>run.records.filter(r=>r.model_id===id&&r.input_sha256===frozenInput).map(r=>({parent_stock:id==='experimental-v1'?r.stock:plan.profiles.find(p=>json(binding(root,p.file).file).info.stock===r.stock).parent_stock,input_sha256:r.input_sha256,file:{path:relative(r.output_path),sha256:r.output_sha256}}));
+    writeJson(path.join(o['render-out'],'models.json'),{format:'SpektraLab.PhoenixModels',version:1,recipe:plan.recipe,models:[{id:'experimental-v1',label:'Frozen v1, same-run parent renders',renderer_commit:plan.renderer_commit,recipe_sha256:plan.recipe.sha256,materials:parents,fixed_renders:fixedRenders('experimental-v1')},{id:plan.id,label:plan.id,renderer_commit:plan.renderer_commit,recipe_sha256:plan.recipe.sha256,candidate_plan:{path:relative(o.plan),sha256:fileHash(o.plan)},materials:candidates,fixed_renders:fixedRenders(plan.id)}]});
+   }
+   const esc=require('./common.cjs').escapeHtml;fs.writeFileSync(path.join(o['render-out'],'index.html'),'<!doctype html><meta charset="utf-8"><title>Phoenix candidate comparison</title><h1>Engineering render comparison</h1><p>Photographic fidelity: Not Verified</p><pre>'+esc(JSON.stringify(comparisons,null,2))+'</pre>'+run.records.map(r=>'<figure><img width="384" src="'+esc(path.basename(r.output_path))+'"><figcaption>'+esc(r.model_id+' / '+r.stock+' / '+r.input_id)+'</figcaption></figure>').join(''),{flag:'wx'});
+  }return 0;
+ }
+ if(command==='report'){const result=require('./report.cjs').generate(root,{lock:o.lock??path.join(dir,'baseline-lock.v1.json'),references:o.references??path.join(dir,'references.v1.json'),policy:o.policy??path.join(dir,'acceptance.v1.json'),models:o.models??path.join(dir,'models.v1.json'),split:o.split??'validation',purpose:o.purpose??'iteration',runId:o.run??'run-'+new Date().toISOString().replace(/[:.]/g,'-'),out:path.resolve(o.out??path.join(root,'build/phoenix-validation-reports'))});console.log(result.directory);for(const m of result.report.models)console.log(m.id+': engineering='+m.engineering_gate.status+'; photographic='+m.photographic_gate.status);
+  const gate=o.gate??'engineering';requireThat(['engineering','photographic'].includes(gate),'Unknown gate');const states=result.report.models.map(m=>m[gate+'_gate'].status);return states.includes('Fail')?1:states.includes('Not Verified')?3:0;
+ }
+ requireThat(command==='help','Unknown command');console.log('Phoenix validation: verify | split [--manifest file] | extract --input PNG --spec JSON --out JSON | candidate --plan JSON [--render-out new-directory] | report [--run id --out dir --references JSON --models JSON --policy JSON --split train|validation|test --purpose final_evaluation --gate engineering|photographic]\nExit: 0 selected gate Pass; 1 Fail/invalid input; 3 Not Verified. Offline, Node built-ins only.');return 0;
+}
+if(require.main===module){try{process.exitCode=execute(process.argv.slice(2));}catch(e){console.error(e.message);process.exitCode=1;}}
+module.exports={execute};

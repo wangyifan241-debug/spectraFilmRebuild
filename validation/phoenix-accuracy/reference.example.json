@@ -1,0 +1,18 @@
+{
+  "inactive_template": true,
+  "id": "replace-with-reviewed-sample-id",
+  "stock": "phoenix_200",
+  "origin_kind": "physical_film",
+  "film": {"product": null, "format": "135"},
+  "identity": {"negative_id": null, "roll_id": null, "scene_id": null, "raw_capture_id": null},
+  "split": null,
+  "provenance": {"source_uri": null, "author": null, "license": {"id": null, "url_or_permission": null}},
+  "pairing": {"status": "not_verified", "reviewer": null, "method": null},
+  "exposure": {"description": null, "iso": null, "aperture": null, "shutter_seconds": null, "illumination": null},
+  "process": {"description": null, "chemistry": null, "temperature_C": null, "time_seconds": null, "lab": null},
+  "scan": {"device": null, "processing": null, "icc_transform": null, "observation_reviewed_by": null, "resolution_dpi": null, "bit_depth": null},
+  "files": {"raw": null, "scan": null, "icc": null, "reference_observations": null, "pairing_evidence": null},
+  "model_outputs": {
+    "experimental-v1": {"stock": null, "material_sha256": null, "input_sha256": null, "recipe_sha256": null, "renderer_commit": null, "render": null, "observations": null}
+  }
+}

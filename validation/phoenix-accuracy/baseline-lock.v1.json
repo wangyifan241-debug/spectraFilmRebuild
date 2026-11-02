@@ -1,0 +1,339 @@
+{
+  "format": "SpektraLab.PhoenixBaselineLock",
+  "version": 1,
+  "pr": 4,
+  "commit": "ba076b2befe6586ad3095f897ebf40ea7e9ffd6c",
+  "tree": "880c97e14ce429be45d3b055c16a40bd955e0172",
+  "profiles": [
+    {
+      "path": "engine/resources_experimental/profiles/harman_phoenix_200_exp_v1.json",
+      "sha256": "f748850ead1925865f896aac3cce9d7f248918d1b0f4240fa947817001f0f69d",
+      "stock": "harman_phoenix_200_exp_v1",
+      "version": "0.1.0",
+      "source_sha256": {
+        "spectral_csv": "94ed50a49378f17ca4192f24d475ee0db22d9ad3dadc38b8900300ea860baf20",
+        "characteristic_csv": "89c95bf25154dc1072c54260be275d05f013015ef571b096738103fe9405f871",
+        "dye_proxy": "8190c24d1e2f0aa9daeff89a8325f9051d2d2e9a96d867386fbded7fe3a82004"
+      }
+    },
+    {
+      "path": "engine/resources_experimental/profiles/harman_phoenix_ii_200_exp_v1.json",
+      "sha256": "39a8c1cd3b0fe0a09db01f1873306948c5361f528d30de1d8dbce3fc3ee3dd0e",
+      "stock": "harman_phoenix_ii_200_exp_v1",
+      "version": "0.1.0",
+      "source_sha256": {
+        "spectral_csv": "a0c0584cf007865c5440873c16371ce9f4c8a84e4e787ad9f59815d01c4256c9",
+        "characteristic_csv": "d04ae262cb46cbdcb8ecd6f8997dbdd6035119e8bfe601d7335368a3b61598b5",
+        "dye_proxy": "8190c24d1e2f0aa9daeff89a8325f9051d2d2e9a96d867386fbded7fe3a82004"
+      }
+    }
+  ],
+  "files": [
+    {
+      "path": "engine/resources/io/README.txt",
+      "sha256": "4c32ae8e12f083c062711a4400fb877091be059d7b94dcb37c2a6fe6ad492d9d"
+    },
+    {
+      "path": "engine/resources/io/sRGB.icc",
+      "sha256": "f869f25625302eef46cd74fe56ec11adbfa7cf20db6f70b8efdddcbeec4323a0"
+    },
+    {
+      "path": "engine/resources/neutral_print_filters.json",
+      "sha256": "8bbf8d8db76aecdc9e94bc0b1e31f3329553eeda56d210ab36294fa5e4bf3b13"
+    },
+    {
+      "path": "engine/resources/print_luts.json",
+      "sha256": "292b36e7e4a9a7555032cd565b180d0cf6c0da21c80f2210ccaaf9b77732c1dd"
+    },
+    {
+      "path": "engine/resources/profiles/fujifilm_c200.json",
+      "sha256": "30db07d88090aadc62e03d18c2c51f67a20a1673390c69f99933b7ed5406d2c8"
+    },
+    {
+      "path": "engine/resources/profiles/fujifilm_crystal_archive_typeii.json",
+      "sha256": "b613da2fc9cde092da450abe00b230c73d7ec6afc20fed2b4112e5b5fa77e80e"
+    },
+    {
+      "path": "engine/resources/profiles/fujifilm_pro_400h.json",
+      "sha256": "da1be731ab79fb5535c43042494fa7298c942179abb68270b928aa012c629b31"
+    },
+    {
+      "path": "engine/resources/profiles/fujifilm_provia_100f.json",
+      "sha256": "f061f7aa55e3fefe1c89ee2edb8555a2d44fe8167d02f663c787067d131137b6"
+    },
+    {
+      "path": "engine/resources/profiles/fujifilm_velvia_100.json",
+      "sha256": "af696fa9662e0483cb9428d2939675044f2016fc3fad760b50a20a0a586fc04b"
+    },
+    {
+      "path": "engine/resources/profiles/fujifilm_xtra_400.json",
+      "sha256": "5f2a3642c7c8db5e750d7366c34b47d24b89ad78d2abe41da4b5282fd4286e58"
+    },
+    {
+      "path": "engine/resources/profiles/kodak_2383.json",
+      "sha256": "273eda5e3c9f4a624c1ce65a8249e343fb227d49bcf9bab54167415ac6fd5540"
+    },
+    {
+      "path": "engine/resources/profiles/kodak_2393.json",
+      "sha256": "11fc419921ac81bde811305c46c4bc25a833373e5378a06f3c88929b55d16b33"
+    },
+    {
+      "path": "engine/resources/profiles/kodak_ektachrome_100.json",
+      "sha256": "ef194fd80c60a1ac42bbbf1df458b4d047fc07bc17eebce674bb3bcba2ccf62a"
+    },
+    {
+      "path": "engine/resources/profiles/kodak_ektacolor_edge.json",
+      "sha256": "82af7d6f3e268f2debbf1a6993356193ac0e948f8fb9725bb8b68d75daddaef4"
+    },
+    {
+      "path": "engine/resources/profiles/kodak_ektar_100.json",
+      "sha256": "60acbd46c75005771569eafb97f534a4495e9d4e1e9c1e419b90cea2676ec7cf"
+    },
+    {
+      "path": "engine/resources/profiles/kodak_endura_premier.json",
+      "sha256": "7dd0ffe44fc383aa68dc0cee85d4a7e084bec7698784675ea567ca313af00fc1"
+    },
+    {
+      "path": "engine/resources/profiles/kodak_gold_200.json",
+      "sha256": "aa8a0c1c7851fface3752f968cdf6c6d74a26fc9756a4460d3155d2382506b7c"
+    },
+    {
+      "path": "engine/resources/profiles/kodak_kodachrome_64.json",
+      "sha256": "f88ede487219cf75090ed6663af6923c595707b3c48819f2ccf27122130e921d"
+    },
+    {
+      "path": "engine/resources/profiles/kodak_portra_160.json",
+      "sha256": "1bc9b65a6940f3a4381e8d14d0ac43594aff9495051992ce4d7408e761549992"
+    },
+    {
+      "path": "engine/resources/profiles/kodak_portra_400.json",
+      "sha256": "b5cdc73dbec8f462f488bca70bedf23fd13ce79969c0457e8ac2a2565d92bf5d"
+    },
+    {
+      "path": "engine/resources/profiles/kodak_portra_800.json",
+      "sha256": "5b0c6e861c6273a2ecdf552525e80738037918e650a0dc206e095acfd02f8b43"
+    },
+    {
+      "path": "engine/resources/profiles/kodak_portra_800_push1.json",
+      "sha256": "dac9cbcd2442442d9dee90bd2d6a28dcc4b996635dcac0b44ac8ecd32c4b3a4f"
+    },
+    {
+      "path": "engine/resources/profiles/kodak_portra_800_push2.json",
+      "sha256": "5ee01e4a00c157721738314313a43b46fcd5dae62ed3a7e4730f9054b66f6282"
+    },
+    {
+      "path": "engine/resources/profiles/kodak_portra_endura.json",
+      "sha256": "ad5ac4b98640c2d6ad0ba24c33ac880d927cbbf1c60551594f2a081cfc2d8d9a"
+    },
+    {
+      "path": "engine/resources/profiles/kodak_supra_endura.json",
+      "sha256": "8d49b240952c77b8302d6d7e652400e21bed595233f926bcc588481d100d2055"
+    },
+    {
+      "path": "engine/resources/profiles/kodak_ultra_endura.json",
+      "sha256": "8ea5aa5643c5a27b9c189f81a5a126573484f679d4b6d37dbee1b27485b6de9a"
+    },
+    {
+      "path": "engine/resources/profiles/kodak_ultramax_400.json",
+      "sha256": "248b78bdcc4fdbe864e30f193f900059ecd98cbdb276c88ad8f6f5b520137901"
+    },
+    {
+      "path": "engine/resources/profiles/kodak_verita_200d.json",
+      "sha256": "5d71a3f544721a71cfa0b0671ce1b5eda6dc1e6a09273810793d4bc821b272fc"
+    },
+    {
+      "path": "engine/resources/profiles/kodak_vision3_200t.json",
+      "sha256": "4a28f049fd6bad67be98efdb058b413c6b3c022e2932b357b346d902c4c393c8"
+    },
+    {
+      "path": "engine/resources/profiles/kodak_vision3_250d.json",
+      "sha256": "9ab85c8627c0533beb925b747e441e93beabe9e98c2429695b0a53866b56fcc7"
+    },
+    {
+      "path": "engine/resources/profiles/kodak_vision3_500t.json",
+      "sha256": "d7beca68bf16db88dbb7373fd13a6a1150a57a911a54bb0309a760a6f9883329"
+    },
+    {
+      "path": "engine/resources/profiles/kodak_vision3_50d.json",
+      "sha256": "fd426abc9de911682080db222020978dee4e8df7ca939bfcd5c9d0f6df249fa1"
+    },
+    {
+      "path": "engine/resources/spektrafilm_constants.bin",
+      "sha256": "f2c06600606fa169171f58b6639d2669f372a2b39ebe9c72e3edeff5f6d7d31d"
+    },
+    {
+      "path": "engine/resources_experimental/NOTICE.md",
+      "sha256": "4c92f3b5205e638bc88b573e99e8e6caca97437b5a7da2160f5027d830060747"
+    },
+    {
+      "path": "engine/resources_experimental/neutral_print_filters.json",
+      "sha256": "2830aca2477154107fc08d57c058f2fa0a3dfe933b931a946deca30186d43004"
+    },
+    {
+      "path": "engine/resources_experimental/profiles/harman_phoenix_200_exp_v1.json",
+      "sha256": "f748850ead1925865f896aac3cce9d7f248918d1b0f4240fa947817001f0f69d"
+    },
+    {
+      "path": "engine/resources_experimental/profiles/harman_phoenix_ii_200_exp_v1.json",
+      "sha256": "39a8c1cd3b0fe0a09db01f1873306948c5361f528d30de1d8dbce3fc3ee3dd0e"
+    },
+    {
+      "path": "engine/resources_research/build-phoenix.cjs",
+      "sha256": "57b45b54ab70a10efe7cf6ddcf7c4bf955bd607856b5802968d95ca5a1d91721"
+    },
+    {
+      "path": "engine/resources_research/phoenix-community.md",
+      "sha256": "3182e6e632c9700757c3f4561f50e0c63d92792ff7a0290d792ed7a586a93c26"
+    },
+    {
+      "path": "engine/resources_research/phoenix-model-assumptions.json",
+      "sha256": "e1aeead9c13b699d6bdff95cd053f67a23bbdeeacd16b1586982becd0cbd143b"
+    },
+    {
+      "path": "engine/resources_research/phoenix-model-report.json",
+      "sha256": "6000e25fcad56bacc5c583a21f6feb38e611666778b8f03b59d7e7022d32d023"
+    },
+    {
+      "path": "engine/resources_research/phoenix-print-calibration.json",
+      "sha256": "42917348511302b87c33466a7d0d4f3547a240c5bfe62521459538f515d5cc65"
+    },
+    {
+      "path": "engine/resources_research/phoenix2/.gitignore",
+      "sha256": "e7ec87b669af5cf4a7328f1695ffa118b6fb59749e7fbc4a762105075acff175"
+    },
+    {
+      "path": "engine/resources_research/phoenix2/README.md",
+      "sha256": "bbf123751526f2c1cfd4b970efa77673230caddf505be075c3d8ccab421dc780"
+    },
+    {
+      "path": "engine/resources_research/phoenix2/characteristic-candidate.csv",
+      "sha256": "d04ae262cb46cbdcb8ecd6f8997dbdd6035119e8bfe601d7335368a3b61598b5"
+    },
+    {
+      "path": "engine/resources_research/phoenix2/characteristic-candidate.json",
+      "sha256": "eecf9cb640237e12ac194200b37cb75f17c6c6694a4da98da60785a43ade9d8c"
+    },
+    {
+      "path": "engine/resources_research/phoenix2/digitization.json",
+      "sha256": "fa1ab91aff80928315470c814dc7a4dd7e89b96b51a4c24a89e3c0fa447f1c24"
+    },
+    {
+      "path": "engine/resources_research/phoenix2/digitize-characteristic.cjs",
+      "sha256": "5b0df4463a70f219e90fe391dedb0fb640c80e182a46b378ae4515c1299af831"
+    },
+    {
+      "path": "engine/resources_research/phoenix2/digitize.cjs",
+      "sha256": "ee6c0c59387575c71b2e6abb74ef9146297555ef2938061e024258083d5051f9"
+    },
+    {
+      "path": "engine/resources_research/phoenix2/spectral-chart.csv",
+      "sha256": "a0c0584cf007865c5440873c16371ce9f4c8a84e4e787ad9f59815d01c4256c9"
+    },
+    {
+      "path": "engine/resources_research/phoenix200/.gitignore",
+      "sha256": "287a387af7c924026c4e1a9e2e90e8ca61efc46436a756a657dc0ad86d918b8f"
+    },
+    {
+      "path": "engine/resources_research/phoenix200/README.md",
+      "sha256": "f95d62371032d4fddec63f8087c4ea675fa4e63419f4d425d02a1722126f60a5"
+    },
+    {
+      "path": "engine/resources_research/phoenix200/characteristic-chart.csv",
+      "sha256": "89c95bf25154dc1072c54260be275d05f013015ef571b096738103fe9405f871"
+    },
+    {
+      "path": "engine/resources_research/phoenix200/characteristic-preview.csv",
+      "sha256": "34d5133c34f2a16122d69f5eb2a9ade0e4b3269656df6d5d7da2eccd674ea9e9"
+    },
+    {
+      "path": "engine/resources_research/phoenix200/digitization.json",
+      "sha256": "7ad26ac3936955f75d7d2863d4d8e163843768783917361100fd3fe7aad690f1"
+    },
+    {
+      "path": "engine/resources_research/phoenix200/digitize.cjs",
+      "sha256": "9e79a0d4da0b7858f6f0bc1bff96fb15c642cc4865916430165df86fefe8d8ee"
+    },
+    {
+      "path": "engine/resources_research/phoenix200/spectral-chart.csv",
+      "sha256": "94ed50a49378f17ca4192f24d475ee0db22d9ad3dadc38b8900300ea860baf20"
+    },
+    {
+      "path": "engine/resources_research/verify-phoenix.cjs",
+      "sha256": "a4ae4fe3140d4671521b24e92d5c43a82f941279d91c1e033fa818f9017ab3d4"
+    },
+    {
+      "path": "validation/phoenix-review-20261102/images/harman_phoenix_200_exp_v1.png",
+      "sha256": "aeb23dfae33c34efd221ee134815075810760949f2b3c4ec87e9ed271a82a96f"
+    },
+    {
+      "path": "validation/phoenix-review-20261102/images/harman_phoenix_ii_200_exp_v1.png",
+      "sha256": "96f34d81bb2bea76c4d30cbac8125949230c7fe4192885a080701e53036cef8f"
+    },
+    {
+      "path": "validation/phoenix-review-20261102/images/input.png",
+      "sha256": "ca8d89ab09b11257609a326ade302d4c73cd0f3a7c30604ecafc22fa95496783"
+    },
+    {
+      "path": "validation/phoenix-review-20261102/images/portra.png",
+      "sha256": "86e3738dc8ca846a2d3fec556e0918aa7c45567d8b6cf999448d423d9b25f61b"
+    },
+    {
+      "path": "validation/phoenix-review-20261102/ctest-details.txt",
+      "sha256": "fe95c7827d95a6d356978c536042d5614341eb18f63cfff96f8409f3cee9c919"
+    },
+    {
+      "path": "validation/phoenix-review-20261102/ctest-summary.txt",
+      "sha256": "e4626fd3be254134fd4970744104f2e4c3ea707f45b1954c61de0cc359a0bf0f"
+    }
+  ],
+  "external_sources": [
+    {
+      "record": "engine/resources_research/phoenix200/digitization.json",
+      "author": "HARMAN technology Limited",
+      "edition": "November 2023",
+      "sha256": "9c5c63e8e0123f66edf0165a0246beb98e0e872ca2748b0f6267d33ae334472d",
+      "download_url": "https://www.revelab.es/fichas-carretes/harman-phoenix-200-datasheet.pdf",
+      "availability": "URL/hash record; source may not be in checkout"
+    },
+    {
+      "record": "engine/resources_research/phoenix2/digitization.json",
+      "edition": "July 2025",
+      "author": "HARMAN technology Limited",
+      "sha256": "020260790a3b705d38ded5573abcb2af43b228b5e3440bc23463273cf78bff08",
+      "download_url": "https://www.fotoimpex.com/shop/images/products/media/72015_5_PDF-Datasheet.pdf",
+      "official_url": "https://www.harmanphoto.co.uk/amfile/file/download/file/1968/product/2208/",
+      "availability": "URL/hash record; source may not be in checkout"
+    },
+    {
+      "record": "engine/resources_research/phoenix2/characteristic-candidate.json",
+      "url": "https://www.japancamerahunter.com/wp-content/uploads/2025/07/Screenshot-2025-07-14-at-15.49.04.png",
+      "article": "https://www.japancamerahunter.com/2025/07/film-newfilm-news-harman-phoenix-ii-risess-harman-phoenix-rises-again/",
+      "date": "2025-07-16",
+      "sha256": "9ca4c40d38637e84f5dc125a6f259d270f61b9550f437a5e479fbff1ea38fbe3",
+      "conflict": "Article presents Phoenix II; image caption explicitly says HARMAN Phoenix I film. Not authenticated as a manufacturer-issued II curve.",
+      "availability": "URL/hash record; source may not be in checkout"
+    }
+  ],
+  "renderings": [
+    {
+      "path": "validation/phoenix-review-20261102/images/harman_phoenix_200_exp_v1.png",
+      "sha256": "aeb23dfae33c34efd221ee134815075810760949f2b3c4ec87e9ed271a82a96f",
+      "purpose": "engineering_only_not_photographic_reference"
+    },
+    {
+      "path": "validation/phoenix-review-20261102/images/harman_phoenix_ii_200_exp_v1.png",
+      "sha256": "96f34d81bb2bea76c4d30cbac8125949230c7fe4192885a080701e53036cef8f",
+      "purpose": "engineering_only_not_photographic_reference"
+    },
+    {
+      "path": "validation/phoenix-review-20261102/images/input.png",
+      "sha256": "ca8d89ab09b11257609a326ade302d4c73cd0f3a7c30604ecafc22fa95496783",
+      "purpose": "engineering_only_not_photographic_reference"
+    },
+    {
+      "path": "validation/phoenix-review-20261102/images/portra.png",
+      "sha256": "86e3738dc8ca846a2d3fec556e0918aa7c45567d8b6cf999448d423d9b25f61b",
+      "purpose": "engineering_only_not_photographic_reference"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "format": "SpektraLab.PhoenixReferences",
+  "version": 1,
+  "dataset_id": "phoenix-physical-references-v1",
+  "dataset_version": 1,
+  "dataset_kind": "physical",
+  "data_root": ".",
+  "split_policy": {
+    "seed": "phoenix-independent-groups-v1",
+    "version": 1
+  },
+  "samples": []
+}

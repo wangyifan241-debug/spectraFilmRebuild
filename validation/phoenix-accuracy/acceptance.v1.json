@@ -1,0 +1,25 @@
+{
+  "format": "SpektraLab.PhoenixAcceptance",
+  "version": 1,
+  "engineering": {
+    "required": [
+      "frozen PR4 inventory",
+      "existing verify-phoenix.cjs",
+      "pinned historical 7 native tests"
+    ],
+    "candidate": "Not Verified until candidate native test receipt is reviewed"
+  },
+  "photographic": {
+    "version": 1,
+    "status": "provisional_unreviewed",
+    "reviewed_by": null,
+    "minimum_groups_per_stock": 3,
+    "delta_e00_mean": 3,
+    "delta_e00_p95": 6,
+    "rmse_Y": 0.03,
+    "gray_rmse_L": 3,
+    "grain_rms_absolute_Y": 0.005,
+    "halo_ratio_absolute": 0.1,
+    "note": "Provisional project policy only; values are not accuracy claims or industry standards."
+  }
+}

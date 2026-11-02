@@ -1,0 +1,145 @@
+TAP version 13
+# Subtest: CIEDE2000 published arithmetic vector 0
+ok 1 - CIEDE2000 published arithmetic vector 0
+  ---
+  duration_ms: 1.143
+  ...
+# Subtest: CIEDE2000 published arithmetic vector 1
+ok 2 - CIEDE2000 published arithmetic vector 1
+  ---
+  duration_ms: 0.1023
+  ...
+# Subtest: CIEDE2000 published arithmetic vector 2
+ok 3 - CIEDE2000 published arithmetic vector 2
+  ---
+  duration_ms: 0.0573
+  ...
+# Subtest: CIEDE2000 published arithmetic vector 3
+ok 4 - CIEDE2000 published arithmetic vector 3
+  ---
+  duration_ms: 0.1722
+  ...
+# Subtest: CIEDE2000 published arithmetic vector 4
+ok 5 - CIEDE2000 published arithmetic vector 4
+  ---
+  duration_ms: 0.0617
+  ...
+# Subtest: CIEDE2000 published arithmetic vector 5
+ok 6 - CIEDE2000 published arithmetic vector 5
+  ---
+  duration_ms: 0.0433
+  ...
+# Subtest: CIEDE2000 published arithmetic vector 6
+ok 7 - CIEDE2000 published arithmetic vector 6
+  ---
+  duration_ms: 0.0447
+  ...
+# Subtest: gray / Y / Lab arithmetic and exact pairing guards
+ok 8 - gray / Y / Lab arithmetic and exact pairing guards
+  ---
+  duration_ms: 1.0831
+  ...
+# Subtest: colorimetry / NaN / duplicate EV rejected
+ok 9 - colorimetry / NaN / duplicate EV rejected
+  ---
+  duration_ms: 0.4786
+  ...
+# Subtest: transitive roll/negative/scan leakage grouping and order invariance
+ok 10 - transitive roll/negative/scan leakage grouping and order invariance
+  ---
+  duration_ms: 10.0861
+  ...
+# Subtest: same bytes cannot enter separate splits under different identities
+ok 11 - same bytes cannot enter separate splits under different identities
+  ---
+  duration_ms: 0.2631
+  ...
+# Subtest: manifest rejects missing identity and unclassified dataset
+ok 12 - manifest rejects missing identity and unclassified dataset
+  ---
+  duration_ms: 0.1832
+  ...
+# Subtest: missing references / synthetic cannot release photographic scores
+ok 13 - missing references / synthetic cannot release photographic scores
+  ---
+  duration_ms: 0.4917
+  ...
+# Subtest: hash bindings and byte-preserving CRLF check
+ok 14 - hash bindings and byte-preserving CRLF check
+  ---
+  duration_ms: 3.5857
+  ...
+# Subtest: grain detrends a plane, rejects insufficient scan calibration
+ok 15 - grain detrends a plane, rejects insufficient scan calibration
+  ---
+  duration_ms: 1.7548
+  ...
+# Subtest: halo annular energy and truncation guard
+ok 16 - halo annular energy and truncation guard
+  ---
+  duration_ms: 0.7348
+  ...
+# Subtest: PNG baseline comparison is engineering only, dimensions and alpha guarded
+ok 17 - PNG baseline comparison is engineering only, dimensions and alpha guarded
+  ---
+  duration_ms: 218.561
+  ...
+# Subtest: candidate accepts one category with new identity/version and refuses two categories
+ok 18 - candidate accepts one category with new identity/version and refuses two categories
+  ---
+  duration_ms: 31.8245
+  ...
+# Subtest: candidate rejects reused v1 identity / version / renderer / missing source
+ok 19 - candidate rejects reused v1 identity / version / renderer / missing source
+  ---
+  duration_ms: 50.8889
+  ...
+# Subtest: runner refuses unpinned executable before writing output
+ok 20 - runner refuses unpinned executable before writing output
+  ---
+  duration_ms: 80.6013
+  ...
+# Subtest: reviewed photographic policy cannot accidentally omit thresholds
+ok 21 - reviewed photographic policy cannot accidentally omit thresholds
+  ---
+  duration_ms: 0.2062
+  ...
+# Subtest: frozen baseline inventory matches exact Git and working bytes
+ok 22 - frozen baseline inventory matches exact Git and working bytes
+  ---
+  duration_ms: 3280.1197
+  ...
+# Subtest: versioned report: empty physical data stays NV, frozen renders identical, no overwrite, test needs explicit purpose
+ok 23 - versioned report: empty physical data stays NV, frozen renders identical, no overwrite, test needs explicit purpose
+  ---
+  duration_ms: 4895.8495
+  ...
+# Subtest: CLI photographic gate exits 3 and engineering exits 0 independently
+ok 24 - CLI photographic gate exits 3 and engineering exits 0 independently
+  ---
+  duration_ms: 3888.8446
+  ...
+# Subtest: reviewed sRGB PNG ROI extraction binds source/ICC and rejects missing review/alpha/CRC
+ok 25 - reviewed sRGB PNG ROI extraction binds source/ICC and rejects missing review/alpha/CRC
+  ---
+  duration_ms: 24.7384
+  ...
+# Subtest: candidate orchestration stages privately and compares identical parent/new inputs (fake renderer; software only)
+ok 26 - candidate orchestration stages privately and compares identical parent/new inputs (fake renderer; software only)
+  ---
+  duration_ms: 2853.9235
+  ...
+# Subtest: candidate without reviewed native receipts is NV; synthetic rows cannot pass a physical gate
+ok 27 - candidate without reviewed native receipts is NV; synthetic rows cannot pass a physical gate
+  ---
+  duration_ms: 0.2791
+  ...
+1..27
+# tests 27
+# suites 0
+# pass 27
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 15431.3139
