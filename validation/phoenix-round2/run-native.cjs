@@ -1,8 +1,8 @@
 'use strict';
 const fs=require('fs'),cp=require('child_process'),path=require('path'),crypto=require('crypto');
 const out='validation/phoenix-round2',build=path.resolve('build/round2');fs.mkdirSync(build,{recursive:true});
-const source='D:/学习资料/SpektraLab/build/phoenix-20261102';const resources=path.join(build,'resources');
-if(!fs.existsSync(resources))fs.cpSync(source+'/app/resources',resources,{recursive:true});
+const source=path.resolve('build/review-clean');const resources=path.join(build,'resources');
+if(!fs.existsSync(resources))throw Error('Explicit staged resources required');
 for(const f of fs.readdirSync(out+'/profiles'))fs.copyFileSync(out+'/profiles/'+f,resources+'/profiles/'+f);
 const filters=JSON.parse(fs.readFileSync(resources+'/neutral_print_filters.json'));
 for(const f of fs.readdirSync(out+'/profiles')){const p=JSON.parse(fs.readFileSync(out+'/profiles/'+f));const parent=p.info.stock.startsWith('phx_ii')?'harman_phoenix_ii_200_exp_v1':'harman_phoenix_200_exp_v1';for(const x of Object.values(filters))for(const y of Object.values(x))if(y[parent])y[p.info.stock]=y[parent];}

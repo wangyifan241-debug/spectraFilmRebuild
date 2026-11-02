@@ -4,15 +4,15 @@
 
 | ID | 核心差异 | EV0 mean/max 模型间ΔE00 | 全曝光灰阶下降次数 | 决策 |
 |---|---|---|---|---|
-| phx_200_d55_r2 | data.log_sensitivity | 2.3719 / 12.9342 | 36 | Inconclusive |
-| phx_200_linear_r2 | data.log_sensitivity | 5.3840 / 27.6429 | 36 | Inconclusive |
-| phx_200_no_tungsten_r2 | data.log_sensitivity | 0.9812 / 7.9204 | 36 | Inconclusive |
-| phx_200_shared_r2 | data.log_sensitivity | 13.5730 / 36.4045 | 39 | Inconclusive |
-| phx_ii_d55_r2 | data.log_sensitivity | 0.2224 / 0.5770 | 42 | Inconclusive |
-| phx_ii_linear_r2 | data.log_sensitivity | 1.8201 / 8.2001 | 42 | Inconclusive |
-| phx_ii_shared_r2 | data.log_sensitivity | 7.5134 / 16.5057 | 45 | Inconclusive |
-| phx_ii_width115_r2 | data.log_exposure, data.density_curves_model.centers, data.density_curves_model.sigmas | 1.2758 / 2.0151 | 44 | Inconclusive |
-| phx_ii_width130_r2 | data.log_exposure, data.density_curves_model.centers, data.density_curves_model.sigmas | 2.4499 / 3.7199 | 44 | Inconclusive |
+| phx_200_d55_r2 | data.log_sensitivity | 2.6553 / 13.9896 | 36 | Inconclusive |
+| phx_200_linear_r2 | data.log_sensitivity | 6.7977 / 34.7737 | 36 | Inconclusive |
+| phx_200_no_tungsten_r2 | data.log_sensitivity | 1.0109 / 6.9465 | 36 | Inconclusive |
+| phx_200_shared_r2 | data.log_sensitivity | 17.0703 / 40.1207 | 39 | Inconclusive |
+| phx_ii_d55_r2 | data.log_sensitivity | 0.2906 / 0.8943 | 42 | Inconclusive |
+| phx_ii_linear_r2 | data.log_sensitivity | 2.5190 / 10.9892 | 42 | Inconclusive |
+| phx_ii_shared_r2 | data.log_sensitivity | 9.2008 / 18.7036 | 46 | Inconclusive |
+| phx_ii_width115_r2 | data.log_exposure, data.density_curves_model.centers, data.density_curves_model.sigmas | 1.3948 / 2.0056 | 43 | Inconclusive |
+| phx_ii_width130_r2 | data.log_exposure, data.density_curves_model.centers, data.density_curves_model.sigmas | 2.6756 / 3.7857 | 44 | Inconclusive |
 
 每个候选对应的plan含源记录、父材料SHA256和候选文件SHA256。每个候选均有13档24块Lab/RGB/Y及原生驱动报告；所有九款曲线非负有限且密度单调。shared仅修改通道整体比例；linear同时改变纵轴解释下的插值含义（同一类别）；no_tungsten仅取消一代反除；d55仅换归一化权重；width仅变响应宽度。所有未列出的数据字段与父材料一致，由PR6单类别审核验证。证据和公式见SOURCE_REVIEW_FINAL.md。
 
@@ -51,3 +51,5 @@ run-raw.cjs依赖已解码固定输入，其生成命令（已实际执行）为
 - 首次导出缺插件Fail，设置QT_PLUGIN_PATH后重跑Pass；结果记录分别见preview-export-execution.txt、frame-output-regression.txt、colour-regression.txt。
 - 内部GPU全中间值NaN检查、macOS/Metal及完整Xcode suite：未运行，当前Windows环境不能替代。
 - 早期material-sensitivity.json中的Not Run是生成时状态；最新执行以native-execution/exposure24-results/raw-execution及FINAL_REPORT为准。
+
+本表为审查修复后的ProPhoto/D50结果。最新测量实现、6项色彩测试、干净重建与52组阶段定位详见 REVIEW_FIX.md；旧数值保存在 history/reviewed-6eb54e9d。上列Qt测试是历史执行，不能当作本次干净Qt重建。

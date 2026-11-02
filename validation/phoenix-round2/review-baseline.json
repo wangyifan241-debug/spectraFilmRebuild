@@ -1,0 +1,189 @@
+{
+  "status": "Pass",
+  "commit": "ba076b2befe6586ad3095f897ebf40ea7e9ffd6c",
+  "checked_files": 64,
+  "hash_domain": "Exact Git blob SHA256; text-only CRLF checkout recognized separately, no other normalization",
+  "checkout_differences": [
+    {
+      "path": "engine/resources/io/README.txt",
+      "kind": "CRLF checkout of exact LF Git blob",
+      "working_bytes_sha256": "4bb0896891b5dc79d7f0449c8cfcc669788101d144e5c938ea2f6159294656bd"
+    },
+    {
+      "path": "engine/resources/neutral_print_filters.json",
+      "kind": "CRLF checkout of exact LF Git blob",
+      "working_bytes_sha256": "8761d1663ebb3acc3f4fd6606c46e0e4449f5244eabf969bef31689d0d70eec1"
+    },
+    {
+      "path": "engine/resources/print_luts.json",
+      "kind": "CRLF checkout of exact LF Git blob",
+      "working_bytes_sha256": "27b43228c85e55ffaa82079a696f579ef3c00ce057a27f58f11fbc3e0e26f589"
+    },
+    {
+      "path": "engine/resources/profiles/fujifilm_c200.json",
+      "kind": "CRLF checkout of exact LF Git blob",
+      "working_bytes_sha256": "33c1acc77ca85963e6165f7fa7fed545803f0c955732e500681e4f3946d44e4a"
+    },
+    {
+      "path": "engine/resources/profiles/fujifilm_crystal_archive_typeii.json",
+      "kind": "CRLF checkout of exact LF Git blob",
+      "working_bytes_sha256": "8aa83ca1d1fafdc72813f1abae0c17facbb6680b566c0f8e8bbd505251c76700"
+    },
+    {
+      "path": "engine/resources/profiles/fujifilm_pro_400h.json",
+      "kind": "CRLF checkout of exact LF Git blob",
+      "working_bytes_sha256": "beff34f309c5a9c102a87f48876986e7a7bbb20da7994cfc8d08629f6121ae46"
+    },
+    {
+      "path": "engine/resources/profiles/fujifilm_provia_100f.json",
+      "kind": "CRLF checkout of exact LF Git blob",
+      "working_bytes_sha256": "04c42273d861d26838b0c760579a59e4a985483081f1ff100d7cab9007f54a2f"
+    },
+    {
+      "path": "engine/resources/profiles/fujifilm_velvia_100.json",
+      "kind": "CRLF checkout of exact LF Git blob",
+      "working_bytes_sha256": "4678399aaf2e623dc482e46255093f79ddee93ae963759627e58eee002d7ec84"
+    },
+    {
+      "path": "engine/resources/profiles/fujifilm_xtra_400.json",
+      "kind": "CRLF checkout of exact LF Git blob",
+      "working_bytes_sha256": "8d2369fc3a8f707f07d04c17283fbc5bb66d95e65addc09d06be222c785ff92d"
+    },
+    {
+      "path": "engine/resources/profiles/kodak_2383.json",
+      "kind": "CRLF checkout of exact LF Git blob",
+      "working_bytes_sha256": "a7a494c593ff5da06767d6293f7c796a146ca6346cdddd369f1b55cdfef855cf"
+    },
+    {
+      "path": "engine/resources/profiles/kodak_2393.json",
+      "kind": "CRLF checkout of exact LF Git blob",
+      "working_bytes_sha256": "db1d293d5f515c22d3f19b8aa91d874ec9c8c6ebfbfa731dd04de9a303c2a129"
+    },
+    {
+      "path": "engine/resources/profiles/kodak_ektachrome_100.json",
+      "kind": "CRLF checkout of exact LF Git blob",
+      "working_bytes_sha256": "3113bde02c05e707e353911b7628f66ffb1931493dc3a0581c546498e9ab75a2"
+    },
+    {
+      "path": "engine/resources/profiles/kodak_ektacolor_edge.json",
+      "kind": "CRLF checkout of exact LF Git blob",
+      "working_bytes_sha256": "d05b37d843af82057316717844898be9440e61b0e7a0ab36fe9efb83e629a3c7"
+    },
+    {
+      "path": "engine/resources/profiles/kodak_ektar_100.json",
+      "kind": "CRLF checkout of exact LF Git blob",
+      "working_bytes_sha256": "f2a8c9092153b2d1ee90c5aa588ece7c199c8687520e250946484ff3294b0319"
+    },
+    {
+      "path": "engine/resources/profiles/kodak_endura_premier.json",
+      "kind": "CRLF checkout of exact LF Git blob",
+      "working_bytes_sha256": "3f63b8c5a56967776fa9782914079156736c0b1e0ec739ff946d8b1aa2950a6e"
+    },
+    {
+      "path": "engine/resources/profiles/kodak_gold_200.json",
+      "kind": "CRLF checkout of exact LF Git blob",
+      "working_bytes_sha256": "8190c24d1e2f0aa9daeff89a8325f9051d2d2e9a96d867386fbded7fe3a82004"
+    },
+    {
+      "path": "engine/resources/profiles/kodak_kodachrome_64.json",
+      "kind": "CRLF checkout of exact LF Git blob",
+      "working_bytes_sha256": "75b07bf032c80353383b73fbfde6ea5d718ec3d2b05db06aa83a6f960b07f28d"
+    },
+    {
+      "path": "engine/resources/profiles/kodak_portra_160.json",
+      "kind": "CRLF checkout of exact LF Git blob",
+      "working_bytes_sha256": "54caffc4246619e5135996a00386393d37a2dfc7c6fdf4ebf3f32d68281ee0cc"
+    },
+    {
+      "path": "engine/resources/profiles/kodak_portra_400.json",
+      "kind": "CRLF checkout of exact LF Git blob",
+      "working_bytes_sha256": "140c49bbff6d7b6589058ce0836e3286fa995e9433bb8a62a0189d6e1a04da9f"
+    },
+    {
+      "path": "engine/resources/profiles/kodak_portra_800.json",
+      "kind": "CRLF checkout of exact LF Git blob",
+      "working_bytes_sha256": "ba2863125ef4ad4039616c1be76ee38e7bff28706a769b4010a7dfca3e786ee2"
+    },
+    {
+      "path": "engine/resources/profiles/kodak_portra_800_push1.json",
+      "kind": "CRLF checkout of exact LF Git blob",
+      "working_bytes_sha256": "db6b9623e6c64f9188c9e9afb5926895f8d55965b68102e97768694f3ea572b3"
+    },
+    {
+      "path": "engine/resources/profiles/kodak_portra_800_push2.json",
+      "kind": "CRLF checkout of exact LF Git blob",
+      "working_bytes_sha256": "502b232a7395ef6a961c51cd65f53813e2ecbd4ae861802800b7d8cc02d3da6b"
+    },
+    {
+      "path": "engine/resources/profiles/kodak_portra_endura.json",
+      "kind": "CRLF checkout of exact LF Git blob",
+      "working_bytes_sha256": "28bee939504da48e3556c58fc880696f471c2d63bd00e3b8e1831dd0ff5cd25c"
+    },
+    {
+      "path": "engine/resources/profiles/kodak_supra_endura.json",
+      "kind": "CRLF checkout of exact LF Git blob",
+      "working_bytes_sha256": "b3ea5143e10b6bd1cb10026391a425a2ac901aeb96549918d3e1093b395a6b68"
+    },
+    {
+      "path": "engine/resources/profiles/kodak_ultra_endura.json",
+      "kind": "CRLF checkout of exact LF Git blob",
+      "working_bytes_sha256": "c92bcbcb01c917592be523a66140f4110b29f7331546bb58574aa4111d8a7b2c"
+    },
+    {
+      "path": "engine/resources/profiles/kodak_ultramax_400.json",
+      "kind": "CRLF checkout of exact LF Git blob",
+      "working_bytes_sha256": "c36ab49d63ea72cf558c83e4c665ca9d25e3008387ecb8eeb862bf6a996590f6"
+    },
+    {
+      "path": "engine/resources/profiles/kodak_verita_200d.json",
+      "kind": "CRLF checkout of exact LF Git blob",
+      "working_bytes_sha256": "8c5373730fa9eb3bb443e670a915b24530af6ae6468a1e2a369c5e43bf0658de"
+    },
+    {
+      "path": "engine/resources/profiles/kodak_vision3_200t.json",
+      "kind": "CRLF checkout of exact LF Git blob",
+      "working_bytes_sha256": "843fed6fe82eae9c13a2191547347c368634921abb635e1ac5fc7cc7169e72f0"
+    },
+    {
+      "path": "engine/resources/profiles/kodak_vision3_250d.json",
+      "kind": "CRLF checkout of exact LF Git blob",
+      "working_bytes_sha256": "d67d4f551bda1489a1590a2a63fe420f275713682453276b2d99e2f72019d12a"
+    },
+    {
+      "path": "engine/resources/profiles/kodak_vision3_500t.json",
+      "kind": "CRLF checkout of exact LF Git blob",
+      "working_bytes_sha256": "192b85a7050586b88467101a3af96fdffc7317f81332fa07aa4679e67af2b17d"
+    },
+    {
+      "path": "engine/resources/profiles/kodak_vision3_50d.json",
+      "kind": "CRLF checkout of exact LF Git blob",
+      "working_bytes_sha256": "f252ef031edda4be305f9cde8dd52257a7d34a94210ef86c4e6471544f1600c8"
+    },
+    {
+      "path": "engine/resources_research/build-phoenix.cjs",
+      "kind": "CRLF checkout of exact LF Git blob",
+      "working_bytes_sha256": "9cced5bf569c6f6a714c4577708ae8c8d051a6fcc12a2142d251e6b1a79d294e"
+    },
+    {
+      "path": "engine/resources_research/phoenix-community.md",
+      "kind": "CRLF checkout of exact LF Git blob",
+      "working_bytes_sha256": "799e83fe799fed527b77ba174df23a795a149e6298105fe713b97c46946e9428"
+    },
+    {
+      "path": "engine/resources_research/verify-phoenix.cjs",
+      "kind": "CRLF checkout of exact LF Git blob",
+      "working_bytes_sha256": "3425a9d975323ca976bf2fb0d9dd5a71465b1eed5c2543a1007e8894fee73039"
+    },
+    {
+      "path": "validation/phoenix-review-20261102/ctest-details.txt",
+      "kind": "CRLF checkout of exact LF Git blob",
+      "working_bytes_sha256": "9a67001caf090b86609ef187617af8c93608dbc863d2df399eb00e9fb0e360f1"
+    },
+    {
+      "path": "validation/phoenix-review-20261102/ctest-summary.txt",
+      "kind": "CRLF checkout of exact LF Git blob",
+      "working_bytes_sha256": "d1ea8ebf1f168c5fb33947884e2901eadcbdb5973eb5e38faa40472c3c699c89"
+    }
+  ],
+  "failures": []
+}

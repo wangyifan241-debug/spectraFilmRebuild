@@ -1,0 +1,3325 @@
+[
+  {
+    "id": "harman_phoenix_200_exp_v1",
+    "finite": true,
+    "monotonicity": {
+      "pass": false,
+      "failures": [
+        {
+          "from_ev": -6,
+          "to_ev": -5,
+          "patch": 22,
+          "deltaY": -0.002233440085885219
+        },
+        {
+          "from_ev": -6,
+          "to_ev": -5,
+          "patch": 23,
+          "deltaY": -0.005434659403417835
+        },
+        {
+          "from_ev": -6,
+          "to_ev": -5,
+          "patch": 24,
+          "deltaY": -0.007056594503931035
+        },
+        {
+          "from_ev": -5,
+          "to_ev": -4,
+          "patch": 22,
+          "deltaY": -0.0032922122739463267
+        },
+        {
+          "from_ev": -5,
+          "to_ev": -4,
+          "patch": 23,
+          "deltaY": -0.009615827077846625
+        },
+        {
+          "from_ev": -5,
+          "to_ev": -4,
+          "patch": 24,
+          "deltaY": -0.012849067941177156
+        },
+        {
+          "from_ev": -4,
+          "to_ev": -3,
+          "patch": 22,
+          "deltaY": -0.0025046661670031223
+        },
+        {
+          "from_ev": -4,
+          "to_ev": -3,
+          "patch": 23,
+          "deltaY": -0.01577561235509886
+        },
+        {
+          "from_ev": -4,
+          "to_ev": -3,
+          "patch": 24,
+          "deltaY": -0.020949924780446258
+        },
+        {
+          "from_ev": -3,
+          "to_ev": -2,
+          "patch": 23,
+          "deltaY": -0.02712616345524796
+        },
+        {
+          "from_ev": -3,
+          "to_ev": -2,
+          "patch": 24,
+          "deltaY": -0.033521983416697945
+        },
+        {
+          "from_ev": -2,
+          "to_ev": -1,
+          "patch": 23,
+          "deltaY": -0.03994567797523306
+        },
+        {
+          "from_ev": -2,
+          "to_ev": -1,
+          "patch": 24,
+          "deltaY": -0.03742374748728719
+        },
+        {
+          "from_ev": -1,
+          "to_ev": 0,
+          "patch": 23,
+          "deltaY": -0.02296215922969549
+        },
+        {
+          "from_ev": -1,
+          "to_ev": 0,
+          "patch": 24,
+          "deltaY": -0.012581549579744403
+        },
+        {
+          "from_ev": 0,
+          "to_ev": 1,
+          "patch": 19,
+          "deltaY": -0.0022062438870823486
+        },
+        {
+          "from_ev": 0,
+          "to_ev": 1,
+          "patch": 20,
+          "deltaY": -0.007601060326293707
+        },
+        {
+          "from_ev": 0,
+          "to_ev": 1,
+          "patch": 21,
+          "deltaY": -0.023900602810123406
+        },
+        {
+          "from_ev": 0,
+          "to_ev": 1,
+          "patch": 23,
+          "deltaY": -0.0036243519006574805
+        },
+        {
+          "from_ev": 0,
+          "to_ev": 1,
+          "patch": 24,
+          "deltaY": -0.0015231286003146455
+        },
+        {
+          "from_ev": 1,
+          "to_ev": 2,
+          "patch": 19,
+          "deltaY": -0.05017964900964822
+        },
+        {
+          "from_ev": 1,
+          "to_ev": 2,
+          "patch": 20,
+          "deltaY": -0.07056801799001222
+        },
+        {
+          "from_ev": 1,
+          "to_ev": 2,
+          "patch": 21,
+          "deltaY": -0.10787828754259154
+        },
+        {
+          "from_ev": 1,
+          "to_ev": 2,
+          "patch": 24,
+          "deltaY": -0.00013279262342438163
+        },
+        {
+          "from_ev": 2,
+          "to_ev": 3,
+          "patch": 19,
+          "deltaY": -0.17969382193127165
+        },
+        {
+          "from_ev": 2,
+          "to_ev": 3,
+          "patch": 20,
+          "deltaY": -0.17961891905494448
+        },
+        {
+          "from_ev": 2,
+          "to_ev": 3,
+          "patch": 21,
+          "deltaY": -0.14746557796620735
+        },
+        {
+          "from_ev": 3,
+          "to_ev": 4,
+          "patch": 19,
+          "deltaY": -0.15125119467770215
+        },
+        {
+          "from_ev": 3,
+          "to_ev": 4,
+          "patch": 20,
+          "deltaY": -0.13346739014010273
+        },
+        {
+          "from_ev": 3,
+          "to_ev": 4,
+          "patch": 21,
+          "deltaY": -0.08906915501589927
+        },
+        {
+          "from_ev": 4,
+          "to_ev": 5,
+          "patch": 19,
+          "deltaY": -0.05828013571209428
+        },
+        {
+          "from_ev": 4,
+          "to_ev": 5,
+          "patch": 20,
+          "deltaY": -0.05164301598442109
+        },
+        {
+          "from_ev": 4,
+          "to_ev": 5,
+          "patch": 21,
+          "deltaY": -0.03593470724604511
+        },
+        {
+          "from_ev": 5,
+          "to_ev": 6,
+          "patch": 19,
+          "deltaY": -0.018817241679290192
+        },
+        {
+          "from_ev": 5,
+          "to_ev": 6,
+          "patch": 20,
+          "deltaY": -0.016954817025859353
+        },
+        {
+          "from_ev": 5,
+          "to_ev": 6,
+          "patch": 21,
+          "deltaY": -0.012285760595847933
+        }
+      ]
+    },
+    "gray_slopes": [
+      {
+        "ev": -5,
+        "dL_per_EV": -0.33313808625332086
+      },
+      {
+        "ev": -4,
+        "dL_per_EV": -0.4980465356355239
+      },
+      {
+        "ev": -3,
+        "dL_per_EV": -0.3846755932754604
+      },
+      {
+        "ev": -2,
+        "dL_per_EV": 0.5471308053191919
+      },
+      {
+        "ev": -1,
+        "dL_per_EV": 1.955672789416667
+      },
+      {
+        "ev": 0,
+        "dL_per_EV": 1.8808700489976502
+      },
+      {
+        "ev": 1,
+        "dL_per_EV": 0.4295578843863552
+      },
+      {
+        "ev": 2,
+        "dL_per_EV": 0.3030589031167068
+      },
+      {
+        "ev": 3,
+        "dL_per_EV": 0.7571401665004913
+      },
+      {
+        "ev": 4,
+        "dL_per_EV": 0.5966037029583262
+      },
+      {
+        "ev": 5,
+        "dL_per_EV": 0.3062552800550975
+      },
+      {
+        "ev": 6,
+        "dL_per_EV": 0.11405564478329211
+      }
+    ],
+    "decision": "Inconclusive",
+    "reason": "Unknown spectral calibration; exposure monotonicity failures also occur in v1; no paired real-film reference"
+  },
+  {
+    "id": "harman_phoenix_ii_200_exp_v1",
+    "finite": true,
+    "monotonicity": {
+      "pass": false,
+      "failures": [
+        {
+          "from_ev": -6,
+          "to_ev": -5,
+          "patch": 23,
+          "deltaY": -0.00047214233502482217
+        },
+        {
+          "from_ev": -6,
+          "to_ev": -5,
+          "patch": 24,
+          "deltaY": -0.0006645432065654766
+        },
+        {
+          "from_ev": -5,
+          "to_ev": -4,
+          "patch": 23,
+          "deltaY": -0.0019687314665649824
+        },
+        {
+          "from_ev": -5,
+          "to_ev": -4,
+          "patch": 24,
+          "deltaY": -0.002670276728922144
+        },
+        {
+          "from_ev": -4,
+          "to_ev": -3,
+          "patch": 23,
+          "deltaY": -0.010119401575808235
+        },
+        {
+          "from_ev": -4,
+          "to_ev": -3,
+          "patch": 24,
+          "deltaY": -0.01256413085901048
+        },
+        {
+          "from_ev": -3,
+          "to_ev": -2,
+          "patch": 23,
+          "deltaY": -0.03647396841821757
+        },
+        {
+          "from_ev": -3,
+          "to_ev": -2,
+          "patch": 24,
+          "deltaY": -0.04385250236667686
+        },
+        {
+          "from_ev": -2,
+          "to_ev": -1,
+          "patch": 22,
+          "deltaY": -0.004034981329769899
+        },
+        {
+          "from_ev": -2,
+          "to_ev": -1,
+          "patch": 23,
+          "deltaY": -0.0526589350213259
+        },
+        {
+          "from_ev": -2,
+          "to_ev": -1,
+          "patch": 24,
+          "deltaY": -0.06007979557728798
+        },
+        {
+          "from_ev": -1,
+          "to_ev": 0,
+          "patch": 19,
+          "deltaY": -0.06860133824430348
+        },
+        {
+          "from_ev": -1,
+          "to_ev": 0,
+          "patch": 20,
+          "deltaY": -0.07757016007198259
+        },
+        {
+          "from_ev": -1,
+          "to_ev": 0,
+          "patch": 21,
+          "deltaY": -0.05174690395991555
+        },
+        {
+          "from_ev": -1,
+          "to_ev": 0,
+          "patch": 22,
+          "deltaY": -0.01345660030867557
+        },
+        {
+          "from_ev": -1,
+          "to_ev": 0,
+          "patch": 23,
+          "deltaY": -0.022313427714278054
+        },
+        {
+          "from_ev": -1,
+          "to_ev": 0,
+          "patch": 24,
+          "deltaY": -0.020972472663111315
+        },
+        {
+          "from_ev": 0,
+          "to_ev": 1,
+          "patch": 19,
+          "deltaY": -0.11847273743609515
+        },
+        {
+          "from_ev": 0,
+          "to_ev": 1,
+          "patch": 20,
+          "deltaY": -0.11370367055850761
+        },
+        {
+          "from_ev": 0,
+          "to_ev": 1,
+          "patch": 21,
+          "deltaY": -0.07944610720201095
+        },
+        {
+          "from_ev": 0,
+          "to_ev": 1,
+          "patch": 22,
+          "deltaY": -0.016490626412850137
+        },
+        {
+          "from_ev": 0,
+          "to_ev": 1,
+          "patch": 24,
+          "deltaY": -0.0029665331956812754
+        },
+        {
+          "from_ev": 1,
+          "to_ev": 2,
+          "patch": 19,
+          "deltaY": -0.1144742864634048
+        },
+        {
+          "from_ev": 1,
+          "to_ev": 2,
+          "patch": 20,
+          "deltaY": -0.08898603201941452
+        },
+        {
+          "from_ev": 1,
+          "to_ev": 2,
+          "patch": 21,
+          "deltaY": -0.0528760189630621
+        },
+        {
+          "from_ev": 1,
+          "to_ev": 2,
+          "patch": 22,
+          "deltaY": -0.012024314797810617
+        },
+        {
+          "from_ev": 2,
+          "to_ev": 3,
+          "patch": 19,
+          "deltaY": -0.08095946993793687
+        },
+        {
+          "from_ev": 2,
+          "to_ev": 3,
+          "patch": 20,
+          "deltaY": -0.061098302311194175
+        },
+        {
+          "from_ev": 2,
+          "to_ev": 3,
+          "patch": 21,
+          "deltaY": -0.03514823688261848
+        },
+        {
+          "from_ev": 2,
+          "to_ev": 3,
+          "patch": 22,
+          "deltaY": -0.006654803280611951
+        },
+        {
+          "from_ev": 3,
+          "to_ev": 4,
+          "patch": 19,
+          "deltaY": -0.047412162903438776
+        },
+        {
+          "from_ev": 3,
+          "to_ev": 4,
+          "patch": 20,
+          "deltaY": -0.03725992434986777
+        },
+        {
+          "from_ev": 3,
+          "to_ev": 4,
+          "patch": 21,
+          "deltaY": -0.02269248973025209
+        },
+        {
+          "from_ev": 3,
+          "to_ev": 4,
+          "patch": 22,
+          "deltaY": -0.0037833261362354292
+        },
+        {
+          "from_ev": 4,
+          "to_ev": 5,
+          "patch": 19,
+          "deltaY": -0.02629626877112734
+        },
+        {
+          "from_ev": 4,
+          "to_ev": 5,
+          "patch": 20,
+          "deltaY": -0.021757030187129656
+        },
+        {
+          "from_ev": 4,
+          "to_ev": 5,
+          "patch": 21,
+          "deltaY": -0.014628203080310265
+        },
+        {
+          "from_ev": 4,
+          "to_ev": 5,
+          "patch": 22,
+          "deltaY": -0.0036930796907831825
+        },
+        {
+          "from_ev": 5,
+          "to_ev": 6,
+          "patch": 19,
+          "deltaY": -0.015529601528735004
+        },
+        {
+          "from_ev": 5,
+          "to_ev": 6,
+          "patch": 20,
+          "deltaY": -0.013323903317683461
+        },
+        {
+          "from_ev": 5,
+          "to_ev": 6,
+          "patch": 21,
+          "deltaY": -0.00998663666729424
+        },
+        {
+          "from_ev": 5,
+          "to_ev": 6,
+          "patch": 22,
+          "deltaY": -0.004171044478247066
+        }
+      ]
+    },
+    "gray_slopes": [
+      {
+        "ev": -5,
+        "dL_per_EV": 0.03213639179142547
+      },
+      {
+        "ev": -4,
+        "dL_per_EV": 0.09590689609171932
+      },
+      {
+        "ev": -3,
+        "dL_per_EV": 0.2251750305024771
+      },
+      {
+        "ev": -2,
+        "dL_per_EV": 0.2098986780815153
+      },
+      {
+        "ev": -1,
+        "dL_per_EV": -0.5458307274012455
+      },
+      {
+        "ev": 0,
+        "dL_per_EV": -1.8939787174389977
+      },
+      {
+        "ev": 1,
+        "dL_per_EV": -2.4980444758135363
+      },
+      {
+        "ev": 2,
+        "dL_per_EV": -1.9687723790537746
+      },
+      {
+        "ev": 3,
+        "dL_per_EV": -1.1526214253631224
+      },
+      {
+        "ev": 4,
+        "dL_per_EV": -0.6777377218178415
+      },
+      {
+        "ev": 5,
+        "dL_per_EV": -0.678539788085402
+      },
+      {
+        "ev": 6,
+        "dL_per_EV": -0.7879169756892352
+      }
+    ],
+    "decision": "Inconclusive",
+    "reason": "Unknown spectral calibration; exposure monotonicity failures also occur in v1; no paired real-film reference"
+  },
+  {
+    "id": "phx_200_d55_r2",
+    "finite": true,
+    "monotonicity": {
+      "pass": false,
+      "failures": [
+        {
+          "from_ev": -6,
+          "to_ev": -5,
+          "patch": 22,
+          "deltaY": -0.0025281730647955525
+        },
+        {
+          "from_ev": -6,
+          "to_ev": -5,
+          "patch": 23,
+          "deltaY": -0.005689673837687828
+        },
+        {
+          "from_ev": -6,
+          "to_ev": -5,
+          "patch": 24,
+          "deltaY": -0.007349653894913599
+        },
+        {
+          "from_ev": -5,
+          "to_ev": -4,
+          "patch": 22,
+          "deltaY": -0.003733488293812398
+        },
+        {
+          "from_ev": -5,
+          "to_ev": -4,
+          "patch": 23,
+          "deltaY": -0.009907896259413657
+        },
+        {
+          "from_ev": -5,
+          "to_ev": -4,
+          "patch": 24,
+          "deltaY": -0.013073596820879912
+        },
+        {
+          "from_ev": -4,
+          "to_ev": -3,
+          "patch": 22,
+          "deltaY": -0.003246264596516002
+        },
+        {
+          "from_ev": -4,
+          "to_ev": -3,
+          "patch": 23,
+          "deltaY": -0.01600896852458382
+        },
+        {
+          "from_ev": -4,
+          "to_ev": -3,
+          "patch": 24,
+          "deltaY": -0.021032018603709082
+        },
+        {
+          "from_ev": -3,
+          "to_ev": -2,
+          "patch": 23,
+          "deltaY": -0.02807786125803427
+        },
+        {
+          "from_ev": -3,
+          "to_ev": -2,
+          "patch": 24,
+          "deltaY": -0.033917797312450156
+        },
+        {
+          "from_ev": -2,
+          "to_ev": -1,
+          "patch": 23,
+          "deltaY": -0.04018780573203439
+        },
+        {
+          "from_ev": -2,
+          "to_ev": -1,
+          "patch": 24,
+          "deltaY": -0.03697759583547393
+        },
+        {
+          "from_ev": -1,
+          "to_ev": 0,
+          "patch": 23,
+          "deltaY": -0.02118755317007042
+        },
+        {
+          "from_ev": -1,
+          "to_ev": 0,
+          "patch": 24,
+          "deltaY": -0.011703099577501095
+        },
+        {
+          "from_ev": 0,
+          "to_ev": 1,
+          "patch": 19,
+          "deltaY": -0.0023940127007550105
+        },
+        {
+          "from_ev": 0,
+          "to_ev": 1,
+          "patch": 20,
+          "deltaY": -0.008152108549346115
+        },
+        {
+          "from_ev": 0,
+          "to_ev": 1,
+          "patch": 21,
+          "deltaY": -0.021937374103754625
+        },
+        {
+          "from_ev": 0,
+          "to_ev": 1,
+          "patch": 23,
+          "deltaY": -0.003210087517126643
+        },
+        {
+          "from_ev": 0,
+          "to_ev": 1,
+          "patch": 24,
+          "deltaY": -0.0014215439762817325
+        },
+        {
+          "from_ev": 1,
+          "to_ev": 2,
+          "patch": 19,
+          "deltaY": -0.05199057855422162
+        },
+        {
+          "from_ev": 1,
+          "to_ev": 2,
+          "patch": 20,
+          "deltaY": -0.07288020670007034
+        },
+        {
+          "from_ev": 1,
+          "to_ev": 2,
+          "patch": 21,
+          "deltaY": -0.10827114317789799
+        },
+        {
+          "from_ev": 1,
+          "to_ev": 2,
+          "patch": 24,
+          "deltaY": -0.00012597171774445404
+        },
+        {
+          "from_ev": 2,
+          "to_ev": 3,
+          "patch": 19,
+          "deltaY": -0.1806223216676563
+        },
+        {
+          "from_ev": 2,
+          "to_ev": 3,
+          "patch": 20,
+          "deltaY": -0.18017724484795827
+        },
+        {
+          "from_ev": 2,
+          "to_ev": 3,
+          "patch": 21,
+          "deltaY": -0.14317604962706781
+        },
+        {
+          "from_ev": 3,
+          "to_ev": 4,
+          "patch": 19,
+          "deltaY": -0.14903820821526936
+        },
+        {
+          "from_ev": 3,
+          "to_ev": 4,
+          "patch": 20,
+          "deltaY": -0.13066630288651304
+        },
+        {
+          "from_ev": 3,
+          "to_ev": 4,
+          "patch": 21,
+          "deltaY": -0.08555812171043728
+        },
+        {
+          "from_ev": 4,
+          "to_ev": 5,
+          "patch": 19,
+          "deltaY": -0.05741101556067246
+        },
+        {
+          "from_ev": 4,
+          "to_ev": 5,
+          "patch": 20,
+          "deltaY": -0.050608968792897585
+        },
+        {
+          "from_ev": 4,
+          "to_ev": 5,
+          "patch": 21,
+          "deltaY": -0.03457901167434105
+        },
+        {
+          "from_ev": 5,
+          "to_ev": 6,
+          "patch": 19,
+          "deltaY": -0.01879629898396229
+        },
+        {
+          "from_ev": 5,
+          "to_ev": 6,
+          "patch": 20,
+          "deltaY": -0.01686627817961306
+        },
+        {
+          "from_ev": 5,
+          "to_ev": 6,
+          "patch": 21,
+          "deltaY": -0.012046387002898368
+        }
+      ]
+    },
+    "gray_slopes": [
+      {
+        "ev": -5,
+        "dL_per_EV": -0.37802914715628333
+      },
+      {
+        "ev": -4,
+        "dL_per_EV": -0.5673085518633343
+      },
+      {
+        "ev": -3,
+        "dL_per_EV": -0.5024177649837256
+      },
+      {
+        "ev": -2,
+        "dL_per_EV": 0.16985905666138734
+      },
+      {
+        "ev": -1,
+        "dL_per_EV": 1.0559073954809506
+      },
+      {
+        "ev": 0,
+        "dL_per_EV": 0.9897560423274285
+      },
+      {
+        "ev": 1,
+        "dL_per_EV": 0.5630465888008942
+      },
+      {
+        "ev": 2,
+        "dL_per_EV": 1.1163344962753285
+      },
+      {
+        "ev": 3,
+        "dL_per_EV": 1.5175786212454554
+      },
+      {
+        "ev": 4,
+        "dL_per_EV": 1.0632013723617249
+      },
+      {
+        "ev": 5,
+        "dL_per_EV": 0.5068142749611582
+      },
+      {
+        "ev": 6,
+        "dL_per_EV": 0.17203705508029543
+      }
+    ],
+    "decision": "Inconclusive",
+    "reason": "Unknown spectral calibration; exposure monotonicity failures also occur in v1; no paired real-film reference"
+  },
+  {
+    "id": "phx_200_linear_r2",
+    "finite": true,
+    "monotonicity": {
+      "pass": false,
+      "failures": [
+        {
+          "from_ev": -6,
+          "to_ev": -5,
+          "patch": 22,
+          "deltaY": -0.0022188509974143955
+        },
+        {
+          "from_ev": -6,
+          "to_ev": -5,
+          "patch": 23,
+          "deltaY": -0.005503965926901208
+        },
+        {
+          "from_ev": -6,
+          "to_ev": -5,
+          "patch": 24,
+          "deltaY": -0.007186504338402927
+        },
+        {
+          "from_ev": -5,
+          "to_ev": -4,
+          "patch": 22,
+          "deltaY": -0.003307950509909119
+        },
+        {
+          "from_ev": -5,
+          "to_ev": -4,
+          "patch": 23,
+          "deltaY": -0.009692221838631013
+        },
+        {
+          "from_ev": -5,
+          "to_ev": -4,
+          "patch": 24,
+          "deltaY": -0.012990874114743839
+        },
+        {
+          "from_ev": -4,
+          "to_ev": -3,
+          "patch": 22,
+          "deltaY": -0.0026256454396978296
+        },
+        {
+          "from_ev": -4,
+          "to_ev": -3,
+          "patch": 23,
+          "deltaY": -0.015788518415717268
+        },
+        {
+          "from_ev": -4,
+          "to_ev": -3,
+          "patch": 24,
+          "deltaY": -0.021003576729084567
+        },
+        {
+          "from_ev": -3,
+          "to_ev": -2,
+          "patch": 23,
+          "deltaY": -0.027165829989700796
+        },
+        {
+          "from_ev": -3,
+          "to_ev": -2,
+          "patch": 24,
+          "deltaY": -0.033463050689703185
+        },
+        {
+          "from_ev": -2,
+          "to_ev": -1,
+          "patch": 23,
+          "deltaY": -0.0401303148016926
+        },
+        {
+          "from_ev": -2,
+          "to_ev": -1,
+          "patch": 24,
+          "deltaY": -0.03731441406806443
+        },
+        {
+          "from_ev": -1,
+          "to_ev": 0,
+          "patch": 23,
+          "deltaY": -0.02265465015734519
+        },
+        {
+          "from_ev": -1,
+          "to_ev": 0,
+          "patch": 24,
+          "deltaY": -0.012359252875629945
+        },
+        {
+          "from_ev": 0,
+          "to_ev": 1,
+          "patch": 19,
+          "deltaY": -0.002343752450240877
+        },
+        {
+          "from_ev": 0,
+          "to_ev": 1,
+          "patch": 20,
+          "deltaY": -0.008065105069853695
+        },
+        {
+          "from_ev": 0,
+          "to_ev": 1,
+          "patch": 21,
+          "deltaY": -0.025080698496058762
+        },
+        {
+          "from_ev": 0,
+          "to_ev": 1,
+          "patch": 23,
+          "deltaY": -0.003482083621529476
+        },
+        {
+          "from_ev": 0,
+          "to_ev": 1,
+          "patch": 24,
+          "deltaY": -0.0014732802536410604
+        },
+        {
+          "from_ev": 1,
+          "to_ev": 2,
+          "patch": 19,
+          "deltaY": -0.05173401665381194
+        },
+        {
+          "from_ev": 1,
+          "to_ev": 2,
+          "patch": 20,
+          "deltaY": -0.07198353318105666
+        },
+        {
+          "from_ev": 1,
+          "to_ev": 2,
+          "patch": 21,
+          "deltaY": -0.10763350674721767
+        },
+        {
+          "from_ev": 1,
+          "to_ev": 2,
+          "patch": 24,
+          "deltaY": -0.00012665692929287676
+        },
+        {
+          "from_ev": 2,
+          "to_ev": 3,
+          "patch": 19,
+          "deltaY": -0.18006261849984678
+        },
+        {
+          "from_ev": 2,
+          "to_ev": 3,
+          "patch": 20,
+          "deltaY": -0.17970186983931785
+        },
+        {
+          "from_ev": 2,
+          "to_ev": 3,
+          "patch": 21,
+          "deltaY": -0.14555139716509968
+        },
+        {
+          "from_ev": 3,
+          "to_ev": 4,
+          "patch": 19,
+          "deltaY": -0.14977801186617162
+        },
+        {
+          "from_ev": 3,
+          "to_ev": 4,
+          "patch": 20,
+          "deltaY": -0.13190909830380954
+        },
+        {
+          "from_ev": 3,
+          "to_ev": 4,
+          "patch": 21,
+          "deltaY": -0.08778615800595832
+        },
+        {
+          "from_ev": 4,
+          "to_ev": 5,
+          "patch": 19,
+          "deltaY": -0.05779006554953234
+        },
+        {
+          "from_ev": 4,
+          "to_ev": 5,
+          "patch": 20,
+          "deltaY": -0.05118245928436077
+        },
+        {
+          "from_ev": 4,
+          "to_ev": 5,
+          "patch": 21,
+          "deltaY": -0.03551605180095044
+        },
+        {
+          "from_ev": 5,
+          "to_ev": 6,
+          "patch": 19,
+          "deltaY": -0.018741606084705265
+        },
+        {
+          "from_ev": 5,
+          "to_ev": 6,
+          "patch": 20,
+          "deltaY": -0.01688662559175333
+        },
+        {
+          "from_ev": 5,
+          "to_ev": 6,
+          "patch": 21,
+          "deltaY": -0.012216081791965816
+        }
+      ]
+    },
+    "gray_slopes": [
+      {
+        "ev": -5,
+        "dL_per_EV": -0.3309338684038394
+      },
+      {
+        "ev": -4,
+        "dL_per_EV": -0.5003857027583862
+      },
+      {
+        "ev": -3,
+        "dL_per_EV": -0.4033677610565931
+      },
+      {
+        "ev": -2,
+        "dL_per_EV": 0.4725932636335912
+      },
+      {
+        "ev": -1,
+        "dL_per_EV": 1.820371392587262
+      },
+      {
+        "ev": 0,
+        "dL_per_EV": 1.6708018697295728
+      },
+      {
+        "ev": 1,
+        "dL_per_EV": 0.31179602778038173
+      },
+      {
+        "ev": 2,
+        "dL_per_EV": 0.5019911730312572
+      },
+      {
+        "ev": 3,
+        "dL_per_EV": 0.9549595714347134
+      },
+      {
+        "ev": 4,
+        "dL_per_EV": 0.6999684936592203
+      },
+      {
+        "ev": 5,
+        "dL_per_EV": 0.34502498014597904
+      },
+      {
+        "ev": 6,
+        "dL_per_EV": 0.12647294066933057
+      }
+    ],
+    "decision": "Inconclusive",
+    "reason": "Unknown spectral calibration; exposure monotonicity failures also occur in v1; no paired real-film reference"
+  },
+  {
+    "id": "phx_200_no_tungsten_r2",
+    "finite": true,
+    "monotonicity": {
+      "pass": false,
+      "failures": [
+        {
+          "from_ev": -6,
+          "to_ev": -5,
+          "patch": 22,
+          "deltaY": -0.0022401411148217643
+        },
+        {
+          "from_ev": -6,
+          "to_ev": -5,
+          "patch": 23,
+          "deltaY": -0.005445474094458669
+        },
+        {
+          "from_ev": -6,
+          "to_ev": -5,
+          "patch": 24,
+          "deltaY": -0.007075297067451053
+        },
+        {
+          "from_ev": -5,
+          "to_ev": -4,
+          "patch": 22,
+          "deltaY": -0.003301369208687982
+        },
+        {
+          "from_ev": -5,
+          "to_ev": -4,
+          "patch": 23,
+          "deltaY": -0.009634044058657823
+        },
+        {
+          "from_ev": -5,
+          "to_ev": -4,
+          "patch": 24,
+          "deltaY": -0.012857522343720118
+        },
+        {
+          "from_ev": -4,
+          "to_ev": -3,
+          "patch": 22,
+          "deltaY": -0.0025055294454321975
+        },
+        {
+          "from_ev": -4,
+          "to_ev": -3,
+          "patch": 23,
+          "deltaY": -0.01579131732327825
+        },
+        {
+          "from_ev": -4,
+          "to_ev": -3,
+          "patch": 24,
+          "deltaY": -0.020967948235011996
+        },
+        {
+          "from_ev": -3,
+          "to_ev": -2,
+          "patch": 23,
+          "deltaY": -0.027185224988295995
+        },
+        {
+          "from_ev": -3,
+          "to_ev": -2,
+          "patch": 24,
+          "deltaY": -0.03356044325804919
+        },
+        {
+          "from_ev": -2,
+          "to_ev": -1,
+          "patch": 23,
+          "deltaY": -0.03996849435673908
+        },
+        {
+          "from_ev": -2,
+          "to_ev": -1,
+          "patch": 24,
+          "deltaY": -0.0373911459328217
+        },
+        {
+          "from_ev": -1,
+          "to_ev": 0,
+          "patch": 23,
+          "deltaY": -0.022855095645952027
+        },
+        {
+          "from_ev": -1,
+          "to_ev": 0,
+          "patch": 24,
+          "deltaY": -0.012519244366899562
+        },
+        {
+          "from_ev": 0,
+          "to_ev": 1,
+          "patch": 19,
+          "deltaY": -0.0022089953996239364
+        },
+        {
+          "from_ev": 0,
+          "to_ev": 1,
+          "patch": 20,
+          "deltaY": -0.007616260171871891
+        },
+        {
+          "from_ev": 0,
+          "to_ev": 1,
+          "patch": 21,
+          "deltaY": -0.024011280189409345
+        },
+        {
+          "from_ev": 0,
+          "to_ev": 1,
+          "patch": 23,
+          "deltaY": -0.003593910466354288
+        },
+        {
+          "from_ev": 0,
+          "to_ev": 1,
+          "patch": 24,
+          "deltaY": -0.0015148397595118688
+        },
+        {
+          "from_ev": 1,
+          "to_ev": 2,
+          "patch": 19,
+          "deltaY": -0.050417290989124286
+        },
+        {
+          "from_ev": 1,
+          "to_ev": 2,
+          "patch": 20,
+          "deltaY": -0.07082791090415885
+        },
+        {
+          "from_ev": 1,
+          "to_ev": 2,
+          "patch": 21,
+          "deltaY": -0.10811169418349609
+        },
+        {
+          "from_ev": 1,
+          "to_ev": 2,
+          "patch": 24,
+          "deltaY": -0.0001324824605867729
+        },
+        {
+          "from_ev": 2,
+          "to_ev": 3,
+          "patch": 19,
+          "deltaY": -0.1798559499887451
+        },
+        {
+          "from_ev": 2,
+          "to_ev": 3,
+          "patch": 20,
+          "deltaY": -0.17976133620585188
+        },
+        {
+          "from_ev": 2,
+          "to_ev": 3,
+          "patch": 21,
+          "deltaY": -0.14730081913606802
+        },
+        {
+          "from_ev": 3,
+          "to_ev": 4,
+          "patch": 19,
+          "deltaY": -0.15102659544999036
+        },
+        {
+          "from_ev": 3,
+          "to_ev": 4,
+          "patch": 20,
+          "deltaY": -0.13320252672574862
+        },
+        {
+          "from_ev": 3,
+          "to_ev": 4,
+          "patch": 21,
+          "deltaY": -0.08884964286814928
+        },
+        {
+          "from_ev": 4,
+          "to_ev": 5,
+          "patch": 19,
+          "deltaY": -0.05815567399480767
+        },
+        {
+          "from_ev": 4,
+          "to_ev": 5,
+          "patch": 20,
+          "deltaY": -0.05151018919825234
+        },
+        {
+          "from_ev": 4,
+          "to_ev": 5,
+          "patch": 21,
+          "deltaY": -0.03582442432842123
+        },
+        {
+          "from_ev": 5,
+          "to_ev": 6,
+          "patch": 19,
+          "deltaY": -0.01876586358841925
+        },
+        {
+          "from_ev": 5,
+          "to_ev": 6,
+          "patch": 20,
+          "deltaY": -0.016926838603118693
+        },
+        {
+          "from_ev": 5,
+          "to_ev": 6,
+          "patch": 21,
+          "deltaY": -0.012247209441034634
+        }
+      ]
+    },
+    "gray_slopes": [
+      {
+        "ev": -5,
+        "dL_per_EV": -0.33416222134109574
+      },
+      {
+        "ev": -4,
+        "dL_per_EV": -0.4994898579829936
+      },
+      {
+        "ev": -3,
+        "dL_per_EV": -0.3848640548939457
+      },
+      {
+        "ev": -2,
+        "dL_per_EV": 0.5407143963467718
+      },
+      {
+        "ev": -1,
+        "dL_per_EV": 1.937552859289731
+      },
+      {
+        "ev": 0,
+        "dL_per_EV": 1.8630792023598772
+      },
+      {
+        "ev": 1,
+        "dL_per_EV": 0.4384932446737153
+      },
+      {
+        "ev": 2,
+        "dL_per_EV": 0.31856822702586385
+      },
+      {
+        "ev": 3,
+        "dL_per_EV": 0.7709529024562656
+      },
+      {
+        "ev": 4,
+        "dL_per_EV": 0.6039250104855611
+      },
+      {
+        "ev": 5,
+        "dL_per_EV": 0.30690383071072347
+      },
+      {
+        "ev": 6,
+        "dL_per_EV": 0.1155656344021736
+      }
+    ],
+    "decision": "Inconclusive",
+    "reason": "Unknown spectral calibration; exposure monotonicity failures also occur in v1; no paired real-film reference"
+  },
+  {
+    "id": "phx_200_shared_r2",
+    "finite": true,
+    "monotonicity": {
+      "pass": false,
+      "failures": [
+        {
+          "from_ev": -6,
+          "to_ev": -5,
+          "patch": 22,
+          "deltaY": -0.0011390902866896813
+        },
+        {
+          "from_ev": -6,
+          "to_ev": -5,
+          "patch": 23,
+          "deltaY": -0.004249489193120626
+        },
+        {
+          "from_ev": -6,
+          "to_ev": -5,
+          "patch": 24,
+          "deltaY": -0.005347138945314273
+        },
+        {
+          "from_ev": -5,
+          "to_ev": -4,
+          "patch": 23,
+          "deltaY": -0.009322465947416342
+        },
+        {
+          "from_ev": -5,
+          "to_ev": -4,
+          "patch": 24,
+          "deltaY": -0.012278904003083596
+        },
+        {
+          "from_ev": -4,
+          "to_ev": -3,
+          "patch": 23,
+          "deltaY": -0.018957739830206155
+        },
+        {
+          "from_ev": -4,
+          "to_ev": -3,
+          "patch": 24,
+          "deltaY": -0.025925558292142006
+        },
+        {
+          "from_ev": -3,
+          "to_ev": -2,
+          "patch": 23,
+          "deltaY": -0.02908325619726533
+        },
+        {
+          "from_ev": -3,
+          "to_ev": -2,
+          "patch": 24,
+          "deltaY": -0.040359035537802276
+        },
+        {
+          "from_ev": -2,
+          "to_ev": -1,
+          "patch": 23,
+          "deltaY": -0.02676386331743926
+        },
+        {
+          "from_ev": -2,
+          "to_ev": -1,
+          "patch": 24,
+          "deltaY": -0.03167189104764491
+        },
+        {
+          "from_ev": -1,
+          "to_ev": 0,
+          "patch": 22,
+          "deltaY": -0.015392017564857557
+        },
+        {
+          "from_ev": -1,
+          "to_ev": 0,
+          "patch": 23,
+          "deltaY": -0.012079356388618172
+        },
+        {
+          "from_ev": -1,
+          "to_ev": 0,
+          "patch": 24,
+          "deltaY": -0.010076110773767931
+        },
+        {
+          "from_ev": 0,
+          "to_ev": 1,
+          "patch": 19,
+          "deltaY": -0.001608477978157663
+        },
+        {
+          "from_ev": 0,
+          "to_ev": 1,
+          "patch": 22,
+          "deltaY": -0.016480763255499076
+        },
+        {
+          "from_ev": 0,
+          "to_ev": 1,
+          "patch": 23,
+          "deltaY": -0.003384740901390366
+        },
+        {
+          "from_ev": 0,
+          "to_ev": 1,
+          "patch": 24,
+          "deltaY": -0.001828075353732193
+        },
+        {
+          "from_ev": 1,
+          "to_ev": 2,
+          "patch": 19,
+          "deltaY": -0.03348689911343272
+        },
+        {
+          "from_ev": 1,
+          "to_ev": 2,
+          "patch": 20,
+          "deltaY": -0.05024387024299648
+        },
+        {
+          "from_ev": 1,
+          "to_ev": 2,
+          "patch": 21,
+          "deltaY": -0.05028866047352426
+        },
+        {
+          "from_ev": 1,
+          "to_ev": 2,
+          "patch": 23,
+          "deltaY": -0.0012869315777718632
+        },
+        {
+          "from_ev": 1,
+          "to_ev": 2,
+          "patch": 24,
+          "deltaY": -0.00012714940783636712
+        },
+        {
+          "from_ev": 2,
+          "to_ev": 3,
+          "patch": 19,
+          "deltaY": -0.16144898444895717
+        },
+        {
+          "from_ev": 2,
+          "to_ev": 3,
+          "patch": 20,
+          "deltaY": -0.16163608560827852
+        },
+        {
+          "from_ev": 2,
+          "to_ev": 3,
+          "patch": 21,
+          "deltaY": -0.1326173542795872
+        },
+        {
+          "from_ev": 2,
+          "to_ev": 3,
+          "patch": 22,
+          "deltaY": -0.0003731311628543954
+        },
+        {
+          "from_ev": 3,
+          "to_ev": 4,
+          "patch": 19,
+          "deltaY": -0.17525244001415458
+        },
+        {
+          "from_ev": 3,
+          "to_ev": 4,
+          "patch": 20,
+          "deltaY": -0.15600554763937785
+        },
+        {
+          "from_ev": 3,
+          "to_ev": 4,
+          "patch": 21,
+          "deltaY": -0.10727767392868201
+        },
+        {
+          "from_ev": 3,
+          "to_ev": 4,
+          "patch": 22,
+          "deltaY": -0.006288334868085388
+        },
+        {
+          "from_ev": 4,
+          "to_ev": 5,
+          "patch": 19,
+          "deltaY": -0.06854578031659214
+        },
+        {
+          "from_ev": 4,
+          "to_ev": 5,
+          "patch": 20,
+          "deltaY": -0.06232474273950295
+        },
+        {
+          "from_ev": 4,
+          "to_ev": 5,
+          "patch": 21,
+          "deltaY": -0.04602619217238668
+        },
+        {
+          "from_ev": 4,
+          "to_ev": 5,
+          "patch": 22,
+          "deltaY": -0.004258845932753108
+        },
+        {
+          "from_ev": 5,
+          "to_ev": 6,
+          "patch": 19,
+          "deltaY": -0.019745704842611594
+        },
+        {
+          "from_ev": 5,
+          "to_ev": 6,
+          "patch": 20,
+          "deltaY": -0.018245000655497806
+        },
+        {
+          "from_ev": 5,
+          "to_ev": 6,
+          "patch": 21,
+          "deltaY": -0.014210525409236452
+        },
+        {
+          "from_ev": 5,
+          "to_ev": 6,
+          "patch": 22,
+          "deltaY": -0.0016492306003723645
+        }
+      ]
+    },
+    "gray_slopes": [
+      {
+        "ev": -5,
+        "dL_per_EV": -0.16877753278988905
+      },
+      {
+        "ev": -4,
+        "dL_per_EV": 0.00553180496622474
+      },
+      {
+        "ev": -3,
+        "dL_per_EV": 1.155606728142736
+      },
+      {
+        "ev": -2,
+        "dL_per_EV": 4.157563982524337
+      },
+      {
+        "ev": -1,
+        "dL_per_EV": 5.043532328250095
+      },
+      {
+        "ev": 0,
+        "dL_per_EV": -1.6973572631420666
+      },
+      {
+        "ev": 1,
+        "dL_per_EV": -1.91692763227978
+      },
+      {
+        "ev": 2,
+        "dL_per_EV": 0.6122254835819518
+      },
+      {
+        "ev": 3,
+        "dL_per_EV": -0.04388483775186103
+      },
+      {
+        "ev": 4,
+        "dL_per_EV": -0.7484679450448226
+      },
+      {
+        "ev": 5,
+        "dL_per_EV": -0.5167526601670289
+      },
+      {
+        "ev": 6,
+        "dL_per_EV": -0.20232813297474195
+      }
+    ],
+    "decision": "Inconclusive",
+    "reason": "Unknown spectral calibration; exposure monotonicity failures also occur in v1; no paired real-film reference"
+  },
+  {
+    "id": "phx_ii_d55_r2",
+    "finite": true,
+    "monotonicity": {
+      "pass": false,
+      "failures": [
+        {
+          "from_ev": -6,
+          "to_ev": -5,
+          "patch": 23,
+          "deltaY": -0.0004689709720643864
+        },
+        {
+          "from_ev": -6,
+          "to_ev": -5,
+          "patch": 24,
+          "deltaY": -0.0006505471437690258
+        },
+        {
+          "from_ev": -5,
+          "to_ev": -4,
+          "patch": 23,
+          "deltaY": -0.0019008623135045033
+        },
+        {
+          "from_ev": -5,
+          "to_ev": -4,
+          "patch": 24,
+          "deltaY": -0.0025854345684503954
+        },
+        {
+          "from_ev": -4,
+          "to_ev": -3,
+          "patch": 23,
+          "deltaY": -0.009775697737929245
+        },
+        {
+          "from_ev": -4,
+          "to_ev": -3,
+          "patch": 24,
+          "deltaY": -0.012166675822490564
+        },
+        {
+          "from_ev": -3,
+          "to_ev": -2,
+          "patch": 23,
+          "deltaY": -0.03573261933121458
+        },
+        {
+          "from_ev": -3,
+          "to_ev": -2,
+          "patch": 24,
+          "deltaY": -0.04301104739427915
+        },
+        {
+          "from_ev": -2,
+          "to_ev": -1,
+          "patch": 22,
+          "deltaY": -0.0037827445038937924
+        },
+        {
+          "from_ev": -2,
+          "to_ev": -1,
+          "patch": 23,
+          "deltaY": -0.05292751502095634
+        },
+        {
+          "from_ev": -2,
+          "to_ev": -1,
+          "patch": 24,
+          "deltaY": -0.060486228403229786
+        },
+        {
+          "from_ev": -1,
+          "to_ev": 0,
+          "patch": 19,
+          "deltaY": -0.0671045840046699
+        },
+        {
+          "from_ev": -1,
+          "to_ev": 0,
+          "patch": 20,
+          "deltaY": -0.07589277586369664
+        },
+        {
+          "from_ev": -1,
+          "to_ev": 0,
+          "patch": 21,
+          "deltaY": -0.050174899896889336
+        },
+        {
+          "from_ev": -1,
+          "to_ev": 0,
+          "patch": 22,
+          "deltaY": -0.013299718280998934
+        },
+        {
+          "from_ev": -1,
+          "to_ev": 0,
+          "patch": 23,
+          "deltaY": -0.023070842501717675
+        },
+        {
+          "from_ev": -1,
+          "to_ev": 0,
+          "patch": 24,
+          "deltaY": -0.021757234164046506
+        },
+        {
+          "from_ev": 0,
+          "to_ev": 1,
+          "patch": 19,
+          "deltaY": -0.11779962297038027
+        },
+        {
+          "from_ev": 0,
+          "to_ev": 1,
+          "patch": 20,
+          "deltaY": -0.11364881880574795
+        },
+        {
+          "from_ev": 0,
+          "to_ev": 1,
+          "patch": 21,
+          "deltaY": -0.07975898583236005
+        },
+        {
+          "from_ev": 0,
+          "to_ev": 1,
+          "patch": 22,
+          "deltaY": -0.016563036882977375
+        },
+        {
+          "from_ev": 0,
+          "to_ev": 1,
+          "patch": 24,
+          "deltaY": -0.003114490136832556
+        },
+        {
+          "from_ev": 1,
+          "to_ev": 2,
+          "patch": 19,
+          "deltaY": -0.11469724292243122
+        },
+        {
+          "from_ev": 1,
+          "to_ev": 2,
+          "patch": 20,
+          "deltaY": -0.0893075713533506
+        },
+        {
+          "from_ev": 1,
+          "to_ev": 2,
+          "patch": 21,
+          "deltaY": -0.053133893088006534
+        },
+        {
+          "from_ev": 1,
+          "to_ev": 2,
+          "patch": 22,
+          "deltaY": -0.012142631671373846
+        },
+        {
+          "from_ev": 2,
+          "to_ev": 3,
+          "patch": 19,
+          "deltaY": -0.08183870526774156
+        },
+        {
+          "from_ev": 2,
+          "to_ev": 3,
+          "patch": 20,
+          "deltaY": -0.0617143456223713
+        },
+        {
+          "from_ev": 2,
+          "to_ev": 3,
+          "patch": 21,
+          "deltaY": -0.03550039752379888
+        },
+        {
+          "from_ev": 2,
+          "to_ev": 3,
+          "patch": 22,
+          "deltaY": -0.006779278767401142
+        },
+        {
+          "from_ev": 3,
+          "to_ev": 4,
+          "patch": 19,
+          "deltaY": -0.048065552050517685
+        },
+        {
+          "from_ev": 3,
+          "to_ev": 4,
+          "patch": 20,
+          "deltaY": -0.03775465562966063
+        },
+        {
+          "from_ev": 3,
+          "to_ev": 4,
+          "patch": 21,
+          "deltaY": -0.02292810315554243
+        },
+        {
+          "from_ev": 3,
+          "to_ev": 4,
+          "patch": 22,
+          "deltaY": -0.003807586556409448
+        },
+        {
+          "from_ev": 4,
+          "to_ev": 5,
+          "patch": 19,
+          "deltaY": -0.026636884397544858
+        },
+        {
+          "from_ev": 4,
+          "to_ev": 5,
+          "patch": 20,
+          "deltaY": -0.022014202397515253
+        },
+        {
+          "from_ev": 4,
+          "to_ev": 5,
+          "patch": 21,
+          "deltaY": -0.014771129220020593
+        },
+        {
+          "from_ev": 4,
+          "to_ev": 5,
+          "patch": 22,
+          "deltaY": -0.0036740147961114022
+        },
+        {
+          "from_ev": 5,
+          "to_ev": 6,
+          "patch": 19,
+          "deltaY": -0.015686042998697497
+        },
+        {
+          "from_ev": 5,
+          "to_ev": 6,
+          "patch": 20,
+          "deltaY": -0.013434532914304936
+        },
+        {
+          "from_ev": 5,
+          "to_ev": 6,
+          "patch": 21,
+          "deltaY": -0.010054759999967675
+        },
+        {
+          "from_ev": 5,
+          "to_ev": 6,
+          "patch": 22,
+          "deltaY": -0.004151762188412511
+        }
+      ]
+    },
+    "gray_slopes": [
+      {
+        "ev": -5,
+        "dL_per_EV": 0.029727931177596645
+      },
+      {
+        "ev": -4,
+        "dL_per_EV": 0.09483150620818748
+      },
+      {
+        "ev": -3,
+        "dL_per_EV": 0.2268407980348499
+      },
+      {
+        "ev": -2,
+        "dL_per_EV": 0.21585112113235994
+      },
+      {
+        "ev": -1,
+        "dL_per_EV": -0.5113527165376581
+      },
+      {
+        "ev": 0,
+        "dL_per_EV": -1.8687340259924312
+      },
+      {
+        "ev": 1,
+        "dL_per_EV": -2.5037738358370305
+      },
+      {
+        "ev": 2,
+        "dL_per_EV": -1.984584030516146
+      },
+      {
+        "ev": 3,
+        "dL_per_EV": -1.1727873538630007
+      },
+      {
+        "ev": 4,
+        "dL_per_EV": -0.6815645103876946
+      },
+      {
+        "ev": 5,
+        "dL_per_EV": -0.6745142778544206
+      },
+      {
+        "ev": 6,
+        "dL_per_EV": -0.7835333363541963
+      }
+    ],
+    "decision": "Inconclusive",
+    "reason": "Unknown spectral calibration; exposure monotonicity failures also occur in v1; no paired real-film reference"
+  },
+  {
+    "id": "phx_ii_linear_r2",
+    "finite": true,
+    "monotonicity": {
+      "pass": false,
+      "failures": [
+        {
+          "from_ev": -6,
+          "to_ev": -5,
+          "patch": 23,
+          "deltaY": -0.0004815023372458094
+        },
+        {
+          "from_ev": -6,
+          "to_ev": -5,
+          "patch": 24,
+          "deltaY": -0.0006733255661185156
+        },
+        {
+          "from_ev": -5,
+          "to_ev": -4,
+          "patch": 23,
+          "deltaY": -0.0020006046485267492
+        },
+        {
+          "from_ev": -5,
+          "to_ev": -4,
+          "patch": 24,
+          "deltaY": -0.0027066252718233597
+        },
+        {
+          "from_ev": -4,
+          "to_ev": -3,
+          "patch": 23,
+          "deltaY": -0.010251690446093586
+        },
+        {
+          "from_ev": -4,
+          "to_ev": -3,
+          "patch": 24,
+          "deltaY": -0.012720441315190317
+        },
+        {
+          "from_ev": -3,
+          "to_ev": -2,
+          "patch": 23,
+          "deltaY": -0.03671320294862143
+        },
+        {
+          "from_ev": -3,
+          "to_ev": -2,
+          "patch": 24,
+          "deltaY": -0.04414267114018569
+        },
+        {
+          "from_ev": -2,
+          "to_ev": -1,
+          "patch": 22,
+          "deltaY": -0.004147644871616202
+        },
+        {
+          "from_ev": -2,
+          "to_ev": -1,
+          "patch": 23,
+          "deltaY": -0.05257887648950246
+        },
+        {
+          "from_ev": -2,
+          "to_ev": -1,
+          "patch": 24,
+          "deltaY": -0.05991133860857779
+        },
+        {
+          "from_ev": -1,
+          "to_ev": 0,
+          "patch": 19,
+          "deltaY": -0.06931934871886891
+        },
+        {
+          "from_ev": -1,
+          "to_ev": 0,
+          "patch": 20,
+          "deltaY": -0.07823579350406096
+        },
+        {
+          "from_ev": -1,
+          "to_ev": 0,
+          "patch": 21,
+          "deltaY": -0.05265315507525209
+        },
+        {
+          "from_ev": -1,
+          "to_ev": 0,
+          "patch": 22,
+          "deltaY": -0.013520229845392695
+        },
+        {
+          "from_ev": -1,
+          "to_ev": 0,
+          "patch": 23,
+          "deltaY": -0.022077909733816205
+        },
+        {
+          "from_ev": -1,
+          "to_ev": 0,
+          "patch": 24,
+          "deltaY": -0.020709812384586086
+        },
+        {
+          "from_ev": 0,
+          "to_ev": 1,
+          "patch": 19,
+          "deltaY": -0.1184028315600773
+        },
+        {
+          "from_ev": 0,
+          "to_ev": 1,
+          "patch": 20,
+          "deltaY": -0.11348000948477438
+        },
+        {
+          "from_ev": 0,
+          "to_ev": 1,
+          "patch": 21,
+          "deltaY": -0.07920089976822772
+        },
+        {
+          "from_ev": 0,
+          "to_ev": 1,
+          "patch": 22,
+          "deltaY": -0.01648090060341184
+        },
+        {
+          "from_ev": 0,
+          "to_ev": 1,
+          "patch": 24,
+          "deltaY": -0.002913576408789387
+        },
+        {
+          "from_ev": 1,
+          "to_ev": 2,
+          "patch": 19,
+          "deltaY": -0.1139521707868596
+        },
+        {
+          "from_ev": 1,
+          "to_ev": 2,
+          "patch": 20,
+          "deltaY": -0.08846898851500656
+        },
+        {
+          "from_ev": 1,
+          "to_ev": 2,
+          "patch": 21,
+          "deltaY": -0.052463492368419934
+        },
+        {
+          "from_ev": 1,
+          "to_ev": 2,
+          "patch": 22,
+          "deltaY": -0.011989131337446848
+        },
+        {
+          "from_ev": 2,
+          "to_ev": 3,
+          "patch": 19,
+          "deltaY": -0.08069764807681593
+        },
+        {
+          "from_ev": 2,
+          "to_ev": 3,
+          "patch": 20,
+          "deltaY": -0.0608545977066515
+        },
+        {
+          "from_ev": 2,
+          "to_ev": 3,
+          "patch": 21,
+          "deltaY": -0.03498643467186241
+        },
+        {
+          "from_ev": 2,
+          "to_ev": 3,
+          "patch": 22,
+          "deltaY": -0.006631213138097752
+        },
+        {
+          "from_ev": 3,
+          "to_ev": 4,
+          "patch": 19,
+          "deltaY": -0.04722265262484995
+        },
+        {
+          "from_ev": 3,
+          "to_ev": 4,
+          "patch": 20,
+          "deltaY": -0.03710100196131225
+        },
+        {
+          "from_ev": 3,
+          "to_ev": 4,
+          "patch": 21,
+          "deltaY": -0.0225961437706773
+        },
+        {
+          "from_ev": 3,
+          "to_ev": 4,
+          "patch": 22,
+          "deltaY": -0.003739800217927511
+        },
+        {
+          "from_ev": 4,
+          "to_ev": 5,
+          "patch": 19,
+          "deltaY": -0.026174498244218664
+        },
+        {
+          "from_ev": 4,
+          "to_ev": 5,
+          "patch": 20,
+          "deltaY": -0.021674873343747375
+        },
+        {
+          "from_ev": 4,
+          "to_ev": 5,
+          "patch": 21,
+          "deltaY": -0.014567271295137352
+        },
+        {
+          "from_ev": 4,
+          "to_ev": 5,
+          "patch": 22,
+          "deltaY": -0.0036821395556460995
+        },
+        {
+          "from_ev": 5,
+          "to_ev": 6,
+          "patch": 19,
+          "deltaY": -0.015477768687680277
+        },
+        {
+          "from_ev": 5,
+          "to_ev": 6,
+          "patch": 20,
+          "deltaY": -0.013266690614121418
+        },
+        {
+          "from_ev": 5,
+          "to_ev": 6,
+          "patch": 21,
+          "deltaY": -0.00995551811528976
+        },
+        {
+          "from_ev": 5,
+          "to_ev": 6,
+          "patch": 22,
+          "deltaY": -0.004160851690315506
+        }
+      ]
+    },
+    "gray_slopes": [
+      {
+        "ev": -5,
+        "dL_per_EV": 0.032058743742872764
+      },
+      {
+        "ev": -4,
+        "dL_per_EV": 0.09708552509984258
+      },
+      {
+        "ev": -3,
+        "dL_per_EV": 0.22812753550786624
+      },
+      {
+        "ev": -2,
+        "dL_per_EV": 0.20965521848508217
+      },
+      {
+        "ev": -1,
+        "dL_per_EV": -0.5611354736843026
+      },
+      {
+        "ev": 0,
+        "dL_per_EV": -1.9039470106275402
+      },
+      {
+        "ev": 1,
+        "dL_per_EV": -2.498391310093922
+      },
+      {
+        "ev": 2,
+        "dL_per_EV": -1.964358865179868
+      },
+      {
+        "ev": 3,
+        "dL_per_EV": -1.1491812845538334
+      },
+      {
+        "ev": 4,
+        "dL_per_EV": -0.6701869438990613
+      },
+      {
+        "ev": 5,
+        "dL_per_EV": -0.6766616204946772
+      },
+      {
+        "ev": 6,
+        "dL_per_EV": -0.7860914435345805
+      }
+    ],
+    "decision": "Inconclusive",
+    "reason": "Unknown spectral calibration; exposure monotonicity failures also occur in v1; no paired real-film reference"
+  },
+  {
+    "id": "phx_ii_shared_r2",
+    "finite": true,
+    "monotonicity": {
+      "pass": false,
+      "failures": [
+        {
+          "from_ev": -6,
+          "to_ev": -5,
+          "patch": 23,
+          "deltaY": -0.00041204813860726275
+        },
+        {
+          "from_ev": -6,
+          "to_ev": -5,
+          "patch": 24,
+          "deltaY": -0.0005494471034084847
+        },
+        {
+          "from_ev": -5,
+          "to_ev": -4,
+          "patch": 23,
+          "deltaY": -0.002333665810457519
+        },
+        {
+          "from_ev": -5,
+          "to_ev": -4,
+          "patch": 24,
+          "deltaY": -0.002845147747502552
+        },
+        {
+          "from_ev": -4,
+          "to_ev": -3,
+          "patch": 22,
+          "deltaY": -0.002357826579336808
+        },
+        {
+          "from_ev": -4,
+          "to_ev": -3,
+          "patch": 23,
+          "deltaY": -0.013184348189973244
+        },
+        {
+          "from_ev": -4,
+          "to_ev": -3,
+          "patch": 24,
+          "deltaY": -0.01518136898414385
+        },
+        {
+          "from_ev": -3,
+          "to_ev": -2,
+          "patch": 22,
+          "deltaY": -0.009408256453427966
+        },
+        {
+          "from_ev": -3,
+          "to_ev": -2,
+          "patch": 23,
+          "deltaY": -0.039266473481037845
+        },
+        {
+          "from_ev": -3,
+          "to_ev": -2,
+          "patch": 24,
+          "deltaY": -0.045959406309770204
+        },
+        {
+          "from_ev": -2,
+          "to_ev": -1,
+          "patch": 22,
+          "deltaY": -0.014576087079886196
+        },
+        {
+          "from_ev": -2,
+          "to_ev": -1,
+          "patch": 23,
+          "deltaY": -0.04790784908404366
+        },
+        {
+          "from_ev": -2,
+          "to_ev": -1,
+          "patch": 24,
+          "deltaY": -0.05497804215626788
+        },
+        {
+          "from_ev": -1,
+          "to_ev": 0,
+          "patch": 19,
+          "deltaY": -0.06040655297650899
+        },
+        {
+          "from_ev": -1,
+          "to_ev": 0,
+          "patch": 20,
+          "deltaY": -0.05422122197535417
+        },
+        {
+          "from_ev": -1,
+          "to_ev": 0,
+          "patch": 21,
+          "deltaY": -0.01751174380752124
+        },
+        {
+          "from_ev": -1,
+          "to_ev": 0,
+          "patch": 22,
+          "deltaY": -0.011657297757566201
+        },
+        {
+          "from_ev": -1,
+          "to_ev": 0,
+          "patch": 23,
+          "deltaY": -0.0218067337891178
+        },
+        {
+          "from_ev": -1,
+          "to_ev": 0,
+          "patch": 24,
+          "deltaY": -0.020764546613317905
+        },
+        {
+          "from_ev": 0,
+          "to_ev": 1,
+          "patch": 19,
+          "deltaY": -0.1189684203850655
+        },
+        {
+          "from_ev": 0,
+          "to_ev": 1,
+          "patch": 20,
+          "deltaY": -0.11015609940620175
+        },
+        {
+          "from_ev": 0,
+          "to_ev": 1,
+          "patch": 21,
+          "deltaY": -0.06529717751055333
+        },
+        {
+          "from_ev": 0,
+          "to_ev": 1,
+          "patch": 22,
+          "deltaY": -0.009596714248070237
+        },
+        {
+          "from_ev": 0,
+          "to_ev": 1,
+          "patch": 23,
+          "deltaY": -0.002067178494428057
+        },
+        {
+          "from_ev": 0,
+          "to_ev": 1,
+          "patch": 24,
+          "deltaY": -0.0035920521255375076
+        },
+        {
+          "from_ev": 1,
+          "to_ev": 2,
+          "patch": 19,
+          "deltaY": -0.1098125611397266
+        },
+        {
+          "from_ev": 1,
+          "to_ev": 2,
+          "patch": 20,
+          "deltaY": -0.08351049948702663
+        },
+        {
+          "from_ev": 1,
+          "to_ev": 2,
+          "patch": 21,
+          "deltaY": -0.04743301102943859
+        },
+        {
+          "from_ev": 1,
+          "to_ev": 2,
+          "patch": 22,
+          "deltaY": -0.006604567704843509
+        },
+        {
+          "from_ev": 2,
+          "to_ev": 3,
+          "patch": 19,
+          "deltaY": -0.07287109978540546
+        },
+        {
+          "from_ev": 2,
+          "to_ev": 3,
+          "patch": 20,
+          "deltaY": -0.0516306939603314
+        },
+        {
+          "from_ev": 2,
+          "to_ev": 3,
+          "patch": 21,
+          "deltaY": -0.02681767544186256
+        },
+        {
+          "from_ev": 2,
+          "to_ev": 3,
+          "patch": 22,
+          "deltaY": -0.0021856725399013316
+        },
+        {
+          "from_ev": 3,
+          "to_ev": 4,
+          "patch": 19,
+          "deltaY": -0.046982550635048526
+        },
+        {
+          "from_ev": 3,
+          "to_ev": 4,
+          "patch": 20,
+          "deltaY": -0.03481270395522018
+        },
+        {
+          "from_ev": 3,
+          "to_ev": 4,
+          "patch": 21,
+          "deltaY": -0.018850837475738125
+        },
+        {
+          "from_ev": 3,
+          "to_ev": 4,
+          "patch": 22,
+          "deltaY": -0.001030091956857937
+        },
+        {
+          "from_ev": 4,
+          "to_ev": 5,
+          "patch": 19,
+          "deltaY": -0.029287663666440755
+        },
+        {
+          "from_ev": 4,
+          "to_ev": 5,
+          "patch": 20,
+          "deltaY": -0.023480839524003427
+        },
+        {
+          "from_ev": 4,
+          "to_ev": 5,
+          "patch": 21,
+          "deltaY": -0.014632789097770188
+        },
+        {
+          "from_ev": 4,
+          "to_ev": 5,
+          "patch": 22,
+          "deltaY": -0.002410428723081434
+        },
+        {
+          "from_ev": 5,
+          "to_ev": 6,
+          "patch": 19,
+          "deltaY": -0.01751113153076224
+        },
+        {
+          "from_ev": 5,
+          "to_ev": 6,
+          "patch": 20,
+          "deltaY": -0.014858149208271457
+        },
+        {
+          "from_ev": 5,
+          "to_ev": 6,
+          "patch": 21,
+          "deltaY": -0.010550831652793413
+        },
+        {
+          "from_ev": 5,
+          "to_ev": 6,
+          "patch": 22,
+          "deltaY": -0.003403045362995155
+        }
+      ]
+    },
+    "gray_slopes": [
+      {
+        "ev": -5,
+        "dL_per_EV": 0.013100987903754913
+      },
+      {
+        "ev": -4,
+        "dL_per_EV": -0.005032732508169602
+      },
+      {
+        "ev": -3,
+        "dL_per_EV": -0.32363926773290075
+      },
+      {
+        "ev": -2,
+        "dL_per_EV": -1.326667686753865
+      },
+      {
+        "ev": -1,
+        "dL_per_EV": -2.179198695718071
+      },
+      {
+        "ev": 0,
+        "dL_per_EV": -1.868920299778381
+      },
+      {
+        "ev": 1,
+        "dL_per_EV": -1.6378639588231465
+      },
+      {
+        "ev": 2,
+        "dL_per_EV": -1.1872028720634304
+      },
+      {
+        "ev": 3,
+        "dL_per_EV": -0.40478880529074956
+      },
+      {
+        "ev": 4,
+        "dL_per_EV": -0.19294455835690627
+      },
+      {
+        "ev": 5,
+        "dL_per_EV": -0.4571110486449328
+      },
+      {
+        "ev": 6,
+        "dL_per_EV": -0.6593233255885309
+      }
+    ],
+    "decision": "Inconclusive",
+    "reason": "Unknown spectral calibration; exposure monotonicity failures also occur in v1; no paired real-film reference"
+  },
+  {
+    "id": "phx_ii_width115_r2",
+    "finite": true,
+    "monotonicity": {
+      "pass": false,
+      "failures": [
+        {
+          "from_ev": -6,
+          "to_ev": -5,
+          "patch": 23,
+          "deltaY": -0.0010027046246538496
+        },
+        {
+          "from_ev": -6,
+          "to_ev": -5,
+          "patch": 24,
+          "deltaY": -0.0014541584942006358
+        },
+        {
+          "from_ev": -5,
+          "to_ev": -4,
+          "patch": 23,
+          "deltaY": -0.0040552063202635436
+        },
+        {
+          "from_ev": -5,
+          "to_ev": -4,
+          "patch": 24,
+          "deltaY": -0.005507040964036036
+        },
+        {
+          "from_ev": -4,
+          "to_ev": -3,
+          "patch": 23,
+          "deltaY": -0.01595660121574291
+        },
+        {
+          "from_ev": -4,
+          "to_ev": -3,
+          "patch": 24,
+          "deltaY": -0.020143057288977237
+        },
+        {
+          "from_ev": -3,
+          "to_ev": -2,
+          "patch": 22,
+          "deltaY": -0.0003019018520375727
+        },
+        {
+          "from_ev": -3,
+          "to_ev": -2,
+          "patch": 23,
+          "deltaY": -0.0386071135677616
+        },
+        {
+          "from_ev": -3,
+          "to_ev": -2,
+          "patch": 24,
+          "deltaY": -0.0482709231081828
+        },
+        {
+          "from_ev": -2,
+          "to_ev": -1,
+          "patch": 19,
+          "deltaY": -0.005605774899327676
+        },
+        {
+          "from_ev": -2,
+          "to_ev": -1,
+          "patch": 22,
+          "deltaY": -0.0055904865871034826
+        },
+        {
+          "from_ev": -2,
+          "to_ev": -1,
+          "patch": 23,
+          "deltaY": -0.04159805096186508
+        },
+        {
+          "from_ev": -2,
+          "to_ev": -1,
+          "patch": 24,
+          "deltaY": -0.04774663348121229
+        },
+        {
+          "from_ev": -1,
+          "to_ev": 0,
+          "patch": 19,
+          "deltaY": -0.0692398961265327
+        },
+        {
+          "from_ev": -1,
+          "to_ev": 0,
+          "patch": 20,
+          "deltaY": -0.07094549378700826
+        },
+        {
+          "from_ev": -1,
+          "to_ev": 0,
+          "patch": 21,
+          "deltaY": -0.04337680629416879
+        },
+        {
+          "from_ev": -1,
+          "to_ev": 0,
+          "patch": 22,
+          "deltaY": -0.012199873884886997
+        },
+        {
+          "from_ev": -1,
+          "to_ev": 0,
+          "patch": 23,
+          "deltaY": -0.017050396214284474
+        },
+        {
+          "from_ev": -1,
+          "to_ev": 0,
+          "patch": 24,
+          "deltaY": -0.016232072353345745
+        },
+        {
+          "from_ev": 0,
+          "to_ev": 1,
+          "patch": 19,
+          "deltaY": -0.10253450401971509
+        },
+        {
+          "from_ev": 0,
+          "to_ev": 1,
+          "patch": 20,
+          "deltaY": -0.09462753559112241
+        },
+        {
+          "from_ev": 0,
+          "to_ev": 1,
+          "patch": 21,
+          "deltaY": -0.06229125934412344
+        },
+        {
+          "from_ev": 0,
+          "to_ev": 1,
+          "patch": 22,
+          "deltaY": -0.014035625256019521
+        },
+        {
+          "from_ev": 0,
+          "to_ev": 1,
+          "patch": 24,
+          "deltaY": -0.0027525820091487997
+        },
+        {
+          "from_ev": 1,
+          "to_ev": 2,
+          "patch": 19,
+          "deltaY": -0.09491537180190485
+        },
+        {
+          "from_ev": 1,
+          "to_ev": 2,
+          "patch": 20,
+          "deltaY": -0.07324574577820805
+        },
+        {
+          "from_ev": 1,
+          "to_ev": 2,
+          "patch": 21,
+          "deltaY": -0.04414285016967895
+        },
+        {
+          "from_ev": 1,
+          "to_ev": 2,
+          "patch": 22,
+          "deltaY": -0.011049889708474994
+        },
+        {
+          "from_ev": 2,
+          "to_ev": 3,
+          "patch": 19,
+          "deltaY": -0.07186406722291924
+        },
+        {
+          "from_ev": 2,
+          "to_ev": 3,
+          "patch": 20,
+          "deltaY": -0.053007814990171265
+        },
+        {
+          "from_ev": 2,
+          "to_ev": 3,
+          "patch": 21,
+          "deltaY": -0.03043342886595496
+        },
+        {
+          "from_ev": 2,
+          "to_ev": 3,
+          "patch": 22,
+          "deltaY": -0.0069046021314469325
+        },
+        {
+          "from_ev": 3,
+          "to_ev": 4,
+          "patch": 19,
+          "deltaY": -0.048007760984287495
+        },
+        {
+          "from_ev": 3,
+          "to_ev": 4,
+          "patch": 20,
+          "deltaY": -0.03632928495174517
+        },
+        {
+          "from_ev": 3,
+          "to_ev": 4,
+          "patch": 21,
+          "deltaY": -0.021196321992191375
+        },
+        {
+          "from_ev": 3,
+          "to_ev": 4,
+          "patch": 22,
+          "deltaY": -0.0038513189889356897
+        },
+        {
+          "from_ev": 4,
+          "to_ev": 5,
+          "patch": 19,
+          "deltaY": -0.029408348076950724
+        },
+        {
+          "from_ev": 4,
+          "to_ev": 5,
+          "patch": 20,
+          "deltaY": -0.02318321281689051
+        },
+        {
+          "from_ev": 4,
+          "to_ev": 5,
+          "patch": 21,
+          "deltaY": -0.014484212450648598
+        },
+        {
+          "from_ev": 4,
+          "to_ev": 5,
+          "patch": 22,
+          "deltaY": -0.0028480536824561087
+        },
+        {
+          "from_ev": 5,
+          "to_ev": 6,
+          "patch": 19,
+          "deltaY": -0.018057308409693773
+        },
+        {
+          "from_ev": 5,
+          "to_ev": 6,
+          "patch": 20,
+          "deltaY": -0.014964278603294384
+        },
+        {
+          "from_ev": 5,
+          "to_ev": 6,
+          "patch": 21,
+          "deltaY": -0.010278851365062264
+        },
+        {
+          "from_ev": 5,
+          "to_ev": 6,
+          "patch": 22,
+          "deltaY": -0.003249842853796453
+        }
+      ]
+    },
+    "gray_slopes": [
+      {
+        "ev": -5,
+        "dL_per_EV": 0.05718005671395332
+      },
+      {
+        "ev": -4,
+        "dL_per_EV": 0.132233653831328
+      },
+      {
+        "ev": -3,
+        "dL_per_EV": 0.19501276668314915
+      },
+      {
+        "ev": -2,
+        "dL_per_EV": -0.040716387815486144
+      },
+      {
+        "ev": -1,
+        "dL_per_EV": -0.7638204293935331
+      },
+      {
+        "ev": 0,
+        "dL_per_EV": -1.7363976288528562
+      },
+      {
+        "ev": 1,
+        "dL_per_EV": -2.1318065744798034
+      },
+      {
+        "ev": 2,
+        "dL_per_EV": -1.7969660863670853
+      },
+      {
+        "ev": 3,
+        "dL_per_EV": -1.184514238245633
+      },
+      {
+        "ev": 4,
+        "dL_per_EV": -0.6837254813973956
+      },
+      {
+        "ev": 5,
+        "dL_per_EV": -0.51702241555531
+      },
+      {
+        "ev": 6,
+        "dL_per_EV": -0.6024927610991924
+      }
+    ],
+    "decision": "Inconclusive",
+    "reason": "Unknown spectral calibration; exposure monotonicity failures also occur in v1; no paired real-film reference"
+  },
+  {
+    "id": "phx_ii_width130_r2",
+    "finite": true,
+    "monotonicity": {
+      "pass": false,
+      "failures": [
+        {
+          "from_ev": -6,
+          "to_ev": -5,
+          "patch": 23,
+          "deltaY": -0.0019045765166488815
+        },
+        {
+          "from_ev": -6,
+          "to_ev": -5,
+          "patch": 24,
+          "deltaY": -0.002823307082522375
+        },
+        {
+          "from_ev": -5,
+          "to_ev": -4,
+          "patch": 23,
+          "deltaY": -0.007060334842095478
+        },
+        {
+          "from_ev": -5,
+          "to_ev": -4,
+          "patch": 24,
+          "deltaY": -0.009522321208240425
+        },
+        {
+          "from_ev": -4,
+          "to_ev": -3,
+          "patch": 23,
+          "deltaY": -0.02056083596293061
+        },
+        {
+          "from_ev": -4,
+          "to_ev": -3,
+          "patch": 24,
+          "deltaY": -0.02685773474096642
+        },
+        {
+          "from_ev": -3,
+          "to_ev": -2,
+          "patch": 22,
+          "deltaY": -0.001812539872214608
+        },
+        {
+          "from_ev": -3,
+          "to_ev": -2,
+          "patch": 23,
+          "deltaY": -0.03672160842489608
+        },
+        {
+          "from_ev": -3,
+          "to_ev": -2,
+          "patch": 24,
+          "deltaY": -0.04715771936971089
+        },
+        {
+          "from_ev": -2,
+          "to_ev": -1,
+          "patch": 19,
+          "deltaY": -0.011425452554754911
+        },
+        {
+          "from_ev": -2,
+          "to_ev": -1,
+          "patch": 22,
+          "deltaY": -0.0065006270971796065
+        },
+        {
+          "from_ev": -2,
+          "to_ev": -1,
+          "patch": 23,
+          "deltaY": -0.0328528529864281
+        },
+        {
+          "from_ev": -2,
+          "to_ev": -1,
+          "patch": 24,
+          "deltaY": -0.03774280346055542
+        },
+        {
+          "from_ev": -1,
+          "to_ev": 0,
+          "patch": 19,
+          "deltaY": -0.06688321853727369
+        },
+        {
+          "from_ev": -1,
+          "to_ev": 0,
+          "patch": 20,
+          "deltaY": -0.06305251975604736
+        },
+        {
+          "from_ev": -1,
+          "to_ev": 0,
+          "patch": 21,
+          "deltaY": -0.036157000053505695
+        },
+        {
+          "from_ev": -1,
+          "to_ev": 0,
+          "patch": 22,
+          "deltaY": -0.010943285735078745
+        },
+        {
+          "from_ev": -1,
+          "to_ev": 0,
+          "patch": 23,
+          "deltaY": -0.013398080434009363
+        },
+        {
+          "from_ev": -1,
+          "to_ev": 0,
+          "patch": 24,
+          "deltaY": -0.013191539066651065
+        },
+        {
+          "from_ev": 0,
+          "to_ev": 1,
+          "patch": 19,
+          "deltaY": -0.08990611909729729
+        },
+        {
+          "from_ev": 0,
+          "to_ev": 1,
+          "patch": 20,
+          "deltaY": -0.0792928392554969
+        },
+        {
+          "from_ev": 0,
+          "to_ev": 1,
+          "patch": 21,
+          "deltaY": -0.05023101698392057
+        },
+        {
+          "from_ev": 0,
+          "to_ev": 1,
+          "patch": 22,
+          "deltaY": -0.012199212102650847
+        },
+        {
+          "from_ev": 0,
+          "to_ev": 1,
+          "patch": 24,
+          "deltaY": -0.002547915067668754
+        },
+        {
+          "from_ev": 1,
+          "to_ev": 2,
+          "patch": 19,
+          "deltaY": -0.07995040926928926
+        },
+        {
+          "from_ev": 1,
+          "to_ev": 2,
+          "patch": 20,
+          "deltaY": -0.06173627023807968
+        },
+        {
+          "from_ev": 1,
+          "to_ev": 2,
+          "patch": 21,
+          "deltaY": -0.0375783080896826
+        },
+        {
+          "from_ev": 1,
+          "to_ev": 2,
+          "patch": 22,
+          "deltaY": -0.01012276993001028
+        },
+        {
+          "from_ev": 2,
+          "to_ev": 3,
+          "patch": 19,
+          "deltaY": -0.062411318796188664
+        },
+        {
+          "from_ev": 2,
+          "to_ev": 3,
+          "patch": 20,
+          "deltaY": -0.04563089681900839
+        },
+        {
+          "from_ev": 2,
+          "to_ev": 3,
+          "patch": 21,
+          "deltaY": -0.026573324824974875
+        },
+        {
+          "from_ev": 2,
+          "to_ev": 3,
+          "patch": 22,
+          "deltaY": -0.006936317330241859
+        },
+        {
+          "from_ev": 3,
+          "to_ev": 4,
+          "patch": 19,
+          "deltaY": -0.04557642617502322
+        },
+        {
+          "from_ev": 3,
+          "to_ev": 4,
+          "patch": 20,
+          "deltaY": -0.03354435060001712
+        },
+        {
+          "from_ev": 3,
+          "to_ev": 4,
+          "patch": 21,
+          "deltaY": -0.01929175945781625
+        },
+        {
+          "from_ev": 3,
+          "to_ev": 4,
+          "patch": 22,
+          "deltaY": -0.0041045302316364
+        },
+        {
+          "from_ev": 4,
+          "to_ev": 5,
+          "patch": 19,
+          "deltaY": -0.03061482048342784
+        },
+        {
+          "from_ev": 4,
+          "to_ev": 5,
+          "patch": 20,
+          "deltaY": -0.02338996554372169
+        },
+        {
+          "from_ev": 4,
+          "to_ev": 5,
+          "patch": 21,
+          "deltaY": -0.01392549213884274
+        },
+        {
+          "from_ev": 4,
+          "to_ev": 5,
+          "patch": 22,
+          "deltaY": -0.0026231127280672284
+        },
+        {
+          "from_ev": 5,
+          "to_ev": 6,
+          "patch": 19,
+          "deltaY": -0.01999437536172252
+        },
+        {
+          "from_ev": 5,
+          "to_ev": 6,
+          "patch": 20,
+          "deltaY": -0.015869808422972406
+        },
+        {
+          "from_ev": 5,
+          "to_ev": 6,
+          "patch": 21,
+          "deltaY": -0.010230255392196158
+        },
+        {
+          "from_ev": 5,
+          "to_ev": 6,
+          "patch": 22,
+          "deltaY": -0.002480677364455064
+        }
+      ]
+    },
+    "gray_slopes": [
+      {
+        "ev": -5,
+        "dL_per_EV": 0.08274813755581789
+      },
+      {
+        "ev": -4,
+        "dL_per_EV": 0.1386305886638155
+      },
+      {
+        "ev": -3,
+        "dL_per_EV": 0.10619570689915037
+      },
+      {
+        "ev": -2,
+        "dL_per_EV": -0.2454675158970261
+      },
+      {
+        "ev": -1,
+        "dL_per_EV": -0.8967990620053641
+      },
+      {
+        "ev": 0,
+        "dL_per_EV": -1.5722039945976363
+      },
+      {
+        "ev": 1,
+        "dL_per_EV": -1.8568978759203532
+      },
+      {
+        "ev": 2,
+        "dL_per_EV": -1.637246749811439
+      },
+      {
+        "ev": 3,
+        "dL_per_EV": -1.1797794827916945
+      },
+      {
+        "ev": 4,
+        "dL_per_EV": -0.7227950238760243
+      },
+      {
+        "ev": 5,
+        "dL_per_EV": -0.4722514842105383
+      },
+      {
+        "ev": 6,
+        "dL_per_EV": -0.45440740580745853
+      }
+    ],
+    "decision": "Inconclusive",
+    "reason": "Unknown spectral calibration; exposure monotonicity failures also occur in v1; no paired real-film reference"
+  }
+]

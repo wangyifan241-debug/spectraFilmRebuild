@@ -1,0 +1,53 @@
+TAP version 13
+# Subtest: independent D50 primary tristimuli
+ok 1 - independent D50 primary tristimuli
+  ---
+  duration_ms: 1.1347
+  ...
+# Subtest: white and black independent whitepoint
+ok 2 - white and black independent whitepoint
+  ---
+  duration_ms: 1.3116
+  ...
+# Subtest: ROMM published gamma and linear toe
+ok 3 - ROMM published gamma and linear toe
+  ---
+  duration_ms: 0.0978
+  ...
+# Subtest: sRGB to ProPhoto agrees with independently composed Bradford D50 XYZ
+not ok 4 - sRGB to ProPhoto agrees with independently composed Bradford D50 XYZ
+  ---
+  duration_ms: 1.3825
+  failureType: 'testCodeFailure'
+  error: '0.20638274301851392 != 0.206391'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: '=='
+  stack: |-
+    near (C:\Users\Strickland\.codex\worktrees\phoenix-round2\SpektraLab\validation\phoenix-round2\color-tests.cjs:2:28)
+    C:\Users\Strickland\.codex\worktrees\phoenix-round2\SpektraLab\validation\phoenix-round2\color-tests.cjs:6:185
+    Array.forEach (<anonymous>)
+    C:\Users\Strickland\.codex\worktrees\phoenix-round2\SpektraLab\validation\phoenix-round2\color-tests.cjs:6:170
+    Array.forEach (<anonymous>)
+    TestContext.<anonymous> (C:\Users\Strickland\.codex\worktrees\phoenix-round2\SpektraLab\validation\phoenix-round2\color-tests.cjs:6:116)
+    Test.runInAsyncScope (node:async_hooks:203:9)
+    Test.run (node:internal/test_runner/test:573:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:318:18)
+    Test.postRun (node:internal/test_runner/test:642:19)
+  ...
+# Subtest: wrong-space negative control is rejected
+ok 5 - wrong-space negative control is rejected
+  ---
+  duration_ms: 0.3118
+  ...
+1..5
+# tests 5
+# suites 0
+# pass 4
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 83.1953

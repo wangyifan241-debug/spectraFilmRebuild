@@ -1,0 +1,40 @@
+TAP version 13
+# Subtest: independent D50 primary tristimuli
+ok 1 - independent D50 primary tristimuli
+  ---
+  duration_ms: 0.9031
+  ...
+# Subtest: white and black independent whitepoint
+ok 2 - white and black independent whitepoint
+  ---
+  duration_ms: 0.6014
+  ...
+# Subtest: ROMM published gamma and linear toe
+ok 3 - ROMM published gamma and linear toe
+  ---
+  duration_ms: 0.0778
+  ...
+# Subtest: sRGB to ProPhoto agrees with independently composed Bradford D50 XYZ
+ok 4 - sRGB to ProPhoto agrees with independently composed Bradford D50 XYZ
+  ---
+  duration_ms: 0.1457
+  ...
+# Subtest: wrong-space negative control is rejected
+ok 5 - wrong-space negative control is rejected
+  ---
+  duration_ms: 0.1829
+  ...
+# Subtest: current native observations agree with decoded ProPhoto; historical sRGB path fails
+ok 6 - current native observations agree with decoded ProPhoto; historical sRGB path fails
+  ---
+  duration_ms: 34.4922
+  ...
+1..6
+# tests 6
+# suites 0
+# pass 6
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 105.8155

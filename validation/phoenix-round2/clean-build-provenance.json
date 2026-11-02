@@ -1,0 +1,183 @@
+{
+  "source_commit": "6eb54e9dcbc8d1bd9fc04bfcff13e841547959c7",
+  "engine_tree": "a0810a2792f4ee693ef7c88e5de59b764dae3931",
+  "compiler": "g++.exe (x86_64-posix-seh-rev1, Built by MinGW-Builds project) 13.1.0\r\nCopyright (C) 2023 Free Software Foundation, Inc.\r\nThis is free software; see the source for copying conditions.  There is NO\r\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\r\n\r\n",
+  "compiler_sha256": "cd65c087ad69a877e5a105c607cc910abfabcc52ba7e9448572f36567b51698c",
+  "binary": [
+    {
+      "path": "build/review-clean/engine/spk_render_fixture.exe",
+      "sha256": "1ad42423d55708058513be03adc73cffd6ac8730d9c45ae603f1013fd48de7c4"
+    },
+    {
+      "path": "build/review-clean/engine/spektrafilm_engine.dll",
+      "sha256": "9f001e271c623dc3077065738faeff02f9aff38303fcc5259f641cb69854d964"
+    }
+  ],
+  "trace_binary_sha256": "019f71340db0b1392be76768f009055fa661a7aab3727f3b1cd2c16f94adf939",
+  "vulkan_headers_commit": "",
+  "shaders": [
+    {
+      "name": "spk_affine3.spv",
+      "sha256": "17f1d8322e569ac4dac0d78b10d61669f9d4220c91d690d2f96299615427bbdf"
+    },
+    {
+      "name": "spk_boost.spv",
+      "sha256": "0b95d2bf9c52724a3d822ae9b5f55363fa8eb7058812251147bbae6ef8f00917"
+    },
+    {
+      "name": "spk_bw_correct.spv",
+      "sha256": "a8515c1208c676e176c689a25a1456d0f535101f54bf1a9e9145059f5085b313"
+    },
+    {
+      "name": "spk_cam16ucs_compress.spv",
+      "sha256": "179d9fd5f8ab7c1de03b21aac7464b28bb47ea20be6fb744605db76743e68753"
+    },
+    {
+      "name": "spk_cctf_decode.spv",
+      "sha256": "e51ba57d071d6900e61c10596ad0b9d8e18381c01e74446bf26930b81bb5e011"
+    },
+    {
+      "name": "spk_cctf_encode_matrix.spv",
+      "sha256": "6ac2d962eb6c0285483fe226d04f0b1f2f5bfcaf21ceb9a170ae5ce9b019d49b"
+    },
+    {
+      "name": "spk_couplers_correction.spv",
+      "sha256": "9f0e990bb40e0ec0b92f387d0355773d1d277f1a4e9a425878a8ba8e03343ce3"
+    },
+    {
+      "name": "spk_curves.spv",
+      "sha256": "9fcd8d055fc2c9b339b34688d4c932719c915cda4695ce8e0d21eae710940a29"
+    },
+    {
+      "name": "spk_di_normalise.spv",
+      "sha256": "2d28f3e2c37099970291a59a3fa69a5cf7b4aa1850a746a9915362d798762f8c"
+    },
+    {
+      "name": "spk_edr.spv",
+      "sha256": "e4bb2921dbc1fdd31411515c1649ec6394280326a18f00a8d0bc18fd5f5c4bbe"
+    },
+    {
+      "name": "spk_geometry_resample_df.spv",
+      "sha256": "29265ee65dba649e31fb803fe64aeee08a125556c2be4e30197bab7ad3c816fb"
+    },
+    {
+      "name": "spk_glare_add.spv",
+      "sha256": "7a6c9090207120238a2f7c2bf8919b7309f6da69836ae33329706be709799ca0"
+    },
+    {
+      "name": "spk_grain_layers.spv",
+      "sha256": "205e31884070a4254723c4789c5bb5b80b8e2f8af1ffa11f8dbdc8c279d8d2ed"
+    },
+    {
+      "name": "spk_grain_layer_one.spv",
+      "sha256": "c72354e98bfc4c710c749403c2d6fc779d1a40d4de60399c04ac090b859d51f9"
+    },
+    {
+      "name": "spk_grain_simple.spv",
+      "sha256": "ce7444a69e7b7b3b5302d2ffc2fcb2a797f1f240250f164cbaa92db6f826c69d"
+    },
+    {
+      "name": "spk_highlight_headroom.spv",
+      "sha256": "a71afb9cf8999ced5be704c7d067737527ef95c4c271ab81836ba4b8f56ba3d6"
+    },
+    {
+      "name": "spk_iir_df_acc.spv",
+      "sha256": "134349601a35b8d70665779c5e25c5ff1eda8f5fe470bb1cb1a7186727c31019"
+    },
+    {
+      "name": "spk_lincomb3.spv",
+      "sha256": "40b03156066cc213051f4d5eece6a38dca0c2e834e203a81ead644db2fbd7f95"
+    },
+    {
+      "name": "spk_log10_guarded.spv",
+      "sha256": "fef81ad5a0f94c34517a29f6ac3f142d951d484775ca52633026b5d0c6de636b"
+    },
+    {
+      "name": "spk_lognormal_field.spv",
+      "sha256": "6e578f77e4276a1862ef5576db316a54bdf873f4793c880e09d7f7248bbd02f2"
+    },
+    {
+      "name": "spk_lut2d_cubic.spv",
+      "sha256": "46c801214f6d2005e04325e782f587b1ed6cd22b4091ef1ce1d6e1174ff49990"
+    },
+    {
+      "name": "spk_lut3d_trilinear.spv",
+      "sha256": "d893b19f909d051c641a8e7d433c45098d935a0e792788e3779a184138c2c029"
+    },
+    {
+      "name": "spk_math_probe.spv",
+      "sha256": "7a2525eae5486bccd5c812deb9af44e399c1a414d3e24aa1fe39634fbf31b009"
+    },
+    {
+      "name": "spk_matmul3.spv",
+      "sha256": "72d95e7cd08613d77201b8b993b2fd8b90041cf56d3ddc105de04f428cae5a88"
+    },
+    {
+      "name": "spk_mul.spv",
+      "sha256": "a06b20e80c080f474613391dca716468ba64b07ef45ceacbf9cdb3415582057c"
+    },
+    {
+      "name": "spk_overscan_add_mask.spv",
+      "sha256": "01e56f48fd193510a41ae9eb5ef9237e691ba0fee5c567ec5376a179abe24957"
+    },
+    {
+      "name": "spk_overscan_canvas.spv",
+      "sha256": "e1c4a9ef48eaaeb7ae390086f067de1fc98f96f1e09eefca5b34ae8b50f7ed73"
+    },
+    {
+      "name": "spk_overscan_film_present.spv",
+      "sha256": "fe9f4f35cf98805c40dc5e0f701ac23f5d41507794df4e3a02b28ad3ff28bd79"
+    },
+    {
+      "name": "spk_overscan_light.spv",
+      "sha256": "bff5f47d1674e6cb7871f8de456a75e6b7b5700424be571b1c0a7d6b21d967d5"
+    },
+    {
+      "name": "spk_print_exposure.spv",
+      "sha256": "b870b4a752ea3d21bb152b3d43a4b4e2484e95e2def63b1756f5fe29873e4e54"
+    },
+    {
+      "name": "spk_reduce_max.spv",
+      "sha256": "0064a5c8efc1a8cc79fa387f8682a7f9edf1b5c2e40e2c4f7802b5c19306cef9"
+    },
+    {
+      "name": "spk_rng_probe.spv",
+      "sha256": "f963c76fecbfe2267342d3af806cb546589655bc862f685a63b91de5249f1c4a"
+    },
+    {
+      "name": "spk_scene_latitude.spv",
+      "sha256": "4d79c3ab6a606167e08f8e7b72c1dbb5ef7640a4f2d46b1f75b542343a5491a3"
+    },
+    {
+      "name": "spk_sep_fir_acc.spv",
+      "sha256": "cd513a95a1a4d2c2114be19b3bc55f705dd51065ceb791531566742b46533d1e"
+    },
+    {
+      "name": "spk_spectral_epilogue.spv",
+      "sha256": "c8c2ee007692b4a088ec981479eb6621079c2fe15961c491bf54f9dd21328fb0"
+    },
+    {
+      "name": "spk_stride_sample.spv",
+      "sha256": "907a232b33daa425515dec1e5bb2ea7f7f3879d1b16e073457f69ec8578ead13"
+    },
+    {
+      "name": "spk_take_rgb.spv",
+      "sha256": "f15e7535f12a12e5586878b5379b66c2ba7d6a5439330fb99a00e59d6a4c87eb"
+    },
+    {
+      "name": "spk_tc_b.spv",
+      "sha256": "02a90468abf11433432e580d92603437dfc985821934f060f9df01a3e5fd0165"
+    },
+    {
+      "name": "spk_to_rgba16.spv",
+      "sha256": "63622bfc67e79c8fad09404add7d86d7faf2f58baf54436c8d4e9d2822a2ae6b"
+    },
+    {
+      "name": "spk_zoom_bilinear_mirror.spv",
+      "sha256": "a748e2df3a7759928c3c86949cadd8ba3be7e4e5a44f93d196b2c6dff4edd1d0"
+    }
+  ],
+  "limits": "clean native engine/driver only; no Qt GUI rebuild or RAW decoder (disabled); trace DLL test-only replaces pipeline object",
+  "glslang": "Glslang Version: 11:16.2.0\r\nESSL Version: OpenGL ES GLSL 3.20 glslang Khronos. 16.2.0\r\nGLSL Version: 4.60 glslang Khronos. 16.2.0\r\nSPIR-V Version 0x00010600, Revision 1\r\nGLSL.std.450 Version 100, Revision 1\r\nKhronos Tool ID 8\r\nSPIR-V Generator Version 11\r\nGL_KHR_vulkan_glsl version 100\r\nARB_GL_gl_spirv version 100\r\n",
+  "cmake": "cmake version 3.25.0\n\nCMake suite maintained and supported by Kitware (kitware.com/cmake).\n"
+}

@@ -1,6 +1,6 @@
 {
   "purpose": "synthetic engineering only",
-  "renderer_sha256": "503f225524699e02a558e9c721092f72f6c339d892095b6a85b9d10143a145cf",
+  "renderer_sha256": "1ad42423d55708058513be03adc73cffd6ac8730d9c45ae603f1013fd48de7c4",
   "input_sha256": "17881d0fc7105685c9a974e3732a0d84da04012cbbbd392d860ff6c5f46faaab",
   "results": [
     {
@@ -16,7 +16,7 @@
           "platform": "windows",
           "compiler": "gcc 13.1.0",
           "pointer_bits": 64,
-          "build_info": "spektrafilm-native 0.1.0 (Nov  2 2026 15:20:20, math=probed)",
+          "build_info": "spektrafilm-native 0.1.0 (Nov  2 2026 22:35:03, math=probed)",
           "transport_version": 1,
           "schema_version": 1
         },
@@ -40,6 +40,7 @@
             },
             "spectral": "native",
             "unsupported_features": [
+              "digital_intermediate",
               "contrast_mask"
             ],
             "working_precision": "float32"
@@ -55,7 +56,7 @@
             "preview": 3400
           },
           "transport_version": 1,
-          "version": "spektrafilm-native 0.1.0 (Nov  2 2026 15:20:20, math=probed)"
+          "version": "spektrafilm-native 0.1.0 (Nov  2 2026 22:35:03, math=probed)"
         },
         "input": {
           "path": "C:\\Users\\Strickland\\.codex\\worktrees\\phoenix-round2\\SpektraLab\\build\\round2/input.f32",
@@ -106,6 +107,7 @@
               },
               "spectral": "native",
               "unsupported_features": [
+                "digital_intermediate",
                 "contrast_mask"
               ],
               "working_precision": "float32"
@@ -121,7 +123,7 @@
               "preview": 3400
             },
             "transport_version": 1,
-            "version": "spektrafilm-native 0.1.0 (Nov  2 2026 15:20:20, math=probed)"
+            "version": "spektrafilm-native 0.1.0 (Nov  2 2026 22:35:03, math=probed)"
           },
           "detected_input": {
             "input_cctf_decoding": false,
@@ -249,9 +251,9 @@
           "row_order": "top_down"
         },
         "timings": {
-          "engine_create_wall_ms": 140.7595,
-          "open_wall_ms": 714.0321,
-          "total_wall_ms": 956.8735
+          "engine_create_wall_ms": 144.6012,
+          "open_wall_ms": 713.5206,
+          "total_wall_ms": 956.5032
         },
         "renders": [
           {
@@ -259,8 +261,8 @@
             "tier": "full",
             "status": 0,
             "error": "",
-            "wall_ms": 17.6409,
-            "engine_ms": 17.2278,
+            "wall_ms": 15.8699,
+            "engine_ms": 15.8632,
             "width": 32,
             "height": 32,
             "row_stride_px": 32,
@@ -273,8 +275,8 @@
             "tier": "full",
             "status": 0,
             "error": "",
-            "wall_ms": 6.4107,
-            "engine_ms": 6.4068,
+            "wall_ms": 5.7921,
+            "engine_ms": 5.7892,
             "width": 32,
             "height": 32,
             "row_stride_px": 32,
@@ -287,8 +289,8 @@
             "tier": "full",
             "status": 0,
             "error": "",
-            "wall_ms": 3.2671,
-            "engine_ms": 3.2626,
+            "wall_ms": 2.6274,
+            "engine_ms": 2.6254,
             "width": 32,
             "height": 32,
             "row_stride_px": 32,
@@ -332,7 +334,7 @@
           "platform": "windows",
           "compiler": "gcc 13.1.0",
           "pointer_bits": 64,
-          "build_info": "spektrafilm-native 0.1.0 (Nov  2 2026 15:20:20, math=probed)",
+          "build_info": "spektrafilm-native 0.1.0 (Nov  2 2026 22:35:03, math=probed)",
           "transport_version": 1,
           "schema_version": 1
         },
@@ -356,6 +358,7 @@
             },
             "spectral": "native",
             "unsupported_features": [
+              "digital_intermediate",
               "contrast_mask"
             ],
             "working_precision": "float32"
@@ -371,7 +374,7 @@
             "preview": 3400
           },
           "transport_version": 1,
-          "version": "spektrafilm-native 0.1.0 (Nov  2 2026 15:20:20, math=probed)"
+          "version": "spektrafilm-native 0.1.0 (Nov  2 2026 22:35:03, math=probed)"
         },
         "input": {
           "path": "C:\\Users\\Strickland\\.codex\\worktrees\\phoenix-round2\\SpektraLab\\build\\round2/input.f32",
@@ -422,6 +425,7 @@
               },
               "spectral": "native",
               "unsupported_features": [
+                "digital_intermediate",
                 "contrast_mask"
               ],
               "working_precision": "float32"
@@ -437,7 +441,7 @@
               "preview": 3400
             },
             "transport_version": 1,
-            "version": "spektrafilm-native 0.1.0 (Nov  2 2026 15:20:20, math=probed)"
+            "version": "spektrafilm-native 0.1.0 (Nov  2 2026 22:35:03, math=probed)"
           },
           "detected_input": {
             "input_cctf_decoding": false,
@@ -565,9 +569,9 @@
           "row_order": "top_down"
         },
         "timings": {
-          "engine_create_wall_ms": 127.6242,
-          "open_wall_ms": 714.8526,
-          "total_wall_ms": 951.4625
+          "engine_create_wall_ms": 133.1585,
+          "open_wall_ms": 712.7909,
+          "total_wall_ms": 940.1666
         },
         "renders": [
           {
@@ -575,8 +579,8 @@
             "tier": "full",
             "status": 0,
             "error": "",
-            "wall_ms": 14.2301,
-            "engine_ms": 14.2229,
+            "wall_ms": 12.1286,
+            "engine_ms": 12.1208,
             "width": 32,
             "height": 32,
             "row_stride_px": 32,
@@ -589,8 +593,8 @@
             "tier": "full",
             "status": 0,
             "error": "",
-            "wall_ms": 7.4786,
-            "engine_ms": 7.4742,
+            "wall_ms": 6.2737,
+            "engine_ms": 6.2707,
             "width": 32,
             "height": 32,
             "row_stride_px": 32,
@@ -603,8 +607,8 @@
             "tier": "full",
             "status": 0,
             "error": "",
-            "wall_ms": 3.7843,
-            "engine_ms": 3.7791,
+            "wall_ms": 2.7388,
+            "engine_ms": 2.7363,
             "width": 32,
             "height": 32,
             "row_stride_px": 32,
@@ -648,7 +652,7 @@
           "platform": "windows",
           "compiler": "gcc 13.1.0",
           "pointer_bits": 64,
-          "build_info": "spektrafilm-native 0.1.0 (Nov  2 2026 15:20:20, math=probed)",
+          "build_info": "spektrafilm-native 0.1.0 (Nov  2 2026 22:35:03, math=probed)",
           "transport_version": 1,
           "schema_version": 1
         },
@@ -672,6 +676,7 @@
             },
             "spectral": "native",
             "unsupported_features": [
+              "digital_intermediate",
               "contrast_mask"
             ],
             "working_precision": "float32"
@@ -687,7 +692,7 @@
             "preview": 3400
           },
           "transport_version": 1,
-          "version": "spektrafilm-native 0.1.0 (Nov  2 2026 15:20:20, math=probed)"
+          "version": "spektrafilm-native 0.1.0 (Nov  2 2026 22:35:03, math=probed)"
         },
         "input": {
           "path": "C:\\Users\\Strickland\\.codex\\worktrees\\phoenix-round2\\SpektraLab\\build\\round2/input.f32",
@@ -738,6 +743,7 @@
               },
               "spectral": "native",
               "unsupported_features": [
+                "digital_intermediate",
                 "contrast_mask"
               ],
               "working_precision": "float32"
@@ -753,7 +759,7 @@
               "preview": 3400
             },
             "transport_version": 1,
-            "version": "spektrafilm-native 0.1.0 (Nov  2 2026 15:20:20, math=probed)"
+            "version": "spektrafilm-native 0.1.0 (Nov  2 2026 22:35:03, math=probed)"
           },
           "detected_input": {
             "input_cctf_decoding": false,
@@ -881,9 +887,9 @@
           "row_order": "top_down"
         },
         "timings": {
-          "engine_create_wall_ms": 128.0384,
-          "open_wall_ms": 739.0464,
-          "total_wall_ms": 966.8089
+          "engine_create_wall_ms": 121.5665,
+          "open_wall_ms": 712.6763,
+          "total_wall_ms": 941.0493
         },
         "renders": [
           {
@@ -891,8 +897,8 @@
             "tier": "full",
             "status": 0,
             "error": "",
-            "wall_ms": 13.9084,
-            "engine_ms": 13.9011,
+            "wall_ms": 13.2038,
+            "engine_ms": 13.1971,
             "width": 32,
             "height": 32,
             "row_stride_px": 32,
@@ -905,8 +911,8 @@
             "tier": "full",
             "status": 0,
             "error": "",
-            "wall_ms": 6.6687,
-            "engine_ms": 6.664,
+            "wall_ms": 7.8837,
+            "engine_ms": 7.8796,
             "width": 32,
             "height": 32,
             "row_stride_px": 32,
@@ -919,8 +925,8 @@
             "tier": "full",
             "status": 0,
             "error": "",
-            "wall_ms": 3.2223,
-            "engine_ms": 3.2179,
+            "wall_ms": 3.2436,
+            "engine_ms": 3.2408,
             "width": 32,
             "height": 32,
             "row_stride_px": 32,
@@ -964,7 +970,7 @@
           "platform": "windows",
           "compiler": "gcc 13.1.0",
           "pointer_bits": 64,
-          "build_info": "spektrafilm-native 0.1.0 (Nov  2 2026 15:20:20, math=probed)",
+          "build_info": "spektrafilm-native 0.1.0 (Nov  2 2026 22:35:03, math=probed)",
           "transport_version": 1,
           "schema_version": 1
         },
@@ -988,6 +994,7 @@
             },
             "spectral": "native",
             "unsupported_features": [
+              "digital_intermediate",
               "contrast_mask"
             ],
             "working_precision": "float32"
@@ -1003,7 +1010,7 @@
             "preview": 3400
           },
           "transport_version": 1,
-          "version": "spektrafilm-native 0.1.0 (Nov  2 2026 15:20:20, math=probed)"
+          "version": "spektrafilm-native 0.1.0 (Nov  2 2026 22:35:03, math=probed)"
         },
         "input": {
           "path": "C:\\Users\\Strickland\\.codex\\worktrees\\phoenix-round2\\SpektraLab\\build\\round2/input.f32",
@@ -1054,6 +1061,7 @@
               },
               "spectral": "native",
               "unsupported_features": [
+                "digital_intermediate",
                 "contrast_mask"
               ],
               "working_precision": "float32"
@@ -1069,7 +1077,7 @@
               "preview": 3400
             },
             "transport_version": 1,
-            "version": "spektrafilm-native 0.1.0 (Nov  2 2026 15:20:20, math=probed)"
+            "version": "spektrafilm-native 0.1.0 (Nov  2 2026 22:35:03, math=probed)"
           },
           "detected_input": {
             "input_cctf_decoding": false,
@@ -1197,9 +1205,9 @@
           "row_order": "top_down"
         },
         "timings": {
-          "engine_create_wall_ms": 133.283,
-          "open_wall_ms": 722.5154,
-          "total_wall_ms": 969.071
+          "engine_create_wall_ms": 136.3747,
+          "open_wall_ms": 745.8804,
+          "total_wall_ms": 989.6736
         },
         "renders": [
           {
@@ -1207,8 +1215,8 @@
             "tier": "full",
             "status": 0,
             "error": "",
-            "wall_ms": 15.1561,
-            "engine_ms": 15.1481,
+            "wall_ms": 12.5441,
+            "engine_ms": 12.5359,
             "width": 32,
             "height": 32,
             "row_stride_px": 32,
@@ -1221,8 +1229,8 @@
             "tier": "full",
             "status": 0,
             "error": "",
-            "wall_ms": 7.9746,
-            "engine_ms": 7.9609,
+            "wall_ms": 6.0238,
+            "engine_ms": 6.0208,
             "width": 32,
             "height": 32,
             "row_stride_px": 32,
@@ -1235,8 +1243,8 @@
             "tier": "full",
             "status": 0,
             "error": "",
-            "wall_ms": 4.2821,
-            "engine_ms": 4.2664,
+            "wall_ms": 2.6925,
+            "engine_ms": 2.69,
             "width": 32,
             "height": 32,
             "row_stride_px": 32,
@@ -1280,7 +1288,7 @@
           "platform": "windows",
           "compiler": "gcc 13.1.0",
           "pointer_bits": 64,
-          "build_info": "spektrafilm-native 0.1.0 (Nov  2 2026 15:20:20, math=probed)",
+          "build_info": "spektrafilm-native 0.1.0 (Nov  2 2026 22:35:03, math=probed)",
           "transport_version": 1,
           "schema_version": 1
         },
@@ -1304,6 +1312,7 @@
             },
             "spectral": "native",
             "unsupported_features": [
+              "digital_intermediate",
               "contrast_mask"
             ],
             "working_precision": "float32"
@@ -1319,7 +1328,7 @@
             "preview": 3400
           },
           "transport_version": 1,
-          "version": "spektrafilm-native 0.1.0 (Nov  2 2026 15:20:20, math=probed)"
+          "version": "spektrafilm-native 0.1.0 (Nov  2 2026 22:35:03, math=probed)"
         },
         "input": {
           "path": "C:\\Users\\Strickland\\.codex\\worktrees\\phoenix-round2\\SpektraLab\\build\\round2/input.f32",
@@ -1370,6 +1379,7 @@
               },
               "spectral": "native",
               "unsupported_features": [
+                "digital_intermediate",
                 "contrast_mask"
               ],
               "working_precision": "float32"
@@ -1385,7 +1395,7 @@
               "preview": 3400
             },
             "transport_version": 1,
-            "version": "spektrafilm-native 0.1.0 (Nov  2 2026 15:20:20, math=probed)"
+            "version": "spektrafilm-native 0.1.0 (Nov  2 2026 22:35:03, math=probed)"
           },
           "detected_input": {
             "input_cctf_decoding": false,
@@ -1513,9 +1523,9 @@
           "row_order": "top_down"
         },
         "timings": {
-          "engine_create_wall_ms": 137.0102,
-          "open_wall_ms": 726.461,
-          "total_wall_ms": 967.2404
+          "engine_create_wall_ms": 132.6813,
+          "open_wall_ms": 707.3931,
+          "total_wall_ms": 934.7435
         },
         "renders": [
           {
@@ -1523,8 +1533,8 @@
             "tier": "full",
             "status": 0,
             "error": "",
-            "wall_ms": 12.4015,
-            "engine_ms": 12.3943,
+            "wall_ms": 11.6286,
+            "engine_ms": 11.6221,
             "width": 32,
             "height": 32,
             "row_stride_px": 32,
@@ -1537,8 +1547,8 @@
             "tier": "full",
             "status": 0,
             "error": "",
-            "wall_ms": 7.7572,
-            "engine_ms": 7.7492,
+            "wall_ms": 6.1003,
+            "engine_ms": 6.0974,
             "width": 32,
             "height": 32,
             "row_stride_px": 32,
@@ -1551,8 +1561,8 @@
             "tier": "full",
             "status": 0,
             "error": "",
-            "wall_ms": 3.5478,
-            "engine_ms": 3.5373,
+            "wall_ms": 2.7109,
+            "engine_ms": 2.7086,
             "width": 32,
             "height": 32,
             "row_stride_px": 32,
@@ -1596,7 +1606,7 @@
           "platform": "windows",
           "compiler": "gcc 13.1.0",
           "pointer_bits": 64,
-          "build_info": "spektrafilm-native 0.1.0 (Nov  2 2026 15:20:20, math=probed)",
+          "build_info": "spektrafilm-native 0.1.0 (Nov  2 2026 22:35:03, math=probed)",
           "transport_version": 1,
           "schema_version": 1
         },
@@ -1620,6 +1630,7 @@
             },
             "spectral": "native",
             "unsupported_features": [
+              "digital_intermediate",
               "contrast_mask"
             ],
             "working_precision": "float32"
@@ -1635,7 +1646,7 @@
             "preview": 3400
           },
           "transport_version": 1,
-          "version": "spektrafilm-native 0.1.0 (Nov  2 2026 15:20:20, math=probed)"
+          "version": "spektrafilm-native 0.1.0 (Nov  2 2026 22:35:03, math=probed)"
         },
         "input": {
           "path": "C:\\Users\\Strickland\\.codex\\worktrees\\phoenix-round2\\SpektraLab\\build\\round2/input.f32",
@@ -1686,6 +1697,7 @@
               },
               "spectral": "native",
               "unsupported_features": [
+                "digital_intermediate",
                 "contrast_mask"
               ],
               "working_precision": "float32"
@@ -1701,7 +1713,7 @@
               "preview": 3400
             },
             "transport_version": 1,
-            "version": "spektrafilm-native 0.1.0 (Nov  2 2026 15:20:20, math=probed)"
+            "version": "spektrafilm-native 0.1.0 (Nov  2 2026 22:35:03, math=probed)"
           },
           "detected_input": {
             "input_cctf_decoding": false,
@@ -1829,9 +1841,9 @@
           "row_order": "top_down"
         },
         "timings": {
-          "engine_create_wall_ms": 122.0228,
-          "open_wall_ms": 730.5314,
-          "total_wall_ms": 954.8515
+          "engine_create_wall_ms": 131.2424,
+          "open_wall_ms": 729.4425,
+          "total_wall_ms": 953.2542
         },
         "renders": [
           {
@@ -1839,8 +1851,8 @@
             "tier": "full",
             "status": 0,
             "error": "",
-            "wall_ms": 13.9169,
-            "engine_ms": 13.9101,
+            "wall_ms": 13.6505,
+            "engine_ms": 13.6415,
             "width": 32,
             "height": 32,
             "row_stride_px": 32,
@@ -1853,8 +1865,8 @@
             "tier": "full",
             "status": 0,
             "error": "",
-            "wall_ms": 8.7485,
-            "engine_ms": 8.7441,
+            "wall_ms": 6.6276,
+            "engine_ms": 6.624,
             "width": 32,
             "height": 32,
             "row_stride_px": 32,
@@ -1867,8 +1879,8 @@
             "tier": "full",
             "status": 0,
             "error": "",
-            "wall_ms": 4.4851,
-            "engine_ms": 4.4807,
+            "wall_ms": 2.893,
+            "engine_ms": 2.8904,
             "width": 32,
             "height": 32,
             "row_stride_px": 32,
@@ -1912,7 +1924,7 @@
           "platform": "windows",
           "compiler": "gcc 13.1.0",
           "pointer_bits": 64,
-          "build_info": "spektrafilm-native 0.1.0 (Nov  2 2026 15:20:20, math=probed)",
+          "build_info": "spektrafilm-native 0.1.0 (Nov  2 2026 22:35:03, math=probed)",
           "transport_version": 1,
           "schema_version": 1
         },
@@ -1936,6 +1948,7 @@
             },
             "spectral": "native",
             "unsupported_features": [
+              "digital_intermediate",
               "contrast_mask"
             ],
             "working_precision": "float32"
@@ -1951,7 +1964,7 @@
             "preview": 3400
           },
           "transport_version": 1,
-          "version": "spektrafilm-native 0.1.0 (Nov  2 2026 15:20:20, math=probed)"
+          "version": "spektrafilm-native 0.1.0 (Nov  2 2026 22:35:03, math=probed)"
         },
         "input": {
           "path": "C:\\Users\\Strickland\\.codex\\worktrees\\phoenix-round2\\SpektraLab\\build\\round2/input.f32",
@@ -2002,6 +2015,7 @@
               },
               "spectral": "native",
               "unsupported_features": [
+                "digital_intermediate",
                 "contrast_mask"
               ],
               "working_precision": "float32"
@@ -2017,7 +2031,7 @@
               "preview": 3400
             },
             "transport_version": 1,
-            "version": "spektrafilm-native 0.1.0 (Nov  2 2026 15:20:20, math=probed)"
+            "version": "spektrafilm-native 0.1.0 (Nov  2 2026 22:35:03, math=probed)"
           },
           "detected_input": {
             "input_cctf_decoding": false,
@@ -2145,9 +2159,9 @@
           "row_order": "top_down"
         },
         "timings": {
-          "engine_create_wall_ms": 143.8277,
-          "open_wall_ms": 725.7739,
-          "total_wall_ms": 968.1292
+          "engine_create_wall_ms": 120.8226,
+          "open_wall_ms": 708.1372,
+          "total_wall_ms": 934.2146
         },
         "renders": [
           {
@@ -2155,8 +2169,8 @@
             "tier": "full",
             "status": 0,
             "error": "",
-            "wall_ms": 14.4489,
-            "engine_ms": 14.4419,
+            "wall_ms": 12.8912,
+            "engine_ms": 12.8848,
             "width": 32,
             "height": 32,
             "row_stride_px": 32,
@@ -2169,8 +2183,8 @@
             "tier": "full",
             "status": 0,
             "error": "",
-            "wall_ms": 5.6467,
-            "engine_ms": 5.6426,
+            "wall_ms": 5.4625,
+            "engine_ms": 5.4603,
             "width": 32,
             "height": 32,
             "row_stride_px": 32,
@@ -2183,8 +2197,8 @@
             "tier": "full",
             "status": 0,
             "error": "",
-            "wall_ms": 2.6569,
-            "engine_ms": 2.6538,
+            "wall_ms": 2.6572,
+            "engine_ms": 2.6554,
             "width": 32,
             "height": 32,
             "row_stride_px": 32,
@@ -2228,7 +2242,7 @@
           "platform": "windows",
           "compiler": "gcc 13.1.0",
           "pointer_bits": 64,
-          "build_info": "spektrafilm-native 0.1.0 (Nov  2 2026 15:20:20, math=probed)",
+          "build_info": "spektrafilm-native 0.1.0 (Nov  2 2026 22:35:03, math=probed)",
           "transport_version": 1,
           "schema_version": 1
         },
@@ -2252,6 +2266,7 @@
             },
             "spectral": "native",
             "unsupported_features": [
+              "digital_intermediate",
               "contrast_mask"
             ],
             "working_precision": "float32"
@@ -2267,7 +2282,7 @@
             "preview": 3400
           },
           "transport_version": 1,
-          "version": "spektrafilm-native 0.1.0 (Nov  2 2026 15:20:20, math=probed)"
+          "version": "spektrafilm-native 0.1.0 (Nov  2 2026 22:35:03, math=probed)"
         },
         "input": {
           "path": "C:\\Users\\Strickland\\.codex\\worktrees\\phoenix-round2\\SpektraLab\\build\\round2/input.f32",
@@ -2318,6 +2333,7 @@
               },
               "spectral": "native",
               "unsupported_features": [
+                "digital_intermediate",
                 "contrast_mask"
               ],
               "working_precision": "float32"
@@ -2333,7 +2349,7 @@
               "preview": 3400
             },
             "transport_version": 1,
-            "version": "spektrafilm-native 0.1.0 (Nov  2 2026 15:20:20, math=probed)"
+            "version": "spektrafilm-native 0.1.0 (Nov  2 2026 22:35:03, math=probed)"
           },
           "detected_input": {
             "input_cctf_decoding": false,
@@ -2461,9 +2477,9 @@
           "row_order": "top_down"
         },
         "timings": {
-          "engine_create_wall_ms": 119.6965,
-          "open_wall_ms": 745.9954,
-          "total_wall_ms": 966.3466
+          "engine_create_wall_ms": 122.1617,
+          "open_wall_ms": 739.4334,
+          "total_wall_ms": 960.4741
         },
         "renders": [
           {
@@ -2471,8 +2487,8 @@
             "tier": "full",
             "status": 0,
             "error": "",
-            "wall_ms": 16.4411,
-            "engine_ms": 16.4331,
+            "wall_ms": 14.061,
+            "engine_ms": 14.0536,
             "width": 32,
             "height": 32,
             "row_stride_px": 32,
@@ -2485,8 +2501,8 @@
             "tier": "full",
             "status": 0,
             "error": "",
-            "wall_ms": 8.1316,
-            "engine_ms": 8.1267,
+            "wall_ms": 5.7123,
+            "engine_ms": 5.7096,
             "width": 32,
             "height": 32,
             "row_stride_px": 32,
@@ -2499,8 +2515,8 @@
             "tier": "full",
             "status": 0,
             "error": "",
-            "wall_ms": 3.6006,
-            "engine_ms": 3.5961,
+            "wall_ms": 3.1158,
+            "engine_ms": 3.1135,
             "width": 32,
             "height": 32,
             "row_stride_px": 32,
@@ -2544,7 +2560,7 @@
           "platform": "windows",
           "compiler": "gcc 13.1.0",
           "pointer_bits": 64,
-          "build_info": "spektrafilm-native 0.1.0 (Nov  2 2026 15:20:20, math=probed)",
+          "build_info": "spektrafilm-native 0.1.0 (Nov  2 2026 22:35:03, math=probed)",
           "transport_version": 1,
           "schema_version": 1
         },
@@ -2568,6 +2584,7 @@
             },
             "spectral": "native",
             "unsupported_features": [
+              "digital_intermediate",
               "contrast_mask"
             ],
             "working_precision": "float32"
@@ -2583,7 +2600,7 @@
             "preview": 3400
           },
           "transport_version": 1,
-          "version": "spektrafilm-native 0.1.0 (Nov  2 2026 15:20:20, math=probed)"
+          "version": "spektrafilm-native 0.1.0 (Nov  2 2026 22:35:03, math=probed)"
         },
         "input": {
           "path": "C:\\Users\\Strickland\\.codex\\worktrees\\phoenix-round2\\SpektraLab\\build\\round2/input.f32",
@@ -2634,6 +2651,7 @@
               },
               "spectral": "native",
               "unsupported_features": [
+                "digital_intermediate",
                 "contrast_mask"
               ],
               "working_precision": "float32"
@@ -2649,7 +2667,7 @@
               "preview": 3400
             },
             "transport_version": 1,
-            "version": "spektrafilm-native 0.1.0 (Nov  2 2026 15:20:20, math=probed)"
+            "version": "spektrafilm-native 0.1.0 (Nov  2 2026 22:35:03, math=probed)"
           },
           "detected_input": {
             "input_cctf_decoding": false,
@@ -2777,9 +2795,9 @@
           "row_order": "top_down"
         },
         "timings": {
-          "engine_create_wall_ms": 125.9167,
-          "open_wall_ms": 711.5951,
-          "total_wall_ms": 939.3435
+          "engine_create_wall_ms": 124.0071,
+          "open_wall_ms": 711.0635,
+          "total_wall_ms": 940.2005
         },
         "renders": [
           {
@@ -2787,8 +2805,8 @@
             "tier": "full",
             "status": 0,
             "error": "",
-            "wall_ms": 13.3569,
-            "engine_ms": 13.3489,
+            "wall_ms": 11.5388,
+            "engine_ms": 11.533,
             "width": 32,
             "height": 32,
             "row_stride_px": 32,
@@ -2801,8 +2819,8 @@
             "tier": "full",
             "status": 0,
             "error": "",
-            "wall_ms": 5.5587,
-            "engine_ms": 5.5544,
+            "wall_ms": 6.5796,
+            "engine_ms": 6.5769,
             "width": 32,
             "height": 32,
             "row_stride_px": 32,
@@ -2815,8 +2833,8 @@
             "tier": "full",
             "status": 0,
             "error": "",
-            "wall_ms": 2.6085,
-            "engine_ms": 2.6054,
+            "wall_ms": 2.7112,
+            "engine_ms": 2.7087,
             "width": 32,
             "height": 32,
             "row_stride_px": 32,
@@ -2860,7 +2878,7 @@
           "platform": "windows",
           "compiler": "gcc 13.1.0",
           "pointer_bits": 64,
-          "build_info": "spektrafilm-native 0.1.0 (Nov  2 2026 15:20:20, math=probed)",
+          "build_info": "spektrafilm-native 0.1.0 (Nov  2 2026 22:35:03, math=probed)",
           "transport_version": 1,
           "schema_version": 1
         },
@@ -2884,6 +2902,7 @@
             },
             "spectral": "native",
             "unsupported_features": [
+              "digital_intermediate",
               "contrast_mask"
             ],
             "working_precision": "float32"
@@ -2899,7 +2918,7 @@
             "preview": 3400
           },
           "transport_version": 1,
-          "version": "spektrafilm-native 0.1.0 (Nov  2 2026 15:20:20, math=probed)"
+          "version": "spektrafilm-native 0.1.0 (Nov  2 2026 22:35:03, math=probed)"
         },
         "input": {
           "path": "C:\\Users\\Strickland\\.codex\\worktrees\\phoenix-round2\\SpektraLab\\build\\round2/input.f32",
@@ -2950,6 +2969,7 @@
               },
               "spectral": "native",
               "unsupported_features": [
+                "digital_intermediate",
                 "contrast_mask"
               ],
               "working_precision": "float32"
@@ -2965,7 +2985,7 @@
               "preview": 3400
             },
             "transport_version": 1,
-            "version": "spektrafilm-native 0.1.0 (Nov  2 2026 15:20:20, math=probed)"
+            "version": "spektrafilm-native 0.1.0 (Nov  2 2026 22:35:03, math=probed)"
           },
           "detected_input": {
             "input_cctf_decoding": false,
@@ -3093,9 +3113,9 @@
           "row_order": "top_down"
         },
         "timings": {
-          "engine_create_wall_ms": 130.6852,
-          "open_wall_ms": 715.0039,
-          "total_wall_ms": 940.3221
+          "engine_create_wall_ms": 130.3815,
+          "open_wall_ms": 715.5694,
+          "total_wall_ms": 946.4938
         },
         "renders": [
           {
@@ -3103,8 +3123,8 @@
             "tier": "full",
             "status": 0,
             "error": "",
-            "wall_ms": 13.1303,
-            "engine_ms": 13.1228,
+            "wall_ms": 11.7209,
+            "engine_ms": 11.7144,
             "width": 32,
             "height": 32,
             "row_stride_px": 32,
@@ -3117,8 +3137,8 @@
             "tier": "full",
             "status": 0,
             "error": "",
-            "wall_ms": 5.9612,
-            "engine_ms": 5.9581,
+            "wall_ms": 7.4397,
+            "engine_ms": 7.4364,
             "width": 32,
             "height": 32,
             "row_stride_px": 32,
@@ -3131,8 +3151,8 @@
             "tier": "full",
             "status": 0,
             "error": "",
-            "wall_ms": 3.8664,
-            "engine_ms": 3.8627,
+            "wall_ms": 2.7803,
+            "engine_ms": 2.7777,
             "width": 32,
             "height": 32,
             "row_stride_px": 32,
@@ -3176,7 +3196,7 @@
           "platform": "windows",
           "compiler": "gcc 13.1.0",
           "pointer_bits": 64,
-          "build_info": "spektrafilm-native 0.1.0 (Nov  2 2026 15:20:20, math=probed)",
+          "build_info": "spektrafilm-native 0.1.0 (Nov  2 2026 22:35:03, math=probed)",
           "transport_version": 1,
           "schema_version": 1
         },
@@ -3200,6 +3220,7 @@
             },
             "spectral": "native",
             "unsupported_features": [
+              "digital_intermediate",
               "contrast_mask"
             ],
             "working_precision": "float32"
@@ -3215,7 +3236,7 @@
             "preview": 3400
           },
           "transport_version": 1,
-          "version": "spektrafilm-native 0.1.0 (Nov  2 2026 15:20:20, math=probed)"
+          "version": "spektrafilm-native 0.1.0 (Nov  2 2026 22:35:03, math=probed)"
         },
         "input": {
           "path": "C:\\Users\\Strickland\\.codex\\worktrees\\phoenix-round2\\SpektraLab\\build\\round2/input.f32",
@@ -3266,6 +3287,7 @@
               },
               "spectral": "native",
               "unsupported_features": [
+                "digital_intermediate",
                 "contrast_mask"
               ],
               "working_precision": "float32"
@@ -3281,7 +3303,7 @@
               "preview": 3400
             },
             "transport_version": 1,
-            "version": "spektrafilm-native 0.1.0 (Nov  2 2026 15:20:20, math=probed)"
+            "version": "spektrafilm-native 0.1.0 (Nov  2 2026 22:35:03, math=probed)"
           },
           "detected_input": {
             "input_cctf_decoding": false,
@@ -3409,9 +3431,9 @@
           "row_order": "top_down"
         },
         "timings": {
-          "engine_create_wall_ms": 128.5353,
-          "open_wall_ms": 720.4591,
-          "total_wall_ms": 958.5633
+          "engine_create_wall_ms": 128.7173,
+          "open_wall_ms": 716.3432,
+          "total_wall_ms": 943.9333
         },
         "renders": [
           {
@@ -3419,8 +3441,8 @@
             "tier": "full",
             "status": 0,
             "error": "",
-            "wall_ms": 15.4812,
-            "engine_ms": 15.4738,
+            "wall_ms": 13.2723,
+            "engine_ms": 13.2653,
             "width": 32,
             "height": 32,
             "row_stride_px": 32,
@@ -3433,8 +3455,8 @@
             "tier": "full",
             "status": 0,
             "error": "",
-            "wall_ms": 7.5962,
-            "engine_ms": 7.5904,
+            "wall_ms": 6.3185,
+            "engine_ms": 6.3155,
             "width": 32,
             "height": 32,
             "row_stride_px": 32,
@@ -3447,8 +3469,8 @@
             "tier": "full",
             "status": 0,
             "error": "",
-            "wall_ms": 3.3066,
-            "engine_ms": 3.3025,
+            "wall_ms": 2.8273,
+            "engine_ms": 2.8246,
             "width": 32,
             "height": 32,
             "row_stride_px": 32,

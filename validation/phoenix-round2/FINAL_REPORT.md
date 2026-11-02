@@ -17,11 +17,11 @@ PR4: ba076b2befe6586ad3095f897ebf40ea7e9ffd6c；PR6 已推送补强: 00405ee8ad5
 
 ## 失败及限制
 
-曝光输出亮度单调性在 v1 与全部候选的极暗区域均存在失败，完整位置和下降量见 exposure-summary.json。例如一代 v1 灰块22从 -6 EV 的 Y≈0.1331 降至 -3 EV 的≈0.1251 后上升。不能用 uint16 输出有限代替内部 float NaN 检查；材料数组与导出观测无 NaN/Inf，但未直接捕获所有 GPU 中间值。
+曝光输出亮度单调性在 v1 与全部候选的极暗区域均存在失败，完整位置和下降量见 exposure-summary.json。例如一代 v1 灰块22从 -6 EV 的 旧错误Y≈0.1331 降至 -3 EV 的旧错误值≈0.1251 后上升。不能用 uint16 输出有限代替内部 float NaN 检查；材料数组与导出观测无 NaN/Inf，但未直接捕获所有 GPU 中间值。
 
 首次导出测试缺 JPEG 插件失败；设置 QT_PLUGIN_PATH 后完整重跑成功。配方 UI 字段 film_exposure_ev 显式转换成 C ABI exposure_compensation_ev，关闭 auto_exposure；父子同配方。未修改 PR6 配方文件。
 
-执行复用了本地 PR4 时期预构建引擎/对象。native-execution.json 固定驱动哈希，RAW 记录 resolved 参数；并非本工作树重新构建全部引擎，不赋予完整源码重建认证。preview-export.cjs 明确生成测试源码并链接已有对象，保留该限制。脚本当前为本机路径，移机需显式配置相同依赖，不能声称零配置可复现。
+历史初轮执行复用了本地 PR4 时期预构建引擎/对象；本次已完成原生引擎/驱动干净重建与曝光重跑，见REVIEW_FIX.md。旧限制描述：native-execution.json 固定驱动哈希，RAW 记录 resolved 参数；并非本工作树重新构建全部引擎，不赋予完整源码重建认证。preview-export.cjs 明确生成测试源码并链接已有对象，保留该限制。脚本当前为本机路径，移机需显式配置相同依赖，不能声称零配置可复现。
 
 ## 决策
 
@@ -30,3 +30,5 @@ PR4: ba076b2befe6586ad3095f897ebf40ea7e9ffd6c；PR6 已推送补强: 00405ee8ad5
 本轮到此停止材料实验，不自动进入第三轮。第三方调研另分支、另 Draft PR。
 
 最终复核补充：SOURCE_REVIEW_FINAL.md 更正JCH图注误读（实际Phoenix II）。该标注确认不等于厂家测量认证。工程失败及剩余P0/P1/P2详见该文件；旧STATUS为阶段历史。
+
+审查修复更新：旧sRGB测量作废，最新ProPhoto/D50重算、原生干净构建、52组阶段定位与剩余限制以 REVIEW_FIX.md 为准。历史数值保存在 history/reviewed-6eb54e9d；本文件旧数字不得与新结果混用。
