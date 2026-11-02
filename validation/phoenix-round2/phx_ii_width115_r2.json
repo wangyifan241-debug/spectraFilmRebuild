@@ -1,0 +1,23 @@
+{
+  "format": "SpektraLab.PhoenixCandidate",
+  "version": 1,
+  "id": "phx_ii_width115_r2",
+  "parent_commit": "ba076b2befe6586ad3095f897ebf40ea7e9ffd6c",
+  "renderer_commit": "ba076b2befe6586ad3095f897ebf40ea7e9ffd6c",
+  "hypothesis": {
+    "category": "exposure_response",
+    "rationale": "width 1.15",
+    "evidence_level": "C",
+    "source_record": "validation/phoenix-round2/RESEARCH_DESIGN.md"
+  },
+  "profiles": [
+    {
+      "parent_stock": "harman_phoenix_ii_200_exp_v1",
+      "parent_path": "validation/phoenix-round2/parents/harman_phoenix_ii_200_exp_v1.json",
+      "file": {
+        "path": "validation/phoenix-round2/profiles/phx_ii_width115_r2.json",
+        "sha256": "6430fb22dbfca0044f39317e100675c9832909e0479dc20cd9735cfb88ba9a64"
+      }
+    }
+  ]
+}

@@ -1,0 +1,1157 @@
+[
+  {
+    "stock": "harman_phoenix_200_exp_v1-ev-1",
+    "parent": "harman_phoenix_200_exp_v1",
+    "mae_encoded_RGB": 0.3268606320811395,
+    "max_encoded_RGB": 0.8672922865644312,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "harman_phoenix_200_exp_v1-ev-2",
+    "parent": "harman_phoenix_200_exp_v1",
+    "mae_encoded_RGB": 0.30356213720085906,
+    "max_encoded_RGB": 0.801358052948806,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "harman_phoenix_200_exp_v1-ev-3",
+    "parent": "harman_phoenix_200_exp_v1",
+    "mae_encoded_RGB": 0.2823597163411421,
+    "max_encoded_RGB": 0.7166247043564508,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "harman_phoenix_200_exp_v1-ev-4",
+    "parent": "harman_phoenix_200_exp_v1",
+    "mae_encoded_RGB": 0.2692926390319442,
+    "max_encoded_RGB": 0.5955901426718547,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "harman_phoenix_200_exp_v1-ev-5",
+    "parent": "harman_phoenix_200_exp_v1",
+    "mae_encoded_RGB": 0.2651613581960034,
+    "max_encoded_RGB": 0.5761043717097734,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "harman_phoenix_200_exp_v1-ev-6",
+    "parent": "harman_phoenix_200_exp_v1",
+    "mae_encoded_RGB": 0.2639880973668659,
+    "max_encoded_RGB": 0.5637903410391394,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "harman_phoenix_200_exp_v1-ev0",
+    "parent": "harman_phoenix_200_exp_v1",
+    "mae_encoded_RGB": 0.34152744796037854,
+    "max_encoded_RGB": 0.8809491111619745,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "harman_phoenix_200_exp_v1-ev1",
+    "parent": "harman_phoenix_200_exp_v1",
+    "mae_encoded_RGB": 0.33914577889359426,
+    "max_encoded_RGB": 0.8809491111619745,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "harman_phoenix_200_exp_v1-ev2",
+    "parent": "harman_phoenix_200_exp_v1",
+    "mae_encoded_RGB": 0.32355218108644185,
+    "max_encoded_RGB": 0.8809491111619745,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "harman_phoenix_200_exp_v1-ev3",
+    "parent": "harman_phoenix_200_exp_v1",
+    "mae_encoded_RGB": 0.2978861337214867,
+    "max_encoded_RGB": 0.8809491111619745,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "harman_phoenix_200_exp_v1-ev4",
+    "parent": "harman_phoenix_200_exp_v1",
+    "mae_encoded_RGB": 0.28268568421613255,
+    "max_encoded_RGB": 0.844281681544213,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "harman_phoenix_200_exp_v1-ev5",
+    "parent": "harman_phoenix_200_exp_v1",
+    "mae_encoded_RGB": 0.2798608975245406,
+    "max_encoded_RGB": 0.7294728007934691,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "harman_phoenix_200_exp_v1-ev6",
+    "parent": "harman_phoenix_200_exp_v1",
+    "mae_encoded_RGB": 0.28076895834128346,
+    "max_encoded_RGB": 0.6411993591210804,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "harman_phoenix_200_exp_v1",
+    "parent": "harman_phoenix_200_exp_v1",
+    "mae_encoded_RGB": 0,
+    "max_encoded_RGB": 0,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "harman_phoenix_ii_200_exp_v1-ev-1",
+    "parent": "harman_phoenix_200_exp_v1",
+    "mae_encoded_RGB": 0.3101256624163937,
+    "max_encoded_RGB": 0.815579461356527,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "harman_phoenix_ii_200_exp_v1-ev-2",
+    "parent": "harman_phoenix_200_exp_v1",
+    "mae_encoded_RGB": 0.3088172360586603,
+    "max_encoded_RGB": 0.7685816739147021,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "harman_phoenix_ii_200_exp_v1-ev-3",
+    "parent": "harman_phoenix_200_exp_v1",
+    "mae_encoded_RGB": 0.2978811318220557,
+    "max_encoded_RGB": 0.6669871061264973,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "harman_phoenix_ii_200_exp_v1-ev-4",
+    "parent": "harman_phoenix_200_exp_v1",
+    "mae_encoded_RGB": 0.2882522667992285,
+    "max_encoded_RGB": 0.5229724574654765,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "harman_phoenix_ii_200_exp_v1-ev-5",
+    "parent": "harman_phoenix_200_exp_v1",
+    "mae_encoded_RGB": 0.2862670740110252,
+    "max_encoded_RGB": 0.5207751583123522,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "harman_phoenix_ii_200_exp_v1-ev-6",
+    "parent": "harman_phoenix_200_exp_v1",
+    "mae_encoded_RGB": 0.28591131329315317,
+    "max_encoded_RGB": 0.5204089417868315,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "harman_phoenix_ii_200_exp_v1-ev0",
+    "parent": "harman_phoenix_200_exp_v1",
+    "mae_encoded_RGB": 0.3065931144061066,
+    "max_encoded_RGB": 0.8467078660257877,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "harman_phoenix_ii_200_exp_v1-ev1",
+    "parent": "harman_phoenix_200_exp_v1",
+    "mae_encoded_RGB": 0.2959312602918928,
+    "max_encoded_RGB": 0.8232547493705653,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "harman_phoenix_ii_200_exp_v1-ev2",
+    "parent": "harman_phoenix_200_exp_v1",
+    "mae_encoded_RGB": 0.28621484961121324,
+    "max_encoded_RGB": 0.8232547493705653,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "harman_phoenix_ii_200_exp_v1-ev3",
+    "parent": "harman_phoenix_200_exp_v1",
+    "mae_encoded_RGB": 0.27934616382626415,
+    "max_encoded_RGB": 0.7178149080643931,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "harman_phoenix_ii_200_exp_v1-ev4",
+    "parent": "harman_phoenix_200_exp_v1",
+    "mae_encoded_RGB": 0.2766933192902647,
+    "max_encoded_RGB": 0.6841077286945907,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "harman_phoenix_ii_200_exp_v1-ev5",
+    "parent": "harman_phoenix_200_exp_v1",
+    "mae_encoded_RGB": 0.27739517965908883,
+    "max_encoded_RGB": 0.6535439078355078,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "harman_phoenix_ii_200_exp_v1-ev6",
+    "parent": "harman_phoenix_200_exp_v1",
+    "mae_encoded_RGB": 0.27895565803737365,
+    "max_encoded_RGB": 0.6302281223773556,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "harman_phoenix_ii_200_exp_v1",
+    "parent": "harman_phoenix_200_exp_v1",
+    "mae_encoded_RGB": 0.042841025231430026,
+    "max_encoded_RGB": 0.24026855878538186,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "phx_200_d55_r2-ev-1",
+    "parent": "harman_phoenix_200_exp_v1",
+    "mae_encoded_RGB": 0.32930537375861474,
+    "max_encoded_RGB": 0.8795605401693751,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "phx_200_d55_r2-ev-2",
+    "parent": "harman_phoenix_200_exp_v1",
+    "mae_encoded_RGB": 0.30515080900632163,
+    "max_encoded_RGB": 0.8027618829633021,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "phx_200_d55_r2-ev-3",
+    "parent": "harman_phoenix_200_exp_v1",
+    "mae_encoded_RGB": 0.28318658445868666,
+    "max_encoded_RGB": 0.7552758068207828,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "phx_200_d55_r2-ev-4",
+    "parent": "harman_phoenix_200_exp_v1",
+    "mae_encoded_RGB": 0.2697120435804036,
+    "max_encoded_RGB": 0.5979095140001526,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "phx_200_d55_r2-ev-5",
+    "parent": "harman_phoenix_200_exp_v1",
+    "mae_encoded_RGB": 0.26542974710555683,
+    "max_encoded_RGB": 0.5776760509651331,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "phx_200_d55_r2-ev-6",
+    "parent": "harman_phoenix_200_exp_v1",
+    "mae_encoded_RGB": 0.2641861070181987,
+    "max_encoded_RGB": 0.5648279545281147,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "phx_200_d55_r2-ev0",
+    "parent": "harman_phoenix_200_exp_v1",
+    "mae_encoded_RGB": 0.34357162541167646,
+    "max_encoded_RGB": 0.8809491111619745,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "phx_200_d55_r2-ev1",
+    "parent": "harman_phoenix_200_exp_v1",
+    "mae_encoded_RGB": 0.3410906137544176,
+    "max_encoded_RGB": 0.8809491111619745,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "phx_200_d55_r2-ev2",
+    "parent": "harman_phoenix_200_exp_v1",
+    "mae_encoded_RGB": 0.3246257516260405,
+    "max_encoded_RGB": 0.8809491111619745,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "phx_200_d55_r2-ev3",
+    "parent": "harman_phoenix_200_exp_v1",
+    "mae_encoded_RGB": 0.2980993030521221,
+    "max_encoded_RGB": 0.8809491111619745,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "phx_200_d55_r2-ev4",
+    "parent": "harman_phoenix_200_exp_v1",
+    "mae_encoded_RGB": 0.28399916711172285,
+    "max_encoded_RGB": 0.8809491111619745,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "phx_200_d55_r2-ev5",
+    "parent": "harman_phoenix_200_exp_v1",
+    "mae_encoded_RGB": 0.2806705148012524,
+    "max_encoded_RGB": 0.7216754406042573,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "phx_200_d55_r2-ev6",
+    "parent": "harman_phoenix_200_exp_v1",
+    "mae_encoded_RGB": 0.2813768803565535,
+    "max_encoded_RGB": 0.6309452964065003,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "phx_200_d55_r2",
+    "parent": "harman_phoenix_200_exp_v1",
+    "mae_encoded_RGB": 0.005570660596437002,
+    "max_encoded_RGB": 0.08033875028610667,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "phx_200_linear_r2-ev-1",
+    "parent": "harman_phoenix_200_exp_v1",
+    "mae_encoded_RGB": 0.3223933100315351,
+    "max_encoded_RGB": 0.8795605401693751,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "phx_200_linear_r2-ev-2",
+    "parent": "harman_phoenix_200_exp_v1",
+    "mae_encoded_RGB": 0.29750066956906074,
+    "max_encoded_RGB": 0.800808728160525,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "phx_200_linear_r2-ev-3",
+    "parent": "harman_phoenix_200_exp_v1",
+    "mae_encoded_RGB": 0.2782000384257137,
+    "max_encoded_RGB": 0.7155718318455787,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "phx_200_linear_r2-ev-4",
+    "parent": "harman_phoenix_200_exp_v1",
+    "mae_encoded_RGB": 0.26761567153207017,
+    "max_encoded_RGB": 0.5922026398107881,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "phx_200_linear_r2-ev-5",
+    "parent": "harman_phoenix_200_exp_v1",
+    "mae_encoded_RGB": 0.2643309832850142,
+    "max_encoded_RGB": 0.5743343251697566,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "phx_200_linear_r2-ev-6",
+    "parent": "harman_phoenix_200_exp_v1",
+    "mae_encoded_RGB": 0.2635629110796415,
+    "max_encoded_RGB": 0.5630273899443046,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "phx_200_linear_r2-ev0",
+    "parent": "harman_phoenix_200_exp_v1",
+    "mae_encoded_RGB": 0.33813357723926146,
+    "max_encoded_RGB": 0.8809491111619745,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "phx_200_linear_r2-ev1",
+    "parent": "harman_phoenix_200_exp_v1",
+    "mae_encoded_RGB": 0.3326789189857196,
+    "max_encoded_RGB": 0.8809491111619745,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "phx_200_linear_r2-ev2",
+    "parent": "harman_phoenix_200_exp_v1",
+    "mae_encoded_RGB": 0.3143820056394813,
+    "max_encoded_RGB": 0.8809491111619745,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "phx_200_linear_r2-ev3",
+    "parent": "harman_phoenix_200_exp_v1",
+    "mae_encoded_RGB": 0.28953021485020747,
+    "max_encoded_RGB": 0.8809491111619745,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "phx_200_linear_r2-ev4",
+    "parent": "harman_phoenix_200_exp_v1",
+    "mae_encoded_RGB": 0.27689758255766667,
+    "max_encoded_RGB": 0.8809491111619745,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "phx_200_linear_r2-ev5",
+    "parent": "harman_phoenix_200_exp_v1",
+    "mae_encoded_RGB": 0.2792630836178515,
+    "max_encoded_RGB": 0.6771038376440071,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "phx_200_linear_r2-ev6",
+    "parent": "harman_phoenix_200_exp_v1",
+    "mae_encoded_RGB": 0.2802418018520652,
+    "max_encoded_RGB": 0.6083161669336995,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "phx_200_linear_r2",
+    "parent": "harman_phoenix_200_exp_v1",
+    "mae_encoded_RGB": 0.011896498730004429,
+    "max_encoded_RGB": 0.12590218966964217,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "phx_200_no_tungsten_r2-ev-1",
+    "parent": "harman_phoenix_200_exp_v1",
+    "mae_encoded_RGB": 0.3239502269779522,
+    "max_encoded_RGB": 0.8223544670786602,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "phx_200_no_tungsten_r2-ev-2",
+    "parent": "harman_phoenix_200_exp_v1",
+    "mae_encoded_RGB": 0.3020699369850091,
+    "max_encoded_RGB": 0.8003814755474175,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "phx_200_no_tungsten_r2-ev-3",
+    "parent": "harman_phoenix_200_exp_v1",
+    "mae_encoded_RGB": 0.2821216169874257,
+    "max_encoded_RGB": 0.7186846723125048,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "phx_200_no_tungsten_r2-ev-4",
+    "parent": "harman_phoenix_200_exp_v1",
+    "mae_encoded_RGB": 0.2692032207662586,
+    "max_encoded_RGB": 0.5886015106431678,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "phx_200_no_tungsten_r2-ev-5",
+    "parent": "harman_phoenix_200_exp_v1",
+    "mae_encoded_RGB": 0.26506197586849484,
+    "max_encoded_RGB": 0.5727168688487068,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "phx_200_no_tungsten_r2-ev-6",
+    "parent": "harman_phoenix_200_exp_v1",
+    "mae_encoded_RGB": 0.26392833286443645,
+    "max_encoded_RGB": 0.5622339208056764,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "phx_200_no_tungsten_r2-ev0",
+    "parent": "harman_phoenix_200_exp_v1",
+    "mae_encoded_RGB": 0.33827261216175875,
+    "max_encoded_RGB": 0.8809491111619745,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "phx_200_no_tungsten_r2-ev1",
+    "parent": "harman_phoenix_200_exp_v1",
+    "mae_encoded_RGB": 0.33653784217561933,
+    "max_encoded_RGB": 0.8809491111619745,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "phx_200_no_tungsten_r2-ev2",
+    "parent": "harman_phoenix_200_exp_v1",
+    "mae_encoded_RGB": 0.32243475576027975,
+    "max_encoded_RGB": 0.8809491111619745,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "phx_200_no_tungsten_r2-ev3",
+    "parent": "harman_phoenix_200_exp_v1",
+    "mae_encoded_RGB": 0.29720775297392066,
+    "max_encoded_RGB": 0.8809491111619745,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "phx_200_no_tungsten_r2-ev4",
+    "parent": "harman_phoenix_200_exp_v1",
+    "mae_encoded_RGB": 0.2833400886294859,
+    "max_encoded_RGB": 0.8809491111619745,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "phx_200_no_tungsten_r2-ev5",
+    "parent": "harman_phoenix_200_exp_v1",
+    "mae_encoded_RGB": 0.2810707909339167,
+    "max_encoded_RGB": 0.7192187380788891,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "phx_200_no_tungsten_r2-ev6",
+    "parent": "harman_phoenix_200_exp_v1",
+    "mae_encoded_RGB": 0.2815662024983494,
+    "max_encoded_RGB": 0.6253299763485161,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "phx_200_no_tungsten_r2",
+    "parent": "harman_phoenix_200_exp_v1",
+    "mae_encoded_RGB": 0.0005888631392894362,
+    "max_encoded_RGB": 0.009658960860608835,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "phx_200_shared_r2-ev-1",
+    "parent": "harman_phoenix_200_exp_v1",
+    "mae_encoded_RGB": 0.31916223201342736,
+    "max_encoded_RGB": 0.8223544670786602,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "phx_200_shared_r2-ev-2",
+    "parent": "harman_phoenix_200_exp_v1",
+    "mae_encoded_RGB": 0.29748995050354876,
+    "max_encoded_RGB": 0.7797055008773938,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "phx_200_shared_r2-ev-3",
+    "parent": "harman_phoenix_200_exp_v1",
+    "mae_encoded_RGB": 0.2826110630292978,
+    "max_encoded_RGB": 0.6332799267566949,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "phx_200_shared_r2-ev-4",
+    "parent": "harman_phoenix_200_exp_v1",
+    "mae_encoded_RGB": 0.2725637173441042,
+    "max_encoded_RGB": 0.5776760509651331,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "phx_200_shared_r2-ev-5",
+    "parent": "harman_phoenix_200_exp_v1",
+    "mae_encoded_RGB": 0.26627164078991034,
+    "max_encoded_RGB": 0.5669031815060654,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "phx_200_shared_r2-ev-6",
+    "parent": "harman_phoenix_200_exp_v1",
+    "mae_encoded_RGB": 0.2642067454413685,
+    "max_encoded_RGB": 0.5592584115358206,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "phx_200_shared_r2-ev0",
+    "parent": "harman_phoenix_200_exp_v1",
+    "mae_encoded_RGB": 0.33800300630547375,
+    "max_encoded_RGB": 0.8795605401693751,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "phx_200_shared_r2-ev1",
+    "parent": "harman_phoenix_200_exp_v1",
+    "mae_encoded_RGB": 0.3434988519970234,
+    "max_encoded_RGB": 0.8795605401693751,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "phx_200_shared_r2-ev2",
+    "parent": "harman_phoenix_200_exp_v1",
+    "mae_encoded_RGB": 0.3343016603325835,
+    "max_encoded_RGB": 0.8795605401693751,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "phx_200_shared_r2-ev3",
+    "parent": "harman_phoenix_200_exp_v1",
+    "mae_encoded_RGB": 0.3089302879266166,
+    "max_encoded_RGB": 0.8795605401693751,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "phx_200_shared_r2-ev4",
+    "parent": "harman_phoenix_200_exp_v1",
+    "mae_encoded_RGB": 0.2883516987980333,
+    "max_encoded_RGB": 0.8582742046234836,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "phx_200_shared_r2-ev5",
+    "parent": "harman_phoenix_200_exp_v1",
+    "mae_encoded_RGB": 0.28252634366814333,
+    "max_encoded_RGB": 0.8232547493705653,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "phx_200_shared_r2-ev6",
+    "parent": "harman_phoenix_200_exp_v1",
+    "mae_encoded_RGB": 0.2821918621331474,
+    "max_encoded_RGB": 0.7107194628824293,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "phx_200_shared_r2",
+    "parent": "harman_phoenix_200_exp_v1",
+    "mae_encoded_RGB": 0.05935836011609668,
+    "max_encoded_RGB": 0.4500038147554742,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "phx_ii_d55_r2-ev-1",
+    "parent": "harman_phoenix_ii_200_exp_v1",
+    "mae_encoded_RGB": 0.28525261727988854,
+    "max_encoded_RGB": 0.771953917753872,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "phx_ii_d55_r2-ev-2",
+    "parent": "harman_phoenix_ii_200_exp_v1",
+    "mae_encoded_RGB": 0.27572558834655986,
+    "max_encoded_RGB": 0.7549248493171588,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "phx_ii_d55_r2-ev-3",
+    "parent": "harman_phoenix_ii_200_exp_v1",
+    "mae_encoded_RGB": 0.26142966802885353,
+    "max_encoded_RGB": 0.6484168764782178,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "phx_ii_d55_r2-ev-4",
+    "parent": "harman_phoenix_ii_200_exp_v1",
+    "mae_encoded_RGB": 0.24971714184214577,
+    "max_encoded_RGB": 0.5210040436408027,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "phx_ii_d55_r2-ev-5",
+    "parent": "harman_phoenix_ii_200_exp_v1",
+    "mae_encoded_RGB": 0.2458591723411174,
+    "max_encoded_RGB": 0.5206988632028687,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "phx_ii_d55_r2-ev-6",
+    "parent": "harman_phoenix_ii_200_exp_v1",
+    "mae_encoded_RGB": 0.24542932688639732,
+    "max_encoded_RGB": 0.521034561684596,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "phx_ii_d55_r2-ev0",
+    "parent": "harman_phoenix_ii_200_exp_v1",
+    "mae_encoded_RGB": 0.2861507289361928,
+    "max_encoded_RGB": 0.8181277180132753,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "phx_ii_d55_r2-ev1",
+    "parent": "harman_phoenix_ii_200_exp_v1",
+    "mae_encoded_RGB": 0.2749636108091101,
+    "max_encoded_RGB": 0.8181277180132753,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "phx_ii_d55_r2-ev2",
+    "parent": "harman_phoenix_ii_200_exp_v1",
+    "mae_encoded_RGB": 0.2619878690775926,
+    "max_encoded_RGB": 0.8130006866559853,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "phx_ii_d55_r2-ev3",
+    "parent": "harman_phoenix_ii_200_exp_v1",
+    "mae_encoded_RGB": 0.2513062209522265,
+    "max_encoded_RGB": 0.6898756389715419,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "phx_ii_d55_r2-ev4",
+    "parent": "harman_phoenix_ii_200_exp_v1",
+    "mae_encoded_RGB": 0.24583634341382496,
+    "max_encoded_RGB": 0.6467231250476845,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "phx_ii_d55_r2-ev5",
+    "parent": "harman_phoenix_ii_200_exp_v1",
+    "mae_encoded_RGB": 0.2441027009660869,
+    "max_encoded_RGB": 0.616037232013428,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "phx_ii_d55_r2-ev6",
+    "parent": "harman_phoenix_ii_200_exp_v1",
+    "mae_encoded_RGB": 0.24549607020580733,
+    "max_encoded_RGB": 0.592309452964065,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "phx_ii_d55_r2",
+    "parent": "harman_phoenix_ii_200_exp_v1",
+    "mae_encoded_RGB": 0.0011323863202868658,
+    "max_encoded_RGB": 0.0035248340581368735,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "phx_ii_linear_r2-ev-1",
+    "parent": "harman_phoenix_ii_200_exp_v1",
+    "mae_encoded_RGB": 0.28564717127934397,
+    "max_encoded_RGB": 0.7706874189364462,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "phx_ii_linear_r2-ev-2",
+    "parent": "harman_phoenix_ii_200_exp_v1",
+    "mae_encoded_RGB": 0.2749325364468089,
+    "max_encoded_RGB": 0.7560845349813077,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "phx_ii_linear_r2-ev-3",
+    "parent": "harman_phoenix_ii_200_exp_v1",
+    "mae_encoded_RGB": 0.26039528317406996,
+    "max_encoded_RGB": 0.6548714427405203,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "phx_ii_linear_r2-ev-4",
+    "parent": "harman_phoenix_ii_200_exp_v1",
+    "mae_encoded_RGB": 0.24936654693897828,
+    "max_encoded_RGB": 0.5233234149691005,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "phx_ii_linear_r2-ev-5",
+    "parent": "harman_phoenix_ii_200_exp_v1",
+    "mae_encoded_RGB": 0.24574223121074099,
+    "max_encoded_RGB": 0.5212634470130465,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "phx_ii_linear_r2-ev-6",
+    "parent": "harman_phoenix_ii_200_exp_v1",
+    "mae_encoded_RGB": 0.24540596647624735,
+    "max_encoded_RGB": 0.5209735255970093,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "phx_ii_linear_r2-ev0",
+    "parent": "harman_phoenix_ii_200_exp_v1",
+    "mae_encoded_RGB": 0.2862150631977841,
+    "max_encoded_RGB": 0.8181277180132753,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "phx_ii_linear_r2-ev1",
+    "parent": "harman_phoenix_ii_200_exp_v1",
+    "mae_encoded_RGB": 0.2735232624583562,
+    "max_encoded_RGB": 0.8181277180132753,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "phx_ii_linear_r2-ev2",
+    "parent": "harman_phoenix_ii_200_exp_v1",
+    "mae_encoded_RGB": 0.25964095998321424,
+    "max_encoded_RGB": 0.7553978789959563,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "phx_ii_linear_r2-ev3",
+    "parent": "harman_phoenix_ii_200_exp_v1",
+    "mae_encoded_RGB": 0.2502709320798704,
+    "max_encoded_RGB": 0.6621805142290379,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "phx_ii_linear_r2-ev4",
+    "parent": "harman_phoenix_ii_200_exp_v1",
+    "mae_encoded_RGB": 0.24501824227989102,
+    "max_encoded_RGB": 0.6325932707713435,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "phx_ii_linear_r2-ev5",
+    "parent": "harman_phoenix_ii_200_exp_v1",
+    "mae_encoded_RGB": 0.2437374679322132,
+    "max_encoded_RGB": 0.6037994964522774,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "phx_ii_linear_r2-ev6",
+    "parent": "harman_phoenix_ii_200_exp_v1",
+    "mae_encoded_RGB": 0.24562379000725013,
+    "max_encoded_RGB": 0.5838712138551919,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "phx_ii_linear_r2",
+    "parent": "harman_phoenix_ii_200_exp_v1",
+    "mae_encoded_RGB": 0.005851561705259256,
+    "max_encoded_RGB": 0.048340581368734266,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "phx_ii_shared_r2-ev-1",
+    "parent": "harman_phoenix_ii_200_exp_v1",
+    "mae_encoded_RGB": 0.29040065959506445,
+    "max_encoded_RGB": 0.7846341649500267,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "phx_ii_shared_r2-ev-2",
+    "parent": "harman_phoenix_ii_200_exp_v1",
+    "mae_encoded_RGB": 0.2746625481215523,
+    "max_encoded_RGB": 0.7860990310521095,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "phx_ii_shared_r2-ev-3",
+    "parent": "harman_phoenix_ii_200_exp_v1",
+    "mae_encoded_RGB": 0.25969860352133695,
+    "max_encoded_RGB": 0.7341878385595483,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "phx_ii_shared_r2-ev-4",
+    "parent": "harman_phoenix_ii_200_exp_v1",
+    "mae_encoded_RGB": 0.25015334522265453,
+    "max_encoded_RGB": 0.5281910429541467,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "phx_ii_shared_r2-ev-5",
+    "parent": "harman_phoenix_ii_200_exp_v1",
+    "mae_encoded_RGB": 0.24641504380610926,
+    "max_encoded_RGB": 0.5209582665751126,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "phx_ii_shared_r2-ev-6",
+    "parent": "harman_phoenix_ii_200_exp_v1",
+    "mae_encoded_RGB": 0.24551930147058854,
+    "max_encoded_RGB": 0.5212176699473564,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "phx_ii_shared_r2-ev0",
+    "parent": "harman_phoenix_ii_200_exp_v1",
+    "mae_encoded_RGB": 0.2947410714853384,
+    "max_encoded_RGB": 0.8130006866559853,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "phx_ii_shared_r2-ev1",
+    "parent": "harman_phoenix_ii_200_exp_v1",
+    "mae_encoded_RGB": 0.28356130470995294,
+    "max_encoded_RGB": 0.7909056229495689,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "phx_ii_shared_r2-ev2",
+    "parent": "harman_phoenix_ii_200_exp_v1",
+    "mae_encoded_RGB": 0.27044336896156185,
+    "max_encoded_RGB": 0.7909056229495689,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "phx_ii_shared_r2-ev3",
+    "parent": "harman_phoenix_ii_200_exp_v1",
+    "mae_encoded_RGB": 0.2604038862424051,
+    "max_encoded_RGB": 0.6896772716868849,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "phx_ii_shared_r2-ev4",
+    "parent": "harman_phoenix_ii_200_exp_v1",
+    "mae_encoded_RGB": 0.2528175148139678,
+    "max_encoded_RGB": 0.6598916609445334,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "phx_ii_shared_r2-ev5",
+    "parent": "harman_phoenix_ii_200_exp_v1",
+    "mae_encoded_RGB": 0.2501181779456275,
+    "max_encoded_RGB": 0.6311589227130541,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "phx_ii_shared_r2-ev6",
+    "parent": "harman_phoenix_ii_200_exp_v1",
+    "mae_encoded_RGB": 0.24991388984257853,
+    "max_encoded_RGB": 0.6061951628900587,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "phx_ii_shared_r2",
+    "parent": "harman_phoenix_ii_200_exp_v1",
+    "mae_encoded_RGB": 0.024312832400308473,
+    "max_encoded_RGB": 0.1674830243381399,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "phx_ii_width115_r2-ev-1",
+    "parent": "harman_phoenix_ii_200_exp_v1",
+    "mae_encoded_RGB": 0.2810582141619618,
+    "max_encoded_RGB": 0.7665980010681316,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "phx_ii_width115_r2-ev-2",
+    "parent": "harman_phoenix_ii_200_exp_v1",
+    "mae_encoded_RGB": 0.27304333840378014,
+    "max_encoded_RGB": 0.7435416189822233,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "phx_ii_width115_r2-ev-3",
+    "parent": "harman_phoenix_ii_200_exp_v1",
+    "mae_encoded_RGB": 0.26207749596271973,
+    "max_encoded_RGB": 0.6609140154116121,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "phx_ii_width115_r2-ev-4",
+    "parent": "harman_phoenix_ii_200_exp_v1",
+    "mae_encoded_RGB": 0.25123459991162633,
+    "max_encoded_RGB": 0.524605172808423,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "phx_ii_width115_r2-ev-5",
+    "parent": "harman_phoenix_ii_200_exp_v1",
+    "mae_encoded_RGB": 0.24637820757356166,
+    "max_encoded_RGB": 0.5214618142977036,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "phx_ii_width115_r2-ev-6",
+    "parent": "harman_phoenix_ii_200_exp_v1",
+    "mae_encoded_RGB": 0.2455524173231248,
+    "max_encoded_RGB": 0.520836194399939,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "phx_ii_width115_r2-ev0",
+    "parent": "harman_phoenix_ii_200_exp_v1",
+    "mae_encoded_RGB": 0.2804572957993209,
+    "max_encoded_RGB": 0.8130006866559853,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "phx_ii_width115_r2-ev1",
+    "parent": "harman_phoenix_ii_200_exp_v1",
+    "mae_encoded_RGB": 0.27118967520536214,
+    "max_encoded_RGB": 0.8130006866559853,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "phx_ii_width115_r2-ev2",
+    "parent": "harman_phoenix_ii_200_exp_v1",
+    "mae_encoded_RGB": 0.2595302178304863,
+    "max_encoded_RGB": 0.7452964065003433,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "phx_ii_width115_r2-ev3",
+    "parent": "harman_phoenix_ii_200_exp_v1",
+    "mae_encoded_RGB": 0.2511637686446178,
+    "max_encoded_RGB": 0.6811474784466316,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "phx_ii_width115_r2-ev4",
+    "parent": "harman_phoenix_ii_200_exp_v1",
+    "mae_encoded_RGB": 0.2458342472851667,
+    "max_encoded_RGB": 0.6424963759822996,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "phx_ii_width115_r2-ev5",
+    "parent": "harman_phoenix_ii_200_exp_v1",
+    "mae_encoded_RGB": 0.24346154885430352,
+    "max_encoded_RGB": 0.6180056458381018,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "phx_ii_width115_r2-ev6",
+    "parent": "harman_phoenix_ii_200_exp_v1",
+    "mae_encoded_RGB": 0.244005931348708,
+    "max_encoded_RGB": 0.5956969558251316,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "phx_ii_width115_r2",
+    "parent": "harman_phoenix_ii_200_exp_v1",
+    "mae_encoded_RGB": 0.008449688342425139,
+    "max_encoded_RGB": 0.05760280766002899,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "phx_ii_width130_r2-ev-1",
+    "parent": "harman_phoenix_ii_200_exp_v1",
+    "mae_encoded_RGB": 0.2766756015392548,
+    "max_encoded_RGB": 0.7443350881208515,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "phx_ii_width130_r2-ev-2",
+    "parent": "harman_phoenix_ii_200_exp_v1",
+    "mae_encoded_RGB": 0.27018467588883976,
+    "max_encoded_RGB": 0.7279468986037995,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "phx_ii_width130_r2-ev-3",
+    "parent": "harman_phoenix_ii_200_exp_v1",
+    "mae_encoded_RGB": 0.2615783789196619,
+    "max_encoded_RGB": 0.6595407034409094,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "phx_ii_width130_r2-ev-4",
+    "parent": "harman_phoenix_ii_200_exp_v1",
+    "mae_encoded_RGB": 0.25197985809109685,
+    "max_encoded_RGB": 0.5310749980926223,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "phx_ii_width130_r2-ev-5",
+    "parent": "harman_phoenix_ii_200_exp_v1",
+    "mae_encoded_RGB": 0.24716385845031974,
+    "max_encoded_RGB": 0.5231860837720302,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "phx_ii_width130_r2-ev-6",
+    "parent": "harman_phoenix_ii_200_exp_v1",
+    "mae_encoded_RGB": 0.24570947795866485,
+    "max_encoded_RGB": 0.5214312962539102,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "phx_ii_width130_r2-ev0",
+    "parent": "harman_phoenix_ii_200_exp_v1",
+    "mae_encoded_RGB": 0.27565758834337845,
+    "max_encoded_RGB": 0.8130006866559853,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "phx_ii_width130_r2-ev1",
+    "parent": "harman_phoenix_ii_200_exp_v1",
+    "mae_encoded_RGB": 0.26758135860132143,
+    "max_encoded_RGB": 0.8130006866559853,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "phx_ii_width130_r2-ev2",
+    "parent": "harman_phoenix_ii_200_exp_v1",
+    "mae_encoded_RGB": 0.2572678145106948,
+    "max_encoded_RGB": 0.7223315785458152,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "phx_ii_width130_r2-ev3",
+    "parent": "harman_phoenix_ii_200_exp_v1",
+    "mae_encoded_RGB": 0.250619922600202,
+    "max_encoded_RGB": 0.6738078889143206,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "phx_ii_width130_r2-ev4",
+    "parent": "harman_phoenix_ii_200_exp_v1",
+    "mae_encoded_RGB": 0.24570555889346843,
+    "max_encoded_RGB": 0.6370489051651789,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "phx_ii_width130_r2-ev5",
+    "parent": "harman_phoenix_ii_200_exp_v1",
+    "mae_encoded_RGB": 0.2431228055221777,
+    "max_encoded_RGB": 0.6182803082322423,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "phx_ii_width130_r2-ev6",
+    "parent": "harman_phoenix_ii_200_exp_v1",
+    "mae_encoded_RGB": 0.2430181679716322,
+    "max_encoded_RGB": 0.5987640192263676,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "phx_ii_width130_r2",
+    "parent": "harman_phoenix_ii_200_exp_v1",
+    "mae_encoded_RGB": 0.016699355346062456,
+    "max_encoded_RGB": 0.0925459678034638,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "raw-harman_phoenix_200_exp_v1",
+    "parent": "harman_phoenix_200_exp_v1",
+    "mae_encoded_RGB": 0.3017741245533568,
+    "max_encoded_RGB": 0.8288853284504464,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "raw-harman_phoenix_ii_200_exp_v1",
+    "parent": "harman_phoenix_200_exp_v1",
+    "mae_encoded_RGB": 0.28624783135124926,
+    "max_encoded_RGB": 0.8039368276493477,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "raw-phx_200_d55_r2",
+    "parent": "harman_phoenix_200_exp_v1",
+    "mae_encoded_RGB": 0.30227989258284393,
+    "max_encoded_RGB": 0.8294956893263142,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "raw-phx_200_linear_r2",
+    "parent": "harman_phoenix_200_exp_v1",
+    "mae_encoded_RGB": 0.3021756573697905,
+    "max_encoded_RGB": 0.8293278400854506,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "raw-phx_200_no_tungsten_r2",
+    "parent": "harman_phoenix_200_exp_v1",
+    "mae_encoded_RGB": 0.3018213967250332,
+    "max_encoded_RGB": 0.8289463645380332,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "raw-phx_200_shared_r2",
+    "parent": "harman_phoenix_200_exp_v1",
+    "mae_encoded_RGB": 0.2995651774815001,
+    "max_encoded_RGB": 0.8255130846112764,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "raw-phx_ii_d55_r2",
+    "parent": "harman_phoenix_200_exp_v1",
+    "mae_encoded_RGB": 0.2857398926861616,
+    "max_encoded_RGB": 0.8032043945983063,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "raw-phx_ii_linear_r2",
+    "parent": "harman_phoenix_200_exp_v1",
+    "mae_encoded_RGB": 0.2864202404170187,
+    "max_encoded_RGB": 0.8041962310215915,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "raw-phx_ii_shared_r2",
+    "parent": "harman_phoenix_200_exp_v1",
+    "mae_encoded_RGB": 0.28451180468134135,
+    "max_encoded_RGB": 0.8014343480582895,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "raw-phx_ii_width115_r2",
+    "parent": "harman_phoenix_200_exp_v1",
+    "mae_encoded_RGB": 0.28623450454273885,
+    "max_encoded_RGB": 0.8038910505836576,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "raw-phx_ii_width130_r2",
+    "parent": "harman_phoenix_200_exp_v1",
+    "mae_encoded_RGB": 0.2862084718169056,
+    "max_encoded_RGB": 0.8038300144960708,
+    "purpose": "engineering output change, not real film accuracy"
+  }
+]
