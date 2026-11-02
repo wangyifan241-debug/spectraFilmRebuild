@@ -110,6 +110,7 @@ struct HalationParams {
 struct DirCouplersParams {
     bool active = true;
     double amount = 1.0;
+    double material_scale = 1.0; // material estimate, independent of wire/user amount
     double inhibition_samelayer = 1.0;
     double inhibition_interlayer = 1.0;
     double gamma_samelayer_rgb[3] = {0.341, 0.324, 0.273};

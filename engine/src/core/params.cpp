@@ -559,11 +559,19 @@ void apply_halation_preset(Params& p) {
     // No layer at all: the rear face of the base is a mirror, and the halo is
     // its geometry (`HalationParams::back_reflection`), not a Gaussian guess.
     p.film_render.halation.back_reflection = own_no;
+    if (p.film.info.has_halation_model && !p.film_render.halation.antihalation_removed) {
+        for (int c = 0; c < 3; ++c) {
+            p.film_render.halation.halation_strength[c] = p.film.info.halation_strength_rgb[c];
+            p.film_render.halation.halation_first_sigma_um[c] = p.film.info.halation_sigma_um;
+        }
+        p.film_render.halation.back_reflection = false;
+    }
 }
 
 namespace {
 
 void apply_film_specifics(Params& p) {
+    p.film_render.dir_couplers.material_scale = p.film.info.dir_couplers_scale;
     DirCouplersParams& dc = p.film_render.dir_couplers;
     if (p.film.info.is_positive()) {
         set3(dc.gamma_samelayer_rgb, 0.12, 0.08, 0.06);
@@ -594,6 +602,8 @@ void apply_film_specifics(Params& p) {
 
 bool digest(Params& p, const Json& neutral_filters, std::string& error) {
     (void)error;
+    // Reset on stock changes before preview/debug modes apply their bypasses.
+    p.film_render.grain.particle_area_um2 = p.film.info.grain_particle_area_um2;
     // `apply_database_neutral_print_filters`: print stock -> illuminant ->
     // film stock -> (c, m, y). A missing entry leaves the defaults, which is
     // what the reference does after printing a warning.

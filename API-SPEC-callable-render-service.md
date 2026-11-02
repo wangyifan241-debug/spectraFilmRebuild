@@ -1050,3 +1050,28 @@ knows exactly, and halate at what they are. Measured canvas against export (live
 downscaled): the halo's energy is 0.83–1.01 of the export's (the low end a frame of tiny lights), and the frame's mean difference is no
 larger than plain 500T's. The kernel `spk_highlight_headroom` is Metal only: the Vulkan backend
 refuses a back-reflection film at dispatch.
+
+## 17. Optional profile `info.render_model` v1 (2026-11-02)
+
+This is a material-file extension, not new JSON method parameters. Transport
+and schema versions remain 1; user grain/halation amounts retain their ranges
+and SHOOT invalidation behavior. Windows material import runs the same parser.
+
+An optional `info.render_model` object must contain `version: 1`,
+`grain_particle_area_um2` (finite 0.01–2), `halation_sigma_um` (finite 1–300),
+and `halation_strength_rgb` (three finite values in 0–1). Wrong versions,
+dimensions and invalid values are rejected. Absence preserves generic particle
+area 0.2 and the historical antihalation preset. Optional `dir_couplers_scale`
+is a finite number in 0–1, default 1. It scales the material's coupling matrix
+independently of the existing `dir_couplers_amount` user/wire control. This
+allows estimated new emulsions to avoid a folded transformed exposure axis
+without altering their characteristic curves or existing materials.
+Preview/debug bypasses still
+apply. The grain estimate resets during digest on material changes; halation
+estimates are reapplied when its user amount changes. An explicit
+`antihalation_removed` override continues to use the existing removal preset.
+
+These baseline physical model parameters multiply neither user control into a
+saved material array. Source/evidence/uncertainty belongs in profile metadata.
+Phoenix v0.1.0 uses explicitly estimated values, not measurements. New versions
+use new stock IDs; custom imports additionally retain their immutable hashes.

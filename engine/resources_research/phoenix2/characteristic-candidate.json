@@ -1,0 +1,40 @@
+{
+  "format": "SpektraLab.PhoenixCharacteristicCandidate",
+  "version": 1,
+  "profile_ready": false,
+  "verified_generation": false,
+  "source": {
+    "url": "https://www.japancamerahunter.com/wp-content/uploads/2025/07/Screenshot-2025-07-14-at-15.49.04.png",
+    "article": "https://www.japancamerahunter.com/2025/07/film-newfilm-news-harman-phoenix-ii-risess-harman-phoenix-rises-again/",
+    "date": "2025-07-16",
+    "sha256": "9ca4c40d38637e84f5dc125a6f259d270f61b9550f437a5e479fbff1ea38fbe3",
+    "conflict": "Article presents Phoenix II; image caption explicitly says HARMAN Phoenix I film. Not authenticated as a manufacturer-issued II curve."
+  },
+  "calibration": {
+    "width": 492,
+    "height": 314,
+    "left": 85,
+    "right": 384,
+    "top": 52,
+    "bottom": 237,
+    "x_min": 0,
+    "x_max": 3,
+    "y_min": 0,
+    "y_max": 2
+  },
+  "method": "Color-dominant source pixels; no smoothing or gap filling",
+  "rows": 298,
+  "channel_samples": {
+    "red": 282,
+    "green": 293,
+    "blue": 298
+  },
+  "ordinate": "Density as printed; density standard unknown",
+  "abscissa": "Relative Log Exposure; absolute anchor unknown",
+  "uncertainty": "Source resolution about 0.0108 D per pixel, plus stroke and axis calibration uncertainty; not a measured accuracy bound",
+  "required_before_use": [
+    "Resolve generation/caption conflict using an independent primary source",
+    "Confirm densitometry and exposure conditions",
+    "Dye/base reconstruction and physical validation"
+  ]
+}

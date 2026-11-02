@@ -41,6 +41,13 @@ struct ProfileInfo {
     /// The stock whose data this profile reads when it is a `derived_from`
     /// alias (`load_profile`); empty for a profile that carries its own data.
     std::string base_stock;
+    // Optional v1 material effect estimates. User amounts remain independent.
+    // Absence preserves the historical generic grain/halation presets.
+    double grain_particle_area_um2 = 0.2;
+    bool has_halation_model = false;
+    double halation_strength_rgb[3] = {0.08, 0.02, 0.0};
+    double halation_sigma_um = 65.0;
+    double dir_couplers_scale = 1.0;
 
     bool is_positive() const { return type == "positive"; }
 };

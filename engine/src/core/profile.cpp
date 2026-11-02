@@ -67,6 +67,38 @@ bool Profile::from_json(const Json& root, std::string& error) {
         return false;
     }
 
+    const Json& effects = in.at("render_model");
+    info.grain_particle_area_um2 = 0.2;
+    info.has_halation_model = false;
+    info.dir_couplers_scale = 1.0;
+    if (!effects.is_null()) {
+        if (!effects.is_object() || effects.at("version").as_double(-1) != 1.0) {
+            error = "render_model: expected version 1 object"; return false;
+        }
+        const double area = effects.at("grain_particle_area_um2").as_double(-1);
+        const double sigma = effects.at("halation_sigma_um").as_double(-1);
+        Vec strengths;
+        if (!std::isfinite(area) || area < 0.01 || area > 2.0 ||
+            !std::isfinite(sigma) || sigma < 1.0 || sigma > 300.0 ||
+            !json_to_vec(effects.at("halation_strength_rgb"), strengths) || strengths.size() != 3) {
+            error = "render_model: invalid particle area, sigma or RGB strengths"; return false;
+        }
+        for (int c = 0; c < 3; ++c) {
+            if (!std::isfinite(strengths[c]) || strengths[c] < 0 || strengths[c] > 1) {
+                error = "render_model: strengths must be finite within 0..1"; return false;
+            }
+            info.halation_strength_rgb[c] = strengths[c];
+        }
+        info.grain_particle_area_um2 = area;
+        info.halation_sigma_um = sigma;
+        info.has_halation_model = true;
+        info.dir_couplers_scale = effects.at("dir_couplers_scale").as_double(1.0);
+        if ((effects.has("dir_couplers_scale") && !effects.at("dir_couplers_scale").is_number()) ||
+            !std::isfinite(info.dir_couplers_scale) || info.dir_couplers_scale < 0 || info.dir_couplers_scale > 1) {
+            error = "render_model: dir_couplers_scale must be finite within 0..1"; return false;
+        }
+    }
+
     const Json& d = root.at("data");
     if (!d.is_object()) { error = "profile '" + info.stock + "' has no 'data' object"; return false; }
 

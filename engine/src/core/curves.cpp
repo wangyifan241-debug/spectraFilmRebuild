@@ -122,7 +122,7 @@ void dir_couplers_matrix(const DirCouplersParams& p, double out[9]) {
     inter[2 * 3 + 0] = p.gamma_interlayer_b_to_rg[0];
     inter[2 * 3 + 1] = p.gamma_interlayer_b_to_rg[1];
     for (int i = 0; i < 9; ++i) out[i] += inter[i] * p.inhibition_interlayer;
-    for (int i = 0; i < 9; ++i) out[i] *= p.amount;
+    for (int i = 0; i < 9; ++i) out[i] *= p.amount * p.material_scale;
 }
 
 void density_curves_before_dir_couplers(const Vec& curves, const Vec& log_exposure,
