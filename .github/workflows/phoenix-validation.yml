@@ -1,0 +1,31 @@
+name: Phoenix validation infrastructure
+on:
+  pull_request:
+    paths:
+      - 'tools/phoenix-validation/**'
+      - 'validation/phoenix-accuracy/**'
+      - 'engine/resources_experimental/**'
+      - 'engine/resources_research/**'
+      - '.github/workflows/phoenix-validation.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  offline-validation:
+    strategy:
+      matrix:
+        os: [windows-latest, ubuntu-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: node tools/phoenix-validation/cli.cjs report --run ci-${{ github.run_id }}-${{ github.run_attempt }} --run-tests yes --gate engineering
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: phoenix-validation-${{ matrix.os }}
+          path: build/phoenix-validation-reports/

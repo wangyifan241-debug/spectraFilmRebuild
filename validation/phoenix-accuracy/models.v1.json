@@ -1,0 +1,50 @@
+{
+  "format": "SpektraLab.PhoenixModels",
+  "version": 1,
+  "recipe": {
+    "path": "validation/phoenix-accuracy/fixed-recipe.v1.json",
+    "sha256": "4cc6689f01970660df2e7719c980ad7390ead42ec5199d5688071b6551d97f52"
+  },
+  "models": [
+    {
+      "id": "experimental-v1",
+      "label": "Phoenix 200 / Phoenix II Experimental v1 (frozen PR4)",
+      "renderer_commit": "ba076b2befe6586ad3095f897ebf40ea7e9ffd6c",
+      "recipe_sha256": "4cc6689f01970660df2e7719c980ad7390ead42ec5199d5688071b6551d97f52",
+      "materials": [
+        {
+          "path": "engine/resources_experimental/profiles/harman_phoenix_200_exp_v1.json",
+          "sha256": "f748850ead1925865f896aac3cce9d7f248918d1b0f4240fa947817001f0f69d",
+          "stock": "harman_phoenix_200_exp_v1",
+          "version": "0.1.0"
+        },
+        {
+          "path": "engine/resources_experimental/profiles/harman_phoenix_ii_200_exp_v1.json",
+          "sha256": "39a8c1cd3b0fe0a09db01f1873306948c5361f528d30de1d8dbce3fc3ee3dd0e",
+          "stock": "harman_phoenix_ii_200_exp_v1",
+          "version": "0.1.0"
+        }
+      ],
+      "fixed_renders": [
+        {
+          "parent_stock": "harman_phoenix_200_exp_v1",
+          "input_sha256": "ca8d89ab09b11257609a326ade302d4c73cd0f3a7c30604ecafc22fa95496783",
+          "file": {
+            "path": "validation/phoenix-review-20261102/images/harman_phoenix_200_exp_v1.png",
+            "sha256": "aeb23dfae33c34efd221ee134815075810760949f2b3c4ec87e9ed271a82a96f",
+            "purpose": "engineering_only_not_photographic_reference"
+          }
+        },
+        {
+          "parent_stock": "harman_phoenix_ii_200_exp_v1",
+          "input_sha256": "ca8d89ab09b11257609a326ade302d4c73cd0f3a7c30604ecafc22fa95496783",
+          "file": {
+            "path": "validation/phoenix-review-20261102/images/harman_phoenix_ii_200_exp_v1.png",
+            "sha256": "96f34d81bb2bea76c4d30cbac8125949230c7fe4192885a080701e53036cef8f",
+            "purpose": "engineering_only_not_photographic_reference"
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "inactive_template": true,
+  "format": "SpektraLab.PhoenixRegistration",
+  "version": 1,
+  "sample_id": null,
+  "source_sha256": null,
+  "target_sha256": null,
+  "status": "not_reviewed",
+  "reviewed_by": null,
+  "reviewed_at": null,
+  "method": null,
+  "coordinate_source": null,
+  "coordinate_units": "target_image_pixels",
+  "source_size": null,
+  "target_size": null,
+  "transform": null,
+  "control_points": [],
+  "regions": []
+}

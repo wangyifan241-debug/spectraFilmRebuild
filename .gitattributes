@@ -4,3 +4,5 @@ engine/resources_experimental/** text eol=lf
 engine/resources_research/phoenix200/** text eol=lf
 engine/resources_research/phoenix2/** text eol=lf
 engine/resources_research/phoenix-*.json text eol=lf
+tools/phoenix-validation/** text eol=lf
+validation/phoenix-accuracy/** text eol=lf

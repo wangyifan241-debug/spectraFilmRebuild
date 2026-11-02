@@ -1,0 +1,9 @@
+{
+  "purpose": "Engineering test sensitivity only; not a film experiment",
+  "mutation": "Intercept metrics.cjs in isolated Node process and replace deltaE00 with constant zero; repository implementation unchanged",
+  "command": "node --require ./build/phoenix-validation-mutation/zero-delta-hook.cjs --test --test-name-pattern=CIEDE2000 tools/phoenix-validation/tests.cjs",
+  "expected_exit_code": 1,
+  "actual_exit_code": 1,
+  "failed_vectors": 7,
+  "result": "Expected red: published arithmetic vectors reject deliberately broken behavior"
+}
