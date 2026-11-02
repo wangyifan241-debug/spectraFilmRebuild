@@ -76,3 +76,5 @@ node validation/phoenix-round3/prepare-research.cjs
 prepare-research从正常构建资源创建私有副本，按原固定公式生成24块/中灰float32输入，核对审核输入SHA及候选/父材料；滤镜值重建必须与research-neutral-print-filters.v1.json深相等，再使用其精确字节以保留历史键序。该表只用于研究副本，来源/许可继承原CC BY-SA滤镜表和候选父继承关系，不安装到产品。已有资源/输入若不匹配就拒绝，不覆盖。审查本次的空目录准备和旧输入拒绝均实际通过。
 
 本目录.gitattributes保留精确文件字节，允许Windows CRLF而不自动转换；清单不包含自身。历史报告中的本机路径只作为证据保留，新脚本不据此寻址。
+
+执行字节补充：旧color.cjs为CRLF工作区、Git保存LF。source-checkout-identities.json分别绑定两个哈希域，executed-tools保存实际执行原字节；没有把换行等价当成字节相等，也没有改写旧PR工具。bind-source-checkout.cjs可重新核对；其余会影响物理计算的脚本实际字节与所绑定身份一致。不同字节的checkout只能新建实验，不恢复旧checkpoint。

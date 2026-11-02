@@ -60,3 +60,5 @@
 空目录输入准备另发现一次滤镜JSON键顺序导致的字节身份不一致，已保留preparation-first-attempt.json。新增私有研究滤镜表快照只为复现字节序，生成参数必须与它深相等；从空目录准备的输入、材料和表SHA一致，过期输入拒绝测试通过，不改产品表。
 
 Checkpoint回归已证明能变红：在独立Node进程中故意禁用身份守卫，6项单元测试变为4通过/2失败（预期红，exit1），原始TAP为review-hardening/unit-tests-deliberately-broken.tap。恢复正常实现后6/6通过。该反例不改变产品文件，不计入正常实现的68/68通过数。
+
+执行字节补充：旧color.cjs为CRLF工作区、Git保存LF。source-checkout-identities.json分别绑定两个哈希域，executed-tools保存实际执行原字节；没有把换行等价当成字节相等，也没有改写旧PR工具。bind-source-checkout.cjs可重新核对；其余会影响物理计算的脚本实际字节与所绑定身份一致。不同字节的checkout只能新建实验，不恢复旧checkpoint。

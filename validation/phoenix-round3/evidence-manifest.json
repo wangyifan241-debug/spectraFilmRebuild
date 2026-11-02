@@ -19,6 +19,10 @@
       "sha256": "be04f72224741ff464e9c248f08c90f1840509bd54b982c7b11db628f9cf578f"
     },
     {
+      "path": "bind-source-checkout.cjs",
+      "sha256": "45947d27fbf7606ee23558bfd3a5fb2b7c51435956e041a3406c88f6b7ee01d1"
+    },
+    {
       "path": "build-deep-scanner.cjs",
       "sha256": "902788d8925e12bee22edd507ec908f3e78ed4e35f5932a655966ea78f59b30e"
     },
@@ -108,7 +112,7 @@
     },
     {
       "path": "FINAL_REPORT.md",
-      "sha256": "7c6d04dc3d27f549a0d7c4e29d2ea49edf4863fa321748a13f5347abbed95b91"
+      "sha256": "30061419e85d87d76aa321fa4ebe0b0051db416649d6d578140243d03e575d4a"
     },
     {
       "path": "fixed-gain-experiment.cjs",
@@ -272,7 +276,7 @@
     },
     {
       "path": "README.md",
-      "sha256": "9f3c7a32b22517dc057025d4336c8c483575aa9081eae287ed036b7126c8df7c"
+      "sha256": "b728461257e6aa74b06dc25bb8a319862a23282ca70d2cabb35144b59dbfa482"
     },
     {
       "path": "recapture-constants.cjs",
@@ -309,6 +313,10 @@
     {
       "path": "review-hardening/dye-basis-audit.json",
       "sha256": "d46451b58fe78125b62ff700c126a5e343c0749ebe7244d0f8f9ef2aac02d3e1"
+    },
+    {
+      "path": "review-hardening/executed-tools/color.cjs",
+      "sha256": "0a63e7ec96ef424790fafc3a6f00f0879982f00bd6f9c9182324b84597f1ea24"
     },
     {
       "path": "review-hardening/fixed-gain-physics.json",
@@ -367,6 +375,10 @@
       "sha256": "03ca0323f6d04972ac81080ae371377063efdd50d4c9e7f5c3467200e38ed478"
     },
     {
+      "path": "review-hardening/source-checkout-identities.json",
+      "sha256": "124059fb4e94ceb7234f271703231677f21f2269402e88910a446d88172b7db4"
+    },
+    {
       "path": "review-hardening/test-summary.json",
       "sha256": "1ef7d476da22346c6d765bd51361de39ae0f5ccb19c32f5ce3eed8bc3eb81fa0"
     },
@@ -392,7 +404,7 @@
     },
     {
       "path": "REVIEW_CHANGED_FILES.txt",
-      "sha256": "470ac19e69081ec68b6cda623fb234e30f06cdb65412d600a1abfc2e1e037daf"
+      "sha256": "431219b5beeffab3611d972e8f514a7814bd86ef56298efad4a5811ed38ec51d"
     },
     {
       "path": "run-experiments.cjs",
@@ -436,7 +448,7 @@
     },
     {
       "path": "TEST_EVIDENCE.md",
-      "sha256": "3b18406de7963dd734553ca051362ee85972c71660ca0afdeacd621cb68dee53"
+      "sha256": "fc0d69989b26c39574c3899aa6e08e33cccf74d8986d873aca123cf17b9e7acd"
     },
     {
       "path": "trace-byte-equivalence.json",

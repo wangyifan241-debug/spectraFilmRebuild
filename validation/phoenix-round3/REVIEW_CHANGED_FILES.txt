@@ -8,6 +8,7 @@ validation/phoenix-round3/SCAN_PRINT_CHAIN.md
 validation/phoenix-round3/TEST_EVIDENCE.md
 validation/phoenix-round3/analyze-fixed-gain.cjs
 validation/phoenix-round3/audit-dye-basis.cjs
+validation/phoenix-round3/bind-source-checkout.cjs
 validation/phoenix-round3/build-deep-scanner.cjs
 validation/phoenix-round3/build-fixed-gain.cjs
 validation/phoenix-round3/build-trace24.cjs
@@ -34,6 +35,7 @@ validation/phoenix-round3/review-hardening/deep-checkpoint-identity.json
 validation/phoenix-round3/review-hardening/deep-scanner-results.json
 validation/phoenix-round3/review-hardening/diagnostic-build-identities.json
 validation/phoenix-round3/review-hardening/dye-basis-audit.json
+validation/phoenix-round3/review-hardening/executed-tools/color.cjs
 validation/phoenix-round3/review-hardening/fixed-gain-physics.json
 validation/phoenix-round3/review-hardening/fixed-gain-stage-events.json
 validation/phoenix-round3/review-hardening/frozen-parent-gains.json
@@ -45,6 +47,7 @@ validation/phoenix-round3/review-hardening/legacy-fixed-gain.json
 validation/phoenix-round3/review-hardening/preparation-first-attempt.json
 validation/phoenix-round3/review-hardening/provenance-tests.tap
 validation/phoenix-round3/review-hardening/session-identity.json
+validation/phoenix-round3/review-hardening/source-checkout-identities.json
 validation/phoenix-round3/review-hardening/test-summary.json
 validation/phoenix-round3/review-hardening/three-mode-comparison.json
 validation/phoenix-round3/review-hardening/three-mode-results.json

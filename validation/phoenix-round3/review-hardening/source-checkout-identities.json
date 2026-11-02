@@ -1,0 +1,53 @@
+{
+  "hash_domain": "Git bytes and actual executed checkout bytes reported separately; differing executed bytes archived without normalization",
+  "records": [
+    {
+      "path": "validation/phoenix-round3/fixed-gain-experiment.cjs",
+      "executed_sha256": "cc77d9648925ae3dcc493f9c471625172454998995dbfc4817bba8c09125c40b",
+      "git_blob_sha256": "cc77d9648925ae3dcc493f9c471625172454998995dbfc4817bba8c09125c40b",
+      "git_blob_id": "d04946f3e8480033044e4499e3dd27736e254fc8",
+      "relation": "exact Git bytes",
+      "executed_snapshot": null
+    },
+    {
+      "path": "validation/phoenix-round3/checkpoint.cjs",
+      "executed_sha256": "bef4bba86689d131beeea593e9125d12d36a9f981481e0a83a54973e29f7be21",
+      "git_blob_sha256": "bef4bba86689d131beeea593e9125d12d36a9f981481e0a83a54973e29f7be21",
+      "git_blob_id": "236387a2836ddea994bcde665f7b582eccce4d52",
+      "relation": "exact Git bytes",
+      "executed_snapshot": null
+    },
+    {
+      "path": "validation/phoenix-round3/config.cjs",
+      "executed_sha256": "e52226ddaace77dbc7299f602d704fc4da77ab917152418eac8c684fc0ff31a8",
+      "git_blob_sha256": "e52226ddaace77dbc7299f602d704fc4da77ab917152418eac8c684fc0ff31a8",
+      "git_blob_id": "626323e44648ec320a9b568995f571398247c871",
+      "relation": "exact Git bytes",
+      "executed_snapshot": null
+    },
+    {
+      "path": "validation/phoenix-round3/build-fixed-gain.cjs",
+      "executed_sha256": "ac1121f53090ce506a18b5cb03d20bfee58fc00ffe614b2c943c09aa2ae9d320",
+      "git_blob_sha256": "ac1121f53090ce506a18b5cb03d20bfee58fc00ffe614b2c943c09aa2ae9d320",
+      "git_blob_id": "58fec24ae6b740ac194ffa3f8ddb4d9f96092c7a",
+      "relation": "exact Git bytes",
+      "executed_snapshot": null
+    },
+    {
+      "path": "validation/phoenix-round2/color.cjs",
+      "executed_sha256": "0a63e7ec96ef424790fafc3a6f00f0879982f00bd6f9c9182324b84597f1ea24",
+      "git_blob_sha256": "104a7c59702ddba44f20955c36e90aafa6e11bbf8a9eb5bbd69b5b99a2ea8e46",
+      "git_blob_id": "7d6114dcde1f47dea07e78c116face86c16ec271",
+      "relation": "CRLF checkout of exact LF Git blob",
+      "executed_snapshot": "review-hardening/executed-tools/color.cjs"
+    },
+    {
+      "path": "tools/phoenix-validation/metrics.cjs",
+      "executed_sha256": "5105ba9b21083049757b81f55fed03afa754940dee67f5d1e0f9da6af96da6cd",
+      "git_blob_sha256": "5105ba9b21083049757b81f55fed03afa754940dee67f5d1e0f9da6af96da6cd",
+      "git_blob_id": "9a558258eced3a3c9477a0beaae2ae7fee0057eb",
+      "relation": "exact Git bytes",
+      "executed_snapshot": null
+    }
+  ]
+}

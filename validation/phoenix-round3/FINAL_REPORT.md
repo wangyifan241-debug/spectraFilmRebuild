@@ -45,3 +45,5 @@ Fixed第三轮46项、旧数据域32项残余都在扫描空间阶段首次出�
 后续仍需厂家原始染料/底基与密度计标准、波长/带宽/光源/几何/误差、批次和C41条件、绝对曝光定义、独立场景/底片/线性扫描和ICC。没有开展第四轮拟合。本次保持Draft，停止等待独立审查。
 
 Checkpoint回归已证明能变红：在独立Node进程中故意禁用身份守卫，6项单元测试变为4通过/2失败（预期红，exit1），原始TAP为review-hardening/unit-tests-deliberately-broken.tap。恢复正常实现后6/6通过。该反例不改变产品文件，不计入正常实现的68/68通过数。
+
+执行字节补充：旧color.cjs为CRLF工作区、Git保存LF。source-checkout-identities.json分别绑定两个哈希域，executed-tools保存实际执行原字节；没有把换行等价当成字节相等，也没有改写旧PR工具。bind-source-checkout.cjs可重新核对；其余会影响物理计算的脚本实际字节与所绑定身份一致。不同字节的checkout只能新建实验，不恢复旧checkpoint。
