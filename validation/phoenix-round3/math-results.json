@@ -1,0 +1,382 @@
+{
+  "checks": [
+    {
+      "name": "zero dye transmission equals base only",
+      "pass": true
+    },
+    {
+      "name": "density transmission round trip",
+      "pass": true
+    },
+    {
+      "name": "additive base law",
+      "pass": true
+    }
+  ],
+  "proxy_nonnegative_basis_gate": {
+    "pass": false,
+    "violations": [
+      {
+        "nm": 430,
+        "channel": 0,
+        "coefficient": -0.004276360961948627,
+        "transmission_increases_with_layer_density": true
+      },
+      {
+        "nm": 430,
+        "channel": 1,
+        "coefficient": -0.009887867678685052,
+        "transmission_increases_with_layer_density": true
+      },
+      {
+        "nm": 435,
+        "channel": 0,
+        "coefficient": -0.018769554821092722,
+        "transmission_increases_with_layer_density": true
+      },
+      {
+        "nm": 435,
+        "channel": 1,
+        "coefficient": -0.023786473508749777,
+        "transmission_increases_with_layer_density": true
+      },
+      {
+        "nm": 440,
+        "channel": 0,
+        "coefficient": -0.025599431891958818,
+        "transmission_increases_with_layer_density": true
+      },
+      {
+        "nm": 440,
+        "channel": 1,
+        "coefficient": -0.03660663084596693,
+        "transmission_increases_with_layer_density": true
+      },
+      {
+        "nm": 445,
+        "channel": 0,
+        "coefficient": -0.025812732068113596,
+        "transmission_increases_with_layer_density": true
+      },
+      {
+        "nm": 445,
+        "channel": 1,
+        "coefficient": -0.045306250705283775,
+        "transmission_increases_with_layer_density": true
+      },
+      {
+        "nm": 450,
+        "channel": 0,
+        "coefficient": -0.020727726771121748,
+        "transmission_increases_with_layer_density": true
+      },
+      {
+        "nm": 450,
+        "channel": 1,
+        "coefficient": -0.046923532120118835,
+        "transmission_increases_with_layer_density": true
+      },
+      {
+        "nm": 455,
+        "channel": 0,
+        "coefficient": -0.011935050209328434,
+        "transmission_increases_with_layer_density": true
+      },
+      {
+        "nm": 455,
+        "channel": 1,
+        "coefficient": -0.03940526370617897,
+        "transmission_increases_with_layer_density": true
+      },
+      {
+        "nm": 460,
+        "channel": 0,
+        "coefficient": -0.0011760984627819534,
+        "transmission_increases_with_layer_density": true
+      },
+      {
+        "nm": 460,
+        "channel": 1,
+        "coefficient": -0.021222765128559938,
+        "transmission_increases_with_layer_density": true
+      },
+      {
+        "nm": 520,
+        "channel": 2,
+        "coefficient": -0.004081496195581209,
+        "transmission_increases_with_layer_density": true
+      },
+      {
+        "nm": 525,
+        "channel": 2,
+        "coefficient": -0.027004137628154262,
+        "transmission_increases_with_layer_density": true
+      },
+      {
+        "nm": 530,
+        "channel": 0,
+        "coefficient": -0.0038454583842326387,
+        "transmission_increases_with_layer_density": true
+      },
+      {
+        "nm": 530,
+        "channel": 2,
+        "coefficient": -0.03577880731122242,
+        "transmission_increases_with_layer_density": true
+      },
+      {
+        "nm": 535,
+        "channel": 0,
+        "coefficient": -0.0152770856923733,
+        "transmission_increases_with_layer_density": true
+      },
+      {
+        "nm": 535,
+        "channel": 2,
+        "coefficient": -0.03422772279815341,
+        "transmission_increases_with_layer_density": true
+      },
+      {
+        "nm": 540,
+        "channel": 0,
+        "coefficient": -0.025554137802649802,
+        "transmission_increases_with_layer_density": true
+      },
+      {
+        "nm": 540,
+        "channel": 2,
+        "coefficient": -0.0261709431048021,
+        "transmission_increases_with_layer_density": true
+      },
+      {
+        "nm": 545,
+        "channel": 0,
+        "coefficient": -0.033127413468402665,
+        "transmission_increases_with_layer_density": true
+      },
+      {
+        "nm": 545,
+        "channel": 2,
+        "coefficient": -0.01517970529929269,
+        "transmission_increases_with_layer_density": true
+      },
+      {
+        "nm": 550,
+        "channel": 0,
+        "coefficient": -0.03618721531965044,
+        "transmission_increases_with_layer_density": true
+      },
+      {
+        "nm": 550,
+        "channel": 2,
+        "coefficient": -0.004142056544374242,
+        "transmission_increases_with_layer_density": true
+      },
+      {
+        "nm": 555,
+        "channel": 0,
+        "coefficient": -0.03279064785319763,
+        "transmission_increases_with_layer_density": true
+      },
+      {
+        "nm": 560,
+        "channel": 0,
+        "coefficient": -0.021165687801649017,
+        "transmission_increases_with_layer_density": true
+      },
+      {
+        "nm": 650,
+        "channel": 1,
+        "coefficient": -0.002848371193208976,
+        "transmission_increases_with_layer_density": true
+      },
+      {
+        "nm": 655,
+        "channel": 1,
+        "coefficient": -0.011624076566229567,
+        "transmission_increases_with_layer_density": true
+      },
+      {
+        "nm": 660,
+        "channel": 1,
+        "coefficient": -0.01915883376246608,
+        "transmission_increases_with_layer_density": true
+      },
+      {
+        "nm": 665,
+        "channel": 1,
+        "coefficient": -0.025389598333344886,
+        "transmission_increases_with_layer_density": true
+      },
+      {
+        "nm": 670,
+        "channel": 1,
+        "coefficient": -0.030310285441188523,
+        "transmission_increases_with_layer_density": true
+      },
+      {
+        "nm": 675,
+        "channel": 1,
+        "coefficient": -0.033981339420171675,
+        "transmission_increases_with_layer_density": true
+      },
+      {
+        "nm": 680,
+        "channel": 1,
+        "coefficient": -0.03650638547199299,
+        "transmission_increases_with_layer_density": true
+      },
+      {
+        "nm": 680,
+        "channel": 2,
+        "coefficient": -2.5694055806520623e-13,
+        "transmission_increases_with_layer_density": true
+      },
+      {
+        "nm": 685,
+        "channel": 1,
+        "coefficient": -0.03798965310823317,
+        "transmission_increases_with_layer_density": true
+      },
+      {
+        "nm": 685,
+        "channel": 2,
+        "coefficient": -4.776427879399007e-14,
+        "transmission_increases_with_layer_density": true
+      },
+      {
+        "nm": 690,
+        "channel": 1,
+        "coefficient": -0.03852439220687245,
+        "transmission_increases_with_layer_density": true
+      },
+      {
+        "nm": 690,
+        "channel": 2,
+        "coefficient": -8.442977583679076e-15,
+        "transmission_increases_with_layer_density": true
+      },
+      {
+        "nm": 695,
+        "channel": 1,
+        "coefficient": -0.0382300251601419,
+        "transmission_increases_with_layer_density": true
+      },
+      {
+        "nm": 695,
+        "channel": 2,
+        "coefficient": -1.419089863440132e-15,
+        "transmission_increases_with_layer_density": true
+      },
+      {
+        "nm": 700,
+        "channel": 1,
+        "coefficient": -0.037248383273373896,
+        "transmission_increases_with_layer_density": true
+      },
+      {
+        "nm": 700,
+        "channel": 2,
+        "coefficient": -2.268015454981059e-16,
+        "transmission_increases_with_layer_density": true
+      },
+      {
+        "nm": 705,
+        "channel": 1,
+        "coefficient": -0.03567374805766693,
+        "transmission_increases_with_layer_density": true
+      },
+      {
+        "nm": 705,
+        "channel": 2,
+        "coefficient": -3.446703867544186e-17,
+        "transmission_increases_with_layer_density": true
+      },
+      {
+        "nm": 710,
+        "channel": 1,
+        "coefficient": -0.03355367614218643,
+        "transmission_increases_with_layer_density": true
+      },
+      {
+        "nm": 710,
+        "channel": 2,
+        "coefficient": -4.980624302840239e-18,
+        "transmission_increases_with_layer_density": true
+      },
+      {
+        "nm": 715,
+        "channel": 1,
+        "coefficient": -0.0309202691394606,
+        "transmission_increases_with_layer_density": true
+      },
+      {
+        "nm": 715,
+        "channel": 2,
+        "coefficient": -6.843613043162571e-19,
+        "transmission_increases_with_layer_density": true
+      },
+      {
+        "nm": 720,
+        "channel": 1,
+        "coefficient": -0.027810311746944913,
+        "transmission_increases_with_layer_density": true
+      },
+      {
+        "nm": 720,
+        "channel": 2,
+        "coefficient": -8.941470692389984e-20,
+        "transmission_increases_with_layer_density": true
+      },
+      {
+        "nm": 725,
+        "channel": 1,
+        "coefficient": -0.024271555382146766,
+        "transmission_increases_with_layer_density": true
+      },
+      {
+        "nm": 730,
+        "channel": 1,
+        "coefficient": -0.020359657547586566,
+        "transmission_increases_with_layer_density": true
+      },
+      {
+        "nm": 735,
+        "channel": 1,
+        "coefficient": -0.016132176279187248,
+        "transmission_increases_with_layer_density": true
+      },
+      {
+        "nm": 740,
+        "channel": 1,
+        "coefficient": -0.011643009260352746,
+        "transmission_increases_with_layer_density": true
+      },
+      {
+        "nm": 745,
+        "channel": 1,
+        "coefficient": -0.006937754976080525,
+        "transmission_increases_with_layer_density": true
+      },
+      {
+        "nm": 745,
+        "channel": 2,
+        "coefficient": -1.599021372951744e-24,
+        "transmission_increases_with_layer_density": true
+      },
+      {
+        "nm": 750,
+        "channel": 1,
+        "coefficient": -0.002049268773563641,
+        "transmission_increases_with_layer_density": true
+      },
+      {
+        "nm": 750,
+        "channel": 2,
+        "coefficient": -1.5442189625393642e-25,
+        "transmission_increases_with_layer_density": true
+      }
+    ]
+  },
+  "note": "Negative empirical basis coefficients are not proof of invalid original measurements. Independent nonnegative dye absorption interpretation fails. Final print Y monotonicity is a separate condition."
+}

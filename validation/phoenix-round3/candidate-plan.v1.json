@@ -1,0 +1,29 @@
+{
+  "version": 1,
+  "status": "diagnostic_only",
+  "parents": [
+    {
+      "id": "harman_phoenix_200_exp_v1",
+      "path": "engine/resources_experimental/profiles/harman_phoenix_200_exp_v1.json",
+      "sha256": "f748850ead1925865f896aac3cce9d7f248918d1b0f4240fa947817001f0f69d"
+    },
+    {
+      "id": "harman_phoenix_ii_200_exp_v1",
+      "path": "engine/resources_experimental/profiles/harman_phoenix_ii_200_exp_v1.json",
+      "sha256": "39a8c1cd3b0fe0a09db01f1873306948c5361f528d30de1d8dbce3fc3ee3dd0e"
+    }
+  ],
+  "groups": [
+    "A dye proxy and constrained peak/bandwidth sensitivity",
+    "B base amplitude/center/width single factors",
+    "C synthetic densitometer sensitivity; no claimed Status M",
+    "D fixed illumination observation and print separation"
+  ],
+  "execution_gate": "Blocked for affected material candidates until all relevant anomalies classified",
+  "print_modes": {
+    "A": "Frozen v1 filters, no optimization",
+    "B": "Not Run; gray-only target/optimizer/bounds/initialization must be frozen before execution"
+  },
+  "candidates": [],
+  "reason": "No candidate material generated before prerequisite classification; round2 nine candidates not adopted"
+}

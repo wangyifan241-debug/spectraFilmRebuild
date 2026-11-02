@@ -1,0 +1,525 @@
+{
+  "scope": "52 existing traced constant-gray outputs versus freshly executed uninstrumented renderer; final RGBA16 only, not all floating intermediates",
+  "records": [
+    {
+      "id": "harman_phoenix_200_exp_v1",
+      "dir": true,
+      "ev": -6,
+      "input_sha256": "50a38a0d02e6f82f90d29479dc22d35e8cba6a1209210d48c18f73de23f27032",
+      "params_sha256": "b0a1cceb094512c3f417d1ec33a368b0cb4c7d99af30c163c2ea5ea244c5f5fe",
+      "traced_sha256": "d9544f540e5af807565b18158ee2d83e0f3034801f29f37f0e5e6719037a6e47",
+      "untraced_sha256": "d9544f540e5af807565b18158ee2d83e0f3034801f29f37f0e5e6719037a6e47",
+      "equal": true
+    },
+    {
+      "id": "harman_phoenix_200_exp_v1",
+      "dir": true,
+      "ev": -5,
+      "input_sha256": "50a38a0d02e6f82f90d29479dc22d35e8cba6a1209210d48c18f73de23f27032",
+      "params_sha256": "b69a5c18b994de942dfc81b1a2dbc66ee528e9d8b3b19303559ef18aa8f15f18",
+      "traced_sha256": "095c3cbed0c1436fe623bbbc90b188af4e794273e1e3036ac38761b5a1dce6c4",
+      "untraced_sha256": "095c3cbed0c1436fe623bbbc90b188af4e794273e1e3036ac38761b5a1dce6c4",
+      "equal": true
+    },
+    {
+      "id": "harman_phoenix_200_exp_v1",
+      "dir": true,
+      "ev": -4,
+      "input_sha256": "50a38a0d02e6f82f90d29479dc22d35e8cba6a1209210d48c18f73de23f27032",
+      "params_sha256": "a76b2b92f64ca02ee871df41eeb6186155f0477fc5076ffe62684321e2e66b7e",
+      "traced_sha256": "0383c705fa660c5cffa35c31128fcf92c83073e23f5ccbdbb933a821e7161de5",
+      "untraced_sha256": "0383c705fa660c5cffa35c31128fcf92c83073e23f5ccbdbb933a821e7161de5",
+      "equal": true
+    },
+    {
+      "id": "harman_phoenix_200_exp_v1",
+      "dir": true,
+      "ev": -3,
+      "input_sha256": "50a38a0d02e6f82f90d29479dc22d35e8cba6a1209210d48c18f73de23f27032",
+      "params_sha256": "c72b1f44f28d743b2bad64c49160da2aeeec62ed6c1989515a700e00982a04cf",
+      "traced_sha256": "b6cefd5067c5002bb94a1c9455a7c0a223e47269d075b97474ce990f0df4e525",
+      "untraced_sha256": "b6cefd5067c5002bb94a1c9455a7c0a223e47269d075b97474ce990f0df4e525",
+      "equal": true
+    },
+    {
+      "id": "harman_phoenix_200_exp_v1",
+      "dir": true,
+      "ev": -2,
+      "input_sha256": "50a38a0d02e6f82f90d29479dc22d35e8cba6a1209210d48c18f73de23f27032",
+      "params_sha256": "0d9919756730ef957049271d8a56d623039462599f76278bda89c3a17e9ff7fa",
+      "traced_sha256": "9090b256cde924662c45d3e5c36411d536be60110a1092e635c9b0e6a697d8aa",
+      "untraced_sha256": "9090b256cde924662c45d3e5c36411d536be60110a1092e635c9b0e6a697d8aa",
+      "equal": true
+    },
+    {
+      "id": "harman_phoenix_200_exp_v1",
+      "dir": true,
+      "ev": -1,
+      "input_sha256": "50a38a0d02e6f82f90d29479dc22d35e8cba6a1209210d48c18f73de23f27032",
+      "params_sha256": "7913bd462fc65fe4a6a344e63a5c66dc8b41c4a7bed8d8307e69ce8079357139",
+      "traced_sha256": "7198ee2db25609440ff54a4990dcc52ee4098fe7544772493fb71593be9fb744",
+      "untraced_sha256": "7198ee2db25609440ff54a4990dcc52ee4098fe7544772493fb71593be9fb744",
+      "equal": true
+    },
+    {
+      "id": "harman_phoenix_200_exp_v1",
+      "dir": true,
+      "ev": 0,
+      "input_sha256": "50a38a0d02e6f82f90d29479dc22d35e8cba6a1209210d48c18f73de23f27032",
+      "params_sha256": "c73d238cf47eade39b836f301d2dd08be44faacb88e50596d0cbcb7951f8c84d",
+      "traced_sha256": "67dc9a7512f29a5dbd3ab8373d6b804f6317b80255c6cef991be732b61fac12d",
+      "untraced_sha256": "67dc9a7512f29a5dbd3ab8373d6b804f6317b80255c6cef991be732b61fac12d",
+      "equal": true
+    },
+    {
+      "id": "harman_phoenix_200_exp_v1",
+      "dir": true,
+      "ev": 1,
+      "input_sha256": "50a38a0d02e6f82f90d29479dc22d35e8cba6a1209210d48c18f73de23f27032",
+      "params_sha256": "fe59e8d5d946c1a0271943edff543b80f27d6c42b6c50ad63b0ddc60d9b5783a",
+      "traced_sha256": "2aab695927dc3eb6ce9fb8395a61447b90f35cae06027ffef2247eaba7f36083",
+      "untraced_sha256": "2aab695927dc3eb6ce9fb8395a61447b90f35cae06027ffef2247eaba7f36083",
+      "equal": true
+    },
+    {
+      "id": "harman_phoenix_200_exp_v1",
+      "dir": true,
+      "ev": 2,
+      "input_sha256": "50a38a0d02e6f82f90d29479dc22d35e8cba6a1209210d48c18f73de23f27032",
+      "params_sha256": "10a27cd178b6f222ce40f2976d40e9eb6238fba280478aa8561a1c1d39857e65",
+      "traced_sha256": "56df436a14689af97ecaa2aa67ee7d0bf2a0854f7530038ba318399da4a1abd6",
+      "untraced_sha256": "56df436a14689af97ecaa2aa67ee7d0bf2a0854f7530038ba318399da4a1abd6",
+      "equal": true
+    },
+    {
+      "id": "harman_phoenix_200_exp_v1",
+      "dir": true,
+      "ev": 3,
+      "input_sha256": "50a38a0d02e6f82f90d29479dc22d35e8cba6a1209210d48c18f73de23f27032",
+      "params_sha256": "7146ef17025028ac10437b7841aa8ee99d1d03f142e7173c2322f0a8ed49bcc6",
+      "traced_sha256": "2378478688e1f3bdd75f5489b2e2034f6fdefbae3fd57d8fcbca1ae7fe672ace",
+      "untraced_sha256": "2378478688e1f3bdd75f5489b2e2034f6fdefbae3fd57d8fcbca1ae7fe672ace",
+      "equal": true
+    },
+    {
+      "id": "harman_phoenix_200_exp_v1",
+      "dir": true,
+      "ev": 4,
+      "input_sha256": "50a38a0d02e6f82f90d29479dc22d35e8cba6a1209210d48c18f73de23f27032",
+      "params_sha256": "5bb2fd6807cd299a82e058609cb66210987aecd53beba766178d465c0c128d90",
+      "traced_sha256": "77406f863a606feb7119f6f64d3985af3b50f8b4a0a5f1eb41a7b0bda78401e7",
+      "untraced_sha256": "77406f863a606feb7119f6f64d3985af3b50f8b4a0a5f1eb41a7b0bda78401e7",
+      "equal": true
+    },
+    {
+      "id": "harman_phoenix_200_exp_v1",
+      "dir": true,
+      "ev": 5,
+      "input_sha256": "50a38a0d02e6f82f90d29479dc22d35e8cba6a1209210d48c18f73de23f27032",
+      "params_sha256": "f3ecf67f54db19e0c58da9d7335bb6856b3bf4fa6035e34bb15519ccc8a3b505",
+      "traced_sha256": "3edd68cc666cc179f98b16af8621763586c45adb0bedaf5fee578d8253129e4b",
+      "untraced_sha256": "3edd68cc666cc179f98b16af8621763586c45adb0bedaf5fee578d8253129e4b",
+      "equal": true
+    },
+    {
+      "id": "harman_phoenix_200_exp_v1",
+      "dir": true,
+      "ev": 6,
+      "input_sha256": "50a38a0d02e6f82f90d29479dc22d35e8cba6a1209210d48c18f73de23f27032",
+      "params_sha256": "409c395eaa9203fcd88c034fc6805a734f50c847985cad8ec0bdf681d9812622",
+      "traced_sha256": "693d4c79f3c7c285959249c64972e4fa60adb2da9fc31672271504203bb045eb",
+      "untraced_sha256": "693d4c79f3c7c285959249c64972e4fa60adb2da9fc31672271504203bb045eb",
+      "equal": true
+    },
+    {
+      "id": "harman_phoenix_200_exp_v1",
+      "dir": false,
+      "ev": -6,
+      "input_sha256": "50a38a0d02e6f82f90d29479dc22d35e8cba6a1209210d48c18f73de23f27032",
+      "params_sha256": "2bb34197789e272db26e0b92028b2ff598ec0bcd8ab859c7c6560835b98e6c65",
+      "traced_sha256": "d9544f540e5af807565b18158ee2d83e0f3034801f29f37f0e5e6719037a6e47",
+      "untraced_sha256": "d9544f540e5af807565b18158ee2d83e0f3034801f29f37f0e5e6719037a6e47",
+      "equal": true
+    },
+    {
+      "id": "harman_phoenix_200_exp_v1",
+      "dir": false,
+      "ev": -5,
+      "input_sha256": "50a38a0d02e6f82f90d29479dc22d35e8cba6a1209210d48c18f73de23f27032",
+      "params_sha256": "dc19df8f5e74b888039fe717cb74dc4d50330d4f1458ebec93e84fc8de1865af",
+      "traced_sha256": "095c3cbed0c1436fe623bbbc90b188af4e794273e1e3036ac38761b5a1dce6c4",
+      "untraced_sha256": "095c3cbed0c1436fe623bbbc90b188af4e794273e1e3036ac38761b5a1dce6c4",
+      "equal": true
+    },
+    {
+      "id": "harman_phoenix_200_exp_v1",
+      "dir": false,
+      "ev": -4,
+      "input_sha256": "50a38a0d02e6f82f90d29479dc22d35e8cba6a1209210d48c18f73de23f27032",
+      "params_sha256": "f55f5f2b6fda37f9a57dd79dd896ab3899975e779e71f914dd6e05d6509a8d3d",
+      "traced_sha256": "080d5a36d0f1e1a71a0f4e88bda09d464c365d4d4096311ab15995978e542aae",
+      "untraced_sha256": "080d5a36d0f1e1a71a0f4e88bda09d464c365d4d4096311ab15995978e542aae",
+      "equal": true
+    },
+    {
+      "id": "harman_phoenix_200_exp_v1",
+      "dir": false,
+      "ev": -3,
+      "input_sha256": "50a38a0d02e6f82f90d29479dc22d35e8cba6a1209210d48c18f73de23f27032",
+      "params_sha256": "2fceda921d6bce39619fece0015ddd3e688fc93aea24614e154e2f21baa6ba21",
+      "traced_sha256": "8168ffb1ed29f2a6f20f088ee8fdd414dff950be635d84afea895d46f3cbad5e",
+      "untraced_sha256": "8168ffb1ed29f2a6f20f088ee8fdd414dff950be635d84afea895d46f3cbad5e",
+      "equal": true
+    },
+    {
+      "id": "harman_phoenix_200_exp_v1",
+      "dir": false,
+      "ev": -2,
+      "input_sha256": "50a38a0d02e6f82f90d29479dc22d35e8cba6a1209210d48c18f73de23f27032",
+      "params_sha256": "4547138be9e7abedf4f02bb144f657f26ac9c7018237a1b7d1f08b8ffd7ea6f9",
+      "traced_sha256": "60585aa25bedbcd02f0405e55c6092b78910724bb2871bf0e84f3a29819fde77",
+      "untraced_sha256": "60585aa25bedbcd02f0405e55c6092b78910724bb2871bf0e84f3a29819fde77",
+      "equal": true
+    },
+    {
+      "id": "harman_phoenix_200_exp_v1",
+      "dir": false,
+      "ev": -1,
+      "input_sha256": "50a38a0d02e6f82f90d29479dc22d35e8cba6a1209210d48c18f73de23f27032",
+      "params_sha256": "70337471f731d83c339321e4a57107f50fda77131c718e0420bd236183024442",
+      "traced_sha256": "710992de1b48066af539d14fac8ea3255f8aefbbe1336c2bb576cd23ce36317b",
+      "untraced_sha256": "710992de1b48066af539d14fac8ea3255f8aefbbe1336c2bb576cd23ce36317b",
+      "equal": true
+    },
+    {
+      "id": "harman_phoenix_200_exp_v1",
+      "dir": false,
+      "ev": 0,
+      "input_sha256": "50a38a0d02e6f82f90d29479dc22d35e8cba6a1209210d48c18f73de23f27032",
+      "params_sha256": "f602060859031c4a597374b40a2bbba3873531ece763c258f2460666dcbfaf93",
+      "traced_sha256": "5bd9679abce62404ef9bd717cb527eb99ea32c255d8815c402cb1e683043c6dc",
+      "untraced_sha256": "5bd9679abce62404ef9bd717cb527eb99ea32c255d8815c402cb1e683043c6dc",
+      "equal": true
+    },
+    {
+      "id": "harman_phoenix_200_exp_v1",
+      "dir": false,
+      "ev": 1,
+      "input_sha256": "50a38a0d02e6f82f90d29479dc22d35e8cba6a1209210d48c18f73de23f27032",
+      "params_sha256": "1bd78d5989c6049995d8f5b6d46a61c6bb4bc36201092979b21f36e542fb6dd1",
+      "traced_sha256": "144934a0c9a8301d23ca556a4979db3ea3b3f3f8e57d36eff91b832fa54f1a69",
+      "untraced_sha256": "144934a0c9a8301d23ca556a4979db3ea3b3f3f8e57d36eff91b832fa54f1a69",
+      "equal": true
+    },
+    {
+      "id": "harman_phoenix_200_exp_v1",
+      "dir": false,
+      "ev": 2,
+      "input_sha256": "50a38a0d02e6f82f90d29479dc22d35e8cba6a1209210d48c18f73de23f27032",
+      "params_sha256": "cb43ba7bfa9e8b9043b347f8e5e90b9b071184420a58994efeaff8f9bc53e157",
+      "traced_sha256": "420f05e993aa75f68991d392639e0c8db6e15cfd60a0a6e89c36274cd68d6923",
+      "untraced_sha256": "420f05e993aa75f68991d392639e0c8db6e15cfd60a0a6e89c36274cd68d6923",
+      "equal": true
+    },
+    {
+      "id": "harman_phoenix_200_exp_v1",
+      "dir": false,
+      "ev": 3,
+      "input_sha256": "50a38a0d02e6f82f90d29479dc22d35e8cba6a1209210d48c18f73de23f27032",
+      "params_sha256": "42a2e6eda7cfc87d1f4ac26fa7cf5d42c13030d3cc529bba36c0040abefeeb3b",
+      "traced_sha256": "041e047a60b0abf5e973eddda4dd47b619c3fbd64867375e6d81274dd9dc08a6",
+      "untraced_sha256": "041e047a60b0abf5e973eddda4dd47b619c3fbd64867375e6d81274dd9dc08a6",
+      "equal": true
+    },
+    {
+      "id": "harman_phoenix_200_exp_v1",
+      "dir": false,
+      "ev": 4,
+      "input_sha256": "50a38a0d02e6f82f90d29479dc22d35e8cba6a1209210d48c18f73de23f27032",
+      "params_sha256": "767aea243f2268bee987aa12a60e635e03a9d741cff61052ac8df0c9db485bc4",
+      "traced_sha256": "3cd311a646f78efb2adae0b067c42844c778776aa3538dbf4c88cf3e2cf16271",
+      "untraced_sha256": "3cd311a646f78efb2adae0b067c42844c778776aa3538dbf4c88cf3e2cf16271",
+      "equal": true
+    },
+    {
+      "id": "harman_phoenix_200_exp_v1",
+      "dir": false,
+      "ev": 5,
+      "input_sha256": "50a38a0d02e6f82f90d29479dc22d35e8cba6a1209210d48c18f73de23f27032",
+      "params_sha256": "ea1b2232bbdaf965891e0bd490fe5df509f971a17f024de40124d5aa73ae427e",
+      "traced_sha256": "5d9875542dad5a5e0b4b899640c9354f5d5a916cede5ec807d720464fa82dc2f",
+      "untraced_sha256": "5d9875542dad5a5e0b4b899640c9354f5d5a916cede5ec807d720464fa82dc2f",
+      "equal": true
+    },
+    {
+      "id": "harman_phoenix_200_exp_v1",
+      "dir": false,
+      "ev": 6,
+      "input_sha256": "50a38a0d02e6f82f90d29479dc22d35e8cba6a1209210d48c18f73de23f27032",
+      "params_sha256": "8d0d9e8dd87ef56b5d1333da20ce6dda8907071c59a620f57ed70708c55558b4",
+      "traced_sha256": "08f8218abc4576be209e4d325c36984eb4b3661ccf7e9532e5d923c7c7106033",
+      "untraced_sha256": "08f8218abc4576be209e4d325c36984eb4b3661ccf7e9532e5d923c7c7106033",
+      "equal": true
+    },
+    {
+      "id": "harman_phoenix_ii_200_exp_v1",
+      "dir": true,
+      "ev": -6,
+      "input_sha256": "50a38a0d02e6f82f90d29479dc22d35e8cba6a1209210d48c18f73de23f27032",
+      "params_sha256": "e88c062dd6f6b906b0e91cbb6c8617340b6f884863f1de163209d916afdecbc0",
+      "traced_sha256": "54309c69398937bc9d9639bf967fa8668e8995d6e44db94249f519b1a622f831",
+      "untraced_sha256": "54309c69398937bc9d9639bf967fa8668e8995d6e44db94249f519b1a622f831",
+      "equal": true
+    },
+    {
+      "id": "harman_phoenix_ii_200_exp_v1",
+      "dir": true,
+      "ev": -5,
+      "input_sha256": "50a38a0d02e6f82f90d29479dc22d35e8cba6a1209210d48c18f73de23f27032",
+      "params_sha256": "31895262eece36df2d5d681a4fd180aed362182d9eef1a4427dcc64ee1a0efb2",
+      "traced_sha256": "d03a091f40cba2631b989b63533eca1730f378d055d164dd55fcf3b9fda2c471",
+      "untraced_sha256": "d03a091f40cba2631b989b63533eca1730f378d055d164dd55fcf3b9fda2c471",
+      "equal": true
+    },
+    {
+      "id": "harman_phoenix_ii_200_exp_v1",
+      "dir": true,
+      "ev": -4,
+      "input_sha256": "50a38a0d02e6f82f90d29479dc22d35e8cba6a1209210d48c18f73de23f27032",
+      "params_sha256": "63707d439ee9fada9d1ba8532769ee3ae605e3f3c6d1ebfa6c52014fef125f58",
+      "traced_sha256": "e59aa5bbb8cf3115b273b4c8fde9cf201728a6c65ef8ec991a42e6017a7bd376",
+      "untraced_sha256": "e59aa5bbb8cf3115b273b4c8fde9cf201728a6c65ef8ec991a42e6017a7bd376",
+      "equal": true
+    },
+    {
+      "id": "harman_phoenix_ii_200_exp_v1",
+      "dir": true,
+      "ev": -3,
+      "input_sha256": "50a38a0d02e6f82f90d29479dc22d35e8cba6a1209210d48c18f73de23f27032",
+      "params_sha256": "f164295d7a17a5af8292bb284e807d082fc8a3ffa0566f3be3542507fdfaffe9",
+      "traced_sha256": "141dceaf08dda74b2c55afcd66b57950beadca11021e473157a302711ba06eb8",
+      "untraced_sha256": "141dceaf08dda74b2c55afcd66b57950beadca11021e473157a302711ba06eb8",
+      "equal": true
+    },
+    {
+      "id": "harman_phoenix_ii_200_exp_v1",
+      "dir": true,
+      "ev": -2,
+      "input_sha256": "50a38a0d02e6f82f90d29479dc22d35e8cba6a1209210d48c18f73de23f27032",
+      "params_sha256": "c1aa7a54daa9c500c78ee5955e7df54f56c864cc0b13a73c9d2ac543f6c4bb1d",
+      "traced_sha256": "50d2acc2197eace5d2b6078fe41192bc1df8e805db3901c31d88865e9deba957",
+      "untraced_sha256": "50d2acc2197eace5d2b6078fe41192bc1df8e805db3901c31d88865e9deba957",
+      "equal": true
+    },
+    {
+      "id": "harman_phoenix_ii_200_exp_v1",
+      "dir": true,
+      "ev": -1,
+      "input_sha256": "50a38a0d02e6f82f90d29479dc22d35e8cba6a1209210d48c18f73de23f27032",
+      "params_sha256": "b540f8ba3552ba7382988610f5acb53a5cc76b4e9f3ace1c86e04c44fe4c520d",
+      "traced_sha256": "2b550b7c35892602ffc8f255daa4c2e598c6843ac273710fb37eac4bda53f7dd",
+      "untraced_sha256": "2b550b7c35892602ffc8f255daa4c2e598c6843ac273710fb37eac4bda53f7dd",
+      "equal": true
+    },
+    {
+      "id": "harman_phoenix_ii_200_exp_v1",
+      "dir": true,
+      "ev": 0,
+      "input_sha256": "50a38a0d02e6f82f90d29479dc22d35e8cba6a1209210d48c18f73de23f27032",
+      "params_sha256": "7c30cf6de08dcbf223d42f6425b7f352c1e46bd8a04ea53a11e265e2bf5af7d6",
+      "traced_sha256": "28c9ecc4d236779e973b679ecae6ce44c500877c384d6e088a5c524f07cc2cdc",
+      "untraced_sha256": "28c9ecc4d236779e973b679ecae6ce44c500877c384d6e088a5c524f07cc2cdc",
+      "equal": true
+    },
+    {
+      "id": "harman_phoenix_ii_200_exp_v1",
+      "dir": true,
+      "ev": 1,
+      "input_sha256": "50a38a0d02e6f82f90d29479dc22d35e8cba6a1209210d48c18f73de23f27032",
+      "params_sha256": "9c627f9f377466820b0ad4f423e60b874601fd478488f8fd20ef6913ecbbc2c1",
+      "traced_sha256": "42172987e65968ba63e7c3683802e6c35316fb836b86817417ec2a51f7599c4d",
+      "untraced_sha256": "42172987e65968ba63e7c3683802e6c35316fb836b86817417ec2a51f7599c4d",
+      "equal": true
+    },
+    {
+      "id": "harman_phoenix_ii_200_exp_v1",
+      "dir": true,
+      "ev": 2,
+      "input_sha256": "50a38a0d02e6f82f90d29479dc22d35e8cba6a1209210d48c18f73de23f27032",
+      "params_sha256": "1ab8041915422eb949ad77bfb786315721d93696484a1b674551d699b948874b",
+      "traced_sha256": "0bfc648295d67d6e103f6f8e97bdc2ad06c1244ab567b8373f22379219c37de6",
+      "untraced_sha256": "0bfc648295d67d6e103f6f8e97bdc2ad06c1244ab567b8373f22379219c37de6",
+      "equal": true
+    },
+    {
+      "id": "harman_phoenix_ii_200_exp_v1",
+      "dir": true,
+      "ev": 3,
+      "input_sha256": "50a38a0d02e6f82f90d29479dc22d35e8cba6a1209210d48c18f73de23f27032",
+      "params_sha256": "9f9bf05bc7b74939fd4dc0ce31097cf2264680ce926d777946884465e0773a8c",
+      "traced_sha256": "ef4032175fe3617fce8a958aeb3822f51faaa242df3f0d9c927c33209baba3d2",
+      "untraced_sha256": "ef4032175fe3617fce8a958aeb3822f51faaa242df3f0d9c927c33209baba3d2",
+      "equal": true
+    },
+    {
+      "id": "harman_phoenix_ii_200_exp_v1",
+      "dir": true,
+      "ev": 4,
+      "input_sha256": "50a38a0d02e6f82f90d29479dc22d35e8cba6a1209210d48c18f73de23f27032",
+      "params_sha256": "835b961bff52b38e8d39383cf7c95643b84accdc197748bf9305a80ead588acc",
+      "traced_sha256": "4b6c2241d1bc59dca2512a016d2eee559484b9ef5d01ee1feaf1c74cad5cc54b",
+      "untraced_sha256": "4b6c2241d1bc59dca2512a016d2eee559484b9ef5d01ee1feaf1c74cad5cc54b",
+      "equal": true
+    },
+    {
+      "id": "harman_phoenix_ii_200_exp_v1",
+      "dir": true,
+      "ev": 5,
+      "input_sha256": "50a38a0d02e6f82f90d29479dc22d35e8cba6a1209210d48c18f73de23f27032",
+      "params_sha256": "3dc61008ae8ab01d5a483442533a2366c8506b0eed52a9c6acb2cb6f2419f7c4",
+      "traced_sha256": "9fadf649f30873b183573f029b55b3ab7234a3047dd0b7dcc3de6c49d1298d47",
+      "untraced_sha256": "9fadf649f30873b183573f029b55b3ab7234a3047dd0b7dcc3de6c49d1298d47",
+      "equal": true
+    },
+    {
+      "id": "harman_phoenix_ii_200_exp_v1",
+      "dir": true,
+      "ev": 6,
+      "input_sha256": "50a38a0d02e6f82f90d29479dc22d35e8cba6a1209210d48c18f73de23f27032",
+      "params_sha256": "9e3929c7aa0b1c3fff52078ddf2b95097ec6e9a60a7f1fcdd00d1e170cc378ac",
+      "traced_sha256": "e762dc49ac1910caa3b700ad3e458f00a04db6f791c9719faa97c520af6c0555",
+      "untraced_sha256": "e762dc49ac1910caa3b700ad3e458f00a04db6f791c9719faa97c520af6c0555",
+      "equal": true
+    },
+    {
+      "id": "harman_phoenix_ii_200_exp_v1",
+      "dir": false,
+      "ev": -6,
+      "input_sha256": "50a38a0d02e6f82f90d29479dc22d35e8cba6a1209210d48c18f73de23f27032",
+      "params_sha256": "ef1e2321ed53cc59f4148a7a7c7d8d517a5bbb6b2f71329f721f61cd523dfeaf",
+      "traced_sha256": "54309c69398937bc9d9639bf967fa8668e8995d6e44db94249f519b1a622f831",
+      "untraced_sha256": "54309c69398937bc9d9639bf967fa8668e8995d6e44db94249f519b1a622f831",
+      "equal": true
+    },
+    {
+      "id": "harman_phoenix_ii_200_exp_v1",
+      "dir": false,
+      "ev": -5,
+      "input_sha256": "50a38a0d02e6f82f90d29479dc22d35e8cba6a1209210d48c18f73de23f27032",
+      "params_sha256": "4725446eafe2ac233318b12924a98d82b05dcc04ebe41e48ee4c72dbe5ff423b",
+      "traced_sha256": "d03a091f40cba2631b989b63533eca1730f378d055d164dd55fcf3b9fda2c471",
+      "untraced_sha256": "d03a091f40cba2631b989b63533eca1730f378d055d164dd55fcf3b9fda2c471",
+      "equal": true
+    },
+    {
+      "id": "harman_phoenix_ii_200_exp_v1",
+      "dir": false,
+      "ev": -4,
+      "input_sha256": "50a38a0d02e6f82f90d29479dc22d35e8cba6a1209210d48c18f73de23f27032",
+      "params_sha256": "51f3e9b240a3588b69dc2934ef8537368dea75725381018000476a10a7a370b4",
+      "traced_sha256": "e59aa5bbb8cf3115b273b4c8fde9cf201728a6c65ef8ec991a42e6017a7bd376",
+      "untraced_sha256": "e59aa5bbb8cf3115b273b4c8fde9cf201728a6c65ef8ec991a42e6017a7bd376",
+      "equal": true
+    },
+    {
+      "id": "harman_phoenix_ii_200_exp_v1",
+      "dir": false,
+      "ev": -3,
+      "input_sha256": "50a38a0d02e6f82f90d29479dc22d35e8cba6a1209210d48c18f73de23f27032",
+      "params_sha256": "5b46d7c71c413f37187ea74c123e2c339f231017339811ce17682008b89647a0",
+      "traced_sha256": "1b1f539d84dd09a4ae9c556ab479404c7dcadc1faa18c832d58e9723cc5411cb",
+      "untraced_sha256": "1b1f539d84dd09a4ae9c556ab479404c7dcadc1faa18c832d58e9723cc5411cb",
+      "equal": true
+    },
+    {
+      "id": "harman_phoenix_ii_200_exp_v1",
+      "dir": false,
+      "ev": -2,
+      "input_sha256": "50a38a0d02e6f82f90d29479dc22d35e8cba6a1209210d48c18f73de23f27032",
+      "params_sha256": "a6f7623db82e683d2ef46903071cd38e7727d41a5390e1f904d6f3caf1aeaf0d",
+      "traced_sha256": "26ad3e471ac8cb98f260d87e011264d2488d44ddfe8313010ff61c815f878515",
+      "untraced_sha256": "26ad3e471ac8cb98f260d87e011264d2488d44ddfe8313010ff61c815f878515",
+      "equal": true
+    },
+    {
+      "id": "harman_phoenix_ii_200_exp_v1",
+      "dir": false,
+      "ev": -1,
+      "input_sha256": "50a38a0d02e6f82f90d29479dc22d35e8cba6a1209210d48c18f73de23f27032",
+      "params_sha256": "c7cc3d055b0289779a21b377923dd53057280c3d8e7a2911461fb31bf8a2fd74",
+      "traced_sha256": "7572c9ec7308da8fc5e832aaaf154639bdc302c5f7fae013b7748092c1cdfac7",
+      "untraced_sha256": "7572c9ec7308da8fc5e832aaaf154639bdc302c5f7fae013b7748092c1cdfac7",
+      "equal": true
+    },
+    {
+      "id": "harman_phoenix_ii_200_exp_v1",
+      "dir": false,
+      "ev": 0,
+      "input_sha256": "50a38a0d02e6f82f90d29479dc22d35e8cba6a1209210d48c18f73de23f27032",
+      "params_sha256": "aaf7764955fb2c5b9bd16b09ee9f53e951209b4905d57cddf207cd2297a7a000",
+      "traced_sha256": "5dcb09bbaae97d30106f683435d9b4bfe0a8612a910f4ab6b411cf18e3485a8e",
+      "untraced_sha256": "5dcb09bbaae97d30106f683435d9b4bfe0a8612a910f4ab6b411cf18e3485a8e",
+      "equal": true
+    },
+    {
+      "id": "harman_phoenix_ii_200_exp_v1",
+      "dir": false,
+      "ev": 1,
+      "input_sha256": "50a38a0d02e6f82f90d29479dc22d35e8cba6a1209210d48c18f73de23f27032",
+      "params_sha256": "968cc04f75dc8c12b5b9c540c8896fcb8feba721eb7c881dd2c693a94dc0379b",
+      "traced_sha256": "051f099adfb13fa7e522d6743f14c281e8dbd819b6a245f191d4ac22c0764c30",
+      "untraced_sha256": "051f099adfb13fa7e522d6743f14c281e8dbd819b6a245f191d4ac22c0764c30",
+      "equal": true
+    },
+    {
+      "id": "harman_phoenix_ii_200_exp_v1",
+      "dir": false,
+      "ev": 2,
+      "input_sha256": "50a38a0d02e6f82f90d29479dc22d35e8cba6a1209210d48c18f73de23f27032",
+      "params_sha256": "2ddf972e077e6ca09f057fc573ed538202d5ffc1682414ceed99a9071bc40380",
+      "traced_sha256": "910e08c73943c88c74e6d90f5d4ff94d1f59cc8fc485df0dd1fb43440e69521d",
+      "untraced_sha256": "910e08c73943c88c74e6d90f5d4ff94d1f59cc8fc485df0dd1fb43440e69521d",
+      "equal": true
+    },
+    {
+      "id": "harman_phoenix_ii_200_exp_v1",
+      "dir": false,
+      "ev": 3,
+      "input_sha256": "50a38a0d02e6f82f90d29479dc22d35e8cba6a1209210d48c18f73de23f27032",
+      "params_sha256": "1469c321bc273bed024c71013af2d414f6fa73a6bb5c92949248640b48b790bb",
+      "traced_sha256": "d4c237f8198555a1d68a9e99f26881532c76aa1052870408f9e8495324c7481e",
+      "untraced_sha256": "d4c237f8198555a1d68a9e99f26881532c76aa1052870408f9e8495324c7481e",
+      "equal": true
+    },
+    {
+      "id": "harman_phoenix_ii_200_exp_v1",
+      "dir": false,
+      "ev": 4,
+      "input_sha256": "50a38a0d02e6f82f90d29479dc22d35e8cba6a1209210d48c18f73de23f27032",
+      "params_sha256": "5d67f522156488c8c018a9316de1437f6290081e973633c5845e3bc7c808c893",
+      "traced_sha256": "4b6c2241d1bc59dca2512a016d2eee559484b9ef5d01ee1feaf1c74cad5cc54b",
+      "untraced_sha256": "4b6c2241d1bc59dca2512a016d2eee559484b9ef5d01ee1feaf1c74cad5cc54b",
+      "equal": true
+    },
+    {
+      "id": "harman_phoenix_ii_200_exp_v1",
+      "dir": false,
+      "ev": 5,
+      "input_sha256": "50a38a0d02e6f82f90d29479dc22d35e8cba6a1209210d48c18f73de23f27032",
+      "params_sha256": "6295a1c01f25676748996b222045aed33d2007e228d8d452d30732f61e07678a",
+      "traced_sha256": "a353bdaf9231e4b8c18032f2f290e319385a28130780b8aab1d0d80702f864f0",
+      "untraced_sha256": "a353bdaf9231e4b8c18032f2f290e319385a28130780b8aab1d0d80702f864f0",
+      "equal": true
+    },
+    {
+      "id": "harman_phoenix_ii_200_exp_v1",
+      "dir": false,
+      "ev": 6,
+      "input_sha256": "50a38a0d02e6f82f90d29479dc22d35e8cba6a1209210d48c18f73de23f27032",
+      "params_sha256": "d5ca4e0ba213814ada4240b83f88223045d40e9f0f34d4f114083abce4eea257",
+      "traced_sha256": "07022c3ef6ad960bda5f5c170455563c6ddbefeeb6e05810bae57a3802b89a65",
+      "untraced_sha256": "07022c3ef6ad960bda5f5c170455563c6ddbefeeb6e05810bae57a3802b89a65",
+      "equal": true
+    }
+  ]
+}

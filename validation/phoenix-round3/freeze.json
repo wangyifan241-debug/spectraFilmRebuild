@@ -1,0 +1,19 @@
+{
+  "source_commit": "00251eacd3b05782dca18778a4cd4b65474e141a",
+  "engine_tree": "a0810a2792f4ee693ef7c88e5de59b764dae3931",
+  "parents": [
+    {
+      "id": "harman_phoenix_200_exp_v1",
+      "path": "engine/resources_experimental/profiles/harman_phoenix_200_exp_v1.json",
+      "sha256": "f748850ead1925865f896aac3cce9d7f248918d1b0f4240fa947817001f0f69d"
+    },
+    {
+      "id": "harman_phoenix_ii_200_exp_v1",
+      "path": "engine/resources_experimental/profiles/harman_phoenix_ii_200_exp_v1.json",
+      "sha256": "39a8c1cd3b0fe0a09db01f1873306948c5361f528d30de1d8dbce3fc3ee3dd0e"
+    }
+  ],
+  "photographic_fidelity_validated": false,
+  "photographic_gate": "Not Verified",
+  "metrics": null
+}
