@@ -13,3 +13,5 @@ Decision for all five candidates: Inconclusive. Retain v1 for product use. Sourc
 Outstanding required delivery: D55 spectral table/formula provenance and candidate; II monotone bounded width alternatives; fixed authentic RAW decode/render; 24-patch D50 Lab/Y analysis; full exposure series; native preview/export consistency and unaffected-stock regressions. No claim that round 2 is complete. No PR4/PR6 merge or product registration of research materials.
 
 Scripts currently run from repository root. run-native.cjs uses a local prebuilt binary path and is an execution reproduction aid, not a portable renderer distribution. Candidate plans intentionally omit renderer and recipe bindings until the complete fixed-input validation is configured.
+
+Update: two II width alternatives (1.15 and 1.30) were added and both actually rendered successfully. Nine native executions now include two parents and seven candidates. Width changes preserve monotonicity and density bounds by rescaling the exposure coordinates and Gaussian centers/sigmas together. D55, authentic RAW, 24-patch Lab and GUI regression gates remain outstanding.

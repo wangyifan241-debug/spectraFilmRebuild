@@ -47,5 +47,19 @@
     "mae_encoded_RGB": 0.024312832400308473,
     "max_encoded_RGB": 0.1674830243381399,
     "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "phx_ii_width115_r2",
+    "parent": "harman_phoenix_ii_200_exp_v1",
+    "mae_encoded_RGB": 0.008449688342425139,
+    "max_encoded_RGB": 0.05760280766002899,
+    "purpose": "engineering output change, not real film accuracy"
+  },
+  {
+    "stock": "phx_ii_width130_r2",
+    "parent": "harman_phoenix_ii_200_exp_v1",
+    "mae_encoded_RGB": 0.016699355346062456,
+    "max_encoded_RGB": 0.0925459678034638,
+    "purpose": "engineering output change, not real film accuracy"
   }
 ]
