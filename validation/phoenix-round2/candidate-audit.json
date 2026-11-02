@@ -1,0 +1,145 @@
+{
+  "checks": [
+    {
+      "id": "phx_200_d55_r2",
+      "status": "Pass",
+      "changed_category": "spectral_response",
+      "changes": [
+        {
+          "stock": "phx_200_d55_r2",
+          "path": "data.log_sensitivity",
+          "category": "spectral_response"
+        }
+      ]
+    },
+    {
+      "id": "phx_200_linear_r2",
+      "status": "Pass",
+      "changed_category": "spectral_response",
+      "changes": [
+        {
+          "stock": "phx_200_linear_r2",
+          "path": "data.log_sensitivity",
+          "category": "spectral_response"
+        }
+      ]
+    },
+    {
+      "id": "phx_200_no_tungsten_r2",
+      "status": "Pass",
+      "changed_category": "spectral_response",
+      "changes": [
+        {
+          "stock": "phx_200_no_tungsten_r2",
+          "path": "data.log_sensitivity",
+          "category": "spectral_response"
+        }
+      ]
+    },
+    {
+      "id": "phx_200_shared_r2",
+      "status": "Pass",
+      "changed_category": "spectral_response",
+      "changes": [
+        {
+          "stock": "phx_200_shared_r2",
+          "path": "data.log_sensitivity",
+          "category": "spectral_response"
+        }
+      ]
+    },
+    {
+      "id": "phx_ii_d55_r2",
+      "status": "Pass",
+      "changed_category": "spectral_response",
+      "changes": [
+        {
+          "stock": "phx_ii_d55_r2",
+          "path": "data.log_sensitivity",
+          "category": "spectral_response"
+        }
+      ]
+    },
+    {
+      "id": "phx_ii_linear_r2",
+      "status": "Pass",
+      "changed_category": "spectral_response",
+      "changes": [
+        {
+          "stock": "phx_ii_linear_r2",
+          "path": "data.log_sensitivity",
+          "category": "spectral_response"
+        }
+      ]
+    },
+    {
+      "id": "phx_ii_shared_r2",
+      "status": "Pass",
+      "changed_category": "spectral_response",
+      "changes": [
+        {
+          "stock": "phx_ii_shared_r2",
+          "path": "data.log_sensitivity",
+          "category": "spectral_response"
+        }
+      ]
+    },
+    {
+      "id": "phx_ii_width115_r2",
+      "status": "Pass",
+      "changed_category": "exposure_response",
+      "changes": [
+        {
+          "stock": "phx_ii_width115_r2",
+          "path": "data.log_exposure",
+          "category": "exposure_response"
+        },
+        {
+          "stock": "phx_ii_width115_r2",
+          "path": "data.density_curves_model.centers",
+          "category": "exposure_response"
+        },
+        {
+          "stock": "phx_ii_width115_r2",
+          "path": "data.density_curves_model.sigmas",
+          "category": "exposure_response"
+        }
+      ]
+    },
+    {
+      "id": "phx_ii_width130_r2",
+      "status": "Pass",
+      "changed_category": "exposure_response",
+      "changes": [
+        {
+          "stock": "phx_ii_width130_r2",
+          "path": "data.log_exposure",
+          "category": "exposure_response"
+        },
+        {
+          "stock": "phx_ii_width130_r2",
+          "path": "data.density_curves_model.centers",
+          "category": "exposure_response"
+        },
+        {
+          "stock": "phx_ii_width130_r2",
+          "path": "data.density_curves_model.sigmas",
+          "category": "exposure_response"
+        }
+      ]
+    }
+  ],
+  "negative_controls_rejected": 9,
+  "unchanged": [
+    {
+      "stock": "harman_phoenix_200_exp_v1",
+      "sha256": "f748850ead1925865f896aac3cce9d7f248918d1b0f4240fa947817001f0f69d",
+      "expected": "f748850ead1925865f896aac3cce9d7f248918d1b0f4240fa947817001f0f69d"
+    },
+    {
+      "stock": "harman_phoenix_ii_200_exp_v1",
+      "sha256": "39a8c1cd3b0fe0a09db01f1873306948c5361f528d30de1d8dbce3fc3ee3dd0e",
+      "expected": "39a8c1cd3b0fe0a09db01f1873306948c5361f528d30de1d8dbce3fc3ee3dd0e"
+    }
+  ]
+}

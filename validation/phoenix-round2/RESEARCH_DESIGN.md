@@ -42,3 +42,5 @@ Any joint ordinate/illumination/normalization experiment must be separately labe
 Bind the final pushed PR6 repair SHA before candidate validation. Record renderer binary hash and source inventory, fixed RAW byte hash, decode settings and complete recipe before renders. Existing input.png is not a RAW substitute. Test gray and 24 synthetic color patches, skin/green/blue, EV -6..+6 including +/-2, channel finite values and monotonic exposure response; report toe/mid/shoulder derivatives, RGB, D50 Lab and relative Y changes. Native preview/export and unaffected-stock regressions must be actual executions, separated from historical credentials. Unsupported tests remain Not Run.
 
 Synthetic Lab differences are model sensitivity, never true-film DeltaE00 accuracy. With no independent paired film references, default physical decision is Inconclusive; retain Experimental v1 in product. Engineering failure implies Reject. Adopt requires source evidence and unacceptable-regression review, not favorable colors.
+
+最终来源纠错见 SOURCE_REVIEW_FINAL.md：直接放大原图确认图注是Phoenix II，早期Phoenix I抄录错误；厂家原始数据真实性仍未认证。本文旧来源结论由该文件取代。

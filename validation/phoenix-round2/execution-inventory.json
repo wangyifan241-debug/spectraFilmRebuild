@@ -6,6 +6,18 @@
       "sha256": "64e645290086fc17841e72502d9275001650aac30953218a64edbf9f82be3a26"
     },
     {
+      "path": "audit.cjs",
+      "sha256": "bfc015284f186392490ea6e2d7163c7d08f3200c70dacf9aa7175cd70c7316bb"
+    },
+    {
+      "path": "baseline-verification.json",
+      "sha256": "3c4f06d95617959fd568b65e096191de4605990d608ce73ad865e1eabbb66995"
+    },
+    {
+      "path": "candidate-audit.json",
+      "sha256": "5bd3c1ce3d542309947b554acdd8d3f4d295c8dfd613072221d667c3843c2848"
+    },
+    {
       "path": "colour-regression.txt",
       "sha256": "d746be7ded1a14ddeb3d7c31740be7231e8803e67978a6370ea1d3501ec121e5"
     },
@@ -16,6 +28,10 @@
     {
       "path": "D55.json",
       "sha256": "5d72c2037f3252f3f97f8885066326de9b5517822cac3ebc1063ca51633e1039"
+    },
+    {
+      "path": "execution-inventory.json",
+      "sha256": "75429f39a2501a89c5f7484694ccf8a258f0d0481fc245f49edb5dad43b89714"
     },
     {
       "path": "exposure-summary.json",
@@ -47,7 +63,7 @@
     },
     {
       "path": "infrastructure-tests.tap",
-      "sha256": "1cfed30d102d9c443985f3959bec582932c347ed59b899b5294a9c82ce0cb847"
+      "sha256": "3986cd949aed482866f19ada3b7327593f57f827155b21f565ba7fc4f92a4b22"
     },
     {
       "path": "material-sensitivity.json",
