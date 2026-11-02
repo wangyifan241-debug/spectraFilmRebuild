@@ -19,6 +19,10 @@
       "sha256": "792cb2ef5634d5bdc8b2007b268d607286a9339cc2653162b626498468a451e6"
     },
     {
+      "path": "candidate-negative-observers.json",
+      "sha256": "aac93bcf4f07524a78ecb08c3e8aad23c267b58ffa7808b8be17da9afc20a598"
+    },
+    {
       "path": "candidate-plan.v1.json",
       "sha256": "68b68acc92ccc3f39d202f3ead533bcfd503f5b324cfd93d048b25d3f1177f5a"
     },
@@ -123,6 +127,10 @@
       "sha256": "294fea300f9b6038d248b994184d596f791ae4e265dd469045e61692f5077d77"
     },
     {
+      "path": "observe-experiment-negatives.cjs",
+      "sha256": "13bb7a702728d8afb0b0eeb7ff4e178777ada8c22996d99438552dba8d5e992f"
+    },
+    {
       "path": "observe-negative.cjs",
       "sha256": "91d270096f31c0982d7cc005f2331121f2ba6faba52e5dab031c5c6d2909bb37"
     },
@@ -195,8 +203,12 @@
       "sha256": "80b31b33f6fa86cc16904f29f8d86e20114f7f49036c42ca9463c7bccdaf1059"
     },
     {
+      "path": "PR_DRAFT.md",
+      "sha256": "c29c9e60286f8e867a9796c4fb287aa28e38649e52a7115fc6824357b47ca709"
+    },
+    {
       "path": "README.md",
-      "sha256": "7bc161ba72fe0c17c0dad4c09ffb30ed5a94c1b16b069ba21496f9982b11643a"
+      "sha256": "ce82972853cc71699bb2ea1ebe3555a439bd6f10121f63fae9dd4d7573cbf80c"
     },
     {
       "path": "recapture-constants.cjs",
@@ -244,7 +256,7 @@
     },
     {
       "path": "TEST_EVIDENCE.md",
-      "sha256": "cc01337f7a2570f64f4dee4cff670c8b30ad97281b0945538f0231a9ab2c8ca6"
+      "sha256": "b9ec9cda2007b2fc07dbcdd3bdab26edd31b07a6e5edaf5e0101c50ef73e6d4f"
     },
     {
       "path": "trace-byte-equivalence.json",

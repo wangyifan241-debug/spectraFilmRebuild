@@ -31,6 +31,7 @@ node validation/phoenix-round3/generate.cjs
 node validation/phoenix-round3/run-experiments.cjs
 node validation/phoenix-round3/recapture-constants.cjs
 node validation/phoenix-round3/summarize-results.cjs
+node validation/phoenix-round3/observe-experiment-negatives.cjs
 node validation/phoenix-round3/source-identities.cjs
 node --test validation/phoenix-round3/tests.cjs
 ```

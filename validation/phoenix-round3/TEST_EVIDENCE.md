@@ -26,3 +26,5 @@
 尚未运行：macOS/Metal/Xcode、真实胶片配对、全尺寸RAW/空间细节比较、扫描器硬件标定、全帧全GPU节点有限性。色块肤色/蓝天/绿植/高光均为合成RGB近似，不冒充实测反射率或真实照片。Qt fixture另含合成灰阶、肤色/彩色及高光小区域。
 
 复现顺序和依赖见README.md。执行工具/源/二进制身份见execution-provenance.json与evidence-manifest.json；清单不包含自身哈希。
+
+全部8736色块另完成固定D50理想负片观察与三组归一合成密度计积分，见candidate-negative-observers.json；不执行反转，不将其当成光学印相正片。
