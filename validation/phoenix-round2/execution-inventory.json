@@ -151,7 +151,7 @@
     },
     {
       "path": "provenance-tests.cjs",
-      "sha256": "e8888fc9f5f04a3ac294abc262fe75aa00313f533af16d5378c4136b79d157ca"
+      "sha256": "551ef17f980aef096343dd0e3aafd5c4a4e4564912f411896dbcce8d3bbf0db7"
     },
     {
       "path": "raw-execution.json",
@@ -175,7 +175,7 @@
     },
     {
       "path": "review-summary.cjs",
-      "sha256": "b0b59bc0263934ba0abc7d26d04c461dc329cc522689e02fe641931eee04fc5c"
+      "sha256": "17b0b1e8c246485970bf500225269667a12f1745ab0702c947d2e35fa4941f1c"
     },
     {
       "path": "REVIEW_CHANGED_FILES.txt",
@@ -199,11 +199,11 @@
     },
     {
       "path": "summarize.cjs",
-      "sha256": "659451024de16ec8ecbb4dcc493b1964696c606919356439136a0b9af4a69ae2"
+      "sha256": "53ee802525d12b4b23a0affae07915e8a101c537c309d1d3a7b238aa51f26b58"
     },
     {
       "path": "toolchain-provenance.cjs",
-      "sha256": "f34a86d67a14b7cdfdc96f7db28ddd8f5258fc93a1cf4a3822d1bbb83486c41e"
+      "sha256": "b3b04bf6b26db081272ebf15552d9e3364aa54a5b5946f57c29016318deebcae"
     },
     {
       "path": "trace.cjs",

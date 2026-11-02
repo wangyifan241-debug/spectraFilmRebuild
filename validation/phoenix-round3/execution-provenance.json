@@ -1,0 +1,53 @@
+{
+  "source_commit": "00251eacd3b05782dca18778a4cd4b65474e141a",
+  "engine_tree": "a0810a2792f4ee693ef7c88e5de59b764dae3931",
+  "node": "v18.17.0",
+  "compiler_and_spirv": "../phoenix-round2/clean-build-provenance.json",
+  "files": [
+    {
+      "path": "build/review-clean/engine/spk_render_fixture.exe",
+      "sha256": "1ad42423d55708058513be03adc73cffd6ac8730d9c45ae603f1013fd48de7c4"
+    },
+    {
+      "path": "build/review-clean/engine/spektrafilm_engine.dll",
+      "sha256": "9f001e271c623dc3077065738faeff02f9aff38303fcc5259f641cb69854d964"
+    },
+    {
+      "path": "build/round3-trace/spk_render_fixture.exe",
+      "sha256": "1ad42423d55708058513be03adc73cffd6ac8730d9c45ae603f1013fd48de7c4"
+    },
+    {
+      "path": "build/round3-trace/spektrafilm_engine.dll",
+      "sha256": "b2954d387598f1264ae71fe109cc4ca6276b635b6e39c2dfb1f79601dc475965"
+    },
+    {
+      "path": "build/round3-trace/pipeline-trace.cpp",
+      "sha256": "7ddcd4d0c47b54ac8d750386ebe81eb4b39df22280f93b057f16c5146aa101c8"
+    },
+    {
+      "path": "build/round3-ui/phoenix_round3_ui.exe",
+      "sha256": "62918edb693f563728b890e4bb25308ff0e53a06c50114a493172a614c05b987"
+    },
+    {
+      "path": "C:/Users/Strickland/SpektraLab-deps-20261028/qt-6.11.3/mingw_64/bin/Qt6Core.dll",
+      "sha256": "804525b34f82278ee94a1ef41ed23cc2af76941333dc3e44e6f890c017dc7238"
+    },
+    {
+      "path": "C:/Users/Strickland/SpektraLab-deps-20261028/LibRaw-0.22.2/libraw/libraw_version.h",
+      "sha256": "b693f77b382dc4b9920625cc30671c99f336b16ba8bd4601474cebc1e7b3d0c5"
+    },
+    {
+      "path": "build/round3-run/patch24.f32",
+      "sha256": "5a05ea471c99240104789b0108507f123b18ef51e476e713bcf584f7ff19d1e9"
+    },
+    {
+      "path": "build/round3-run/gray.f32",
+      "sha256": "c0791fee72b2b21cefe45f0f33664c4bb746c311bb1624726c59dfbd3d7aa0f5"
+    },
+    {
+      "path": "build/round3-run/resources/neutral_print_filters.json",
+      "sha256": "5969780eef7c0ab45aaceed0982d9fc9df0294f4ac8ccf814b51387dca7920e6"
+    }
+  ],
+  "limits": "Qt full source build for test target, not packaged application release; no macOS; tool scripts exact bytes bound by evidence manifest"
+}

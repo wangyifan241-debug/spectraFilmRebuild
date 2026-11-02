@@ -1,0 +1,144 @@
+[
+  {
+    "generation": "phoenix200",
+    "sha256": "9c5c63e8e0123f66edf0165a0246beb98e0e872ca2748b0f6267d33ae334472d",
+    "pages": 6,
+    "evidence": "previously downloaded manufacturer document; hash matches tracked digitization provenance",
+    "hits": [
+      {
+        "page": 1,
+        "topics": [
+          "SCANNING"
+        ]
+      },
+      {
+        "page": 1,
+        "topics": [
+          "SCANNING"
+        ]
+      },
+      {
+        "page": 2,
+        "topics": [
+          "2856"
+        ]
+      },
+      {
+        "page": 4,
+        "topics": [
+          "SCANNING"
+        ]
+      },
+      {
+        "page": 4,
+        "topics": [
+          "SCANNING"
+        ]
+      },
+      {
+        "page": 5,
+        "topics": [
+          "SCANNING"
+        ]
+      },
+      {
+        "page": 5,
+        "topics": [
+          "orange mask"
+        ]
+      },
+      {
+        "page": 5,
+        "topics": [
+          "SCANNING"
+        ]
+      },
+      {
+        "page": 6,
+        "topics": [
+          "SCANNING",
+          "Digital Camera"
+        ]
+      },
+      {
+        "page": 6,
+        "topics": [
+          "SCANNING",
+          "Digital Camera"
+        ]
+      }
+    ],
+    "edition": "Nov 2023"
+  },
+  {
+    "generation": "phoenix2",
+    "sha256": "020260790a3b705d38ded5573abcb2af43b228b5e3440bc23463273cf78bff08",
+    "pages": 5,
+    "evidence": "previously downloaded manufacturer document; hash matches tracked digitization provenance",
+    "hits": [
+      {
+        "page": 1,
+        "topics": [
+          "SCANNING"
+        ]
+      },
+      {
+        "page": 1,
+        "topics": [
+          "orange mask"
+        ]
+      },
+      {
+        "page": 2,
+        "topics": [
+          "D55"
+        ]
+      },
+      {
+        "page": 3,
+        "topics": [
+          "SCANNING"
+        ]
+      },
+      {
+        "page": 4,
+        "topics": [
+          "SCANNING"
+        ]
+      },
+      {
+        "page": 4,
+        "topics": [
+          "orange mask"
+        ]
+      },
+      {
+        "page": 4,
+        "topics": [
+          "SCANNING"
+        ]
+      },
+      {
+        "page": 5,
+        "topics": [
+          "SCANNING"
+        ]
+      },
+      {
+        "page": 5,
+        "topics": [
+          "SCANNING",
+          "Digital Camera"
+        ]
+      },
+      {
+        "page": 5,
+        "topics": [
+          "SCANNING",
+          "Digital Camera"
+        ]
+      }
+    ],
+    "edition": "Jul 2025"
+  }
+]

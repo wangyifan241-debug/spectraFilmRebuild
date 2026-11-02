@@ -1,29 +1,24 @@
 {
   "version": 1,
-  "status": "diagnostic_only",
-  "parents": [
-    {
-      "id": "harman_phoenix_200_exp_v1",
-      "path": "engine/resources_experimental/profiles/harman_phoenix_200_exp_v1.json",
-      "sha256": "f748850ead1925865f896aac3cce9d7f248918d1b0f4240fa947817001f0f69d"
-    },
-    {
-      "id": "harman_phoenix_ii_200_exp_v1",
-      "path": "engine/resources_experimental/profiles/harman_phoenix_ii_200_exp_v1.json",
-      "sha256": "39a8c1cd3b0fe0a09db01f1873306948c5361f528d30de1d8dbce3fc3ee3dd0e"
-    }
-  ],
-  "groups": [
-    "A dye proxy and constrained peak/bandwidth sensitivity",
-    "B base amplitude/center/width single factors",
-    "C synthetic densitometer sensitivity; no claimed Status M",
-    "D fixed illumination observation and print separation"
-  ],
-  "execution_gate": "Blocked for affected material candidates until all relevant anomalies classified",
-  "print_modes": {
-    "A": "Frozen v1 filters, no optimization",
-    "B": "Not Run; gray-only target/optimizer/bounds/initialization must be frozen before execution"
+  "material_plan": "material-plan.v1.json",
+  "gate": {
+    "local_review_source": "00251eacd3b05782dca18778a4cd4b65474e141a",
+    "measurement": "ProPhoto/D50, independent tests",
+    "exposure_groups": 143,
+    "anomalies": 1729,
+    "classification": "anomaly-classification.json",
+    "causal_limit": "mathematical/stage categories, not unique real-film chemistry"
   },
-  "candidates": [],
-  "reason": "No candidate material generated before prerequisite classification; round2 nine candidates not adopted"
+  "groups": {
+    "A": "Gold baseline / Portra proxy / nonnegative projection; analytic Gaussian peak/width experiments in negative-observations, no film identity",
+    "B": "neutral base / amplitude / center / width; each changes only base_density",
+    "C": "current synthetic response / centers+5nm / sigmas*1.1; no standard response dataset found",
+    "D": "frozen optical print / D50 ideal negative observer, no inversion"
+  },
+  "calibration_plan": "material-plan.v1.json calibration; fixed filter_shift_scale=60 in B, inherited scale in A",
+  "freeze": "freeze.json",
+  "interaction_experiments": "analytic Gaussian combined center/width explicitly labeled interaction; no mixed material candidate",
+  "photographic_fidelity_validated": false,
+  "photographic_gate": "Not Verified",
+  "metrics": null
 }

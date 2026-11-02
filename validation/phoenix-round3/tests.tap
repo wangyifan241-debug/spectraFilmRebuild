@@ -1,0 +1,45 @@
+TAP version 13
+# Subtest: frozen v1 and existing profiles unchanged from accepted local source
+ok 1 - frozen v1 and existing profiles unchanged from accepted local source
+  ---
+  duration_ms: 134.5816
+  ...
+# Subtest: 12 candidates change exactly one data field and bind both material identities
+ok 2 - 12 candidates change exactly one data field and bind both material identities
+  ---
+  duration_ms: 63.8734
+  ...
+# Subtest: zero dye, additive base, density/transmission inverse and nonnegative absorption monotonicity
+ok 3 - zero dye, additive base, density/transmission inverse and nonnegative absorption monotonicity
+  ---
+  duration_ms: 0.3995
+  ...
+# Subtest: all 1729 anomalies categorized with 143 trace byte-equality receipts
+ok 4 - all 1729 anomalies categorized with 143 trace byte-equality receipts
+  ---
+  duration_ms: 118.0296
+  ...
+# Subtest: 364 independent modes, no evaluation-driven calibration change
+ok 5 - 364 independent modes, no evaluation-driven calibration change
+  ---
+  duration_ms: 299.367
+  ...
+# Subtest: independent 3432 spectral sums and 364 per-EV constant recapture pass
+ok 6 - independent 3432 spectral sums and 364 per-EV constant recapture pass
+  ---
+  duration_ms: 0.4366
+  ...
+# Subtest: automatic print compensation decomposition closes every anomaly
+ok 7 - automatic print compensation decomposition closes every anomaly
+  ---
+  duration_ms: 4.0669
+  ...
+1..7
+# tests 7
+# suites 0
+# pass 7
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 699.1194

@@ -1,0 +1,6 @@
+{
+  "records": 364,
+  "output_byte_hash_equal": 364,
+  "reason": "repair initial material/mode-only constants overwrite; per-EV constants required",
+  "input_sha256": "5a05ea471c99240104789b0108507f123b18ef51e476e713bcf584f7ff19d1e9"
+}
