@@ -32,10 +32,11 @@ function prerequisites(sample,root,modelId){
  for(const [field,value] of required)if(!text(value))return notVerified('Unknown reference condition: '+field);
  if(sample.pairing?.status!=='verified')return notVerified('Pairing not independently reviewed');
  const files={};for(const kind of ['raw','scan','icc','reference_observations','pairing_evidence']){const b=binding(root,sample.files?.[kind]);if(!b.ok)return notVerified(b.reason);files[kind]=b.file;}
+ const pairing=require('./evidence.cjs').pairingEvidence(sample,root);if(pairing.status!=='Evidence checked')return pairing;
  const output=sample.model_outputs?.[modelId];if(!output)return notVerified('No paired output for model '+modelId);
  if(output.input_sha256!==sample.files.raw.sha256||!digest(output.recipe_sha256)||!text(output.renderer_commit))return notVerified('Model output input/recipe/renderer binding missing');
  for(const kind of ['render','observations']){const b=binding(root,output[kind]);if(!b.ok)return notVerified(b.reason);files['model_'+kind]=b.file;}
- return {status:'Ready',files,output};
+ return {status:'Ready',files,output,pairing};
 }
 function evaluateSample(sample,root,model){
  const ready=prerequisites(sample,root,model.id);if(ready.status!=='Ready')return {id:sample.id,...ready};
@@ -48,10 +49,15 @@ function evaluateSample(sample,root,model){
   if(reference.origin_kind!=='physical_film'||output.origin_kind!=='model_render')return {id:sample.id,...notVerified('Synthetic/unclassified observations cannot verify photography')};
   if(reference.sample_id!==sample.id||output.sample_id!==sample.id||reference.source_image_sha256!==sample.files.scan.sha256||output.source_image_sha256!==ready.output.render.sha256)return {id:sample.id,...notVerified('Observation source identity mismatch')};
   if(!text(reference.extraction_method)||!text(output.extraction_method)||reference.colorimetry?.icc_sha256!==sample.files.icc.sha256||!digest(output.colorimetry?.icc_sha256)||!text(sample.scan.observation_reviewed_by))return {id:sample.id,...notVerified('Missing audited observation extraction/ICC binding')};
+  const expected={sample_id:sample.id,source_sha256:sample.files.raw.sha256};
+  const referenceROI=require('./evidence.cjs').observationRegistration(root,reference,sample.files.reference_registration,{...expected,target_sha256:sample.files.scan.sha256});
+  const modelROI=require('./evidence.cjs').observationRegistration(root,output,ready.output.registration,{...expected,target_sha256:ready.output.render.sha256});
+  if(referenceROI.status!=='Geometry checked'||modelROI.status!=='Geometry checked')return {id:sample.id,...notVerified(referenceROI.reason??modelROI.reason),evidence:{pairing:ready.pairing,reference_registration:referenceROI,model_registration:modelROI}};
+  for(const roi of referenceROI.regions){const modelRegion=modelROI.regions.find(r=>r.id===roi.id);if(!modelRegion||JSON.stringify(roi.source_rect)!==JSON.stringify(modelRegion.source_rect))return {id:sample.id,...notVerified('Reference/model ROIs do not identify the same RAW scene region')};}
   const metrics=pairedMetrics(reference,output);let grain=notVerified('No high-resolution paired grain ROI'),halation=notVerified('No high-resolution paired halation ROI');
-  try{const a=grainStatistics(reference),b=grainStatistics(output);if(a&&b){requireThat(a.pixel_pitch_um===b.pixel_pitch_um,'Grain scale mismatch');grain={status:'Measured',reference:a,model:b,rms_Y_error:b.rms_Y-a.rms_Y};}}catch(e){grain=notVerified(e.message);}
-  try{const a=halationStatistics(reference),b=halationStatistics(output);if(a&&b){requireThat(a.pixel_pitch_um===b.pixel_pitch_um,'Halo scale mismatch');halation={status:'Measured',reference:a,model:b,energy_ratio_error:b.halo_to_core_energy-a.halo_to_core_energy};}}catch(e){halation=notVerified(e.message);}
-  return {id:sample.id,status:'Measured',metrics,grain,halation};
+  try{for(const [packet,audit] of [[reference,referenceROI],[output,modelROI]]){const spatial=packet.spatial?.grain;if(spatial){const roi=audit.regions.find(r=>r.id===spatial.registration_roi_id);requireThat(roi&&roi.target_rect[2]===spatial.width&&roi.target_rect[3]===spatial.height,'Spatial grain ROI registration missing or dimensions differ');}}const a=grainStatistics(reference),b=grainStatistics(output);if(a&&b){requireThat(a.pixel_pitch_um===b.pixel_pitch_um,'Grain scale mismatch');grain={status:'Measured',reference:a,model:b,rms_Y_error:b.rms_Y-a.rms_Y};}}catch(e){grain=notVerified(e.message);}
+  try{for(const [packet,audit] of [[reference,referenceROI],[output,modelROI]]){const spatial=packet.spatial?.halation;if(spatial){const roi=audit.regions.find(r=>r.id===spatial.registration_roi_id);requireThat(roi&&roi.target_rect[2]===spatial.width&&roi.target_rect[3]===spatial.height,'Spatial halation ROI registration missing or dimensions differ');}}const a=halationStatistics(reference),b=halationStatistics(output);if(a&&b){requireThat(a.pixel_pitch_um===b.pixel_pitch_um,'Halo scale mismatch');halation={status:'Measured',reference:a,model:b,energy_ratio_error:b.halo_to_core_energy-a.halo_to_core_energy};}}catch(e){halation=notVerified(e.message);}
+  return {id:sample.id,status:'Measured',metrics,grain,halation,evidence:{pairing:ready.pairing,reference_registration:referenceROI,model_registration:modelROI},scope:'Conditional paired observation metrics; correspondence reviews are not an independently authenticated physical-accuracy certificate'};
  }catch(e){return {id:sample.id,...notVerified('Invalid paired observations: '+e.message)};}
 }
 module.exports={manifest,splits,prerequisites,evaluateSample};

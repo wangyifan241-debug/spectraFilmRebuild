@@ -11,6 +11,7 @@ function leaves(a,b,prefix='',out=[]){if(JSON.stringify(a)===JSON.stringify(b))r
 function version(v){requireThat(/^\d+\.\d+\.\d+$/.test(v),'Material needs semantic version');return v.split('.').map(Number);}
 function newer(a,b){const x=version(a),y=version(b);for(let i=0;i<3;i++)if(x[i]!==y[i])return x[i]>y[i];return false;}
 function validateCandidate(root,plan,lock){
+ requireThat(!plan.comparison_mode||plan.comparison_mode==='frozen_parent_print','Separate print recalibration is design-only and not implemented; use frozen_parent_print');
  requireThat(plan.format==='SpektraLab.PhoenixCandidate'&&plan.version===1&&text(plan.id)&&plan.id!=='experimental-v1','Invalid/new candidate ID required');
  requireThat(plan.parent_commit===lock.commit&&plan.renderer_commit===lock.commit,'Candidate must retain pinned baseline renderer');
  requireThat(text(plan.hypothesis?.category)&&text(plan.hypothesis.rationale)&&['A','B','C'].includes(plan.hypothesis.evidence_level),'Hypothesis provenance missing');
@@ -54,6 +55,6 @@ function runRenders(root,plan,lock,destination){
   const result=cp.spawnSync(runner.executable,args,{shell:false,timeout:runner.timeout_ms??120000,maxBuffer:1024*1024});requireThat(result.status===0,'Renderer failed: '+(result.stderr?.toString()??result.error));requireThat(fs.existsSync(output),'Renderer produced no declared output');
   records.push({model_id:modelId,stock,input_id:input.id,input_sha256:input.file.sha256,output_path:output,output_sha256:fileHash(output),recipe_sha256:plan.recipe.sha256,renderer_sha256:runner.sha256});
  }}}
- const record={format:'SpektraLab.PhoenixRenderRun',version:1,category:plan.hypothesis.category,renderer_commit:plan.renderer_commit,renderer:{executable:runner.executable,sha256:runner.sha256,args:runner.args,assets},recipe_sha256:plan.recipe.sha256,resources_sha256:hash(JSON.stringify(tree)),resource_inventory:tree,records};fs.writeFileSync(path.join(destination,'render-run.json'),JSON.stringify(record,null,2)+'\n');return record;
+ const record={format:'SpektraLab.PhoenixRenderRun',version:1,comparison_mode:'frozen_parent_print',calibration:{recalibrated:false,parent_print_pack_sha256:expectedPack.sha256,staged_print_pack_sha256:fileHash(filterPath),scope:'Candidate IDs inherit parent print values; no white-balance refit'},category:plan.hypothesis.category,renderer_commit:plan.renderer_commit,renderer:{executable:runner.executable,sha256:runner.sha256,args:runner.args,assets},recipe_sha256:plan.recipe.sha256,resources_sha256:hash(JSON.stringify(tree)),resource_inventory:tree,records};fs.writeFileSync(path.join(destination,'render-run.json'),JSON.stringify(record,null,2)+'\n');return record;
 }
 module.exports={validateCandidate,runRenders,leaves};

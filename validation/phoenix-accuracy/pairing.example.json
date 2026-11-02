@@ -1,0 +1,12 @@
+{
+  "inactive_template": true,
+  "format": "SpektraLab.PhoenixPairingEvidence",
+  "version": 1,
+  "sample_id": null,
+  "raw_sha256": null,
+  "scan_sha256": null,
+  "identity": {"negative_id": null, "roll_id": null, "scene_id": null, "raw_capture_id": null},
+  "human_review": {"status": "not_reviewed", "reviewed_by": null, "reviewed_at": null, "method": null, "scope": "capture_provenance_and_scene_correspondence"},
+  "capture_relation": {"timing": null, "lighting": null, "motion": null, "exposure_relation": null},
+  "capture_records": [{"role": "film_frame_record", "description": null, "file": null}, {"role": "scene_capture_record", "description": null, "file": null}]
+}

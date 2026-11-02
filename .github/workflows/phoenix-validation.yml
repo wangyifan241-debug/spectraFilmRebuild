@@ -23,10 +23,9 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
-      - run: node --test tools/phoenix-validation/tests.cjs
-      - run: node tools/phoenix-validation/cli.cjs verify
-      - run: node tools/phoenix-validation/cli.cjs report --run ci-${{ github.run_id }}-${{ github.run_attempt }} --gate engineering
+      - run: node tools/phoenix-validation/cli.cjs report --run ci-${{ github.run_id }}-${{ github.run_attempt }} --run-tests yes --gate engineering
       - uses: actions/upload-artifact@v4
+        if: always()
         with:
           name: phoenix-validation-${{ matrix.os }}
           path: build/phoenix-validation-reports/

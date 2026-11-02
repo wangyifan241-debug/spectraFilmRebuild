@@ -11,8 +11,8 @@
   "exposure": {"description": null, "iso": null, "aperture": null, "shutter_seconds": null, "illumination": null},
   "process": {"description": null, "chemistry": null, "temperature_C": null, "time_seconds": null, "lab": null},
   "scan": {"device": null, "processing": null, "icc_transform": null, "observation_reviewed_by": null, "resolution_dpi": null, "bit_depth": null},
-  "files": {"raw": null, "scan": null, "icc": null, "reference_observations": null, "pairing_evidence": null},
+  "files": {"raw": null, "scan": null, "icc": null, "reference_observations": null, "pairing_evidence": null, "reference_registration": null},
   "model_outputs": {
-    "experimental-v1": {"stock": null, "material_sha256": null, "input_sha256": null, "recipe_sha256": null, "renderer_commit": null, "render": null, "observations": null}
+    "experimental-v1": {"stock": null, "material_sha256": null, "input_sha256": null, "recipe_sha256": null, "renderer_commit": null, "render": null, "observations": null, "registration": null}
   }
 }

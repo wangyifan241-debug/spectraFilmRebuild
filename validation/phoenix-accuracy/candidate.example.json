@@ -1,6 +1,7 @@
 {
   "format": "SpektraLab.PhoenixCandidate",
   "version": 1,
+  "comparison_mode": "frozen_parent_print",
   "id": "replace-with-new-candidate-id",
   "parent_commit": "ba076b2befe6586ad3095f897ebf40ea7e9ffd6c",
   "renderer_commit": "ba076b2befe6586ad3095f897ebf40ea7e9ffd6c",

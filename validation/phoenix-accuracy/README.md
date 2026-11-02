@@ -1,4 +1,7 @@
-# Phoenix 精度验证基础设施 v1
+# Phoenix 精度验证基础设施（第一阶段审查补强）
+
+新增 v2 边界与完整证据格式见 [REVIEW_STAGE1.md](REVIEW_STAGE1.md)。
+最新报告为 `reports/review-stage1-v2/`；原 v1 报告和执行凭据保留为历史记录。
 
 冻结父版本：Draft PR #4，`ba076b2befe6586ad3095f897ebf40ea7e9ffd6c`。
 本目录不修改材料、引擎、Windows UI、输出链路或已有图片。差距分析先于实现提交，见
@@ -14,6 +17,7 @@ node --test tools/phoenix-validation/tests.cjs
 node tools/phoenix-validation/cli.cjs verify
 node tools/phoenix-validation/cli.cjs split
 node tools/phoenix-validation/cli.cjs report --run review-001
+node tools/phoenix-validation/cli.cjs report --run review-with-tests-001 --run-tests yes
 node tools/phoenix-validation/cli.cjs report --run photo-001 --gate photographic
 ```
 
@@ -31,9 +35,10 @@ HTML 可离线打开，JSON 有独立格式与版本号。报告展示固定输�
 `fixed-recipe.v1.json` 的显式控制值来自父版本 `phoenix_material.cpp`；它是重建记录，
 **不是**历史完整参数转储。历史 PNG 以原始哈希为准，印相表不重新求解。
 
-工程门槛复用 `verify-phoenix.cjs` 和父版本已发布的七项 native 测试凭据。
-报告明确将后者标为 historical，不声称本轮重跑了整个 Windows/macOS 测试套件。
-候选模型须提供独立的、经过审阅的 native 凭据，不能仅凭一张渲染图片取得工程 Pass。
+本次工程门槛记录实际运行的 `verify-phoenix.cjs`、冻结检查及显式执行的工具测试。
+父版本七项 native 凭据单列 historical，不贡献本次执行 Pass；所有本次未运行的
+native 测试明确列出。候选导入凭据也是历史支持证据，不能凭图片或导入日志取得
+本次工程 Pass；本轮未实现自动重跑候选 native suite。
 真实胶片门槛另需完整物理来源、独立配对观测、每款至少三个独立分组，以及灰阶、颗粒、
 光晕证据。`acceptance.v1.json` 的阈值目前是 **未审阅的项目建议**，因此不会授予摄影 Pass。
 
@@ -46,6 +51,8 @@ HTML 可离线打开，JSON 有独立格式与版本号。报告展示固定输�
 `files` 的 raw/scan/icc/reference_observations/pairing_evidence 均使用
 `{ "path": "相对于 data_root 的路径", "sha256": "64位小写摘要" }`。
 RAW 与扫描的配对是外部审阅事实，工具不能证明一张下载的 JPEG 属于某张底片。
+仅 manifest 声明不足：必须有独立的拍摄/底片记录、文件身份绑定、注明限制的人工审核，
+以及 RAW→扫描 / RAW→模型的可靠 ROI 配准证据，详见第一阶段补强说明。
 
 按 negative、整卷 roll、scene、RAW 身份和 RAW/扫描内容哈希做**传递闭包分组**。
 同组共享 split；冲突的 train/validation/test 声明直接拒绝。缺省按分组哈希分为
@@ -123,7 +130,7 @@ outer_radius_px、独立测量 background_Y，输出径向轮廓及正背景扣�
 native 凭据格式为 SpektraLab.PhoenixEngineeringReceipt/version1，含 reviewed_by、
 renderer_commit、recipe_sha256、material_sha256 数组；tests 每项记录原有测试名、
 完整 command、exit_code:0、status:Pass、log 文件绑定。所需七项见 receipts.cjs。
-凭据是可审阅执行记录，哈希不会证明实验条件或人类声明真实。
+凭据是可审阅的历史执行记录，哈希不会证明实验条件或人类声明真实，也不表示本次重跑。
 
 ## 数学来源
 

@@ -1,4 +1,5 @@
 'use strict';
+require('./review-tests.cjs');
 const test=require('node:test'),assert=require('node:assert/strict'),os=require('node:os'),cp=require('node:child_process');
 const {fs,path,json,hash,fileHash,BASE,binding,frozenMatch}=require('./common.cjs');
 const {deltaE00,pairedMetrics,grainStatistics,halationStatistics}=require('./metrics.cjs');
