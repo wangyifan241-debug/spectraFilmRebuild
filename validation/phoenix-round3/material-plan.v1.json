@@ -1,0 +1,270 @@
+{
+  "version": 1,
+  "calibration": {
+    "target": "D50 neutral gray linear Y=0.18",
+    "training": "constant linear ProPhoto [0.18,0.18,0.18], EV0 only",
+    "algorithm": "bounded coordinate descent, steps [0.2,0.08,0.03], one sweep per step, strict improvement; no color patches",
+    "initial": [
+      0,
+      0,
+      0
+    ],
+    "parameters": [
+      "m_filter_shift",
+      "y_filter_shift",
+      "log2(print_exposure)"
+    ],
+    "bounds": [
+      [
+        -1,
+        1
+      ],
+      [
+        -1,
+        1
+      ],
+      [
+        -2,
+        2
+      ]
+    ],
+    "objective": "Lab a^2+b^2+(L-L_target)^2; native unclipped scan XYZ required",
+    "evaluation_gate": "freeze parameter results before 24-patch evaluation"
+  },
+  "plans": [
+    {
+      "id": "phx_200_base_neutral_r3",
+      "version": "0.3.0",
+      "parent": "harman_phoenix_200_exp_v1",
+      "parent_sha256": "f748850ead1925865f896aac3cce9d7f248918d1b0f4240fa947817001f0f69d",
+      "candidate_sha256": "e1e0e1b7897323bb92140d66a0b74bcc87114cf4ce12f1307a1141ec293d23fb",
+      "changed_data_fields": [
+        "base_density"
+      ],
+      "formula": "D_base=0.18 D",
+      "source": {
+        "path": "engine/resources_experimental/profiles/harman_phoenix_200_exp_v1.json",
+        "sha256": "f748850ead1925865f896aac3cce9d7f248918d1b0f4240fa947817001f0f69d",
+        "evidence": "pure_estimate_sensitivity"
+      },
+      "decision": "Inconclusive",
+      "photographic_fidelity_validated": false,
+      "metrics": null
+    },
+    {
+      "id": "phx_200_base_amp010_r3",
+      "version": "0.3.0",
+      "parent": "harman_phoenix_200_exp_v1",
+      "parent_sha256": "f748850ead1925865f896aac3cce9d7f248918d1b0f4240fa947817001f0f69d",
+      "candidate_sha256": "ef3b4fd5a9e8416ddb2c425a3332aaeac5752932fe69d8cef05f37c57a7aea00",
+      "changed_data_fields": [
+        "base_density"
+      ],
+      "formula": "D_base=0.18+0.10 Gaussian(550nm,65nm)",
+      "source": {
+        "path": "engine/resources_experimental/profiles/harman_phoenix_200_exp_v1.json",
+        "sha256": "f748850ead1925865f896aac3cce9d7f248918d1b0f4240fa947817001f0f69d",
+        "evidence": "pure_estimate_sensitivity"
+      },
+      "decision": "Inconclusive",
+      "photographic_fidelity_validated": false,
+      "metrics": null
+    },
+    {
+      "id": "phx_200_base_center560_r3",
+      "version": "0.3.0",
+      "parent": "harman_phoenix_200_exp_v1",
+      "parent_sha256": "f748850ead1925865f896aac3cce9d7f248918d1b0f4240fa947817001f0f69d",
+      "candidate_sha256": "3f2eaadd148569ae2a4d7c9f4dda938d7f892714ae3d2193722faae350723167",
+      "changed_data_fields": [
+        "base_density"
+      ],
+      "formula": "D_base=0.18+0.20 Gaussian(560nm,65nm)",
+      "source": {
+        "path": "engine/resources_experimental/profiles/harman_phoenix_200_exp_v1.json",
+        "sha256": "f748850ead1925865f896aac3cce9d7f248918d1b0f4240fa947817001f0f69d",
+        "evidence": "pure_estimate_sensitivity"
+      },
+      "decision": "Inconclusive",
+      "photographic_fidelity_validated": false,
+      "metrics": null
+    },
+    {
+      "id": "phx_200_base_sigma075_r3",
+      "version": "0.3.0",
+      "parent": "harman_phoenix_200_exp_v1",
+      "parent_sha256": "f748850ead1925865f896aac3cce9d7f248918d1b0f4240fa947817001f0f69d",
+      "candidate_sha256": "624a9e85001bfff82b698d6360004de32e1789def0ab930f7bf56f0cf0966f12",
+      "changed_data_fields": [
+        "base_density"
+      ],
+      "formula": "D_base=0.18+0.20 Gaussian(550nm,75nm)",
+      "source": {
+        "path": "engine/resources_experimental/profiles/harman_phoenix_200_exp_v1.json",
+        "sha256": "f748850ead1925865f896aac3cce9d7f248918d1b0f4240fa947817001f0f69d",
+        "evidence": "pure_estimate_sensitivity"
+      },
+      "decision": "Inconclusive",
+      "photographic_fidelity_validated": false,
+      "metrics": null
+    },
+    {
+      "id": "phx_200_dye_portra_proxy_r3",
+      "version": "0.3.0",
+      "parent": "harman_phoenix_200_exp_v1",
+      "parent_sha256": "f748850ead1925865f896aac3cce9d7f248918d1b0f4240fa947817001f0f69d",
+      "candidate_sha256": "8295f38de88ff4f7af6f02966fd17295b16e4690b80c54c128ad3a2f202b545d",
+      "changed_data_fields": [
+        "channel_density"
+      ],
+      "formula": "replace entire dye basis with licensed Portra400 proxy; coefficient scale retained, compatibility unvalidated",
+      "source": {
+        "path": "engine/resources/profiles/kodak_portra_400.json",
+        "sha256": "140c49bbff6d7b6589058ce0836e3286fa995e9433bb8a62a0189d6e1a04da9f",
+        "url": "https://github.com/andreavolpato/spektrafilm",
+        "license": "CC BY-SA 4.0",
+        "evidence": "other_material_proxy",
+        "measurement_conditions": "not independently verified"
+      },
+      "decision": "Inconclusive",
+      "photographic_fidelity_validated": false,
+      "metrics": null
+    },
+    {
+      "id": "phx_200_dye_nonnegative_r3",
+      "version": "0.3.0",
+      "parent": "harman_phoenix_200_exp_v1",
+      "parent_sha256": "f748850ead1925865f896aac3cce9d7f248918d1b0f4240fa947817001f0f69d",
+      "candidate_sha256": "1f71e94ce67e3266ca3175e2a1ccf270108eba93fbc571e6a06a035ddc1976ad",
+      "changed_data_fields": [
+        "channel_density"
+      ],
+      "formula": "A=max(A_gold,0); nonnegative projection sensitivity, not Phoenix measured absorption",
+      "source": {
+        "path": "engine/resources_experimental/profiles/harman_phoenix_200_exp_v1.json",
+        "sha256": "f748850ead1925865f896aac3cce9d7f248918d1b0f4240fa947817001f0f69d",
+        "evidence": "pure_estimate_sensitivity"
+      },
+      "decision": "Inconclusive",
+      "photographic_fidelity_validated": false,
+      "metrics": null
+    },
+    {
+      "id": "phx_ii_200_base_neutral_r3",
+      "version": "0.3.0",
+      "parent": "harman_phoenix_ii_200_exp_v1",
+      "parent_sha256": "39a8c1cd3b0fe0a09db01f1873306948c5361f528d30de1d8dbce3fc3ee3dd0e",
+      "candidate_sha256": "8a625cebffe2d2fe5161a25dda655e060414f51ef204fd6bc5bdae32ccf8c008",
+      "changed_data_fields": [
+        "base_density"
+      ],
+      "formula": "D_base=0.18 D",
+      "source": {
+        "path": "engine/resources_experimental/profiles/harman_phoenix_ii_200_exp_v1.json",
+        "sha256": "39a8c1cd3b0fe0a09db01f1873306948c5361f528d30de1d8dbce3fc3ee3dd0e",
+        "evidence": "pure_estimate_sensitivity"
+      },
+      "decision": "Inconclusive",
+      "photographic_fidelity_validated": false,
+      "metrics": null
+    },
+    {
+      "id": "phx_ii_200_base_amp010_r3",
+      "version": "0.3.0",
+      "parent": "harman_phoenix_ii_200_exp_v1",
+      "parent_sha256": "39a8c1cd3b0fe0a09db01f1873306948c5361f528d30de1d8dbce3fc3ee3dd0e",
+      "candidate_sha256": "c8ccea50ed9ed2e70c21b01414f928aff6743fcb4d5826f74d2b5e2d6b6cad81",
+      "changed_data_fields": [
+        "base_density"
+      ],
+      "formula": "D_base=0.18+0.10 Gaussian(550nm,65nm)",
+      "source": {
+        "path": "engine/resources_experimental/profiles/harman_phoenix_ii_200_exp_v1.json",
+        "sha256": "39a8c1cd3b0fe0a09db01f1873306948c5361f528d30de1d8dbce3fc3ee3dd0e",
+        "evidence": "pure_estimate_sensitivity"
+      },
+      "decision": "Inconclusive",
+      "photographic_fidelity_validated": false,
+      "metrics": null
+    },
+    {
+      "id": "phx_ii_200_base_center560_r3",
+      "version": "0.3.0",
+      "parent": "harman_phoenix_ii_200_exp_v1",
+      "parent_sha256": "39a8c1cd3b0fe0a09db01f1873306948c5361f528d30de1d8dbce3fc3ee3dd0e",
+      "candidate_sha256": "21ec85f429a8861a576641cdad47be8ddd62dd46f598793824a91e5493f202fa",
+      "changed_data_fields": [
+        "base_density"
+      ],
+      "formula": "D_base=0.18+0.20 Gaussian(560nm,65nm)",
+      "source": {
+        "path": "engine/resources_experimental/profiles/harman_phoenix_ii_200_exp_v1.json",
+        "sha256": "39a8c1cd3b0fe0a09db01f1873306948c5361f528d30de1d8dbce3fc3ee3dd0e",
+        "evidence": "pure_estimate_sensitivity"
+      },
+      "decision": "Inconclusive",
+      "photographic_fidelity_validated": false,
+      "metrics": null
+    },
+    {
+      "id": "phx_ii_200_base_sigma075_r3",
+      "version": "0.3.0",
+      "parent": "harman_phoenix_ii_200_exp_v1",
+      "parent_sha256": "39a8c1cd3b0fe0a09db01f1873306948c5361f528d30de1d8dbce3fc3ee3dd0e",
+      "candidate_sha256": "1c707832562cd6068ee35371e53b74cab10ecb006b1dd7c767f2609e0945622e",
+      "changed_data_fields": [
+        "base_density"
+      ],
+      "formula": "D_base=0.18+0.20 Gaussian(550nm,75nm)",
+      "source": {
+        "path": "engine/resources_experimental/profiles/harman_phoenix_ii_200_exp_v1.json",
+        "sha256": "39a8c1cd3b0fe0a09db01f1873306948c5361f528d30de1d8dbce3fc3ee3dd0e",
+        "evidence": "pure_estimate_sensitivity"
+      },
+      "decision": "Inconclusive",
+      "photographic_fidelity_validated": false,
+      "metrics": null
+    },
+    {
+      "id": "phx_ii_200_dye_portra_proxy_r3",
+      "version": "0.3.0",
+      "parent": "harman_phoenix_ii_200_exp_v1",
+      "parent_sha256": "39a8c1cd3b0fe0a09db01f1873306948c5361f528d30de1d8dbce3fc3ee3dd0e",
+      "candidate_sha256": "dfeb9027d6d936dd455dd53b7d00ef93ac50b985ec137e72e21d271db5d32a13",
+      "changed_data_fields": [
+        "channel_density"
+      ],
+      "formula": "replace entire dye basis with licensed Portra400 proxy; coefficient scale retained, compatibility unvalidated",
+      "source": {
+        "path": "engine/resources/profiles/kodak_portra_400.json",
+        "sha256": "140c49bbff6d7b6589058ce0836e3286fa995e9433bb8a62a0189d6e1a04da9f",
+        "url": "https://github.com/andreavolpato/spektrafilm",
+        "license": "CC BY-SA 4.0",
+        "evidence": "other_material_proxy",
+        "measurement_conditions": "not independently verified"
+      },
+      "decision": "Inconclusive",
+      "photographic_fidelity_validated": false,
+      "metrics": null
+    },
+    {
+      "id": "phx_ii_200_dye_nonnegative_r3",
+      "version": "0.3.0",
+      "parent": "harman_phoenix_ii_200_exp_v1",
+      "parent_sha256": "39a8c1cd3b0fe0a09db01f1873306948c5361f528d30de1d8dbce3fc3ee3dd0e",
+      "candidate_sha256": "e0306b3e3b41eda28cdf95763b97aa945e49e9a589b78e6bbb2f939190e4fc1f",
+      "changed_data_fields": [
+        "channel_density"
+      ],
+      "formula": "A=max(A_gold,0); nonnegative projection sensitivity, not Phoenix measured absorption",
+      "source": {
+        "path": "engine/resources_experimental/profiles/harman_phoenix_ii_200_exp_v1.json",
+        "sha256": "39a8c1cd3b0fe0a09db01f1873306948c5361f528d30de1d8dbce3fc3ee3dd0e",
+        "evidence": "pure_estimate_sensitivity"
+      },
+      "decision": "Inconclusive",
+      "photographic_fidelity_validated": false,
+      "metrics": null
+    }
+  ]
+}

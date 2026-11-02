@@ -1,0 +1,24 @@
+{
+  "version": 1,
+  "material_plan": "material-plan.v1.json",
+  "gate": {
+    "local_review_source": "00251eacd3b05782dca18778a4cd4b65474e141a",
+    "measurement": "ProPhoto/D50, independent tests",
+    "exposure_groups": 143,
+    "anomalies": 1729,
+    "classification": "anomaly-classification.json",
+    "causal_limit": "mathematical/stage categories, not unique real-film chemistry"
+  },
+  "groups": {
+    "A": "Gold baseline / Portra proxy / nonnegative projection; analytic Gaussian peak/width experiments in negative-observations, no film identity",
+    "B": "neutral base / amplitude / center / width; each changes only base_density",
+    "C": "current synthetic response / centers+5nm / sigmas*1.1; no standard response dataset found",
+    "D": "frozen optical print / D50 ideal negative observer, no inversion"
+  },
+  "calibration_plan": "material-plan.v1.json calibration; fixed filter_shift_scale=60 in B, inherited scale in A",
+  "freeze": "freeze.json",
+  "interaction_experiments": "analytic Gaussian combined center/width explicitly labeled interaction; no mixed material candidate",
+  "photographic_fidelity_validated": false,
+  "photographic_gate": "Not Verified",
+  "metrics": null
+}

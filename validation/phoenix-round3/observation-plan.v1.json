@@ -1,0 +1,442 @@
+{
+  "version": 1,
+  "items": [
+    {
+      "id": "harman_phoenix_200_exp_v1_synthetic_baseline_r3_observation",
+      "version": "0.3.0",
+      "parent_material_sha256": "f748850ead1925865f896aac3cce9d7f248918d1b0f4240fa947817001f0f69d",
+      "modified_fields": [],
+      "formula": "w_i=exp(-0.5*((lambda_i-mu)/sigma)^2)/sum(w); D=-log10(sum(w*T))",
+      "values": {
+        "centers_nm": [
+          650,
+          550,
+          450
+        ],
+        "sigmas_nm": [
+          35,
+          30,
+          25
+        ]
+      },
+      "source": {
+        "path": "engine/resources_research/phoenix-model-assumptions.json",
+        "sha256": "e1aeead9c13b699d6bdff95cd053f67a23bbdeeacd16b1586982becd0cbd143b"
+      },
+      "assumption": "synthetic_instrument_sensitivity_not_Status_M",
+      "results": "negative-observations.json instrument_readings by stock/EV/patch",
+      "decision": "Retain Baseline",
+      "print_modes": "Not applicable: instrument-only negative observation; changes do not enter print renderer"
+    },
+    {
+      "id": "harman_phoenix_200_exp_v1_centers_plus5_r3_observation",
+      "version": "0.3.0",
+      "parent_material_sha256": "f748850ead1925865f896aac3cce9d7f248918d1b0f4240fa947817001f0f69d",
+      "modified_fields": [
+        "observer.densitometer.centers_nm"
+      ],
+      "formula": "w_i=exp(-0.5*((lambda_i-mu)/sigma)^2)/sum(w); D=-log10(sum(w*T))",
+      "values": {
+        "centers_nm": [
+          655,
+          555,
+          455
+        ],
+        "sigmas_nm": [
+          35,
+          30,
+          25
+        ]
+      },
+      "source": {
+        "path": "engine/resources_research/phoenix-model-assumptions.json",
+        "sha256": "e1aeead9c13b699d6bdff95cd053f67a23bbdeeacd16b1586982becd0cbd143b"
+      },
+      "assumption": "synthetic_instrument_sensitivity_not_Status_M",
+      "results": "negative-observations.json instrument_readings by stock/EV/patch",
+      "decision": "Inconclusive",
+      "print_modes": "Not applicable: instrument-only negative observation; changes do not enter print renderer"
+    },
+    {
+      "id": "harman_phoenix_200_exp_v1_bandwidth_plus10percent_r3_observation",
+      "version": "0.3.0",
+      "parent_material_sha256": "f748850ead1925865f896aac3cce9d7f248918d1b0f4240fa947817001f0f69d",
+      "modified_fields": [
+        "observer.densitometer.sigmas_nm"
+      ],
+      "formula": "w_i=exp(-0.5*((lambda_i-mu)/sigma)^2)/sum(w); D=-log10(sum(w*T))",
+      "values": {
+        "centers_nm": [
+          650,
+          550,
+          450
+        ],
+        "sigmas_nm": [
+          38.5,
+          33,
+          27.5
+        ]
+      },
+      "source": {
+        "path": "engine/resources_research/phoenix-model-assumptions.json",
+        "sha256": "e1aeead9c13b699d6bdff95cd053f67a23bbdeeacd16b1586982becd0cbd143b"
+      },
+      "assumption": "synthetic_instrument_sensitivity_not_Status_M",
+      "results": "negative-observations.json instrument_readings by stock/EV/patch",
+      "decision": "Inconclusive",
+      "print_modes": "Not applicable: instrument-only negative observation; changes do not enter print renderer"
+    },
+    {
+      "id": "harman_phoenix_ii_200_exp_v1_synthetic_baseline_r3_observation",
+      "version": "0.3.0",
+      "parent_material_sha256": "39a8c1cd3b0fe0a09db01f1873306948c5361f528d30de1d8dbce3fc3ee3dd0e",
+      "modified_fields": [],
+      "formula": "w_i=exp(-0.5*((lambda_i-mu)/sigma)^2)/sum(w); D=-log10(sum(w*T))",
+      "values": {
+        "centers_nm": [
+          650,
+          550,
+          450
+        ],
+        "sigmas_nm": [
+          35,
+          30,
+          25
+        ]
+      },
+      "source": {
+        "path": "engine/resources_research/phoenix-model-assumptions.json",
+        "sha256": "e1aeead9c13b699d6bdff95cd053f67a23bbdeeacd16b1586982becd0cbd143b"
+      },
+      "assumption": "synthetic_instrument_sensitivity_not_Status_M",
+      "results": "negative-observations.json instrument_readings by stock/EV/patch",
+      "decision": "Retain Baseline",
+      "print_modes": "Not applicable: instrument-only negative observation; changes do not enter print renderer"
+    },
+    {
+      "id": "harman_phoenix_ii_200_exp_v1_centers_plus5_r3_observation",
+      "version": "0.3.0",
+      "parent_material_sha256": "39a8c1cd3b0fe0a09db01f1873306948c5361f528d30de1d8dbce3fc3ee3dd0e",
+      "modified_fields": [
+        "observer.densitometer.centers_nm"
+      ],
+      "formula": "w_i=exp(-0.5*((lambda_i-mu)/sigma)^2)/sum(w); D=-log10(sum(w*T))",
+      "values": {
+        "centers_nm": [
+          655,
+          555,
+          455
+        ],
+        "sigmas_nm": [
+          35,
+          30,
+          25
+        ]
+      },
+      "source": {
+        "path": "engine/resources_research/phoenix-model-assumptions.json",
+        "sha256": "e1aeead9c13b699d6bdff95cd053f67a23bbdeeacd16b1586982becd0cbd143b"
+      },
+      "assumption": "synthetic_instrument_sensitivity_not_Status_M",
+      "results": "negative-observations.json instrument_readings by stock/EV/patch",
+      "decision": "Inconclusive",
+      "print_modes": "Not applicable: instrument-only negative observation; changes do not enter print renderer"
+    },
+    {
+      "id": "harman_phoenix_ii_200_exp_v1_bandwidth_plus10percent_r3_observation",
+      "version": "0.3.0",
+      "parent_material_sha256": "39a8c1cd3b0fe0a09db01f1873306948c5361f528d30de1d8dbce3fc3ee3dd0e",
+      "modified_fields": [
+        "observer.densitometer.sigmas_nm"
+      ],
+      "formula": "w_i=exp(-0.5*((lambda_i-mu)/sigma)^2)/sum(w); D=-log10(sum(w*T))",
+      "values": {
+        "centers_nm": [
+          650,
+          550,
+          450
+        ],
+        "sigmas_nm": [
+          38.5,
+          33,
+          27.5
+        ]
+      },
+      "source": {
+        "path": "engine/resources_research/phoenix-model-assumptions.json",
+        "sha256": "e1aeead9c13b699d6bdff95cd053f67a23bbdeeacd16b1586982becd0cbd143b"
+      },
+      "assumption": "synthetic_instrument_sensitivity_not_Status_M",
+      "results": "negative-observations.json instrument_readings by stock/EV/patch",
+      "decision": "Inconclusive",
+      "print_modes": "Not applicable: instrument-only negative observation; changes do not enter print renderer"
+    },
+    {
+      "id": "gaussian_450_shift0_sigma25",
+      "parent": "gaussian_450_shift0_sigma25",
+      "category": "single_factor",
+      "formula": "A=exp(-0.5*((lambda-mu)/sigma)^2), nonnegative unit peak in continuous domain",
+      "evidence": "pure_estimate_no_film_identity",
+      "ideal_D50_XYZ": [
+        0.5642732115645824,
+        0.6269746224465963,
+        0.12830261558001496
+      ],
+      "version": "0.3.0",
+      "parent_material_sha256": null,
+      "parent_analytic_model_sha256": "b9f789c945d9d4515e3b316aeeff332845df1d0b5f085ac13c236747d2ccd42d",
+      "modified_fields": [
+        "sigma_nm"
+      ],
+      "source": "pure mathematical Gaussian; no material identity",
+      "decision": "Inconclusive",
+      "results": "negative-observations.json shapeSensitivity",
+      "print_modes": "Not applicable: analytic transmission observer experiment, not a film material"
+    },
+    {
+      "id": "gaussian_450_shift0_sigma30",
+      "parent": "gaussian_450_shift0_sigma25",
+      "category": "single_factor",
+      "formula": "A=exp(-0.5*((lambda-mu)/sigma)^2), nonnegative unit peak in continuous domain",
+      "evidence": "pure_estimate_no_film_identity",
+      "ideal_D50_XYZ": [
+        0.5602187690195367,
+        0.6076851388130677,
+        0.1077888442154172
+      ],
+      "version": "0.3.0",
+      "parent_material_sha256": null,
+      "parent_analytic_model_sha256": "b9f789c945d9d4515e3b316aeeff332845df1d0b5f085ac13c236747d2ccd42d",
+      "modified_fields": [
+        "sigma_nm"
+      ],
+      "source": "pure mathematical Gaussian; no material identity",
+      "decision": "Inconclusive",
+      "results": "negative-observations.json shapeSensitivity",
+      "print_modes": "Not applicable: analytic transmission observer experiment, not a film material"
+    },
+    {
+      "id": "gaussian_450_shift5_sigma25",
+      "parent": "gaussian_450_shift0_sigma25",
+      "category": "single_factor",
+      "formula": "A=exp(-0.5*((lambda-mu)/sigma)^2), nonnegative unit peak in continuous domain",
+      "evidence": "pure_estimate_no_film_identity",
+      "ideal_D50_XYZ": [
+        0.5643475975068104,
+        0.6187321709102159,
+        0.12373912491035655
+      ],
+      "version": "0.3.0",
+      "parent_material_sha256": null,
+      "parent_analytic_model_sha256": "b9f789c945d9d4515e3b316aeeff332845df1d0b5f085ac13c236747d2ccd42d",
+      "modified_fields": [
+        "peak_nm"
+      ],
+      "source": "pure mathematical Gaussian; no material identity",
+      "decision": "Inconclusive",
+      "results": "negative-observations.json shapeSensitivity",
+      "print_modes": "Not applicable: analytic transmission observer experiment, not a film material"
+    },
+    {
+      "id": "gaussian_450_shift5_sigma30",
+      "parent": "gaussian_450_shift0_sigma25",
+      "category": "interaction",
+      "formula": "A=exp(-0.5*((lambda-mu)/sigma)^2), nonnegative unit peak in continuous domain",
+      "evidence": "pure_estimate_no_film_identity",
+      "ideal_D50_XYZ": [
+        0.5593376734894143,
+        0.596179759977706,
+        0.10379410180336571
+      ],
+      "version": "0.3.0",
+      "parent_material_sha256": null,
+      "parent_analytic_model_sha256": "b9f789c945d9d4515e3b316aeeff332845df1d0b5f085ac13c236747d2ccd42d",
+      "modified_fields": [
+        "peak_nm",
+        "sigma_nm"
+      ],
+      "source": "pure mathematical Gaussian; no material identity",
+      "decision": "Inconclusive",
+      "results": "negative-observations.json shapeSensitivity",
+      "print_modes": "Not applicable: analytic transmission observer experiment, not a film material"
+    },
+    {
+      "id": "gaussian_550_shift0_sigma25",
+      "parent": "gaussian_550_shift0_sigma25",
+      "category": "single_factor",
+      "formula": "A=exp(-0.5*((lambda-mu)/sigma)^2), nonnegative unit peak in continuous domain",
+      "evidence": "pure_estimate_no_film_identity",
+      "ideal_D50_XYZ": [
+        0.41740608663470125,
+        0.27847979764623776,
+        0.5218437380115987
+      ],
+      "version": "0.3.0",
+      "parent_material_sha256": null,
+      "parent_analytic_model_sha256": "b9f789c945d9d4515e3b316aeeff332845df1d0b5f085ac13c236747d2ccd42d",
+      "modified_fields": [
+        "sigma_nm"
+      ],
+      "source": "pure mathematical Gaussian; no material identity",
+      "decision": "Inconclusive",
+      "results": "negative-observations.json shapeSensitivity",
+      "print_modes": "Not applicable: analytic transmission observer experiment, not a film material"
+    },
+    {
+      "id": "gaussian_550_shift0_sigma30",
+      "parent": "gaussian_550_shift0_sigma25",
+      "category": "single_factor",
+      "formula": "A=exp(-0.5*((lambda-mu)/sigma)^2), nonnegative unit peak in continuous domain",
+      "evidence": "pure_estimate_no_film_identity",
+      "ideal_D50_XYZ": [
+        0.37208327932426166,
+        0.23549429572568717,
+        0.5018178180468379
+      ],
+      "version": "0.3.0",
+      "parent_material_sha256": null,
+      "parent_analytic_model_sha256": "b9f789c945d9d4515e3b316aeeff332845df1d0b5f085ac13c236747d2ccd42d",
+      "modified_fields": [
+        "sigma_nm"
+      ],
+      "source": "pure mathematical Gaussian; no material identity",
+      "decision": "Inconclusive",
+      "results": "negative-observations.json shapeSensitivity",
+      "print_modes": "Not applicable: analytic transmission observer experiment, not a film material"
+    },
+    {
+      "id": "gaussian_550_shift5_sigma25",
+      "parent": "gaussian_550_shift0_sigma25",
+      "category": "single_factor",
+      "formula": "A=exp(-0.5*((lambda-mu)/sigma)^2), nonnegative unit peak in continuous domain",
+      "evidence": "pure_estimate_no_film_identity",
+      "ideal_D50_XYZ": [
+        0.3934226489196402,
+        0.2743465590965942,
+        0.5277400724221146
+      ],
+      "version": "0.3.0",
+      "parent_material_sha256": null,
+      "parent_analytic_model_sha256": "b9f789c945d9d4515e3b316aeeff332845df1d0b5f085ac13c236747d2ccd42d",
+      "modified_fields": [
+        "peak_nm"
+      ],
+      "source": "pure mathematical Gaussian; no material identity",
+      "decision": "Inconclusive",
+      "results": "negative-observations.json shapeSensitivity",
+      "print_modes": "Not applicable: analytic transmission observer experiment, not a film material"
+    },
+    {
+      "id": "gaussian_550_shift5_sigma30",
+      "parent": "gaussian_550_shift0_sigma25",
+      "category": "interaction",
+      "formula": "A=exp(-0.5*((lambda-mu)/sigma)^2), nonnegative unit peak in continuous domain",
+      "evidence": "pure_estimate_no_film_identity",
+      "ideal_D50_XYZ": [
+        0.34916693953703054,
+        0.23088704658890255,
+        0.5116895539216144
+      ],
+      "version": "0.3.0",
+      "parent_material_sha256": null,
+      "parent_analytic_model_sha256": "b9f789c945d9d4515e3b316aeeff332845df1d0b5f085ac13c236747d2ccd42d",
+      "modified_fields": [
+        "peak_nm",
+        "sigma_nm"
+      ],
+      "source": "pure mathematical Gaussian; no material identity",
+      "decision": "Inconclusive",
+      "results": "negative-observations.json shapeSensitivity",
+      "print_modes": "Not applicable: analytic transmission observer experiment, not a film material"
+    },
+    {
+      "id": "gaussian_650_shift0_sigma25",
+      "parent": "gaussian_650_shift0_sigma25",
+      "category": "single_factor",
+      "formula": "A=exp(-0.5*((lambda-mu)/sigma)^2), nonnegative unit peak in continuous domain",
+      "evidence": "pure_estimate_no_film_identity",
+      "ideal_D50_XYZ": [
+        0.4557856596623344,
+        0.5762298429361327,
+        0.5451020595726118
+      ],
+      "version": "0.3.0",
+      "parent_material_sha256": null,
+      "parent_analytic_model_sha256": "b9f789c945d9d4515e3b316aeeff332845df1d0b5f085ac13c236747d2ccd42d",
+      "modified_fields": [
+        "sigma_nm"
+      ],
+      "source": "pure mathematical Gaussian; no material identity",
+      "decision": "Inconclusive",
+      "results": "negative-observations.json shapeSensitivity",
+      "print_modes": "Not applicable: analytic transmission observer experiment, not a film material"
+    },
+    {
+      "id": "gaussian_650_shift0_sigma30",
+      "parent": "gaussian_650_shift0_sigma25",
+      "category": "single_factor",
+      "formula": "A=exp(-0.5*((lambda-mu)/sigma)^2), nonnegative unit peak in continuous domain",
+      "evidence": "pure_estimate_no_film_identity",
+      "ideal_D50_XYZ": [
+        0.4119754161020819,
+        0.5458770943925669,
+        0.5450467296079797
+      ],
+      "version": "0.3.0",
+      "parent_material_sha256": null,
+      "parent_analytic_model_sha256": "b9f789c945d9d4515e3b316aeeff332845df1d0b5f085ac13c236747d2ccd42d",
+      "modified_fields": [
+        "sigma_nm"
+      ],
+      "source": "pure mathematical Gaussian; no material identity",
+      "decision": "Inconclusive",
+      "results": "negative-observations.json shapeSensitivity",
+      "print_modes": "Not applicable: analytic transmission observer experiment, not a film material"
+    },
+    {
+      "id": "gaussian_650_shift5_sigma25",
+      "parent": "gaussian_650_shift0_sigma25",
+      "category": "single_factor",
+      "formula": "A=exp(-0.5*((lambda-mu)/sigma)^2), nonnegative unit peak in continuous domain",
+      "evidence": "pure_estimate_no_film_identity",
+      "ideal_D50_XYZ": [
+        0.4794950063463859,
+        0.5896415196566378,
+        0.5451165968186661
+      ],
+      "version": "0.3.0",
+      "parent_material_sha256": null,
+      "parent_analytic_model_sha256": "b9f789c945d9d4515e3b316aeeff332845df1d0b5f085ac13c236747d2ccd42d",
+      "modified_fields": [
+        "peak_nm"
+      ],
+      "source": "pure mathematical Gaussian; no material identity",
+      "decision": "Inconclusive",
+      "results": "negative-observations.json shapeSensitivity",
+      "print_modes": "Not applicable: analytic transmission observer experiment, not a film material"
+    },
+    {
+      "id": "gaussian_650_shift5_sigma30",
+      "parent": "gaussian_650_shift0_sigma25",
+      "category": "interaction",
+      "formula": "A=exp(-0.5*((lambda-mu)/sigma)^2), nonnegative unit peak in continuous domain",
+      "evidence": "pure_estimate_no_film_identity",
+      "ideal_D50_XYZ": [
+        0.4362695018894058,
+        0.5619460671255685,
+        0.5450741747140979
+      ],
+      "version": "0.3.0",
+      "parent_material_sha256": null,
+      "parent_analytic_model_sha256": "b9f789c945d9d4515e3b316aeeff332845df1d0b5f085ac13c236747d2ccd42d",
+      "modified_fields": [
+        "peak_nm",
+        "sigma_nm"
+      ],
+      "source": "pure mathematical Gaussian; no material identity",
+      "decision": "Inconclusive",
+      "results": "negative-observations.json shapeSensitivity",
+      "print_modes": "Not applicable: analytic transmission observer experiment, not a film material"
+    }
+  ]
+}

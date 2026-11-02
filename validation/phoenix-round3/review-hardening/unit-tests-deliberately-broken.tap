@@ -1,0 +1,66 @@
+TAP version 13
+# Subtest: checkpoint rejects changed binary, input, resources, script and experiment parameters
+not ok 1 - checkpoint rejects changed binary, input, resources, script and experiment parameters
+  ---
+  duration_ms: 1.9017
+  failureType: 'testCodeFailure'
+  error: 'Missing expected exception.'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+  operator: 'throws'
+  stack: |-
+    TestContext.<anonymous> (C:\Users\Strickland\.codex\worktrees\phoenix-round2\SpektraLab\validation\phoenix-round3\hardening-unit-tests.cjs:4:361)
+    Test.runInAsyncScope (node:async_hooks:203:9)
+    Test.run (node:internal/test_runner/test:573:25)
+    Test.start (node:internal/test_runner/test:486:17)
+    startSubtest (node:internal/test_runner/harness:202:17)
+  ...
+# Subtest: legacy unbound output cannot become a fresh checkpoint
+not ok 2 - legacy unbound output cannot become a fresh checkpoint
+  ---
+  duration_ms: 1.0087
+  failureType: 'testCodeFailure'
+  error: 'Missing expected exception.'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+  operator: 'throws'
+  stack: |-
+    TestContext.<anonymous> (C:\Users\Strickland\.codex\worktrees\phoenix-round2\SpektraLab\validation\phoenix-round3\hardening-unit-tests.cjs:5:195)
+    Test.runInAsyncScope (node:async_hooks:203:9)
+    Test.run (node:internal/test_runner/test:573:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:318:18)
+    Test.postRun (node:internal/test_runner/test:642:19)
+    Test.run (node:internal/test_runner/test:601:10)
+    async startSubtest (node:internal/test_runner/harness:202:3)
+  ...
+# Subtest: foreign checkpoint signature, wrong parameters and overwritten fixed gain rejected
+ok 3 - foreign checkpoint signature, wrong parameters and overwritten fixed gain rejected
+  ---
+  duration_ms: 1.93
+  ...
+# Subtest: Gold negative basis is separated from composite absolute density and transmittance
+ok 4 - Gold negative basis is separated from composite absolute density and transmittance
+  ---
+  duration_ms: 0.8327
+  ...
+# Subtest: frozen parent gain file cannot be changed through candidate reference metadata
+ok 5 - frozen parent gain file cannot be changed through candidate reference metadata
+  ---
+  duration_ms: 192.6009
+  ...
+# Subtest: basis normalization requires inverse coefficient scaling; nonnegative projection changes total density
+ok 6 - basis normalization requires inverse coefficient scaling; nonnegative projection changes total density
+  ---
+  duration_ms: 1.2876
+  ...
+1..6
+# tests 6
+# suites 0
+# pass 4
+# fail 2
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 268.0906

@@ -31,7 +31,7 @@
     },
     {
       "path": "clean-build-provenance.json",
-      "sha256": "db7efec22fbac225515915d51b7c480126d07962361c844add1678816930511d"
+      "sha256": "05a9487affedab2445fc8062b0dcb42f4b8adc32c49d9fb6f143ab7d07a0efa4"
     },
     {
       "path": "color-tests.cjs",
@@ -56,10 +56,6 @@
     {
       "path": "D55.json",
       "sha256": "5d72c2037f3252f3f97f8885066326de9b5517822cac3ebc1063ca51633e1039"
-    },
-    {
-      "path": "execution-inventory.json",
-      "sha256": "83882a939da5de66d19d89864148fb57cea454885c65a33ff14179e34daa72d4"
     },
     {
       "path": "exposure-anomalies.json",
@@ -154,6 +150,10 @@
       "sha256": "77b11f8d381478191d7ebd0bda0d74e51309e54306e612bf56b4618cc220bb51"
     },
     {
+      "path": "provenance-tests.cjs",
+      "sha256": "551ef17f980aef096343dd0e3aafd5c4a4e4564912f411896dbcce8d3bbf0db7"
+    },
+    {
       "path": "raw-execution.json",
       "sha256": "347b8bd9a173fa8c9abd5b8b51f5556803d08dc5a42a5c4fb05aa1886555a876"
     },
@@ -175,7 +175,11 @@
     },
     {
       "path": "review-summary.cjs",
-      "sha256": "539902d818fc93692e666d132aeab577fb4a51458d0572218435ca04d04bba6e"
+      "sha256": "17b0b1e8c246485970bf500225269667a12f1745ab0702c947d2e35fa4941f1c"
+    },
+    {
+      "path": "REVIEW_CHANGED_FILES.txt",
+      "sha256": "cb8e28ec396ce9e17a0d302050cb319096963cf105a5d8a8b29574dc8c42ba4c"
     },
     {
       "path": "run-native.cjs",
@@ -195,7 +199,11 @@
     },
     {
       "path": "summarize.cjs",
-      "sha256": "fc0cea06dc757007299620130aeb80543fce357d57e84c6e35c6d6b8214bd4e6"
+      "sha256": "53ee802525d12b4b23a0affae07915e8a101c537c309d1d3a7b238aa51f26b58"
+    },
+    {
+      "path": "toolchain-provenance.cjs",
+      "sha256": "b3b04bf6b26db081272ebf15552d9e3364aa54a5b5946f57c29016318deebcae"
     },
     {
       "path": "trace.cjs",

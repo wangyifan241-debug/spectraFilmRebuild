@@ -1,0 +1,12 @@
+{
+  "status": "Fail",
+  "stage": "first candidate integration summary",
+  "cause": "spectral constants keyed only by material/mode; later EV overwrote earlier EV-dependent gain/offset",
+  "example": {
+    "id": "harman_phoenix_200_exp_v1",
+    "mode": "Frozen Print",
+    "ev": -6,
+    "max_log_exposure_error": 2.2031640464524775
+  },
+  "disposition": "All 364 runs recaptured per EV with output SHA equality; erroneous integration never published as Pass"
+}

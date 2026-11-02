@@ -1,0 +1,41 @@
+{
+  "retrieval_date": "2026-11-02",
+  "records": [
+    {
+      "id": "phoenix200-official",
+      "url": "https://www.harmanphoto.co.uk/amfile/file/download/file/1963/product/2143/",
+      "status": 403,
+      "final_url": "https://www.harmanphoto.co.uk/amfile/file/download/file/1963/product/2143/",
+      "content_type": "text/html",
+      "pdf_verified": false,
+      "sha256": "2709b6d85dea83f086277035f13b6a089fad94ade9906af3918b6109eed38b11",
+      "bytes": 1260,
+      "local_raw_path": null,
+      "interpretation": "download identity only; content and measurement conditions require review"
+    },
+    {
+      "id": "phoenixII-official",
+      "url": "https://www.harmanphoto.co.uk/amfile/file/download/file/1968/product/2208/",
+      "status": 403,
+      "final_url": "https://www.harmanphoto.co.uk/amfile/file/download/file/1968/product/2208/",
+      "content_type": "text/html",
+      "pdf_verified": false,
+      "sha256": "acab25d3cd225f6d21b7ea87bd6cb99de3806778e3a9fe45ded74a83a6f95be5",
+      "bytes": 1260,
+      "local_raw_path": null,
+      "interpretation": "download identity only; content and measurement conditions require review"
+    },
+    {
+      "id": "phoenix-scanning-20241001",
+      "url": "https://www.harmanphoto.co.uk/wp/wp-content/uploads/sites/3/2024/10/Phoenix-Scanning-Parameters-011024.pdf",
+      "status": 403,
+      "final_url": "https://www.harmanphoto.co.uk/wp/wp-content/uploads/sites/3/2024/10/Phoenix-Scanning-Parameters-011024.pdf",
+      "content_type": "text/html",
+      "pdf_verified": false,
+      "sha256": "32f2fa940d4b4fe19aca1e53a24e5aac29c57b7c5ee78588325b87f1b649c864",
+      "bytes": 146,
+      "local_raw_path": null,
+      "interpretation": "download identity only; content and measurement conditions require review"
+    }
+  ]
+}

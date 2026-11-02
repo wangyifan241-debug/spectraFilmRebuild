@@ -1,0 +1,37 @@
+[
+  {
+    "path": "engine/resources_research/phoenix-model-assumptions.json",
+    "sha256": "e1aeead9c13b699d6bdff95cd053f67a23bbdeeacd16b1586982becd0cbd143b",
+    "version": null
+  },
+  {
+    "path": "engine/resources_research/build-phoenix.cjs",
+    "sha256": "9cced5bf569c6f6a714c4577708ae8c8d051a6fcc12a2142d251e6b1a79d294e",
+    "version": null
+  },
+  {
+    "path": "engine/resources_research/phoenix200/digitization.json",
+    "sha256": "7ad26ac3936955f75d7d2863d4d8e163843768783917361100fd3fe7aad690f1",
+    "version": null
+  },
+  {
+    "path": "engine/resources_research/phoenix2/digitization.json",
+    "sha256": "fa1ab91aff80928315470c814dc7a4dd7e89b96b51a4c24a89e3c0fa447f1c24",
+    "version": null
+  },
+  {
+    "path": "engine/resources/profiles/kodak_gold_200.json",
+    "sha256": "8190c24d1e2f0aa9daeff89a8325f9051d2d2e9a96d867386fbded7fe3a82004",
+    "version": "0.3.2"
+  },
+  {
+    "path": "engine/resources/profiles/kodak_portra_400.json",
+    "sha256": "140c49bbff6d7b6589058ce0836e3286fa995e9433bb8a62a0189d6e1a04da9f",
+    "version": "0.3.2"
+  },
+  {
+    "path": "engine/resources/spektrafilm_constants.bin",
+    "sha256": "f2c06600606fa169171f58b6639d2669f372a2b39ebe9c72e3edeff5f6d7d31d",
+    "version": null
+  }
+]

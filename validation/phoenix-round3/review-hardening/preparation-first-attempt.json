@@ -1,0 +1,7 @@
+{
+  "status": "Fail",
+  "reason": "Generated JSON key insertion order differed from historical private pack; semantic values equal but byte SHA correctly rejected",
+  "resolution": "Freeze exact private research pack bytes, verify regenerated values deep-equal before copying; never change product pack",
+  "original_expected_sha256": "5969780eef7c0ab45aaceed0982d9fc9df0294f4ac8ccf814b51387dca7920e6",
+  "first_attempt_sha256": "08a737a82da6d01406cc0e8e102350f62b21d4fa0dff7bc7e5f5773dcafba407"
+}

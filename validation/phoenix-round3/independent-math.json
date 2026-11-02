@@ -1,0 +1,20 @@
+{
+  "math": [
+    {
+      "name": "all instrument weights normalized",
+      "pass": true
+    },
+    {
+      "name": "D50 ideal transparent filter Y=1",
+      "pass": true
+    },
+    {
+      "name": "Beer Lambert nonnegative absorption monotonic and base multiplication",
+      "pass": true
+    }
+  ],
+  "maxIntegralError": 3.351045227140137e-7,
+  "records": 3432,
+  "bounds_failed": [],
+  "scope": "CPU reconstruction from directly observed layer density/constants; not final RGB inversion"
+}
