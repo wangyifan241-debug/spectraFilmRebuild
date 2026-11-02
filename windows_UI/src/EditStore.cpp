@@ -117,7 +117,7 @@ QJsonObject stateJson(const State& state) {
         {"grain_amount", s.grain_amount}, {"halation_active", s.halation_active},
         {"halation_amount", s.halation_amount}, {"glare_active", s.glare_active},
         {"glare_amount", s.glare_amount}, {"y_filter_shift", s.y_filter_shift},
-        {"m_filter_shift", s.m_filter_shift}}},
+        {"m_filter_shift", s.m_filter_shift}, {"auto_negative",s.auto_negative}}},
         {"develop", QJsonObject{{"enabled",d.enabled},{"temperature",d.temperature},{"tint",d.tint},
             {"exposure",d.exposure},{"contrast",d.contrast},{"brightness",d.brightness},
             {"saturation",d.saturation},{"highlights",d.highlights},{"shadows",d.shadows},
@@ -152,11 +152,14 @@ State parseState(const QJsonObject& value, const Catalog* catalog) {
     else if(value.contains("develop"))keys(value, {"settings", "decodeMode", "geometry", "develop"}, QStringLiteral("state"));
     else keys(value, {"settings", "decodeMode", "geometry"}, QStringLiteral("state"));
     State state;
-    const auto s = object(value, "settings");
+    auto s = object(value, "settings");
+    const auto autoNegative=s.take("auto_negative");
+    require(autoNegative.isUndefined()||autoNegative.isBool(),QStringLiteral("Invalid automatic negative setting"));
     keys(s, {"film_stock", "print_stock", "print_exposure", "film_exposure_ev", "film_format_mm",
              "grain_active", "grain_amount", "halation_active", "halation_amount", "glare_active",
              "glare_amount", "y_filter_shift", "m_filter_shift"}, QStringLiteral("settings"));
     auto& out = state.settings;
+    out.auto_negative=autoNegative.toBool(false);
     if(value.contains("halfPair"))out.pair=pair_project::parseRecipe(object(value,"halfPair"));
     out.film_stock = stockId(s, "film_stock", catalog ? &catalog->films : nullptr).toStdString();
     out.print_stock = stockId(s, "print_stock", catalog ? &catalog->papers : nullptr).toStdString();
@@ -359,7 +362,7 @@ QJsonObject readDocument(const QString& path, QByteArray* digest = nullptr) {
     require(string(result, "format") == "SpektraLab.Windows.Editor",
             QStringLiteral("Saved edits use an unsupported document format"));
     const auto version = result.value("version");
-    require(version.isDouble() && (version.toDouble() == 1.0 || version.toDouble() == 2.0 || version.toDouble() == 3.0 || version.toDouble()==4.0 || version.toDouble()==5.0 || version.toDouble()==6.0 || version.toDouble()==7.0 || version.toDouble()==8.0 || version.toDouble()==9.0),
+    require(version.isDouble() && (version.toDouble() == 1.0 || version.toDouble() == 2.0 || version.toDouble() == 3.0 || version.toDouble()==4.0 || version.toDouble()==5.0 || version.toDouble()==6.0 || version.toDouble()==7.0 || version.toDouble()==8.0 || version.toDouble()==9.0 || version.toDouble()==10.0),
             QStringLiteral("Saved edits use an unsupported version; existing file was preserved"));
     require(object(result,"state").contains("develop") == (version.toDouble()>=2.0),
             QStringLiteral("Saved edit fields do not match their document version"));
@@ -446,7 +449,7 @@ void Store::save(const QUrl& source, const State& state) const {
         require(observed->record == previousDigest,
                 QStringLiteral("Saved edits changed in another instance; restart the app and reopen the photo before saving"));
     const auto bytes = QJsonDocument(QJsonObject{{"format", "SpektraLab.Windows.Editor"},
-        {"version", 9}, {"source", identityJson(sourceId)}, {"state", value}}).toJson(QJsonDocument::Indented);
+        {"version", 10}, {"source", identityJson(sourceId)}, {"state", value}}).toJson(QJsonDocument::Indented);
     require(bytes.size() <= maximumDocumentBytes, QStringLiteral("Saved edit document exceeds the 64 KiB limit"));
     QSaveFile file(path);
     file.setDirectWriteFallback(false);
