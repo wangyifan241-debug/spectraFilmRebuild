@@ -1,0 +1,20 @@
+Internal ctest changing into directory: C:/Users/Strickland/SpektraLab-work/build/phoenix-pr-clean
+Test project C:/Users/Strickland/SpektraLab-work/build/phoenix-pr-clean
+    Start  1: spk_qt_phoenix
+1/7 Test  #1: spk_qt_phoenix .....................   Passed   26.84 sec
+    Start  2: spk_phoenix_model_data
+2/7 Test  #2: spk_phoenix_model_data .............   Passed    0.26 sec
+    Start  3: spk_phoenix_model_counterfactual
+3/7 Test  #3: spk_phoenix_model_counterfactual ...   Passed    0.09 sec
+    Start 15: spk_qt_frame_output
+4/7 Test #15: spk_qt_frame_output ................   Passed    2.52 sec
+    Start 22: spk_qt_material_workflow
+5/7 Test #22: spk_qt_material_workflow ...........   Passed   24.33 sec
+    Start 23: spk_core_schema
+6/7 Test #23: spk_core_schema ....................   Passed    0.15 sec
+    Start 24: spk_core_setup
+7/7 Test #24: spk_core_setup .....................   Passed    1.73 sec
+
+100% tests passed, 0 tests failed out of 7
+
+Total Test time (real) =  55.96 sec
