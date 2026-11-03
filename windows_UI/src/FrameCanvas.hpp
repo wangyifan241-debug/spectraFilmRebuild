@@ -10,6 +10,7 @@ class FrameCanvas : public QQuickItem {
     Q_PROPERTY(bool compare READ compare WRITE setCompare NOTIFY viewChanged)
     Q_PROPERTY(bool showOriginal READ showOriginal WRITE setShowOriginal NOTIFY viewChanged)
     Q_PROPERTY(double splitPosition READ splitPosition WRITE setSplitPosition NOTIFY viewChanged)
+    Q_PROPERTY(QString displayCapabilityStatus READ displayCapabilityStatus NOTIFY viewChanged)
     Q_PROPERTY(QString colourStatus READ colourStatus NOTIFY viewChanged)
     Q_PROPERTY(bool fit READ fit WRITE setFit NOTIFY viewChanged)
     Q_PROPERTY(double scalePercent READ scalePercent NOTIFY viewChanged)
@@ -26,6 +27,7 @@ public:
     void setShowOriginal(bool);
     double splitPosition() const {return split_position_;}
     void setSplitPosition(double);
+    QString displayCapabilityStatus() const {return display_capability_status_;}
     QString colourStatus() const {return colour_status_;}
     bool fit() const { return fit_; }
     void setFit(bool fit);
@@ -52,6 +54,7 @@ private:
     void refreshMonitorProfile();
     QColorSpace monitor_space_{QColorSpace::SRgb};
     QString colour_status_;
+    QString display_capability_status_;
     QImage image_;
     QImage before_image_;
     quint64 before_revision_=0;

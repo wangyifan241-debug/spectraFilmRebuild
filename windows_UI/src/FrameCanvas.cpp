@@ -1,3 +1,4 @@
+#include "WindowsDisplay.hpp"
 #include "FrameCanvas.hpp"
 #include <QMouseEvent>
 #include <QQuickWindow>
@@ -30,6 +31,15 @@ FrameCanvas::FrameCanvas(QQuickItem* parent):QQuickItem(parent) {
     });
 }
 void FrameCanvas::refreshMonitorProfile() {
+    display_capability_status_=QStringLiteral("Display capability unknown; application output is SDR");
+    if(window()&&window()->screen()) {
+        const auto capability=spk::desktop::display_capability(window()->screen()->name().toStdWString());
+        if(capability.known)
+            display_capability_status_=QStringLiteral("Advanced Color: supported %1, enabled %2, %3 bits/channel; application output is SDR")
+                .arg(capability.advanced_color_supported?"yes":"no")
+                .arg(capability.advanced_color_enabled?"yes":"no").arg(capability.bits_per_channel);
+        else display_capability_status_+=QStringLiteral(" (Windows status %1)").arg(capability.error);
+    }
     monitor_space_=QColorSpace::SRgb;colour_status_=QStringLiteral("sRGB 显示 · 未取得显示器 ICC");
 #ifdef _WIN32
     if(window()&&window()->screen()) {
