@@ -10,11 +10,17 @@ $build=(Resolve-Path -LiteralPath $BuildDirectory).Path
 $qt=(Resolve-Path -LiteralPath $QtBin).Path
 $compiler=(Resolve-Path -LiteralPath $CompilerBin).Path
 $target=[IO.Path]::GetFullPath($Destination)
+$root=[IO.Path]::GetFullPath((Join-Path $PSScriptRoot '../..'))
+. (Join-Path $root 'windows_UI/source-inventory.ps1')
+$buildIdentity=Get-Content -LiteralPath (Join-Path $build 'phoenix-build.json') -Raw | ConvertFrom-Json
+if(!$buildIdentity.experimental_preview -or $buildIdentity.source_inventory_sha256 -ne (Get-SpektraLabInventoryDigest @(Get-SpektraLabSourceInventory $root))){throw 'Source does not match completed preview build; run build-preview.ps1 first'}
 if(Test-Path -LiteralPath $target){throw 'Choose a new output directory; existing application files will not be replaced'}
 $exe=Join-Path $build 'app/SpektraLabPhoenixPreview.exe'
 if(!(Test-Path -LiteralPath $exe)){throw 'Build the experimental Qt target first'}
+if((Get-FileHash -LiteralPath $exe).Hash.ToLower() -ne $buildIdentity.executable_sha256){throw 'Executable does not match completed preview build'}
 New-Item -ItemType Directory -Path $target | Out-Null
 Copy-Item -LiteralPath $exe -Destination $target
+Copy-Item -LiteralPath (Join-Path $build 'phoenix-build.json') -Destination $target
 foreach($name in @('resources','licenses')){Copy-Item -LiteralPath (Join-Path $build "app/$name") -Destination $target -Recurse}
 $qtLicenses=Join-Path $qt '../../licenses'
 if(!(Test-Path -LiteralPath $qtLicenses)){throw 'Qt license directory is required beside the Qt installation'}
@@ -40,7 +46,6 @@ foreach($name in @('libstdc++-6.dll','libgcc_s_seh-1.dll','libwinpthread-1.dll')
 '@ | Set-Content -Encoding ascii (Join-Path $target 'Start-Fixed-Gain-Research.cmd')
 [IO.File]::WriteAllText((Join-Path $target 'qt.conf'),"[Paths]`nPlugins=.`nQmlImports=qml`n")
 $sourceCommit=(& git rev-parse HEAD).Trim()
-$root=[IO.Path]::GetFullPath((Join-Path $PSScriptRoot '../..'))
 New-Item -ItemType Directory -Path (Join-Path $target 'Source') | Out-Null
 $sourceEntries=Get-Content -LiteralPath (Join-Path $root 'windows_UI/dependencies/distribution-sources.json') -Raw | ConvertFrom-Json
 foreach($entry in $sourceEntries){
@@ -68,6 +73,7 @@ Add-Type -AssemblyName System.IO.Compression.FileSystem
 $zip=[IO.Compression.ZipFile]::Open((Join-Path $target 'Source/SpektraLab-source.zip'),[IO.Compression.ZipArchiveMode]::Create)
 try{foreach($entry in $sourceInventory){[void][IO.Compression.ZipFileExtensions]::CreateEntryFromFile($zip,(Join-Path $root $entry.path),$entry.path,[IO.Compression.CompressionLevel]::Optimal)}}finally{$zip.Dispose()}
 $sourceInventory | ConvertTo-Json -Depth 4 | Set-Content -Encoding utf8 (Join-Path $target 'Source/source-inventory.json')
+if((Get-SpektraLabInventoryDigest @(Get-SpektraLabSourceInventory $root)) -ne $buildIdentity.source_inventory_sha256 -or (Get-FileHash -LiteralPath (Join-Path $target 'SpektraLabPhoenixPreview.exe')).Hash.ToLower() -ne $buildIdentity.executable_sha256){throw 'Build/source changed during packaging; discard this incomplete output'}
 @"
 SpektraLab Phoenix Experimental Preview 0.1
 Source commit: $sourceCommit

@@ -19,3 +19,9 @@ $env:PATH="$compiler;$qt/bin;"+$env:PATH
 if($LASTEXITCODE -ne 0){throw 'Preview configure failed'}
 & $cmake --build $build --target SpektraLabQt spk_qt_phoenix_preview_test spk_qt_qml_workflow_test spk_qt_frame_output_test spk_qt_review_colour_test -j $Jobs
 if($LASTEXITCODE -ne 0){throw 'Preview build failed'}
+$root=[IO.Path]::GetFullPath((Join-Path $PSScriptRoot '../..'))
+. (Join-Path $root 'windows_UI/source-inventory.ps1')
+@{source_inventory_sha256=Get-SpektraLabInventoryDigest @(Get-SpektraLabSourceInventory $root);
+ executable_sha256=(Get-FileHash -LiteralPath "$build/app/SpektraLabPhoenixPreview.exe").Hash.ToLower();
+ source_commit=(& git -C $root rev-parse HEAD).Trim();experimental_preview=$true} |
+ ConvertTo-Json | Set-Content -Encoding utf8 "$build/phoenix-build.json"
