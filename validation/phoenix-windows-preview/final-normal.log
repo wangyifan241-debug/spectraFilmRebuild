@@ -1,0 +1,75 @@
+PARITY harman_phoenix_200_exp_v1 mode=0 max=0 first=3612/3612
+harman_phoenix_200_exp_v1 mode=0 max=0
+PARITY harman_phoenix_200_exp_v1 mode=1 max=0 first=3679/3679
+harman_phoenix_200_exp_v1 mode=1 max=0
+PARITY harman_phoenix_ii_200_exp_v1 mode=0 max=0 first=4765/4765
+harman_phoenix_ii_200_exp_v1 mode=0 max=0
+PARITY harman_phoenix_ii_200_exp_v1 mode=1 max=0 first=4859/4859
+harman_phoenix_ii_200_exp_v1 mode=1 max=0
+PARITY phx_200_d55_r2 mode=0 max=0 first=3562/3562
+phx_200_d55_r2 mode=0 max=0
+PARITY phx_200_linear_r2 mode=0 max=0 first=3583/3583
+phx_200_linear_r2 mode=0 max=0
+PARITY phx_200_no_tungsten_r2 mode=0 max=0 first=3608/3608
+phx_200_no_tungsten_r2 mode=0 max=0
+PARITY phx_200_shared_r2 mode=0 max=0 first=3822/3822
+phx_200_shared_r2 mode=0 max=0
+PARITY phx_ii_d55_r2 mode=0 max=0 first=4817/4817
+phx_ii_d55_r2 mode=0 max=0
+PARITY phx_ii_linear_r2 mode=0 max=0 first=4748/4748
+phx_ii_linear_r2 mode=0 max=0
+PARITY phx_ii_shared_r2 mode=0 max=0 first=4942/4942
+phx_ii_shared_r2 mode=0 max=0
+PARITY phx_ii_width115_r2 mode=0 max=0 first=4785/4785
+phx_ii_width115_r2 mode=0 max=0
+PARITY phx_ii_width130_r2 mode=0 max=0 first=4824/4824
+phx_ii_width130_r2 mode=0 max=0
+PARITY phx_200_base_amp010_r3 mode=0 max=0 first=3694/3694
+phx_200_base_amp010_r3 mode=0 max=0
+PARITY phx_200_base_amp010_r3 mode=1 max=0 first=3673/3673
+phx_200_base_amp010_r3 mode=1 max=0
+PARITY phx_200_base_center560_r3 mode=0 max=0 first=3650/3650
+phx_200_base_center560_r3 mode=0 max=0
+PARITY phx_200_base_center560_r3 mode=1 max=0 first=3692/3692
+phx_200_base_center560_r3 mode=1 max=0
+PARITY phx_200_base_neutral_r3 mode=0 max=0 first=3800/3800
+phx_200_base_neutral_r3 mode=0 max=0
+PARITY phx_200_base_neutral_r3 mode=1 max=0 first=3756/3756
+phx_200_base_neutral_r3 mode=1 max=0
+PARITY phx_200_base_sigma075_r3 mode=0 max=0 first=3612/3612
+phx_200_base_sigma075_r3 mode=0 max=0
+PARITY phx_200_base_sigma075_r3 mode=1 max=0 first=3671/3671
+phx_200_base_sigma075_r3 mode=1 max=0
+PARITY phx_200_dye_nonnegative_r3 mode=0 max=0 first=3558/3558
+phx_200_dye_nonnegative_r3 mode=0 max=0
+PARITY phx_200_dye_nonnegative_r3 mode=1 max=0 first=3601/3601
+phx_200_dye_nonnegative_r3 mode=1 max=0
+PARITY phx_200_dye_portra_proxy_r3 mode=0 max=0 first=3590/3590
+phx_200_dye_portra_proxy_r3 mode=0 max=0
+PARITY phx_200_dye_portra_proxy_r3 mode=1 max=0 first=3582/3582
+phx_200_dye_portra_proxy_r3 mode=1 max=0
+PARITY phx_ii_200_base_amp010_r3 mode=0 max=0 first=4835/4835
+phx_ii_200_base_amp010_r3 mode=0 max=0
+PARITY phx_ii_200_base_amp010_r3 mode=1 max=0 first=4888/4888
+phx_ii_200_base_amp010_r3 mode=1 max=0
+PARITY phx_ii_200_base_center560_r3 mode=0 max=0 first=4820/4820
+phx_ii_200_base_center560_r3 mode=0 max=0
+PARITY phx_ii_200_base_center560_r3 mode=1 max=0 first=4867/4867
+phx_ii_200_base_center560_r3 mode=1 max=0
+PARITY phx_ii_200_base_neutral_r3 mode=0 max=0 first=4965/4965
+phx_ii_200_base_neutral_r3 mode=0 max=0
+PARITY phx_ii_200_base_neutral_r3 mode=1 max=0 first=5003/5003
+phx_ii_200_base_neutral_r3 mode=1 max=0
+PARITY phx_ii_200_base_sigma075_r3 mode=0 max=0 first=4748/4748
+phx_ii_200_base_sigma075_r3 mode=0 max=0
+PARITY phx_ii_200_base_sigma075_r3 mode=1 max=0 first=4848/4848
+phx_ii_200_base_sigma075_r3 mode=1 max=0
+PARITY phx_ii_200_dye_nonnegative_r3 mode=0 max=0 first=4677/4677
+phx_ii_200_dye_nonnegative_r3 mode=0 max=0
+PARITY phx_ii_200_dye_nonnegative_r3 mode=1 max=0 first=4759/4759
+phx_ii_200_dye_nonnegative_r3 mode=1 max=0
+PARITY phx_ii_200_dye_portra_proxy_r3 mode=0 max=0 first=4722/4722
+phx_ii_200_dye_portra_proxy_r3 mode=0 max=0
+PARITY phx_ii_200_dye_portra_proxy_r3 mode=1 max=0 first=4807/4807
+phx_ii_200_dye_portra_proxy_r3 mode=1 max=0
+PASS 1187 checks

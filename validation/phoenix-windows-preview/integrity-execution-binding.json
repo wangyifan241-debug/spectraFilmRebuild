@@ -1,0 +1,9 @@
+{
+  "integrity_checks": 149,
+  "normal_fixed_comparisons_inventory": "execution-inventory.json",
+  "integrity_report_sha256": "3def20f5d292c639832173c21f3ee8109640bb1b8ef0b8e67edf37edbcff73b1",
+  "integrity_test_executable_sha256": "81d0b3c0a2f253b4ccc446046b5edf901d09b95ab384719f4212bbb6015a707b",
+  "integrity_test_source_commit": "03c214f41ebe7cea30e0340fd8843aae242b779d",
+  "note": "The independent negative-control fixture was strengthened after the 60 normal/fixed comparisons; renderer and application executable bytes are unchanged.",
+  "normal_fixed_inventory_git_head": "6eef11bcd31e8a8eed2ad1d3562115ebc6fafc37"
+}

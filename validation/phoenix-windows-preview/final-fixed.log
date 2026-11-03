@@ -1,0 +1,47 @@
+PARITY harman_phoenix_200_exp_v1 mode=2 max=0 first=3612/3612
+harman_phoenix_200_exp_v1 mode=2 max=0
+PARITY harman_phoenix_ii_200_exp_v1 mode=2 max=0 first=4765/4765
+harman_phoenix_ii_200_exp_v1 mode=2 max=0
+PARITY phx_200_d55_r2 mode=2 max=0 first=3609/3609
+phx_200_d55_r2 mode=2 max=0
+PARITY phx_200_linear_r2 mode=2 max=0 first=3617/3617
+phx_200_linear_r2 mode=2 max=0
+PARITY phx_200_no_tungsten_r2 mode=2 max=0 first=3612/3612
+phx_200_no_tungsten_r2 mode=2 max=0
+PARITY phx_200_shared_r2 mode=2 max=0 first=3580/3580
+phx_200_shared_r2 mode=2 max=0
+PARITY phx_ii_d55_r2 mode=2 max=0 first=4764/4764
+phx_ii_d55_r2 mode=2 max=0
+PARITY phx_ii_linear_r2 mode=2 max=0 first=4765/4765
+phx_ii_linear_r2 mode=2 max=0
+PARITY phx_ii_shared_r2 mode=2 max=0 first=4760/4760
+phx_ii_shared_r2 mode=2 max=0
+PARITY phx_ii_width115_r2 mode=2 max=0 first=4785/4785
+phx_ii_width115_r2 mode=2 max=0
+PARITY phx_ii_width130_r2 mode=2 max=0 first=4823/4823
+phx_ii_width130_r2 mode=2 max=0
+PARITY phx_200_base_amp010_r3 mode=2 max=0 first=3480/3480
+phx_200_base_amp010_r3 mode=2 max=0
+PARITY phx_200_base_center560_r3 mode=2 max=0 first=3631/3631
+phx_200_base_center560_r3 mode=2 max=0
+PARITY phx_200_base_neutral_r3 mode=2 max=0 first=3370/3370
+phx_200_base_neutral_r3 mode=2 max=0
+PARITY phx_200_base_sigma075_r3 mode=2 max=0 first=3665/3665
+phx_200_base_sigma075_r3 mode=2 max=0
+PARITY phx_200_dye_nonnegative_r3 mode=2 max=0 first=3613/3613
+phx_200_dye_nonnegative_r3 mode=2 max=0
+PARITY phx_200_dye_portra_proxy_r3 mode=2 max=0 first=3613/3613
+phx_200_dye_portra_proxy_r3 mode=2 max=0
+PARITY phx_ii_200_base_amp010_r3 mode=2 max=0 first=4358/4358
+phx_ii_200_base_amp010_r3 mode=2 max=0
+PARITY phx_ii_200_base_center560_r3 mode=2 max=0 first=4774/4774
+phx_ii_200_base_center560_r3 mode=2 max=0
+PARITY phx_ii_200_base_neutral_r3 mode=2 max=0 first=4066/4066
+phx_ii_200_base_neutral_r3 mode=2 max=0
+PARITY phx_ii_200_base_sigma075_r3 mode=2 max=0 first=4875/4875
+phx_ii_200_base_sigma075_r3 mode=2 max=0
+PARITY phx_ii_200_dye_nonnegative_r3 mode=2 max=0 first=4765/4765
+phx_ii_200_dye_nonnegative_r3 mode=2 max=0
+PARITY phx_ii_200_dye_portra_proxy_r3 mode=2 max=0 first=4765/4765
+phx_ii_200_dye_portra_proxy_r3 mode=2 max=0
+PASS 781 checks

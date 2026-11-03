@@ -79,6 +79,9 @@ struct RenderSettings {
     double glare_amount = 1.0;
     double y_filter_shift = 0.0;
     double m_filter_shift = 0.0;
+#ifdef SPK_PHOENIX_PREVIEW
+    int phoenix_print_mode=0; // 0 frozen, 1 fixed-gray preset, 2 isolated fixed-gain process
+#endif
     ScenePlacement placement;
     FilmEdge edge;
     DateBack date;
@@ -115,6 +118,9 @@ public:
     std::filesystem::path source;
     DecodeMode decode_mode = DecodeMode::compatible16;
     RenderSettings settings;
+#ifdef SPK_PHOENIX_PREVIEW
+    std::string experimental_params_json;
+#endif
     // Resolved from the selected film's catalog metadata, not a separate
     // user setting. Slide film is viewed directly without the paper stage.
     bool scan_film = false;

@@ -6,3 +6,5 @@ engine/resources_research/phoenix2/** text eol=lf
 engine/resources_research/phoenix-*.json text eol=lf
 tools/phoenix-validation/** text eol=lf
 validation/phoenix-accuracy/** text eol=lf
+windows_UI/experimental/** text eol=lf
+validation/phoenix-windows-preview/** text eol=lf

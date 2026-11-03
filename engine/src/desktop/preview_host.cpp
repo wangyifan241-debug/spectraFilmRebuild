@@ -1,3 +1,6 @@
+#ifdef SPK_PHOENIX_PREVIEW
+#include "phoenix_gain_table.hpp"
+#endif
 #include "preview_host.hpp"
 #include "io/image_writer.hpp"
 #include "image_io.hpp"
@@ -26,16 +29,16 @@ double elapsed(Clock::time_point start) {
 
 bool decode_photo(const fs::path& path,DecodeMode mode,io::DecodedRaw& out,std::string& error) {
     const auto kind=spkhost::sniff_kind(path);
-    if(kind!=spkhost::FileKind::Jpeg&&kind!=spkhost::FileKind::Png)
+    if(kind!=spkhost::FileKind::Jpeg&&kind!=spkhost::FileKind::Png&&kind!=spkhost::FileKind::Tiff)
         return mode==DecodeMode::headroom?io::decode_raw_headroom(path,out,error):io::decode_raw_compatible(path,out,error);
-    if(mode!=DecodeMode::compatible16){error="RAW headroom decoding is not available for JPEG/PNG";return false;}
+    if(mode!=DecodeMode::compatible16){error="RAW headroom decoding is not available for JPEG/PNG/TIFF";return false;}
     const auto start=Clock::now();spkhost::FloatImage image;spkhost::Probe probe;spkhost::DecodeOptions options;
     options.strict_icc=true;
     if(!spkhost::decode_linear_prophoto(path,options,image,probe,error))return false;
     io::DecodedRaw next;next.width=image.width;next.height=image.height;next.rgb=std::move(image.rgb);
     next.metadata.input_kind=spkhost::kind_name(kind);next.metadata.input_profile=probe.colour_description;
     next.metadata.make=probe.metadata.make;next.metadata.model=probe.metadata.model;
-    next.metadata.decoder_name=kind==spkhost::FileKind::Jpeg?"JPEG / ICC":"PNG / ICC";
+    next.metadata.decoder_name=kind==spkhost::FileKind::Jpeg?"JPEG / ICC":kind==spkhost::FileKind::Tiff?"TIFF / ICC":"PNG / ICC";
     next.timings.total_ms=elapsed(start);out=std::move(next);return true;
 }
 
@@ -300,8 +303,15 @@ Json opening_params(const RenderSettings& settings, bool scan_film, bool mono, b
     params.set("glare_amount", Json(settings.glare_amount));
     params.set("y_filter_shift", Json(mono ? 0.0 : settings.y_filter_shift));
     params.set("m_filter_shift", Json(mono ? 0.0 : settings.m_filter_shift));
+
+#ifdef SPK_PHOENIX_PREVIEW
+    params.set("filter_shift_scale",Json(settings.phoenix_print_mode==1?60.0:1.0));
+#endif
     placement_params(params,settings.placement);
     film_edge_params(params,settings);
+#ifdef SPK_PHOENIX_PREVIEW
+    if(phoenix_preview::is_phoenix(settings.film_stock))params.set("auto_exposure",Json(false));
+#endif
     return params;
 }
 
@@ -341,8 +351,16 @@ Json changed_params(const RenderSettings& before, const RenderSettings& after, b
         delta.set("y_filter_shift", Json(mono ? 0.0 : after.y_filter_shift));
     if (before.m_filter_shift != after.m_filter_shift || before.film_stock != after.film_stock)
         delta.set("m_filter_shift", Json(mono ? 0.0 : after.m_filter_shift));
+    #ifdef SPK_PHOENIX_PREVIEW
+    if(before.phoenix_print_mode!=after.phoenix_print_mode)delta.set("filter_shift_scale",Json(after.phoenix_print_mode==1?60.0:1.0));
+#endif
     if(before.placement!=after.placement)placement_params(delta,after.placement);
     if(before.edge!=after.edge||before.date!=after.date||before.pair.active!=after.pair.active||((after.edge.active||after.date.active)&&before.film_stock!=after.film_stock))film_edge_params(delta,after);
+
+#ifdef SPK_PHOENIX_PREVIEW
+    if(phoenix_preview::is_phoenix(after.film_stock))delta.set("auto_exposure",Json(false));
+    else if(before.film_stock!=after.film_stock)delta.set("auto_exposure",Json(!after.pair.active));
+#endif
     return delta;
 }
 
@@ -537,6 +555,9 @@ FramePtr PreviewHost::open_raw(const fs::path& source, DecodeMode mode, const Re
     const auto status = spk_render(session.get(), "live", &next->result_);
     require(status == SPK_OK, "Render: " + std::string(spk_last_error(impl_->engine.get())));
     read_film_geometry(session.get(),*next);
+#ifdef SPK_PHOENIX_PREVIEW
+    {char* r=nullptr;if(spk_get_params(session.get(),&r)==SPK_OK&&r){next->experimental_params_json=r;spk_string_free(r);}}
+#endif
     next->timings.render_ms = elapsed(t);
     next->timings.engine_render_ms = next->result_.elapsed_ms;
     t = Clock::now();
@@ -626,6 +647,9 @@ FramePtr PreviewHost::render(const RenderSettings& settings,const InputGeometry&
         const auto status = spk_reprint(impl_->session.get(), "live", &next->result_);
         require(status == SPK_OK, "Render: " + std::string(spk_last_error(impl_->engine.get())));
         read_film_geometry(impl_->session.get(),*next);
+#ifdef SPK_PHOENIX_PREVIEW
+    {char* r=nullptr;if(spk_get_params(impl_->session.get(),&r)==SPK_OK&&r){next->experimental_params_json=r;spk_string_free(r);}}
+#endif
         next->timings.render_ms = elapsed(t);
         next->timings.engine_render_ms = next->result_.elapsed_ms;
         t = Clock::now();

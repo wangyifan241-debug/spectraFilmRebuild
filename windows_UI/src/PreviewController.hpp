@@ -3,6 +3,7 @@
 #include "FrameOutput.hpp"
 #include "EditStore.hpp"
 #include "MaterialLibrary.hpp"
+#include "PhoenixExperiments.hpp"
 #include <QImage>
 #include <QObject>
 #include <QTimer>
@@ -19,6 +20,10 @@
 
 class PreviewController final : public QObject {
     Q_OBJECT
+    Q_PROPERTY(bool phoenixExperimentalBuild READ phoenixExperimentalBuild CONSTANT)
+    Q_PROPERTY(bool phoenixFixedWindow READ phoenixFixedWindow CONSTANT)
+    Q_PROPERTY(QVariantMap phoenixInfo READ phoenixInfo NOTIFY settingsChanged)
+    Q_PROPERTY(int phoenixPrintMode READ phoenixPrintMode NOTIFY settingsChanged)
     Q_PROPERTY(bool ready READ ready NOTIFY stateChanged)
     Q_PROPERTY(bool busy READ busy NOTIFY stateChanged)
     Q_PROPERTY(bool hasFrame READ hasFrame NOTIFY frameChanged)
@@ -94,6 +99,12 @@ public:
     Q_INVOKABLE void removeMaterial(const QString& id);
     Q_INVOKABLE void chooseMaterial(const QString& id);
     Q_INVOKABLE void rescanMaterials();
+    bool phoenixExperimentalBuild() const;
+    bool phoenixFixedWindow() const;
+    QVariantMap phoenixInfo() const;
+    int phoenixPrintMode() const;
+    Q_INVOKABLE void setPhoenixPrintMode(int mode);
+    Q_INVOKABLE void resetPhoenixV1();
     int filmIndex() const { return film_index_; }
     int paperIndex() const { return paper_index_; }
     int decodeMode() const { return decode_mode_; }
@@ -267,6 +278,8 @@ private:
     int active_index_=-1;
     std::filesystem::path resources_;
     std::unique_ptr<MaterialLibrary> materials_;
+    std::unique_ptr<PhoenixExperiments> phoenix_;
+    void applyPhoenixPreset(int mode);
     spk::desktop::editing::Store edit_store_;
     QTimer save_timer_;
     int gesture_index_=-1;

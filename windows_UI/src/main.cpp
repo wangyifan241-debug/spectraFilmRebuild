@@ -3,6 +3,7 @@
 #include <QCommandLineParser>
 #include <QCryptographicHash>
 #include <QDir>
+#include <QElapsedTimer>
 #include <QFile>
 #include <QGuiApplication>
 #include <QIcon>
@@ -165,7 +166,7 @@ private:
             });
         } else if(stage_==1) {
             if(!require(operation=="export"&&ok&&QFileInfo(output_+"/displayed-frame.tif").size()>0,"export_displayed_frame"))return;
-            stage_=2;controller_.setExposureEv(0.5);
+            stage_=2;brightness_wait_.start();controller_.setExposureEv(0.5);
             controller_.setDialogOpen(true);
             later([this]{
                 if(!require(!controller_.busy()&&!controller_.settingsEditable()&&controller_.dirty()&&
@@ -174,8 +175,20 @@ private:
                 if(!require(controller_.exposureEv()==0.5,"file_dialog_holds_selected_settings"))return;
                 controller_.setDialogOpen(false);
             },400);
-            QTimer::singleShot(5000,this,[this]{if(!done_&&stage_==2)finish(false,"automatic brightness preview did not run");});
+            // Exporting the original may release the preview GPU session.
+            // Rebuilding that session on a camera RAW is a full render, not a
+            // cached print edit. Use the controller gate's correctness deadline;
+            // keep the 5 s gate for the small synthetic/cached case.
+            const bool rebuild=original_->width()!=original_->source_width()||original_->height()!=original_->source_height();
+            const int deadline=rebuild?120000:5000;
+            checks_["brightness_after_export_deadline_ms"]=deadline;
+            QTimer::singleShot(deadline,this,[this]{if(!done_&&stage_==2){
+                checks_["brightness_timeout_busy"]=controller_.busy();
+                checks_["brightness_timeout_dirty"]=controller_.dirty();
+                finish(false,"timeout waiting for brightness preview after export");
+            }});
         } else if(stage_==2) {
+            checks_["brightness_after_export_elapsed_ms"]=double(brightness_wait_.elapsed());
             // A native export releases the preview GPU session to avoid
             // keeping two full negatives on a 4 GB device. The first edit
             // rebuilds it; subsequent print edits exercise cached reprint.
@@ -657,6 +670,7 @@ private:
     int remembered_paper_=0,negative_film_=0,slide_index_=0;double remembered_ev_=0;
     const QStringList slide_ids_{"fujifilm_provia_100f","fujifilm_velvia_100","kodak_ektachrome_100","kodak_kodachrome_64"};
     QJsonArray slide_results_;
+    QElapsedTimer brightness_wait_;
     bool headroom_slides_=false;
     QImage capture_;
     QImage comparison_base_;
@@ -691,7 +705,15 @@ int main(int argc,char** argv) {
                        {"edit-store","Override the per-photo edit directory (tests use an isolated directory)","directory"},
                        {"self-test","Run real RAW frontend checks and save a report in a NEW directory","directory"},
                        {"reject","Unsupported RAW for the failed-open check","file"}});
+    #ifdef SPK_PHOENIX_PREVIEW
+    parser.addOption({"fixed-gain","Open an isolated Research Only fixed internal gain window"});
+    parser.addOption({"phoenix-stock","Initial experimental stock ID","id"});
+#endif
     parser.process(app);
+#ifdef SPK_PHOENIX_PREVIEW
+    qputenv("SPEKTRALAB_PHOENIX_FIXED_GAIN",parser.isSet("fixed-gain")?"1":"0");
+    app.setApplicationName(parser.isSet("fixed-gain")?"SpektraLab Phoenix Fixed Gain Research 0.1":"SpektraLab Phoenix Experimental Preview 0.1");
+#endif
     const auto resources=parser.isSet("resources")?parser.value("resources"):QCoreApplication::applicationDirPath()+"/resources";
     const bool testing=parser.isSet("self-test");
     const bool snapshot=parser.isSet("snapshot");
@@ -713,6 +735,9 @@ int main(int argc,char** argv) {
     auto failDisplay=std::make_shared<bool>(false);
     PreviewController controller(std::filesystem::path(resources.toStdWString()),nullptr,
         [failDisplay](const auto& frame){if(*failDisplay){*failDisplay=false;throw std::runtime_error("Injected display publication failure");}return PreviewController::imageFromFrame(frame);},editDirectory);
+    #ifdef SPK_PHOENIX_PREVIEW
+    if(parser.isSet("phoenix-stock"))QObject::connect(&controller,&PreviewController::sourceOpened,&app,[&controller,&parser]{controller.chooseMaterial(parser.value("phoenix-stock"));});
+#endif
     qmlRegisterType<FrameCanvas>("SpektraLab.Native",1,0,"FrameCanvas");
     QQmlApplicationEngine engine;engine.rootContext()->setContextProperty("preview",&controller);
     QObject::connect(&engine,&QQmlApplicationEngine::objectCreationFailed,&app,[]{QCoreApplication::exit(2);},Qt::QueuedConnection);

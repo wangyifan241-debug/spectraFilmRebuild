@@ -11,7 +11,7 @@ ApplicationWindow {
     minimumWidth: 1100; minimumHeight: 740
     visible: true
     color: Theme.card
-    title: (preview.hasFrame ? preview.fileName + " — " : "") + "SpektraLab"
+    title: (preview.hasFrame ? preview.fileName + " — " : "") + (preview.phoenixExperimentalBuild ? (preview.phoenixFixedWindow ? "Phoenix · Fixed Internal Gain · Research Only" : "SpektraLab · Phoenix Experimental") : "SpektraLab")
     font.family: "Segoe UI"
     font.pixelSize: 12
     palette.window: Theme.card
@@ -58,10 +58,11 @@ ApplicationWindow {
     function filmGroup(positive, monochrome) {
         var rows = []
         for (var i = 0; i < preview.films.length; ++i)
-            if ((monochrome || preview.films[i].positive === positive) && preview.films[i].monochrome === monochrome)
+            if (!preview.films[i].experimental && (monochrome || preview.films[i].positive === positive) && preview.films[i].monochrome === monochrome)
                 rows.push({ "name": preview.films[i].name, "catalogIndex": i, "enabled": preview.films[i].enabled, "cine": preview.films[i].cine, "custom": preview.films[i].custom })
         return rows
     }
+    function phoenixGroup(generation, round) {var rows=[];for(var i=0;i<preview.films.length;++i){var f=preview.films[i];if(f.experimental && f.phoenixGeneration===generation && f.phoenixRound===round)rows.push({name:f.name,catalogIndex:i});}return rows;}
     function openExport() { if (preview.hasFrame && !preview.busy && !preview.dirty && !cropMode) exportPopup.open() }
     function chooseExportDestination(kind) { exportDestination = kind; exportPopup.close() }
     function showExportOptions() { openExport() }
@@ -90,7 +91,7 @@ ApplicationWindow {
         function onStateChanged() { if (window.closePending && !preview.busy) window.close() }
         function onSourceOpened() { window.cropMode = false; canvas.resetView(true) }
         function onCatalogChanged() { Qt.callLater(function() { filmQuickSelect.currentIndex = preview.filmIndex }) }
-        function onSettingsChanged() { Qt.callLater(function() { filmQuickSelect.currentIndex = preview.filmIndex }) }
+        function onSettingsChanged() { Qt.callLater(function() { filmQuickSelect.currentIndex = preview.filmIndex; phoenixPrintModePicker.currentIndex=preview.phoenixPrintMode }) }
         function onOperationFinished(operation, ok) {
             if (operation === "export" || operation === "batch-export") window.exportResultMessage = preview.status
         }
@@ -107,7 +108,7 @@ ApplicationWindow {
         id: openDialog
         title: "导入一张或多张照片"
         fileMode: FileDialog.OpenFiles
-        nameFilters: ["照片与双拼项目 (*.arw *.nef *.nrw *.dng *.cr2 *.cr3 *.raf *.rw2 *.orf *.pef *.srw *.jpg *.jpeg *.png *.spektrapair)", "JPG / PNG 图片 (*.jpg *.jpeg *.png)", "所有文件 (*)"]
+        nameFilters: ["照片与双拼项目 (*.arw *.nef *.nrw *.dng *.cr2 *.cr3 *.raf *.rw2 *.orf *.pef *.srw *.jpg *.jpeg *.png *.tif *.tiff *.spektrapair)", "TIFF / JPG / PNG 图片 (*.tif *.tiff *.jpg *.jpeg *.png)", "所有文件 (*)"]
         onVisibleChanged: window.updateDialogState()
         onAccepted: preview.openFiles(selectedFiles)
     }
@@ -285,6 +286,29 @@ ApplicationWindow {
                             FilmGroup { positive: true }
                             FilmGroup { positive: false }
                             FilmGroup { monochrome: true }
+                            Section {
+                                visible: preview.phoenixExperimentalBuild
+                                title: "Experimental · Phoenix"
+                                Note {text: "Not Verified · 仅用于观察，不代表真实胶片精度";color: Theme.accent}
+                                Repeater {model: [{g:1,r:1,t:"Phoenix 200 · v1"},{g:1,r:2,t:"Phoenix 200 · Round 2"},{g:1,r:3,t:"Phoenix 200 · Round 3"},{g:2,r:1,t:"Phoenix II · v1"},{g:2,r:2,t:"Phoenix II · Round 2"},{g:2,r:3,t:"Phoenix II · Round 3"}]
+                                    delegate: ColumnLayout {required property var modelData;Layout.fillWidth:true
+                                        Text {text:modelData.t;color:Theme.muted;font.pixelSize:11}
+                                        EditorComboBox {objectName:"phoenixGroup_"+modelData.g+"_"+modelData.r;Layout.fillWidth:true;model:window.phoenixGroup(modelData.g,modelData.r);textRole:"name";enabled:preview.settingsEditable
+                                            currentIndex:{for(var i=0;i<model.length;++i)if(model[i].catalogIndex===preview.filmIndex)return i;return -1;}
+                                            displayText:currentIndex<0?"选择实验候选…":model[currentIndex].name
+                                            onActivated:preview.filmIndex=model[currentIndex].catalogIndex
+                                        }
+                                    }
+                                }
+                                Note {visible:!!preview.phoenixInfo.id;text:(preview.phoenixInfo.id||"")+" · v"+(preview.phoenixInfo.version||"")}
+                                Note {visible:!!preview.phoenixInfo.id;text:preview.phoenixInfo.description||""}
+                                Note {visible:!!preview.phoenixInfo.id;text:"SHA256: "+(preview.phoenixInfo.sha256||"")}
+                                EditorComboBox {id:phoenixPrintModePicker;objectName:"phoenixPrintMode";Layout.fillWidth:true;model:["Frozen Print","Recalibrated Neutral Print","Fixed Internal Gain · 独立研究窗口"];currentIndex:preview.phoenixPrintMode;enabled:preview.settingsEditable && !!preview.phoenixInfo.id && !preview.phoenixFixedWindow;onActivated:preview.setPhoenixPrintMode(currentIndex)}
+                                Note {visible:!!preview.phoenixInfo.id;text:preview.phoenixFixedWindow?"Research Only · 同代父 EV0 gain；不是更真实的印相。":"研究曝光关闭自动测光。灰阶滤镜只是固定起点，不是这张照片的最佳校准。"}
+                                Note {visible:!!preview.phoenixInfo.id && !preview.phoenixInfo.calibration;text:"此 Round 2 候选没有 Recalibrated 灰阶结果，只能使用 Frozen 或独立 Fixed Gain。"}
+                                ActionButton {objectName:"phoenixResetV1";text:"重置到同代 Experimental v1";enabled:preview.settingsEditable && !!preview.phoenixInfo.id;onClicked:preview.resetPhoenixV1()}
+                            }
+
                         }
                         Section {
                             title: "印相材料 · 相纸 / 印片"

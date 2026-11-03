@@ -1,3 +1,4 @@
+option(SPEKTRALAB_PHOENIX_EXPERIMENTAL_PREVIEW "Build isolated Phoenix experimental preview" OFF)
 # The engine outside macOS: the portable setup/pipeline sources plus the
 # Vulkan backend, on Linux and Windows (native MinGW/MSVC or cross-compiled
 # MinGW-w64). The macOS application continues to use build.sh/Xcode and
@@ -57,6 +58,10 @@ else()
     endif()
 endif()
 target_link_libraries(spektralab_pipeline PRIVATE spektralab_core)
+if(SPEKTRALAB_PHOENIX_EXPERIMENTAL_PREVIEW)
+ target_compile_definitions(spektralab_pipeline PRIVATE SPK_PHOENIX_PREVIEW=1)
+ target_include_directories(spektralab_pipeline PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/../windows_UI/experimental")
+endif()
 target_include_directories(spektralab_pipeline PRIVATE
     "${CMAKE_CURRENT_SOURCE_DIR}/include"
     "${CMAKE_CURRENT_SOURCE_DIR}/src"
@@ -208,6 +213,10 @@ if(NOT APPLE)
                 target_link_libraries(spk_output_colour PUBLIC spektralab_engine spektralab_core)
                 add_library(spk_desktop_host STATIC src/desktop/preview_host.cpp)
                 target_compile_features(spk_desktop_host PUBLIC cxx_std_20)
+                if(SPEKTRALAB_PHOENIX_EXPERIMENTAL_PREVIEW)
+                    target_compile_definitions(spk_desktop_host PUBLIC SPK_PHOENIX_PREVIEW=1)
+                    target_include_directories(spk_desktop_host PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/../windows_UI/experimental")
+                endif()
                 target_include_directories(spk_desktop_host PUBLIC
                     "${CMAKE_CURRENT_SOURCE_DIR}/src" "${CMAKE_CURRENT_SOURCE_DIR}/include")
                 target_link_libraries(spk_desktop_host PUBLIC spk_image_io spektralab_engine spk_output_colour spk_raster_io)

@@ -1,3 +1,6 @@
+#ifdef SPK_PHOENIX_PREVIEW
+#include "phoenix_gain_table.hpp"
+#endif
 #include "pipeline.hpp"
 #include "timer.hpp"
 #include "halation_psf.hpp"
@@ -1639,6 +1642,9 @@ bool Pipeline::update_bw_references(std::string& error) {
 
 bool Pipeline::node_enlarger_spectral(const Image& in, Image& out, std::string& error) {
     Timer t(this, "printing.expose.enlarger_spectral");
+#ifdef SPK_PHOENIX_PREVIEW
+    phoenix_preview::apply_fixed_gain(params_.film.info.stock, print_gain_);
+#endif
     return spectral(in, print_chd_, print_base_, print_ixs_, print_gain_, print_offset_,
                     /*log_out=*/true, kNumWavelengths, out, error);
 }

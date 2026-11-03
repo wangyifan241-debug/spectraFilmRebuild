@@ -1,0 +1,19 @@
+sRGB,0.00999466,old22=898,linear=1310,actual=1310
+sRGB,0.179995,old22=16165,linear=16953,actual=16953
+sRGB,0.459998,old22=41311,linear=41447,actual=41447
+sRGB,0.700008,old22=62865,linear=62443,actual=62443
+sRGB,0.820005,old22=65535,linear=65535,actual=65535
+sRGB,0.949996,old22=65535,linear=65535,actual=65535
+ROMM,0.00999466,old22=898,linear=1310,actual=1310
+ROMM,0.179995,old22=16165,linear=17337,actual=17337
+ROMM,0.459998,old22=41311,linear=44307,actual=44307
+ROMM,0.700008,old22=62865,linear=65535,actual=65535
+ROMM,0.820005,old22=65535,linear=65535,actual=65535
+ROMM,0.949996,old22=65535,linear=65535,actual=65535
+sRGB ICC TRC max absolute error=7.60396e-06
+Display P3 ICC TRC max absolute error=7.60396e-06
+ProPhoto RGB ICC TRC max absolute error=1.32181e-05
+sRGB host/Qt in-gamut max absolute error=0.000381476
+Display P3 host/Qt in-gamut max absolute error=0.00030518
+ProPhoto RGB host/Qt in-gamut max absolute error=0.000976577
+PASS linear EV, neutral identity

@@ -1,0 +1,10 @@
+{
+  "runtime_changed_since_native_tests": false,
+  "source_pack_reproduction_previously_verified": true,
+  "package_manifest_sha256": "ef7e3515c22aa157ffd95853ca15882f334ec019f22e19f6b6614509944ffa0c",
+  "exe_matches_tested_build": true,
+  "source_commit": "03c214f41ebe7cea30e0340fd8843aae242b779d",
+  "exe_sha256": "f6dc75ff50d0262ae8f82f5181bdaf6e8215392be1c726a0b89155329e60046d",
+  "all_hashes_match": true,
+  "package_file_count": 1713
+}

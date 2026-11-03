@@ -1,0 +1,2 @@
+JPEG quality95 rms=0.745356 max_channel_error=3
+PASS crop/geometry-order/quarter-turns/flips/straighten/zoom-fill/16-bit-interpolation/display/PNG8/PNG16/TIFF16/ICC/JPEG/resize/no-overwrite/race/cleanup/extensions/source-immutability

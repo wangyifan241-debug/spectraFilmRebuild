@@ -1,0 +1,192 @@
+{
+    "checks": 781,
+    "fixed_process": true,
+    "photographic_fidelity_validated": false,
+    "photographic_gate": "Not Verified",
+    "results": [
+        {
+            "GPU_render": true,
+            "export_formats": 4,
+            "id": "harman_phoenix_200_exp_v1",
+            "max_RGBA16_error_vs_research": 0,
+            "mode": 2,
+            "recipe_exact": true
+        },
+        {
+            "GPU_render": true,
+            "export_formats": 4,
+            "id": "harman_phoenix_ii_200_exp_v1",
+            "max_RGBA16_error_vs_research": 0,
+            "mode": 2,
+            "recipe_exact": true
+        },
+        {
+            "GPU_render": true,
+            "export_formats": 4,
+            "id": "phx_200_d55_r2",
+            "max_RGBA16_error_vs_research": 0,
+            "mode": 2,
+            "recipe_exact": true
+        },
+        {
+            "GPU_render": true,
+            "export_formats": 4,
+            "id": "phx_200_linear_r2",
+            "max_RGBA16_error_vs_research": 0,
+            "mode": 2,
+            "recipe_exact": true
+        },
+        {
+            "GPU_render": true,
+            "export_formats": 4,
+            "id": "phx_200_no_tungsten_r2",
+            "max_RGBA16_error_vs_research": 0,
+            "mode": 2,
+            "recipe_exact": true
+        },
+        {
+            "GPU_render": true,
+            "export_formats": 4,
+            "id": "phx_200_shared_r2",
+            "max_RGBA16_error_vs_research": 0,
+            "mode": 2,
+            "recipe_exact": true
+        },
+        {
+            "GPU_render": true,
+            "export_formats": 4,
+            "id": "phx_ii_d55_r2",
+            "max_RGBA16_error_vs_research": 0,
+            "mode": 2,
+            "recipe_exact": true
+        },
+        {
+            "GPU_render": true,
+            "export_formats": 4,
+            "id": "phx_ii_linear_r2",
+            "max_RGBA16_error_vs_research": 0,
+            "mode": 2,
+            "recipe_exact": true
+        },
+        {
+            "GPU_render": true,
+            "export_formats": 4,
+            "id": "phx_ii_shared_r2",
+            "max_RGBA16_error_vs_research": 0,
+            "mode": 2,
+            "recipe_exact": true
+        },
+        {
+            "GPU_render": true,
+            "export_formats": 4,
+            "id": "phx_ii_width115_r2",
+            "max_RGBA16_error_vs_research": 0,
+            "mode": 2,
+            "recipe_exact": true
+        },
+        {
+            "GPU_render": true,
+            "export_formats": 4,
+            "id": "phx_ii_width130_r2",
+            "max_RGBA16_error_vs_research": 0,
+            "mode": 2,
+            "recipe_exact": true
+        },
+        {
+            "GPU_render": true,
+            "export_formats": 4,
+            "id": "phx_200_base_amp010_r3",
+            "max_RGBA16_error_vs_research": 0,
+            "mode": 2,
+            "recipe_exact": true
+        },
+        {
+            "GPU_render": true,
+            "export_formats": 4,
+            "id": "phx_200_base_center560_r3",
+            "max_RGBA16_error_vs_research": 0,
+            "mode": 2,
+            "recipe_exact": true
+        },
+        {
+            "GPU_render": true,
+            "export_formats": 4,
+            "id": "phx_200_base_neutral_r3",
+            "max_RGBA16_error_vs_research": 0,
+            "mode": 2,
+            "recipe_exact": true
+        },
+        {
+            "GPU_render": true,
+            "export_formats": 4,
+            "id": "phx_200_base_sigma075_r3",
+            "max_RGBA16_error_vs_research": 0,
+            "mode": 2,
+            "recipe_exact": true
+        },
+        {
+            "GPU_render": true,
+            "export_formats": 4,
+            "id": "phx_200_dye_nonnegative_r3",
+            "max_RGBA16_error_vs_research": 0,
+            "mode": 2,
+            "recipe_exact": true
+        },
+        {
+            "GPU_render": true,
+            "export_formats": 4,
+            "id": "phx_200_dye_portra_proxy_r3",
+            "max_RGBA16_error_vs_research": 0,
+            "mode": 2,
+            "recipe_exact": true
+        },
+        {
+            "GPU_render": true,
+            "export_formats": 4,
+            "id": "phx_ii_200_base_amp010_r3",
+            "max_RGBA16_error_vs_research": 0,
+            "mode": 2,
+            "recipe_exact": true
+        },
+        {
+            "GPU_render": true,
+            "export_formats": 4,
+            "id": "phx_ii_200_base_center560_r3",
+            "max_RGBA16_error_vs_research": 0,
+            "mode": 2,
+            "recipe_exact": true
+        },
+        {
+            "GPU_render": true,
+            "export_formats": 4,
+            "id": "phx_ii_200_base_neutral_r3",
+            "max_RGBA16_error_vs_research": 0,
+            "mode": 2,
+            "recipe_exact": true
+        },
+        {
+            "GPU_render": true,
+            "export_formats": 4,
+            "id": "phx_ii_200_base_sigma075_r3",
+            "max_RGBA16_error_vs_research": 0,
+            "mode": 2,
+            "recipe_exact": true
+        },
+        {
+            "GPU_render": true,
+            "export_formats": 4,
+            "id": "phx_ii_200_dye_nonnegative_r3",
+            "max_RGBA16_error_vs_research": 0,
+            "mode": 2,
+            "recipe_exact": true
+        },
+        {
+            "GPU_render": true,
+            "export_formats": 4,
+            "id": "phx_ii_200_dye_portra_proxy_r3",
+            "max_RGBA16_error_vs_research": 0,
+            "mode": 2,
+            "recipe_exact": true
+        }
+    ]
+}
