@@ -1,0 +1,29 @@
+{
+  "status": "Ready for User Test",
+  "branch": "codex/windows-parity-round6-process",
+  "local_code_commit": "e4b654ff53f254ef18cda33fa3c74cf02c1eda40",
+  "published_code_commit": "419df78b697242efe19c203973ad05daba45b3ca",
+  "published_code_tree": "cf888b863109374c322bf13170d844b776039012",
+  "executable": "build/round6-native/app/SpektraLabQt.exe",
+  "executable_sha256": "b6a75693907f057dd6a34be812d8f1d1455c8f454866279baee9d79f6d0910d4",
+  "installer": "build/round6-preview-process-session/SpektraLab-2026.11.04-round6-process-session-windows-x64-setup.exe",
+  "installer_sha256": "108853f03c484e75aaee556ab91525cadce04a0706242fdfd3c3921dfd9da098",
+  "source_inventory_sha256": "e201b2cd4824de1114baab1c365fc9c58d0929ea81a05887aee1c1d43ca743e7",
+  "payload_inventory_sha256": "dd7734c5166325fce14dc0ce7af1d8bf789d0551aaed89c10fba563816a4502c",
+  "preserved_external_uncommitted_file": "AGENTS.md",
+  "agent_instructions_sha256": "3e6d4671f0bf2ad4cc7e8118698bf3a3a2861f21f6ea2f8ecb10822d58683e64",
+  "windows_ctest": {
+    "passed": 37,
+    "total": 37
+  },
+  "sony_raw_checks": 192,
+  "native_main_window_report_fields": 250,
+  "native_full_workflow_budget_seconds": 300,
+  "previous_native_180s_attempts_timed_out": 2,
+  "native_full_workflow_assertions_and_fixture_size_unchanged": true,
+  "installed_files_checked": 1721,
+  "physical_pointer_automation_verified": false,
+  "hdr_canvas_complete": false,
+  "phoenix_materials_changed": false,
+  "phoenix_generations_independently_certified": false
+}
