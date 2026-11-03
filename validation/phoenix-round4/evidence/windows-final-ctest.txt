@@ -1,0 +1,92 @@
+Internal ctest changing into directory: C:/Users/Strickland/.codex/worktrees/phoenix-round4/SpektraLab/build/round4
+Test project C:/Users/Strickland/.codex/worktrees/phoenix-round4/SpektraLab/build/round4
+      Start  1: spk_round4_dataset
+ 1/43 Test  #1: spk_round4_dataset .................   Passed    0.18 sec
+      Start  2: spk_round4_spectral_reference
+ 2/43 Test  #2: spk_round4_spectral_reference ......   Passed    0.05 sec
+      Start  3: spk_round4_gpu_scan
+ 3/43 Test  #3: spk_round4_gpu_scan ................   Passed    5.91 sec
+      Start  4: spk_core_schema
+ 4/43 Test  #4: spk_core_schema ....................   Passed    0.08 sec
+      Start  5: spk_core_setup
+ 5/43 Test  #5: spk_core_setup .....................   Passed    1.81 sec
+      Start  6: spk_desktop_preview
+ 6/43 Test  #6: spk_desktop_preview ................   Passed    0.03 sec
+      Start  7: spk_image_writer
+ 7/43 Test  #7: spk_image_writer ...................   Passed    0.05 sec
+      Start  8: spk_raw_decoder_errors
+ 8/43 Test  #8: spk_raw_decoder_errors .............   Passed    0.02 sec
+      Start  9: spk_raw_metadata_link
+ 9/43 Test  #9: spk_raw_metadata_link ..............   Passed    0.01 sec
+      Start 10: spk_raw_headroom
+10/43 Test #10: spk_raw_headroom ...................   Passed    0.01 sec
+      Start 11: spk_vulkan_smoke
+11/43 Test #11: spk_vulkan_smoke ...................   Passed    1.58 sec
+      Start 12: spk_vulkan_grain
+12/43 Test #12: spk_vulkan_grain ...................   Passed    0.60 sec
+      Start 13: spk_vulkan_pointwise
+13/43 Test #13: spk_vulkan_pointwise ...............   Passed    0.46 sec
+      Start 14: spk_vulkan_resample
+14/43 Test #14: spk_vulkan_resample ................   Passed    0.61 sec
+      Start 15: spk_vulkan_transfer
+15/43 Test #15: spk_vulkan_transfer ................   Passed    0.29 sec
+      Start 16: spk_vulkan_geometry
+16/43 Test #16: spk_vulkan_geometry ................   Passed    0.53 sec
+      Start 17: spk_vulkan_lut_di
+17/43 Test #17: spk_vulkan_lut_di ..................   Passed    0.40 sec
+      Start 18: spk_vulkan_transfer_device_oom
+18/43 Test #18: spk_vulkan_transfer_device_oom .....   Passed    0.38 sec
+      Start 19: spk_windows_film_edge
+19/43 Test #19: spk_windows_film_edge ..............   Passed    3.67 sec
+      Start 20: spk_windows_feature_boundaries
+20/43 Test #20: spk_windows_feature_boundaries .....   Passed    1.37 sec
+      Start 21: spk_windows_c_abi
+21/43 Test #21: spk_windows_c_abi ..................   Passed    1.08 sec
+      Start 22: spk_qt_phoenix
+22/43 Test #22: spk_qt_phoenix .....................   Passed   17.82 sec
+      Start 23: spk_phoenix_model_data
+23/43 Test #23: spk_phoenix_model_data .............   Passed    0.07 sec
+      Start 24: spk_phoenix_model_counterfactual
+24/43 Test #24: spk_phoenix_model_counterfactual ...   Passed    0.06 sec
+      Start 25: spk_highlight_reference
+25/43 Test #25: spk_highlight_reference ............   Passed    1.26 sec
+      Start 26: spk_qt_raster_input
+26/43 Test #26: spk_qt_raster_input ................   Passed    8.57 sec
+      Start 27: spk_payload_inventory
+27/43 Test #27: spk_payload_inventory ..............   Passed    0.81 sec
+      Start 28: spk_qt_review_controller
+28/43 Test #28: spk_qt_review_controller ...........   Passed    3.38 sec
+      Start 29: spk_qt_review_colour
+29/43 Test #29: spk_qt_review_colour ...............   Passed    2.38 sec
+      Start 30: spk_qt_application_icon
+30/43 Test #30: spk_qt_application_icon ............   Passed    0.04 sec
+      Start 31: spk_qt_responsiveness
+31/43 Test #31: spk_qt_responsiveness ..............   Passed    3.97 sec
+      Start 32: spk_spectral_lift
+32/43 Test #32: spk_spectral_lift ..................   Passed    1.13 sec
+      Start 33: spk_scan_curve_fit
+33/43 Test #33: spk_scan_curve_fit .................   Passed    0.63 sec
+      Start 34: spk_qt_qml_workflow
+34/43 Test #34: spk_qt_qml_workflow ................   Passed  110.08 sec
+      Start 35: spk_qt_stock_policy
+35/43 Test #35: spk_qt_stock_policy ................   Passed   13.17 sec
+      Start 36: spk_qt_frame_output
+36/43 Test #36: spk_qt_frame_output ................   Passed    1.22 sec
+      Start 37: spk_qt_edit_store
+37/43 Test #37: spk_qt_edit_store ..................   Passed    0.65 sec
+      Start 38: spk_qt_scene_placement
+38/43 Test #38: spk_qt_scene_placement .............   Passed    9.65 sec
+      Start 39: spk_qt_film_frame
+39/43 Test #39: spk_qt_film_frame ..................   Passed   18.08 sec
+      Start 40: spk_qt_half_pair
+40/43 Test #40: spk_qt_half_pair ...................   Passed   21.55 sec
+      Start 41: spk_qt_open_material
+41/43 Test #41: spk_qt_open_material ...............   Passed   35.33 sec
+      Start 42: spk_qt_material_library
+42/43 Test #42: spk_qt_material_library ............   Passed    8.13 sec
+      Start 43: spk_qt_material_workflow
+43/43 Test #43: spk_qt_material_workflow ...........   Passed   19.39 sec
+
+100% tests passed, 0 tests failed out of 43
+
+Total Test time (real) = 296.57 sec

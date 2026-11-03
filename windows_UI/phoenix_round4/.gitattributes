@@ -1,0 +1,2 @@
+# Preserve source bytes; build receipts record their exact hashes.
+* -text whitespace=cr-at-eol
