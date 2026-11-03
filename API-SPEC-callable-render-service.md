@@ -1050,3 +1050,15 @@ knows exactly, and halate at what they are. Measured canvas against export (live
 downscaled): the halo's energy is 0.83–1.01 of the export's (the low end a frame of tiny lights), and the frame's mean difference is no
 larger than plain 500T's. The kernel `spk_highlight_headroom` is Metal only: the Vulkan backend
 refuses a back-reflection film at dispatch.
+
+### Windows HDR transport extension: native RGB float readback
+
+`spk_reprint_rgb32f(session, tier, spk_float_result*)` uses the same pipeline,
+negative cache and resolved output parameters as `spk_reprint`, reading RGB
+float32 before `spk_to_rgba16` clamps to UNORM16. The new independent result is
+owned until `spk_float_result_free`; existing `spk_result` ABI and JSON wire
+remain unchanged. Dimensions are pixels; RGB is tightly packed and retains the
+session output gamut/TRC. Consumers must explicitly request linear encoding
+for linear-light HDR. This transport neither enables HDR display nor supplies
+absolute luminance, gamut mapping, an HDR transfer function or HDR metadata.
+The caller must provide a non-null output object. Failures leave it empty.

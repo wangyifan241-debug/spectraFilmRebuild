@@ -1186,7 +1186,7 @@ bool materialise(spk_session* session, const Image& rgb, spk_result* out, std::s
 }
 
 spk_status render_tier(spk_session* session, const char* tier_name, bool use_reprint,
-                       spk_result* out) {
+                       spk_result* out, float** float_pixels = nullptr) {
     if (!session || !out) { g_error = "session or result is null"; return SPK_ERR_INVALID_ARG; }
     const Tier* tier = find_tier(tier_name);
     if (!tier) {
@@ -1239,7 +1239,16 @@ spk_status render_tier(spk_session* session, const char* tier_name, bool use_rep
         ok = session->pipeline->set_overscan_frame(state.overscan_frame_w, state.overscan_frame_h, error);
     }
     if (ok) ok = run_print_for(session, negative, rgb, &session->progress, error);
+    // Optional range-preserving transport, before UNORM16 clamping. Kept
+    // separate from the existing result ABI used by Swift and ctypes clients.
+    std::unique_ptr<float[]> float_copy;
+    if(ok&&float_pixels) {
+        float_copy.reset(new(std::nothrow) float[rgb.pixels()*3]);
+        if(!float_copy){error="Cannot allocate float render readback";ok=false;}
+        else ok=gpu->read(rgb.buf.get(),0,float_copy.get(),rgb.pixels()*3*sizeof(float),error);
+    }
     if (ok) ok = materialise(session, rgb, out, error);
+    if(ok&&float_pixels)*float_pixels=float_copy.release();
     gpu->end_frame();
 
     if (!ok) {
@@ -1260,6 +1269,20 @@ spk_status render_tier(spk_session* session, const char* tier_name, bool use_rep
 
 spk_status spk_reprint(spk_session* session, const char* tier, spk_result* out) {
     return render_tier(session, tier, /*use_reprint=*/true, out);
+}
+
+spk_status spk_reprint_rgb32f(spk_session* session, const char* tier, spk_float_result* out) {
+    if(!out){g_error="float result is null";return SPK_ERR_INVALID_ARG;}
+    std::memset(out,0,sizeof *out);
+    spk_result packed{};float* pixels=nullptr;
+    const auto status=render_tier(session,tier,true,&packed,&pixels);
+    if(status==SPK_OK){out->rgb=pixels;out->width=packed.width;out->height=packed.height;}
+    else delete[] pixels;
+    spk_result_free(&packed);
+    return status;
+}
+void spk_float_result_free(spk_float_result* result) {
+    if(result){delete[] result->rgb;std::memset(result,0,sizeof *result);}
 }
 
 spk_status spk_render(spk_session* session, const char* tier, spk_result* out) {
