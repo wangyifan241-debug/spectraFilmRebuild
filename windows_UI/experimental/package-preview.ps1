@@ -19,6 +19,12 @@ foreach($name in @('resources','licenses')){Copy-Item -LiteralPath (Join-Path $b
 $qtLicenses=Join-Path $qt '../../licenses'
 if(!(Test-Path -LiteralPath $qtLicenses)){throw 'Qt license directory is required beside the Qt installation'}
 Copy-Item -LiteralPath $qtLicenses -Destination (Join-Path $target 'licenses/Qt') -Recurse
+New-Item -ItemType Directory -Path (Join-Path $target 'licenses/MinGW') | Out-Null
+foreach($component in @('gcc','mingw-w64','winpthreads')){
+ Copy-Item -LiteralPath (Join-Path $compiler "../licenses/$component") -Destination (Join-Path $target "licenses/MinGW/$component") -Recurse
+}
+$librawSources=Join-Path $qt '../../../LibRaw-0.22.2'
+foreach($name in @('LICENSE.LGPL','LICENSE.CDDL','COPYRIGHT')){Copy-Item -LiteralPath (Join-Path $librawSources $name) -Destination (Join-Path $target "licenses/LibRaw-$name")}
 Copy-Item -LiteralPath (Join-Path $build 'app/spk_material_fit.exe') -Destination $target
 $env:PATH=$qt+';'+$compiler+';'+$env:PATH
 & (Join-Path $qt 'windeployqt.exe') --release --compiler-runtime --no-translations --qmldir (Join-Path $PSScriptRoot '../qml') (Join-Path $target 'SpektraLabPhoenixPreview.exe')
@@ -45,6 +51,9 @@ foreach($entry in $sourceEntries){
 foreach($name in @('qtbase-sdk-source-overlay.zip','qtbase-sdk-source-overlay.json')){Copy-Item -LiteralPath (Join-Path $LibrarySourceDirectory $name) -Destination (Join-Path $target 'Source')}
 Copy-Item -LiteralPath (Join-Path $root 'windows_UI/dependencies/distribution-sources.json') -Destination (Join-Path $target 'Source')
 Copy-Item -LiteralPath (Join-Path $root 'windows_UI/THIRD_PARTY.md') -Destination (Join-Path $target 'licenses')
+foreach($name in @('Profiles-and-LUTs-CC-BY-SA-4.0.txt','Profiles-and-LUTs-CHANGELOG.txt')){
+ Copy-Item -LiteralPath (Join-Path $root "modern_UI/Spektrafilm/Spektrafilm/Resources/Licenses/$name") -Destination (Join-Path $target 'licenses')
+}
 Copy-Item -LiteralPath (Join-Path $qt '../sbom') -Destination (Join-Path $target 'licenses/Qt-SBOM') -Recurse
 # Archive only allowlisted source and frozen research inputs, never local photographs/builds.
 . (Join-Path $root 'windows_UI/source-inventory.ps1')
