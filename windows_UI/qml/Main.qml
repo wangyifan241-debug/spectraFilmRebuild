@@ -624,7 +624,7 @@ ApplicationWindow {
                                     ctx.globalAlpha = 1
                                 }
                             }
-                            Note { text: preview.hasFrame ? "ProPhoto 调色 → sRGB · RGB / 亮度 · 裁切后\n" + canvas.colourStatus : "导入照片后显示" }
+                            Note { text: preview.hasFrame ? "ProPhoto 调色 → sRGB · RGB / 亮度 · 裁切后\n" + canvas.colourStatus + "\n" + canvas.displayCapabilityStatus : "导入照片后显示" }
                         }
                         Section {
                             visible: window.postMode
