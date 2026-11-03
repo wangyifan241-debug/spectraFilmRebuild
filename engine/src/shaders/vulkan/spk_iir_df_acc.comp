@@ -4,6 +4,7 @@
 // owns one complete line/channel; the forward float32 plane is read again by
 // the backward sweep. Bindings 0 and 6 may alias for the second separable pass.
 layout(local_size_x = 256) in;
+layout(push_constant) uniform DispatchBase { uint line_channel_offset; } dispatch_base;
 // vulkan_gpu.cpp sets this from the device's measured fma behaviour.
 layout(constant_id = 0) const bool SPK_FUSED_FMA = true;
 layout(set = 0, binding = 0, std430) readonly buffer Input { float value[]; } image_data;
@@ -17,7 +18,7 @@ layout(set = 0, binding = 6, std430) buffer Output { float value[]; } output_dat
 // vulkan_gpu.cpp folds a dispatch past maxComputeWorkGroupCount[0] (65535 on
 // lavapipe and Intel) into rows of workgroups; this is the 1D index it means.
 uint spk_global_index() {
-    return gl_GlobalInvocationID.y * (gl_NumWorkGroups.x * gl_WorkGroupSize.x) + gl_GlobalInvocationID.x;
+    return dispatch_base.line_channel_offset + gl_GlobalInvocationID.y * (gl_NumWorkGroups.x * gl_WorkGroupSize.x) + gl_GlobalInvocationID.x;
 }
 
 // (hi, lo) float pairs, translated from spk_common.h. precise preserves the

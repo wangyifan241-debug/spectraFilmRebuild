@@ -4,6 +4,7 @@
 #include <QMetaObject>
 #include <QDir>
 #include <QFileInfo>
+#include <QSaveFile>
 #include <QSet>
 #include <QStandardPaths>
 #include <QJsonDocument>
@@ -155,11 +156,6 @@ void PreviewController::accept(Reply reply) {
         edit_store_.updateCatalog(catalog_);
         for(auto& item:library_)if(item.material_blocked){const auto restored=edit_store_.load(item.url,catalog_);item.material_blocked=restored.material_unavailable;item.save_blocked=restored.blocked;item.save_warning=restored.warning;if(restored.state){item.settings=restored.state->settings;item.mode=restored.state->mode;item.geometry=restored.state->geometry;item.develop=restored.state->develop;item.has_stored=true;}}
         loadSettings(desired,mode);emit catalogChanged();emit materialsChanged();status_=QStringLiteral("材料目录已更新；历史版本保留，未替换当前照片");
-    } else if(reply.operation=="process") {
-        if(extra_settings_.y_filter_shift!=0||extra_settings_.m_filter_shift!=0) {
-            extra_settings_.y_filter_shift=0;extra_settings_.m_filter_shift=0;
-            changed("process");
-        } else status_=QStringLiteral("Process complete: neutral filter pack");
     } else if(reply.operation=="scene-measure"||reply.operation=="scene-fit") {
         scene_report_=reply.scene;scene_reference_=frame_;measured_settings_=settings();
         const auto fit=scene_report_.value("fit").toMap();
@@ -195,7 +191,10 @@ void PreviewController::accept(Reply reply) {
         }
         catch(const std::exception& e){failed_=true;status_=text(e.what());if(frame_)restoreSettings();}
         if(!failed_) {
-            restoreSettings();
+            if(reply.operation=="process") {
+                loadSettings(frame_->settings,frame_->decode_mode);
+                saveActiveSettings(true);save_timer_.start();
+            } else restoreSettings();
             updateThumbnail();
             status_=QStringLiteral("渲染完成 %1 秒%2")
                 .arg(frame_->timings.render_ms/1000,0,'f',2)
@@ -321,6 +320,18 @@ bool PreviewController::filmIsMonochrome() const {
 }
 QString PreviewController::fileName() const {return frame_?QString::fromStdWString(frame_->source.filename().wstring()):QString();}
 QUrl PreviewController::sourceFolder() const {return frame_?QUrl::fromLocalFile(QString::fromStdWString(frame_->source.parent_path().wstring())):QUrl();}
+QString PreviewController::processDiagnostics() const {
+    if(!frame_)return {};
+    QJsonObject report;
+    if(!frame_->process_report.empty())report=QJsonDocument::fromJson(QByteArray::fromStdString(frame_->process_report)).object();
+    else {
+        report["resolved"]=QJsonDocument::fromJson(QByteArray::fromStdString(frame_->resolved_params)).object();
+        report["render_progress"]=QJsonDocument::fromJson(QByteArray::fromStdString(frame_->render_progress)).object();
+        report["reason"]="Current rendered frame; derived exposure is informational, never an extra compensation";
+    }
+    report["source"]=QString::fromStdWString(frame_->source.wstring());
+    return QString::fromUtf8(QJsonDocument(report).toJson(QJsonDocument::Indented));
+}
 QVariantMap PreviewController::metadata() const {
     if(!frame_)return {};
     return {{"width",image_.width()},{"height",image_.height()},
@@ -636,10 +647,7 @@ void PreviewController::process() {
     submit([held,gen](auto& host){
         Reply r;r.generation=gen;r.operation="process";
         try {
-            QJsonParseError error;
-            const auto doc=QJsonDocument::fromJson(QByteArray::fromStdString(host.solve(held)),&error);
-            if(error.error!=QJsonParseError::NoError||!doc.isObject()||!doc.object().value("solved_params").isObject())
-                throw std::runtime_error("Invalid Process solve response");
+            r.frame=host.process(held);
         }catch(const std::exception& e){r.error=text(e.what());}
         return r;
     },QStringLiteral("Processing..."),"process");
@@ -906,6 +914,17 @@ void PreviewController::scheduleSave() {
 }
 void PreviewController::flushEdits() {
     save_timer_.stop();
+    // Derived exposure/neutral-pack evidence is per-photo metadata, not an
+    // editable gain. Never replay this record as a physical parameter. On
+    // reopen the engine remeasures the retained recipe and displays fresh data.
+    if(frame_&&!dirty()&&active_index_>=0&&!library_[active_index_].save_blocked) {
+        const auto diagnosticPath=edit_store_.filePath(library_[active_index_].url)+".process.json";
+        QDir().mkpath(QFileInfo(diagnosticPath).absolutePath());
+        QSaveFile file(diagnosticPath);file.setDirectWriteFallback(false);
+        const auto bytes=processDiagnostics().toUtf8();
+        if(!file.open(QIODevice::WriteOnly)||file.write(bytes)!=bytes.size()||!file.commit())
+            library_[active_index_].save_warning=QStringLiteral("Cannot save Process measurement diagnostics");
+    }
     int retryDelay=0;
     for(auto& item:library_)if(item.pending_save&&!item.save_blocked) {
         try {edit_store_.save(item.url,itemState(item));item.pending_save=false;item.has_stored=true;item.save_warning.clear();item.save_failures=0;}

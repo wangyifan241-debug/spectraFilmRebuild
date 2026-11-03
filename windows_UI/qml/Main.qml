@@ -386,6 +386,16 @@ ApplicationWindow {
                                 onMoved: preview.exposureEv = value
                             }
                             Button {
+                                objectName: "processDiagnosticsButton"; text: "配光诊断"; enabled: preview.hasFrame
+                                onClicked: processDiagnosticsDialog.open()
+                            }
+                            Dialog {
+                                id: processDiagnosticsDialog; objectName: "processDiagnosticsDialog"; parent: Overlay.overlay; anchors.centerIn: parent; title: "Process · 实际会话参数"
+                                width: Math.min(850, window.width - 40); height: Math.min(650, window.height - 40)
+                                modal: true; standardButtons: Dialog.Close
+                                ScrollView { id: processDiagnosticScroll; anchors.fill: parent; TextArea { width: processDiagnosticScroll.availableWidth; text: preview.processDiagnostics; readOnly: true; wrapMode: TextEdit.Wrap; selectByMouse: true } }
+                            }
+                            Button {
                                 text: "配光 Process"; objectName: "processButton"
                                 enabled: preview.settingsEditable && !preview.dirty && !preview.filmIsPositive
                                 onClicked: preview.process()

@@ -357,6 +357,13 @@ SessionPtr open_session(spk_engine* engine, const io::DecodedRaw& decoded,
     return session;
 }
 void read_film_geometry(spk_session* session,Frame& frame) {
+    char* params=nullptr;char* progress=nullptr;
+    require(spk_get_params(session,&params)==SPK_OK&&params,"Cannot read rendered parameters");
+    std::unique_ptr<char,decltype(&spk_string_free)> heldParams(params,spk_string_free);
+    frame.resolved_params=params;
+    require(spk_progress(session,nullptr,&progress)==SPK_OK&&progress,"Cannot read rendered exposure");
+    std::unique_ptr<char,decltype(&spk_string_free)> heldProgress(progress,spk_string_free);
+    frame.render_progress=progress;
     if(!frame.settings.edge.active)return;
     char* raw=nullptr;
     require(spk_overscan_geometry(session,&raw)==SPK_OK&&raw,"Film geometry unavailable");
@@ -682,17 +689,44 @@ void PreviewHost::export_tiff(const Frame& frame, const fs::path& destination) c
     require(written, "TIFF export: " + error);
 }
 
-std::string PreviewHost::solve(const FramePtr& snapshot) {
-    require(snapshot&&snapshot->decoded_,"Process requires a decoded frame");
+FramePtr PreviewHost::process(const FramePtr& snapshot) {
+    require(snapshot&&snapshot==impl_->frame,"Process requires the displayed interactive frame");
     const auto& s=snapshot->settings;
     const bool scan=validate_settings(s,impl_->catalog);
-    impl_->session.reset();
-    auto probe=open_session(impl_->engine.get(),*snapshot->prepared_,s,scan,monochrome(s,impl_->catalog),snapshot->prophoto());
+    // Export/measurement may release GPU storage. Rebuild this interactive
+    // session from the same retained decode, never a second file read/probe.
+    const bool rebuilt=!impl_->session;
+    if(rebuilt)impl_->session=open_session(impl_->engine.get(),*snapshot->prepared_,s,scan,monochrome(s,impl_->catalog),snapshot->prophoto());
+    const auto before=resolved_params_json();
     char* raw=nullptr;
-    const auto status=spk_solve(probe.get(),"both",&raw);
+    const auto status=spk_solve(impl_->session.get(),"both",&raw);
     std::unique_ptr<char,decltype(&spk_string_free)> owned(raw,spk_string_free);
     require(status==SPK_OK&&raw,"Process: "+std::string(spk_last_error(impl_->engine.get())));
-    return std::string(raw);
+    Json solved,prior;std::string error;
+    require(Json::parse(raw,solved,error)&&Json::parse(before,prior,error),"Invalid Process response");
+    const auto& values=solved.at("solved_params");
+    for(const char* key:{"exposure_compensation_ev","c_filter_neutral","m_filter_neutral","y_filter_neutral"}) {
+        require(values.at(key).is_number()&&std::isfinite(values.at(key).as_double()),std::string("Invalid solved field: ")+key);
+        // Solve reports; it does not mutate. Neutral database values must
+        // already be resolved by digest, not added a second time to the wire.
+        if(!scan&&!monochrome(s,impl_->catalog)&&std::string(key)!="exposure_compensation_ev")
+            require(prior.at(key).as_double()==values.at(key).as_double(),std::string("Resolved neutral differs from solved database pack: ")+key);
+    }
+    auto settings=s;settings.y_filter_shift=0;settings.m_filter_shift=0;
+    auto next=std::const_pointer_cast<Frame>(render(settings,snapshot->input_geometry_));
+    Json report=Json::object(),after,progress;
+    require(Json::parse(next->resolved_params,after,error)&&Json::parse(next->render_progress,progress,error),"Invalid reprint diagnostics");
+    report.set("before",prior);report.set("solve",solved);report.set("resolved",after);report.set("render_progress",progress);
+    Json diff=Json::object();
+    for(const auto& field:prior.fields())if(field.second.dump()!=after.at(field.first).dump()) {
+        Json change=Json::object();change.set("before",field.second);change.set("after",after.at(field.first));diff.set(field.first,change);
+    }
+    report.set("parameter_diff",diff);
+    report.set("session_rebuilt",Json(rebuilt));
+    report.set("changed",Json(s.y_filter_shift!=0||s.m_filter_shift!=0));
+    report.set("reason",Json(std::string(s.y_filter_shift!=0||s.m_filter_shift!=0?"Manual Y/M offsets reset; reprinted using resolved neutral pack":"Already neutral; same-session reprint; no new subjective optimization")));
+    next->process_report=report.dump();
+    return next;
 }
 
 std::string PreviewHost::scene_latitude(const FramePtr& snapshot,const std::string& request) {

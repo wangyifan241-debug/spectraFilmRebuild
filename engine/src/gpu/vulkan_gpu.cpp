@@ -583,15 +583,30 @@ public:
         }
         vkUpdateDescriptorSets(device_, uint32_t(writes.size()), writes.data(), 0, nullptr);
 
-        const bool submitted = submit_sync([&](VkCommandBuffer command) {
+        // IIR owns complete independent line/channel chains. Bound each
+        // submission without splitting a recurrence or changing its arithmetic;
+        // a full-frame submission can exceed Windows' GPU watchdog deadline.
+        const bool bounded_iir=std::strcmp(kernel,"spk_iir_df_acc")==0;
+        const bool bounded_fir=std::strcmp(kernel,"spk_sep_fir_acc")==0;
+        const size_t batch_groups=bounded_iir?4:(bounded_fir?256:groups);
+        bool submitted=true;
+        for(size_t first=0;first<groups&&submitted;first+=batch_groups) {
+            const uint32_t count=uint32_t(std::min(batch_groups,groups-first));
+            const uint32_t offset=uint32_t(first*spec->workgroup);
+            submitted=submit_sync([&](VkCommandBuffer command) {
                 device_barrier(command, VK_PIPELINE_STAGE_COMPUTE_SHADER_BIT,
                                VK_ACCESS_SHADER_READ_BIT | VK_ACCESS_SHADER_WRITE_BIT);
                 vkCmdBindPipeline(command, VK_PIPELINE_BIND_POINT_COMPUTE, pipeline->pipeline);
                 vkCmdBindDescriptorSets(command, VK_PIPELINE_BIND_POINT_COMPUTE, pipeline->layout,
                                         0, 1, &set, 0, nullptr);
-                vkCmdDispatch(command, uint32_t(groups_x), uint32_t(groups_y), 1);
+                if(bounded_iir||bounded_fir) {
+                    vkCmdPushConstants(command,pipeline->layout,VK_SHADER_STAGE_COMPUTE_BIT,0,sizeof offset,&offset);
+                    vkCmdDispatch(command,count,1,1);
+                } else vkCmdDispatch(command,uint32_t(groups_x),uint32_t(groups_y),1);
             }, "Vulkan compute dispatch", error);
+        }
         vkDestroyDescriptorPool(device_, descriptor_pool, nullptr);
+        if(!submitted)error=std::string(kernel)+": "+error;
         return submitted;
     }
 
@@ -1017,6 +1032,11 @@ private:
             layout_create.sType = VK_STRUCTURE_TYPE_PIPELINE_LAYOUT_CREATE_INFO;
             layout_create.setLayoutCount = 1;
             layout_create.pSetLayouts = &p.descriptors;
+            VkPushConstantRange iir_base{};
+            if(std::strcmp(spec.name,"spk_iir_df_acc")==0||std::strcmp(spec.name,"spk_sep_fir_acc")==0) {
+                iir_base.stageFlags=VK_SHADER_STAGE_COMPUTE_BIT;iir_base.size=sizeof(uint32_t);
+                layout_create.pushConstantRangeCount=1;layout_create.pPushConstantRanges=&iir_base;
+            }
             result = vkCreatePipelineLayout(device_, &layout_create, nullptr, &p.layout);
         }
         if (result == VK_SUCCESS) {
