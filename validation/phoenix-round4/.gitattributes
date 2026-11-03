@@ -1,0 +1,2 @@
+# Preserve executed source/evidence bytes; recognize CRLF without rewriting.
+* -text whitespace=cr-at-eol

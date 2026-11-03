@@ -1,0 +1,347 @@
+{
+  "status": "RUNTIME_PACKAGE_AND_SAVED_STATE_AUDIT_NOT_LIVE_PARAM_READ",
+  "executable": "C:\\Users\\Strickland\\.codex\\worktrees\\phoenix-round2\\SpektraLab\\output\\PhoenixPreview-0.1-local\\SpektraLabPhoenixPreview.exe",
+  "executable_sha256": "f6dc75ff50d0262ae8f82f5181bdaf6e8215392be1c726a0b89155329e60046d",
+  "build_receipt": {
+    "executable_sha256": "f6dc75ff50d0262ae8f82f5181bdaf6e8215392be1c726a0b89155329e60046d",
+    "source_commit": "03c214f41ebe7cea30e0340fd8843aae242b779d",
+    "source_inventory_sha256": "1379e34aee4ad020f4d36b0edf65b0641d02406faa7b9764f310957c0084cecf",
+    "experimental_preview": true
+  },
+  "manifest_sha256": "0ce386317a2cf7ece8f221cf397b4cc3bece3a63a6634abc9bf4eda7fd9645ab",
+  "resource_sha256": {
+    "resources\\io\\README.txt": "4bb0896891b5dc79d7f0449c8cfcc669788101d144e5c938ea2f6159294656bd",
+    "resources\\io\\sRGB.icc": "f869f25625302eef46cd74fe56ec11adbfa7cf20db6f70b8efdddcbeec4323a0",
+    "resources\\neutral_print_filters.json": "5969780eef7c0ab45aaceed0982d9fc9df0294f4ac8ccf814b51387dca7920e6",
+    "resources\\open-materials\\.gitattributes": "8da2f7cb9ed6d7a23a477f0639a7f02304ea126b3c9413695483e2ecaef4e030",
+    "resources\\open-materials\\CHANGELOG.txt": "0b7093b8f6fb069103115e8811ce8eb403a2ea75cfd1548769775cdf998c1080",
+    "resources\\open-materials\\NOTICE.md": "47e5a8225b1ee20d5737188e0cadc6990af606fa3abf62421b17b07ddbd47f28",
+    "resources\\open-materials\\originals\\kodak_2302.json": "3c04bb2e7701eae97eaaf14100cbf80c8f00dd07db3deda3f14b37ac060ca2be",
+    "resources\\open-materials\\originals\\kodak_doublex.json": "37c333046554151ac5538e6eeb1f2cadef919876c63d0dd861c547952874fac3",
+    "resources\\open-materials\\originals\\kodak_trix.json": "4576c0f34ed7e69dd99551b28560e08f597cca3d71385c1e35577edf4ae4a986",
+    "resources\\open-materials\\profiles\\open_kodak_2302_5m_033.json": "e2298d9d7ffe13f1ce216c813797c8801b97091735b3fa2324a0737e3c8b0952",
+    "resources\\open-materials\\profiles\\open_kodak_doublex_5222_65m_033.json": "8eca8813a6695c87e6c838510aec9234b2012916f0804ce2980320ce9b740371",
+    "resources\\open-materials\\profiles\\open_kodak_trix_7266_033.json": "51cb0ac1e6b5411fa787c9e6187c3f59a1b447ecb3a67bfefb9adadeb6312ecf",
+    "resources\\open-materials\\SPEKTRAFILM_LICENSE.txt": "76d629501783ae52e8d63aee1e054c1e1a9713b9fe7d36fb306e25b1d14b24e9",
+    "resources\\PHOENIX_EXPERIMENTAL_NOTICE.md": "4c92f3b5205e638bc88b573e99e8e6caca97437b5a7da2160f5027d830060747",
+    "resources\\phoenix-preview.json": "0ce386317a2cf7ece8f221cf397b4cc3bece3a63a6634abc9bf4eda7fd9645ab",
+    "resources\\print_luts.json": "27b43228c85e55ffaa82079a696f579ef3c00ce057a27f58f11fbc3e0e26f589",
+    "resources\\PRODUCT_PROFILES_NOTICE.md": "6fcca5f5361ec790cefc4c0bb2a34e3b77b6153851d381354e9cfe50ce82d0f3",
+    "resources\\profiles\\cinestill_800t.json": "b4539181be0fc2c6260d8a7ca04fcfd88be0a45fa52b460fd159dd39d2b42611",
+    "resources\\profiles\\fujifilm_c200.json": "33c1acc77ca85963e6165f7fa7fed545803f0c955732e500681e4f3946d44e4a",
+    "resources\\profiles\\fujifilm_crystal_archive_typeii.json": "8aa83ca1d1fafdc72813f1abae0c17facbb6680b566c0f8e8bbd505251c76700",
+    "resources\\profiles\\fujifilm_neopan_acros_100_ii.json": "4429b45664a06c7ee8d16687bcc7adf656403e534fba584f83762e160abdc4f9",
+    "resources\\profiles\\fujifilm_pro_400h.json": "beff34f309c5a9c102a87f48876986e7a7bbb20da7994cfc8d08629f6121ae46",
+    "resources\\profiles\\fujifilm_provia_100f.json": "04c42273d861d26838b0c760579a59e4a985483081f1ff100d7cab9007f54a2f",
+    "resources\\profiles\\fujifilm_velvia_100.json": "4678399aaf2e623dc482e46255093f79ddee93ae963759627e58eee002d7ec84",
+    "resources\\profiles\\fujifilm_xtra_400.json": "8d2369fc3a8f707f07d04c17283fbc5bb66d95e65addc09d06be222c785ff92d",
+    "resources\\profiles\\harman_phoenix_200_exp_v1.json": "f748850ead1925865f896aac3cce9d7f248918d1b0f4240fa947817001f0f69d",
+    "resources\\profiles\\harman_phoenix_ii_200_exp_v1.json": "39a8c1cd3b0fe0a09db01f1873306948c5361f528d30de1d8dbce3fc3ee3dd0e",
+    "resources\\profiles\\ilford_hp5_plus_400.json": "a09ccdb57816f220ab598e534318a743ef79e16a300f8bd2de7453d451fe8ec5",
+    "resources\\profiles\\ilford_multigrade_iv_rc.json": "0f776f1f26f04aca4ec438ed377dc1acf4073dc1a8ae32c51607a6cb1a02521d",
+    "resources\\profiles\\kodak_2383.json": "a7a494c593ff5da06767d6293f7c796a146ca6346cdddd369f1b55cdfef855cf",
+    "resources\\profiles\\kodak_2393.json": "db1d293d5f515c22d3f19b8aa91d874ec9c8c6ebfbfa731dd04de9a303c2a129",
+    "resources\\profiles\\kodak_ektachrome_100.json": "3113bde02c05e707e353911b7628f66ffb1931493dc3a0581c546498e9ab75a2",
+    "resources\\profiles\\kodak_ektacolor_edge.json": "d05b37d843af82057316717844898be9440e61b0e7a0ab36fe9efb83e629a3c7",
+    "resources\\profiles\\kodak_ektar_100.json": "f2a8c9092153b2d1ee90c5aa588ece7c199c8687520e250946484ff3294b0319",
+    "resources\\profiles\\kodak_endura_premier.json": "3f63b8c5a56967776fa9782914079156736c0b1e0ec739ff946d8b1aa2950a6e",
+    "resources\\profiles\\kodak_gold_200.json": "8190c24d1e2f0aa9daeff89a8325f9051d2d2e9a96d867386fbded7fe3a82004",
+    "resources\\profiles\\kodak_kodachrome_64.json": "75b07bf032c80353383b73fbfde6ea5d718ec3d2b05db06aa83a6f960b07f28d",
+    "resources\\profiles\\kodak_portra_160.json": "54caffc4246619e5135996a00386393d37a2dfc7c6fdf4ebf3f32d68281ee0cc",
+    "resources\\profiles\\kodak_portra_400.json": "140c49bbff6d7b6589058ce0836e3286fa995e9433bb8a62a0189d6e1a04da9f",
+    "resources\\profiles\\kodak_portra_800_push1.json": "db6b9623e6c64f9188c9e9afb5926895f8d55965b68102e97768694f3ea572b3",
+    "resources\\profiles\\kodak_portra_800_push2.json": "502b232a7395ef6a961c51cd65f53813e2ecbd4ae861802800b7d8cc02d3da6b",
+    "resources\\profiles\\kodak_portra_800.json": "ba2863125ef4ad4039616c1be76ee38e7bff28706a769b4010a7dfca3e786ee2",
+    "resources\\profiles\\kodak_portra_endura.json": "28bee939504da48e3556c58fc880696f471c2d63bd00e3b8e1831dd0ff5cd25c",
+    "resources\\profiles\\kodak_supra_endura.json": "b3ea5143e10b6bd1cb10026391a425a2ac901aeb96549918d3e1093b395a6b68",
+    "resources\\profiles\\kodak_tmax_100.json": "c9160236872034b86fb42b67be3a9252088bfa7bdbb450148b0c20ad83e3033a",
+    "resources\\profiles\\kodak_tri_x_400.json": "a54be071c6a055a9a49acb7072d10bf0b1bcddf9c0a459b0800a9b14bb66b1f1",
+    "resources\\profiles\\kodak_ultra_endura.json": "c92bcbcb01c917592be523a66140f4110b29f7331546bb58574aa4111d8a7b2c",
+    "resources\\profiles\\kodak_ultramax_400.json": "c36ab49d63ea72cf558c83e4c665ca9d25e3008387ecb8eeb862bf6a996590f6",
+    "resources\\profiles\\kodak_verita_200d.json": "8c5373730fa9eb3bb443e670a915b24530af6ae6468a1e2a369c5e43bf0658de",
+    "resources\\profiles\\kodak_vision3_200t.json": "843fed6fe82eae9c13a2191547347c368634921abb635e1ac5fc7cc7169e72f0",
+    "resources\\profiles\\kodak_vision3_250d.json": "d67d4f551bda1489a1590a2a63fe420f275713682453276b2d99e2f72019d12a",
+    "resources\\profiles\\kodak_vision3_500t.json": "192b85a7050586b88467101a3af96fdffc7317f81332fa07aa4679e67af2b17d",
+    "resources\\profiles\\kodak_vision3_50d.json": "f252ef031edda4be305f9cde8dd52257a7d34a94210ef86c4e6471544f1600c8",
+    "resources\\profiles\\open_kodak_2302_5m_033.json": "e2298d9d7ffe13f1ce216c813797c8801b97091735b3fa2324a0737e3c8b0952",
+    "resources\\profiles\\open_kodak_doublex_5222_65m_033.json": "8eca8813a6695c87e6c838510aec9234b2012916f0804ce2980320ce9b740371",
+    "resources\\profiles\\open_kodak_trix_7266_033.json": "51cb0ac1e6b5411fa787c9e6187c3f59a1b447ecb3a67bfefb9adadeb6312ecf",
+    "resources\\profiles\\phx_200_base_amp010_r3.json": "ef3b4fd5a9e8416ddb2c425a3332aaeac5752932fe69d8cef05f37c57a7aea00",
+    "resources\\profiles\\phx_200_base_center560_r3.json": "3f2eaadd148569ae2a4d7c9f4dda938d7f892714ae3d2193722faae350723167",
+    "resources\\profiles\\phx_200_base_neutral_r3.json": "e1e0e1b7897323bb92140d66a0b74bcc87114cf4ce12f1307a1141ec293d23fb",
+    "resources\\profiles\\phx_200_base_sigma075_r3.json": "624a9e85001bfff82b698d6360004de32e1789def0ab930f7bf56f0cf0966f12",
+    "resources\\profiles\\phx_200_d55_r2.json": "d0ba0b2272022a967ffdc26dffe6f78e83463bf02dbabf0a543b298f83c7f8ca",
+    "resources\\profiles\\phx_200_dye_nonnegative_r3.json": "1f71e94ce67e3266ca3175e2a1ccf270108eba93fbc571e6a06a035ddc1976ad",
+    "resources\\profiles\\phx_200_dye_portra_proxy_r3.json": "8295f38de88ff4f7af6f02966fd17295b16e4690b80c54c128ad3a2f202b545d",
+    "resources\\profiles\\phx_200_linear_r2.json": "cdf690d60933d3376f52f41cf62628f38b5cd76957a5c1762041034d218252e6",
+    "resources\\profiles\\phx_200_no_tungsten_r2.json": "38664869dc0bbe67786e79a26511168788783f5aae5b588564e0bdd60f14798c",
+    "resources\\profiles\\phx_200_shared_r2.json": "70352f0c331fd2100813125b69a90b00d0c26c66b9ec1d41a8cbb89db210efba",
+    "resources\\profiles\\phx_ii_200_base_amp010_r3.json": "c8ccea50ed9ed2e70c21b01414f928aff6743fcb4d5826f74d2b5e2d6b6cad81",
+    "resources\\profiles\\phx_ii_200_base_center560_r3.json": "21ec85f429a8861a576641cdad47be8ddd62dd46f598793824a91e5493f202fa",
+    "resources\\profiles\\phx_ii_200_base_neutral_r3.json": "8a625cebffe2d2fe5161a25dda655e060414f51ef204fd6bc5bdae32ccf8c008",
+    "resources\\profiles\\phx_ii_200_base_sigma075_r3.json": "1c707832562cd6068ee35371e53b74cab10ecb006b1dd7c767f2609e0945622e",
+    "resources\\profiles\\phx_ii_200_dye_nonnegative_r3.json": "e0306b3e3b41eda28cdf95763b97aa945e49e9a589b78e6bbb2f939190e4fc1f",
+    "resources\\profiles\\phx_ii_200_dye_portra_proxy_r3.json": "dfeb9027d6d936dd455dd53b7d00ef93ac50b985ec137e72e21d271db5d32a13",
+    "resources\\profiles\\phx_ii_d55_r2.json": "5d10f7090b9fc0f518c4c76d00ce0e9e2df62a0cbc102f4ff218401c700ff0c8",
+    "resources\\profiles\\phx_ii_linear_r2.json": "e09d6adff3ec55277bea02fe062483bfd1bfd1c3a00d02030a499d72dadafe01",
+    "resources\\profiles\\phx_ii_shared_r2.json": "62af0482f131e74ff2c7cb3670a4fb6569ebc0d5f8943dafa2222ab798e6ae28",
+    "resources\\profiles\\phx_ii_width115_r2.json": "6430fb22dbfca0044f39317e100675c9832909e0479dc20cd9735cfb88ba9a64",
+    "resources\\profiles\\phx_ii_width130_r2.json": "ddeb3f9cf1966c99cfe27d18d95e5cde5fdf03d786e5f8ee44ab309892f157d9",
+    "resources\\spektrafilm_constants.bin": "f2c06600606fa169171f58b6639d2669f372a2b39ebe9c72e3edeff5f6d7d31d",
+    "resources\\vulkan\\spk_affine3.spv": "17f1d8322e569ac4dac0d78b10d61669f9d4220c91d690d2f96299615427bbdf",
+    "resources\\vulkan\\spk_boost.spv": "0b95d2bf9c52724a3d822ae9b5f55363fa8eb7058812251147bbae6ef8f00917",
+    "resources\\vulkan\\spk_bw_correct.spv": "a8515c1208c676e176c689a25a1456d0f535101f54bf1a9e9145059f5085b313",
+    "resources\\vulkan\\spk_cam16ucs_compress.spv": "179d9fd5f8ab7c1de03b21aac7464b28bb47ea20be6fb744605db76743e68753",
+    "resources\\vulkan\\spk_cctf_decode.spv": "e51ba57d071d6900e61c10596ad0b9d8e18381c01e74446bf26930b81bb5e011",
+    "resources\\vulkan\\spk_cctf_encode_matrix.spv": "6ac2d962eb6c0285483fe226d04f0b1f2f5bfcaf21ceb9a170ae5ce9b019d49b",
+    "resources\\vulkan\\spk_couplers_correction.spv": "9f0e990bb40e0ec0b92f387d0355773d1d277f1a4e9a425878a8ba8e03343ce3",
+    "resources\\vulkan\\spk_curves.spv": "9fcd8d055fc2c9b339b34688d4c932719c915cda4695ce8e0d21eae710940a29",
+    "resources\\vulkan\\spk_di_normalise.spv": "2d28f3e2c37099970291a59a3fa69a5cf7b4aa1850a746a9915362d798762f8c",
+    "resources\\vulkan\\spk_edr.spv": "e4bb2921dbc1fdd31411515c1649ec6394280326a18f00a8d0bc18fd5f5c4bbe",
+    "resources\\vulkan\\spk_geometry_resample_df.spv": "29265ee65dba649e31fb803fe64aeee08a125556c2be4e30197bab7ad3c816fb",
+    "resources\\vulkan\\spk_glare_add.spv": "7a6c9090207120238a2f7c2bf8919b7309f6da69836ae33329706be709799ca0",
+    "resources\\vulkan\\spk_grain_layer_one.spv": "c72354e98bfc4c710c749403c2d6fc779d1a40d4de60399c04ac090b859d51f9",
+    "resources\\vulkan\\spk_grain_layers.spv": "205e31884070a4254723c4789c5bb5b80b8e2f8af1ffa11f8dbdc8c279d8d2ed",
+    "resources\\vulkan\\spk_grain_simple.spv": "ce7444a69e7b7b3b5302d2ffc2fcb2a797f1f240250f164cbaa92db6f826c69d",
+    "resources\\vulkan\\spk_highlight_headroom.spv": "a71afb9cf8999ced5be704c7d067737527ef95c4c271ab81836ba4b8f56ba3d6",
+    "resources\\vulkan\\spk_iir_df_acc.spv": "134349601a35b8d70665779c5e25c5ff1eda8f5fe470bb1cb1a7186727c31019",
+    "resources\\vulkan\\spk_lincomb3.spv": "40b03156066cc213051f4d5eece6a38dca0c2e834e203a81ead644db2fbd7f95",
+    "resources\\vulkan\\spk_log10_guarded.spv": "fef81ad5a0f94c34517a29f6ac3f142d951d484775ca52633026b5d0c6de636b",
+    "resources\\vulkan\\spk_lognormal_field.spv": "6e578f77e4276a1862ef5576db316a54bdf873f4793c880e09d7f7248bbd02f2",
+    "resources\\vulkan\\spk_lut2d_cubic.spv": "46c801214f6d2005e04325e782f587b1ed6cd22b4091ef1ce1d6e1174ff49990",
+    "resources\\vulkan\\spk_lut3d_trilinear.spv": "d893b19f909d051c641a8e7d433c45098d935a0e792788e3779a184138c2c029",
+    "resources\\vulkan\\spk_math_probe.spv": "7a2525eae5486bccd5c812deb9af44e399c1a414d3e24aa1fe39634fbf31b009",
+    "resources\\vulkan\\spk_matmul3.spv": "72d95e7cd08613d77201b8b993b2fd8b90041cf56d3ddc105de04f428cae5a88",
+    "resources\\vulkan\\spk_mul.spv": "a06b20e80c080f474613391dca716468ba64b07ef45ceacbf9cdb3415582057c",
+    "resources\\vulkan\\spk_overscan_add_mask.spv": "01e56f48fd193510a41ae9eb5ef9237e691ba0fee5c567ec5376a179abe24957",
+    "resources\\vulkan\\spk_overscan_canvas.spv": "e1c4a9ef48eaaeb7ae390086f067de1fc98f96f1e09eefca5b34ae8b50f7ed73",
+    "resources\\vulkan\\spk_overscan_film_present.spv": "fe9f4f35cf98805c40dc5e0f701ac23f5d41507794df4e3a02b28ad3ff28bd79",
+    "resources\\vulkan\\spk_overscan_light.spv": "bff5f47d1674e6cb7871f8de456a75e6b7b5700424be571b1c0a7d6b21d967d5",
+    "resources\\vulkan\\spk_print_exposure.spv": "b870b4a752ea3d21bb152b3d43a4b4e2484e95e2def63b1756f5fe29873e4e54",
+    "resources\\vulkan\\spk_reduce_max.spv": "0064a5c8efc1a8cc79fa387f8682a7f9edf1b5c2e40e2c4f7802b5c19306cef9",
+    "resources\\vulkan\\spk_rng_probe.spv": "f963c76fecbfe2267342d3af806cb546589655bc862f685a63b91de5249f1c4a",
+    "resources\\vulkan\\spk_scene_latitude.spv": "4d79c3ab6a606167e08f8e7b72c1dbb5ef7640a4f2d46b1f75b542343a5491a3",
+    "resources\\vulkan\\spk_sep_fir_acc.spv": "cd513a95a1a4d2c2114be19b3bc55f705dd51065ceb791531566742b46533d1e",
+    "resources\\vulkan\\spk_spectral_epilogue.spv": "c8c2ee007692b4a088ec981479eb6621079c2fe15961c491bf54f9dd21328fb0",
+    "resources\\vulkan\\spk_stride_sample.spv": "907a232b33daa425515dec1e5bb2ea7f7f3879d1b16e073457f69ec8578ead13",
+    "resources\\vulkan\\spk_take_rgb.spv": "f15e7535f12a12e5586878b5379b66c2ba7d6a5439330fb99a00e59d6a4c87eb",
+    "resources\\vulkan\\spk_tc_b.spv": "02a90468abf11433432e580d92603437dfc985821934f060f9df01a3e5fd0165",
+    "resources\\vulkan\\spk_to_rgba16.spv": "63622bfc67e79c8fad09404add7d86d7faf2f58baf54436c8d4e9d2822a2ae6b",
+    "resources\\vulkan\\spk_zoom_bilinear_mirror.spv": "a748e2df3a7759928c3c86949cadd8ba3be7e4e5a44f93d196b2c6dff4edd1d0"
+  },
+  "saved_edits_sha256": "f5deefa59539d0d6335b29280efbfd6afbf32d21d242482b9380c8f02e688d2d",
+  "saved_state": {
+    "format": "SpektraLab.Windows.Editor",
+    "source": {
+      "mtimeMs": "1793597517795",
+      "path": "c:/users/strickland/downloads/dsc02443.arw",
+      "sampleSha256": "9675b55c14cb5445f6bc5383f8b447cb3d181cb60e4cd050ec530d5bc3c2f889",
+      "size": "39915520"
+    },
+    "state": {
+      "dateBack": {
+        "active": false,
+        "corner": "br",
+        "exposure": 3.5,
+        "size": 1,
+        "style": "lcd",
+        "text": ""
+      },
+      "decodeMode": "compatible16",
+      "develop": {
+        "blackPoint": 0,
+        "brightness": 0,
+        "contrast": 0,
+        "curves": [
+          [
+            {
+              "x": 0,
+              "y": 0
+            },
+            {
+              "x": 1,
+              "y": 1
+            }
+          ],
+          [
+            {
+              "x": 0,
+              "y": 0
+            },
+            {
+              "x": 1,
+              "y": 1
+            }
+          ],
+          [
+            {
+              "x": 0,
+              "y": 0
+            },
+            {
+              "x": 1,
+              "y": 1
+            }
+          ],
+          [
+            {
+              "x": 0,
+              "y": 0
+            },
+            {
+              "x": 1,
+              "y": 1
+            }
+          ],
+          [
+            {
+              "x": 0,
+              "y": 0
+            },
+            {
+              "x": 1,
+              "y": 1
+            }
+          ]
+        ],
+        "enabled": true,
+        "exposure": 0,
+        "exposureModel": "linear-v1",
+        "highlights": 0,
+        "saturation": 0,
+        "shadows": 0,
+        "temperature": 0,
+        "tint": 0,
+        "vignetteAmount": 0,
+        "vignetteMidpoint": 50,
+        "whitePoint": 0,
+        "workingSpace": "ProPhoto RGB",
+        "zones": [
+          {
+            "hue": 0,
+            "luminance": 0,
+            "saturation": 0
+          },
+          {
+            "hue": 0,
+            "luminance": 0,
+            "saturation": 0
+          },
+          {
+            "hue": 0,
+            "luminance": 0,
+            "saturation": 0
+          },
+          {
+            "hue": 0,
+            "luminance": 0,
+            "saturation": 0
+          }
+        ]
+      },
+      "filmEdge": {
+        "active": false,
+        "cameraSeed": 1,
+        "carrier": "black",
+        "fog": 1,
+        "format": "135",
+        "frameNumber": 0,
+        "frameSeed": 1,
+        "gate": "auto",
+        "holes": "white",
+        "leaks": 0,
+        "mode": "strip"
+      },
+      "geometry": {
+        "crop": {
+          "height": 1,
+          "width": 1,
+          "x": 0,
+          "y": 0
+        },
+        "flipHorizontal": false,
+        "flipVertical": false,
+        "quarterTurns": 0,
+        "straightenDegrees": 0
+      },
+      "halfPair": {
+        "active": false,
+        "holes": [
+          {
+            "exposure": 0,
+            "geometry": {
+              "flipH": false,
+              "flipV": false,
+              "h": 1,
+              "straighten": 0,
+              "turns": 0,
+              "w": 1,
+              "x": 0,
+              "y": 0
+            },
+            "scale": 1,
+            "turns": 0,
+            "x": 0,
+            "y": 0
+          },
+          {
+            "exposure": 0,
+            "geometry": {
+              "flipH": false,
+              "flipV": false,
+              "h": 1,
+              "straighten": 0,
+              "turns": 0,
+              "w": 1,
+              "x": 0,
+              "y": 0
+            },
+            "scale": 1,
+            "turns": 0,
+            "x": 0,
+            "y": 0
+          }
+        ],
+        "spacing": 1,
+        "turned": false
+      },
+      "materialVersions": {
+        "engineResourcesSha256": "a0a271fd516e4f0cacd5ea196abe7717b4b81c0ec4c14a99a36a5f38cffec954",
+        "filmSha256": "1f71e94ce67e3266ca3175e2a1ccf270108eba93fbc571e6a06a035ddc1976ad",
+        "paperSha256": "28bee939504da48e3556c58fc880696f471c2d63bd00e3b8e1831dd0ff5cd25c"
+      },
+      "placement": {
+        "active": false,
+        "highlightKnee": 2,
+        "highlightPullBack": 0,
+        "highlightRoom": 0,
+        "maxLift": 4,
+        "norm": "power",
+        "rolloff": 2,
+        "shadowKnee": -2,
+        "shadowPullBack": 0,
+        "shadowRoom": 0
+      },
+      "settings": {
+        "film_exposure_ev": 0,
+        "film_format_mm": 35,
+        "film_stock": "phx_200_dye_nonnegative_r3",
+        "glare_active": false,
+        "glare_amount": 1,
+        "grain_active": false,
+        "grain_amount": 1,
+        "halation_active": false,
+        "halation_amount": 1,
+        "m_filter_shift": 0,
+        "phoenix_mode": 0,
+        "print_exposure": 1,
+        "print_stock": "kodak_portra_endura",
+        "y_filter_shift": 0
+      }
+    },
+    "version": 10
+  },
+  "live_resolved_parameters": null,
+  "live_resolved_status": "Not Observable: shipped GUI does not expose live engine get_params; saved state is not represented as live state",
+  "photographic_gate": "Not Verified"
+}

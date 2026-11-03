@@ -1,0 +1,149 @@
+{
+  "status": "SOFTWARE_ABLATION_NOT_REAL_FILM_ERROR",
+  "models": {
+    "harman_phoenix_200_exp_v1": {
+      "no-unsharp": {
+        "purpose": "engineering_encoded_RGB_difference_not_photographic_accuracy",
+        "width": 256,
+        "height": 96,
+        "identical_bytes": false,
+        "mae_encoded_RGB": 0.0016548964737615672,
+        "rmse_encoded_RGB": 0.01121074645901928,
+        "max_encoded_RGB": 0.274341954680705
+      },
+      "no-scanner-correction": {
+        "purpose": "engineering_encoded_RGB_difference_not_photographic_accuracy",
+        "width": 256,
+        "height": 96,
+        "identical_bytes": true,
+        "mae_encoded_RGB": 0,
+        "rmse_encoded_RGB": 0,
+        "max_encoded_RGB": 0
+      },
+      "no-gamut": {
+        "purpose": "engineering_encoded_RGB_difference_not_photographic_accuracy",
+        "width": 256,
+        "height": 96,
+        "identical_bytes": false,
+        "mae_encoded_RGB": 0.008146657015865146,
+        "rmse_encoded_RGB": 0.0142304286360979,
+        "max_encoded_RGB": 0.05897611963073168
+      },
+      "direct-negative": {
+        "purpose": "engineering_encoded_RGB_difference_not_photographic_accuracy",
+        "width": 256,
+        "height": 96,
+        "identical_bytes": false,
+        "mae_encoded_RGB": 0.5580945230592111,
+        "rmse_encoded_RGB": 0.5858903456020984,
+        "max_encoded_RGB": 0.890028229190509
+      },
+      "no-auto-print-compensation": {
+        "purpose": "engineering_encoded_RGB_difference_not_photographic_accuracy",
+        "width": 256,
+        "height": 96,
+        "identical_bytes": true,
+        "mae_encoded_RGB": 0,
+        "rmse_encoded_RGB": 0,
+        "max_encoded_RGB": 0
+      },
+      "round4-scan": {
+        "purpose": "engineering_encoded_RGB_difference_not_photographic_accuracy",
+        "width": 256,
+        "height": 96,
+        "identical_bytes": false,
+        "mae_encoded_RGB": 0.11074790321733011,
+        "rmse_encoded_RGB": 0.15026219372585778,
+        "max_encoded_RGB": 0.5539177538719767
+      },
+      "internal_gain": {
+        "internal_gain": [
+          0.40848703560034955,
+          0.40848703560034955,
+          0.40848703560034955
+        ],
+        "print_exposure_gain": [
+          1,
+          1,
+          1
+        ]
+      },
+      "uninstrumented_control": {
+        "max_RGBA16_error": 0,
+        "status": "PASS"
+      }
+    },
+    "harman_phoenix_ii_200_exp_v1": {
+      "no-unsharp": {
+        "purpose": "engineering_encoded_RGB_difference_not_photographic_accuracy",
+        "width": 256,
+        "height": 96,
+        "identical_bytes": false,
+        "mae_encoded_RGB": 0.0010365886045834445,
+        "rmse_encoded_RGB": 0.007217080885873972,
+        "max_encoded_RGB": 0.1637903410391394
+      },
+      "no-scanner-correction": {
+        "purpose": "engineering_encoded_RGB_difference_not_photographic_accuracy",
+        "width": 256,
+        "height": 96,
+        "identical_bytes": true,
+        "mae_encoded_RGB": 0,
+        "rmse_encoded_RGB": 0,
+        "max_encoded_RGB": 0
+      },
+      "no-gamut": {
+        "purpose": "engineering_encoded_RGB_difference_not_photographic_accuracy",
+        "width": 256,
+        "height": 96,
+        "identical_bytes": false,
+        "mae_encoded_RGB": 0.0041896303273451715,
+        "rmse_encoded_RGB": 0.008126956531000689,
+        "max_encoded_RGB": 0.03506523231860837
+      },
+      "direct-negative": {
+        "purpose": "engineering_encoded_RGB_difference_not_photographic_accuracy",
+        "width": 256,
+        "height": 96,
+        "identical_bytes": false,
+        "mae_encoded_RGB": 0.4870242729629737,
+        "rmse_encoded_RGB": 0.5237620107575774,
+        "max_encoded_RGB": 0.7849240863660639
+      },
+      "no-auto-print-compensation": {
+        "purpose": "engineering_encoded_RGB_difference_not_photographic_accuracy",
+        "width": 256,
+        "height": 96,
+        "identical_bytes": true,
+        "mae_encoded_RGB": 0,
+        "rmse_encoded_RGB": 0,
+        "max_encoded_RGB": 0
+      },
+      "round4-scan": {
+        "purpose": "engineering_encoded_RGB_difference_not_photographic_accuracy",
+        "width": 256,
+        "height": 96,
+        "identical_bytes": false,
+        "mae_encoded_RGB": 0.08270064169187316,
+        "rmse_encoded_RGB": 0.10877065957519405,
+        "max_encoded_RGB": 0.37471580071717403
+      },
+      "internal_gain": {
+        "internal_gain": [
+          0.32690421903309935,
+          0.32690421903309935,
+          0.32690421903309935
+        ],
+        "print_exposure_gain": [
+          1,
+          1,
+          1
+        ]
+      },
+      "uninstrumented_control": {
+        "max_RGBA16_error": 0,
+        "status": "PASS"
+      }
+    }
+  }
+}

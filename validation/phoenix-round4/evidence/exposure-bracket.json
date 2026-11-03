@@ -1,0 +1,147 @@
+{
+  "status": "SOFTWARE_EXPOSURE_BRACKET_NOT_REAL_FILM_VALIDATION",
+  "models": {
+    "harman_phoenix_200_exp_v1": {
+      "scanner_recipe_sha256": "24ed0a7d4a7a121535965bcfcabffc19b186b47bf58b312d1e460bd4270917bb",
+      "rows": [
+        {
+          "exposure_ev": -2,
+          "auto_gain": [
+            0.10826841072920367,
+            0.10826841072920367,
+            0.10826841072920367
+          ],
+          "no_compensation_gain": [
+            0.40848703560034955,
+            0.40848703560034955,
+            0.40848703560034955
+          ],
+          "scan_gray_linear_prophoto": [
+            0.04674819856882095,
+            0.04674792289733887,
+            0.046744346618652344
+          ],
+          "uninstrumented_control": {
+            "max_RGBA16_error": 0,
+            "status": "PASS"
+          }
+        },
+        {
+          "exposure_ev": 0,
+          "auto_gain": [
+            0.40848703560034955,
+            0.40848703560034955,
+            0.40848703560034955
+          ],
+          "no_compensation_gain": [
+            0.40848703560034955,
+            0.40848703560034955,
+            0.40848703560034955
+          ],
+          "scan_gray_linear_prophoto": [
+            0.18700581789016724,
+            0.1870262622833252,
+            0.18701623380184174
+          ],
+          "uninstrumented_control": {
+            "max_RGBA16_error": 0,
+            "status": "PASS"
+          }
+        },
+        {
+          "exposure_ev": 2,
+          "auto_gain": [
+            3.7667563694173345,
+            3.7667563694173345,
+            3.7667563694173345
+          ],
+          "no_compensation_gain": [
+            0.40848703560034955,
+            0.40848703560034955,
+            0.40848703560034955
+          ],
+          "scan_gray_linear_prophoto": [
+            0.7483343482017517,
+            0.7482931613922119,
+            0.748420774936676
+          ],
+          "uninstrumented_control": {
+            "max_RGBA16_error": 0,
+            "status": "PASS"
+          }
+        }
+      ]
+    },
+    "harman_phoenix_ii_200_exp_v1": {
+      "scanner_recipe_sha256": "7f72ca5eaa1b67d58ac5fbe0d6d988f9833eb7721cf982bdb860f5984c427b16",
+      "rows": [
+        {
+          "exposure_ev": -2,
+          "auto_gain": [
+            0.13126279307471056,
+            0.13126279307471056,
+            0.13126279307471056
+          ],
+          "no_compensation_gain": [
+            0.32690421903309935,
+            0.32690421903309935,
+            0.32690421903309935
+          ],
+          "scan_gray_linear_prophoto": [
+            0.046753011643886566,
+            0.04675358161330223,
+            0.046752989292144775
+          ],
+          "uninstrumented_control": {
+            "max_RGBA16_error": 0,
+            "status": "PASS"
+          }
+        },
+        {
+          "exposure_ev": 0,
+          "auto_gain": [
+            0.32690421903309935,
+            0.32690421903309935,
+            0.32690421903309935
+          ],
+          "no_compensation_gain": [
+            0.32690421903309935,
+            0.32690421903309935,
+            0.32690421903309935
+          ],
+          "scan_gray_linear_prophoto": [
+            0.1870446801185608,
+            0.18704068660736084,
+            0.18703320622444153
+          ],
+          "uninstrumented_control": {
+            "max_RGBA16_error": 0,
+            "status": "PASS"
+          }
+        },
+        {
+          "exposure_ev": 2,
+          "auto_gain": [
+            0.7511612297536975,
+            0.7511612297536975,
+            0.7511612297536975
+          ],
+          "no_compensation_gain": [
+            0.32690421903309935,
+            0.32690421903309935,
+            0.32690421903309935
+          ],
+          "scan_gray_linear_prophoto": [
+            0.7483375668525696,
+            0.7482593655586243,
+            0.7483863830566406
+          ],
+          "uninstrumented_control": {
+            "max_RGBA16_error": 0,
+            "status": "PASS"
+          }
+        }
+      ]
+    }
+  }
+}

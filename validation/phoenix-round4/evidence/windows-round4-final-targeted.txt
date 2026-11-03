@@ -1,0 +1,12 @@
+Internal ctest changing into directory: C:/Users/Strickland/.codex/worktrees/phoenix-round4/SpektraLab/build/round4
+Test project C:/Users/Strickland/.codex/worktrees/phoenix-round4/SpektraLab/build/round4
+    Start 1: spk_round4_dataset
+1/3 Test #1: spk_round4_dataset ...............   Passed    0.16 sec
+    Start 2: spk_round4_spectral_reference
+2/3 Test #2: spk_round4_spectral_reference ....   Passed    0.05 sec
+    Start 3: spk_round4_gpu_scan
+3/3 Test #3: spk_round4_gpu_scan ..............   Passed    6.71 sec
+
+100% tests passed, 0 tests failed out of 3
+
+Total Test time (real) =   6.94 sec
