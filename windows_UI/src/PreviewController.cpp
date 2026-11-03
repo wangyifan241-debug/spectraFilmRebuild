@@ -155,6 +155,11 @@ void PreviewController::accept(Reply reply) {
         edit_store_.updateCatalog(catalog_);
         for(auto& item:library_)if(item.material_blocked){const auto restored=edit_store_.load(item.url,catalog_);item.material_blocked=restored.material_unavailable;item.save_blocked=restored.blocked;item.save_warning=restored.warning;if(restored.state){item.settings=restored.state->settings;item.mode=restored.state->mode;item.geometry=restored.state->geometry;item.develop=restored.state->develop;item.has_stored=true;}}
         loadSettings(desired,mode);emit catalogChanged();emit materialsChanged();status_=QStringLiteral("材料目录已更新；历史版本保留，未替换当前照片");
+    } else if(reply.operation=="process") {
+        if(extra_settings_.y_filter_shift!=0||extra_settings_.m_filter_shift!=0) {
+            extra_settings_.y_filter_shift=0;extra_settings_.m_filter_shift=0;
+            changed("process");
+        } else status_=QStringLiteral("Process complete: neutral filter pack");
     } else if(reply.operation=="scene-measure"||reply.operation=="scene-fit") {
         scene_report_=reply.scene;scene_reference_=frame_;measured_settings_=settings();
         const auto fit=scene_report_.value("fit").toMap();
@@ -624,6 +629,21 @@ QVariantMap PreviewController::sceneReport() const {
     return result;
 }
 void PreviewController::measureScene(){requestScene(extra_settings_.placement.highlight_pull_back,extra_settings_.placement.shadow_pull_back,false,false);}
+void PreviewController::process() {
+    if(!frame_||busy_||dirty()||dialog_open_)return;
+    endEditGesture();
+    const auto held=frame_;const auto gen=++generation_;
+    submit([held,gen](auto& host){
+        Reply r;r.generation=gen;r.operation="process";
+        try {
+            QJsonParseError error;
+            const auto doc=QJsonDocument::fromJson(QByteArray::fromStdString(host.solve(held)),&error);
+            if(error.error!=QJsonParseError::NoError||!doc.isObject()||!doc.object().value("solved_params").isObject())
+                throw std::runtime_error("Invalid Process solve response");
+        }catch(const std::exception& e){r.error=text(e.what());}
+        return r;
+    },QStringLiteral("Processing..."),"process");
+}
 void PreviewController::fitScene(double h,double s,bool automatic){requestScene(h,s,automatic,true);}
 void PreviewController::requestScene(double h,double s,bool automatic,bool applyFit) {
     if(!frame_||busy_||dirty()||dialog_open_||!std::isfinite(h)||!std::isfinite(s)||h<0||h>8||s<0||s>8)return;

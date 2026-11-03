@@ -682,6 +682,19 @@ void PreviewHost::export_tiff(const Frame& frame, const fs::path& destination) c
     require(written, "TIFF export: " + error);
 }
 
+std::string PreviewHost::solve(const FramePtr& snapshot) {
+    require(snapshot&&snapshot->decoded_,"Process requires a decoded frame");
+    const auto& s=snapshot->settings;
+    const bool scan=validate_settings(s,impl_->catalog);
+    impl_->session.reset();
+    auto probe=open_session(impl_->engine.get(),*snapshot->prepared_,s,scan,monochrome(s,impl_->catalog),snapshot->prophoto());
+    char* raw=nullptr;
+    const auto status=spk_solve(probe.get(),"both",&raw);
+    std::unique_ptr<char,decltype(&spk_string_free)> owned(raw,spk_string_free);
+    require(status==SPK_OK&&raw,"Process: "+std::string(spk_last_error(impl_->engine.get())));
+    return std::string(raw);
+}
+
 std::string PreviewHost::scene_latitude(const FramePtr& snapshot,const std::string& request) {
     require(snapshot&&snapshot->decoded_,"Scene measurement requires a decoded frame");
     const auto& s=snapshot->settings;

@@ -40,6 +40,17 @@ int main(int argc,char** argv) {
         PreviewController c(resources,nullptr,{},edits);idle(c);
         c.openRaw(QUrl::fromLocalFile(source));idle(c);
         c.setAdjustment("grainActive",false);c.setAdjustment("glareActive",false);idle(c);
+        // Process resets only relative enlarger offsets; one undo restores both.
+        c.setAdjustment("yFilterShift",.2);c.setAdjustment("mFilterShift",-.15);idle(c);
+        const auto shifted=c.frame()->settings;
+        c.process();idle(c);
+        check(c.frame()->settings.y_filter_shift==0&&c.frame()->settings.m_filter_shift==0,"Process did not neutralize Y/M");
+        check(c.frame()->settings.film_stock==shifted.film_stock&&c.frame()->settings.film_exposure_ev==shifted.film_exposure_ev,"Process changed film placement/material");
+        c.undo();idle(c);
+        check(c.frame()->settings.y_filter_shift==.2&&c.frame()->settings.m_filter_shift==-.15,"Process undo did not restore both offsets");
+        c.redo();idle(c);
+        check(c.frame()->settings.y_filter_shift==0&&c.frame()->settings.m_filter_shift==0,"Process redo failed");
+        c.flushEdits();
         const auto initial=c.frame();const auto initialImage=c.previewImage();const auto original=c.originalImage();
         c.flushEdits();desktop::editing::Store store(edits);
         const auto storePath=store.filePath(QUrl::fromLocalFile(source));const auto initialEdits=bytes(storePath);
