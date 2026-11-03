@@ -123,6 +123,8 @@ public:
     io::RawMetadata metadata;
     io::RawDecodeTimings decode_timings;
     Timings timings;
+    // Immutable evidence from the session that actually rendered this frame.
+    std::string resolved_params, render_progress, process_report;
     // Normalised picture quad on the film canvas, from the engine that drew it.
     std::array<double,8> film_gate{};
     std::array<double,8> film_gate_b{};
@@ -210,8 +212,8 @@ public:
     FramePtr render_original(const FramePtr& snapshot, bool negative_scan = false);
     // Measure/fit the supplied immutable decode, never a possibly newer live
     // session or a reread of its path. No render setting is committed here.
-    // Read-only Process probe on the immutable shown frame.
-    std::string solve(const FramePtr& snapshot);
+    // Solve and reprint the shown frame on the interactive session.
+    FramePtr process(const FramePtr& snapshot);
     std::string scene_latitude(const FramePtr& snapshot, const std::string& request="{}");
     // Exports exactly the supplied sRGB frame, even after a newer one opened.
     // ProPhoto frames are refused here: use the colour-managed FrameOutput.

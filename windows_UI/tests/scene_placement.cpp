@@ -31,15 +31,43 @@ QByteArray bytes(const QString& path) {QFile file(path);if(!file.open(QIODevice:
 int main(int argc,char** argv) {
     QCoreApplication app(argc,argv);
     try {
-        check(argc==2,"Expected bundled resource directory");
+        check(argc==2||argc==3,"Expected resources and optional owned-copy Sony RAW fixture");
         const std::filesystem::path resources(app.arguments()[1].toStdWString());
         QTemporaryDir owned;check(owned.isValid(),"Cannot create owned fixture directory");
         const auto source=owned.filePath("owned.dng"),second=owned.filePath("second.dng"),edits=owned.filePath("edits");
-        writeSyntheticDng(source);writeSyntheticDng(second,160,96);
+        if(argc==3)check(QFile::copy(app.arguments()[2],source),"Cannot copy external RAW into isolated fixture");
+        else writeSyntheticDng(source);
+        writeSyntheticDng(second,160,96);
         const auto rawBytes=bytes(source);
         PreviewController c(resources,nullptr,{},edits);idle(c);
         c.openRaw(QUrl::fromLocalFile(source));idle(c);
         c.setAdjustment("grainActive",false);c.setAdjustment("glareActive",false);idle(c);
+        // Controlled one-stop change of the SAME decoded scene. This tests
+        // linear-radiance metering, not two unrelated photographs or recipes.
+        {
+            const auto& decoded=c.frame()->original();
+            const unsigned w=std::min(128u,decoded.width),h=std::min(128u,decoded.height);
+            std::vector<float> meterPixels(size_t(w)*h*3);
+            for(unsigned y=0;y<h;++y)for(unsigned x=0;x<w;++x)for(unsigned k=0;k<3;++k)
+                meterPixels[(size_t(y)*w+x)*3+k]=decoded.rgb[(size_t(y*decoded.height/h)*decoded.width+x*decoded.width/w)*3+k];
+            const auto resourcePath=resources.u8string();
+            std::unique_ptr<spk_engine,decltype(&spk_engine_destroy)> meterEngine(spk_engine_create(reinterpret_cast<const char*>(resourcePath.c_str()),nullptr),spk_engine_destroy);
+            check(bool(meterEngine),"Cannot create independent exposure measurement session");
+            double firstEV=0;
+            for(unsigned pass=0;pass<2;++pass) {
+                if(pass)for(auto& v:meterPixels)v*=.5f;
+                spk_image input{meterPixels.data(),w,h,3};
+                std::unique_ptr<spk_session,decltype(&spk_session_release)> meterSession(spk_open(meterEngine.get(),&input,"{\"input_color_space\":\"ProPhoto RGB\",\"input_cctf_decoding\":false}",nullptr),spk_session_release);
+                check(bool(meterSession),"Cannot open controlled exposure measurement");
+                char* raw=nullptr;check(spk_solve(meterSession.get(),"exposure",&raw)==SPK_OK&&raw,"Controlled exposure solve failed");
+                std::unique_ptr<char,decltype(&spk_string_free)> reply(raw,spk_string_free);
+                const auto params=QJsonDocument::fromJson(QByteArray(raw)).object()["solved_params"].toObject();
+                check(params["exposure_compensation_ev"].isDouble(),"No measured exposure baseline");
+                const auto ev=params["exposure_compensation_ev"].toDouble();
+                if(!pass)firstEV=ev;else check(std::abs((ev-firstEV)-1)<1e-4,"One-stop scene gain did not shift auto exposure by one stop");
+            }
+        }
+
         // Process resets only relative enlarger offsets; one undo restores both.
         c.setAdjustment("yFilterShift",.2);c.setAdjustment("mFilterShift",-.15);idle(c);
         const auto shifted=c.frame()->settings;
@@ -50,10 +78,29 @@ int main(int argc,char** argv) {
         check(c.frame()->settings.y_filter_shift==.2&&c.frame()->settings.m_filter_shift==-.15,"Process undo did not restore both offsets");
         c.redo();idle(c);
         check(c.frame()->settings.y_filter_shift==0&&c.frame()->settings.m_filter_shift==0,"Process redo failed");
+        c.process();idle(c);
+        const auto processFrame=c.frame();
+        const auto processReport=QJsonDocument::fromJson(c.processDiagnostics().toUtf8()).object();
+        const auto solved=processReport["solve"].toObject()["solved_params"].toObject();
+        const auto actual=processReport["resolved"].toObject();
+        for(const char* key:{"c_filter_neutral","m_filter_neutral","y_filter_neutral"})
+            check(solved[key].isDouble()&&solved[key]==actual[key],"Solved pack did not reach the actual Vulkan reprint");
+        const auto autoMeterEV=solved["exposure_compensation_ev"].toDouble();
+        check(solved["exposure_compensation_ev"].isDouble()&&std::isfinite(autoMeterEV),"Missing measured auto exposure");
+        const auto applied=processReport["render_progress"].toObject()["auto_exposure_ev"];
+        check(applied.isDouble()&&std::abs(applied.toDouble()-autoMeterEV)<1e-6,"Reprint did not use solved auto-exposure baseline");
+        c.process();idle(c);
+        check(c.frame()!=processFrame,"Neutral Process skipped actual reprint");
+        const auto repeated=QJsonDocument::fromJson(c.processDiagnostics().toUtf8()).object();
+        check(!repeated["changed"].toBool(),"Repeated Process accumulated a parameter change");
+        check(repeated["solve"].toObject()["solved_params"].toObject()==solved,"Repeated Process drifted its baseline");
+        check(repeated["resolved"].toObject()==actual,"Repeated Process changed effective physical parameters");
+        check(c.previewImage()==desktop::output::displayFrame(processFrame,{}),"Repeated deterministic Process changed output pixels");
         c.flushEdits();
         const auto initial=c.frame();const auto initialImage=c.previewImage();const auto original=c.originalImage();
         c.flushEdits();desktop::editing::Store store(edits);
         const auto storePath=store.filePath(QUrl::fromLocalFile(source));const auto initialEdits=bytes(storePath);
+        check(QFile::exists(storePath+".process.json"),"Derived exposure baseline diagnostics were not persisted");
         const auto couldUndo=c.canUndo();
         c.measureScene();idle(c);
         const auto measured=c.sceneReport(),scene=measured.value("scene").toMap();
@@ -92,7 +139,17 @@ int main(int argc,char** argv) {
         c.undo();idle(c);check(c.previewImage()==fittedImage,"Reset was not undoable");
         const auto destination=owned.filePath("fitted.png");
         c.exportImage(QUrl::fromLocalFile(destination),1,95,0);idle(c);
-        check(QImageReader(destination).read().convertToFormat(QImage::Format_ARGB32)==fittedImage,"Export omitted or changed scene placement");
+        auto expectedExport=fittedImage;
+        if(argc==3) {
+            desktop::PreviewHost exportProbe(resources,true);
+            const auto full=exportProbe.render_original(c.frame());
+            expectedExport=desktop::output::displayFrame(full,{});
+            const auto nativeParams=QJsonDocument::fromJson(QByteArray::fromStdString(full->resolved_params)).object();
+            const auto liveParams=QJsonDocument::fromJson(QByteArray::fromStdString(c.frame()->resolved_params)).object();
+            for(const char* key:{"c_filter_neutral","m_filter_neutral","y_filter_neutral","exposure_compensation_ev","y_filter_shift","m_filter_shift"})
+                check(nativeParams[key]==liveParams[key],"Native export reconstructed different physical parameters");
+        }
+        check(QImageReader(destination).read().convertToFormat(QImage::Format_ARGB32)==expectedExport,"Export omitted or changed scene placement");
         c.flushEdits();
         PreviewController reopened(resources,nullptr,{},edits);idle(reopened);
         reopened.openRaw(QUrl::fromLocalFile(source));idle(reopened);
@@ -101,8 +158,11 @@ int main(int argc,char** argv) {
         c.setAdjustment("filmExposureEv",.5);idle(c);
         check(!c.sceneReport().value("available").toBool(),"Old measurement survived a changed input exposure");
         c.measureScene();idle(c);check(c.sceneReport().value("available").toBool(),"Updated settings could not be remeasured");
+        const auto beforeAutomatic=c.frame();
         c.fitScene(0,0,true);idle(c);
-        check(c.sceneReport().value("fit").toMap().value("valid").toBool(),"Automatic suggestion failed for owned scene");
+        const bool autoValid=c.sceneReport().value("fit").toMap().value("valid").toBool();
+        if(argc==2)check(autoValid,"Automatic suggestion failed for owned synthetic scene");
+        else if(!autoValid)check(c.frame()==beforeAutomatic&&!c.dirty(),"Real-scene fit refusal changed its recipe");
         c.openRaw(QUrl::fromLocalFile(second));idle(c);
         check(!c.sceneReport().value("available").toBool(),"Measurement was retargeted to another image");
         check(bytes(source)==rawBytes,"Scene workflow changed original RAW bytes");

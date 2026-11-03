@@ -73,7 +73,7 @@ bool check_fir_boundaries(spk::gpu::Gpu* gpu, std::string& error) {
     // The original smoke had period 4 for both reflect and mirror. A negative
     // value accidentally treated as unsigned has the same remainder for that
     // power of two, hiding the defect. Odd lengths and bands do not hide it.
-    const uint32_t shapes[][2] = {{1, 1}, {1, 7}, {7, 1}, {7, 11}, {19, 13}, {129, 193}};
+    const uint32_t shapes[][2] = {{1, 1}, {1, 7}, {7, 1}, {7, 11}, {19, 13}, {129, 193}, {257, 263}};
     const uint32_t radii[] = {1, 2, 9};
     const float mix[3] = {0.5f, 1.0f, 2.0f};
     constexpr float sentinel = -12345.0f;
@@ -212,7 +212,7 @@ bool check_iir(spk::gpu::Gpu* gpu, std::string& error) {
     // recurrence initialization, while 257 crosses a workgroup boundary and
     // gives the nearly-unit poles enough distance to reveal precision loss.
     const uint32_t shapes[][2] = {
-        {1, 1}, {1, 2}, {2, 1}, {2, 3}, {3, 2}, {5, 7}, {3, 257}, {257, 3}
+        {1, 1}, {1, 2}, {2, 1}, {2, 3}, {3, 2}, {5, 7}, {3, 257}, {257, 3}, {37, 401}, {401, 37}
     };
     const uint32_t masks[] = {0u, 2u, 7u};  // zero, one, and three active channels
     size_t cases = 0;

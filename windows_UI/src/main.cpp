@@ -107,8 +107,54 @@ private:
     }
     void step(const QString& operation,bool ok) {
         if(done_)return;
+        if(stage_==-10) {
+            if(!require(operation=="render"&&ok,"process_shift_render"))return;
+            held_=controller_.frame();stage_=-11;
+            later([this]{
+                auto* button=window_.findChild<QObject*>("processButton");
+                require(button&&button->property("enabled").toBool()&&QMetaObject::invokeMethod(button,"clicked"),"qml_process_button");
+            });return;
+        }
+        if(stage_==-11) {
+            if(!require(operation=="process"&&ok&&controller_.frame()!=held_&&controller_.frame()->settings.y_filter_shift==0&&controller_.frame()->settings.m_filter_shift==0,"process_actual_reprint"))return;
+            stage_=-12;controller_.undo();return;
+        }
+        if(stage_==-12) {
+            if(!require(operation=="render"&&ok&&controller_.frame()->settings.y_filter_shift==.2&&controller_.frame()->settings.m_filter_shift==-.15,"process_undo_both_offsets"))return;
+            stage_=-13;controller_.redo();return;
+        }
+        if(stage_==-13) {
+            if(!require(operation=="render"&&ok&&controller_.frame()->settings.y_filter_shift==0&&controller_.frame()->settings.m_filter_shift==0,"process_redo_both_offsets"))return;
+            held_=controller_.frame();stage_=-14;controller_.process();return;
+        }
+        if(stage_==-14) {
+            if(!require(operation=="process"&&ok&&controller_.frame()!=held_,"neutral_process_still_reprints"))return;
+            const auto diagnostic=QJsonDocument::fromJson(controller_.processDiagnostics().toUtf8()).object();
+            const auto solved=diagnostic["solve"].toObject()["solved_params"].toObject();
+            const auto resolved=diagnostic["resolved"].toObject();
+            for(const char* key:{"c_filter_neutral","m_filter_neutral","y_filter_neutral"})
+                if(!require(solved[key].isDouble()&&solved[key]==resolved[key],QString("process_rendered_")+key))return;
+            later([this]{
+                auto* button=window_.findChild<QObject*>("processDiagnosticsButton");
+                auto* dialog=window_.findChild<QObject*>("processDiagnosticsDialog");
+                if(!require(button&&dialog&&QMetaObject::invokeMethod(button,"clicked"),"qml_process_diagnostics_button"))return;
+                later([this,dialog]{
+                    auto* parent=dialog->property("parent").value<QQuickItem*>();
+                    const auto origin=parent?parent->mapToScene(QPointF(dialog->property("x").toDouble(),dialog->property("y").toDouble())):QPointF(-1,-1);
+                    if(!require(parent&&origin.x()>=0&&origin.y()>=0&&origin.x()+dialog->property("width").toDouble()<=window_.width()+1&&origin.y()+dialog->property("height").toDouble()<=window_.height()+1,"process_diagnostics_inside_main_window"))return;
+                    if(!require(dialog->property("visible").toBool(),"process_diagnostics_visible")||!capture("process-diagnostics"))return;
+                    QMetaObject::invokeMethod(dialog,"close");
+                    later([this]{stage_=0;step("open",true);});
+                });
+            });return;
+        }
         if(stage_==0) {
             if(!require(operation=="open"&&ok&&controller_.hasFrame(),"open_raw"))return;
+            if(!process_ui_checked_) {
+                process_ui_checked_=true;stage_=-10;
+                controller_.setAdjustment("yFilterShift",.2);controller_.setAdjustment("mFilterShift",-.15);
+                return;
+            }
             original_=controller_.frame();original_hash_=fingerprint(original_);
             checks_["width"]=int(original_->width());checks_["height"]=int(original_->height());
             checks_["film_count"]=controller_.films().size();checks_["paper_count"]=controller_.papers().size();
@@ -657,7 +703,7 @@ private:
     int remembered_paper_=0,negative_film_=0,slide_index_=0;double remembered_ev_=0;
     const QStringList slide_ids_{"fujifilm_provia_100f","fujifilm_velvia_100","kodak_ektachrome_100","kodak_kodachrome_64"};
     QJsonArray slide_results_;
-    bool headroom_slides_=false;
+    bool headroom_slides_=false,process_ui_checked_=false;
     QImage capture_;
     QImage comparison_base_;
     QByteArray batch_export_hash_;
