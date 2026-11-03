@@ -3,6 +3,7 @@
 #include <QCommandLineParser>
 #include <QCryptographicHash>
 #include <QDir>
+#include <QElapsedTimer>
 #include <QFile>
 #include <QGuiApplication>
 #include <QIcon>
@@ -165,7 +166,7 @@ private:
             });
         } else if(stage_==1) {
             if(!require(operation=="export"&&ok&&QFileInfo(output_+"/displayed-frame.tif").size()>0,"export_displayed_frame"))return;
-            stage_=2;controller_.setExposureEv(0.5);
+            stage_=2;brightness_wait_.start();controller_.setExposureEv(0.5);
             controller_.setDialogOpen(true);
             later([this]{
                 if(!require(!controller_.busy()&&!controller_.settingsEditable()&&controller_.dirty()&&
@@ -174,8 +175,20 @@ private:
                 if(!require(controller_.exposureEv()==0.5,"file_dialog_holds_selected_settings"))return;
                 controller_.setDialogOpen(false);
             },400);
-            QTimer::singleShot(5000,this,[this]{if(!done_&&stage_==2)finish(false,"automatic brightness preview did not run");});
+            // Exporting the original may release the preview GPU session.
+            // Rebuilding that session on a camera RAW is a full render, not a
+            // cached print edit. Use the controller gate's correctness deadline;
+            // keep the 5 s gate for the small synthetic/cached case.
+            const bool rebuild=original_->width()!=original_->source_width()||original_->height()!=original_->source_height();
+            const int deadline=rebuild?120000:5000;
+            checks_["brightness_after_export_deadline_ms"]=deadline;
+            QTimer::singleShot(deadline,this,[this]{if(!done_&&stage_==2){
+                checks_["brightness_timeout_busy"]=controller_.busy();
+                checks_["brightness_timeout_dirty"]=controller_.dirty();
+                finish(false,"timeout waiting for brightness preview after export");
+            }});
         } else if(stage_==2) {
+            checks_["brightness_after_export_elapsed_ms"]=double(brightness_wait_.elapsed());
             // A native export releases the preview GPU session to avoid
             // keeping two full negatives on a 4 GB device. The first edit
             // rebuilds it; subsequent print edits exercise cached reprint.
@@ -657,6 +670,7 @@ private:
     int remembered_paper_=0,negative_film_=0,slide_index_=0;double remembered_ev_=0;
     const QStringList slide_ids_{"fujifilm_provia_100f","fujifilm_velvia_100","kodak_ektachrome_100","kodak_kodachrome_64"};
     QJsonArray slide_results_;
+    QElapsedTimer brightness_wait_;
     bool headroom_slides_=false;
     QImage capture_;
     QImage comparison_base_;
