@@ -1,0 +1,4 @@
+'use strict';
+const fs=require('node:fs'),path=require('node:path');const {compare}=require('../../tools/phoenix-validation/png.cjs');
+const root=process.argv[2],report=JSON.parse(fs.readFileSync(path.join(root,'report.json'),'utf8')),results={status:'SOFTWARE_ABLATION_NOT_REAL_FILM_ERROR',models:{}};
+for(const id of ['harman_phoenix_200_exp_v1','harman_phoenix_ii_200_exp_v1']){const ref=fs.readFileSync(path.join(root,id+'-v1-optical-print.png'));let o={};for(const mode of ['no-unsharp','no-scanner-correction','no-gamut','direct-negative','no-auto-print-compensation','round4-scan'])o[mode]=compare(ref,fs.readFileSync(path.join(root,id+'-'+mode+'.png')));o.internal_gain=report[id+'-constants'];o.uninstrumented_control=report[id+'-uninstrumented-control'];results.models[id]=o;}console.log(JSON.stringify(results,null,2));

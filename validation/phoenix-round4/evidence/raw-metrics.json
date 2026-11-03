@@ -1,0 +1,23 @@
+{
+  "status": "SOFTWARE_COMPARISON_ONLY",
+  "real_film_metrics": null,
+  "integrity_files": 227,
+  "models": {
+    "harman_phoenix_200_exp_v1": {
+      "spectral_oracle_max_logT_error": 1.942592916526209e-7,
+      "sampled_total_density_min": 0.17834319826227707,
+      "sampled_transmission_max": 0.6632187591461989,
+      "endpoint_clamp_channel_fraction": 0.10670679644808743,
+      "negative_linear_channel_fraction": 0,
+      "above_one_linear_channel_fraction": 0.000004447005919854281
+    },
+    "harman_phoenix_ii_200_exp_v1": {
+      "spectral_oracle_max_logT_error": 2.0411679590992549e-7,
+      "sampled_total_density_min": 0.18038211347365346,
+      "sampled_transmission_max": 0.6601123933355599,
+      "endpoint_clamp_channel_fraction": 0.10707945554417123,
+      "negative_linear_channel_fraction": 0,
+      "above_one_linear_channel_fraction": 0.000004891706511839708
+    }
+  }
+}

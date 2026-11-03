@@ -300,6 +300,8 @@ struct OverscanLayout {
 };
 
 class Pipeline {
+    // Independent research harness; no new C ABI or default render mode.
+    friend struct ResearchPipelineAccess;
 public:
     Pipeline(gpu::Gpu* gpu, const Colour* colour, const Blob* blob, SetupCache* cache)
         : gpu_(gpu), colour_(colour), blob_(blob), cache_(cache), blur_(gpu) {}

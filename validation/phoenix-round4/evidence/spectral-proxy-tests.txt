@@ -1,0 +1,1 @@
+7 spectral proxy checks passed; synthetic inputs only

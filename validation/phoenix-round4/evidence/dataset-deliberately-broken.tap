@@ -1,0 +1,98 @@
+TAP version 13
+# Subtest: empty manifest is explicitly not verified
+ok 1 - empty manifest is explicitly not verified
+  ---
+  duration_ms: 1.4625
+  ...
+# Subtest: empty dataset cannot fit
+ok 2 - empty dataset cannot fit
+  ---
+  duration_ms: 0.8049
+  ...
+# Subtest: same scene bracket across splits rejected
+not ok 3 - same scene bracket across splits rejected
+  ---
+  duration_ms: 12.6413
+  failureType: 'testCodeFailure'
+  error: 'Missing expected exception.'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+  operator: 'throws'
+  stack: |-
+    C:\Users\Strickland\.codex\worktrees\phoenix-round4\SpektraLab\build\round4\dataset-counterfactual\tests.cjs:8:78
+    fixture (C:\Users\Strickland\.codex\worktrees\phoenix-round4\SpektraLab\build\round4\dataset-counterfactual\tests.cjs:7:969)
+    TestContext.<anonymous> (C:\Users\Strickland\.codex\worktrees\phoenix-round4\SpektraLab\build\round4\dataset-counterfactual\tests.cjs:8:54)
+    Test.runInAsyncScope (node:async_hooks:203:9)
+    Test.run (node:internal/test_runner/test:573:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:318:18)
+    Test.postRun (node:internal/test_runner/test:642:19)
+    Test.run (node:internal/test_runner/test:601:10)
+    async Test.processPendingSubtests (node:internal/test_runner/test:318:7)
+  ...
+# Subtest: same roll different scenes across splits rejected
+not ok 4 - same roll different scenes across splits rejected
+  ---
+  duration_ms: 4.9866
+  failureType: 'testCodeFailure'
+  error: 'Missing expected exception.'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+  operator: 'throws'
+  stack: |-
+    C:\Users\Strickland\.codex\worktrees\phoenix-round4\SpektraLab\build\round4\dataset-counterfactual\tests.cjs:9:86
+    fixture (C:\Users\Strickland\.codex\worktrees\phoenix-round4\SpektraLab\build\round4\dataset-counterfactual\tests.cjs:7:969)
+    TestContext.<anonymous> (C:\Users\Strickland\.codex\worktrees\phoenix-round4\SpektraLab\build\round4\dataset-counterfactual\tests.cjs:9:62)
+    Test.runInAsyncScope (node:async_hooks:203:9)
+    Test.run (node:internal/test_runner/test:573:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:318:18)
+    Test.postRun (node:internal/test_runner/test:642:19)
+    Test.run (node:internal/test_runner/test:601:10)
+    async Test.processPendingSubtests (node:internal/test_runner/test:318:7)
+  ...
+# Subtest: tampered input rejected
+ok 5 - tampered input rejected
+  ---
+  duration_ms: 9.0405
+  ...
+# Subtest: unknown correction switch rejected
+ok 6 - unknown correction switch rejected
+  ---
+  duration_ms: 4.0566
+  ...
+# Subtest: synthetic fixture cannot pass evidence gate
+ok 7 - synthetic fixture cannot pass evidence gate
+  ---
+  duration_ms: 5.6442
+  ...
+# Subtest: renaming identities cannot reuse the same negative across splits
+not ok 8 - renaming identities cannot reuse the same negative across splits
+  ---
+  duration_ms: 5.2583
+  failureType: 'testCodeFailure'
+  error: 'Missing expected exception.'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+  operator: 'throws'
+  stack: |-
+    C:\Users\Strickland\.codex\worktrees\phoenix-round4\SpektraLab\build\round4\dataset-counterfactual\tests.cjs:14:101
+    fixture (C:\Users\Strickland\.codex\worktrees\phoenix-round4\SpektraLab\build\round4\dataset-counterfactual\tests.cjs:7:969)
+    TestContext.<anonymous> (C:\Users\Strickland\.codex\worktrees\phoenix-round4\SpektraLab\build\round4\dataset-counterfactual\tests.cjs:14:77)
+    Test.runInAsyncScope (node:async_hooks:203:9)
+    Test.run (node:internal/test_runner/test:573:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:318:18)
+    Test.postRun (node:internal/test_runner/test:642:19)
+    Test.run (node:internal/test_runner/test:601:10)
+    async Test.processPendingSubtests (node:internal/test_runner/test:318:7)
+  ...
+1..8
+# tests 8
+# suites 0
+# pass 5
+# fail 3
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 144.7369

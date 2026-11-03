@@ -1,0 +1,8 @@
+'use strict';
+const fs=require('node:fs'),path=require('node:path'),assert=require('node:assert/strict'),crypto=require('node:crypto');
+const dirs=process.argv.slice(2),reports=dirs.map(d=>JSON.parse(fs.readFileSync(path.join(d,'report.json'),'utf8')));assert.equal(dirs.length,3);assert.equal(new Set(reports.map(r=>r.provenance.executable_sha256)).size,1,'Bracket executable drift');const out={status:'SOFTWARE_EXPOSURE_BRACKET_NOT_REAL_FILM_VALIDATION',models:{}};
+for(const stock of ['harman_phoenix_200_exp_v1','harman_phoenix_ii_200_exp_v1']){
+const hashes=dirs.map(d=>crypto.createHash('sha256').update(fs.readFileSync(path.join(d,stock+'-scan-recipe.json'))).digest('hex'));assert.equal(new Set(hashes).size,1,'Scanner recalibrated to exposure edit');
+const rows=reports.map((r,i)=>{const raw=fs.readFileSync(path.join(dirs[i],stock+'-scan-linear-prophoto.f32')),width=r['input-linear-prophoto'].width,index=(12*width+128)*3;return {exposure_ev:r.provenance.exposure_ev,auto_gain:r[stock+'-constants'].internal_gain,no_compensation_gain:r[stock+'-no-auto-print-compensation-constants'].internal_gain,scan_gray_linear_prophoto:[0,1,2].map(c=>raw.readFloatLE(4*(index+c))),uninstrumented_control:r[stock+'-uninstrumented-control']};}).sort((a,b)=>a.exposure_ev-b.exposure_ev);
+assert.equal(new Set(rows.map(r=>JSON.stringify(r.no_compensation_gain))).size,1,'Disabled compensation gain drift');assert(new Set(rows.map(r=>JSON.stringify(r.auto_gain))).size>1,'Ablation did not exercise dynamic compensation');out.models[stock]={scanner_recipe_sha256:hashes[0],rows};}
+console.log(JSON.stringify(out,null,2));

@@ -1,0 +1,12 @@
+#version 450
+layout(local_size_x=256) in;
+layout(binding=0,std430) readonly buffer Input {float v[];} src;
+layout(binding=1,std430) readonly buffer Params {float v[];} p;
+layout(binding=2,std430) readonly buffer Meta {uint v[];} meta;
+layout(binding=3,std430) writeonly buffer Output {float v[];} dst;
+void main(){
+ uint i=gl_GlobalInvocationID.y*(gl_NumWorkGroups.x*gl_WorkGroupSize.x)+gl_GlobalInvocationID.x;
+ if(i>=meta.v[0])return;
+ vec3 x=exp(src.v[3*i]*2.302585093)*vec3(1,0,0)+exp(src.v[3*i+1]*2.302585093)*vec3(0,1,0)+exp(src.v[3*i+2]*2.302585093)*vec3(0,0,1);
+ for(uint c=0;c<3;c++)dst.v[3*i+c]=dot(x,vec3(p.v[3*c],p.v[3*c+1],p.v[3*c+2]));
+}
