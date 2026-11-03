@@ -10,6 +10,8 @@
 #include <QJsonObject>
 #include <QDate>
 #include <QRegularExpression>
+#include <QCoreApplication>
+#include <QProcess>
 #include <algorithm>
 #include <cmath>
 
@@ -19,9 +21,10 @@ namespace output=desktop::output;
 namespace editing=desktop::editing;
 QString text(const std::string& s) { return QString::fromUtf8(s.data(),qsizetype(s.size())); }
 std::filesystem::path path(const QUrl& u) { return std::filesystem::path(u.toLocalFile().toStdWString()); }
-QVariantList list(const std::vector<desktop::Stock>& stocks,const MaterialLibrary* materials=nullptr) {
+QVariantList list(const std::vector<desktop::Stock>& stocks,const MaterialLibrary* materials=nullptr,const PhoenixExperiments* phoenix=nullptr) {
     QVariantList result;
     for(const auto& s:stocks) {const auto entry=materials?materials->entry(text(s.id)):QVariantMap{};const bool enabled=entry.isEmpty()||(entry.value("available").toBool()&&entry.value("enabled").toBool()&&!entry.value("removed").toBool());result.push_back(QVariantMap{{"id",text(s.id)},{"name",text(s.label)+(enabled?QString():QStringLiteral("（已禁用/存档）"))},{"positive",s.is_positive},{"monochrome",s.is_monochrome},{"printFilm",entry.value("stage")=="printing"&&entry.value("support")=="film"},{"unfiltered2302",entry.value("logicalId")=="open_kodak_2302_5m_033"},{"multigrade",entry.value("logicalId")=="ilford_multigrade_iv_rc"},{"cine",entry.value("use")=="cine"},{"custom",entry.value("custom",false)},{"enabled",enabled}});}
+    if(phoenix)for(auto& value:result){auto row=value.toMap();const auto e=phoenix->entry(row["id"].toString());row["experimental"]=!e.isEmpty();if(!e.isEmpty()){row["name"]=e["name"];row["phoenixGeneration"]=e["generation"];row["phoenixRound"]=e["round"];}value=row;}
     return result;
 }
 bool sameSettings(desktop::RenderSettings a, desktop::RenderSettings b) {
@@ -73,6 +76,9 @@ PreviewController::PreviewController(std::filesystem::path resources,QObject* pa
     connect(&save_timer_,&QTimer::timeout,this,&PreviewController::flushEdits);
     try {
         const auto materialDirectory=editDirectory.isEmpty()?QStandardPaths::writableLocation(QStandardPaths::AppLocalDataLocation)+"/Materials":QDir(editDirectory).absoluteFilePath("Materials");
+        #ifdef SPK_PHOENIX_PREVIEW
+        phoenix_=std::make_unique<PhoenixExperiments>(QString::fromStdWString(resources.wstring()));
+#endif
         materials_=std::make_unique<MaterialLibrary>(QString::fromStdWString(resources.wstring()),materialDirectory);
         resources_=std::filesystem::path(materials_->runtimeResources().toStdWString());
     }catch(const std::exception& e){busy_=false;failed_=true;status_=QStringLiteral("材料库无法启动，现有文件未覆盖：")+text(e.what());QTimer::singleShot(0,this,[this]{emit stateChanged();emit initialized(false);});return;}
@@ -144,14 +150,14 @@ void PreviewController::accept(Reply reply) {
         status_=reply.error;
         if(frame_&&reply.operation!="export"&&reply.operation!="batch-export")restoreSettings();
     } else if(reply.operation=="init") {
-        ready_=true;catalog_=std::move(reply.catalog);decorateCatalog(catalog_);films_=list(catalog_.films,materials_.get());papers_=list(catalog_.papers,materials_.get());
+        ready_=true;catalog_=std::move(reply.catalog);decorateCatalog(catalog_);films_=list(catalog_.films,materials_.get(),phoenix_.get());papers_=list(catalog_.papers,materials_.get());
         restoreSettings();emit catalogChanged();status_=QStringLiteral("就绪 · 打开 RAW、JPG 或 PNG 开始");
         emit materialsChanged();
     } else if(reply.operation=="materials") {
         const auto desired=settings();const auto mode=decode_mode_?desktop::DecodeMode::headroom:desktop::DecodeMode::compatible16;
         const auto retainMissing=[&](auto& next,const auto& previous,const std::string& id){if(std::none_of(next.begin(),next.end(),[&](const auto& s){return s.id==id;})){const auto old=std::find_if(previous.begin(),previous.end(),[&](const auto& s){return s.id==id;});if(old!=previous.end())next.push_back(*old);}};
         retainMissing(reply.catalog.films,catalog_.films,desired.film_stock);retainMissing(reply.catalog.papers,catalog_.papers,desired.print_stock);
-        catalog_=std::move(reply.catalog);decorateCatalog(catalog_);films_=list(catalog_.films,materials_.get());papers_=list(catalog_.papers,materials_.get());
+        catalog_=std::move(reply.catalog);decorateCatalog(catalog_);films_=list(catalog_.films,materials_.get(),phoenix_.get());papers_=list(catalog_.papers,materials_.get());
         edit_store_.updateCatalog(catalog_);
         for(auto& item:library_)if(item.material_blocked){const auto restored=edit_store_.load(item.url,catalog_);item.material_blocked=restored.material_unavailable;item.save_blocked=restored.blocked;item.save_warning=restored.warning;if(restored.state){item.settings=restored.state->settings;item.mode=restored.state->mode;item.geometry=restored.state->geometry;item.develop=restored.state->develop;item.has_stored=true;}}
         loadSettings(desired,mode);emit catalogChanged();emit materialsChanged();status_=QStringLiteral("材料目录已更新；历史版本保留，未替换当前照片");
@@ -372,7 +378,13 @@ void PreviewController::setFilmIndex(int v){
             }
         if(nextPaper<0)return; // incomplete bundle: do not publish an invalid pair
     }
-    film_index_=v;paper_index_=nextPaper;changed("filmIndex");
+    const bool wasPhoenix=phoenix_&&!phoenixInfo().isEmpty();
+    film_index_=v;paper_index_=nextPaper;
+    if(phoenix_&&phoenix_->contains(text(film.id)))applyPhoenixPreset(phoenixFixedWindow()?2:0);
+#ifdef SPK_PHOENIX_PREVIEW
+    else if(wasPhoenix){extra_settings_.phoenix_print_mode=0;extra_settings_.m_filter_shift=0;extra_settings_.y_filter_shift=0;exposure_ev_=0;}
+#endif
+    changed("filmIndex");
 }
 void PreviewController::setPaperIndex(int v){
     if(!settingsEditable()||filmIsPositive()||v<0||v>=papers_.size()||v==paper_index_||
@@ -696,7 +708,7 @@ int PreviewController::addFile(const QUrl& url) {
     if(stored.state){item.settings=stored.state->settings;item.mode=stored.state->mode;item.geometry=stored.state->geometry;item.develop=stored.state->develop;item.has_stored=true;}
     // A new raster must not inherit the previous RAW's headroom preset.
     const auto suffix=info.suffix().toLower();
-    if(!stored.state&&(suffix=="jpg"||suffix=="jpeg"||suffix=="png"))item.mode=desktop::DecodeMode::compatible16;
+    if(!stored.state&&(suffix=="jpg"||suffix=="jpeg"||suffix=="png"||suffix=="tif"||suffix=="tiff"))item.mode=desktop::DecodeMode::compatible16;
     // Legacy records did not pin these fields. Resolve their existing IDs at
     // open, before producing a Frame, without rewriting the record on read.
     if(item.settings.film_profile_sha256.empty())for(const auto& stock:catalog_.films)if(stock.id==item.settings.film_stock)item.settings.film_profile_sha256=stock.profile_sha256;
@@ -750,7 +762,7 @@ void PreviewController::syncSelectedSettings(bool includeCrop) {
         next.settings.pair=item.settings.pair;if(next.settings.pair.active)next.settings.edge.format="135_half";
         if(item.settings.pair.active){next.geometry={};next.mode=item.mode;}
         const auto suffix=QFileInfo(item.url.toLocalFile()).suffix().toLower();
-        if(suffix=="jpg"||suffix=="jpeg"||suffix=="png")next.mode=desktop::DecodeMode::compatible16;
+        if(suffix=="jpg"||suffix=="jpeg"||suffix=="png"||suffix=="tif"||suffix=="tiff")next.mode=desktop::DecodeMode::compatible16;
         if(!includeCrop||item.settings.pair.active)next.geometry=item.geometry;
         if(sameState(itemState(item),next))continue;
         // Each recipient owns its own undo history, just like its settings.
@@ -979,3 +991,29 @@ void PreviewController::exportBatch(const QUrl& folder,int format,int quality,in
         return r;
     },QStringLiteral("正在批量导出…"),"batch-export");
 }
+
+bool PreviewController::phoenixExperimentalBuild() const {return bool(phoenix_);}
+bool PreviewController::phoenixFixedWindow() const {return qEnvironmentVariable("SPEKTRALAB_PHOENIX_FIXED_GAIN")=="1";}
+QVariantMap PreviewController::phoenixInfo() const {return phoenix_&&film_index_>=0&&film_index_<films_.size()?phoenix_->entry(films_[film_index_].toMap()["id"].toString()):QVariantMap{};}
+int PreviewController::phoenixPrintMode() const {
+#ifdef SPK_PHOENIX_PREVIEW
+return extra_settings_.phoenix_print_mode;
+#else
+return 0;
+#endif
+}
+void PreviewController::applyPhoenixPreset(int mode){
+#ifdef SPK_PHOENIX_PREVIEW
+ const auto e=phoenixInfo();if(e.isEmpty())return;auto preset=e["calibration"].toMap();if(mode==1&&preset.isEmpty())throw std::runtime_error("This Round 2 candidate has no frozen neutral calibration; use Frozen Print");
+ for(int i=0;i<papers_.size();++i)if(papers_[i].toMap()["id"]=="kodak_portra_endura")paper_index_=i;
+ extra_settings_.phoenix_print_mode=mode;extra_settings_.m_filter_shift=mode==1?preset["m_filter_shift"].toDouble():0;extra_settings_.y_filter_shift=mode==1?preset["y_filter_shift"].toDouble():0;exposure_ev_=mode==1?-std::log2(preset["print_exposure"].toDouble()):0;
+ extra_settings_.grain_active=false;extra_settings_.halation_active=false;extra_settings_.glare_active=false;
+#endif
+}
+void PreviewController::setPhoenixPrintMode(int mode){
+ if(!settingsEditable()||!phoenix_||phoenixInfo().isEmpty()||mode<0||mode>2)return;
+ if(mode==2&&!phoenixFixedWindow()){if(!frame_)return;QStringList args{"--fixed-gain","--open",QString::fromStdWString(frame_->source.wstring()),"--phoenix-stock",phoenixInfo()["id"].toString()};if(!QProcess::startDetached(QCoreApplication::applicationFilePath(),args)) {status_="Cannot start isolated Fixed Internal Gain viewer";emit stateChanged();}emit settingsChanged();return;}
+ if(phoenixFixedWindow()&&mode!=2)return;
+ try{applyPhoenixPreset(mode);changed("phoenixPrintMode");}catch(const std::exception& e){status_=text(e.what());emit settingsChanged();emit stateChanged();}
+}
+void PreviewController::resetPhoenixV1(){if(!phoenix_||phoenixInfo().isEmpty())return;const auto parent=phoenixInfo()["parent"].toString();for(int i=0;i<films_.size();++i)if(films_[i].toMap()["id"]==parent){if(i==film_index_)setPhoenixPrintMode(phoenixFixedWindow()?2:0);else setFilmIndex(i);return;}}

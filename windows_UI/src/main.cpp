@@ -691,7 +691,15 @@ int main(int argc,char** argv) {
                        {"edit-store","Override the per-photo edit directory (tests use an isolated directory)","directory"},
                        {"self-test","Run real RAW frontend checks and save a report in a NEW directory","directory"},
                        {"reject","Unsupported RAW for the failed-open check","file"}});
+    #ifdef SPK_PHOENIX_PREVIEW
+    parser.addOption({"fixed-gain","Open an isolated Research Only fixed internal gain window"});
+    parser.addOption({"phoenix-stock","Initial experimental stock ID","id"});
+#endif
     parser.process(app);
+#ifdef SPK_PHOENIX_PREVIEW
+    qputenv("SPEKTRALAB_PHOENIX_FIXED_GAIN",parser.isSet("fixed-gain")?"1":"0");
+    app.setApplicationName(parser.isSet("fixed-gain")?"SpektraLab Phoenix Fixed Gain Research 0.1":"SpektraLab Phoenix Experimental Preview 0.1");
+#endif
     const auto resources=parser.isSet("resources")?parser.value("resources"):QCoreApplication::applicationDirPath()+"/resources";
     const bool testing=parser.isSet("self-test");
     const bool snapshot=parser.isSet("snapshot");
@@ -713,6 +721,9 @@ int main(int argc,char** argv) {
     auto failDisplay=std::make_shared<bool>(false);
     PreviewController controller(std::filesystem::path(resources.toStdWString()),nullptr,
         [failDisplay](const auto& frame){if(*failDisplay){*failDisplay=false;throw std::runtime_error("Injected display publication failure");}return PreviewController::imageFromFrame(frame);},editDirectory);
+    #ifdef SPK_PHOENIX_PREVIEW
+    if(parser.isSet("phoenix-stock"))QObject::connect(&controller,&PreviewController::sourceOpened,&app,[&controller,&parser]{controller.chooseMaterial(parser.value("phoenix-stock"));});
+#endif
     qmlRegisterType<FrameCanvas>("SpektraLab.Native",1,0,"FrameCanvas");
     QQmlApplicationEngine engine;engine.rootContext()->setContextProperty("preview",&controller);
     QObject::connect(&engine,&QQmlApplicationEngine::objectCreationFailed,&app,[]{QCoreApplication::exit(2);},Qt::QueuedConnection);

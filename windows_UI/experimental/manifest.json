@@ -1,0 +1,499 @@
+{
+  "resource_hashes": {
+    "spektrafilm_constants.bin": "f2c06600606fa169171f58b6639d2669f372a2b39ebe9c72e3edeff5f6d7d31d",
+    "print_luts.json": "27b43228c85e55ffaa82079a696f579ef3c00ce057a27f58f11fbc3e0e26f589",
+    "neutral_print_filters.json": "5969780eef7c0ab45aaceed0982d9fc9df0294f4ac8ccf814b51387dca7920e6"
+  },
+  "format": "SpektraLab.PhoenixExperimentalPreview",
+  "version": 1,
+  "research_commit": "73784949cda9a99e859d3b3a82ac27784a5e7b3b",
+  "calibration_condition": "Endura/TH-KG3; fixed 0.18 gray EV0 calibration. Starting preset only, not best calibration for arbitrary photographs.",
+  "photographic_fidelity_validated": false,
+  "photographic_gate": "Not Verified",
+  "entries": [
+    {
+      "id": "harman_phoenix_200_exp_v1",
+      "round": 1,
+      "generation": 1,
+      "version": "0.1.0",
+      "sha256": "f748850ead1925865f896aac3cce9d7f248918d1b0f4240fa947817001f0f69d",
+      "source": "engine/resources_experimental/profiles/harman_phoenix_200_exp_v1.json",
+      "parent": "harman_phoenix_200_exp_v1",
+      "description": "Frozen Experimental v1; Gold dye proxy and estimated base",
+      "calibration": {
+        "m_filter_shift": 0,
+        "y_filter_shift": 0,
+        "print_exposure": 0.9659363289248455,
+        "filter_shift_scale": 60
+      },
+      "fixed_gain": [
+        0.40848703560034955,
+        0.40848703560034955,
+        0.40848703560034955
+      ],
+      "photographic_fidelity_validated": false,
+      "photographic_gate": "Not Verified"
+    },
+    {
+      "id": "harman_phoenix_ii_200_exp_v1",
+      "round": 1,
+      "generation": 2,
+      "version": "0.1.0",
+      "sha256": "39a8c1cd3b0fe0a09db01f1873306948c5361f528d30de1d8dbce3fc3ee3dd0e",
+      "source": "engine/resources_experimental/profiles/harman_phoenix_ii_200_exp_v1.json",
+      "parent": "harman_phoenix_ii_200_exp_v1",
+      "description": "Frozen Experimental v1; Gold dye proxy and estimated base",
+      "calibration": {
+        "m_filter_shift": 0,
+        "y_filter_shift": 0,
+        "print_exposure": 0.9794202975869268,
+        "filter_shift_scale": 60
+      },
+      "fixed_gain": [
+        0.32690421903309935,
+        0.32690421903309935,
+        0.32690421903309935
+      ],
+      "photographic_fidelity_validated": false,
+      "photographic_gate": "Not Verified"
+    },
+    {
+      "id": "phx_200_d55_r2",
+      "round": 2,
+      "generation": 1,
+      "version": "0.2.0",
+      "sha256": "d0ba0b2272022a967ffdc26dffe6f78e83463bf02dbabf0a543b298f83c7f8ca",
+      "source": "validation/phoenix-round2/profiles/phx_200_d55_r2.json",
+      "parent": "harman_phoenix_200_exp_v1",
+      "description": "D55 normalization illumination",
+      "calibration": null,
+      "fixed_gain": [
+        0.40848703560034955,
+        0.40848703560034955,
+        0.40848703560034955
+      ],
+      "photographic_fidelity_validated": false,
+      "photographic_gate": "Not Verified"
+    },
+    {
+      "id": "phx_200_linear_r2",
+      "round": 2,
+      "generation": 1,
+      "version": "0.2.0",
+      "sha256": "cdf690d60933d3376f52f41cf62628f38b5cd76957a5c1762041034d218252e6",
+      "source": "validation/phoenix-round2/profiles/phx_200_linear_r2.json",
+      "parent": "harman_phoenix_200_exp_v1",
+      "description": "Linear interpretation of relative spectral sensitivity",
+      "calibration": null,
+      "fixed_gain": [
+        0.40848703560034955,
+        0.40848703560034955,
+        0.40848703560034955
+      ],
+      "photographic_fidelity_validated": false,
+      "photographic_gate": "Not Verified"
+    },
+    {
+      "id": "phx_200_no_tungsten_r2",
+      "round": 2,
+      "generation": 1,
+      "version": "0.2.0",
+      "sha256": "38664869dc0bbe67786e79a26511168788783f5aae5b588564e0bdd60f14798c",
+      "source": "validation/phoenix-round2/profiles/phx_200_no_tungsten_r2.json",
+      "parent": "harman_phoenix_200_exp_v1",
+      "description": "Remove assumed tungsten division",
+      "calibration": null,
+      "fixed_gain": [
+        0.40848703560034955,
+        0.40848703560034955,
+        0.40848703560034955
+      ],
+      "photographic_fidelity_validated": false,
+      "photographic_gate": "Not Verified"
+    },
+    {
+      "id": "phx_200_shared_r2",
+      "round": 2,
+      "generation": 1,
+      "version": "0.2.0",
+      "sha256": "70352f0c331fd2100813125b69a90b00d0c26c66b9ec1d41a8cbb89db210efba",
+      "source": "validation/phoenix-round2/profiles/phx_200_shared_r2.json",
+      "parent": "harman_phoenix_200_exp_v1",
+      "description": "Shared channel sensitivity normalization",
+      "calibration": null,
+      "fixed_gain": [
+        0.40848703560034955,
+        0.40848703560034955,
+        0.40848703560034955
+      ],
+      "photographic_fidelity_validated": false,
+      "photographic_gate": "Not Verified"
+    },
+    {
+      "id": "phx_ii_d55_r2",
+      "round": 2,
+      "generation": 2,
+      "version": "0.2.0",
+      "sha256": "5d10f7090b9fc0f518c4c76d00ce0e9e2df62a0cbc102f4ff218401c700ff0c8",
+      "source": "validation/phoenix-round2/profiles/phx_ii_d55_r2.json",
+      "parent": "harman_phoenix_ii_200_exp_v1",
+      "description": "D55 normalization illumination",
+      "calibration": null,
+      "fixed_gain": [
+        0.32690421903309935,
+        0.32690421903309935,
+        0.32690421903309935
+      ],
+      "photographic_fidelity_validated": false,
+      "photographic_gate": "Not Verified"
+    },
+    {
+      "id": "phx_ii_linear_r2",
+      "round": 2,
+      "generation": 2,
+      "version": "0.2.0",
+      "sha256": "e09d6adff3ec55277bea02fe062483bfd1bfd1c3a00d02030a499d72dadafe01",
+      "source": "validation/phoenix-round2/profiles/phx_ii_linear_r2.json",
+      "parent": "harman_phoenix_ii_200_exp_v1",
+      "description": "Linear interpretation of relative spectral sensitivity",
+      "calibration": null,
+      "fixed_gain": [
+        0.32690421903309935,
+        0.32690421903309935,
+        0.32690421903309935
+      ],
+      "photographic_fidelity_validated": false,
+      "photographic_gate": "Not Verified"
+    },
+    {
+      "id": "phx_ii_shared_r2",
+      "round": 2,
+      "generation": 2,
+      "version": "0.2.0",
+      "sha256": "62af0482f131e74ff2c7cb3670a4fb6569ebc0d5f8943dafa2222ab798e6ae28",
+      "source": "validation/phoenix-round2/profiles/phx_ii_shared_r2.json",
+      "parent": "harman_phoenix_ii_200_exp_v1",
+      "description": "Shared channel sensitivity normalization",
+      "calibration": null,
+      "fixed_gain": [
+        0.32690421903309935,
+        0.32690421903309935,
+        0.32690421903309935
+      ],
+      "photographic_fidelity_validated": false,
+      "photographic_gate": "Not Verified"
+    },
+    {
+      "id": "phx_ii_width115_r2",
+      "round": 2,
+      "generation": 2,
+      "version": "0.2.0",
+      "sha256": "6430fb22dbfca0044f39317e100675c9832909e0479dc20cd9735cfb88ba9a64",
+      "source": "validation/phoenix-round2/profiles/phx_ii_width115_r2.json",
+      "parent": "harman_phoenix_ii_200_exp_v1",
+      "description": "Characteristic exposure width ×1.15",
+      "calibration": null,
+      "fixed_gain": [
+        0.32690421903309935,
+        0.32690421903309935,
+        0.32690421903309935
+      ],
+      "photographic_fidelity_validated": false,
+      "photographic_gate": "Not Verified"
+    },
+    {
+      "id": "phx_ii_width130_r2",
+      "round": 2,
+      "generation": 2,
+      "version": "0.2.0",
+      "sha256": "ddeb3f9cf1966c99cfe27d18d95e5cde5fdf03d786e5f8ee44ab309892f157d9",
+      "source": "validation/phoenix-round2/profiles/phx_ii_width130_r2.json",
+      "parent": "harman_phoenix_ii_200_exp_v1",
+      "description": "Characteristic exposure width ×1.30",
+      "calibration": null,
+      "fixed_gain": [
+        0.32690421903309935,
+        0.32690421903309935,
+        0.32690421903309935
+      ],
+      "photographic_fidelity_validated": false,
+      "photographic_gate": "Not Verified"
+    },
+    {
+      "id": "phx_200_base_amp010_r3",
+      "round": 3,
+      "generation": 1,
+      "version": "0.3.0",
+      "sha256": "ef3b4fd5a9e8416ddb2c425a3332aaeac5752932fe69d8cef05f37c57a7aea00",
+      "source": "validation/phoenix-round3/profiles/phx_200_base_amp010_r3.json",
+      "parent": "harman_phoenix_200_exp_v1",
+      "description": "D_base=0.18+0.10 Gaussian(550nm,65nm)",
+      "calibration": {
+        "m_filter_shift": 0.12000000000000001,
+        "y_filter_shift": 0.03,
+        "print_exposure": 0.9794202975869268,
+        "filter_shift_scale": 60
+      },
+      "fixed_gain": [
+        0.40848703560034955,
+        0.40848703560034955,
+        0.40848703560034955
+      ],
+      "photographic_fidelity_validated": false,
+      "photographic_gate": "Not Verified"
+    },
+    {
+      "id": "phx_200_base_center560_r3",
+      "round": 3,
+      "generation": 1,
+      "version": "0.3.0",
+      "sha256": "3f2eaadd148569ae2a4d7c9f4dda938d7f892714ae3d2193722faae350723167",
+      "source": "validation/phoenix-round3/profiles/phx_200_base_center560_r3.json",
+      "parent": "harman_phoenix_200_exp_v1",
+      "description": "D_base=0.18+0.20 Gaussian(560nm,65nm)",
+      "calibration": {
+        "m_filter_shift": 0,
+        "y_filter_shift": 0.03,
+        "print_exposure": 0.9659363289248455,
+        "filter_shift_scale": 60
+      },
+      "fixed_gain": [
+        0.40848703560034955,
+        0.40848703560034955,
+        0.40848703560034955
+      ],
+      "photographic_fidelity_validated": false,
+      "photographic_gate": "Not Verified"
+    },
+    {
+      "id": "phx_200_base_neutral_r3",
+      "round": 3,
+      "generation": 1,
+      "version": "0.3.0",
+      "sha256": "e1e0e1b7897323bb92140d66a0b74bcc87114cf4ce12f1307a1141ec293d23fb",
+      "source": "validation/phoenix-round3/profiles/phx_200_base_neutral_r3.json",
+      "parent": "harman_phoenix_200_exp_v1",
+      "description": "D_base=0.18 D",
+      "calibration": {
+        "m_filter_shift": 0.23,
+        "y_filter_shift": 0.03,
+        "print_exposure": 0.9659363289248455,
+        "filter_shift_scale": 60
+      },
+      "fixed_gain": [
+        0.40848703560034955,
+        0.40848703560034955,
+        0.40848703560034955
+      ],
+      "photographic_fidelity_validated": false,
+      "photographic_gate": "Not Verified"
+    },
+    {
+      "id": "phx_200_base_sigma075_r3",
+      "round": 3,
+      "generation": 1,
+      "version": "0.3.0",
+      "sha256": "624a9e85001bfff82b698d6360004de32e1789def0ab930f7bf56f0cf0966f12",
+      "source": "validation/phoenix-round3/profiles/phx_200_base_sigma075_r3.json",
+      "parent": "harman_phoenix_200_exp_v1",
+      "description": "D_base=0.18+0.20 Gaussian(550nm,75nm)",
+      "calibration": {
+        "m_filter_shift": 0.03,
+        "y_filter_shift": 0,
+        "print_exposure": 0.9659363289248455,
+        "filter_shift_scale": 60
+      },
+      "fixed_gain": [
+        0.40848703560034955,
+        0.40848703560034955,
+        0.40848703560034955
+      ],
+      "photographic_fidelity_validated": false,
+      "photographic_gate": "Not Verified"
+    },
+    {
+      "id": "phx_200_dye_nonnegative_r3",
+      "round": 3,
+      "generation": 1,
+      "version": "0.3.0",
+      "sha256": "1f71e94ce67e3266ca3175e2a1ccf270108eba93fbc571e6a06a035ddc1976ad",
+      "source": "validation/phoenix-round3/profiles/phx_200_dye_nonnegative_r3.json",
+      "parent": "harman_phoenix_200_exp_v1",
+      "description": "A=max(A_gold,0); nonnegative projection sensitivity, not Phoenix measured absorption",
+      "calibration": {
+        "m_filter_shift": -0.03,
+        "y_filter_shift": 0,
+        "print_exposure": 0.9794202975869268,
+        "filter_shift_scale": 60
+      },
+      "fixed_gain": [
+        0.40848703560034955,
+        0.40848703560034955,
+        0.40848703560034955
+      ],
+      "photographic_fidelity_validated": false,
+      "photographic_gate": "Not Verified"
+    },
+    {
+      "id": "phx_200_dye_portra_proxy_r3",
+      "round": 3,
+      "generation": 1,
+      "version": "0.3.0",
+      "sha256": "8295f38de88ff4f7af6f02966fd17295b16e4690b80c54c128ad3a2f202b545d",
+      "source": "validation/phoenix-round3/profiles/phx_200_dye_portra_proxy_r3.json",
+      "parent": "harman_phoenix_200_exp_v1",
+      "description": "replace entire dye basis with licensed Portra400 proxy; coefficient scale retained, compatibility unvalidated",
+      "calibration": {
+        "m_filter_shift": 0.03,
+        "y_filter_shift": 0.08,
+        "print_exposure": 0.9659363289248455,
+        "filter_shift_scale": 60
+      },
+      "fixed_gain": [
+        0.40848703560034955,
+        0.40848703560034955,
+        0.40848703560034955
+      ],
+      "photographic_fidelity_validated": false,
+      "photographic_gate": "Not Verified"
+    },
+    {
+      "id": "phx_ii_200_base_amp010_r3",
+      "round": 3,
+      "generation": 2,
+      "version": "0.3.0",
+      "sha256": "c8ccea50ed9ed2e70c21b01414f928aff6743fcb4d5826f74d2b5e2d6b6cad81",
+      "source": "validation/phoenix-round3/profiles/phx_ii_200_base_amp010_r3.json",
+      "parent": "harman_phoenix_ii_200_exp_v1",
+      "description": "D_base=0.18+0.10 Gaussian(550nm,65nm)",
+      "calibration": {
+        "m_filter_shift": 0.12000000000000001,
+        "y_filter_shift": 0.03,
+        "print_exposure": 0.9794202975869268,
+        "filter_shift_scale": 60
+      },
+      "fixed_gain": [
+        0.32690421903309935,
+        0.32690421903309935,
+        0.32690421903309935
+      ],
+      "photographic_fidelity_validated": false,
+      "photographic_gate": "Not Verified"
+    },
+    {
+      "id": "phx_ii_200_base_center560_r3",
+      "round": 3,
+      "generation": 2,
+      "version": "0.3.0",
+      "sha256": "21ec85f429a8861a576641cdad47be8ddd62dd46f598793824a91e5493f202fa",
+      "source": "validation/phoenix-round3/profiles/phx_ii_200_base_center560_r3.json",
+      "parent": "harman_phoenix_ii_200_exp_v1",
+      "description": "D_base=0.18+0.20 Gaussian(560nm,65nm)",
+      "calibration": {
+        "m_filter_shift": 0,
+        "y_filter_shift": 0.03,
+        "print_exposure": 0.9794202975869268,
+        "filter_shift_scale": 60
+      },
+      "fixed_gain": [
+        0.32690421903309935,
+        0.32690421903309935,
+        0.32690421903309935
+      ],
+      "photographic_fidelity_validated": false,
+      "photographic_gate": "Not Verified"
+    },
+    {
+      "id": "phx_ii_200_base_neutral_r3",
+      "round": 3,
+      "generation": 2,
+      "version": "0.3.0",
+      "sha256": "8a625cebffe2d2fe5161a25dda655e060414f51ef204fd6bc5bdae32ccf8c008",
+      "source": "validation/phoenix-round3/profiles/phx_ii_200_base_neutral_r3.json",
+      "parent": "harman_phoenix_ii_200_exp_v1",
+      "description": "D_base=0.18 D",
+      "calibration": {
+        "m_filter_shift": 0.23,
+        "y_filter_shift": 0.05,
+        "print_exposure": 0.9659363289248455,
+        "filter_shift_scale": 60
+      },
+      "fixed_gain": [
+        0.32690421903309935,
+        0.32690421903309935,
+        0.32690421903309935
+      ],
+      "photographic_fidelity_validated": false,
+      "photographic_gate": "Not Verified"
+    },
+    {
+      "id": "phx_ii_200_base_sigma075_r3",
+      "round": 3,
+      "generation": 2,
+      "version": "0.3.0",
+      "sha256": "1c707832562cd6068ee35371e53b74cab10ecb006b1dd7c767f2609e0945622e",
+      "source": "validation/phoenix-round3/profiles/phx_ii_200_base_sigma075_r3.json",
+      "parent": "harman_phoenix_ii_200_exp_v1",
+      "description": "D_base=0.18+0.20 Gaussian(550nm,75nm)",
+      "calibration": {
+        "m_filter_shift": 0.03,
+        "y_filter_shift": 0,
+        "print_exposure": 0.9794202975869268,
+        "filter_shift_scale": 60
+      },
+      "fixed_gain": [
+        0.32690421903309935,
+        0.32690421903309935,
+        0.32690421903309935
+      ],
+      "photographic_fidelity_validated": false,
+      "photographic_gate": "Not Verified"
+    },
+    {
+      "id": "phx_ii_200_dye_nonnegative_r3",
+      "round": 3,
+      "generation": 2,
+      "version": "0.3.0",
+      "sha256": "e0306b3e3b41eda28cdf95763b97aa945e49e9a589b78e6bbb2f939190e4fc1f",
+      "source": "validation/phoenix-round3/profiles/phx_ii_200_dye_nonnegative_r3.json",
+      "parent": "harman_phoenix_ii_200_exp_v1",
+      "description": "A=max(A_gold,0); nonnegative projection sensitivity, not Phoenix measured absorption",
+      "calibration": {
+        "m_filter_shift": -0.03,
+        "y_filter_shift": 0,
+        "print_exposure": 0.9794202975869268,
+        "filter_shift_scale": 60
+      },
+      "fixed_gain": [
+        0.32690421903309935,
+        0.32690421903309935,
+        0.32690421903309935
+      ],
+      "photographic_fidelity_validated": false,
+      "photographic_gate": "Not Verified"
+    },
+    {
+      "id": "phx_ii_200_dye_portra_proxy_r3",
+      "round": 3,
+      "generation": 2,
+      "version": "0.3.0",
+      "sha256": "dfeb9027d6d936dd455dd53b7d00ef93ac50b985ec137e72e21d271db5d32a13",
+      "source": "validation/phoenix-round3/profiles/phx_ii_200_dye_portra_proxy_r3.json",
+      "parent": "harman_phoenix_ii_200_exp_v1",
+      "description": "replace entire dye basis with licensed Portra400 proxy; coefficient scale retained, compatibility unvalidated",
+      "calibration": {
+        "m_filter_shift": -0.03,
+        "y_filter_shift": 0,
+        "print_exposure": 0.9794202975869268,
+        "filter_shift_scale": 60
+      },
+      "fixed_gain": [
+        0.32690421903309935,
+        0.32690421903309935,
+        0.32690421903309935
+      ],
+      "photographic_fidelity_validated": false,
+      "photographic_gate": "Not Verified"
+    }
+  ]
+}

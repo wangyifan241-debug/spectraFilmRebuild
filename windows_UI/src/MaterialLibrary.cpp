@@ -20,7 +20,11 @@ void require(bool ok,const QString& message){if(!ok)throw std::runtime_error(mes
 QString hash(const QByteArray& b){return QString::fromLatin1(QCryptographicHash::hash(b,QCryptographicHash::Sha256).toHex());}
 QByteArray read(const QString& file,qint64 maximum=maxProfileBytes){QFile f(file);require(!QFileInfo(file).isSymLink()&&f.open(QIODevice::ReadOnly),"Cannot read a regular material file: "+file);require(f.size()>0&&f.size()<=maximum,"Material file exceeds size limit");const auto b=f.readAll();require(b.size()==f.size(),"Incomplete material file");return b;}
 QJsonObject json(const QByteArray& b){QJsonParseError error;const auto doc=QJsonDocument::fromJson(b,&error);require(error.error==QJsonParseError::NoError&&doc.isObject(),"Invalid material JSON: "+error.errorString());return doc.object();}
-QString resourceIdentity(const QString& directory){QByteArray context("SpektraLab.material-context.v1\n");for(const auto name:{"spektrafilm_constants.bin","neutral_print_filters.json","print_luts.json"}){context.append(name);context.append('\0');context.append(hash(read(directory+"/"+name,32*1024*1024)).toUtf8());context.append('\n');}return hash(context);}
+QString resourceIdentity(const QString& directory){QByteArray context("SpektraLab.material-context.v1\n");for(const auto name:{"spektrafilm_constants.bin","neutral_print_filters.json","print_luts.json"}){context.append(name);context.append('\0');context.append(hash(read(directory+"/"+name,32*1024*1024)).toUtf8());context.append('\n');}
+#ifdef SPK_PHOENIX_PREVIEW
+if(QFileInfo::exists(directory+"/phoenix-preview.json")){context.append("phoenix-preview.json");context.append(hash(read(directory+"/phoenix-preview.json")).toUtf8());}
+#endif
+return hash(context);}
 void writeNew(const QString& path,const QByteArray& b){QFile f(path);require(f.open(QIODevice::WriteOnly|QIODevice::NewOnly),"Material version already exists or cannot be written");require(f.write(b)==b.size()&&f.flush(),"Incomplete material write");}
 bool finite(const QJsonValue& v){return v.isDouble()&&std::isfinite(v.toDouble());}
 QJsonArray array(const QJsonObject& o,const char* key,int count=0){require(o[key].isArray(),QString("Expected material array: ")+key);const auto a=o[key].toArray();require(!count||a.size()==count,QString("Wrong material array length: ")+key);return a;}

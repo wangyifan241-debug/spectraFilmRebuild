@@ -20,10 +20,13 @@ endif()
 find_package(Qt6 6.8 REQUIRED COMPONENTS Core Gui Qml Quick QuickControls2)
 qt_standard_project_setup(REQUIRES 6.8)
 
-add_library(spk_material_library STATIC src/MaterialLibrary.hpp src/MaterialLibrary.cpp)
+add_library(spk_material_library STATIC src/MaterialLibrary.hpp src/MaterialLibrary.cpp src/PhoenixExperiments.cpp)
 target_compile_features(spk_material_library PUBLIC cxx_std_20)
 target_include_directories(spk_material_library PUBLIC src)
 target_link_libraries(spk_material_library PUBLIC spk_desktop_host Qt6::Core)
+if(SPEKTRALAB_PHOENIX_EXPERIMENTAL_PREVIEW)
+ target_include_directories(spk_material_library PRIVATE experimental)
+endif()
 
 # Offline measurement research only. Not linked into the interactive renderer
 # and does not emit/install Profile files or depend on Python/scipy.
@@ -61,14 +64,26 @@ set_target_properties(SpektraLabQt PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_
 
 # The one resource directory is explicitly adjacent to the executable. No
 # lookup through another checkout and no Python in the application.
+set(phoenix_pack_command)
+if(SPEKTRALAB_PHOENIX_EXPERIMENTAL_PREVIEW)
+ find_program(PHOENIX_NODE node REQUIRED)
+ set(phoenix_pack_command COMMAND "${PHOENIX_NODE}" "${CMAKE_CURRENT_SOURCE_DIR}/experimental/build-pack.cjs" "$<TARGET_FILE_DIR:SpektraLabQt>/resources")
+endif()
 add_custom_target(spektralab_qt_resources ALL
     COMMAND "${CMAKE_COMMAND}" -E copy_directory
         "$<TARGET_FILE_DIR:spk_raw_render>/resources" "$<TARGET_FILE_DIR:SpektraLabQt>/resources"
     COMMAND "${CMAKE_COMMAND}" -E copy_directory
         "$<TARGET_FILE_DIR:spk_raw_render>/licenses" "$<TARGET_FILE_DIR:SpektraLabQt>/licenses"
+    ${phoenix_pack_command}
     VERBATIM)
 add_dependencies(spektralab_qt_resources spektralab_vulkan_resources)
 add_dependencies(SpektraLabQt spektralab_qt_resources)
+if(SPEKTRALAB_PHOENIX_EXPERIMENTAL_PREVIEW)
+ find_program(PHOENIX_NODE node REQUIRED)
+ add_custom_target(phoenix_preview_resources ALL DEPENDS spektralab_qt_resources)
+ add_dependencies(SpektraLabQt phoenix_preview_resources)
+ set_target_properties(SpektraLabQt PROPERTIES OUTPUT_NAME "SpektraLabPhoenixPreview")
+endif()
 add_dependencies(SpektraLabQt spk_material_fit)
 
 if(BUILD_TESTING)
@@ -244,3 +259,10 @@ foreach(consumer SpektraLabQt spk_qt_stock_policy_test spk_qt_library_workflow_t
         target_link_libraries(${consumer} PRIVATE spk_material_library)
     endif()
 endforeach()
+
+if(SPEKTRALAB_PHOENIX_EXPERIMENTAL_PREVIEW)
+ qt_add_executable(spk_qt_phoenix_preview_test tests/phoenix_preview.cpp src/PreviewController.hpp src/PreviewController.cpp src/FrameOutput.cpp src/EditStore.cpp)
+ target_include_directories(spk_qt_phoenix_preview_test PRIVATE "${SPEKTRALAB_SOURCE_ROOT}/engine")
+ target_link_libraries(spk_qt_phoenix_preview_test PRIVATE spk_material_library Qt6::Gui)
+ add_dependencies(spk_qt_phoenix_preview_test phoenix_preview_resources)
+endif()

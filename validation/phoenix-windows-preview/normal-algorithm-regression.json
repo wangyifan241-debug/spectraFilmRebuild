@@ -1,0 +1,12 @@
+[
+  {
+    "id": "kodak_portra_400",
+    "sha256": "6dab6ce63d7e0dafe69855d2882f1e870e8aa23682ce741f1bbd36b924dcee7e",
+    "byte_identical": true
+  },
+  {
+    "id": "kodak_gold_200",
+    "sha256": "c2a3e6dbad30c2384e24200a2c66bc36d5dd42be76f0d010068da8434e5a4c5a",
+    "byte_identical": true
+  }
+]

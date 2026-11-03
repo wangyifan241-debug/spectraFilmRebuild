@@ -117,7 +117,11 @@ QJsonObject stateJson(const State& state) {
         {"grain_amount", s.grain_amount}, {"halation_active", s.halation_active},
         {"halation_amount", s.halation_amount}, {"glare_active", s.glare_active},
         {"glare_amount", s.glare_amount}, {"y_filter_shift", s.y_filter_shift},
-        {"m_filter_shift", s.m_filter_shift}}},
+        {"m_filter_shift", s.m_filter_shift}
+#ifdef SPK_PHOENIX_PREVIEW
+        ,{"phoenix_mode",s.phoenix_print_mode}
+#endif
+        }},
         {"develop", QJsonObject{{"enabled",d.enabled},{"temperature",d.temperature},{"tint",d.tint},
             {"exposure",d.exposure},{"contrast",d.contrast},{"brightness",d.brightness},
             {"saturation",d.saturation},{"highlights",d.highlights},{"shadows",d.shadows},
@@ -153,6 +157,10 @@ State parseState(const QJsonObject& value, const Catalog* catalog) {
     else keys(value, {"settings", "decodeMode", "geometry"}, QStringLiteral("state"));
     State state;
     const auto s = object(value, "settings");
+    #ifdef SPK_PHOENIX_PREVIEW
+    if(s.contains("phoenix_mode")) keys(s,{"film_stock","print_stock","print_exposure","film_exposure_ev","film_format_mm","grain_active","grain_amount","halation_active","halation_amount","glare_active","glare_amount","y_filter_shift","m_filter_shift","phoenix_mode"},QStringLiteral("experimental settings"));
+    else
+#endif
     keys(s, {"film_stock", "print_stock", "print_exposure", "film_exposure_ev", "film_format_mm",
              "grain_active", "grain_amount", "halation_active", "halation_amount", "glare_active",
              "glare_amount", "y_filter_shift", "m_filter_shift"}, QStringLiteral("settings"));
@@ -180,6 +188,10 @@ State parseState(const QJsonObject& value, const Catalog* catalog) {
     out.glare_amount = number(s, "glare_amount", 0.0, 30.0);
     out.y_filter_shift = number(s, "y_filter_shift", -1.0, 1.0);
     out.m_filter_shift = number(s, "m_filter_shift", -1.0, 1.0);
+#ifdef SPK_PHOENIX_PREVIEW
+    if(s.contains("phoenix_mode")){const auto mode=number(s,"phoenix_mode",0,2);require(mode==std::floor(mode),QStringLiteral("Experimental print mode must be an integer"));out.phoenix_print_mode=int(mode);}
+    if(out.film_stock.starts_with("harman_phoenix_")||out.film_stock.starts_with("phx_"))require((out.phoenix_print_mode==2)==(qEnvironmentVariable("SPEKTRALAB_PHOENIX_FIXED_GAIN")=="1"),QStringLiteral("Fixed Internal Gain recipe requires its isolated research window"));
+#endif
     if(value.contains("filmEdge")) {
         const auto e=object(value,"filmEdge"),d=object(value,"dateBack");
         keys(e,{"active","format","mode","gate","holes","carrier","cameraSeed","frameSeed","frameNumber","fog","leaks"},QStringLiteral("filmEdge"));
@@ -359,8 +371,15 @@ QJsonObject readDocument(const QString& path, QByteArray* digest = nullptr) {
     require(string(result, "format") == "SpektraLab.Windows.Editor",
             QStringLiteral("Saved edits use an unsupported document format"));
     const auto version = result.value("version");
-    require(version.isDouble() && (version.toDouble() == 1.0 || version.toDouble() == 2.0 || version.toDouble() == 3.0 || version.toDouble()==4.0 || version.toDouble()==5.0 || version.toDouble()==6.0 || version.toDouble()==7.0 || version.toDouble()==8.0 || version.toDouble()==9.0),
+    require(version.isDouble() && (version.toDouble() == 1.0 || version.toDouble() == 2.0 || version.toDouble() == 3.0 || version.toDouble()==4.0 || version.toDouble()==5.0 || version.toDouble()==6.0 || version.toDouble()==7.0 || version.toDouble()==8.0 || version.toDouble()==9.0
+#ifdef SPK_PHOENIX_PREVIEW
+ || version.toDouble()==10.0
+#endif
+ ),
             QStringLiteral("Saved edits use an unsupported version; existing file was preserved"));
+    #ifdef SPK_PHOENIX_PREVIEW
+    require(object(object(result,"state"),"settings").contains("phoenix_mode")== (version.toDouble()>=10),QStringLiteral("Experimental recipe mode does not match document version"));
+#endif
     require(object(result,"state").contains("develop") == (version.toDouble()>=2.0),
             QStringLiteral("Saved edit fields do not match their document version"));
     if(version.toDouble()>=2)require(object(object(result,"state"),"develop").contains("workingSpace")== (version.toDouble()>=3),QStringLiteral("Saved develop fields do not match document version"));
@@ -446,7 +465,13 @@ void Store::save(const QUrl& source, const State& state) const {
         require(observed->record == previousDigest,
                 QStringLiteral("Saved edits changed in another instance; restart the app and reopen the photo before saving"));
     const auto bytes = QJsonDocument(QJsonObject{{"format", "SpektraLab.Windows.Editor"},
-        {"version", 9}, {"source", identityJson(sourceId)}, {"state", value}}).toJson(QJsonDocument::Indented);
+        {"version",
+#ifdef SPK_PHOENIX_PREVIEW
+        10
+#else
+        9
+#endif
+        }, {"source", identityJson(sourceId)}, {"state", value}}).toJson(QJsonDocument::Indented);
     require(bytes.size() <= maximumDocumentBytes, QStringLiteral("Saved edit document exceeds the 64 KiB limit"));
     QSaveFile file(path);
     file.setDirectWriteFallback(false);
