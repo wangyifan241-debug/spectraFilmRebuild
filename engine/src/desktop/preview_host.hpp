@@ -151,6 +151,7 @@ public:
 private:
     Frame() = default;
     spk_result result_{};
+    std::vector<uint16_t> phoenix_preview_pixels_;
     // Retain the exact decode behind the displayed frame. Original exports
     // never re-read a changed file or accidentally use a newer photo/decode.
     std::shared_ptr<const io::DecodedRaw> decoded_;

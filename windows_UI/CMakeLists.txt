@@ -72,6 +72,9 @@ add_dependencies(SpektraLabQt spektralab_qt_resources)
 add_dependencies(SpektraLabQt spk_material_fit)
 
 if(BUILD_TESTING)
+    qt_add_executable(spk_qt_phoenix_round5_test tests/phoenix_round5_preview.cpp src/PreviewController.hpp src/PreviewController.cpp src/FrameOutput.cpp src/EditStore.cpp)
+    target_link_libraries(spk_qt_phoenix_round5_test PRIVATE spk_material_library Qt6::Gui)
+    add_dependencies(spk_qt_phoenix_round5_test spektralab_qt_resources)
     qt_add_executable(spk_qt_phoenix_test tests/phoenix_material.cpp
         src/PreviewController.hpp src/PreviewController.cpp src/FrameOutput.cpp src/EditStore.cpp)
     target_link_libraries(spk_qt_phoenix_test PRIVATE spk_material_library Qt6::Gui)

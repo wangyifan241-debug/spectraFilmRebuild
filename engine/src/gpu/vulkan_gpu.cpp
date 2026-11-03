@@ -68,9 +68,7 @@ constexpr KernelSpec kKernels[] = {
     {"spk_lincomb3", 6, kWorkgroup},
     {"spk_log10_guarded", 4, kWorkgroup},
     {"spk_curves", 6, kWorkgroup},
-#ifdef SPK_ENABLE_ROUND4_RESEARCH
-    {"spk_round4_scan", 4, kWorkgroup},
-#endif
+    {"spk_round4_scan", 4, kWorkgroup}, // shared Phoenix scan, opt-in by stock
     {"spk_couplers_correction", 7, kWorkgroup},
     {"spk_spectral_epilogue", 7, kWorkgroup},
     {"spk_print_exposure", 4, kWorkgroup},

@@ -1,0 +1,17 @@
+{
+  "classification": "software integration agreement; not film accuracy",
+  "models": {
+    "harman_phoenix_200_round5": {
+      "width": 732,
+      "height": 1024,
+      "mean_abs_sRGB_8bit": 0.2731442900391833,
+      "max_abs_sRGB_8bit": 0.49805447470819775
+    },
+    "harman_phoenix_ii_200_round5": {
+      "width": 732,
+      "height": 1024,
+      "mean_abs_sRGB_8bit": 0.2735584031900605,
+      "max_abs_sRGB_8bit": 0.49805447470819775
+    }
+  }
+}

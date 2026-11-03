@@ -260,6 +260,7 @@ ApplicationWindow {
                         }
                         Section {
                             title: "胶片"
+                            Label { Layout.fillWidth: true; wrapMode: Text.Wrap; visible: ((preview.films[preview.filmIndex] || {}).id || "").endsWith("_round5"); text: "Round 5 · Vulkan 光谱扫描 · 1024px 实验预览\nPhysical Film Accuracy: Not Verified\n原尺寸导出尚未开放；相纸/滤色与眩光不参与此扫描路径"; color: "#e6ba78"; font.pixelSize: 10 }
                             EditorComboBox {
                                 id: filmQuickSelect
                                 objectName: "filmQuickSelect"; Layout.fillWidth: true

@@ -1,5 +1,6 @@
 // Independent research executable. No material edits and no runtime fallback.
 #include "pipeline/pipeline.hpp"
+#include "desktop/phoenix_round5_scan.hpp"
 #include "io/raw_decoder.hpp"
 #include "io/image_writer.hpp"
 #include "output.hpp"
@@ -64,6 +65,7 @@ struct Lab {
  void capture(const QString& name,const Image& i){if(exportOnly)return;auto v=values(i);QByteArray bytes(reinterpret_cast<const char*>(v.data()),qsizetype(v.size()*4));write(output+"/"+name+".f32",bytes);auto q=stats(v);q["sha256"]=hash(bytes);q["width"]=int(i.w);q["height"]=int(i.h);q["encoding"]="little-endian float32 packed RGB; semantics by stage";report[name]=q;}
  Params params(const std::string& stock,const QJsonObject& delta={}){Params p;need(init_params(resources.toStdString(),stock,"kodak_portra_endura",json(QJsonDocument::fromJson(read(resources+"/neutral_print_filters.json")).object()),p,err));apply_delta(p,json(QJsonObject{{"input_color_space","ProPhoto RGB"},{"input_cctf_decoding",false},{"output_color_space","ProPhoto RGB"},{"auto_exposure",false},{"grain_active",false},{"halation_active",false},{"glare_active",false}}));apply_delta(p,json(QJsonObject{{"exposure_compensation_ev",exposureEv}}));apply_delta(p,json(delta));return p;}
  Image film(Pipeline& pipe,const Image& input,const QString& prefix,bool trace){pipe.set_source_long_edge(std::max(input.w,input.h),std::max(input.w,input.h));Image start;need(ResearchPipelineAccess::film(pipe,input,start,err));Pipeline::Chain chain{start,{}};if(trace)capture(prefix+"-film-prefix",start);for(size_t i=0;i<Pipeline::kFilmStageCount;i++){Pipeline::Chain next;need((pipe.*Pipeline::kFilmStages[i].run)(chain,next,err));need(gpu->flush(err));chain=next;if(trace)capture(prefix+"-"+Pipeline::kFilmStages[i].name,chain.cur);}return chain.cur;}
+ Image film(Pipeline& pipe,const Image& input){return film(pipe,input,"",false);}
  Image print(Pipeline& pipe,const Image& negative,const QString& prefix,bool trace){need(ResearchPipelineAccess::print(pipe,err));if(trace)report[prefix+"-constants"]=ResearchPipelineAccess::constants(pipe);Pipeline::Chain chain{negative,{}};for(size_t i=0;i<Pipeline::kPrintStageCount;i++){Pipeline::Chain next;std::string stage=Pipeline::kPrintStages[i].name;
  if(trace&&(stage=="print_spectral"||stage=="print_linear"||stage=="print_scan_finish")){next=chain;need(ResearchPipelineAccess::trace(pipe,stage,chain.cur,next.cur,[&](const char* label,const Image& im){capture(prefix+"-"+label,im);},err));}
  else need((pipe.*Pipeline::kPrintStages[i].run)(chain,next,err));need(gpu->flush(err));chain=next;if(trace)capture(prefix+"-"+Pipeline::kPrintStages[i].name,chain.cur);}return chain.cur;}
@@ -74,46 +76,7 @@ for(int c=0;c<3;c++)rgb[c]=colour.cctf_encode(rgb[c]*gain,"ProPhoto RGB");}row[x
  }
 };
 }
-struct Scanner {
- Lab& lab;gpu::BufferRef chd,base,ixs,ep,x,inv,y,matrix;Vec axis,target;QJsonObject recipe;size_t k=129;
- Scanner(Lab& l,const Params& p,Pipeline& pipe):lab(l){
-  Vec dyes=p.film.data.channel_density,zero(81,0),weights(243),illum;need(l.colour.illuminant_values("D50",illum,err));
-  size_t missing=0;for(size_t w=0;w<81;w++){bool valid=std::isfinite(p.film.data.base_density[w]);for(int c=0;c<3;c++)valid&=std::isfinite(dyes[3*w+c]);if(!valid){missing++;for(int c=0;c<3;c++)dyes[3*w+c]=0;}}
-  const double centres[3]={610,540,450},sigma[3]={30,30,25};
-  for(int c=0;c<3;c++){double norm=0;for(size_t w=0;w<81;w++){double z=(380.+5*w-centres[c])/sigma[c];bool valid=std::isfinite(p.film.data.base_density[w]);for(int j=0;j<3;j++)valid&=std::isfinite(p.film.data.channel_density[3*w+j]);weights[3*w+c]=valid?illum[w]*std::exp(-.5*z*z):0;norm+=weights[3*w+c];}if(!(norm>0))throw std::runtime_error("empty detector");for(size_t w=0;w<81;w++)weights[3*w+c]/=norm;}
-  chd=l.gpu->upload_persistent_f32(dyes.data(),dyes.size(),err);base=l.gpu->upload_persistent_f32(zero.data(),zero.size(),err);ixs=l.gpu->upload_persistent_f32(weights.data(),weights.size(),err);const float e[6]={1,1,1,0,0,0};ep=l.gpu->upload(e,sizeof e,err);
-  std::vector<float> neutral(k*3);for(size_t i=0;i<k;i++)for(int c=0;c<3;c++)neutral[3*i+c]=float(.184*std::exp2(-6.+12.*i/(k-1)));
-  auto negative=l.film(pipe,l.upload(neutral,unsigned(k),1),"",false);auto measured=l.values(spectral(negative));axis.resize(k*3);target.resize(k*3);Vec steps((k-1)*3);
-  for(size_t i=0;i<k;i++)for(int c=0;c<3;c++){axis[3*i+c]=measured[3*(k-1-i)+c];target[3*i+c]=std::log10(neutral[3*(k-1-i)+c]);}
-  for(size_t i=0;i+1<k;i++)for(int c=0;c<3;c++){double d=axis[3*(i+1)+c]-axis[3*i+c];if(!(d>1e-8))throw std::runtime_error("Noninvertible neutral scanner response; no sorting/repair allowed");steps[3*i+c]=1/d;}
-  x=l.gpu->upload_persistent_f32(axis.data(),axis.size(),err);inv=l.gpu->upload_persistent_f32(steps.data(),steps.size(),err);y=l.gpu->upload_persistent_f32(target.data(),target.size(),err);
-  // Synthetic scene Jacobian around neutral, NOT a real-film parameter fit.
-  std::vector<float> probes(4*3,.184f);for(int c=0;c<3;c++)probes[3*(c+1)+c]+=.01f;
-  auto probesNeg=l.film(pipe,l.upload(probes,4,1),"",false);auto logs=l.values(invert(spectral(probesNeg)));Mat3 jac;
-  for(int row=0;row<3;row++)for(int col=0;col<3;col++)jac.m[row][col]=(std::pow(10.,logs[3*(col+1)+row])-std::pow(10.,logs[row]))/.01;
-  auto m=jac.inverse();double jnorm=0,inorm=0;for(int row=0;row<3;row++){double a=0,b=0;for(int c=0;c<3;c++){a+=std::abs(jac.m[row][c]);b+=std::abs(m.m[row][c]);}jnorm=std::max(jnorm,a);inorm=std::max(inorm,b);}if(!std::isfinite(jnorm*inorm)||jnorm*inorm>10000)throw std::runtime_error("Ill-conditioned synthetic scanner Jacobian");for(int row=0;row<3;row++){double sum=m.m[row][0]+m.m[row][1]+m.m[row][2];if(!std::isfinite(sum)||std::abs(sum)<1e-6)throw std::runtime_error("singular scanner matrix");for(int col=0;col<3;col++)m.m[row][col]/=sum;}
-  // Round five: fixed multi-exposure synthetic instrument calibration.
-  // Neutral is constrained exactly; no photograph or per-image statistics enter.
-  std::vector<float> training;
-  for(int ev=-2;ev<=2;ev++)for(int r=1;r<=4;r++)for(int g=1;g<=4;g++)for(int b=1;b<=4;b++){
-   double scale=.184*std::exp2(ev)/4.;training.push_back(r*scale);training.push_back(g*scale);training.push_back(b*scale);
-  }
-  auto trainNeg=l.film(pipe,l.upload(training,unsigned(training.size()/3),1),"",false);
-  auto trainLogs=l.values(invert(spectral(trainNeg)));
-  double aa=1e-4,ab=0,bb=1e-4,ay[3]={},by[3]={};
-  for(size_t i=0;i<training.size();i+=3){double v[3];for(int c=0;c<3;c++)v[c]=std::pow(10.,trainLogs[i+c]);
-   double norm=std::max(.02,double(training[i]+training[i+1]+training[i+2]));double a=(v[0]-v[2])/norm,b=(v[1]-v[2])/norm;
-   aa+=a*a;ab+=a*b;bb+=b*b;for(int c=0;c<3;c++){double y=(training[i+c]-v[2])/norm;ay[c]+=a*y;by[c]+=b*y;}}
-  double determinant=aa*bb-ab*ab;if(!(determinant>1e-10))throw std::runtime_error("degenerate round5 calibration");
-  for(int c=0;c<3;c++){m.m[c][0]=(ay[c]*bb-by[c]*ab)/determinant;m.m[c][1]=(by[c]*aa-ay[c]*ab)/determinant;m.m[c][2]=1-m.m[c][0]-m.m[c][1];}
-  double raw[9];m.to_row_major(raw);for(double coefficient:raw)if(!std::isfinite(coefficient)||std::abs(coefficient)>100)throw std::runtime_error("Unstable scanner calibration coefficient");matrix=l.gpu->upload_persistent_f32(raw,9,err);
-  Mat3 prophotoXYZ;need(l.colour.matrix_RGB_to_XYZ("ProPhoto RGB",nullptr,"CAT02",prophotoXYZ,err));double xyzMatrix[9];prophotoXYZ.to_row_major(xyzMatrix);
-  recipe={{"linear_prophoto_to_XYZ_D50",array(Vec(xyzMatrix,xyzMatrix+9))},{"output_recipe","luminance shoulder above 0.184; ProPhoto encode/16-bit; shared engine OutputTransform CAT02/CAM16 to sRGB/16-bit; hard clip at quantization; bundled ICC"},{"status","IDEALIZED_PROXY_NOT_VERIFIED"},{"illuminant","D50 baked engine samples"},{"wavelength_nm",array(l.colour.wavelengths())},{"normalized_detector_weights",array(weights)},{"base_operation","zero base per wavelength before integral; idealized mathematical removal"},{"excluded_missing_wavelengths",double(missing)},{"neutral_axis_logT",array(axis)},{"neutral_axis_logPositive",array(target)},{"scanner_to_linear_prophoto",array(Vec(raw,raw+9))},{"jacobian_condition_inf",jnorm*inorm},{"matrix_source","neutral-constrained ridge fit, 320 fixed synthetic probes across -2..+2 EV; independent per generation; no real-film fit"},{"range_ev",QJsonArray{-6,6}},{"outside_range","endpoint clamp; counts reported separately"}};
- }
- Image spectral(const Image& n){Image o=lab.alloc(n);uint32_t meta[3]={uint32_t(n.pixels()),81,0};need(lab.gpu->dispatch("spk_spectral_epilogue",{gpu::Arg::buf(n.buf),gpu::Arg::buf(chd),gpu::Arg::buf(base),gpu::Arg::buf(ixs),gpu::Arg::buf(ep),gpu::Arg::inline_bytes(meta,3),gpu::Arg::buf(o.buf)},n.pixels(),err));need(lab.gpu->flush(err));return o;}
- Image invert(const Image& n){Image o=lab.alloc(n);uint32_t meta[2]={uint32_t(k),uint32_t(n.pixels())};need(lab.gpu->dispatch("spk_curves",{gpu::Arg::buf(n.buf),gpu::Arg::buf(x),gpu::Arg::buf(inv),gpu::Arg::buf(y),gpu::Arg::inline_bytes(meta,2),gpu::Arg::buf(o.buf)},n.pixels(),err));need(lab.gpu->flush(err));return o;}
- Image positive(const Image& logs){Image o=lab.alloc(logs);uint32_t meta[1]={uint32_t(logs.pixels())};need(lab.gpu->dispatch("spk_round4_scan",{gpu::Arg::buf(logs.buf),gpu::Arg::buf(matrix),gpu::Arg::inline_bytes(meta,1),gpu::Arg::buf(o.buf)},logs.pixels(),err));need(lab.gpu->flush(err));return o;}
-};
+using Scanner=spk::phoenix5::Scanner<Lab>;
 int main(int argc,char** argv){QGuiApplication app(argc,argv);try{
  auto args=app.arguments();if(qEnvironmentVariableIsSet("PHOENIX_ROUND4_EXPOSURE_EV")){bool ok=false;exposureEv=qEnvironmentVariable("PHOENIX_ROUND4_EXPOSURE_EV").toDouble(&ok);if(!ok||!std::isfinite(exposureEv)||exposureEv< -8||exposureEv>8)throw std::runtime_error("Invalid explicit exposure EV");}
  if(args.size()==3&&args[1]=="--view"){
@@ -136,7 +99,7 @@ int main(int argc,char** argv){QGuiApplication app(argc,argv);try{
   pipe.set_source_long_edge(std::max(w,h),std::max(w,h));
   auto logT=scanner.spectral(negative);auto reversed=scanner.invert(logT);auto positive=scanner.positive(reversed);QString prefix=QString::fromStdString(stock);
   lab.capture(prefix+"-scan-logT",logT);lab.capture(prefix+"-scan-logPositive",reversed);lab.capture(prefix+"-scan-linear-prophoto",positive);lab.exportImage(prefix+"-round5-scan",positive,true);
-  write(output+"/"+prefix+"-scan-recipe.json",QJsonDocument(scanner.recipe).toJson());
+  write(output+"/"+prefix+"-scan-recipe.json",QJsonDocument(qjson(scanner.recipe)).toJson());
   if(exportOnly){write(output+"/"+prefix+"-resolved.json",QJsonDocument(resolved(p)).toJson());continue;}
   auto optical=lab.print(pipe,negative,prefix,true);
   // Witness that node taps preserve the ordinary engine's Optical Print output.

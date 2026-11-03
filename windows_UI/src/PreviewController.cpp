@@ -374,7 +374,9 @@ void PreviewController::setFilmIndex(int v){
             }
         if(nextPaper<0)return; // incomplete bundle: do not publish an invalid pair
     }
-    film_index_=v;paper_index_=nextPaper;changed("filmIndex");
+    film_index_=v;paper_index_=nextPaper;
+    if(film.id=="harman_phoenix_200_round5"||film.id=="harman_phoenix_ii_200_round5"){extra_settings_.grain_active=false;extra_settings_.halation_active=false;extra_settings_.glare_active=false;}
+    changed("filmIndex");
 }
 void PreviewController::setPaperIndex(int v){
     if(!settingsEditable()||filmIsPositive()||v<0||v>=papers_.size()||v==paper_index_||
@@ -696,6 +698,7 @@ int PreviewController::addFile(const QUrl& url) {
     item.mode=decode_mode_?desktop::DecodeMode::headroom:desktop::DecodeMode::compatible16;
     const auto stored=edit_store_.load(local,catalog_);
     item.save_blocked=stored.blocked;item.save_warning=stored.warning;item.material_blocked=stored.material_unavailable;
+    if(!stored.state&&(item.settings.film_stock=="harman_phoenix_200_round5"||item.settings.film_stock=="harman_phoenix_ii_200_round5"))item.pending_save=true;
     if(stored.state){item.settings=stored.state->settings;item.mode=stored.state->mode;item.geometry=stored.state->geometry;item.develop=stored.state->develop;item.has_stored=true;}
     // A new raster must not inherit the previous RAW's headroom preset.
     const auto suffix=info.suffix().toLower();

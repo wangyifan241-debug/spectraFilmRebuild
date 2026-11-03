@@ -1,4 +1,5 @@
 #include "preview_host.hpp"
+#include "phoenix_round5_preview.hpp"
 #include "io/image_writer.hpp"
 #include "image_io.hpp"
 #include "json.hpp"
@@ -535,6 +536,13 @@ FramePtr PreviewHost::open_raw(const fs::path& source, DecodeMode mode, const Re
     next->prepared_=prepare_input(decoded,settings,geometry);
     next->native_=std::max(next->prepared_->width,next->prepared_->height)<=3400;
     next->display_transform_ = impl_->display_transform;
+    if(phoenix_round5(settings.film_stock)){
+        impl_->session.reset();
+        require(bool(next->display_transform_),"Round 5 requires the editor colour-managed ProPhoto path");
+        t=Clock::now();render_phoenix_preview(utf8(impl_->resources),*next->prepared_,settings,next->phoenix_preview_pixels_,next->result_);
+        next->native_=false;next->timings.render_ms=elapsed(t);next->timings.total_ms=elapsed(started);
+        impl_->decoded=decoded;impl_->frame=next;return next;
+    }
     t = Clock::now();
     auto session = open_session(impl_->engine.get(), *next->prepared_, settings, scan_film, monochrome(settings, impl_->catalog), next->prophoto());
     next->timings.open_ms = elapsed(t);
@@ -615,6 +623,13 @@ FramePtr PreviewHost::render(const RenderSettings& settings,const InputGeometry&
     next->prepared_=new_input?prepare_input(next->decoded_,settings,geometry):old.prepared_;
     next->native_=std::max(next->prepared_->width,next->prepared_->height)<=3400;
     next->display_transform_ = impl_->display_transform;
+    if(phoenix_round5(settings.film_stock)){
+        impl_->session.reset();
+        require(bool(next->display_transform_),"Round 5 requires the editor colour-managed ProPhoto path");
+        auto t=Clock::now();render_phoenix_preview(utf8(impl_->resources),*next->prepared_,settings,next->phoenix_preview_pixels_,next->result_);
+        next->native_=false;next->timings.render_ms=elapsed(t);next->timings.total_ms=elapsed(started);
+        impl_->decoded=next->decoded_;impl_->frame=next;return next;
+    }
     const auto delta = changed_params(impl_->frame->settings, settings, scan_film, monochrome(settings, impl_->catalog));
     try {
         auto t = Clock::now();
@@ -653,6 +668,7 @@ FramePtr PreviewHost::render(const RenderSettings& settings,const InputGeometry&
 
 FramePtr PreviewHost::render_original(const FramePtr& snapshot, bool negative_scan) {
     require(snapshot && snapshot->decoded_, "Original export requires a decoded frame snapshot");
+    require(!phoenix_round5(snapshot->settings.film_stock),"Round 5 original-size export is blocked pending Vulkan device-lost investigation; ordinary preview is available");
     if(negative_scan) {
         require(!validate_settings(snapshot->settings,impl_->catalog), "Negative scan export requires a negative film");
         require(snapshot->prophoto(), "Negative scan export requires ProPhoto working pixels");

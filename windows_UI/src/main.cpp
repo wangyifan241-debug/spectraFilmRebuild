@@ -682,7 +682,8 @@ int main(int argc,char** argv) {
     app.setWindowIcon(QIcon(QStringLiteral(":/assets/film.ico")));
     QQuickStyle::setStyle("Basic");
     QCommandLineParser parser;parser.setApplicationDescription("SpektraLab Windows Qt Quick preview");parser.addHelpOption();
-    parser.addOptions({{"resources","Engine resource directory","directory"},
+    parser.addOptions({{"film","Select a bundled film ID before opening (saved per-photo edits take precedence)","id"},
+                       {"resources","Engine resource directory","directory"},
                        {"open","Open a RAW file","file"},
                        {"snapshot","Save one rendered window capture to a new PNG and exit (requires --open)","file"},
                        {"ui-smoke","Capture the initialized empty editor to a NEW PNG and exit (no RAW required)","file"},
@@ -776,7 +777,7 @@ int main(int argc,char** argv) {
             });
             QTimer::singleShot(60000,&app,[]{QCoreApplication::exit(1);});
         }
-        QObject::connect(&controller,&PreviewController::initialized,&app,[&](bool ok){if(ok)controller.openRaw(QUrl::fromLocalFile(parser.value("open")));});
+        QObject::connect(&controller,&PreviewController::initialized,&app,[&](bool ok){if(ok){if(parser.isSet("film")){const auto films=controller.films();bool found=false;for(int i=0;i<films.size();++i)if(films[i].toMap().value("id").toString()==parser.value("film")){controller.setFilmIndex(i);found=true;break;}if(!found){QCoreApplication::exit(2);return;}}controller.openRaw(QUrl::fromLocalFile(parser.value("open")));}});
     }
     return app.exec();
 }
