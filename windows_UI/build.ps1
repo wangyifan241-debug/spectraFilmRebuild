@@ -3,6 +3,7 @@ param(
     [string]$SourceDirectory = (Split-Path $PSScriptRoot -Parent),
     [string]$BuildDirectory = (Join-Path $PSScriptRoot '.build'),
     [string]$DependencyDirectory,
+    [string]$CompilerDirectory,
     [ValidateRange(1,32)][int]$Jobs = 4,
     [switch]$RunTests,
     [switch]$Fresh
@@ -19,7 +20,7 @@ if (-not (Test-Path -LiteralPath (Join-Path $SourceDirectory 'engine/CMakeLists.
 if (-not $DependencyDirectory) { $DependencyDirectory = Join-Path (Split-Path $SourceDirectory -Parent) 'deps' }
 $DependencyDirectory = [IO.Path]::GetFullPath($DependencyDirectory)
 $qt = Join-Path $DependencyDirectory 'qt-6.11.3/mingw_64'
-$compiler = Join-Path $DependencyDirectory 'qt-6.11.3/Tools/mingw1310_64/bin'
+$compiler = if ($CompilerDirectory) { [IO.Path]::GetFullPath($CompilerDirectory) } else { Join-Path $DependencyDirectory 'qt-6.11.3/Tools/mingw1310_64/bin' }
 $cmake = Join-Path $DependencyDirectory 'cmake-3.25.0-windows-x86_64/bin/cmake.exe'
 $ctest = Join-Path $DependencyDirectory 'cmake-3.25.0-windows-x86_64/bin/ctest.exe'
 $libraw = Join-Path $DependencyDirectory 'LibRaw-0.22.2'

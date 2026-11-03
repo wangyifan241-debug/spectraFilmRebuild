@@ -33,6 +33,7 @@ class PreviewController final : public QObject {
     Q_PROPERTY(QUrl sourceFolder READ sourceFolder NOTIFY frameChanged)
     Q_PROPERTY(QImage previewImage READ previewImage NOTIFY frameChanged)
     Q_PROPERTY(QImage originalImage READ originalImage NOTIFY frameChanged)
+    Q_PROPERTY(QString processDiagnostics READ processDiagnostics NOTIFY frameChanged)
     Q_PROPERTY(QVariantMap metadata READ metadata NOTIFY frameChanged)
     Q_PROPERTY(QVariantMap histogram READ histogram NOTIFY frameChanged)
     Q_PROPERTY(QVariantMap postAdjustments READ postAdjustments NOTIFY settingsChanged)
@@ -84,6 +85,7 @@ public:
     QImage previewImage() const { return image_; }
     QImage originalImage() const;
     QVariantMap metadata() const;
+    QString processDiagnostics() const;
     QVariantMap histogram() const;
     QVariantMap postAdjustments() const;
     QVariantList films() const { return films_; }
@@ -157,6 +159,7 @@ public:
     Q_INVOKABLE void cancelExport();
     Q_INVOKABLE void resetSettings();
     Q_INVOKABLE void measureScene();
+    Q_INVOKABLE void process();
     Q_INVOKABLE void fitScene(double highlight,double shadow,bool automatic=false);
     Q_INVOKABLE void resetScenePlacement();
     Q_INVOKABLE void setDialogOpen(bool open);

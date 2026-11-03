@@ -385,6 +385,21 @@ ApplicationWindow {
                                 onPressedChanged: { if (pressed) preview.beginEditGesture("exposureEv"); else preview.endEditGesture() }
                                 onMoved: preview.exposureEv = value
                             }
+                            Button {
+                                objectName: "processDiagnosticsButton"; text: "配光诊断"; enabled: preview.hasFrame
+                                onClicked: processDiagnosticsDialog.open()
+                            }
+                            Dialog {
+                                id: processDiagnosticsDialog; objectName: "processDiagnosticsDialog"; parent: Overlay.overlay; anchors.centerIn: parent; title: "Process · 实际会话参数"
+                                width: Math.min(850, window.width - 40); height: Math.min(650, window.height - 40)
+                                modal: true; standardButtons: Dialog.Close
+                                ScrollView { id: processDiagnosticScroll; anchors.fill: parent; TextArea { width: processDiagnosticScroll.availableWidth; text: preview.processDiagnostics; readOnly: true; wrapMode: TextEdit.Wrap; selectByMouse: true } }
+                            }
+                            Button {
+                                text: "配光 Process"; objectName: "processButton"
+                                enabled: preview.settingsEditable && !preview.dirty && !preview.filmIsPositive
+                                onClicked: preview.process()
+                            }
                             Adjustment { label: "黄色滤镜"; setting: "yFilterShift"; from: -1; to: 1; step: 0.01; decimals: 2; available: !preview.filmIsPositive && !preview.filmIsMonochrome }
                             Adjustment { label: "洋红滤镜"; setting: "mFilterShift"; from: -1; to: 1; step: 0.01; decimals: 2; available: !preview.filmIsPositive && !preview.filmIsMonochrome }
                         }

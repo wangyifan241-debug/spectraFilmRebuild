@@ -3,6 +3,7 @@
 // Separable three-channel FIR. Keep the Metal kernel's axis, edge modes, and
 // optional accumulation so downscale and film blur share one implementation.
 layout(local_size_x = 256) in;
+layout(push_constant) uniform DispatchBase { uint pixel_offset; } dispatch_base;
 layout(set = 0, binding = 0, std430) readonly buffer Input { float value[]; } image_data;
 layout(set = 0, binding = 1, std430) readonly buffer Weights { float value[]; } weights;
 layout(set = 0, binding = 2, std430) readonly buffer Accumulator { float value[]; } accumulator;
@@ -13,7 +14,7 @@ layout(set = 0, binding = 5, std430) writeonly buffer Output { float value[]; } 
 // vulkan_gpu.cpp folds a dispatch past maxComputeWorkGroupCount[0] (65535 on
 // lavapipe and Intel) into rows of workgroups; this is the 1D index it means.
 uint spk_global_index() {
-    return gl_GlobalInvocationID.y * (gl_NumWorkGroups.x * gl_WorkGroupSize.x) + gl_GlobalInvocationID.x;
+    return dispatch_base.pixel_offset + gl_GlobalInvocationID.y * (gl_NumWorkGroups.x * gl_WorkGroupSize.x) + gl_GlobalInvocationID.x;
 }
 
 int reflect_index(int index, int length) {
