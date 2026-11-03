@@ -10,8 +10,8 @@ real Vulkan film renderer. This is not a monitor calibration measurement.
 |---|---|---|
 | 23 materials, Frozen 23 + frozen neutral calibration 14 | 1187 checks pass; 37/37 RGBA16 comparisons exact | normal-results.json; final-normal.log |
 | Fixed gain, all 23, isolated process | 781 checks pass; 23/23 RGBA16 comparisons exact | fixed-results.json; final-fixed.log |
-| Manifest/profile integrity, 23 UI identities, unsupported mode refusal, JPEG/TIFF import | 28 checks pass | integrity-results.json; final-integrity.log |
-| Actual QML workflow and scene captures | pass; 235 report fields | final-qml.log |
+| Manifest/profile integrity, 23 UI identities, unsupported mode refusal, JPEG/TIFF import | 149 checks pass | integrity-results.json; final-integrity.log |
+| Actual QML workflow and scene captures | pass; 237 report fields | final-qml.log |
 | Geometry, preview/exports, PNG8/PNG16/TIFF16/JPEG, ICC, cleanup and no overwrite | pass | final-frame-output.log |
 | Linear EV / neutral identity / colour-space conversions | pass | final-colour.log |
 | Normal engine option OFF: Portra 400 and Gold 200 vs original research normal binary | 2/2 byte-identical | normal-algorithm-regression.json |
@@ -46,6 +46,42 @@ Earlier integration attempts failed and are not counted as final passes:
 
 The retained historical logs distinguish these failures from final gates.
 No test exception or threshold was added to make a candidate pass.
+
+## Standalone package and native large-RAW follow-up
+
+The local delivery directory is `output/PhoenixPreview-0.1-local/`.
+`package-integrity.json` verifies all 1713 packaged files and the exact executable
+against the completed build. The package includes Qt/compiler runtimes,
+corresponding application/library source, SDK source overlay and notices.
+An intentionally substituted executable is rejected before creating output
+(`package-negative-control.json`). The material/manifest controls now each use
+a complete valid resource fixture and assert their own specific error: removing
+one profile cannot accidentally pass because another required resource is absent.
+
+The application was launched from an unrelated working directory with only
+Windows system PATH entries and Qt development variables removed. Real ARW
+pixels were displayed in its real Windows canvas, with v1 material identity
+confirmed in the saved recipe and accessibility tree. No diagnostic DLL, SDK,
+Node or Python was used at runtime.
+
+The comprehensive native 36 MP ARW workflow is **not fully passing**:
+
+- The initial 5-second post-export brightness deadline failed. A full-resolution
+  export releases the preview session, requiring a full session rebuild. The
+  self-test now uses its existing controller correctness deadline of 120 seconds
+  for that case and records elapsed time. Observed rebuilds took 5346 and 8750 ms.
+  This is a test deadline correction, not a rendering performance improvement.
+- One subsequent run failed `slide_auto_scan_fujifilm_velvia_100`; a repeat
+  passed the slide stages but exceeded the 360-second overall workflow deadline.
+  Both reports are retained in `native-large-raw-*.json`. Their causal status is
+  unresolved; do not describe these as a verified pre-existing defect or a
+  confirmed material-model error.
+
+Thus the requested synthetic candidate comparisons and targeted gates pass,
+while this additional generic large-RAW native workflow has two failed attempts.
+The earlier short-deadline failure is also retained. Smaller owned-fixture QML
+workflow and both Phoenix generations' ARW preview/full-resolution export pass.
+Private photographs and their scene captures are not committed or uploaded.
 
 ## Limits
 
