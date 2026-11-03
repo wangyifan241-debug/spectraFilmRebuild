@@ -1,0 +1,13 @@
+{
+  "source_commit": "493c7e85a8c81e430ba435dc504a2d902f2a36ea",
+  "executable": "build/round6-native/app/SpektraLabQt.exe",
+  "executable_sha256": "272ba3060640859e26d1ebae963b6304b1b58c7488c91df4dbafa1b6d1910f0c",
+  "installer": "SpektraLab-2026.11.03-round6-process-windows-x64-setup.exe",
+  "installer_sha256": "2b884046c95ddb6f4594c304c500a721352140ae7ba04e87f9361ab1cd18df17",
+  "ctest_passed": 37,
+  "ctest_total": 37,
+  "native_window_application_checks": 237,
+  "native_pointer_input_verified": false,
+  "hdr_output_complete": false,
+  "phoenix_materials_modified": false
+}

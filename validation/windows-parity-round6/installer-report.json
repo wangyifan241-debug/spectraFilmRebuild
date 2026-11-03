@@ -1,0 +1,12 @@
+{
+  "passed": true,
+  "installed_files_checked": 1721,
+  "executable_sha256": "272ba3060640859e26d1ebae963b6304b1b58c7488c91df4dbafa1b6d1910f0c",
+  "isolated_path": "C:\\Users\\Strickland\\.codex\\worktrees\\windows-parity-round6\\SpektraLab\\build\\i-9b49526c\\安装 测试",
+  "overwrite_refused": true,
+  "installed_app_smoke": true,
+  "uninstalled": true,
+  "recipient_file_preserved": true,
+  "user_registration_unchanged": true,
+  "clean_machine": false
+}

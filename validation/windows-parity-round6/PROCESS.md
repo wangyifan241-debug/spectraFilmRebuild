@@ -15,7 +15,9 @@ The host solve probe is shared desktop boundary code; it releases and lazily res
 - New regression: deliberate removal of Process Y/M reset failed with `Process did not neutralize Y/M`; restored implementation passed (10.32 s).
 - Actual Vulkan/controller fixture verifies paired Y/M reset, retained film identity/exposure, one-step undo and redo. Existing remainder verifies fit/refusal, save/reopen, export pixel agreement and immutable decode identity.
 - Offscreen empty-editor image generated and inspected. It verifies startup/layout only; Process is below the visible rail portion and this capture does not prove interactive Process operation.
-- Real-window input/capture: unavailable. Computer-use returned `native pipe unavailable ... os error 2` on two attempts. No live-window pass is claimed.
+- Native Windows main-window test: the existing application self-test was run using QT_QPA_PLATFORM=windows with the software backend override removed. All 237 report fields passed. Its actual main-window grabWindow captures show the rendered canvas; native export, split/Space, geometry, post processing and isolated persistence passed. See native-report.json and native-canvas.png. This is an application-driven native-window test, not physical pointer input or an OS-level capture. It does not specifically exercise clicking the new Process button.
+- External pointer/OS capture: computer-use returned `native pipe unavailable ... os error 2` on two attempts; manual Process interaction remains unverified.
+- Deployed official build.ps1 gate: 37/37 passed (321.59 s); source and payload inventories recorded in qt-build.json before packaging.
 
 ## Manual acceptance still required
 
@@ -28,3 +30,18 @@ The host solve probe is shared desktop boundary code; it releases and lazily res
 ## Remaining work
 
 Process is wired into the editor, but live-pointer/UI verification and dedicated Phoenix integration fixtures remain pending. HDR output/display, native editor preview, export recipes/soft proof, display-color parity and latest-Mac external sidecar synchronization remain separate modules. Current SDR sRGB output must not be described as HDR.
+
+## Runnable Preview delivery
+
+Source commit: 493c7e85a8c81e430ba435dc504a2d902f2a36ea. Later validation-only commits do not change the build inputs; the installer embeds this source commit and an exact source inventory.
+
+- EXE: build/round6-native/app/SpektraLabQt.exe (run with its sibling deployed DLLs/resources).
+- Installer: build/round6-preview-process/SpektraLab-2026.11.03-round6-process-windows-x64-setup.exe.
+- EXE SHA256: 272ba3060640859e26d1ebae963b6304b1b58c7488c91df4dbafa1b6d1910f0c.
+- Installer SHA256: 2b884046c95ddb6f4594c304c500a721352140ae7ba04e87f9361ab1cd18df17.
+- Package test: 1,721 installed file hashes, isolated installed startup, overwrite refusal, safe uninstall, recipient-owned file preserved and existing uninstall registration unchanged. See installer-report.json.
+- Actual limitation: the original deeply nested test installation directory failed with exit 3. An otherwise identical generated test runner using the shorter owned workspace build/i-9b49526c target passed. No installer check was disabled. Deep custom install paths are not supported by this Preview; use the default/short destination. This is not a clean-machine certification.
+
+Operation location: left rail → scroll down to **放大机 · 相纸亮度** → **配光 Process**. The adjacent **亮度** slider controls print exposure; **黄色滤镜** and **洋红滤镜** remain available for relative manual offsets.
+
+This package contains Process only. HDR diagnostics are on independent branch codex/windows-parity-round6-hdr (Draft PR #13); actual HDR output/switch/fallback remain unfinished. No experimental Phoenix resource has been imported, changed or integrated.
