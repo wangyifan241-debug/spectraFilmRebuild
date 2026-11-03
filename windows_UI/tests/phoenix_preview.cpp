@@ -5,6 +5,7 @@
 #include <QCoreApplication>
 #include <QColorSpace>
 #include <QDir>
+#include <QDirIterator>
 #include <QFile>
 #include <QImageReader>
 #include <QJsonArray>
@@ -23,7 +24,7 @@ if(!app.arguments().contains("--integrity-only"))for(const auto v:entries){const
 if(app.arguments().contains("--integrity-only")){
  int marked=0;for(const auto& item:p.films())if(item.toMap()["experimental"].toBool())++marked;check(marked==23,"23 UI experimental identities");
  p.chooseMaterial("phx_200_linear_r2");idle(p);const auto held=p.frame();p.setPhoenixPrintMode(1);check(p.phoenixPrintMode()==0&&p.frame()==held,"R2 recalibration must not be silently applied");check(p.status().contains("no frozen neutral calibration"),"unsupported calibration has explicit message");
- QTemporaryDir bad;std::filesystem::copy(std::filesystem::path(resources.toStdWString()),std::filesystem::path(bad.path().toStdWString()),std::filesystem::copy_options::recursive);PhoenixExperiments copied(bad.path());const auto missing=entries[0].toObject()["id"].toString();check(QFile::remove(bad.path()+"/profiles/"+missing+".json"),"remove exactly one candidate fixture");bool refused=false;try{PhoenixExperiments broken(bad.path());}catch(const std::exception& e){refused=QString::fromUtf8(e.what()).contains("Missing experimental profile: "+missing);}check(refused,"missing candidate explicitly rejected for its own reason");check(QFile::copy(resources+"/profiles/"+missing+".json",bad.path()+"/profiles/"+missing+".json"),"restore candidate before manifest control");
+ QTemporaryDir bad;QDirIterator copyFiles(resources,QDir::Files,QDirIterator::Subdirectories);while(copyFiles.hasNext()){const auto src=copyFiles.next(),dest=bad.path()+"/"+QDir(resources).relativeFilePath(src);check(QDir().mkpath(QFileInfo(dest).path())&&QFile::copy(src,dest),"copy complete resource fixture");}PhoenixExperiments copied(bad.path());const auto missing=entries[0].toObject()["id"].toString();check(QFile::remove(bad.path()+"/profiles/"+missing+".json"),"remove exactly one candidate fixture");bool refused=false;try{PhoenixExperiments broken(bad.path());}catch(const std::exception& e){refused=QString::fromUtf8(e.what()).contains("Missing experimental profile: "+missing);}check(refused,"missing candidate explicitly rejected for its own reason");check(QFile::copy(resources+"/profiles/"+missing+".json",bad.path()+"/profiles/"+missing+".json"),"restore candidate before manifest control");
  QFile edited(bad.path()+"/phoenix-preview.json");check(edited.open(QIODevice::ReadWrite),"manifest corruption fixture");auto bytes=edited.readAll();const auto originalBytes=bytes;bytes.replace("0.40848703560034955","0.50848703560034955");check(bytes!=originalBytes,"negative control actually changes gain bytes");edited.resize(0);edited.write(bytes);edited.close();refused=false;try{PhoenixExperiments broken(bad.path());}catch(const std::exception& e){refused=QString::fromUtf8(e.what()).contains("manifest does not match this executable");}check(refused,"manifest/gain cannot drift from binary for its own reason");
  for(const auto suffix:{"jpg","tif"}){const auto exported=out+"/input-roundtrip."+suffix;p.exportImage(QUrl::fromLocalFile(exported),QString(suffix)=="jpg"?3:0,95,0);idle(p);p.openRaw(QUrl::fromLocalFile(exported));idle(p);check(p.frame()->metadata.input_kind!="raw","JPEG/TIFF import through real decoder");}
 }
