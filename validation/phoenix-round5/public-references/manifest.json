@@ -1,0 +1,38 @@
+[
+  {
+    "id": "train",
+    "author": "Felipe Tofani",
+    "film": "Phoenix 200",
+    "camera": "Mamiya RZ67",
+    "processing": "Negative Lab Pro; development/scanner unknown",
+    "title": "Time_to_take_the_train_-_Flickr_-_ftrc.jpg",
+    "original": "https://flickr.com/photos/81035303@N00/54723280356",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/3/36/Time_to_take_the_train_-_Flickr_-_ftrc.jpg",
+    "license": "CC-BY-SA-4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "page": "https://commons.wikimedia.org/wiki/File:Time_to_take_the_train_-_Flickr_-_ftrc.jpg",
+    "classification": "inverted display JPEG; not linear RAW or original negative",
+    "use": "unpaired qualitative style only; no pixel/DeltaE fidelity metric",
+    "distribution": "separate share-alike collection; images not committed",
+    "sha256": null,
+    "acquisition": "not downloaded: connection timeout"
+  },
+  {
+    "id": "flight",
+    "author": "Mario A. P.",
+    "film": "Phoenix II 200",
+    "camera": null,
+    "processing": "Author says unretouched; development/scanner unknown",
+    "title": "Lone_flight_-_Flickr_-_Mario_A._P..jpg",
+    "original": "https://flickr.com/photos/99058495@N00/55264341397",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/1/17/Lone_flight_-_Flickr_-_Mario_A._P..jpg",
+    "license": "CC-BY-SA-4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "page": "https://commons.wikimedia.org/wiki/File:Lone_flight_-_Flickr_-_Mario_A._P..jpg",
+    "classification": "inverted display JPEG; not linear RAW or original negative",
+    "use": "unpaired qualitative style only; no pixel/DeltaE fidelity metric",
+    "distribution": "separate share-alike collection; images not committed",
+    "sha256": null,
+    "acquisition": "not downloaded: connection timeout"
+  }
+]

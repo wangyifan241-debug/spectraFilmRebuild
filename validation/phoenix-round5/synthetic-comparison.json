@@ -1,0 +1,30 @@
+{
+  "classification": "synthetic model regression only; NOT real-film accuracy",
+  "physical_accuracy": "Not Verified",
+  "models": {
+    "harman_phoenix_200_exp_v1": {
+      "round4": {
+        "rmse_linear_prophoto_below_075": 0.06834969740811106,
+        "nonfinite": 0,
+        "negative_channels": 0
+      },
+      "round5": {
+        "rmse_linear_prophoto_below_075": 0.06670883011599005,
+        "nonfinite": 0,
+        "negative_channels": 0
+      }
+    },
+    "harman_phoenix_ii_200_exp_v1": {
+      "round4": {
+        "rmse_linear_prophoto_below_075": 0.05754106660656341,
+        "nonfinite": 0,
+        "negative_channels": 0
+      },
+      "round5": {
+        "rmse_linear_prophoto_below_075": 0.049242987441669085,
+        "nonfinite": 0,
+        "negative_channels": 0
+      }
+    }
+  }
+}

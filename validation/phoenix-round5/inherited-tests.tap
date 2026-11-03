@@ -1,0 +1,265 @@
+TAP version 13
+# Subtest: review: manifest pairing claim and unstructured evidence cannot verify pairing
+ok 1 - review: manifest pairing claim and unstructured evidence cannot verify pairing
+  ---
+  duration_ms: 55.6638
+  ...
+# Subtest: review: pairing artifact verifies bytes, retains attestation limits, requires capture records
+ok 2 - review: pairing artifact verifies bytes, retains attestation limits, requires capture records
+  ---
+  duration_ms: 20.5162
+  ...
+# Subtest: review: missing human review and wrong capture identity are independent failures
+ok 3 - review: missing human review and wrong capture identity are independent failures
+  ---
+  duration_ms: 26.1594
+  ...
+# Subtest: review: documentary hash mismatch and RAW/scan mismatch rejected
+ok 4 - review: documentary hash mismatch and RAW/scan mismatch rejected
+  ---
+  duration_ms: 23.1055
+  ...
+# Subtest: review: registration recomputes held-out residuals independently of reported error
+ok 5 - review: registration recomputes held-out residuals independently of reported error
+  ---
+  duration_ms: 21.3481
+  ...
+# Subtest: review: missing held-outs / duplicate and collinear points / singular transform rejected
+ok 6 - review: missing held-outs / duplicate and collinear points / singular transform rejected
+  ---
+  duration_ms: 32.0347
+  ...
+# Subtest: review: ROI coordinate source/reviewer and wrong image binding rejected
+ok 7 - review: ROI coordinate source/reviewer and wrong image binding rejected
+  ---
+  duration_ms: 22.6291
+  ...
+# Subtest: review: ROI must follow transform and observations cannot invent ROI origin/error
+ok 8 - review: ROI must follow transform and observations cannot invent ROI origin/error
+  ---
+  duration_ms: 17.3379
+  ...
+# Subtest: review: missing registration is NV, never a default perfect alignment
+ok 9 - review: missing registration is NV, never a default perfect alignment
+  ---
+  duration_ms: 13.4598
+  ...
+# Subtest: review: real/model extraction requires file-bound registered ROI; reviewed geometry records origin and residuals
+ok 10 - review: real/model extraction requires file-bound registered ROI; reviewed geometry records origin and residuals
+  ---
+  duration_ms: 163.2017
+  ...
+# Subtest: review: print refitting cannot silently enter frozen comparison mode
+ok 11 - review: print refitting cannot silently enter frozen comparison mode
+  ---
+  duration_ms: 1.1542
+  ...
+# Subtest: review: report distinguishes this execution, history, and not-run tests
+ok 12 - review: report distinguishes this execution, history, and not-run tests
+  ---
+  duration_ms: 2724.4897
+  ...
+# Subtest: review: manifest pairing claim and unstructured evidence cannot verify pairing
+ok 13 - review: manifest pairing claim and unstructured evidence cannot verify pairing
+  ---
+  duration_ms: 37.9786
+  ...
+# Subtest: review: pairing artifact verifies bytes, retains attestation limits, requires capture records
+ok 14 - review: pairing artifact verifies bytes, retains attestation limits, requires capture records
+  ---
+  duration_ms: 19.7953
+  ...
+# Subtest: review: missing human review and wrong capture identity are independent failures
+ok 15 - review: missing human review and wrong capture identity are independent failures
+  ---
+  duration_ms: 25.9012
+  ...
+# Subtest: review: documentary hash mismatch and RAW/scan mismatch rejected
+ok 16 - review: documentary hash mismatch and RAW/scan mismatch rejected
+  ---
+  duration_ms: 22.0175
+  ...
+# Subtest: review: registration recomputes held-out residuals independently of reported error
+ok 17 - review: registration recomputes held-out residuals independently of reported error
+  ---
+  duration_ms: 24.4755
+  ...
+# Subtest: review: missing held-outs / duplicate and collinear points / singular transform rejected
+ok 18 - review: missing held-outs / duplicate and collinear points / singular transform rejected
+  ---
+  duration_ms: 33.338
+  ...
+# Subtest: review: ROI coordinate source/reviewer and wrong image binding rejected
+ok 19 - review: ROI coordinate source/reviewer and wrong image binding rejected
+  ---
+  duration_ms: 22.8693
+  ...
+# Subtest: review: ROI must follow transform and observations cannot invent ROI origin/error
+ok 20 - review: ROI must follow transform and observations cannot invent ROI origin/error
+  ---
+  duration_ms: 19.1448
+  ...
+# Subtest: review: missing registration is NV, never a default perfect alignment
+ok 21 - review: missing registration is NV, never a default perfect alignment
+  ---
+  duration_ms: 13.3715
+  ...
+# Subtest: review: real/model extraction requires file-bound registered ROI; reviewed geometry records origin and residuals
+ok 22 - review: real/model extraction requires file-bound registered ROI; reviewed geometry records origin and residuals
+  ---
+  duration_ms: 161.0154
+  ...
+# Subtest: review: print refitting cannot silently enter frozen comparison mode
+ok 23 - review: print refitting cannot silently enter frozen comparison mode
+  ---
+  duration_ms: 0.5363
+  ...
+# Subtest: review: report distinguishes this execution, history, and not-run tests
+ok 24 - review: report distinguishes this execution, history, and not-run tests
+  ---
+  duration_ms: 2729.9122
+  ...
+# Subtest: CIEDE2000 published arithmetic vector 0
+ok 25 - CIEDE2000 published arithmetic vector 0
+  ---
+  duration_ms: 0.4998
+  ...
+# Subtest: CIEDE2000 published arithmetic vector 1
+ok 26 - CIEDE2000 published arithmetic vector 1
+  ---
+  duration_ms: 0.1375
+  ...
+# Subtest: CIEDE2000 published arithmetic vector 2
+ok 27 - CIEDE2000 published arithmetic vector 2
+  ---
+  duration_ms: 0.1029
+  ...
+# Subtest: CIEDE2000 published arithmetic vector 3
+ok 28 - CIEDE2000 published arithmetic vector 3
+  ---
+  duration_ms: 0.2558
+  ...
+# Subtest: CIEDE2000 published arithmetic vector 4
+ok 29 - CIEDE2000 published arithmetic vector 4
+  ---
+  duration_ms: 0.1075
+  ...
+# Subtest: CIEDE2000 published arithmetic vector 5
+ok 30 - CIEDE2000 published arithmetic vector 5
+  ---
+  duration_ms: 0.0803
+  ...
+# Subtest: CIEDE2000 published arithmetic vector 6
+ok 31 - CIEDE2000 published arithmetic vector 6
+  ---
+  duration_ms: 0.0806
+  ...
+# Subtest: gray / Y / Lab arithmetic and exact pairing guards
+ok 32 - gray / Y / Lab arithmetic and exact pairing guards
+  ---
+  duration_ms: 2.087
+  ...
+# Subtest: colorimetry / NaN / duplicate EV rejected
+ok 33 - colorimetry / NaN / duplicate EV rejected
+  ---
+  duration_ms: 0.4058
+  ...
+# Subtest: transitive roll/negative/scan leakage grouping and order invariance
+ok 34 - transitive roll/negative/scan leakage grouping and order invariance
+  ---
+  duration_ms: 19.1517
+  ...
+# Subtest: same bytes cannot enter separate splits under different identities
+ok 35 - same bytes cannot enter separate splits under different identities
+  ---
+  duration_ms: 0.3101
+  ...
+# Subtest: manifest rejects missing identity and unclassified dataset
+ok 36 - manifest rejects missing identity and unclassified dataset
+  ---
+  duration_ms: 0.1452
+  ...
+# Subtest: missing references / synthetic cannot release photographic scores
+ok 37 - missing references / synthetic cannot release photographic scores
+  ---
+  duration_ms: 0.5352
+  ...
+# Subtest: hash bindings and byte-preserving CRLF check
+ok 38 - hash bindings and byte-preserving CRLF check
+  ---
+  duration_ms: 2.1036
+  ...
+# Subtest: grain detrends a plane, rejects insufficient scan calibration
+ok 39 - grain detrends a plane, rejects insufficient scan calibration
+  ---
+  duration_ms: 0.9506
+  ...
+# Subtest: halo annular energy and truncation guard
+ok 40 - halo annular energy and truncation guard
+  ---
+  duration_ms: 0.7585
+  ...
+# Subtest: PNG baseline comparison is engineering only, dimensions and alpha guarded
+ok 41 - PNG baseline comparison is engineering only, dimensions and alpha guarded
+  ---
+  duration_ms: 134.6111
+  ...
+# Subtest: candidate accepts one category with new identity/version and refuses two categories
+ok 42 - candidate accepts one category with new identity/version and refuses two categories
+  ---
+  duration_ms: 41.6527
+  ...
+# Subtest: candidate rejects reused v1 identity / version / renderer / missing source
+ok 43 - candidate rejects reused v1 identity / version / renderer / missing source
+  ---
+  duration_ms: 69.3025
+  ...
+# Subtest: runner refuses unpinned executable before writing output
+ok 44 - runner refuses unpinned executable before writing output
+  ---
+  duration_ms: 182.0351
+  ...
+# Subtest: reviewed photographic policy cannot accidentally omit thresholds
+ok 45 - reviewed photographic policy cannot accidentally omit thresholds
+  ---
+  duration_ms: 0.2385
+  ...
+# Subtest: frozen baseline inventory matches exact Git and working bytes
+ok 46 - frozen baseline inventory matches exact Git and working bytes
+  ---
+  duration_ms: 3901.4004
+  ...
+# Subtest: versioned report: empty physical data stays NV, frozen renders identical, no overwrite, test needs explicit purpose
+ok 47 - versioned report: empty physical data stays NV, frozen renders identical, no overwrite, test needs explicit purpose
+  ---
+  duration_ms: 6264.3735
+  ...
+# Subtest: CLI photographic gate exits 3 and engineering exits 0 independently
+ok 48 - CLI photographic gate exits 3 and engineering exits 0 independently
+  ---
+  duration_ms: 4771.5178
+  ...
+# Subtest: reviewed sRGB PNG ROI extraction binds source/ICC and rejects missing review/alpha/CRC
+ok 49 - reviewed sRGB PNG ROI extraction binds source/ICC and rejects missing review/alpha/CRC
+  ---
+  duration_ms: 6.327
+  ...
+# Subtest: candidate orchestration stages privately and compares identical parent/new inputs (fake renderer; software only)
+ok 50 - candidate orchestration stages privately and compares identical parent/new inputs (fake renderer; software only)
+  ---
+  duration_ms: 3221.9073
+  ...
+# Subtest: candidate without reviewed native receipts is NV; synthetic rows cannot pass a physical gate
+ok 51 - candidate without reviewed native receipts is NV; synthetic rows cannot pass a physical gate
+  ---
+  duration_ms: 0.2437
+  ...
+1..51
+# tests 51
+# suites 0
+# pass 51
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 21829.915

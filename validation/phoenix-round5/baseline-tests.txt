@@ -1,0 +1,1 @@
+PASS independent spectral oracle, neutral reversal, original C ABI control, PNG/TIFF16 exact channels and ICC; artifacts C:\Users\Strickland\.codex\worktrees\phoenix-round5\SpektraLab\validation\phoenix-round5\round4-ctest-fOKuzB

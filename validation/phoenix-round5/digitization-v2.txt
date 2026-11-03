@@ -1,0 +1,1 @@
+{"rows":670,"counts":{"red":{"traced":198,"ambiguous":2,"missing":470},"green":{"traced":158,"ambiguous":4,"missing":508},"blue":{"traced":205,"ambiguous":2,"missing":463}},"profile_ready":false}

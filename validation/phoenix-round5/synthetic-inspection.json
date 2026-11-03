@@ -1,0 +1,293 @@
+{
+  "status": "SOFTWARE_COMPARISON_ONLY",
+  "real_film_metrics": null,
+  "integrity_files": 227,
+  "models": {
+    "harman_phoenix_200_exp_v1": {
+      "spectral_oracle_max_logT_error": 2.520904516245537e-7,
+      "sampled_total_density_min": 0.16632622219878324,
+      "sampled_transmission_max": 0.6818263448992106,
+      "endpoint_clamp_channel_fraction": 0.07430013020833333,
+      "negative_linear_channel_fraction": 0,
+      "above_one_linear_channel_fraction": 0.15079752604166666,
+      "neutral_max_relative_error": 0.0015470900759111395,
+      "synthetic_D50_Lab_patches": [
+        {
+          "band": 0,
+          "ev": -4,
+          "delta_e00": 0.005831740685317311,
+          "delta_L": -0.0047461571925992985,
+          "reference_Y": 0.011689094826579094,
+          "model_Y": 0.01168277389621362,
+          "delta_chroma": 0.0003303835845410606,
+          "reference_hue_degrees": 97.85837343101153,
+          "model_hue_degrees": 65.10714700181043
+        },
+        {
+          "band": 0,
+          "ev": -2,
+          "delta_e00": 0.007744783963494554,
+          "delta_L": -0.009746059029453136,
+          "reference_Y": 0.04600000008940696,
+          "model_Y": 0.04596764849536121,
+          "delta_chroma": 0.0005613773245086162,
+          "reference_hue_degrees": 97.85837343073794,
+          "model_hue_degrees": 85.9426263299185
+        },
+        {
+          "band": 0,
+          "ev": 0,
+          "delta_e00": 0.016551751600273973,
+          "delta_L": -0.0007250909557541263,
+          "reference_Y": 0.1870255172252655,
+          "model_Y": 0.1870193845272064,
+          "delta_chroma": 0.004389010924033982,
+          "reference_hue_degrees": 97.85837343106081,
+          "model_hue_degrees": 133.59510666967142
+        },
+        {
+          "band": 1,
+          "ev": -4,
+          "delta_e00": 7.625465712262454,
+          "delta_L": 6.396029691378825,
+          "reference_Y": 0.005447118189185857,
+          "model_Y": 0.013058581736078484,
+          "delta_chroma": 1.1082150405313627,
+          "reference_hue_degrees": 12.214689335693151,
+          "model_hue_degrees": 37.67981315477394
+        },
+        {
+          "band": 1,
+          "ev": -2,
+          "delta_e00": 5.1002885763352985,
+          "delta_L": 5.041614998170992,
+          "reference_Y": 0.021436000041663645,
+          "model_Y": 0.033153781587444246,
+          "delta_chroma": 2.2755963539555495,
+          "reference_hue_degrees": 17.95095637447376,
+          "model_hue_degrees": 26.900686325218004
+        },
+        {
+          "band": 1,
+          "ev": 0,
+          "delta_e00": 8.216894147185133,
+          "delta_L": -3.097740081343538,
+          "reference_Y": 0.08715389102697371,
+          "model_Y": 0.07233512420579791,
+          "delta_chroma": -5.169221344695558,
+          "reference_hue_degrees": 17.95095637447378,
+          "model_hue_degrees": 1.7826488856002853
+        },
+        {
+          "band": 2,
+          "ev": -4,
+          "delta_e00": 6.268558998030291,
+          "delta_L": -0.31980474748968746,
+          "reference_Y": 0.009163373661926015,
+          "model_Y": 0.008805852993484587,
+          "delta_chroma": -9.339473297147173,
+          "reference_hue_degrees": 153.5148529472652,
+          "model_hue_degrees": 165.10011350497504
+        },
+        {
+          "band": 2,
+          "ev": -2,
+          "delta_e00": 7.053636045716454,
+          "delta_L": 3.427994458995606,
+          "reference_Y": 0.036060550070088356,
+          "model_Y": 0.046628563767857845,
+          "delta_chroma": -16.903001322496007,
+          "reference_hue_degrees": 151.34684253137925,
+          "model_hue_degrees": 153.14879301484305
+        },
+        {
+          "band": 2,
+          "ev": 0,
+          "delta_e00": 9.62676028696938,
+          "delta_L": 5.02702223108367,
+          "reference_Y": 0.14661397859081624,
+          "model_Y": 0.18581480695158242,
+          "delta_chroma": -28.78275253103834,
+          "reference_hue_degrees": 151.34684253137922,
+          "model_hue_degrees": 152.04366585570332
+        },
+        {
+          "band": 3,
+          "ev": -4,
+          "delta_e00": 6.1580211005972085,
+          "delta_L": 3.7226873916728422,
+          "reference_Y": 0.0029231503887567666,
+          "model_Y": 0.007044375513819977,
+          "delta_chroma": -1.6639720859710607,
+          "reference_hue_degrees": -85.23372173066795,
+          "model_hue_degrees": -107.22172861068337
+        },
+        {
+          "band": 3,
+          "ev": -2,
+          "delta_e00": 3.1267486229797963,
+          "delta_L": 2.6996636239945992,
+          "reference_Y": 0.011503450022358447,
+          "model_Y": 0.015440742267481981,
+          "delta_chroma": -0.8040266759963153,
+          "reference_hue_degrees": -82.39512828044279,
+          "model_hue_degrees": -89.26671048807212
+        },
+        {
+          "band": 3,
+          "ev": 0,
+          "delta_e00": 3.6872025755096987,
+          "delta_L": 0.6811736631481011,
+          "reference_Y": 0.046770406220108265,
+          "model_Y": 0.04909471729584038,
+          "delta_chroma": 3.763986237025314,
+          "reference_hue_degrees": -82.39512828044279,
+          "model_hue_degrees": -74.75557246414913
+        }
+      ]
+    },
+    "harman_phoenix_ii_200_exp_v1": {
+      "spectral_oracle_max_logT_error": 1.473375049118597e-7,
+      "sampled_total_density_min": 0.17886066283623553,
+      "sampled_transmission_max": 0.6624290004679565,
+      "endpoint_clamp_channel_fraction": 0.054036458333333336,
+      "negative_linear_channel_fraction": 0,
+      "above_one_linear_channel_fraction": 0.1943359375,
+      "neutral_max_relative_error": 0.0022923290506501326,
+      "synthetic_D50_Lab_patches": [
+        {
+          "band": 0,
+          "ev": -4,
+          "delta_e00": 0.007619509511419868,
+          "delta_L": -0.005135690747593458,
+          "reference_Y": 0.011689094826579094,
+          "model_Y": 0.011682255216781049,
+          "delta_chroma": 0.006594609777252332,
+          "reference_hue_degrees": 97.85837343101153,
+          "model_hue_degrees": 101.87739147329209
+        },
+        {
+          "band": 0,
+          "ev": -2,
+          "delta_e00": 0.004894609339351666,
+          "delta_L": -0.0036913860885121608,
+          "reference_Y": 0.04600000008940696,
+          "model_Y": 0.045987744918093085,
+          "delta_chroma": 0.0015522567949535233,
+          "reference_hue_degrees": 97.85837343073794,
+          "model_hue_degrees": 111.49416461935085
+        },
+        {
+          "band": 0,
+          "ev": 0,
+          "delta_e00": 0.0033961775904145066,
+          "delta_L": 0.0019276778070747014,
+          "reference_Y": 0.1870255172252655,
+          "model_Y": 0.1870418218538165,
+          "delta_chroma": 0.0018556070568814063,
+          "reference_hue_degrees": 97.85837343106081,
+          "model_hue_degrees": 92.31188507685712
+        },
+        {
+          "band": 1,
+          "ev": -4,
+          "delta_e00": 3.7117142088671478,
+          "delta_L": 3.8292759994746923,
+          "reference_Y": 0.005447118189185857,
+          "model_Y": 0.009712534379912539,
+          "delta_chroma": 4.555199161478747,
+          "reference_hue_degrees": 12.214689335693151,
+          "model_hue_degrees": 17.837370678632613
+        },
+        {
+          "band": 1,
+          "ev": -2,
+          "delta_e00": 5.542166638461004,
+          "delta_L": 5.688166429159402,
+          "reference_Y": 0.021436000041663645,
+          "model_Y": 0.034909554322343314,
+          "delta_chroma": 2.2196446242730232,
+          "reference_hue_degrees": 17.95095637447376,
+          "model_hue_degrees": 27.350644341486557
+        },
+        {
+          "band": 1,
+          "ev": 0,
+          "delta_e00": 5.236787801916641,
+          "delta_L": -2.1920136422040386,
+          "reference_Y": 0.08715389102697371,
+          "model_Y": 0.076478358303383,
+          "delta_chroma": -9.057964469633397,
+          "reference_hue_degrees": 17.95095637447378,
+          "model_hue_degrees": 9.499920591401768
+        },
+        {
+          "band": 2,
+          "ev": -4,
+          "delta_e00": 6.398109498400184,
+          "delta_L": 3.1062195379511444,
+          "reference_Y": 0.009163373661926015,
+          "model_Y": 0.013150477667897939,
+          "delta_chroma": -7.528170355443496,
+          "reference_hue_degrees": 153.5148529472652,
+          "model_hue_degrees": 140.09616259716225
+        },
+        {
+          "band": 2,
+          "ev": -2,
+          "delta_e00": 7.488070873116138,
+          "delta_L": 4.064999988174129,
+          "reference_Y": 0.036060550070088356,
+          "model_Y": 0.04879552091620862,
+          "delta_chroma": -13.651489877242948,
+          "reference_hue_degrees": 151.34684253137925,
+          "model_hue_degrees": 138.71523284610677
+        },
+        {
+          "band": 2,
+          "ev": 0,
+          "delta_e00": 4.34024097134143,
+          "delta_L": 2.4084398136280214,
+          "reference_Y": 0.14661397859081624,
+          "model_Y": 0.16462357944883405,
+          "delta_chroma": -9.873867387331735,
+          "reference_hue_degrees": 151.34684253137922,
+          "model_hue_degrees": 145.83341475820953
+        },
+        {
+          "band": 3,
+          "ev": -4,
+          "delta_e00": 2.9741634501956624,
+          "delta_L": 0.4092820740904273,
+          "reference_Y": 0.0029231503887567666,
+          "model_Y": 0.0033762487527914343,
+          "delta_chroma": -0.1959183541112104,
+          "reference_hue_degrees": -85.23372173066795,
+          "model_hue_degrees": -75.42860965433184
+        },
+        {
+          "band": 3,
+          "ev": -2,
+          "delta_e00": 2.8156523809863168,
+          "delta_L": 2.863384113198574,
+          "reference_Y": 0.011503450022358447,
+          "model_Y": 0.015704783019889146,
+          "delta_chroma": -3.3214007093136004,
+          "reference_hue_degrees": -82.39512828044279,
+          "model_hue_degrees": -80.44907251274995
+        },
+        {
+          "band": 3,
+          "ev": 0,
+          "delta_e00": 3.5305614691905682,
+          "delta_L": 0.9070844002772205,
+          "reference_Y": 0.046770406220108265,
+          "model_Y": 0.04988224248886108,
+          "delta_chroma": 0.9952652139872669,
+          "reference_hue_degrees": -82.39512828044279,
+          "model_hue_degrees": -76.02464744393203
+        }
+      ]
+    }
+  }
+}

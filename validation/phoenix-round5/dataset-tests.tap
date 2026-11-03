@@ -1,0 +1,50 @@
+TAP version 13
+# Subtest: empty manifest is explicitly not verified
+ok 1 - empty manifest is explicitly not verified
+  ---
+  duration_ms: 1.6132
+  ...
+# Subtest: empty dataset cannot fit
+ok 2 - empty dataset cannot fit
+  ---
+  duration_ms: 0.6262
+  ...
+# Subtest: same scene bracket across splits rejected
+ok 3 - same scene bracket across splits rejected
+  ---
+  duration_ms: 10.9129
+  ...
+# Subtest: same roll different scenes across splits rejected
+ok 4 - same roll different scenes across splits rejected
+  ---
+  duration_ms: 3.1206
+  ...
+# Subtest: tampered input rejected
+ok 5 - tampered input rejected
+  ---
+  duration_ms: 7.0457
+  ...
+# Subtest: unknown correction switch rejected
+ok 6 - unknown correction switch rejected
+  ---
+  duration_ms: 2.465
+  ...
+# Subtest: synthetic fixture cannot pass evidence gate
+ok 7 - synthetic fixture cannot pass evidence gate
+  ---
+  duration_ms: 3.1391
+  ...
+# Subtest: renaming identities cannot reuse the same negative across splits
+ok 8 - renaming identities cannot reuse the same negative across splits
+  ---
+  duration_ms: 4.5812
+  ...
+1..8
+# tests 8
+# suites 0
+# pass 8
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 107.3816

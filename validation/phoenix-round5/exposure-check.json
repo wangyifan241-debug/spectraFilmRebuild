@@ -1,0 +1,18 @@
+{
+  "status": "software exposure regression only",
+  "ev": [
+    -2,
+    -1,
+    0,
+    1,
+    2
+  ],
+  "models": {
+    "harman_phoenix_200_exp_v1": {
+      "recipe_fixed_across_five_exposures": true
+    },
+    "harman_phoenix_ii_200_exp_v1": {
+      "recipe_fixed_across_five_exposures": true
+    }
+  }
+}
