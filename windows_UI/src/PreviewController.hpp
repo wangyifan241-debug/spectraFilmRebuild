@@ -157,6 +157,7 @@ public:
     Q_INVOKABLE void cancelExport();
     Q_INVOKABLE void resetSettings();
     Q_INVOKABLE void measureScene();
+    Q_INVOKABLE void process();
     Q_INVOKABLE void fitScene(double highlight,double shadow,bool automatic=false);
     Q_INVOKABLE void resetScenePlacement();
     Q_INVOKABLE void setDialogOpen(bool open);

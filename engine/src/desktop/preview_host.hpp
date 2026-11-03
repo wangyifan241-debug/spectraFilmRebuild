@@ -210,6 +210,8 @@ public:
     FramePtr render_original(const FramePtr& snapshot, bool negative_scan = false);
     // Measure/fit the supplied immutable decode, never a possibly newer live
     // session or a reread of its path. No render setting is committed here.
+    // Read-only Process probe on the immutable shown frame.
+    std::string solve(const FramePtr& snapshot);
     std::string scene_latitude(const FramePtr& snapshot, const std::string& request="{}");
     // Exports exactly the supplied sRGB frame, even after a newer one opened.
     // ProPhoto frames are refused here: use the colour-managed FrameOutput.

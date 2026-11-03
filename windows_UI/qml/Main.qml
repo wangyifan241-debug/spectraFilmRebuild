@@ -382,6 +382,11 @@ ApplicationWindow {
                                 onPressedChanged: { if (pressed) preview.beginEditGesture("exposureEv"); else preview.endEditGesture() }
                                 onMoved: preview.exposureEv = value
                             }
+                            Button {
+                                text: "配光 Process"; objectName: "processButton"
+                                enabled: preview.settingsEditable && !preview.dirty && !preview.filmIsPositive
+                                onClicked: preview.process()
+                            }
                             Adjustment { label: "黄色滤镜"; setting: "yFilterShift"; from: -1; to: 1; step: 0.01; decimals: 2; available: !preview.filmIsPositive && !preview.filmIsMonochrome }
                             Adjustment { label: "洋红滤镜"; setting: "mFilterShift"; from: -1; to: 1; step: 0.01; decimals: 2; available: !preview.filmIsPositive && !preview.filmIsMonochrome }
                         }
