@@ -243,6 +243,14 @@ spk_status spk_scene_latitude(spk_session* session, const char* request_json, ch
 spk_status spk_overscan_geometry(spk_session* session, char** out_json);
 
 /* Tiers are the three API-SPEC §6 names: "live", "preview", "full". */
+/* Owned, tightly packed RGB float32 in the session's resolved output space
+ * and transfer function. No [0,1] clamp. Set output_cctf_encoding=false for
+ * linear-light consumers. This does not by itself enable HDR or select an
+ * output transform. Existing spk_result layout is unchanged. */
+typedef struct { float* rgb; uint32_t width, height; } spk_float_result;
+spk_status spk_reprint_rgb32f(spk_session* session, const char* tier, spk_float_result* out);
+void spk_float_result_free(spk_float_result* result);
+
 spk_status spk_reprint(spk_session* session, const char* tier, spk_result* out);
 spk_status spk_render(spk_session* session, const char* tier, spk_result* out);
 

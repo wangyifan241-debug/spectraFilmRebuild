@@ -267,3 +267,12 @@ if(BUILD_TESTING)
     add_test(NAME spk_display_capability COMMAND spk_display_capability_test)
 
 endif()
+
+if(BUILD_TESTING)
+    add_executable(spk_float_transport_test tests/float_transport.cpp)
+    target_compile_features(spk_float_transport_test PRIVATE cxx_std_20)
+    target_include_directories(spk_float_transport_test PRIVATE "${SPEKTRALAB_SOURCE_ROOT}/engine/include")
+    target_link_libraries(spk_float_transport_test PRIVATE spektralab_engine)
+    add_dependencies(spk_float_transport_test spektralab_qt_resources)
+    add_test(NAME spk_float_transport COMMAND spk_float_transport_test "$<TARGET_FILE_DIR:SpektraLabQt>/resources")
+endif()
