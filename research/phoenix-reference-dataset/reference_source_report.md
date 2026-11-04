@@ -1,0 +1,14 @@
+# Reference source report — 2026-11-04
+
+## Checked first-party sources
+- HARMAN https://www.harmanphoto.co.uk/phoenix/ : manufacturer page explicitly distinguishes Phoenix and Phoenix II; community gallery labels include Beatriz Valim / Trev Lee Phoenix II, mixed with RED and Switch Azure. Do not ingest the whole gallery as Phoenix. Image rights not yet established: discovery only, no bulk download. Need individual image/author attribution and reuse terms.
+- Felipe Tofani: https://commons.wikimedia.org/wiki/File:Time_to_take_the_train_-_Flickr_-_ftrc.jpg ; source https://flickr.com/photos/81035303@N00/54723280356 . Author describes Mamiya RZ67 with Phoenix 200, summer evening Berlin. Commons identifies CC-BY-SA-4.0, Flickr review 2025-08-26. Film identity author-described, not independently measured; scanner unknown. Metadata eligible, download/visual review separately recorded.
+- Mario A. P.: https://commons.wikimedia.org/wiki/File:Lone_flight_-_Flickr_-_Mario_A._P..jpg ; source https://flickr.com/photos/99058495@N00/55264341397 . Author explicitly says Phoenix II 200 and unretouched, 2026. Commons identifies CC-BY-SA-4.0, Flickr review 2026-06-02. Copyright notice coexists with license; preserve both and attribution. Scanner unknown. Metadata eligible, not a calibrated film measurement.
+
+## Discovered expansion leads, not screened sample counts
+- https://bluemooncamera.com/museum/exhibit/10505/harman-phoenix-200--120/4837 : lab/staff Phoenix 200 120 gallery, Gabriel Binder, sunny/highlight metering. Requires individual file identities, scanning details and rights review.
+- https://talkativephotographer.com/film-samples/harman-phoenix : photographer sample gallery, reports scanner-induced magenta shifts. Treat scanner differences explicitly; no reuse license verified.
+- https://avoidxray.com/films/harman-phoenix-ii-200 : reports 44 images from one photographer. This is a page claim, NOT 44 collected/accepted records. Needs author/source/license verification; one author cannot establish validation independence.
+- https://emulsive.org/articles/news/new-film-day-say-hello-to-harman-phoenix-200-a-brand-new-mid-speed-colour-film : launch samples with photographer credits; individual rights and image-generation assignment needed.
+
+No stock thumbnails, packaging, charts, digital simulations, generative images or mixed-generation gallery images count toward the 200+200 targets. CC-BY-SA artifacts require attribution and compatible treatment; project being noncommercial is not blanket permission. Public repo defaults to metadata/code/statistics only.
