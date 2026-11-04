@@ -25,3 +25,11 @@ Analysis exports per-stage nonfinite/range statistics and neutral RGB response C
 
 ## Remaining Phase 0 requirements
 Independent device calibration / decoupled candidate; actual window preset/original toggles, asynchronous/cache ordering and parameter regressions; channel response plots and visual clipping assessment; full application/resource delta between old and integrated EXEs. Earlier startup failure exact cause remains unresolved, but no longer blocks the controlled experiments. Export protection stays active. Current narrow tests do not cover all Phase 0 acceptance requirements. Do not advance to formal fitting.
+
+## Closeout follow-up (not acceptance)
+- Existing synthetic float32 captures produced four response figures via plot_responses.py: neutral stage and RGB-biased exposure ramps for each film. Density/log and linear units are explicitly separated. No baseline rerender used for plotting.
+- Independent device candidate E added only to research main.cpp, behind PHOENIX_PHASE0_DEVICE plus PHOENIX_PHASE0_ABLATION. Matrix fits 81 known wavelength impulses from D50 Gaussian detectors to CIE1931 XYZ then linear ProPhoto, ridge 1e-8. It has no photographic or film RGB target. Applying this transmission-calibrated matrix to inverted-positive signals remains an unvalidated hypothesis, not a production proposal.
+- Actual synthetic E run exit 0, output build/phoenix-phase0-device-synth with coefficients/recipe/input/resource/executable fingerprints and PNGs. Synthetic inter-film mean DE00 7.14676, P95 15.68134; difference is not accuracy. RAW candidate E not yet run.
+- Newly built spk_qt_frame_output_test actually passed (exit 0); frame-output.log. It covers output transforms/encoders/ICC/source immutability and output races, not GUI toggles.
+- Newly built spk_qt_editing_workflow_test started with DSC02443.ARW, rejected.NEF and isolated build/phoenix-phase0-ui-regression edits. Still pending; not counted as a pass. This is in-process controller testing, not proof of native window display.
+- a1415455 remains ancestor. Remote ls-remote with TLS verification enabled failed with connection reset; remote state unconfirmed. No force push or merge performed. PR remains blocked on network/remote publication.

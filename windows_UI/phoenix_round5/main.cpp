@@ -110,6 +110,23 @@ int main(int argc,char** argv){QGuiApplication app(argc,argv);try{
     anchor.append(a);slope.append(d);
     for(size_t i=c;i<affine.size();i+=3)affine[i]=float(std::log10(.184)+d*(measured[i]-a));
    }
+   // Device-only spectral least squares: no film RGB targets or image statistics.
+   // Synthetic wavelength impulses calibrate detector weights to CIE XYZ D50.
+   if(qEnvironmentVariableIsSet("PHOENIX_PHASE0_DEVICE")) {
+    Vec illum;need(lab.colour.illuminant_values("D50",illum,err));
+    const auto& cmf=lab.colour.cmfs_1931_2deg();const auto& wavelengths=lab.colour.wavelengths();
+    double sensor[81][3],norm[3]={},ynorm=0;const double centres[3]={610,540,450},sigma[3]={30,30,25};
+    for(int i=0;i<81;i++){ynorm+=illum[i]*cmf[3*i+1];for(int c=0;c<3;c++){double z=(wavelengths[i]-centres[c])/sigma[c];sensor[i][c]=illum[i]*std::exp(-.5*z*z);norm[c]+=sensor[i][c];}}
+    Mat3 gram,cross;for(int r=0;r<3;r++)for(int c=0;c<3;c++){gram.m[r][c]=r==c?1e-8:0;cross.m[r][c]=0;}
+    for(int i=0;i<81;i++){for(int c=0;c<3;c++)sensor[i][c]/=norm[c];for(int r=0;r<3;r++)for(int c=0;c<3;c++){gram.m[r][c]+=sensor[i][r]*sensor[i][c];cross.m[r][c]+=illum[i]*cmf[3*i+r]/ynorm*sensor[i][c];}}
+    auto inverse=gram.inverse();Mat3 xyzToRgb;need(lab.colour.matrix_XYZ_to_RGB("ProPhoto RGB",nullptr,"CAT02",xyzToRgb,err));double matrix[9]={};
+    for(int r=0;r<3;r++)for(int c=0;c<3;c++)for(int j=0;j<3;j++)for(int k=0;k<3;k++)matrix[3*r+c]+=xyzToRgb.m[r][j]*cross.m[j][k]*inverse.m[k][c];
+    QJsonArray coefficients;for(double v:matrix)coefficients.append(v);
+    auto held=scanner.matrix;scanner.matrix=lab.gpu->upload_persistent_f32(matrix,9,err);
+    auto device=scanner.positive(lab.upload(affine,w,h));scanner.matrix=held;
+    lab.capture(prefix+"-E-device",device);lab.exportImage(prefix+"-E-device",device,true);
+    write(output+"/"+prefix+"-device.json",QJsonDocument(QJsonObject{{"matrix",coefficients},{"method","81 spectral impulses, D50 Gaussian detector -> CIE1931 XYZ -> ProPhoto, ridge 1e-8; no film fit"},{"limitation","synthetic device; applying transmission calibration to inverted positive signals is an unvalidated research hypothesis"}}).toJson());
+   }
    auto affineImage=lab.upload(affine,w,h);
    lab.capture(prefix+"-affine-logPositive",affineImage);
    // Same negative, spectral detector, anchor and display transform in all cells.

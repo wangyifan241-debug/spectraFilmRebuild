@@ -12,6 +12,7 @@ def lab(a):
  return np.stack([116*f[...,1]-16,500*(f[...,0]-f[...,1]),200*(f[...,1]-f[...,2])],axis=-1)
 def read(p):return np.asarray(Image.open(p).convert('RGB'),dtype=float)/255
 modes={'A':'round5-scan','B':'B-affine-matrix','C':'C-inverse-identity','D':'D-affine-identity'}
+if (root/'harman_phoenix_200_exp_v1-E-device.png').exists():modes['E']='E-device'
 report={'classification':'factorial software diagnostic; NOT real-film accuracy; identity matrix cells NOT proposed improvements','comparisons':{},'stages':{}}
 images={}
 for stock in ['harman_phoenix_200_exp_v1','harman_phoenix_ii_200_exp_v1']:
