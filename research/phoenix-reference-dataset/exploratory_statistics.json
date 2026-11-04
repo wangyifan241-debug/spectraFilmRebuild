@@ -154,5 +154,115 @@
       259
     ],
     "limitation": "single scene/author, not film causality or model calibration; no semantic segmentation, grain or halation estimate"
+  },
+  {
+    "id": "commons-200458925",
+    "film_stock": "Phoenix 200",
+    "source_sha256": "6bb03764f82e5ecf526f55796f4606afcec10b10fa00e64422b679b4bef29623",
+    "color_policy": "EXPLICIT exploratory assumption: untagged interpreted as sRGB; not verified",
+    "mask": [
+      {
+        "rect_normalized": [
+          0,
+          0,
+          1,
+          0.015
+        ],
+        "reason": "scan border"
+      },
+      {
+        "rect_normalized": [
+          0,
+          0.985,
+          1,
+          1
+        ],
+        "reason": "scan border"
+      },
+      {
+        "rect_normalized": [
+          0,
+          0,
+          0.015,
+          1
+        ],
+        "reason": "scan border"
+      },
+      {
+        "rect_normalized": [
+          0.985,
+          0,
+          1,
+          1
+        ],
+        "reason": "scan border"
+      }
+    ],
+    "retained_pixel_fraction": 0.9409210645835225,
+    "sampled_pixels": 152074,
+    "linear_Y_percentiles": [
+      0.003329325314100941,
+      0.005602075705083556,
+      0.013973519190457485,
+      0.03673271985276313,
+      0.13138305699114855,
+      0.46521287701368724,
+      0.6956629691260126
+    ],
+    "Lab_D65_mean": [
+      29.48727015188572,
+      7.455770493925258,
+      12.559638109961789
+    ],
+    "OKLab_mean": [
+      0.39428477551985497,
+      0.021476359804397313,
+      0.029745407905540925
+    ],
+    "Lab_L_histogram": [
+      7220,
+      22192,
+      21591,
+      17755,
+      13285,
+      9796,
+      8778,
+      8495,
+      7845,
+      6270,
+      5420,
+      4944,
+      4116,
+      3994,
+      3487,
+      2711,
+      2129,
+      1663,
+      383,
+      0
+    ],
+    "OKLab_L_histogram": [
+      1,
+      27,
+      1616,
+      15319,
+      25521,
+      21846,
+      16046,
+      11453,
+      10032,
+      9510,
+      8347,
+      6494,
+      6077,
+      4854,
+      4750,
+      4066,
+      3006,
+      2077,
+      1032,
+      0
+    ],
+    "limitation": "single scene/author, not film causality or model calibration; no semantic segmentation, grain or halation estimate"
   }
 ]

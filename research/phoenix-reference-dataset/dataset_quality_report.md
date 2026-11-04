@@ -1,11 +1,44 @@
-# Dataset quality — executed expansion batch
+# Actual acquisition result
 
-Total unique source-page records: 128. Text-matched stock candidates (not individually verified): {'Phoenix 200': 56, 'Phoenix II 200': 52, 'unverified': 20}.
+{
+  "manifest_rows": 128,
+  "trust_grades": {
+    "B": 3,
+    "C": 124,
+    "D": 1
+  },
+  "new_downloads_this_batch": 1,
+  "downloaded_total": 4,
+  "verified_downloads_by_stock": {
+    "Phoenix 200": 2,
+    "Phoenix II 200": 1
+  },
+  "exploratory_usable_by_stock": {
+    "Phoenix 200": 2,
+    "Phoenix II 200": 1
+  },
+  "downloaded_distinct_authors": 4,
+  "verified_distinct_authors": 3,
+  "scenes": {
+    "urban_transit_indoor": 1,
+    "urban_architecture_sky": 1,
+    "landscape_sunset": 1
+  },
+  "mirror_aliases": [
+    {
+      "id": "flickr-55541233666",
+      "duplicate_of": "commons-200458925"
+    }
+  ],
+  "excluded_missing_source": [
+    "unresolved-turn6view1-98"
+  ],
+  "formal_fitting_accepted": 0,
+  "target_met": false
+}
 
-Actually downloaded: {'Phoenix 200': 2, 'Phoenix II 200': 1}. Reviewed for exploratory use: 2 (one per generation). Formal fitting accepted: 0. Train/validation assigned: 0.
+Trust: A=verified stock with scanner and ICC evidence; B=verified author stock statement with acquisition/scan uncertainty; C=tag-only or unresolved identity; D=missing source/wrong product. A grade is provenance completeness, never film accuracy. The one missing-source record is retained for history but excluded from candidate use. The Flickr/Commons sunset alias is one photograph, not two.
 
-Scene coverage among downloads: {'urban_transit_indoor': 1, 'urban_architecture_sky': 1, 'unreviewed': 1}. Unknown scenes stay unknown. Two reviewed images allow per-image color_exploratory/tone with explicit ICC policy and watermark mask; neither supports grain, halation or held-out validation. Other acquired images remain unreviewed.
+This batch gained one downloadable forest image, generation unresolved. Verified exploration remains Phoenix 200 two images and Phoenix II one image; the per-generation 15 target is NOT met. Three newly license-checked Flickr leads returned image HTTP 403 and were not fetched through another route. HARMAN terms prohibit automated scripts; no bulk official-gallery download. Most existing Flickr rows are rights-reserved metadata.
 
-The 15–25 per-generation exploratory target is NOT met. Most Flickr candidates have all-rights-reserved/unknown licensing; no mass download performed. A candidate is an individual URL, not an independent photographer or statistically independent roll. Strong single-author concentration remains.
-
-Quality is multidimensional: resolution, identity evidence, scanner, encoding, scene applicability, JPEG uncertainty, watermark and motion blur. Resolution is not an overall quality score. dHash flags require review. Initial generic robots check found Flickr disallows custom generic crawlers: custom access was stopped; subsequent metadata discovery used the available search service. No login, rate-limit or rights bypass.
+Scanner unknown is allowed for exploratory color/tone with declared uncertainty. Quality is per-dimension, never aggregated; null dimensions remain unassessed. No training/validation assignment, grain or halation recovery, formal model fitting, or real-film accuracy claim.
