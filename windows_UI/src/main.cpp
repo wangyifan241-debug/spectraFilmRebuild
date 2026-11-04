@@ -30,6 +30,9 @@
 #include <dwmapi.h>
 #endif
 
+
+#include "PhoenixGuiTest.hpp"
+
 namespace {
 QQuickItem* visualNamed(QQuickItem* root,const QString& name) {
     if(root->objectName()==name)return root;
@@ -220,7 +223,7 @@ private:
                 if(!require(controller_.exposureEv()==0.5,"file_dialog_holds_selected_settings"))return;
                 controller_.setDialogOpen(false);
             },400);
-            QTimer::singleShot(5000,this,[this]{if(!done_&&stage_==2)finish(false,"automatic brightness preview did not run");});
+            QTimer::singleShot(5000,this,[this]{if(!done_&&stage_==2){checks_["brightness_deadline_state"]=QJsonObject{{"busy",controller_.busy()},{"dirty",controller_.dirty()},{"failed",controller_.failed()},{"status",controller_.status()},{"selected_film",controller_.films()[controller_.filmIndex()].toMap().value("id").toString()},{"exposure_ev",controller_.exposureEv()}};finish(false,"automatic brightness preview did not run");}});
         } else if(stage_==2) {
             // A native export releases the preview GPU session to avoid
             // keeping two full negatives on a 4 GB device. The first edit
@@ -786,7 +789,7 @@ int main(int argc,char** argv) {
         }
     }
 #endif
-    std::unique_ptr<SelfTest> test;
+    std::unique_ptr<QObject> test;
     if(uiSmoke) {
         auto* window=qobject_cast<QQuickWindow*>(engine.rootObjects().first());if(!window)return 2;
         if(parser.isSet("ui-smoke-post"))window->setProperty("postMode",true);
@@ -807,7 +810,8 @@ int main(int argc,char** argv) {
         QTimer::singleShot(30000,&app,[]{QCoreApplication::exit(1);});
     } else if(testing) {
         auto* window=qobject_cast<QQuickWindow*>(engine.rootObjects().first());if(!window)return 2;
-        test=std::make_unique<SelfTest>(controller,*window,testInput,testReject,testOutput,failDisplay);
+        if(qEnvironmentVariableIsSet("SPEKTRALAB_PHOENIX_GUI_TEST"))test=std::make_unique<PhoenixGuiTest>(controller,*window,testInput,testOutput);
+        else test=std::make_unique<SelfTest>(controller,*window,testInput,testReject,testOutput,failDisplay);
     } else if(parser.isSet("open")) {
         if(snapshot) {
             auto* window=qobject_cast<QQuickWindow*>(engine.rootObjects().first());if(!window)return 2;
