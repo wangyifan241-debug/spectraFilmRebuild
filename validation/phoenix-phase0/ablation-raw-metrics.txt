@@ -1,0 +1,100 @@
+{
+  "harman_phoenix_200_exp_v1-A-vs-digital": {
+    "RGB_MAE_255": 4.153087734090388,
+    "DE00_mean": 2.6023423824184175,
+    "DE00_p95": 4.309709735167393,
+    "display_endpoint_fraction": 0.0
+  },
+  "harman_phoenix_200_exp_v1-B-vs-digital": {
+    "RGB_MAE_255": 23.377480095201502,
+    "DE00_mean": 8.708328804170053,
+    "DE00_p95": 20.144983054229442,
+    "display_endpoint_fraction": 0.0
+  },
+  "harman_phoenix_200_exp_v1-C-vs-digital": {
+    "RGB_MAE_255": 7.982278236708787,
+    "DE00_mean": 6.206262421496791,
+    "DE00_p95": 9.622007503556638,
+    "display_endpoint_fraction": 0.0005612121470856102
+  },
+  "harman_phoenix_200_exp_v1-D-vs-digital": {
+    "RGB_MAE_255": 25.59929719518443,
+    "DE00_mean": 10.704240771743734,
+    "DE00_p95": 20.43694735926992,
+    "display_endpoint_fraction": 0.0
+  },
+  "harman_phoenix_200_exp_v1-B-vs-A": {
+    "RGB_MAE_255": 21.513822183800094,
+    "DE00_mean": 8.249714862841092,
+    "DE00_p95": 18.756632565925646
+  },
+  "harman_phoenix_200_exp_v1-C-vs-A": {
+    "RGB_MAE_255": 6.068544370446267,
+    "DE00_mean": 5.495385941944322,
+    "DE00_p95": 9.108739065978087
+  },
+  "harman_phoenix_200_exp_v1-D-vs-A": {
+    "RGB_MAE_255": 24.469666527920104,
+    "DE00_mean": 10.7383780315911,
+    "DE00_p95": 19.05905962345474
+  },
+  "harman_phoenix_ii_200_exp_v1-A-vs-digital": {
+    "RGB_MAE_255": 2.262290190260702,
+    "DE00_mean": 1.3059233626099378,
+    "DE00_p95": 2.3299489159448123,
+    "display_endpoint_fraction": 0.0
+  },
+  "harman_phoenix_ii_200_exp_v1-B-vs-digital": {
+    "RGB_MAE_255": 16.778873075335845,
+    "DE00_mean": 6.036316706911356,
+    "DE00_p95": 15.659231616115811,
+    "display_endpoint_fraction": 0.0
+  },
+  "harman_phoenix_ii_200_exp_v1-C-vs-digital": {
+    "RGB_MAE_255": 5.161281342497723,
+    "DE00_mean": 5.275763813023432,
+    "DE00_p95": 8.261713224359722,
+    "display_endpoint_fraction": 0.0
+  },
+  "harman_phoenix_ii_200_exp_v1-D-vs-digital": {
+    "RGB_MAE_255": 18.37969292534722,
+    "DE00_mean": 8.393523923777558,
+    "DE00_p95": 15.659231616115811,
+    "display_endpoint_fraction": 0.0
+  },
+  "harman_phoenix_ii_200_exp_v1-B-vs-A": {
+    "RGB_MAE_255": 15.532669484289627,
+    "DE00_mean": 5.808256679270931,
+    "DE00_p95": 14.251357091200857
+  },
+  "harman_phoenix_ii_200_exp_v1-C-vs-A": {
+    "RGB_MAE_255": 4.301331344632286,
+    "DE00_mean": 4.952281429979967,
+    "DE00_p95": 9.129031223898071
+  },
+  "harman_phoenix_ii_200_exp_v1-D-vs-A": {
+    "RGB_MAE_255": 17.369945533071476,
+    "DE00_mean": 8.26636335479513,
+    "DE00_p95": 14.251357091200857
+  },
+  "II-vs-I-A": {
+    "RGB_MAE_255": 2.170196699965847,
+    "DE00_mean": 1.6836508148343359,
+    "DE00_p95": 3.2591430155684047
+  },
+  "II-vs-I-B": {
+    "RGB_MAE_255": 10.546729138205826,
+    "DE00_mean": 4.6412097301707025,
+    "DE00_p95": 7.545737454414362
+  },
+  "II-vs-I-C": {
+    "RGB_MAE_255": 3.4376720991290997,
+    "DE00_mean": 2.5312585293782197,
+    "DE00_p95": 4.770228778827053
+  },
+  "II-vs-I-D": {
+    "RGB_MAE_255": 11.937451527635481,
+    "DE00_mean": 5.6861627446745935,
+    "DE00_p95": 8.857533230189524
+  }
+}

@@ -1,0 +1,74 @@
+{
+  'B-phoenix-I__vs__A-digital-normal': {
+    count: 749568,
+    MAE_RGB_255: 5.179223677282902,
+    max_RGB_255: 32,
+    changed_fraction: 0.9666674671277322,
+    nonzero_fraction: 0.9973117849214481,
+    deltaE00_mean: 2.796812666620894,
+    deltaE00_p95: 4.517935114186775,
+    deltaE00_max: 8.683999885597311,
+    mean_signed_RGB_255: [ 1.9790559362192623, -1.9776377860314207, -2.902100943476776 ],
+    mean_delta_linear_Y: -0.012196980571125041
+  },
+  'C-phoenix-II__vs__A-digital-normal': {
+    count: 749568,
+    MAE_RGB_255: 3.6967173091704555,
+    max_RGB_255: 26,
+    changed_fraction: 0.8153483072916666,
+    nonzero_fraction: 0.9690515070013661,
+    deltaE00_mean: 1.6070901374293456,
+    deltaE00_p95: 3.5930766285203783,
+    deltaE00_max: 5.684281367000945,
+    mean_signed_RGB_255: [ 0.4975439186304645, -1.4571273053278688, -1.4672958290642077 ],
+    mean_delta_linear_Y: -0.011577186979229315
+  },
+  'D-diagnostic-plus2EV__vs__C-phoenix-II': {
+    count: 749568,
+    MAE_RGB_255: 48.550511316739495,
+    max_RGB_255: 98.99999999999999,
+    changed_fraction: 0.8983174308401639,
+    nonzero_fraction: 0.8983174308401639,
+    deltaE00_mean: 16.966808264077304,
+    deltaE00_p95: 28.9622627922591,
+    deltaE00_max: 30.508678457902946,
+    mean_signed_RGB_255: [ 52.718376451502735, 48.56719070184426, 44.31440376323429 ],
+    mean_delta_linear_Y: 0.1895326055616341
+  },
+  'B-phoenix-I__vs__A2-digital-shared-shoulder': {
+    count: 749568,
+    MAE_RGB_255: 4.139416303790759,
+    max_RGB_255: 26,
+    changed_fraction: 0.9666501238046448,
+    nonzero_fraction: 0.9973091167178961,
+    deltaE00_mean: 2.5989663645610803,
+    deltaE00_p95: 4.304582190927333,
+    deltaE00_max: 8.683999885597311,
+    mean_signed_RGB_255: [ 3.7849561347336067, -0.1136748100239071, -0.9199498911372951 ],
+    mean_delta_linear_Y: -0.0007613829433787225
+  },
+  'C-phoenix-II__vs__A2-digital-shared-shoulder': {
+    count: 749568,
+    MAE_RGB_255: 2.256149319786248,
+    max_RGB_255: 26,
+    changed_fraction: 0.7947444394637978,
+    nonzero_fraction: 0.9673278475068307,
+    deltaE00_mean: 1.3045489036055702,
+    deltaE00_p95: 2.3274034421195315,
+    deltaE00_max: 5.684281367000945,
+    mean_signed_RGB_255: [ 2.303444117144809, 0.4068356706796448, 0.5148552232752732 ],
+    mean_delta_linear_Y: -0.00014158935148263254
+  },
+  'C-phoenix-II__vs__B-phoenix-I': {
+    count: 749568,
+    MAE_RGB_255: 2.161830992429583,
+    max_RGB_255: 20,
+    changed_fraction: 0.7962799906079235,
+    nonzero_fraction: 0.887939453125,
+    deltaE00_mean: 1.6826167029878545,
+    deltaE00_p95: 3.2549785621078113,
+    deltaE00_max: 9.303129768563334,
+    mean_signed_RGB_255: [ -1.481512017588798, 0.5205104807035519, 1.4348051144125684 ],
+    mean_delta_linear_Y: 0.0006197935918955363
+  }
+}

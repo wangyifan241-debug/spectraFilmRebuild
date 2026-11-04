@@ -99,6 +99,32 @@ int main(int argc,char** argv){QGuiApplication app(argc,argv);try{
   pipe.set_source_long_edge(std::max(w,h),std::max(w,h));
   auto logT=scanner.spectral(negative);auto reversed=scanner.invert(logT);auto positive=scanner.positive(reversed);QString prefix=QString::fromStdString(stock);
   lab.capture(prefix+"-scan-logT",logT);lab.capture(prefix+"-scan-logPositive",reversed);lab.capture(prefix+"-scan-linear-prophoto",positive);lab.exportImage(prefix+"-round5-scan",positive,true);
+  // Research-only factorial ablation; production Scanner is unchanged.
+  if(qEnvironmentVariableIsSet("PHOENIX_PHASE0_ABLATION")) {
+   auto measured=lab.values(logT); auto affine=measured;
+   const size_t mid=scanner.k/2;
+   QJsonArray anchor,slope;
+   for(int c=0;c<3;c++) {
+    const double a=scanner.axis[3*mid+c];
+    const double d=(scanner.target[3*(mid+1)+c]-scanner.target[3*(mid-1)+c])/(scanner.axis[3*(mid+1)+c]-scanner.axis[3*(mid-1)+c]);
+    anchor.append(a);slope.append(d);
+    for(size_t i=c;i<affine.size();i+=3)affine[i]=float(std::log10(.184)+d*(measured[i]-a));
+   }
+   auto affineImage=lab.upload(affine,w,h);
+   lab.capture(prefix+"-affine-logPositive",affineImage);
+   // Same negative, spectral detector, anchor and display transform in all cells.
+   // Identity matrix cells are diagnostics, never claimed as a viable colour model.
+   for(const auto& mode:QStringList{"B-affine-matrix","C-inverse-identity","D-affine-identity"}) {
+    auto saved=scanner.matrix;
+    if(mode!="B-affine-matrix") {const float identity[9]={1,0,0,0,1,0,0,0,1};scanner.matrix=lab.gpu->upload(identity,sizeof identity,err);}
+    auto result=scanner.positive(mode=="C-inverse-identity"?reversed:affineImage);
+    scanner.matrix=saved;
+    lab.capture(prefix+"-"+mode,result);lab.exportImage(prefix+"-"+mode,result,true);
+   }
+   write(output+"/"+prefix+"-ablation.json",QJsonDocument(QJsonObject{{"affine_logT_anchor",anchor},{"affine_logPositive_slope",slope},{"positive_anchor",.184},{"classification","factorial diagnostic only; identity is not device calibration or a model improvement"}}).toJson());
+   write(output+"/"+prefix+"-scan-recipe.json",QJsonDocument(qjson(scanner.recipe)).toJson());
+   write(output+"/"+prefix+"-resolved.json",QJsonDocument(resolved(p)).toJson());continue;
+  }
   write(output+"/"+prefix+"-scan-recipe.json",QJsonDocument(qjson(scanner.recipe)).toJson());
   if(exportOnly){write(output+"/"+prefix+"-resolved.json",QJsonDocument(resolved(p)).toJson());continue;}
   auto optical=lab.print(pipe,negative,prefix,true);
