@@ -1,0 +1,34 @@
+{
+  "status": "PASS",
+  "scope": "exact A baseline preservation and branch sensitivity only; not UI race or real-film accuracy",
+  "checks": [
+    {
+      "input": "phoenix-phase0-synth-02",
+      "film": "harman_phoenix_200_exp_v1",
+      "baseline_exact": true,
+      "ablation_sensitivity": true,
+      "sha256": "98c66c76c12d46d79dd3c47c9957642c7019cb70c57871b9920d1102bf3f046f"
+    },
+    {
+      "input": "phoenix-phase0-synth-02",
+      "film": "harman_phoenix_ii_200_exp_v1",
+      "baseline_exact": true,
+      "ablation_sensitivity": true,
+      "sha256": "1f4a5522bcd24aac86a4198b7b1a1cc8ccb5ad646808d3628055cc00f7e6a21c"
+    },
+    {
+      "input": "phoenix-phase0-raw-02",
+      "film": "harman_phoenix_200_exp_v1",
+      "baseline_exact": true,
+      "ablation_sensitivity": true,
+      "sha256": "290bc31d9750dab79990185faa13b6f21cb8df7fbf30db9b1fd29e9b30037a6d"
+    },
+    {
+      "input": "phoenix-phase0-raw-02",
+      "film": "harman_phoenix_ii_200_exp_v1",
+      "baseline_exact": true,
+      "ablation_sensitivity": true,
+      "sha256": "8420de795f6ed388dbf5ed846cd4555cdf4ad8188de9de821ea8be1291828f6e"
+    }
+  ]
+}

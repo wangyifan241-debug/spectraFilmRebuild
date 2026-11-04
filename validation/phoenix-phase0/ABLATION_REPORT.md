@@ -1,0 +1,57 @@
+# Phase 0 scan ablation — executed findings
+
+Status: In Development, not accepted. No real-film accuracy established.
+
+Actual engine runs: synthetic and DSC02443.ARW, PHOENIX_PHASE0_ABLATION=1, both exit 0. Production Scanner unchanged. Research main.cpp uses actual film/spectral/inverse/GPU-positive stages. B replaces full neutral inverse with its local affine tangent at 18.4% gray; C uses full inverse and identity matrix; D combines affine mapping and identity. A is unchanged Round 5. B uses the original fitted matrix as a controlled intervention, not a newly calibrated device. C/D can have severe colour errors and are diagnostic controls, NOT improvements. An independent physically interpretable device calibration candidate remains unimplemented.
+
+## RAW inter-film differences (sRGB PNG -> inverse TRC -> XYZ D65 -> Bradford D50 -> Lab; CIEDE2000)
+| Cell | RGB MAE /255 | mean DE00 | P95 DE00 |
+|---|---:|---:|---:|
+| A full inverse + regression | 2.1702 | 1.6837 | 3.2591 |
+| B affine neutral + regression | 10.5467 | 4.6412 | 7.5457 |
+| C full inverse + identity | 3.4377 | 2.5313 | 4.7702 |
+| D affine neutral + identity | 11.9375 | 5.6862 | 8.8575 |
+
+Within these fixed conditions, replacing the full neutral inverse while holding the matrix fixed increases inter-film mean DE00 by 2.9576; replacing the matrix while holding full inverse increases it by .8476. Combined increase is 4.0025, not the sum: interventions interact. This supports suppression of inter-film differences by the scanner, particularly full tone inversion. It does not prove every part of that suppression is undesirable, or establish how real film should look. Larger differences can be artifacts. The affine tangent preserves the mid-gray anchor but extrapolates toward extremes and must be judged alongside clipping and neutral response.
+
+Analysis exports per-stage nonfinite/range statistics and neutral RGB response CSVs for the synthetic ramps. Each stock/mode has digital-reference RGB MAE, mean/P95 DE00, endpoint fractions and absolute RGB x10 difference PNGs. Actual linear ProPhoto .f32 outputs and scanner recipes are preserved. Analysis uses an 8-bit reading of PNGs; floating stage hashes independently retain full precision. Generic 0..1 range counts on log/density stages are not output clipping measurements.
+
+## Evidence and commands
+- build/phoenix-phase0-ablation-synth and build/phoenix-phase0-ablation-raw: actual outputs, report.json with resource/executable/input hashes, recipe and affine anchor/slope JSON.
+- python validation/phoenix-phase0/analyze_ablation.py build/phoenix-phase0-ablation-raw (and synthetic): analysis/index.html, metrics.json, differences and CSVs.
+- python validation/phoenix-phase0/check_ablation.py: PASS 4 exact baseline preservation cases, 12 branch sensitivity checks. No original baseline rerenders required.
+- node --test tools/phoenix-validation/tests.cjs tools/phoenix-validation/review-tests.cjs: 51 passed, 0 failed/skipped. These validate existing research tooling, not UI behavior.
+- Launch environment and previous baseline commands: preliminary-audit.md; add PHOENIX_PHASE0_ABLATION=1 to use new research branch. Use unique output directory. Build receipt was refreshed with current source inventory and executable SHA.
+
+## Remaining Phase 0 requirements
+Independent device calibration / decoupled candidate; actual window preset/original toggles, asynchronous/cache ordering and parameter regressions; channel response plots and visual clipping assessment; full application/resource delta between old and integrated EXEs. Earlier startup failure exact cause remains unresolved, but no longer blocks the controlled experiments. Export protection stays active. Current narrow tests do not cover all Phase 0 acceptance requirements. Do not advance to formal fitting.
+
+## Closeout follow-up (not acceptance)
+- Existing synthetic float32 captures produced four response figures via plot_responses.py: neutral stage and RGB-biased exposure ramps for each film. Density/log and linear units are explicitly separated. No baseline rerender used for plotting.
+- Independent device candidate E added only to research main.cpp, behind PHOENIX_PHASE0_DEVICE plus PHOENIX_PHASE0_ABLATION. Matrix fits 81 known wavelength impulses from D50 Gaussian detectors to CIE1931 XYZ then linear ProPhoto, ridge 1e-8. It has no photographic or film RGB target. Applying this transmission-calibrated matrix to inverted-positive signals remains an unvalidated hypothesis, not a production proposal.
+- Actual synthetic E run exit 0, output build/phoenix-phase0-device-synth with coefficients/recipe/input/resource/executable fingerprints and PNGs. Synthetic inter-film mean DE00 7.14676, P95 15.68134; difference is not accuracy. RAW candidate E not yet run.
+- Newly built spk_qt_frame_output_test actually passed (exit 0); frame-output.log. It covers output transforms/encoders/ICC/source immutability and output races, not GUI toggles.
+- Newly built spk_qt_editing_workflow_test started with DSC02443.ARW, rejected.NEF and isolated build/phoenix-phase0-ui-regression edits. Still pending; not counted as a pass. This is in-process controller testing, not proof of native window display.
+- a1415455 remains ancestor. Remote ls-remote with TLS verification enabled failed with connection reset; remote state unconfirmed. No force push or merge performed. PR remains blocked on network/remote publication.
+
+## Engineering acceptance follow-up
+Editing workflow finished: exit 0, passed=true, checkCount=114 in build/phoenix-phase0-ui-regression/report.json. Includes superseded-render rejection. This is a controller integration run, not complete GUI acceptance.
+
+Candidate E DSC02443.ARW completed exit 0 in build/phoenix-phase0-device-raw. Actual figures and comparisons: analysis/index.html; detailed metrics: device-raw-metrics.txt. Inter-film RGB MAE=11.66084/255, mean DE00=5.28559, P95=7.92122. Same RAW, decoder/as-shot WB, linear ProPhoto input, zero exposure adjustment, .184 affine anchor, D50, highlight shoulder and output transform as the factorial tool. E changes the independent device matrix only relative to D; no original-image RGB fitting. The device fit uses all wavelengths, unlike stock-specific validity masking in the spectral scanner: this is an additional compatibility limitation.
+
+E range checks: device-range-checks.json. Both RAW outputs have zero nonfinite/negative/>1 channels in linear ProPhoto. That is NOT a guarantee of no sRGB out-of-gamut pixels. Synthetic ramps have no monotonic decreases, but neutral RGB maximum spread is .50393 for I and .33187 for II at extreme exposure; 13.44%/7.82% of synthetic channels exceed 1 before shoulder. At the closest sampled gray, E is approximately (.1919,.1844,.1869). Candidate E therefore fails strict neutral preservation and is NOT approved as a production scanner. Display endpoint fractions and difference PNGs are in analysis/metrics.json and analysis/. No larger-DE accuracy claim is made.
+
+Independent real-window run: candidate package build/ip02/payload/SpektraLabQt.exe, --film harman_phoenix_200_round5 --open DSC02443.ARW --reject build/integrated-fixtures/rejected.NEF --self-test build/phoenix-phase0-live-ui. Test owns its input copies and edits; user window untouched. Report passed=false, error=automatic brightness preview did not run. Captured fit.png, 100-percent.png, process-diagnostics.png, failure.png, displayed-frame.tif. Actual canvas/published-frame and 100-percent source checks exist in report; later before/after and complete Phoenix-switch checks were not reached. PowerShell direct GUI invocation did not provide a process exit code (live-ui-exit.txt is empty exit=); use the app report as failure evidence, not a fabricated code. This gate remains Blocked pending diagnosis/fix or a narrowly scoped dedicated window test.
+
+Phase 0 remains In Development with failed window acceptance. Confirmed scanner reconstruction suppresses current-model differences; true Phoenix accuracy remains Not Verified; original-size Round 5 export remains deliberately blocked. Remaining: complete Phoenix GUI switching/original/cache/retired-task checks, resolve the window self-test failure, and publish an independent PR once remote access works. No phase acceptance or start of formal fitting.
+
+## Current authoritative GUI acceptance update
+Supersedes earlier GUI pending/failed statements for the independent Phoenix gate, not the original broad self-test.
+- Dedicated gate added in PhoenixGuiTest.hpp; opt in SPEKTRALAB_PHOENIX_GUI_TEST=1 with the existing --self-test isolated directory arguments. Original SelfTest remains intact.
+- First run exit 2: QtQuick.Dialogs missing in research deployment. Repaired research deployment using windeployqt --release --compiler-runtime --qmldir windows_UI/qml <research-app>/SpektraLabQt.exe. No model or renderer change.
+- Second run exit 0, phoenix-gui-report.json passed=true. Actual QQuickWindow captures: 01-phoenix-I, 02-original, 03-rendered, 04-phoenix-II, 05-switch-back, 06-final-after-retired-task. Each record includes actual selected frame film ID, exposure, stochastic flags, rendered/original/screenshot SHA256, original display state and publication count. Independent output directory build/phoenix-phase0-gui-dedicated-02 owns source copies and edits.
+- Checks prove canvas uses published image, original toggle uses original buffer without changing render, stocks differ, switch-back restores exact pixels, and final selection survives a queued competing render. The separate 114-check controller workflow tests superseded publication rejection. A GUI final-state check alone does not prove absence of every transient stale publication.
+- Original automatic-brightness assertion at main.cpp stage 1 starts a fixed 5000 ms deadline after export, changes brightness, suspends pending preview via dialogOpen and resumes after 400 ms. At expiry it formerly recorded no busy/dirty/error state. Added brightness_deadline_state diagnostics, preserving the assertion and deadline. Broad-test failure classification awaits the diagnostic rerun; cannot yet call it a timing defect or production defect.
+- Candidate E is complete on RAW but fails strict neutral preservation on synthetic extremes; do not promote it. Physical film accuracy unverified; native original-size Round 5 export remains protected/blocked.
+
+Original broad-test diagnostic completed: assertion FAILED again. At its fixed five-second deadline: busy=true, dirty=true, failed=false, exposure_ev=.5, selected_film=kodak_portra_400, status=updating film effect. Thus it is not a missing Phoenix render or a rejected brightness setter: the ordinary Portra render was in flight at the deadline. This establishes a completion-deadline failure; it does not establish eventual successful completion, nor justify silently widening/removing the assertion. No production timing fix has been made. Phase 0 overall classification: Blocked pending the ordinary-render completion/performance gate, despite independent Phoenix GUI pass. Original failure is retained in brightness-diagnostic-report.json. Separate model accuracy is Not Verified.

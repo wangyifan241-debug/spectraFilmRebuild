@@ -1,0 +1,2 @@
+QQmlApplicationEngine failed to load component
+qrc:/qt/qml/SpektraLab/qml/Main.qml:4:1: 模块“QtQuick.Dialogs”没有安装

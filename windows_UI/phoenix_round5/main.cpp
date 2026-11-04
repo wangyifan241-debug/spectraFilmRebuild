@@ -99,6 +99,49 @@ int main(int argc,char** argv){QGuiApplication app(argc,argv);try{
   pipe.set_source_long_edge(std::max(w,h),std::max(w,h));
   auto logT=scanner.spectral(negative);auto reversed=scanner.invert(logT);auto positive=scanner.positive(reversed);QString prefix=QString::fromStdString(stock);
   lab.capture(prefix+"-scan-logT",logT);lab.capture(prefix+"-scan-logPositive",reversed);lab.capture(prefix+"-scan-linear-prophoto",positive);lab.exportImage(prefix+"-round5-scan",positive,true);
+  // Research-only factorial ablation; production Scanner is unchanged.
+  if(qEnvironmentVariableIsSet("PHOENIX_PHASE0_ABLATION")) {
+   auto measured=lab.values(logT); auto affine=measured;
+   const size_t mid=scanner.k/2;
+   QJsonArray anchor,slope;
+   for(int c=0;c<3;c++) {
+    const double a=scanner.axis[3*mid+c];
+    const double d=(scanner.target[3*(mid+1)+c]-scanner.target[3*(mid-1)+c])/(scanner.axis[3*(mid+1)+c]-scanner.axis[3*(mid-1)+c]);
+    anchor.append(a);slope.append(d);
+    for(size_t i=c;i<affine.size();i+=3)affine[i]=float(std::log10(.184)+d*(measured[i]-a));
+   }
+   // Device-only spectral least squares: no film RGB targets or image statistics.
+   // Synthetic wavelength impulses calibrate detector weights to CIE XYZ D50.
+   if(qEnvironmentVariableIsSet("PHOENIX_PHASE0_DEVICE")) {
+    Vec illum;need(lab.colour.illuminant_values("D50",illum,err));
+    const auto& cmf=lab.colour.cmfs_1931_2deg();const auto& wavelengths=lab.colour.wavelengths();
+    double sensor[81][3],norm[3]={},ynorm=0;const double centres[3]={610,540,450},sigma[3]={30,30,25};
+    for(int i=0;i<81;i++){ynorm+=illum[i]*cmf[3*i+1];for(int c=0;c<3;c++){double z=(wavelengths[i]-centres[c])/sigma[c];sensor[i][c]=illum[i]*std::exp(-.5*z*z);norm[c]+=sensor[i][c];}}
+    Mat3 gram,cross;for(int r=0;r<3;r++)for(int c=0;c<3;c++){gram.m[r][c]=r==c?1e-8:0;cross.m[r][c]=0;}
+    for(int i=0;i<81;i++){for(int c=0;c<3;c++)sensor[i][c]/=norm[c];for(int r=0;r<3;r++)for(int c=0;c<3;c++){gram.m[r][c]+=sensor[i][r]*sensor[i][c];cross.m[r][c]+=illum[i]*cmf[3*i+r]/ynorm*sensor[i][c];}}
+    auto inverse=gram.inverse();Mat3 xyzToRgb;need(lab.colour.matrix_XYZ_to_RGB("ProPhoto RGB",nullptr,"CAT02",xyzToRgb,err));double matrix[9]={};
+    for(int r=0;r<3;r++)for(int c=0;c<3;c++)for(int j=0;j<3;j++)for(int k=0;k<3;k++)matrix[3*r+c]+=xyzToRgb.m[r][j]*cross.m[j][k]*inverse.m[k][c];
+    QJsonArray coefficients;for(double v:matrix)coefficients.append(v);
+    auto held=scanner.matrix;scanner.matrix=lab.gpu->upload_persistent_f32(matrix,9,err);
+    auto device=scanner.positive(lab.upload(affine,w,h));scanner.matrix=held;
+    lab.capture(prefix+"-E-device",device);lab.exportImage(prefix+"-E-device",device,true);
+    write(output+"/"+prefix+"-device.json",QJsonDocument(QJsonObject{{"matrix",coefficients},{"method","81 spectral impulses, D50 Gaussian detector -> CIE1931 XYZ -> ProPhoto, ridge 1e-8; no film fit"},{"limitation","synthetic device; applying transmission calibration to inverted positive signals is an unvalidated research hypothesis"}}).toJson());
+   }
+   auto affineImage=lab.upload(affine,w,h);
+   lab.capture(prefix+"-affine-logPositive",affineImage);
+   // Same negative, spectral detector, anchor and display transform in all cells.
+   // Identity matrix cells are diagnostics, never claimed as a viable colour model.
+   for(const auto& mode:QStringList{"B-affine-matrix","C-inverse-identity","D-affine-identity"}) {
+    auto saved=scanner.matrix;
+    if(mode!="B-affine-matrix") {const float identity[9]={1,0,0,0,1,0,0,0,1};scanner.matrix=lab.gpu->upload(identity,sizeof identity,err);}
+    auto result=scanner.positive(mode=="C-inverse-identity"?reversed:affineImage);
+    scanner.matrix=saved;
+    lab.capture(prefix+"-"+mode,result);lab.exportImage(prefix+"-"+mode,result,true);
+   }
+   write(output+"/"+prefix+"-ablation.json",QJsonDocument(QJsonObject{{"affine_logT_anchor",anchor},{"affine_logPositive_slope",slope},{"positive_anchor",.184},{"classification","factorial diagnostic only; identity is not device calibration or a model improvement"}}).toJson());
+   write(output+"/"+prefix+"-scan-recipe.json",QJsonDocument(qjson(scanner.recipe)).toJson());
+   write(output+"/"+prefix+"-resolved.json",QJsonDocument(resolved(p)).toJson());continue;
+  }
   write(output+"/"+prefix+"-scan-recipe.json",QJsonDocument(qjson(scanner.recipe)).toJson());
   if(exportOnly){write(output+"/"+prefix+"-resolved.json",QJsonDocument(resolved(p)).toJson());continue;}
   auto optical=lab.print(pipe,negative,prefix,true);
