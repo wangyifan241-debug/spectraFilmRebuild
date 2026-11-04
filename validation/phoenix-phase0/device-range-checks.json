@@ -1,0 +1,84 @@
+{
+  "synth-harman_phoenix_200_exp_v1": {
+    "nonfinite": 0,
+    "negative_fraction": 0.0,
+    "above_one_fraction": 0.13444010416666666,
+    "minimum": [
+      0.07066851109266281,
+      0.06543537229299545,
+      0.06198962777853012
+    ],
+    "maximum": [
+      1.8350125551223755,
+      1.917893886566162,
+      1.413925051689148
+    ],
+    "neutral_channel_spread_max": 0.5039278268814087,
+    "neutral_monotonic_violations_per_channel": [
+      0,
+      0,
+      0
+    ],
+    "midgray_nearest_sample_RGB": [
+      0.19187109172344208,
+      0.1843530535697937,
+      0.1869307905435562
+    ]
+  },
+  "synth-harman_phoenix_ii_200_exp_v1": {
+    "nonfinite": 0,
+    "negative_fraction": 0.0,
+    "above_one_fraction": 0.0781521267361111,
+    "minimum": [
+      0.045492321252822876,
+      0.04364912584424019,
+      0.04496469721198082
+    ],
+    "maximum": [
+      1.1705166101455688,
+      1.3328105211257935,
+      1.5024787187576294
+    ],
+    "neutral_channel_spread_max": 0.3318668603897095,
+    "neutral_monotonic_violations_per_channel": [
+      0,
+      0,
+      0
+    ],
+    "midgray_nearest_sample_RGB": [
+      0.19183467328548431,
+      0.18431580066680908,
+      0.18692749738693237
+    ]
+  },
+  "raw-harman_phoenix_200_exp_v1": {
+    "nonfinite": 0,
+    "negative_fraction": 0.0,
+    "above_one_fraction": 0.0,
+    "minimum": [
+      0.07066264003515244,
+      0.0654214397072792,
+      0.0619865246117115
+    ],
+    "maximum": [
+      0.9884880781173706,
+      0.9619770646095276,
+      0.9523581266403198
+    ]
+  },
+  "raw-harman_phoenix_ii_200_exp_v1": {
+    "nonfinite": 0,
+    "negative_fraction": 0.0,
+    "above_one_fraction": 0.0,
+    "minimum": [
+      0.045482706278562546,
+      0.04362642392516136,
+      0.04495922476053238
+    ],
+    "maximum": [
+      0.6408398747444153,
+      0.6727795004844666,
+      0.7312155365943909
+    ]
+  }
+}
