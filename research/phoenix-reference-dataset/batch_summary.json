@@ -1,0 +1,36 @@
+{
+  "manifest_rows": 128,
+  "trust_grades": {
+    "B": 3,
+    "C": 124,
+    "D": 1
+  },
+  "new_downloads_this_batch": 1,
+  "downloaded_total": 4,
+  "verified_downloads_by_stock": {
+    "Phoenix 200": 2,
+    "Phoenix II 200": 1
+  },
+  "exploratory_usable_by_stock": {
+    "Phoenix 200": 2,
+    "Phoenix II 200": 1
+  },
+  "downloaded_distinct_authors": 4,
+  "verified_distinct_authors": 3,
+  "scenes": {
+    "urban_transit_indoor": 1,
+    "urban_architecture_sky": 1,
+    "landscape_sunset": 1
+  },
+  "mirror_aliases": [
+    {
+      "id": "flickr-55541233666",
+      "duplicate_of": "commons-200458925"
+    }
+  ],
+  "excluded_missing_source": [
+    "unresolved-turn6view1-98"
+  ],
+  "formal_fitting_accepted": 0,
+  "target_met": false
+}

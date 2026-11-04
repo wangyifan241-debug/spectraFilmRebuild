@@ -1,0 +1,12 @@
+# Phoenix reference dataset v0.1
+`dataset_manifest.jsonl` has one real image candidate per line. Unknown metadata is explicit; quality_score is nullable until local decode. `tools/phoenix-dataset/acquire_seed.py` reuses and rechecks existing Round 5 leads, writes local originals only under ignored build/. `screen.py` records exact SHA256, dHash flags and resolution score; it never auto-accepts a photograph based on these proxies.
+
+Run: python tools/phoenix-dataset/acquire_seed.py; python tools/phoenix-dataset/screen.py.
+
+Selection: exclude wrong/ambiguous stock, scans of prints without provenance, packaging/screenshots/simulations, severe compression, obvious watermarks/large borders and broken ICC. Unknown scanner/post-processing remain stratification/confidence limits, not invented values. Scene labels require visual review; balance portrait/skin, sky, vegetation, urban, indoor, night, neutral objects with lighting/format/exposure covariates. Record exclusion reasons; do not select for a preferred look.
+
+Split policy: connect samples sharing photographer OR source/roll/duplicate cluster; assign whole connected components to train/validation with a fixed versioned seed. Two seed records from one Flickr platform are quarantined rather than pretend to have independent validation. Require multiple independent components before freezing a split; identical/near-identical cross-platform reposts stay connected. Never infer film accuracy from nonpaired image DeltaE.
+
+Phase 2 can start exploratory scene/scanner-stratified statistics once credible images are actually acquired and reviewed. Until then no fit or grain recovery claim. 200 per film is a goal, not an acceptance count.
+
+Batch update: 128 source-page manifest rows (56 Phoenix 200 text-matched, 52 Phoenix II, 20 unverified); 125 new discovery records are source URLs, not statistically independent authors/rolls. Actual downloads 2 Phoenix 200 and 1 Phoenix II; formal fitting accepts 0. Per-use color_exploratory/tone is allowed on the two reviewed seeds with declared confounds. A limited Phase 2 exploration has started; semantic/causal film-signature analysis remains pending. Quality dimensions are now in quality.py, superseding the initial resolution-only screen. Acquisition and Commons query responses are cached locally, but a general authenticated Flickr discovery/resumable downloader and complete metadata-sync system are not yet implemented. Do not claim the full pipeline requirement is complete.
