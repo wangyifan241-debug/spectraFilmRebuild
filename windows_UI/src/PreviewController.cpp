@@ -936,6 +936,7 @@ void PreviewController::flushEdits() {
         try {edit_store_.save(item.url,itemState(item));item.pending_save=false;item.save_blocked=false;item.material_blocked=false;item.has_stored=true;item.save_warning.clear();item.save_failures=0;}
         catch(const std::exception& e){
             try {
+                if(text(e.what()).contains("being written by another process"))throw;
                 (void)edit_store_.saveCurrentSession(item.url,itemState(item));
                 item.pending_save=false;item.save_blocked=false;item.material_blocked=false;item.has_stored=true;item.save_warning.clear();item.save_failures=0;
             }catch(const std::exception& fallback){
@@ -956,7 +957,7 @@ bool PreviewController::prepareToClose() {
     save_timer_.stop();
     for(auto& item:library_)if(item.pending_save) {
         try{const auto path=edit_store_.saveUnsavedSnapshot(item.url,itemState(item),item.save_warning);item.pending_save=false;qWarning("Unsaved settings checkpoint: %s",path.toUtf8().constData());}
-        catch(const std::exception& e){qWarning("Closing without blocking; settings checkpoint failed: %s",e.what());}
+        catch(const std::exception& e){qWarning("Cannot close safely; settings checkpoint failed: %s",e.what());return false;}
     }
     return true;
 }

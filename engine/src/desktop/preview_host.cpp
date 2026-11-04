@@ -723,6 +723,7 @@ void PreviewHost::export_tiff(const Frame& frame, const fs::path& destination) c
 FramePtr PreviewHost::process(const FramePtr& snapshot) {
     require(snapshot&&snapshot==impl_->frame,"Process requires the displayed interactive frame");
     const auto& s=snapshot->settings;
+    require(!phoenix_round5(s.film_stock), "Round 5 uses spectral scanning; Process and scene fitting are unavailable for this experimental recipe");
     const bool scan=validate_settings(s,impl_->catalog);
     // Export/measurement may release GPU storage. Rebuild this interactive
     // session from the same retained decode, never a second file read/probe.
@@ -763,6 +764,7 @@ FramePtr PreviewHost::process(const FramePtr& snapshot) {
 std::string PreviewHost::scene_latitude(const FramePtr& snapshot,const std::string& request) {
     require(snapshot&&snapshot->decoded_,"Scene measurement requires a decoded frame");
     const auto& s=snapshot->settings;
+    require(!phoenix_round5(s.film_stock), "Round 5 uses spectral scanning; Process and scene fitting are unavailable for this experimental recipe");
     const bool scan=validate_settings(s,impl_->catalog);
     // Keep only one image session resident on a small GPU. The interactive
     // session is reconstructed lazily, just as after an original-size export.

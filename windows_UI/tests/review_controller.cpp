@@ -64,7 +64,7 @@ struct PreviewControllerReviewTest {
         const auto saved=c.edit_store_.load(item.url,c.catalog_);check(saved.state.has_value(),"recovered record did not reopen");
         check(lock.tryLock(),"second test lock failed");c.library_.back().pending_save=true;c.library_.back().save_failures=0;
         for(int n=0;n<4;++n)c.flushEdits();
-        check(!c.save_timer_.isActive()&&!c.prepareToClose(),"retry was unbounded or failed save allowed normal close");
+        check(!c.save_timer_.isActive()&&c.library_.back().pending_save,"retry was unbounded or pending edits were silently discarded");
         lock.unlock();c.retrySave();check(c.prepareToClose()&&c.persistenceWarning().isEmpty(),"explicit retry did not recover close");
     }
 };

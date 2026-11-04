@@ -11,7 +11,7 @@ ApplicationWindow {
     minimumWidth: 1100; minimumHeight: 740
     visible: true
     color: Theme.card
-    title: (preview.hasFrame ? preview.fileName + " — " : "") + "SpektraLab"
+    title: (preview.hasFrame ? preview.fileName + " — " : "") + "SpektraLab Windows Integrated Preview 0.2"
     font.family: "Segoe UI"
     font.pixelSize: 12
     palette.window: Theme.card
@@ -394,7 +394,7 @@ ApplicationWindow {
                             }
                             Button {
                                 text: "配光 Process"; objectName: "processButton"
-                                enabled: preview.settingsEditable && !preview.dirty && !preview.filmIsPositive
+                                enabled: preview.settingsEditable && !preview.dirty && !preview.filmIsPositive && !((preview.films[preview.filmIndex] || {}).id || "").endsWith("_round5")
                                 onClicked: preview.process()
                             }
                             Adjustment { label: "黄色滤镜"; setting: "yFilterShift"; from: -1; to: 1; step: 0.01; decimals: 2; available: !preview.filmIsPositive && !preview.filmIsMonochrome }

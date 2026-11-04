@@ -724,7 +724,7 @@ int main(int argc,char** argv) {
         std::fwrite(bytes.data(),1,std::size_t(bytes.size()),stderr);std::fputc('\n',stderr);std::fflush(stderr);
     });
     QGuiApplication app(argc,argv);
-    app.setOrganizationName("SpektraLab");app.setApplicationName("SpektraLab Windows");
+    app.setOrganizationName("SpektraLab");app.setApplicationName("SpektraLab Windows Integrated Preview 0.2");
     app.setWindowIcon(QIcon(QStringLiteral(":/assets/film.ico")));
     QQuickStyle::setStyle("Basic");
     QCommandLineParser parser;parser.setApplicationDescription("SpektraLab Windows Qt Quick preview");parser.addHelpOption();
