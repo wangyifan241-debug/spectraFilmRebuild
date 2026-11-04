@@ -10,7 +10,7 @@ seen={}
 hashes=[]
 for row in rows:
     row['quality_score']=None
-    local=Path('build/phoenix-reference-dataset/images')/(row['id']+'.jpg')
+    local=Path(row.get('local_file',str(Path('build/phoenix-reference-dataset/images')/(row['id']+'.jpg'))))
     if not local.exists():
         continue
     data=local.read_bytes()
