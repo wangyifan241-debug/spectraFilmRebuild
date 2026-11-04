@@ -1,0 +1,158 @@
+[
+  {
+    "id": "train",
+    "film_stock": "Phoenix 200",
+    "source_sha256": "b5c620121e84703d85ddd4f49f588a78a22787fa085d2d50794b731bbfa4d3eb",
+    "color_policy": "embedded ICC -> sRGB via LittleCMS",
+    "mask": [],
+    "retained_pixel_fraction": 1.0,
+    "sampled_pixels": 154381,
+    "linear_Y_percentiles": [
+      0.0008030716930735142,
+      0.003763924601795055,
+      0.021116298009328363,
+      0.050130790114721775,
+      0.19241968900638973,
+      0.5687664036949759,
+      0.7885977557173809
+    ],
+    "Lab_D65_mean": [
+      34.24602919363346,
+      -5.558449618521706,
+      1.6187736571031732
+    ],
+    "OKLab_mean": [
+      0.42937082624774003,
+      -0.019907892183686073,
+      0.0007250854259396735
+    ],
+    "Lab_L_histogram": [
+      9218,
+      5945,
+      18394,
+      22183,
+      16548,
+      12322,
+      8966,
+      7231,
+      6787,
+      6929,
+      6469,
+      6381,
+      5984,
+      4648,
+      4361,
+      4213,
+      2861,
+      2785,
+      2151,
+      5
+    ],
+    "OKLab_L_histogram": [
+      106,
+      1742,
+      5236,
+      3818,
+      13346,
+      26214,
+      20667,
+      14937,
+      10253,
+      8314,
+      8318,
+      7648,
+      7235,
+      6338,
+      4939,
+      5082,
+      3854,
+      3304,
+      2954,
+      76
+    ],
+    "limitation": "single scene/author, not film causality or model calibration; no semantic segmentation, grain or halation estimate"
+  },
+  {
+    "id": "flight",
+    "film_stock": "Phoenix II 200",
+    "source_sha256": "5c1912de2e67e7057c70bf697d72ae37eba388c635814b9b58099c4c56203bda",
+    "color_policy": "EXPLICIT exploratory assumption: untagged interpreted as sRGB; not verified",
+    "mask": [
+      {
+        "rect_normalized": [
+          0,
+          0.92,
+          1,
+          1
+        ],
+        "reason": "copyright watermark exclusion; conservative bottom strip"
+      }
+    ],
+    "retained_pixel_fraction": 0.9198520345252774,
+    "sampled_pixels": 150734,
+    "linear_Y_percentiles": [
+      0.01568354362095017,
+      0.02038775145826664,
+      0.03688647858098808,
+      0.07821894926196851,
+      0.22370537047911504,
+      0.5826195315508466,
+      0.6597779952684447
+    ],
+    "Lab_D65_mean": [
+      39.94892482032429,
+      -3.9605610865289016,
+      -9.99929128245998
+    ],
+    "OKLab_mean": [
+      0.4808119810843921,
+      -0.022003136468602164,
+      -0.028987483553713344
+    ],
+    "Lab_L_histogram": [
+      0,
+      112,
+      5062,
+      21931,
+      18674,
+      17001,
+      17147,
+      12872,
+      7582,
+      6388,
+      7007,
+      5658,
+      4979,
+      5053,
+      5783,
+      6583,
+      7411,
+      1030,
+      277,
+      184
+    ],
+    "OKLab_L_histogram": [
+      0,
+      0,
+      0,
+      8,
+      2126,
+      22620,
+      21655,
+      19341,
+      18230,
+      12270,
+      7177,
+      8199,
+      6816,
+      5840,
+      5812,
+      6723,
+      8167,
+      5137,
+      354,
+      259
+    ],
+    "limitation": "single scene/author, not film causality or model calibration; no semantic segmentation, grain or halation estimate"
+  }
+]
