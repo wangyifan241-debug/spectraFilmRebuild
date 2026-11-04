@@ -131,6 +131,9 @@ int main(int argc, char** argv) {
         state.develop.vignetteAmount=-35;state.develop.vignetteMidpoint=42;
         store.save(url, state);
         check(store.load(url, catalog).state == std::optional(state), "atomic update did not replace prior state");
+        state.settings.auto_negative=true;store.save(url,state);
+        check(store.load(url,catalog).state==std::optional(state),"Automatic inversion did not survive save/load");
+        state.settings.auto_negative=false;store.save(url,state);
         const auto validBytes = read(path);
         auto validJson = QJsonDocument::fromJson(validBytes).object();
         validJson["version"]=8;
@@ -151,7 +154,7 @@ int main(int argc, char** argv) {
         const auto migrated=store.load(url,catalog);
         check(migrated.state==std::optional(legacyExpected),"version 1 edits did not restore with neutral post-develop");
         store.save(url,*migrated.state);
-        check(QJsonDocument::fromJson(read(path)).object()["version"].toInt()==9,"legacy save did not migrate version");
+        check(QJsonDocument::fromJson(read(path)).object()["version"].toInt()==10,"legacy save did not migrate version");
         write(path,validBytes);
         check(store.load(url,catalog).state==std::optional(state),"restoring migration fixture failed");
         auto version2=validJson;version2["version"]=2;
@@ -282,6 +285,34 @@ int main(int argc, char** argv) {
         rejects([&] { store.save(url, state); }, "concurrent writer bypassed store lock");
         check(read(path) == validBytes, "locked save changed history");
         lock.unlock();
+
+        // Combined timestamp + global material-context mismatch: current edits
+        // go to an independent history automatically; old bytes remain intact.
+        const auto sessionSource=QDir(sources).filePath("independent-history.ARW");write(sessionSource,input);
+        const auto sessionUrl=QUrl::fromLocalFile(sessionSource);
+        const auto sessionRoot=temporary.filePath("independent-store");editing::Store sessionStore(sessionRoot);
+        auto oldCatalog=catalog;oldCatalog.engine_resources_sha256=std::string(64,'a');
+        auto newCatalog=catalog;newCatalog.engine_resources_sha256=std::string(64,'b');
+        auto oldState=state;oldState.settings.engine_resources_sha256=oldCatalog.engine_resources_sha256;
+        (void)sessionStore.load(sessionUrl,oldCatalog);sessionStore.save(sessionUrl,oldState);
+        const auto sessionMain=sessionStore.filePath(sessionUrl);
+        auto oldDocument=QJsonDocument::fromJson(read(sessionMain)).object();
+        mutateObject(oldDocument,"source",[](auto& s){s["mtimeMs"]=QString::number(s["mtimeMs"].toString().toLongLong()-1000);});
+        const auto oldHistory=QJsonDocument(oldDocument).toJson();write(sessionMain,oldHistory);
+        const auto blocked=sessionStore.load(sessionUrl,newCatalog);
+        check(blocked.blocked&&!blocked.state,"Combined conflict incorrectly restored old settings");
+        auto currentState=state;currentState.settings.engine_resources_sha256=newCatalog.engine_resources_sha256;currentState.settings.print_exposure=1.4;
+        rejects([&]{sessionStore.save(sessionUrl,currentState);},"Ordinary save bypassed a conflicting original history");
+        const auto independent=sessionStore.saveCurrentSession(sessionUrl,currentState);
+        check(QFileInfo::exists(independent)&&read(sessionMain)==oldHistory,"Independent save overwrote old history");
+        editing::Store sessionReopened(sessionRoot);
+        check(sessionReopened.load(sessionUrl,newCatalog).state==std::optional(currentState),"New session history was not restored under its current context");
+        currentState.settings.print_exposure=1.5;sessionReopened.save(sessionUrl,currentState);
+        check(editing::Store(sessionRoot).load(sessionUrl,newCatalog).state==std::optional(currentState),"Subsequent independent saves did not retain latest state");
+        check(read(sessionMain)==oldHistory,"Later session save rewrote the protected original");
+        const auto checkpoint=sessionReopened.saveUnsavedSnapshot(sessionUrl,currentState,"owned test: source no longer trusted");
+        const auto checkpointDoc=QJsonDocument::fromJson(read(checkpoint)).object();
+        check(!checkpointDoc["autoApply"].toBool(true)&&checkpointDoc["format"]=="SpektraLab.Windows.UnsavedSession","Unverified checkpoint could auto-apply to a photo");
 
         // Same name, size and timestamp, but changed sampled bytes: the hash
         // prevents an unrelated replacement from inheriting these edits.

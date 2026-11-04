@@ -34,6 +34,10 @@ public:
     // Atomic replacement after validating the existing record and source.
     // Throws std::runtime_error; a rejected save leaves old edits untouched.
     void save(const QUrl& source, const State& state) const;
+    // Immutable current-context history; never replaces a conflicting record.
+    QString saveCurrentSession(const QUrl& source, const State& state) const;
+    // Last-resort checkpoint, deliberately never applied automatically.
+    QString saveUnsavedSnapshot(const QUrl& source, const State& state, const QString& reason) const;
     QString filePath(const QUrl& source) const;
     void updateCatalog(const Catalog& catalog) const;
 
@@ -42,6 +46,7 @@ private:
         QByteArray source, record;
         QString warning;
         std::optional<Catalog> catalog;
+        bool independent = false;
     };
     QString directory_;
     // All calls belong to the controller thread. Remember what it loaded so

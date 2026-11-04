@@ -6,6 +6,8 @@
 #include <QTimer>
 #include <QImageReader>
 #include <QFile>
+#include <QColorSpace>
+#include <map>
 #include <iostream>
 #include <cmath>
 #include <stdexcept>
@@ -22,6 +24,44 @@ void idle(PreviewController& c){
 }
 QByteArray bytes(const QString& path){QFile f(path);if(!f.open(QIODevice::ReadOnly))throw std::runtime_error("fixture read");return f.readAll();}
 }
+quint16 le16(const QByteArray& bytes,qsizetype offset) {
+    check(offset>=0 && offset+2<=bytes.size(),"TIFF short beyond file");
+    return quint16(uchar(bytes[offset])) | (quint16(uchar(bytes[offset+1]))<<8);
+}
+quint32 le32(const QByteArray& bytes,qsizetype offset) {
+    return quint32(le16(bytes,offset)) | (quint32(le16(bytes,offset+2))<<16);
+}
+struct Tag {quint16 type;quint32 count;quint32 payload;};
+void verifyTiff(const QString& path,const QImage& expected,const QByteArray& icc) {
+    const auto bytes=::bytes(path);check(bytes.startsWith("II") && le16(bytes,2)==42,"TIFF header differs");
+    const quint32 offset=le32(bytes,4);const quint16 count=le16(bytes,offset);
+    std::map<quint16,Tag> tags;
+    for(quint32 i=0;i<count;++i) {
+        const auto entry=offset+2+i*12;const auto type=le16(bytes,entry+2);const auto n=le32(bytes,entry+4);
+        const quint64 size=quint64(n)*(type==3?2:type==4?4:type==5?8:1);
+        tags.emplace(le16(bytes,entry),Tag{type,n,size<=4?entry+8:le32(bytes,entry+8)});
+    }
+    auto value=[&](int tag,int index=0) {
+        const auto& t=tags.at(quint16(tag));check(quint32(index)<t.count,"TIFF tag index invalid");
+        return t.type==3?quint32(le16(bytes,t.payload+index*2)):le32(bytes,t.payload+index*4);
+    };
+    check(value(256)==quint32(expected.width()) && value(257)==quint32(expected.height()),"TIFF size differs");
+    check(value(259)==1 && value(262)==2 && value(274)==1 && value(277)==3,"TIFF layout differs");
+    check(tags.at(258).count==3,"TIFF channel depths missing");
+    for(int c=0;c<3;++c)check(value(258,c)==16,"TIFF lost 16-bit depth");
+    const auto& tag=tags.at(34675);
+    check(bytes.mid(tag.payload,tag.count)==icc,"TIFF ICC changed");
+    const int rows=int(value(278));
+    for(int y=0;y<expected.height();++y) {
+        const auto start=value(273,y/rows);const auto* row=reinterpret_cast<const QRgba64*>(expected.constScanLine(y));
+        for(int x=0;x<expected.width();++x) {
+            const auto at=start+(quint32(y%rows)*expected.width()+x)*6;
+            check(le16(bytes,at)==row[x].red() && le16(bytes,at+2)==row[x].green() &&
+                  le16(bytes,at+4)==row[x].blue(),"TIFF sample changed or channels swapped");
+        }
+    }
+}
+
 int main(int argc,char** argv){
     QCoreApplication app(argc,argv);
     try {
@@ -32,7 +72,37 @@ int main(int argc,char** argv){
         const auto originalBytes=bytes(raw);
         PreviewController c(resources,nullptr,{},edits);idle(c);c.openRaw(QUrl::fromLocalFile(raw));idle(c);
         c.setAdjustment("grainActive",false);c.setAdjustment("glareActive",false);c.setAdjustment("halationActive",false);idle(c);
-        const auto plain=c.previewImage(),original=c.originalImage();const auto held=c.frame();
+        const auto plain=c.previewImage(),original=c.originalImage();
+        c.setAdjustment("autoNegative",true);idle(c);
+        check(c.frame()->settings.auto_negative&&c.previewImage()!=plain,"Automatic negative inversion did not change the print");
+        check(c.frame()->negative_was_cached(),"Automatic inversion redeveloped the negative");
+        const auto positiveFile=owned.filePath("auto-positive.png");
+        c.exportImage(QUrl::fromLocalFile(positiveFile),1,95,0);idle(c);
+        check(QImageReader(positiveFile).read().convertToFormat(QImage::Format_ARGB32)==c.previewImage(),"Automatic inversion preview and export disagree");
+        c.setAdjustment("autoNegative",false);idle(c);
+        check(c.previewImage()==plain,"Disabling automatic inversion did not restore the original print");
+        const auto held=c.frame();
+        const auto negativeFile=owned.filePath("negative.tif");
+        c.exportImage(QUrl::fromLocalFile(negativeFile),4,95,0);idle(c);
+        const auto negativeBytes=bytes(negativeFile);
+
+
+        check(c.frame()==held&&c.previewImage()==plain,"Negative export changed the editor frame");
+        desktop::PreviewHost scanHost(resources,true);
+        const auto scan=scanHost.render_original(scanHost.open_raw(std::filesystem::path(raw.toStdWString()),held->decode_mode,held->settings),true);
+        const auto& scanPixels=scan->pixels();
+        QImage expected(reinterpret_cast<const uchar*>(scanPixels.rgba16),int(scan->width()),int(scan->height()),qsizetype(scanPixels.row_stride_px)*8,QImage::Format_RGBA64);
+        verifyTiff(negativeFile,expected,QColorSpace(QColorSpace::ProPhotoRgb).iccProfile());
+        c.setPostAdjustment("exposure",1.0);idle(c);
+        const auto gradedNegativeFile=owned.filePath("negative-graded.tif");
+        c.exportImage(QUrl::fromLocalFile(gradedNegativeFile),4,95,0);idle(c);
+        check(bytes(gradedNegativeFile)==negativeBytes,"Post-Dev grade leaked into negative export");
+        c.resetPostAdjustments();idle(c);
+        auto positiveSettings=held->settings;positiveSettings.film_stock="kodak_ektachrome_100";
+        bool refusedPositive=false;
+        try {scanHost.render_original(scanHost.open_raw(std::filesystem::path(raw.toStdWString()),held->decode_mode,positiveSettings),true);}
+        catch(const std::exception&){refusedPositive=true;}
+        check(refusedPositive,"Positive film accepted as a negative scan");
         c.setFilmFrame("dateText","26 10 30");c.setFilmFrame("dateSize",2.);c.setFilmFrame("dateActive",true);idle(c);
         check(c.previewImage()!=plain&&c.frame()->input_cut(),"Date did not reach film exposure");
         check(c.originalImage()==original,"Date leaked into original comparison");

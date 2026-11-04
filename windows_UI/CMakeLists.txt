@@ -244,3 +244,16 @@ foreach(consumer SpektraLabQt spk_qt_stock_policy_test spk_qt_library_workflow_t
         target_link_libraries(${consumer} PRIVATE spk_material_library)
     endif()
 endforeach()
+
+if(BUILD_TESTING)
+    qt_add_executable(spk_qt_close_recovery_test tests/close_save_recovery.cpp
+        src/PreviewController.hpp src/PreviewController.cpp src/FrameOutput.cpp src/EditStore.cpp)
+    target_include_directories(spk_qt_close_recovery_test PRIVATE src)
+    target_compile_features(spk_qt_close_recovery_test PRIVATE cxx_std_20)
+    target_link_libraries(spk_qt_close_recovery_test PRIVATE spk_material_library Qt6::Core Qt6::Gui)
+    add_test(NAME spk_qt_close_recovery COMMAND spk_qt_close_recovery_test "$<TARGET_FILE_DIR:SpektraLabQt>/resources")
+    set_tests_properties(spk_qt_close_recovery PROPERTIES TIMEOUT 120)
+    if(WIN32)
+        set_tests_properties(spk_qt_close_recovery PROPERTIES ENVIRONMENT_MODIFICATION "${qt_test_runtime_path}")
+    endif()
+endif()

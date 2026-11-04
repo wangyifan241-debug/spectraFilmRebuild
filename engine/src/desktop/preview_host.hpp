@@ -76,6 +76,7 @@ struct RenderSettings {
     bool halation_active = true;
     double halation_amount = 1.0;
     bool glare_active = true;
+    bool auto_negative = false;
     double glare_amount = 1.0;
     double y_filter_shift = 0.0;
     double m_filter_shift = 0.0;
@@ -118,6 +119,7 @@ public:
     // Resolved from the selected film's catalog metadata, not a separate
     // user setting. Slide film is viewed directly without the paper stage.
     bool scan_film = false;
+    bool auto_negative_active = false; // pixels() is Cineon; output must decode before grading
     io::RawMetadata metadata;
     io::RawDecodeTimings decode_timings;
     Timings timings;
@@ -204,7 +206,7 @@ public:
     // upscaled preview. Does not replace current(); releases the interactive
     // GPU session first and rebuilds it lazily on the next edit. Small frames
     // already at native size are returned unchanged (including their grain).
-    FramePtr render_original(const FramePtr& snapshot);
+    FramePtr render_original(const FramePtr& snapshot, bool negative_scan = false);
     // Measure/fit the supplied immutable decode, never a possibly newer live
     // session or a reread of its path. No render setting is committed here.
     std::string scene_latitude(const FramePtr& snapshot, const std::string& request="{}");

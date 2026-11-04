@@ -404,6 +404,28 @@ surface applies the geometry itself.
 
 ### 7.8 Export
 
+Windows Qt also offers an opt-in **automatic negative inversion** control.
+The engine's Digital Intermediate removes the film base spectrally and
+reverses printing density using the film's own neutral calibration; Vulkan
+now implements `spk_di_encode`. These engine pixels remain Cineon log.
+`FrameOutput::framePixels` decodes that log into linear ProPhoto, applies a
+luminance shoulder (identity through mid-grey, asymptotic to white), then
+encodes ProPhoto for the shared preview/grade/export path. Never tag the raw
+Cineon result as display RGB. Slides and monochrome films bypass this colour
+negative mode. Disabling it restores
+the existing print parameters. Windows sidecars version 10 persist the
+setting, with versions 1–9 defaulting to off. Negative TIFF export still
+forces direct scan and bypasses this positive display transform.
+
+The Windows Qt export menu also offers **Negative scan TIFF · 16 bit**.
+This renders the held frame at native resolution with `scan_film=true`,
+bypassing paper/print film, and writes encoded ProPhoto RGB with its ICC
+profile. The orange mask is retained; these are scanned transmission RGB,
+not the normalized dye densities in `export_di`. Geometry and film-side
+effects remain, while Post-Dev grading is bypassed for external inversion.
+Positive films are refused. Single and batch exports preserve the editor's
+held frame and use the existing atomic, no-overwrite writer.
+
 - **A recipe** is format, depth, colour space, long edge, naming and folder
   (`ExportRecipe`). The export page proves the file at its own resolution
   before it is written (soft proof, §7.5 row 7c) — measured identical to the

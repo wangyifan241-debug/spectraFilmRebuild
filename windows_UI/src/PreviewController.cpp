@@ -43,9 +43,11 @@ desktop::InputGeometry filmGeometry(const output::Geometry& g) {
     return {g.crop.x(),g.crop.y(),g.crop.width(),g.crop.height(),g.straightenDegrees,g.quarterTurns,g.flipHorizontal,g.flipVertical};
 }
 output::ExportOptions exportOptions(int format,int quality,int maxEdge) {
-    if(format<0||format>3||quality<1||quality>100||maxEdge<0||maxEdge>100000)
+    if(format<0||format>4||quality<1||quality>100||maxEdge<0||maxEdge>100000)
         throw std::runtime_error("Invalid export options");
-    return {static_cast<output::Format>(format),quality,maxEdge};
+    output::ExportOptions options{format==4?output::Format::TIFF16:static_cast<output::Format>(format),quality,maxEdge};
+    options.negativeScan=format==4;
+    return options;
 }
 }
 QImage PreviewController::imageFromFrame(const desktop::FramePtr& frame) {
@@ -423,7 +425,7 @@ void PreviewController::exportImage(const QUrl& url,int format,int quality,int m
     submit([p,held,gen,geometry,develop,resources,format,quality,maxLongEdge](auto& host){Reply r;r.generation=gen;r.operation="export";
         try{auto options=exportOptions(format,quality,maxLongEdge);options.develop=develop;
             if(std::filesystem::exists(p))throw std::runtime_error("The export file already exists");
-            output::exportFrame(host.render_original(held),p,geometry,options,resources);
+            output::exportFrame(host.render_original(held,options.negativeScan),p,geometry,options,resources);
             r.message=QStringLiteral("已导出：")+QString::fromStdWString(p.wstring());
         }catch(const std::exception& e){r.error=text(e.what());}return r;},QStringLiteral("正在按原尺寸渲染并导出…"),"export");
 }
@@ -515,7 +517,7 @@ QVariantMap PreviewController::adjustments() const {
     return {{"filmExposureEv",s.film_exposure_ev},{"filmFormatMm",s.film_format_mm},
         {"grainActive",s.grain_active},{"grainAmount",s.grain_amount},
         {"halationActive",s.halation_active},{"halationAmount",s.halation_amount},
-        {"glareActive",s.glare_active},{"glareAmount",s.glare_amount},
+        {"glareActive",s.glare_active},{"glareAmount",s.glare_amount},{"autoNegative",s.auto_negative},
         {"yFilterShift",s.y_filter_shift},{"mFilterShift",s.m_filter_shift}};
 }
 QVariantMap PreviewController::filmFrame() const {
@@ -567,6 +569,7 @@ void PreviewController::setAdjustment(const QString& name,const QVariant& value)
     if(!settingsEditable())return;
     auto next=extra_settings_;
     if(name=="grainActive")next.grain_active=value.toBool();
+    else if(name=="autoNegative")next.auto_negative=value.toBool();
     else if(name=="halationActive")next.halation_active=value.toBool();
     else if(name=="glareActive")next.glare_active=value.toBool();
     else {
@@ -887,11 +890,16 @@ void PreviewController::scheduleSave() {
 void PreviewController::flushEdits() {
     save_timer_.stop();
     int retryDelay=0;
-    for(auto& item:library_)if(item.pending_save&&!item.save_blocked) {
-        try {edit_store_.save(item.url,itemState(item));item.pending_save=false;item.has_stored=true;item.save_warning.clear();item.save_failures=0;}
+    for(auto& item:library_)if(item.pending_save) {
+        try {edit_store_.save(item.url,itemState(item));item.pending_save=false;item.save_blocked=false;item.material_blocked=false;item.has_stored=true;item.save_warning.clear();item.save_failures=0;}
         catch(const std::exception& e){
-            item.save_warning=text(e.what());
-            if(++item.save_failures<=3)retryDelay=std::max(retryDelay,500*(1<<item.save_failures));
+            try {
+                (void)edit_store_.saveCurrentSession(item.url,itemState(item));
+                item.pending_save=false;item.save_blocked=false;item.material_blocked=false;item.has_stored=true;item.save_warning.clear();item.save_failures=0;
+            }catch(const std::exception& fallback){
+                item.save_warning=text(e.what())+"\n"+text(fallback.what());
+                if(++item.save_failures<=3)retryDelay=std::max(retryDelay,500*(1<<item.save_failures));
+            }
         }
     }
     if(retryDelay)save_timer_.start(retryDelay);
@@ -903,7 +911,11 @@ void PreviewController::retrySave() {
 }
 bool PreviewController::prepareToClose() {
     endEditGesture();flushEdits();
-    for(const auto& item:library_)if(item.pending_save)return false;
+    save_timer_.stop();
+    for(auto& item:library_)if(item.pending_save) {
+        try{const auto path=edit_store_.saveUnsavedSnapshot(item.url,itemState(item),item.save_warning);item.pending_save=false;qWarning("Unsaved settings checkpoint: %s",path.toUtf8().constData());}
+        catch(const std::exception& e){qWarning("Closing without blocking; settings checkpoint failed: %s",e.what());}
+    }
     return true;
 }
 QString PreviewController::persistenceWarning() const {
@@ -947,7 +959,7 @@ void PreviewController::exportBatch(const QUrl& folder,int format,int quality,in
         try {
             const auto options=exportOptions(format,quality,maxLongEdge);
             if(!std::filesystem::is_directory(destination))throw std::runtime_error("Export destination is not a folder");
-            const QString extension=format==0?".tif":format==3?".jpg":".png";
+            const QString extension=(format==0||format==4)?".tif":format==3?".jpg":".png";
             QSet<QString> names;
             for(const auto& item:items) {
                 if(cancel->load())break;
@@ -964,7 +976,7 @@ void PreviewController::exportBatch(const QUrl& folder,int format,int quality,in
                             (!held->input_cut()||held->input_geometry()==filmGeometry(item.geometry));
                         const auto developed=useShown?held:desktop::pair_project::open(host,source,item.mode,item.settings,filmGeometry(item.geometry));
                         auto itemOptions=options;itemOptions.develop=item.develop;
-                        output::exportFrame(host.render_original(developed),target,item.geometry,itemOptions,resources);++done;
+                        output::exportFrame(host.render_original(developed,itemOptions.negativeScan),target,item.geometry,itemOptions,resources);++done;
                     }
                 }catch(const std::exception& e){++errors;details.append(name+": "+text(e.what()));}
                 ++processed;

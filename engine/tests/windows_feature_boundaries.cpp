@@ -71,7 +71,6 @@ int main(int argc, char** argv) {
 
         struct Feature { const char* key; const char* label; };
         const std::vector<Feature> features{
-            {"digital_intermediate", "digital intermediate"},
             {"contrast_mask_active", "contrast mask"},
 #ifndef _WIN32
             {"overscan_active", "overscan"},
@@ -105,10 +104,8 @@ int main(int argc, char** argv) {
         const bool empty = !di.texture && !di.rgba16 && !di_json;
         spk_result_free(&di);
         spk_string_free(di_json);
-        require(di_status == SPK_ERR_USER && empty &&
-                di_error.find("digital intermediate") != std::string::npos,
-                "DI API did not return a clear refusal and empty result");
-        require(params(session.get()) == before, "DI refusal mutated the session");
+        require(di_status == SPK_OK && !empty, "DI render failed: " + di_error);
+        require(params(session.get()) == before, "DI export mutated the session");
         render(engine.get(), session.get());
 
         const float* mask = nullptr;
@@ -128,7 +125,7 @@ int main(int argc, char** argv) {
         require(latitude_status == SPK_OK && latitude_valid, "latitude analysis failed: " + latitude_error);
         require(params(session.get()) == before, "latitude analysis mutated the session");
         render(engine.get(), session.get());
-        std::cout << "Vulkan feature boundaries passed (unported flags, DI refusal, mask off, active/bypassed latitude and analysis)\n";
+        std::cout << "Vulkan feature boundaries passed (unported flags, DI rendering, mask off, active/bypassed latitude and analysis)\n";
         return 0;
     } catch (const std::exception& error) {
         std::cerr << error.what() << '\n';

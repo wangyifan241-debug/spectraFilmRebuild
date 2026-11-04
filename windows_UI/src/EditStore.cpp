@@ -11,6 +11,8 @@
 #include <QLockFile>
 #include <QRegularExpression>
 #include <QSaveFile>
+#include <QUuid>
+#include <QStandardPaths>
 #include <algorithm>
 #include <cmath>
 #include <stdexcept>
@@ -117,7 +119,7 @@ QJsonObject stateJson(const State& state) {
         {"grain_amount", s.grain_amount}, {"halation_active", s.halation_active},
         {"halation_amount", s.halation_amount}, {"glare_active", s.glare_active},
         {"glare_amount", s.glare_amount}, {"y_filter_shift", s.y_filter_shift},
-        {"m_filter_shift", s.m_filter_shift}}},
+        {"m_filter_shift", s.m_filter_shift}, {"auto_negative",s.auto_negative}}},
         {"develop", QJsonObject{{"enabled",d.enabled},{"temperature",d.temperature},{"tint",d.tint},
             {"exposure",d.exposure},{"contrast",d.contrast},{"brightness",d.brightness},
             {"saturation",d.saturation},{"highlights",d.highlights},{"shadows",d.shadows},
@@ -152,11 +154,14 @@ State parseState(const QJsonObject& value, const Catalog* catalog) {
     else if(value.contains("develop"))keys(value, {"settings", "decodeMode", "geometry", "develop"}, QStringLiteral("state"));
     else keys(value, {"settings", "decodeMode", "geometry"}, QStringLiteral("state"));
     State state;
-    const auto s = object(value, "settings");
+    auto s = object(value, "settings");
+    const auto autoNegative=s.take("auto_negative");
+    require(autoNegative.isUndefined()||autoNegative.isBool(),QStringLiteral("Invalid automatic negative setting"));
     keys(s, {"film_stock", "print_stock", "print_exposure", "film_exposure_ev", "film_format_mm",
              "grain_active", "grain_amount", "halation_active", "halation_amount", "glare_active",
              "glare_amount", "y_filter_shift", "m_filter_shift"}, QStringLiteral("settings"));
     auto& out = state.settings;
+    out.auto_negative=autoNegative.toBool(false);
     if(value.contains("halfPair"))out.pair=pair_project::parseRecipe(object(value,"halfPair"));
     out.film_stock = stockId(s, "film_stock", catalog ? &catalog->films : nullptr).toStdString();
     out.print_stock = stockId(s, "print_stock", catalog ? &catalog->papers : nullptr).toStdString();
@@ -336,6 +341,10 @@ QByteArray fingerprint(const Identity& value) {
     return QCryptographicHash::hash(QJsonDocument(identityJson(value)).toJson(QJsonDocument::Compact),
                                     QCryptographicHash::Sha256);
 }
+QString sessionPrefix(const Identity& value,const std::optional<Catalog>& catalog) {
+    const auto context=catalog?QByteArray::fromStdString(catalog->engine_resources_sha256):QByteArray{};
+    return QString::fromLatin1(QCryptographicHash::hash(fingerprint(value)+context,QCryptographicHash::Sha256).toHex())+"-";
+}
 bool recordExists(const QString& path) {
     const QFileInfo info(path);
     return info.exists() || info.isSymLink();
@@ -359,7 +368,7 @@ QJsonObject readDocument(const QString& path, QByteArray* digest = nullptr) {
     require(string(result, "format") == "SpektraLab.Windows.Editor",
             QStringLiteral("Saved edits use an unsupported document format"));
     const auto version = result.value("version");
-    require(version.isDouble() && (version.toDouble() == 1.0 || version.toDouble() == 2.0 || version.toDouble() == 3.0 || version.toDouble()==4.0 || version.toDouble()==5.0 || version.toDouble()==6.0 || version.toDouble()==7.0 || version.toDouble()==8.0 || version.toDouble()==9.0),
+    require(version.isDouble() && (version.toDouble() == 1.0 || version.toDouble() == 2.0 || version.toDouble() == 3.0 || version.toDouble()==4.0 || version.toDouble()==5.0 || version.toDouble()==6.0 || version.toDouble()==7.0 || version.toDouble()==8.0 || version.toDouble()==9.0 || version.toDouble()==10.0),
             QStringLiteral("Saved edits use an unsupported version; existing file was preserved"));
     require(object(result,"state").contains("develop") == (version.toDouble()>=2.0),
             QStringLiteral("Saved edit fields do not match their document version"));
@@ -396,6 +405,15 @@ LoadResult Store::load(const QUrl& source, const Catalog& catalog) const {
         key = observationKey(source);
         const auto path = filePath(source);
         const auto sourceId = identity(sourcePath(source));
+        const QDir sessions(QDir(directory_).filePath("Sessions"));
+        for(const auto& name:sessions.entryList({sessionPrefix(sourceId,catalog)+"*.json"},QDir::Files,QDir::Name|QDir::Reversed)) {
+            try {
+                QByteArray digest;const auto document=readDocument(sessions.filePath(name),&digest);
+                const auto restored=checkDocument(document,sourceId,&catalog);
+                observations_.insert(key,{fingerprint(sourceId),digest,{},catalog,true});
+                return {restored,{},false};
+            } catch(const std::exception&) { /* Retain invalid/older-context history; do not apply it. */ }
+        }
         if (!recordExists(path)) {
             observations_.insert(key, {fingerprint(sourceId), {}, {}, catalog});
             return {};
@@ -418,6 +436,7 @@ void Store::save(const QUrl& source, const State& state) const {
     const auto key = observationKey(source);
     const auto path = filePath(source);
     const auto observed = observations_.constFind(key);
+    if(observed!=observations_.cend()&&observed->independent){(void)saveCurrentSession(source,state);return;}
     if (observed != observations_.cend() && !observed->warning.isEmpty()) fail(observed->warning);
     const auto value = stateJson(state);
     const auto catalog = observed != observations_.cend() ? observed->catalog : std::optional<Catalog>{};
@@ -446,7 +465,7 @@ void Store::save(const QUrl& source, const State& state) const {
         require(observed->record == previousDigest,
                 QStringLiteral("Saved edits changed in another instance; restart the app and reopen the photo before saving"));
     const auto bytes = QJsonDocument(QJsonObject{{"format", "SpektraLab.Windows.Editor"},
-        {"version", 9}, {"source", identityJson(sourceId)}, {"state", value}}).toJson(QJsonDocument::Indented);
+        {"version", 10}, {"source", identityJson(sourceId)}, {"state", value}}).toJson(QJsonDocument::Indented);
     require(bytes.size() <= maximumDocumentBytes, QStringLiteral("Saved edit document exceeds the 64 KiB limit"));
     QSaveFile file(path);
     file.setDirectWriteFallback(false);
@@ -455,6 +474,40 @@ void Store::save(const QUrl& source, const State& state) const {
     require(file.commit(), QStringLiteral("Cannot atomically save edits: ") + file.errorString());
     observations_.insert(key, {fingerprint(sourceId),
                                 QCryptographicHash::hash(bytes, QCryptographicHash::Sha256), {}, catalog});
+}
+
+QString Store::saveCurrentSession(const QUrl& source,const State& state) const {
+    const auto key=observationKey(source);const auto observed=observations_.constFind(key);
+    require(observed!=observations_.cend(),QStringLiteral("No opened source identity for independent saved edits"));
+    const auto current=identity(sourcePath(source));
+    require(observed->source==fingerprint(current),QStringLiteral("Source changed during editing; current settings need an unverified recovery snapshot"));
+    const auto catalog=observed->catalog;const auto value=stateJson(state);
+    (void)parseState(value,catalog?&*catalog:nullptr);
+    require(pathIdentity(QFileInfo(sourcePath(source)).absolutePath())!=pathIdentity(directory_),QStringLiteral("Saved edit store must not be beside the source photograph"));
+    const auto directory=QDir(directory_).filePath("Sessions");
+    require(QDir().mkpath(directory),QStringLiteral("Cannot create independent edit-session directory"));
+    static qint64 lastStamp=0;lastStamp=std::max(lastStamp+1,QDateTime::currentMSecsSinceEpoch());
+    const auto path=QDir(directory).filePath(sessionPrefix(current,catalog)+QString::number(lastStamp)+"-"+QUuid::createUuid().toString(QUuid::WithoutBraces)+".json");
+    const int version=object(value,"settings").contains("auto_negative")?10:9;
+    const auto bytes=QJsonDocument(QJsonObject{{"format","SpektraLab.Windows.Editor"},{"version",version},{"source",identityJson(current)},{"state",value}}).toJson(QJsonDocument::Indented);
+    require(bytes.size()<=maximumDocumentBytes,QStringLiteral("Saved edit document exceeds the 64 KiB limit"));
+    QSaveFile file(path);file.setDirectWriteFallback(false);
+    require(file.open(QIODevice::WriteOnly)&&file.write(bytes)==bytes.size()&&file.commit(),QStringLiteral("Cannot atomically save independent edit session"));
+    observations_.insert(key,{fingerprint(current),QCryptographicHash::hash(bytes,QCryptographicHash::Sha256),{},catalog,true});
+    return path;
+}
+QString Store::saveUnsavedSnapshot(const QUrl& source,const State& state,const QString& reason) const {
+    auto directory=QDir(directory_).filePath("Recovery");
+    if(!QDir().mkpath(directory))directory=QDir(QStandardPaths::writableLocation(QStandardPaths::TempLocation)).filePath("SpektraLab-Recovery");
+    require(QDir().mkpath(directory),QStringLiteral("Cannot create emergency recovery directory"));
+    const auto observed=observations_.constFind(observationKey(source));
+    const auto bytes=QJsonDocument(QJsonObject{{"format","SpektraLab.Windows.UnsavedSession"},{"version",1},{"autoApply",false},
+        {"sourceUrl",source.toString()},{"openedSourceFingerprint",observed==observations_.cend()?QString{}:QString::fromLatin1(observed->source.toHex())},
+        {"reason",reason},{"state",stateJson(state)}}).toJson(QJsonDocument::Indented);
+    const auto path=QDir(directory).filePath(QUuid::createUuid().toString(QUuid::WithoutBraces)+".json");
+    QSaveFile file(path);file.setDirectWriteFallback(false);
+    require(file.open(QIODevice::WriteOnly)&&file.write(bytes)==bytes.size()&&file.commit(),QStringLiteral("Cannot write emergency recovery snapshot"));
+    return path;
 }
 
 } // namespace spk::desktop::editing

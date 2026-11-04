@@ -18,6 +18,13 @@ moves.
 
 ## 1. The three calls that matter, mapped to engine code
 
+Windows/Vulkan update (2026-11-02): `digital_intermediate` and
+`spk_render_digital_intermediate` are now supported and no longer advertised
+in `unsupported_features`. The output contract remains Cineon log, not
+display-encoded RGB. The Qt application's automatic negative inversion
+decodes and tone-maps that result in its output stage; this does not alter
+the engine's measured film profiles or the C ABI's DI pixel encoding.
+
 Do not build a new abstraction layer. `SimulationPipeline` already has the
 three primitives a render service needs:
 

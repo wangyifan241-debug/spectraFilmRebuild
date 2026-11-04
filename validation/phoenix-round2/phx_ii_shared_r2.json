@@ -1,0 +1,24 @@
+{
+  "format": "SpektraLab.PhoenixCandidate",
+  "version": 1,
+  "id": "phx_ii_shared_r2",
+  "parent_commit": "ba076b2befe6586ad3095f897ebf40ea7e9ffd6c",
+  "renderer_commit": "ba076b2befe6586ad3095f897ebf40ea7e9ffd6c",
+  "comparison_mode": "frozen_parent_print",
+  "hypothesis": {
+    "category": "spectral_response",
+    "rationale": "shared",
+    "evidence_level": "C",
+    "source_record": "validation/phoenix-round2/RESEARCH_DESIGN.md"
+  },
+  "profiles": [
+    {
+      "parent_stock": "harman_phoenix_ii_200_exp_v1",
+      "parent_path": "validation/phoenix-round2/parents/harman_phoenix_ii_200_exp_v1.json",
+      "file": {
+        "path": "validation/phoenix-round2/profiles/phx_ii_shared_r2.json",
+        "sha256": "62af0482f131e74ff2c7cb3670a4fb6569ebc0d5f8943dafa2222ab798e6ae28"
+      }
+    }
+  ]
+}

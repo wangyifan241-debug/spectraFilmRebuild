@@ -28,6 +28,7 @@ ApplicationWindow {
     property bool originalMode: false
     property rect draftCrop: Qt.rect(0, 0, 1, 1)
     property int exportFormat: 0
+    readonly property bool autoNegativeActive: preview.adjustments.autoNegative === true && !preview.filmIsPositive && !preview.filmIsMonochrome
     property int exportQuality: 95
     property int exportLongEdge: 0
     property string exportDestination: ""
@@ -82,8 +83,9 @@ ApplicationWindow {
     }
     onClosing: function(event) {
         if (preview.batchExporting) preview.cancelExport()
-        if (preview.busy) { closePending = true; event.accepted = false }
-        else { closePending = false; if (!preview.prepareToClose()) { event.accepted = false; unsavedDialog.open() } }
+        closePending = false
+        preview.prepareToClose()
+        event.accepted = true
     }
     Connections {
         target: preview
@@ -94,13 +96,6 @@ ApplicationWindow {
         function onOperationFinished(operation, ok) {
             if (operation === "export" || operation === "batch-export") window.exportResultMessage = preview.status
         }
-    }
-    MessageDialog {
-        id: unsavedDialog
-        title: "编辑设置尚未保存"
-        text: "本次关闭已取消。请释放文件锁或修复保存目录后，点击“重试保存设置”。"
-        informativeText: preview.persistenceWarning
-        buttons: MessageDialog.Ok
     }
     MaterialManager { id: materialManager; anchors.centerIn: parent; width: Math.min(920,window.width-40); height: Math.min(760,window.height-40) }
     FileDialog {
@@ -117,7 +112,7 @@ ApplicationWindow {
         title: "导出当前画面 · 不覆盖现有文件"
         fileMode: FileDialog.SaveFile
         nameFilters: window.formatFilter()
-        defaultSuffix: window.exportFormat === 3 ? "jpg" : window.exportFormat === 0 ? "tif" : "png"
+        defaultSuffix: window.exportFormat === 3 ? "jpg" : (window.exportFormat === 0 || window.exportFormat === 4) ? "tif" : "png"
         currentFolder: preview.sourceFolder
         onVisibleChanged: window.updateDialogState()
         onAccepted: preview.exportImage(selectedFile, window.exportFormat, window.exportQuality, window.exportLongEdge)
@@ -288,6 +283,7 @@ ApplicationWindow {
                         }
                         Section {
                             title: "印相材料 · 相纸 / 印片"
+                            Note { visible: window.autoNegativeActive; text: "自动负片翻转已开启，跳过所选印相材料；关闭后恢复。"; color: Theme.accent }
                             Note { visible: preview.filmIsPositive; text: "反转片直接扫描，不使用相纸。"; color: Theme.accent }
                             Note { objectName: "printMaterialPolicyNote"; visible: preview.filmIsMonochrome && !preview.filmIsPositive; text: (preview.papers[preview.paperIndex] || {}).unfiltered2302 ? "黑白电影印片 · 不使用 Multigrade 滤片" : (preview.papers[preview.paperIndex] || {}).multigrade ? "银盐相纸 · Multigrade 滤镜 2" : "自定义黑白材料 · 沿用兼容滤片，需独立标定"; color: Theme.accent }
                             ListView {
@@ -372,7 +368,7 @@ ApplicationWindow {
                             ActionButton { objectName: "resetGeometryButton"; Layout.fillWidth: true; text: "重置裁切与方向"; enabled: window.canEditCrop && !window.cropMode; onClicked: { preview.resetGeometry(); canvas.resetView(true) } }
                         }
                         Section {
-                            title: "放大机 · 相纸亮度"
+                            title: window.autoNegativeActive ? "负片翻转 · 输出亮度与色彩" : "放大机 · 相纸亮度"
                             RowLayout {
                                 Layout.fillWidth: true
                                 Text { text: "亮度"; color: Theme.text; font.pixelSize: 11 }
@@ -684,6 +680,13 @@ ApplicationWindow {
                         Section {
                             visible: !window.postMode
                             title: "胶片画幅与效果"
+                            EditorCheckBox {
+                                text: "自动负片翻转 · 去色罩"
+                                checked: preview.adjustments.autoNegative === true
+                                enabled: preview.settingsEditable && !preview.filmIsPositive && !preview.filmIsMonochrome
+                                onClicked: preview.setAdjustment("autoNegative", checked)
+                            }
+                            Note { text: preview.adjustments.autoNegative ? "彩色负片自动去色罩并翻转，跳过印相；可继续调色。正片与黑白片保持原流程。" : "关闭时保持原有印相流程；负片 TIFF 导出仍可单独使用。" }
                             RowLayout {
                                 Text { text: "画幅长边"; color: Theme.text; font.pixelSize: 11 }
                                 EditorComboBox {
@@ -756,11 +759,11 @@ ApplicationWindow {
         contentItem: ColumnLayout {
             spacing: 14
             Text { text: "导出照片"; color: Theme.text; font.pixelSize: 20; font.bold: true }
-            Note { text: "当前画面或所选照片 · sRGB\n裁切与效果一起写入文件。" }
+            Note { text: window.exportFormat === 4 ? "负片扫描 · 16 位 ProPhoto RGB\n保留色罩，跳过印相及后期调色；用于外部负片翻转。" : "当前画面或所选照片 · sRGB\n裁切与效果一起写入文件。" }
             Rectangle { Layout.fillWidth: true; implicitHeight: 1; color: Theme.line; opacity: 0.5 }
             RowLayout {
                 Text { text: "格式"; color: Theme.text; Layout.preferredWidth: 76 }
-                EditorComboBox { Layout.fillWidth: true; model: ["TIFF · 16 位", "PNG · 8 位", "PNG · 16 位", "JPEG · 8 位"]; currentIndex: window.exportFormat; onActivated: window.exportFormat = currentIndex }
+                EditorComboBox { Layout.fillWidth: true; model: ["TIFF · 16 位", "PNG · 8 位", "PNG · 16 位", "JPEG · 8 位", "负片扫描 TIFF · 16 位"]; currentIndex: window.exportFormat; onActivated: window.exportFormat = currentIndex }
             }
             RowLayout {
                 visible: window.exportFormat === 3

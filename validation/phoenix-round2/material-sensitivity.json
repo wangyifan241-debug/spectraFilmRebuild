@@ -1,0 +1,102 @@
+{
+  "base": "ba076b2befe6586ad3095f897ebf40ea7e9ffd6c",
+  "infra": "00405ee8ad5a448b09e64b1bf9195f1bb429f9a9",
+  "scope": "Material-array sensitivity only; not native render validation",
+  "candidates": [
+    {
+      "id": "phx_200_linear_r2",
+      "validation": {
+        "status": "Pass",
+        "changed_category": "spectral_response",
+        "changes": [
+          {
+            "stock": "phx_200_linear_r2",
+            "path": "data.log_sensitivity",
+            "category": "spectral_response"
+          }
+        ]
+      },
+      "max_absolute_log10_sensitivity_change": 2.5511509007578645,
+      "finite": true,
+      "decision": "Inconclusive",
+      "native_tests": "Not Run",
+      "photographic_fidelity_validated": false
+    },
+    {
+      "id": "phx_200_shared_r2",
+      "validation": {
+        "status": "Pass",
+        "changed_category": "spectral_response",
+        "changes": [
+          {
+            "stock": "phx_200_shared_r2",
+            "path": "data.log_sensitivity",
+            "category": "spectral_response"
+          }
+        ]
+      },
+      "max_absolute_log10_sensitivity_change": 0.24011238428892767,
+      "finite": true,
+      "decision": "Inconclusive",
+      "native_tests": "Not Run",
+      "photographic_fidelity_validated": false
+    },
+    {
+      "id": "phx_200_no_tungsten_r2",
+      "validation": {
+        "status": "Pass",
+        "changed_category": "spectral_response",
+        "changes": [
+          {
+            "stock": "phx_200_no_tungsten_r2",
+            "path": "data.log_sensitivity",
+            "category": "spectral_response"
+          }
+        ]
+      },
+      "max_absolute_log10_sensitivity_change": 0.6171567324885707,
+      "finite": true,
+      "decision": "Inconclusive",
+      "native_tests": "Not Run",
+      "photographic_fidelity_validated": false
+    },
+    {
+      "id": "phx_ii_linear_r2",
+      "validation": {
+        "status": "Pass",
+        "changed_category": "spectral_response",
+        "changes": [
+          {
+            "stock": "phx_ii_linear_r2",
+            "path": "data.log_sensitivity",
+            "category": "spectral_response"
+          }
+        ]
+      },
+      "max_absolute_log10_sensitivity_change": 2.0241448334384398,
+      "finite": true,
+      "decision": "Inconclusive",
+      "native_tests": "Not Run",
+      "photographic_fidelity_validated": false
+    },
+    {
+      "id": "phx_ii_shared_r2",
+      "validation": {
+        "status": "Pass",
+        "changed_category": "spectral_response",
+        "changes": [
+          {
+            "stock": "phx_ii_shared_r2",
+            "path": "data.log_sensitivity",
+            "category": "spectral_response"
+          }
+        ]
+      },
+      "max_absolute_log10_sensitivity_change": 0.16580705023651576,
+      "finite": true,
+      "decision": "Inconclusive",
+      "native_tests": "Not Run",
+      "photographic_fidelity_validated": false
+    }
+  ]
+}
