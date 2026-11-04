@@ -1,0 +1,480 @@
+{
+  "feature_order": [
+    "Lab_L",
+    "Lab_a",
+    "Lab_b",
+    "OKLab_L",
+    "OKLab_a",
+    "OKLab_b",
+    "Y_median",
+    "Y_p95_minus_p05"
+  ],
+  "reference_count": 32,
+  "author_counts": {
+    "Phoenix 200": 5,
+    "Phoenix II 200": 9
+  },
+  "author_stability": {
+    "Lab_L": {
+      "II_minus_I_author_balanced": 1.6586563720785321,
+      "author_bootstrap_95_interval": [
+        -11.541127155023647,
+        13.268165225936801
+      ],
+      "leave_one_author_out_range": [
+        -1.7997745208028348,
+        7.276917628332633
+      ],
+      "caution": "descriptive resampling of these authors, not independent film causality"
+    },
+    "Lab_a": {
+      "II_minus_I_author_balanced": -3.5326570792795398,
+      "author_bootstrap_95_interval": [
+        -9.089550761335692,
+        2.8138123153383585
+      ],
+      "leave_one_author_out_range": [
+        -5.950554159943223,
+        -2.3350382919038175
+      ],
+      "caution": "descriptive resampling of these authors, not independent film causality"
+    },
+    "Lab_b": {
+      "II_minus_I_author_balanced": -0.5774253773184714,
+      "author_bootstrap_95_interval": [
+        -8.52883396289559,
+        7.308357911575588
+      ],
+      "leave_one_author_out_range": [
+        -2.6060568216815394,
+        1.8169702901436509
+      ],
+      "caution": "descriptive resampling of these authors, not independent film causality"
+    },
+    "OKLab_L": {
+      "II_minus_I_author_balanced": 0.011592309546839596,
+      "author_bootstrap_95_interval": [
+        -0.10530164035378954,
+        0.11356886717725788
+      ],
+      "leave_one_author_out_range": [
+        -0.018439976920834156,
+        0.06086644141817382
+      ],
+      "caution": "descriptive resampling of these authors, not independent film causality"
+    },
+    "OKLab_a": {
+      "II_minus_I_author_balanced": -0.012074846678491291,
+      "author_bootstrap_95_interval": [
+        -0.02960311457262347,
+        0.008283551129447954
+      ],
+      "leave_one_author_out_range": [
+        -0.01958918597301767,
+        -0.008527182603921638
+      ],
+      "caution": "descriptive resampling of these authors, not independent film causality"
+    },
+    "OKLab_b": {
+      "II_minus_I_author_balanced": -0.0008414423152690517,
+      "author_bootstrap_95_interval": [
+        -0.021542832757463243,
+        0.019613488739951355
+      ],
+      "leave_one_author_out_range": [
+        -0.006123931578981633,
+        0.005408693149635234
+      ],
+      "caution": "descriptive resampling of these authors, not independent film causality"
+    },
+    "Y_median": {
+      "II_minus_I_author_balanced": 0.0005406153569604832,
+      "author_bootstrap_95_interval": [
+        -0.11367396738923555,
+        0.09972577371234284
+      ],
+      "leave_one_author_out_range": [
+        -0.02454707226562647,
+        0.04925599052988662
+      ],
+      "caution": "descriptive resampling of these authors, not independent film causality"
+    },
+    "Y_p95_minus_p05": {
+      "II_minus_I_author_balanced": -0.0202770426605966,
+      "author_bootstrap_95_interval": [
+        -0.1370252451096049,
+        0.10534759569604023
+      ],
+      "leave_one_author_out_range": [
+        -0.06099934317430922,
+        0.009723451426876917
+      ],
+      "caution": "descriptive resampling of these authors, not independent film causality"
+    }
+  },
+  "scene_groups": {
+    "architecture": {
+      "Phoenix 200": {
+        "n": 3,
+        "authors": 1,
+        "ids": [
+          "P1_pumpkin_entry",
+          "P1_fountain",
+          "P1_hotel"
+        ],
+        "author_balanced_mean": [
+          49.50850771050572,
+          6.567466139183769,
+          7.989652368700972,
+          0.5604921704295681,
+          0.018696755043026314,
+          0.015684184791733672,
+          0.2216349705992279,
+          0.8779045314328281
+        ]
+      },
+      "Phoenix II 200": {
+        "n": 1,
+        "authors": 1,
+        "ids": [
+          "flight"
+        ],
+        "author_balanced_mean": [
+          39.94892482032429,
+          -3.9605610865289016,
+          -9.99929128245998,
+          0.4808119810843921,
+          -0.022003136468602164,
+          -0.028987483553713344,
+          0.07821894926196851,
+          0.5622317800925799
+        ]
+      }
+    },
+    "flowers": {
+      "Phoenix 200": {
+        "n": 3,
+        "authors": 2,
+        "ids": [
+          "P1_backlit_flower",
+          "P1_marigold",
+          "P1_michelle_roses"
+        ],
+        "author_balanced_mean": [
+          33.09302904012534,
+          4.922638574130053,
+          11.224571071681295,
+          0.4215196736515665,
+          0.013536907217324107,
+          0.026313947832225393,
+          0.1544421043223983,
+          0.5787087605221308
+        ]
+      },
+      "Phoenix II 200": {
+        "n": 5,
+        "authors": 2,
+        "ids": [
+          "P2_taiyou_flowers",
+          "lomo-ekmonks",
+          "taiyou-55520dc648a1",
+          "taiyou-8502f7cf96e7",
+          "taiyou-572648635ba9"
+        ],
+        "author_balanced_mean": [
+          42.08282556278693,
+          -0.6410955251031987,
+          8.310927850681248,
+          0.49968330773560543,
+          -0.003301846833097125,
+          0.019254285437520592,
+          0.13706997946572586,
+          0.5961952798082248
+        ]
+      }
+    },
+    "human_portrait": {
+      "Phoenix 200": {
+        "n": 0,
+        "authors": 0,
+        "ids": [],
+        "author_balanced_mean": null
+      },
+      "Phoenix II 200": {
+        "n": 4,
+        "authors": 3,
+        "ids": [
+          "P2_naeem_parasol",
+          "lomo-earley",
+          "taiyou-d8f77915c993",
+          "taiyou-8a11edcf50cb"
+        ],
+        "author_balanced_mean": [
+          50.040199315377784,
+          1.2199223677949718,
+          10.604707148593516,
+          0.5688483582608875,
+          -0.0006542790078834909,
+          0.02374477366387724,
+          0.2697939967707799,
+          0.6061718096614928
+        ]
+      }
+    },
+    "indoor": {
+      "Phoenix 200": {
+        "n": 1,
+        "authors": 1,
+        "ids": [
+          "train"
+        ],
+        "author_balanced_mean": [
+          34.24602919363346,
+          -5.558449618521706,
+          1.6187736571031732,
+          0.42937082624774003,
+          -0.019907892183686073,
+          0.0007250854259396735,
+          0.050130790114721775,
+          0.5650024790931808
+        ]
+      },
+      "Phoenix II 200": {
+        "n": 1,
+        "authors": 1,
+        "ids": [
+          "lomo-jason"
+        ],
+        "author_balanced_mean": [
+          31.478317060009335,
+          -3.2140280610626966,
+          24.28665617279438,
+          0.40824500746458253,
+          -0.010229887766441074,
+          0.058201875102764006,
+          0.05553837817282054,
+          0.38684603387810323
+        ]
+      }
+    },
+    "landscape": {
+      "Phoenix 200": {
+        "n": 2,
+        "authors": 2,
+        "ids": [
+          "commons-200458925",
+          "P1_trev_beach"
+        ],
+        "author_balanced_mean": [
+          45.19369457704559,
+          8.179692173780586,
+          12.251193144841999,
+          0.5301998351608106,
+          0.02253615821140182,
+          0.028039287090295906,
+          0.17834346682092161,
+          0.5432167308031454
+        ]
+      },
+      "Phoenix II 200": {
+        "n": 1,
+        "authors": 1,
+        "ids": [
+          "P2_marcus_cliffs"
+        ],
+        "author_balanced_mean": [
+          52.99952524138541,
+          4.716489708813179,
+          3.3168532788003464,
+          0.5963150762224411,
+          0.010246755447391951,
+          0.0066132995052871546,
+          0.20051705562253896,
+          0.7140016882234249
+        ]
+      }
+    },
+    "other": {
+      "Phoenix 200": {
+        "n": 4,
+        "authors": 1,
+        "ids": [
+          "P1_pumpkin_cutout",
+          "P1_pumpkin_cart",
+          "P1_scarecrows",
+          "P1_pumpkin_rows"
+        ],
+        "author_balanced_mean": [
+          36.353928552557726,
+          9.65448573690715,
+          12.38019963664247,
+          0.4523016574167592,
+          0.019947154168680675,
+          0.022101499103993217,
+          0.07024684210420301,
+          0.6949162416628671
+        ]
+      },
+      "Phoenix II 200": {
+        "n": 1,
+        "authors": 1,
+        "ids": [
+          "lomo-fabio"
+        ],
+        "author_balanced_mean": [
+          18.512119406544578,
+          7.775553237673586,
+          15.23191490035736,
+          0.2776584231608977,
+          0.024909754740905805,
+          0.041395378453851155,
+          0.002871303335734988,
+          0.49047747433795635
+        ]
+      }
+    },
+    "vegetation": {
+      "Phoenix 200": {
+        "n": 3,
+        "authors": 1,
+        "ids": [
+          "P1_palms_blue",
+          "P1_palms_pale",
+          "P1_green_leaves"
+        ],
+        "author_balanced_mean": [
+          45.92552029992081,
+          3.097985352681993,
+          7.053711812202859,
+          0.5327340100446887,
+          0.009974874387325925,
+          0.017372443353297524,
+          0.27088992572979476,
+          0.6462086067447067
+        ]
+      },
+      "Phoenix II 200": {
+        "n": 3,
+        "authors": 2,
+        "ids": [
+          "lomo-jaeming",
+          "taiyou-c421cadf6004",
+          "taiyou-ac1d77eafc48"
+        ],
+        "author_balanced_mean": [
+          33.58102275695837,
+          -7.685953902659735,
+          2.1706531008556875,
+          0.41975355831436567,
+          -0.029077924819170507,
+          0.003696540081810367,
+          0.06753313521401208,
+          0.6134367439758202
+        ]
+      }
+    }
+  },
+  "paired_software_metrics": {
+    "round5-I-vs-digital": {
+      "RGB_MAE_255": 4.153087734090388,
+      "DE00_D65_mean": 2.5799089567999345,
+      "DE00_D65_p95": 4.270322411283505
+    },
+    "round5-II-vs-digital": {
+      "RGB_MAE_255": 2.262290190260702,
+      "DE00_D65_mean": 1.3068142693365592,
+      "DE00_D65_p95": 2.332035785689117
+    },
+    "round5-II-vs-round5-I": {
+      "RGB_MAE_255": 2.170196699965847,
+      "DE00_D65_mean": 1.6735546116087068,
+      "DE00_D65_p95": 3.2291623473267332
+    }
+  },
+  "ROIs": {
+    "sony": {
+      "rect": [
+        0.28,
+        0.56,
+        0.34,
+        0.62
+      ],
+      "description": "manually inspected exposed skin patch; not a calibrated skin target"
+    },
+    "reference": {
+      "id": "P2_naeem_parasol",
+      "rect": [
+        0.525,
+        0.345,
+        0.555,
+        0.36
+      ],
+      "description": "manually inspected cheek patch, outdoor parasol illumination; not paired"
+    }
+  },
+  "region_statistics": {
+    "digital": {
+      "Lab_D65_mean": [
+        58.167216492962325,
+        10.036546981850488,
+        14.833627457657402
+      ],
+      "pixel_count": 2684
+    },
+    "round5-I": {
+      "Lab_D65_mean": [
+        57.538090184454965,
+        12.801836237338293,
+        21.172554912533098
+      ],
+      "pixel_count": 2684
+    },
+    "round5-II": {
+      "Lab_D65_mean": [
+        57.53161663060967,
+        10.483336459592628,
+        15.702365384442311
+      ],
+      "pixel_count": 2684
+    },
+    "reference-II-Naeem": {
+      "Lab_D65_mean": [
+        55.64490592918955,
+        22.048661229002157,
+        48.25693359723908
+      ],
+      "pixel_count": 1800,
+      "color_policy": "embedded ICC; provisional sRGB if untagged",
+      "comparison": "different person, lighting and scanner; no unpaired DE accuracy metric"
+    }
+  },
+  "render_receipts": {
+    "digital": {
+      "source": "build\\phoenix-phase0-raw-02\\digital-input.png",
+      "PNG_sha256": "838a16c3b697ad56df87bdf1fe357d6c0d11a3b4f5d053ecc4f6e919a7c3c19d",
+      "canonical_RGB8_sha256": "f62d8f76789f1315b8af416421239ad069044ea67ae286b37d30d7031a20acdc",
+      "execution": "reused actual Phase 0 Sony RAW engine output, not a new render or a Research output"
+    },
+    "round5-I": {
+      "source": "build\\phoenix-phase0-raw-02\\harman_phoenix_200_exp_v1-round5-scan.png",
+      "PNG_sha256": "52995539d13de8767f0a6b1a59c896855939c5d48e28f4c2b94a9ef648a81b46",
+      "canonical_RGB8_sha256": "370b1ac540569987ac591b345cff05231b2d08efe7f499b9490d5909a6f66d52",
+      "execution": "reused actual Phase 0 Sony RAW engine output, not a new render or a Research output"
+    },
+    "round5-II": {
+      "source": "build\\phoenix-phase0-raw-02\\harman_phoenix_ii_200_exp_v1-round5-scan.png",
+      "PNG_sha256": "cb96bbd755352230f4e9943ad6e9d6bd4a624d8d42bf937111ae201f99273920",
+      "canonical_RGB8_sha256": "7ea0a7c2d087a1f4c53697eb82bcaa8869b4c016f48fd34390b0e1b5ad23b648",
+      "execution": "reused actual Phase 0 Sony RAW engine output, not a new render or a Research output"
+    }
+  },
+  "RAW_provenance": {
+    "input_absolute": "C:/Users/Strickland/Downloads/DSC02443.ARW",
+    "input_sha256": "2f0fbdac0097e7fb2a91c049fdb869ff45354208a9e60da5e0df471d94f91202",
+    "source_width": 5120,
+    "source_height": 7168,
+    "preview_stride": 7,
+    "executable_sha256": "ddb32c9d16433346d747395c3cfb5b29cbd0d11851877e519e6b606cb8f5c29b"
+  },
+  "Research_v0_1": "not implemented; no sufficient evidence for a defensible material/color fit"
+}
