@@ -1,6 +1,6 @@
 # Windows Integrated Preview 0.2 — integration record
 
-Status: In Development. User acceptance pending. Physical Film Accuracy: Not Verified.
+Status: Ready for User Test. User acceptance pending. Physical Film Accuracy: Not Verified.
 
 ## Baseline and protection
 

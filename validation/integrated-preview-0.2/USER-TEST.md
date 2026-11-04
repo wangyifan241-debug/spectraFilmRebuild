@@ -1,6 +1,6 @@
 # 人工测试步骤 — Integrated Preview 0.2
 
-状态等待本次验证完成后更新为 Ready for User Test；用户验收前不标 Accepted。
+状态：Ready for User Test；用户验收前不标 Accepted。
 
 1. 保留完整 app 依赖目录，启动 SpektraLabQt.exe。安装包须安装到新的短路径空目录；拒绝覆盖已有版本。程序不写入照片目录。
 2. 导入 Sony ARW。先用 Portra 400 / Endura 检查预览、前后对比、裁切、旋转、缩放、撤销/重做。

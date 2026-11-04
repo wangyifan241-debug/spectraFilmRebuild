@@ -1,0 +1,12 @@
+{
+  "passed": true,
+  "installed_files_checked": 1728,
+  "executable_sha256": "81b06daf4f4719fb8b8a95595be6b820129c8bbb29ff72d98164b649f557002d",
+  "isolated_path": "D:\\学习资料\\SpektraLab\\build\\ip02\\install-test-0e75d3417bce49bf94c358a91c8744c8\\安装 测试",
+  "overwrite_refused": true,
+  "installed_app_smoke": true,
+  "uninstalled": true,
+  "recipient_file_preserved": true,
+  "user_registration_unchanged": true,
+  "clean_machine": false
+}

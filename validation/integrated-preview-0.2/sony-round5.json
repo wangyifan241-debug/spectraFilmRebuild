@@ -1,0 +1,15 @@
+{
+    "harman_phoenix_200_round5": {
+        "height": 1024,
+        "pixel_sha256": "cf6867087373390a0b20024dab72cc7079eff185e2961045ddcb3f1b192e9a76",
+        "saved": true,
+        "width": 732
+    },
+    "harman_phoenix_ii_200_round5": {
+        "height": 1024,
+        "pixel_sha256": "8ef6ee9f18e751ac516ac119d497560ad347341b60167bd56b02cad117279493",
+        "saved": true,
+        "width": 732
+    },
+    "status": "PASS real Sony RAW/controller/Vulkan; reopen exact; physical accuracy Not Verified"
+}

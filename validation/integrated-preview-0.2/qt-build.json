@@ -1,0 +1,11 @@
+{
+  "qt": "6.11.3",
+  "compiler": "MinGW-w64 13.1.0 posix-seh",
+  "source_directory": "D:\\spk-integrated-source",
+  "build_directory": "D:\\spk-integrated-build",
+  "source_inventory_sha256": "4be970137b4a6adddfe2a43f33cbe2044fe706b9352f8197d98e0ad742645452",
+  "payload_inventory_sha256": "8390cef74f65c8521f6765fc0417c66406b69980aa70d97c1ae1d3e3483ddf30",
+  "utc": "2026-11-04T00:27:13.0150426Z",
+  "ctest_run": true,
+  "executable_sha256": "81b06daf4f4719fb8b8a95595be6b820129c8bbb29ff72d98164b649f557002d"
+}
