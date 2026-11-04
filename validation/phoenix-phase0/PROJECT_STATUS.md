@@ -1,16 +1,16 @@
-# Phoenix Film Reconstruction — current project status
-Updated 2026-11-04. Governing route remains the original Phase 0–6 plan.
+# Phoenix Film Reconstruction — current status
+Updated 2026-11-05. Original Phase 0–6 route remains authoritative; no PR was merged.
 
-| Phase | Current status | Actual evidence / remaining work |
+| Phase | Actual status | Evidence / limits |
 |---|---|---|
-| 0 Runtime audit | Partially Validated / Known Issues | Retained Draft PR #14 and engineering backlog; no repeated audit or forced merge |
-| 1 Reference dataset | In Development | 38 local files, 32 unique private exploratory samples (16 per stock), 14 exploratory authors; source/license/scene balance still incomplete |
-| 2 Film signatures | Exploratory analysis started | Actual Lab D65 / OKLab / linear-Y distributions on 32 images, author-balanced plots; no intrinsic film-response conclusion |
-| 3 Unpaired model | Not started | No formal fitting; assess directly blocking engineering issues before fitting |
-| 4 Research materials | Not started | Preserve Round 5; distinct materials/provenance later |
-| 5 Visual validation | Not started | Independent held-out scenes, exposures/seeds, reference controls and human assessment later |
-| 6 Windows delivery | Not started | Protected original-size export remains unresolved; no bypass |
+| 0 | Partially Validated / Known Issues | Retained #14 and engineering backlog; scanner controls not promoted |
+| 1 | First exploratory batch available; ongoing provenance work | Existing 32 private exploratory photos, 16 per stock; author/scanner/rights imbalance remains; collection paused for this task |
+| 2 | Executed exploratory model comparison, ready for review | Author bootstrap/leave-one-out and scene groups; real saved Sony RAW/scan PNGs reused with fingerprints; skin ROIs and local HTML; Draft PR #16 |
+| 3 | Controlled v0.1 protocol only | No numeric fit, implemented Research preset, Research PNG or new EXE; evidence does not yet identify defensible stock parameters |
+| 4 | Not started | Future separate Research materials; preserve Round 5 |
+| 5 | Not started | Independent held-out scenes/conditions and user visual review remain |
+| 6 | Not started | Windows integration later; original-size export protection unchanged |
 
-The supplied-source batch imported 22 existing user files without redownload and downloaded 12 additional public image variants. Two resized/cropped mirrors, three small previews and one generation-unconfirmed image are excluded from exploratory statistics. Formal-fitting accepted remains zero. Unknown scanner is an explicit uncertainty, not an automatic exploration exclusion. Non-CC source images stay private and are not committed to GitHub.
+Current visual artifact: build/phoenix-phase2/index.html. Source/metric conditions: research/phoenix-phase2/REPORT.md and comparison.json. Current metrics use shared-shoulder digital baseline and Lab D65, not the earlier unshouldered/D50 measurements.
 
-Phase 1 continues on existing Draft PR #15. No duplicate PR and no branch merge. Reports: research/phoenix-reference-dataset/PROVIDED_BATCH_REPORT.md and provided_batch_summary.json. Five provenance-rule tests and three original-integrity/mask/sample tests executed successfully. Raw data lives only under build/phoenix-reference-dataset; supplied originals remain unchanged.
+Phase 3 protocol: research/phoenix-phase3/RESEARCH_V01_PROTOCOL.md. No arbitrary increase in saturation, direct promotion of affine/identity/E scan controls, or material-profile rewrite. Once a first actual candidate and test build exist, stop subjective tuning and obtain user visual feedback before iteration. There is no such candidate build yet.

@@ -1,0 +1,17 @@
+{
+  "model_version": "0.1-protocol",
+  "implementation_status": "design_only",
+  "runtime_loadable": false,
+  "dataset": "existing 32 private exploratory scans; not a calibrated training dataset",
+  "confidence": "insufficient for numeric material/color fit",
+  "parameter_source": "no fitted parameters; Phase 0 scanner interventions and Phase 2 author/scene analysis",
+  "validation_status": "not_implemented_not_validated",
+  "reserved_presets": [
+    {"id": "harman_phoenix_200_research_v01", "name": "Phoenix 200 Research v0.1", "preserve_control": "harman_phoenix_200_round5"},
+    {"id": "harman_phoenix_ii_200_research_v01", "name": "Phoenix II 200 Research v0.1", "preserve_control": "harman_phoenix_ii_200_round5"}
+  ],
+  "research_pngs": [],
+  "windows_executable": null,
+  "original_resolution_export_guard": "unchanged",
+  "subjective_iteration_stop": "after the first actual candidate images and test build, await user visual feedback"
+}
