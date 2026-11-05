@@ -1,0 +1,1229 @@
+<!doctype html><meta charset="utf-8"><title>Color chain localization</title><style>body{background:#202020;color:#eee;font:16px system-ui;margin:20px}main{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}img{width:100%}figure{margin:0}pre{white-space:pre-wrap}a{color:#acd9ff}</style><h1>Same proxy negative: fitted device vs direct spectral integral</h1><p>Diagnostic only, not v0.3 or validated Phoenix color. No endpoint extension. Same positive formula and display. <a href="RESULT.md">Attribution report</a> · <a href="metrics.json">All stage evidence</a></p><h2>DSC02443</h2><h3>phoenix_i</h3><main><figure><figcaption>Digital</figcaption><img src="DSC02443/digital_baseline.png"></figure><figure><figcaption>Round5</figcaption><img src="DSC02443/round5_phoenix_i.png"></figure><figure><figcaption>frozen v0.2</figcaption><img src="DSC02443/research_phoenix_i.png"></figure><figure><figcaption>direct integration: diagnostic only</figcaption><img src="DSC02443/direct_integration_diagnostic_phoenix_i.png"></figure></main><img style="max-width:400px" src="DSC02443/phoenix_i_difference10x.png"><h4>face</h4><main><figure><figcaption>fit</figcaption><img src="DSC02443/phoenix_i_face_fit.png"></figure><figure><figcaption>direct</figcaption><img src="DSC02443/phoenix_i_face_direct.png"></figure></main><h4>arm</h4><main><figure><figcaption>fit</figcaption><img src="DSC02443/phoenix_i_arm_fit.png"></figure><figure><figcaption>direct</figcaption><img src="DSC02443/phoenix_i_arm_direct.png"></figure></main><h4>uniform</h4><main><figure><figcaption>fit</figcaption><img src="DSC02443/phoenix_i_uniform_fit.png"></figure><figure><figcaption>direct</figcaption><img src="DSC02443/phoenix_i_uniform_direct.png"></figure></main><h4>dark_clothing</h4><main><figure><figcaption>fit</figcaption><img src="DSC02443/phoenix_i_dark_clothing_fit.png"></figure><figure><figcaption>direct</figcaption><img src="DSC02443/phoenix_i_dark_clothing_direct.png"></figure></main><h4>background</h4><main><figure><figcaption>fit</figcaption><img src="DSC02443/phoenix_i_background_fit.png"></figure><figure><figcaption>direct</figcaption><img src="DSC02443/phoenix_i_background_direct.png"></figure></main><details><summary>Stage and region numbers</summary><pre>{
+  &quot;virtual_negative_device_relative_XYZ_error&quot;: {
+    &quot;n&quot;: 669624,
+    &quot;min&quot;: 0.0006268002548712308,
+    &quot;p50&quot;: 0.03514643993462824,
+    &quot;p95&quot;: 0.11121357788853296,
+    &quot;max&quot;: 0.13163629060154092
+  },
+  &quot;virtual_negative_transmission_DE00_D50&quot;: {
+    &quot;n&quot;: 669624,
+    &quot;min&quot;: 0.05097607645405812,
+    &quot;p50&quot;: 1.5262043500679592,
+    &quot;p95&quot;: 3.0558465842203386,
+    &quot;max&quot;: 3.5793291387384474
+  },
+  &quot;same_positive_formula_direct_vs_fit_display16_DE00_common_interior&quot;: {
+    &quot;n&quot;: 669624,
+    &quot;min&quot;: 0.0,
+    &quot;p50&quot;: 0.4853390971944602,
+    &quot;p95&quot;: 1.5056512789360328,
+    &quot;max&quot;: 2.7100700558083757
+  },
+  &quot;neutral_transmission_at_EV0_fit&quot;: [
+    0.3090122640132904,
+    0.23508653044700623,
+    0.15680979192256927
+  ],
+  &quot;neutral_transmission_at_EV0_direct&quot;: [
+    0.318602055311203,
+    0.24165542423725128,
+    0.15175893902778625
+  ],
+  &quot;direct_engine_constraints&quot;: {
+    &quot;Y_constraint_pass&quot;: true,
+    &quot;endpoint_saturated_pixels&quot;: 79455,
+    &quot;log_chromatic_norm_bound&quot;: 1.3862943611198906,
+    &quot;maximum_channel_ratio&quot;: 3.1749609453149277,
+    &quot;maximum_relative_Y_vs_scalar_exposure_error&quot;: 5.7972545208784254e-08,
+    &quot;ratio_bound_pass&quot;: true
+  },
+  &quot;fitted_toXYZ_vs_inverse_baked_matrix_coefficient_error&quot;: 0.00011998097042331679,
+  &quot;ROIs&quot;: {
+    &quot;face&quot;: {
+      &quot;common_interior_fraction&quot;: 0.9986201298701298,
+      &quot;fit_mean_Lab_D65&quot;: [
+        40.08892215071102,
+        15.015378275005592,
+        10.870669349183899
+      ],
+      &quot;direct_mean_Lab_D65&quot;: [
+        39.92857004246439,
+        13.757547557523349,
+        10.802392368674422
+      ],
+      &quot;direct_vs_fit_DE00&quot;: {
+        &quot;n&quot;: 12303,
+        &quot;min&quot;: 0.0,
+        &quot;p50&quot;: 1.023831993742016,
+        &quot;p95&quot;: 1.385731551374991,
+        &quot;max&quot;: 1.5811513694950265
+      },
+      &quot;relative_XYZ_error&quot;: {
+        &quot;n&quot;: 12303,
+        &quot;min&quot;: 0.0006843360034472681,
+        &quot;p50&quot;: 0.06279276479399115,
+        &quot;p95&quot;: 0.09395265260443977,
+        &quot;max&quot;: 0.1210027215825588
+      },
+      &quot;fixed_exposure_log_reference_term_norm&quot;: {
+        &quot;n&quot;: 12303,
+        &quot;min&quot;: 0.0003407527954298913,
+        &quot;p50&quot;: 0.06768045817771387,
+        &quot;p95&quot;: 0.1216038455251551,
+        &quot;max&quot;: 0.1699991323152783
+      },
+      &quot;fixed_exposure_log_pixel_term_norm&quot;: {
+        &quot;n&quot;: 12303,
+        &quot;min&quot;: 0.0009188442920861298,
+        &quot;p50&quot;: 0.06143424258013292,
+        &quot;p95&quot;: 0.10660432742075823,
+        &quot;max&quot;: 0.16562085654760622
+      },
+      &quot;fixed_exposure_log_net_change_norm&quot;: {
+        &quot;n&quot;: 12303,
+        &quot;min&quot;: 6.55939505404529e-05,
+        &quot;p50&quot;: 0.02354178580809006,
+        &quot;p95&quot;: 0.033425355828331345,
+        &quot;max&quot;: 0.04185088228394301
+      }
+    },
+    &quot;arm&quot;: {
+      &quot;common_interior_fraction&quot;: 1.0,
+      &quot;fit_mean_Lab_D65&quot;: [
+        58.14133856229111,
+        15.411572440721361,
+        25.7942118117581
+      ],
+      &quot;direct_mean_Lab_D65&quot;: [
+        57.9096546724901,
+        13.590828745951109,
+        26.088095182097465
+      ],
+      &quot;direct_vs_fit_DE00&quot;: {
+        &quot;n&quot;: 2684,
+        &quot;min&quot;: 0.7376283342262436,
+        &quot;p50&quot;: 1.4768648769608077,
+        &quot;p95&quot;: 1.5286152396087023,
+        &quot;max&quot;: 1.600576603236713
+      },
+      &quot;relative_XYZ_error&quot;: {
+        &quot;n&quot;: 2684,
+        &quot;min&quot;: 0.025117386678185603,
+        &quot;p50&quot;: 0.0948052049607925,
+        &quot;p95&quot;: 0.10072451747380078,
+        &quot;max&quot;: 0.11515387055178321
+      },
+      &quot;fixed_exposure_log_reference_term_norm&quot;: {
+        &quot;n&quot;: 2684,
+        &quot;min&quot;: 0.020701618767366935,
+        &quot;p50&quot;: 0.11146964669059198,
+        &quot;p95&quot;: 0.12334111073661513,
+        &quot;max&quot;: 0.153744083048678
+      },
+      &quot;fixed_exposure_log_pixel_term_norm&quot;: {
+        &quot;n&quot;: 2684,
+        &quot;min&quot;: 0.02544752936086708,
+        &quot;p50&quot;: 0.07786235468809138,
+        &quot;p95&quot;: 0.09124432296841656,
+        &quot;max&quot;: 0.11893738584268645
+      },
+      &quot;fixed_exposure_log_net_change_norm&quot;: {
+        &quot;n&quot;: 2684,
+        &quot;min&quot;: 0.010779065266291505,
+        &quot;p50&quot;: 0.03966170921816774,
+        &quot;p95&quot;: 0.04329502589795761,
+        &quot;max&quot;: 0.04736674772495068
+      }
+    },
+    &quot;uniform&quot;: {
+      &quot;common_interior_fraction&quot;: 1.0,
+      &quot;fit_mean_Lab_D65&quot;: [
+        60.86383456445489,
+        4.621454664076904,
+        -28.372554962322692
+      ],
+      &quot;direct_mean_Lab_D65&quot;: [
+        60.98731655863871,
+        4.978932419525445,
+        -29.641629240284587
+      ],
+      &quot;direct_vs_fit_DE00&quot;: {
+        &quot;n&quot;: 17748,
+        &quot;min&quot;: 0.02834911607123552,
+        &quot;p50&quot;: 0.5108798137224345,
+        &quot;p95&quot;: 1.0530899173270436,
+        &quot;max&quot;: 1.8550824427777433
+      },
+      &quot;relative_XYZ_error&quot;: {
+        &quot;n&quot;: 17748,
+        &quot;min&quot;: 0.004263832904801183,
+        &quot;p50&quot;: 0.07453756117009253,
+        &quot;p95&quot;: 0.11347885468251599,
+        &quot;max&quot;: 0.12129286696213495
+      },
+      &quot;fixed_exposure_log_reference_term_norm&quot;: {
+        &quot;n&quot;: 17748,
+        &quot;min&quot;: 0.002496520566600644,
+        &quot;p50&quot;: 0.12229339649376628,
+        &quot;p95&quot;: 0.18856955368612452,
+        &quot;max&quot;: 0.19725381503651537
+      },
+      &quot;fixed_exposure_log_pixel_term_norm&quot;: {
+        &quot;n&quot;: 17748,
+        &quot;min&quot;: 0.004655851129211785,
+        &quot;p50&quot;: 0.1563786897593789,
+        &quot;p95&quot;: 0.19966846257004528,
+        &quot;max&quot;: 0.2098245267025027
+      },
+      &quot;fixed_exposure_log_net_change_norm&quot;: {
+        &quot;n&quot;: 17748,
+        &quot;min&quot;: 0.0008013265804030807,
+        &quot;p50&quot;: 0.030703232068166657,
+        &quot;p95&quot;: 0.05884339947327532,
+        &quot;max&quot;: 0.08064507534667781
+      }
+    },
+    &quot;dark_clothing&quot;: {
+      &quot;common_interior_fraction&quot;: 0.9919415292353823,
+      &quot;fit_mean_Lab_D65&quot;: [
+        12.88983487737653,
+        0.639321276462741,
+        -2.8261221255527866
+      ],
+      &quot;direct_mean_Lab_D65&quot;: [
+        13.283859698740141,
+        0.6865414814806882,
+        -2.9153369196338446
+      ],
+      &quot;direct_vs_fit_DE00&quot;: {
+        &quot;n&quot;: 5293,
+        &quot;min&quot;: 0.052134097425902505,
+        &quot;p50&quot;: 0.2836384470618696,
+        &quot;p95&quot;: 0.3739285098844211,
+        &quot;max&quot;: 0.5027461992018452
+      },
+      &quot;relative_XYZ_error&quot;: {
+        &quot;n&quot;: 5293,
+        &quot;min&quot;: 0.002014671707635093,
+        &quot;p50&quot;: 0.010701529800396637,
+        &quot;p95&quot;: 0.013260024374511093,
+        &quot;max&quot;: 0.02512971205553559
+      },
+      &quot;fixed_exposure_log_reference_term_norm&quot;: {
+        &quot;n&quot;: 5293,
+        &quot;min&quot;: 0.0003385509129692051,
+        &quot;p50&quot;: 0.007820342155786152,
+        &quot;p95&quot;: 0.01093872615692498,
+        &quot;max&quot;: 0.02880109428295825
+      },
+      &quot;fixed_exposure_log_pixel_term_norm&quot;: {
+        &quot;n&quot;: 5293,
+        &quot;min&quot;: 0.0017138976803750346,
+        &quot;p50&quot;: 0.013496335796700447,
+        &quot;p95&quot;: 0.02014063228179948,
+        &quot;max&quot;: 0.02943586536702617
+      },
+      &quot;fixed_exposure_log_net_change_norm&quot;: {
+        &quot;n&quot;: 5293,
+        &quot;min&quot;: 0.0009162561895862367,
+        &quot;p50&quot;: 0.005848618216462893,
+        &quot;p95&quot;: 0.009664813606227255,
+        &quot;max&quot;: 0.014940317174946299
+      }
+    },
+    &quot;background&quot;: {
+      &quot;common_interior_fraction&quot;: 1.0,
+      &quot;fit_mean_Lab_D65&quot;: [
+        38.032657223331384,
+        3.592442799109597,
+        8.011248186220739
+      ],
+      &quot;direct_mean_Lab_D65&quot;: [
+        37.88165871278484,
+        3.096446325769929,
+        8.009953300564725
+      ],
+      &quot;direct_vs_fit_DE00&quot;: {
+        &quot;n&quot;: 9020,
+        &quot;min&quot;: 0.1768390417545947,
+        &quot;p50&quot;: 0.6325276201386291,
+        &quot;p95&quot;: 0.8362483103280011,
+        &quot;max&quot;: 1.0550706868444328
+      },
+      &quot;relative_XYZ_error&quot;: {
+        &quot;n&quot;: 9020,
+        &quot;min&quot;: 0.020729822496271425,
+        &quot;p50&quot;: 0.032531071195279794,
+        &quot;p95&quot;: 0.04095810345773511,
+        &quot;max&quot;: 0.04700878412953406
+      },
+      &quot;fixed_exposure_log_reference_term_norm&quot;: {
+        &quot;n&quot;: 9020,
+        &quot;min&quot;: 0.024512146474364654,
+        &quot;p50&quot;: 0.03494081244115472,
+        &quot;p95&quot;: 0.04448249446826007,
+        &quot;max&quot;: 0.04875996591244334
+      },
+      &quot;fixed_exposure_log_pixel_term_norm&quot;: {
+        &quot;n&quot;: 9020,
+        &quot;min&quot;: 0.018254436717033588,
+        &quot;p50&quot;: 0.02982763505629769,
+        &quot;p95&quot;: 0.03770399874351675,
+        &quot;max&quot;: 0.04433877602001181
+      },
+      &quot;fixed_exposure_log_net_change_norm&quot;: {
+        &quot;n&quot;: 9020,
+        &quot;min&quot;: 0.0023686330248691347,
+        &quot;p50&quot;: 0.008374353159425398,
+        &quot;p95&quot;: 0.01157947584517843,
+        &quot;max&quot;: 0.01590943992125568
+      }
+    }
+  }
+}</pre></details><h3>phoenix_ii</h3><main><figure><figcaption>Digital</figcaption><img src="DSC02443/digital_baseline.png"></figure><figure><figcaption>Round5</figcaption><img src="DSC02443/round5_phoenix_ii.png"></figure><figure><figcaption>frozen v0.2</figcaption><img src="DSC02443/research_phoenix_ii.png"></figure><figure><figcaption>direct integration: diagnostic only</figcaption><img src="DSC02443/direct_integration_diagnostic_phoenix_ii.png"></figure></main><img style="max-width:400px" src="DSC02443/phoenix_ii_difference10x.png"><h4>face</h4><main><figure><figcaption>fit</figcaption><img src="DSC02443/phoenix_ii_face_fit.png"></figure><figure><figcaption>direct</figcaption><img src="DSC02443/phoenix_ii_face_direct.png"></figure></main><h4>arm</h4><main><figure><figcaption>fit</figcaption><img src="DSC02443/phoenix_ii_arm_fit.png"></figure><figure><figcaption>direct</figcaption><img src="DSC02443/phoenix_ii_arm_direct.png"></figure></main><h4>uniform</h4><main><figure><figcaption>fit</figcaption><img src="DSC02443/phoenix_ii_uniform_fit.png"></figure><figure><figcaption>direct</figcaption><img src="DSC02443/phoenix_ii_uniform_direct.png"></figure></main><h4>dark_clothing</h4><main><figure><figcaption>fit</figcaption><img src="DSC02443/phoenix_ii_dark_clothing_fit.png"></figure><figure><figcaption>direct</figcaption><img src="DSC02443/phoenix_ii_dark_clothing_direct.png"></figure></main><h4>background</h4><main><figure><figcaption>fit</figcaption><img src="DSC02443/phoenix_ii_background_fit.png"></figure><figure><figcaption>direct</figcaption><img src="DSC02443/phoenix_ii_background_direct.png"></figure></main><details><summary>Stage and region numbers</summary><pre>{
+  &quot;virtual_negative_device_relative_XYZ_error&quot;: {
+    &quot;n&quot;: 668964,
+    &quot;min&quot;: 9.637856536054177e-06,
+    &quot;p50&quot;: 0.02590676267154005,
+    &quot;p95&quot;: 0.05378640034285666,
+    &quot;max&quot;: 0.05857458742436932
+  },
+  &quot;virtual_negative_transmission_DE00_D50&quot;: {
+    &quot;n&quot;: 668964,
+    &quot;min&quot;: 0.0006116000468081194,
+    &quot;p50&quot;: 1.3379983679650163,
+    &quot;p95&quot;: 2.2398657947527534,
+    &quot;max&quot;: 2.341954650980107
+  },
+  &quot;same_positive_formula_direct_vs_fit_display16_DE00_common_interior&quot;: {
+    &quot;n&quot;: 668964,
+    &quot;min&quot;: 0.0,
+    &quot;p50&quot;: 0.37349971017881034,
+    &quot;p95&quot;: 0.7117235363400047,
+    &quot;max&quot;: 0.948608658954606
+  },
+  &quot;neutral_transmission_at_EV0_fit&quot;: [
+    0.44624999165534973,
+    0.4723634421825409,
+    0.3040442168712616
+  ],
+  &quot;neutral_transmission_at_EV0_direct&quot;: [
+    0.4582996666431427,
+    0.47901415824890137,
+    0.29451942443847656
+  ],
+  &quot;direct_engine_constraints&quot;: {
+    &quot;Y_constraint_pass&quot;: true,
+    &quot;endpoint_saturated_pixels&quot;: 80554,
+    &quot;log_chromatic_norm_bound&quot;: 1.3862943611198906,
+    &quot;maximum_channel_ratio&quot;: 1.8873602679892467,
+    &quot;maximum_relative_Y_vs_scalar_exposure_error&quot;: 5.7759561467030096e-08,
+    &quot;ratio_bound_pass&quot;: true
+  },
+  &quot;fitted_toXYZ_vs_inverse_baked_matrix_coefficient_error&quot;: 0.00011998097042331679,
+  &quot;ROIs&quot;: {
+    &quot;face&quot;: {
+      &quot;common_interior_fraction&quot;: 0.9972402597402598,
+      &quot;fit_mean_Lab_D65&quot;: [
+        39.320990789584904,
+        4.368018677076911,
+        5.286871642382161
+      ],
+      &quot;direct_mean_Lab_D65&quot;: [
+        39.17158879465697,
+        3.987716440612577,
+        5.303616482238824
+      ],
+      &quot;direct_vs_fit_DE00&quot;: {
+        &quot;n&quot;: 12286,
+        &quot;min&quot;: 0.0,
+        &quot;p50&quot;: 0.5891786529743281,
+        &quot;p95&quot;: 0.7368073291760544,
+        &quot;max&quot;: 0.8817118571258109
+      },
+      &quot;relative_XYZ_error&quot;: {
+        &quot;n&quot;: 12286,
+        &quot;min&quot;: 5.00242769400663e-05,
+        &quot;p50&quot;: 0.03706820714533901,
+        &quot;p95&quot;: 0.046278215247071236,
+        &quot;max&quot;: 0.05259794270795423
+      },
+      &quot;fixed_exposure_log_reference_term_norm&quot;: {
+        &quot;n&quot;: 12286,
+        &quot;min&quot;: 2.716741549908653e-05,
+        &quot;p50&quot;: 0.05702065306327486,
+        &quot;p95&quot;: 0.08893045782569793,
+        &quot;max&quot;: 0.11389415880115299
+      },
+      &quot;fixed_exposure_log_pixel_term_norm&quot;: {
+        &quot;n&quot;: 12286,
+        &quot;min&quot;: 1.0647199844606921e-06,
+        &quot;p50&quot;: 0.04454266941596523,
+        &quot;p95&quot;: 0.06872035072258555,
+        &quot;max&quot;: 0.09156766562765005
+      },
+      &quot;fixed_exposure_log_net_change_norm&quot;: {
+        &quot;n&quot;: 12286,
+        &quot;min&quot;: 1.0805582860375339e-05,
+        &quot;p50&quot;: 0.017456810469011454,
+        &quot;p95&quot;: 0.02391267849406666,
+        &quot;max&quot;: 0.028398255963461752
+      }
+    },
+    &quot;arm&quot;: {
+      &quot;common_interior_fraction&quot;: 1.0,
+      &quot;fit_mean_Lab_D65&quot;: [
+        57.160970412180944,
+        3.8802809810913153,
+        10.168154961529664
+      ],
+      &quot;direct_mean_Lab_D65&quot;: [
+        56.974799381749754,
+        3.4040565033305357,
+        10.396371165331994
+      ],
+      &quot;direct_vs_fit_DE00&quot;: {
+        &quot;n&quot;: 2684,
+        &quot;min&quot;: 0.5283896107859292,
+        &quot;p50&quot;: 0.6688143667709886,
+        &quot;p95&quot;: 0.8103046055943985,
+        &quot;max&quot;: 0.8664337518294537
+      },
+      &quot;relative_XYZ_error&quot;: {
+        &quot;n&quot;: 2684,
+        &quot;min&quot;: 0.021911145631601982,
+        &quot;p50&quot;: 0.04510480136768276,
+        &quot;p95&quot;: 0.046785308915423936,
+        &quot;max&quot;: 0.050981433279043864
+      },
+      &quot;fixed_exposure_log_reference_term_norm&quot;: {
+        &quot;n&quot;: 2684,
+        &quot;min&quot;: 0.01568138391814062,
+        &quot;p50&quot;: 0.08294858804731395,
+        &quot;p95&quot;: 0.09020864006783096,
+        &quot;max&quot;: 0.10591842505405691
+      },
+      &quot;fixed_exposure_log_pixel_term_norm&quot;: {
+        &quot;n&quot;: 2684,
+        &quot;min&quot;: 0.01739049376579888,
+        &quot;p50&quot;: 0.058071290502923374,
+        &quot;p95&quot;: 0.06484414454485327,
+        &quot;max&quot;: 0.07744629687690456
+      },
+      &quot;fixed_exposure_log_net_change_norm&quot;: {
+        &quot;n&quot;: 2684,
+        &quot;min&quot;: 0.010312521123109526,
+        &quot;p50&quot;: 0.027014998820669135,
+        &quot;p95&quot;: 0.028879481050204256,
+        &quot;max&quot;: 0.031838202923557664
+      }
+    },
+    &quot;uniform&quot;: {
+      &quot;common_interior_fraction&quot;: 1.0,
+      &quot;fit_mean_Lab_D65&quot;: [
+        61.22861067036561,
+        0.9417813773865026,
+        -9.043342109887062
+      ],
+      &quot;direct_mean_Lab_D65&quot;: [
+        61.327966976552574,
+        1.1124914754184394,
+        -9.608933630783271
+      ],
+      &quot;direct_vs_fit_DE00&quot;: {
+        &quot;n&quot;: 17748,
+        &quot;min&quot;: 0.0,
+        &quot;p50&quot;: 0.4701487334044976,
+        &quot;p95&quot;: 0.5605575233167541,
+        &quot;max&quot;: 0.6044761722806511
+      },
+      &quot;relative_XYZ_error&quot;: {
+        &quot;n&quot;: 17748,
+        &quot;min&quot;: 7.300535784563653e-05,
+        &quot;p50&quot;: 0.04298414772062928,
+        &quot;p95&quot;: 0.05425072512642668,
+        &quot;max&quot;: 0.055802543253476326
+      },
+      &quot;fixed_exposure_log_reference_term_norm&quot;: {
+        &quot;n&quot;: 17748,
+        &quot;min&quot;: 8.966884537408909e-05,
+        &quot;p50&quot;: 0.09384062894896394,
+        &quot;p95&quot;: 0.12569248937339192,
+        &quot;max&quot;: 0.129654314395996
+      },
+      &quot;fixed_exposure_log_pixel_term_norm&quot;: {
+        &quot;n&quot;: 17748,
+        &quot;min&quot;: 3.8541066287884127e-05,
+        &quot;p50&quot;: 0.08916463197681937,
+        &quot;p95&quot;: 0.11091020067647592,
+        &quot;max&quot;: 0.11206915479841648
+      },
+      &quot;fixed_exposure_log_net_change_norm&quot;: {
+        &quot;n&quot;: 17748,
+        &quot;min&quot;: 3.6136732204068665e-05,
+        &quot;p50&quot;: 0.0064079341851771,
+        &quot;p95&quot;: 0.01471348278316945,
+        &quot;max&quot;: 0.021286621742630633
+      }
+    },
+    &quot;dark_clothing&quot;: {
+      &quot;common_interior_fraction&quot;: 0.9833208395802099,
+      &quot;fit_mean_Lab_D65&quot;: [
+        13.140862735774549,
+        0.2644311720078431,
+        -1.15769751839817
+      ],
+      &quot;direct_mean_Lab_D65&quot;: [
+        13.39053223797901,
+        0.29570931810598483,
+        -1.18995242834644
+      ],
+      &quot;direct_vs_fit_DE00&quot;: {
+        &quot;n&quot;: 5247,
+        &quot;min&quot;: 0.004376093583105633,
+        &quot;p50&quot;: 0.19595231436612395,
+        &quot;p95&quot;: 0.26902430049651804,
+        &quot;max&quot;: 0.33524031424051826
+      },
+      &quot;relative_XYZ_error&quot;: {
+        &quot;n&quot;: 5247,
+        &quot;min&quot;: 9.65653905818984e-06,
+        &quot;p50&quot;: 0.0023362173664898678,
+        &quot;p95&quot;: 0.005265912396627629,
+        &quot;max&quot;: 0.0194538812605965
+      },
+      &quot;fixed_exposure_log_reference_term_norm&quot;: {
+        &quot;n&quot;: 5247,
+        &quot;min&quot;: 2.6899180781278857e-05,
+        &quot;p50&quot;: 0.0007615631948416211,
+        &quot;p95&quot;: 0.0024441595137138362,
+        &quot;max&quot;: 0.02619427063485507
+      },
+      &quot;fixed_exposure_log_pixel_term_norm&quot;: {
+        &quot;n&quot;: 5247,
+        &quot;min&quot;: 2.4881816068747404e-06,
+        &quot;p50&quot;: 0.0021048276217045772,
+        &quot;p95&quot;: 0.005206914105476743,
+        &quot;max&quot;: 0.021547741873699802
+      },
+      &quot;fixed_exposure_log_net_change_norm&quot;: {
+        &quot;n&quot;: 5247,
+        &quot;min&quot;: 2.8184884037580255e-05,
+        &quot;p50&quot;: 0.0015383390952428619,
+        &quot;p95&quot;: 0.003224976813770741,
+        &quot;max&quot;: 0.008247571496486038
+      }
+    },
+    &quot;background&quot;: {
+      &quot;common_interior_fraction&quot;: 1.0,
+      &quot;fit_mean_Lab_D65&quot;: [
+        37.77079174166534,
+        1.587592068174022,
+        5.180853525130237
+      ],
+      &quot;direct_mean_Lab_D65&quot;: [
+        37.62343887871095,
+        1.3543729316371067,
+        5.185264609522935
+      ],
+      &quot;direct_vs_fit_DE00&quot;: {
+        &quot;n&quot;: 9020,
+        &quot;min&quot;: 0.11037493076449896,
+        &quot;p50&quot;: 0.34233115094405886,
+        &quot;p95&quot;: 0.45481445768133555,
+        &quot;max&quot;: 0.5746365588553107
+      },
+      &quot;relative_XYZ_error&quot;: {
+        &quot;n&quot;: 9020,
+        &quot;min&quot;: 0.01677857552214173,
+        &quot;p50&quot;: 0.02362365077215599,
+        &quot;p95&quot;: 0.027332067487311425,
+        &quot;max&quot;: 0.0299426292570836
+      },
+      &quot;fixed_exposure_log_reference_term_norm&quot;: {
+        &quot;n&quot;: 9020,
+        &quot;min&quot;: 0.020744575241621356,
+        &quot;p50&quot;: 0.032602401725402956,
+        &quot;p95&quot;: 0.040936591862605516,
+        &quot;max&quot;: 0.04422950129522677
+      },
+      &quot;fixed_exposure_log_pixel_term_norm&quot;: {
+        &quot;n&quot;: 9020,
+        &quot;min&quot;: 0.015130022887104503,
+        &quot;p50&quot;: 0.024439406733199182,
+        &quot;p95&quot;: 0.031151767806452013,
+        &quot;max&quot;: 0.034794671637674156
+      },
+      &quot;fixed_exposure_log_net_change_norm&quot;: {
+        &quot;n&quot;: 9020,
+        &quot;min&quot;: 0.005692156900564113,
+        &quot;p50&quot;: 0.010891297131658685,
+        &quot;p95&quot;: 0.01315542179218394,
+        &quot;max&quot;: 0.016883726556026976
+      }
+    }
+  }
+}</pre></details><h2>DSC02337</h2><h3>phoenix_i</h3><main><figure><figcaption>Digital</figcaption><img src="DSC02337/digital_baseline.png"></figure><figure><figcaption>Round5</figcaption><img src="DSC02337/round5_phoenix_i.png"></figure><figure><figcaption>frozen v0.2</figcaption><img src="DSC02337/research_phoenix_i.png"></figure><figure><figcaption>direct integration: diagnostic only</figcaption><img src="DSC02337/direct_integration_diagnostic_phoenix_i.png"></figure></main><img style="max-width:400px" src="DSC02337/phoenix_i_difference10x.png"><h4>face</h4><main><figure><figcaption>fit</figcaption><img src="DSC02337/phoenix_i_face_fit.png"></figure><figure><figcaption>direct</figcaption><img src="DSC02337/phoenix_i_face_direct.png"></figure></main><h4>hair</h4><main><figure><figcaption>fit</figcaption><img src="DSC02337/phoenix_i_hair_fit.png"></figure><figure><figcaption>direct</figcaption><img src="DSC02337/phoenix_i_hair_direct.png"></figure></main><h4>sky</h4><main><figure><figcaption>fit</figcaption><img src="DSC02337/phoenix_i_sky_fit.png"></figure><figure><figcaption>direct</figcaption><img src="DSC02337/phoenix_i_sky_direct.png"></figure></main><h4>foliage</h4><main><figure><figcaption>fit</figcaption><img src="DSC02337/phoenix_i_foliage_fit.png"></figure><figure><figcaption>direct</figcaption><img src="DSC02337/phoenix_i_foliage_direct.png"></figure></main><h4>patterned_shirt</h4><main><figure><figcaption>fit</figcaption><img src="DSC02337/phoenix_i_patterned_shirt_fit.png"></figure><figure><figcaption>direct</figcaption><img src="DSC02337/phoenix_i_patterned_shirt_direct.png"></figure></main><h4>white_sleeve</h4><main><figure><figcaption>fit</figcaption><img src="DSC02337/phoenix_i_white_sleeve_fit.png"></figure><figure><figcaption>direct</figcaption><img src="DSC02337/phoenix_i_white_sleeve_direct.png"></figure></main><details><summary>Stage and region numbers</summary><pre>{
+  &quot;virtual_negative_device_relative_XYZ_error&quot;: {
+    &quot;n&quot;: 671647,
+    &quot;min&quot;: 0.0007168730513972278,
+    &quot;p50&quot;: 0.032220720120897564,
+    &quot;p95&quot;: 0.13474192580770167,
+    &quot;max&quot;: 0.13843557162144288
+  },
+  &quot;virtual_negative_transmission_DE00_D50&quot;: {
+    &quot;n&quot;: 671647,
+    &quot;min&quot;: 0.0562873660771551,
+    &quot;p50&quot;: 0.6151589877008338,
+    &quot;p95&quot;: 2.3697815133956928,
+    &quot;max&quot;: 3.163693320993372
+  },
+  &quot;same_positive_formula_direct_vs_fit_display16_DE00_common_interior&quot;: {
+    &quot;n&quot;: 671647,
+    &quot;min&quot;: 0.0,
+    &quot;p50&quot;: 0.16981718213037,
+    &quot;p95&quot;: 1.071889466951715,
+    &quot;max&quot;: 1.8161203216717043
+  },
+  &quot;neutral_transmission_at_EV0_fit&quot;: [
+    0.3090122640132904,
+    0.23508653044700623,
+    0.15680979192256927
+  ],
+  &quot;neutral_transmission_at_EV0_direct&quot;: [
+    0.318602055311203,
+    0.24165542423725128,
+    0.15175893902778625
+  ],
+  &quot;direct_engine_constraints&quot;: {
+    &quot;Y_constraint_pass&quot;: true,
+    &quot;endpoint_saturated_pixels&quot;: 77648,
+    &quot;log_chromatic_norm_bound&quot;: 1.3862943611198906,
+    &quot;maximum_channel_ratio&quot;: 3.811595205951108,
+    &quot;maximum_relative_Y_vs_scalar_exposure_error&quot;: 5.924166712745205e-08,
+    &quot;ratio_bound_pass&quot;: true
+  },
+  &quot;fitted_toXYZ_vs_inverse_baked_matrix_coefficient_error&quot;: 0.00011998097042331679,
+  &quot;ROIs&quot;: {
+    &quot;face&quot;: {
+      &quot;common_interior_fraction&quot;: 1.0,
+      &quot;fit_mean_Lab_D65&quot;: [
+        35.129443684359345,
+        7.825079399943821,
+        7.830463265962295
+      ],
+      &quot;direct_mean_Lab_D65&quot;: [
+        34.93062088018177,
+        7.063404573685069,
+        7.705448163798
+      ],
+      &quot;direct_vs_fit_DE00&quot;: {
+        &quot;n&quot;: 6561,
+        &quot;min&quot;: 0.019845034141966915,
+        &quot;p50&quot;: 0.8269311750254419,
+        &quot;p95&quot;: 1.071018440154767,
+        &quot;max&quot;: 1.195912792767668
+      },
+      &quot;relative_XYZ_error&quot;: {
+        &quot;n&quot;: 6561,
+        &quot;min&quot;: 0.00245933543152661,
+        &quot;p50&quot;: 0.03549771063454301,
+        &quot;p95&quot;: 0.04566743623009051,
+        &quot;max&quot;: 0.053051931565388705
+      },
+      &quot;fixed_exposure_log_reference_term_norm&quot;: {
+        &quot;n&quot;: 6561,
+        &quot;min&quot;: 0.002763492089471358,
+        &quot;p50&quot;: 0.032679646800148,
+        &quot;p95&quot;: 0.0443651140488817,
+        &quot;max&quot;: 0.04861140609574321
+      },
+      &quot;fixed_exposure_log_pixel_term_norm&quot;: {
+        &quot;n&quot;: 6561,
+        &quot;min&quot;: 0.00323614271021839,
+        &quot;p50&quot;: 0.03321352423369341,
+        &quot;p95&quot;: 0.04282033855692312,
+        &quot;max&quot;: 0.05372215316491391
+      },
+      &quot;fixed_exposure_log_net_change_norm&quot;: {
+        &quot;n&quot;: 6561,
+        &quot;min&quot;: 0.0003282801906279163,
+        &quot;p50&quot;: 0.011476870620001307,
+        &quot;p95&quot;: 0.016992616492474834,
+        &quot;max&quot;: 0.026915668638099584
+      }
+    },
+    &quot;hair&quot;: {
+      &quot;common_interior_fraction&quot;: 0.9946098149637973,
+      &quot;fit_mean_Lab_D65&quot;: [
+        10.415065038184235,
+        0.1512188177826489,
+        -0.34803781443011905
+      ],
+      &quot;direct_mean_Lab_D65&quot;: [
+        10.515950250791004,
+        0.1487885475924192,
+        -0.35381847787933046
+      ],
+      &quot;direct_vs_fit_DE00&quot;: {
+        &quot;n&quot;: 12363,
+        &quot;min&quot;: 0.0,
+        &quot;p50&quot;: 0.07222890227059682,
+        &quot;p95&quot;: 0.19717930969419023,
+        &quot;max&quot;: 1.222820634969063
+      },
+      &quot;relative_XYZ_error&quot;: {
+        &quot;n&quot;: 12363,
+        &quot;min&quot;: 0.0013646722243626601,
+        &quot;p50&quot;: 0.0050135043062295446,
+        &quot;p95&quot;: 0.007851554439079398,
+        &quot;max&quot;: 0.034104012810698255
+      },
+      &quot;fixed_exposure_log_reference_term_norm&quot;: {
+        &quot;n&quot;: 12363,
+        &quot;min&quot;: 0.0003465543368085205,
+        &quot;p50&quot;: 0.005181195412372913,
+        &quot;p95&quot;: 0.01034455058801536,
+        &quot;max&quot;: 0.034447120673799216
+      },
+      &quot;fixed_exposure_log_pixel_term_norm&quot;: {
+        &quot;n&quot;: 12363,
+        &quot;min&quot;: 0.0012307984596931507,
+        &quot;p50&quot;: 0.00617493960884924,
+        &quot;p95&quot;: 0.011670962556220965,
+        &quot;max&quot;: 0.08552427575716569
+      },
+      &quot;fixed_exposure_log_net_change_norm&quot;: {
+        &quot;n&quot;: 12363,
+        &quot;min&quot;: 9.989229294750234e-06,
+        &quot;p50&quot;: 0.0013592846244387363,
+        &quot;p95&quot;: 0.0025225595684845383,
+        &quot;max&quot;: 0.0565651474279386
+      }
+    },
+    &quot;sky&quot;: {
+      &quot;common_interior_fraction&quot;: 1.0,
+      &quot;fit_mean_Lab_D65&quot;: [
+        83.43710817351857,
+        -1.047124596211019,
+        -1.302710304870119
+      ],
+      &quot;direct_mean_Lab_D65&quot;: [
+        83.46118619933681,
+        -1.0062315379984352,
+        -1.2587458275992334
+      ],
+      &quot;direct_vs_fit_DE00&quot;: {
+        &quot;n&quot;: 28928,
+        &quot;min&quot;: 0.0,
+        &quot;p50&quot;: 0.004090571148404534,
+        &quot;p95&quot;: 0.603291095953706,
+        &quot;max&quot;: 1.7660017793991944
+      },
+      &quot;relative_XYZ_error&quot;: {
+        &quot;n&quot;: 28928,
+        &quot;min&quot;: 0.005307177678002138,
+        &quot;p50&quot;: 0.1347255321937921,
+        &quot;p95&quot;: 0.13474128785486775,
+        &quot;max&quot;: 0.13488417149996848
+      },
+      &quot;fixed_exposure_log_reference_term_norm&quot;: {
+        &quot;n&quot;: 28928,
+        &quot;min&quot;: 0.0463143967672134,
+        &quot;p50&quot;: 0.21573940872861072,
+        &quot;p95&quot;: 0.2157822926015532,
+        &quot;max&quot;: 0.21614570745457873
+      },
+      &quot;fixed_exposure_log_pixel_term_norm&quot;: {
+        &quot;n&quot;: 28928,
+        &quot;min&quot;: 0.009527182098985142,
+        &quot;p50&quot;: 0.19863839945793163,
+        &quot;p95&quot;: 0.19867970051434172,
+        &quot;max&quot;: 0.19902441584318994
+      },
+      &quot;fixed_exposure_log_net_change_norm&quot;: {
+        &quot;n&quot;: 28928,
+        &quot;min&quot;: 0.018469357342706518,
+        &quot;p50&quot;: 0.022975827728612088,
+        &quot;p95&quot;: 0.031380903460402,
+        &quot;max&quot;: 0.08496424022280033
+      }
+    },
+    &quot;foliage&quot;: {
+      &quot;common_interior_fraction&quot;: 1.0,
+      &quot;fit_mean_Lab_D65&quot;: [
+        57.95963023045183,
+        -39.23164734236273,
+        35.62422060841997
+      ],
+      &quot;direct_mean_Lab_D65&quot;: [
+        58.3543643282246,
+        -37.943280835186755,
+        36.9700483715302
+      ],
+      &quot;direct_vs_fit_DE00&quot;: {
+        &quot;n&quot;: 22968,
+        &quot;min&quot;: 0.11455369771112803,
+        &quot;p50&quot;: 0.9693764534205309,
+        &quot;p95&quot;: 1.1056495513464641,
+        &quot;max&quot;: 1.1958065996278984
+      },
+      &quot;relative_XYZ_error&quot;: {
+        &quot;n&quot;: 22968,
+        &quot;min&quot;: 0.004052959400593825,
+        &quot;p50&quot;: 0.03979386933665224,
+        &quot;p95&quot;: 0.050990788060660194,
+        &quot;max&quot;: 0.07364052335402523
+      },
+      &quot;fixed_exposure_log_reference_term_norm&quot;: {
+        &quot;n&quot;: 22968,
+        &quot;min&quot;: 0.012455429559216517,
+        &quot;p50&quot;: 0.10356523264425373,
+        &quot;p95&quot;: 0.12179480108391884,
+        &quot;max&quot;: 0.13493496442571035
+      },
+      &quot;fixed_exposure_log_pixel_term_norm&quot;: {
+        &quot;n&quot;: 22968,
+        &quot;min&quot;: 0.0027780405539658036,
+        &quot;p50&quot;: 0.019206727399749927,
+        &quot;p95&quot;: 0.03433250964604536,
+        &quot;max&quot;: 0.05321777860839972
+      },
+      &quot;fixed_exposure_log_net_change_norm&quot;: {
+        &quot;n&quot;: 22968,
+        &quot;min&quot;: 0.007392077179699269,
+        &quot;p50&quot;: 0.0992143186530012,
+        &quot;p95&quot;: 0.10432283147520442,
+        &quot;max&quot;: 0.11230551338997705
+      }
+    },
+    &quot;patterned_shirt&quot;: {
+      &quot;common_interior_fraction&quot;: 1.0,
+      &quot;fit_mean_Lab_D65&quot;: [
+        19.87273336398375,
+        -0.3298065187900848,
+        -0.7713223878190257
+      ],
+      &quot;direct_mean_Lab_D65&quot;: [
+        19.997972600327756,
+        -0.29578156806893247,
+        -0.7671506540111905
+      ],
+      &quot;direct_vs_fit_DE00&quot;: {
+        &quot;n&quot;: 16848,
+        &quot;min&quot;: 0.0,
+        &quot;p50&quot;: 0.11079708300555413,
+        &quot;p95&quot;: 0.27985122590895045,
+        &quot;max&quot;: 0.8705438997187727
+      },
+      &quot;relative_XYZ_error&quot;: {
+        &quot;n&quot;: 16848,
+        &quot;min&quot;: 0.002864676546749279,
+        &quot;p50&quot;: 0.008167545452255589,
+        &quot;p95&quot;: 0.011631363095841674,
+        &quot;max&quot;: 0.0355129855715626
+      },
+      &quot;fixed_exposure_log_reference_term_norm&quot;: {
+        &quot;n&quot;: 16848,
+        &quot;min&quot;: 0.00039522368382975275,
+        &quot;p50&quot;: 0.01249747989961796,
+        &quot;p95&quot;: 0.021371319442884996,
+        &quot;max&quot;: 0.03389692375137111
+      },
+      &quot;fixed_exposure_log_pixel_term_norm&quot;: {
+        &quot;n&quot;: 16848,
+        &quot;min&quot;: 0.002228543158925415,
+        &quot;p50&quot;: 0.012297741783616473,
+        &quot;p95&quot;: 0.019279345594523246,
+        &quot;max&quot;: 0.030541582385678022
+      },
+      &quot;fixed_exposure_log_net_change_norm&quot;: {
+        &quot;n&quot;: 16848,
+        &quot;min&quot;: 0.00012867979856096833,
+        &quot;p50&quot;: 0.002127478656711636,
+        &quot;p95&quot;: 0.004622345539998159,
+        &quot;max&quot;: 0.01174597930152723
+      }
+    },
+    &quot;white_sleeve&quot;: {
+      &quot;common_interior_fraction&quot;: 1.0,
+      &quot;fit_mean_Lab_D65&quot;: [
+        37.52955210499435,
+        -2.7390803757204303,
+        -11.857238871991981
+      ],
+      &quot;direct_mean_Lab_D65&quot;: [
+        37.728871121184284,
+        -2.5226799545148695,
+        -11.936885459815663
+      ],
+      &quot;direct_vs_fit_DE00&quot;: {
+        &quot;n&quot;: 14688,
+        &quot;min&quot;: 0.003443061482219343,
+        &quot;p50&quot;: 0.32255764729843195,
+        &quot;p95&quot;: 0.8323243177421532,
+        &quot;max&quot;: 1.1481783460702346
+      },
+      &quot;relative_XYZ_error&quot;: {
+        &quot;n&quot;: 14688,
+        &quot;min&quot;: 0.0035225277735069466,
+        &quot;p50&quot;: 0.01178614876049263,
+        &quot;p95&quot;: 0.054592733714229395,
+        &quot;max&quot;: 0.07183548368179446
+      },
+      &quot;fixed_exposure_log_reference_term_norm&quot;: {
+        &quot;n&quot;: 14688,
+        &quot;min&quot;: 0.001312720636656177,
+        &quot;p50&quot;: 0.020621234349344417,
+        &quot;p95&quot;: 0.12206677954381118,
+        &quot;max&quot;: 0.1308523846580305
+      },
+      &quot;fixed_exposure_log_pixel_term_norm&quot;: {
+        &quot;n&quot;: 14688,
+        &quot;min&quot;: 0.0034255571392743586,
+        &quot;p50&quot;: 0.02049011746972834,
+        &quot;p95&quot;: 0.11163181878363608,
+        &quot;max&quot;: 0.1404236422873292
+      },
+      &quot;fixed_exposure_log_net_change_norm&quot;: {
+        &quot;n&quot;: 14688,
+        &quot;min&quot;: 0.0001057574357092258,
+        &quot;p50&quot;: 0.005039497443894366,
+        &quot;p95&quot;: 0.028002678408318393,
+        &quot;max&quot;: 0.05356480538685521
+      }
+    }
+  }
+}</pre></details><h3>phoenix_ii</h3><main><figure><figcaption>Digital</figcaption><img src="DSC02337/digital_baseline.png"></figure><figure><figcaption>Round5</figcaption><img src="DSC02337/round5_phoenix_ii.png"></figure><figure><figcaption>frozen v0.2</figcaption><img src="DSC02337/research_phoenix_ii.png"></figure><figure><figcaption>direct integration: diagnostic only</figcaption><img src="DSC02337/direct_integration_diagnostic_phoenix_ii.png"></figure></main><img style="max-width:400px" src="DSC02337/phoenix_ii_difference10x.png"><h4>face</h4><main><figure><figcaption>fit</figcaption><img src="DSC02337/phoenix_ii_face_fit.png"></figure><figure><figcaption>direct</figcaption><img src="DSC02337/phoenix_ii_face_direct.png"></figure></main><h4>hair</h4><main><figure><figcaption>fit</figcaption><img src="DSC02337/phoenix_ii_hair_fit.png"></figure><figure><figcaption>direct</figcaption><img src="DSC02337/phoenix_ii_hair_direct.png"></figure></main><h4>sky</h4><main><figure><figcaption>fit</figcaption><img src="DSC02337/phoenix_ii_sky_fit.png"></figure><figure><figcaption>direct</figcaption><img src="DSC02337/phoenix_ii_sky_direct.png"></figure></main><h4>foliage</h4><main><figure><figcaption>fit</figcaption><img src="DSC02337/phoenix_ii_foliage_fit.png"></figure><figure><figcaption>direct</figcaption><img src="DSC02337/phoenix_ii_foliage_direct.png"></figure></main><h4>patterned_shirt</h4><main><figure><figcaption>fit</figcaption><img src="DSC02337/phoenix_ii_patterned_shirt_fit.png"></figure><figure><figcaption>direct</figcaption><img src="DSC02337/phoenix_ii_patterned_shirt_direct.png"></figure></main><h4>white_sleeve</h4><main><figure><figcaption>fit</figcaption><img src="DSC02337/phoenix_ii_white_sleeve_fit.png"></figure><figure><figcaption>direct</figcaption><img src="DSC02337/phoenix_ii_white_sleeve_direct.png"></figure></main><details><summary>Stage and region numbers</summary><pre>{
+  &quot;virtual_negative_device_relative_XYZ_error&quot;: {
+    &quot;n&quot;: 672876,
+    &quot;min&quot;: 2.053126776065749e-05,
+    &quot;p50&quot;: 0.028742002634434945,
+    &quot;p95&quot;: 0.05884980812680988,
+    &quot;max&quot;: 0.05961371430435566
+  },
+  &quot;virtual_negative_transmission_DE00_D50&quot;: {
+    &quot;n&quot;: 672876,
+    &quot;min&quot;: 0.0006096269903816321,
+    &quot;p50&quot;: 1.2519220919358602,
+    &quot;p95&quot;: 2.0552663274783396,
+    &quot;max&quot;: 2.142600375467476
+  },
+  &quot;same_positive_formula_direct_vs_fit_display16_DE00_common_interior&quot;: {
+    &quot;n&quot;: 672876,
+    &quot;min&quot;: 0.0,
+    &quot;p50&quot;: 0.10844118946689799,
+    &quot;p95&quot;: 0.7464835415043944,
+    &quot;max&quot;: 0.8632295894464607
+  },
+  &quot;neutral_transmission_at_EV0_fit&quot;: [
+    0.44624999165534973,
+    0.4723634421825409,
+    0.3040442168712616
+  ],
+  &quot;neutral_transmission_at_EV0_direct&quot;: [
+    0.4582996666431427,
+    0.47901415824890137,
+    0.29451942443847656
+  ],
+  &quot;direct_engine_constraints&quot;: {
+    &quot;Y_constraint_pass&quot;: true,
+    &quot;endpoint_saturated_pixels&quot;: 76678,
+    &quot;log_chromatic_norm_bound&quot;: 1.3862943611198906,
+    &quot;maximum_channel_ratio&quot;: 1.9013970862187521,
+    &quot;maximum_relative_Y_vs_scalar_exposure_error&quot;: 5.930247015673018e-08,
+    &quot;ratio_bound_pass&quot;: true
+  },
+  &quot;fitted_toXYZ_vs_inverse_baked_matrix_coefficient_error&quot;: 0.00011998097042331679,
+  &quot;ROIs&quot;: {
+    &quot;face&quot;: {
+      &quot;common_interior_fraction&quot;: 1.0,
+      &quot;fit_mean_Lab_D65&quot;: [
+        34.8105567386539,
+        3.5476921798668637,
+        5.85949432459571
+      ],
+      &quot;direct_mean_Lab_D65&quot;: [
+        34.58717299893479,
+        3.177549060753557,
+        5.784550743019424
+      ],
+      &quot;direct_vs_fit_DE00&quot;: {
+        &quot;n&quot;: 6561,
+        &quot;min&quot;: 0.0029787136292424485,
+        &quot;p50&quot;: 0.5109943744617211,
+        &quot;p95&quot;: 0.6316573824329819,
+        &quot;max&quot;: 0.7035725487414953
+      },
+      &quot;relative_XYZ_error&quot;: {
+        &quot;n&quot;: 6561,
+        &quot;min&quot;: 0.00029776332071267006,
+        &quot;p50&quot;: 0.02553721397911194,
+        &quot;p95&quot;: 0.029693339492089313,
+        &quot;max&quot;: 0.03193291970756391
+      },
+      &quot;fixed_exposure_log_reference_term_norm&quot;: {
+        &quot;n&quot;: 6561,
+        &quot;min&quot;: 9.814100442532071e-05,
+        &quot;p50&quot;: 0.02968320885793415,
+        &quot;p95&quot;: 0.04051408203897941,
+        &quot;max&quot;: 0.04405210655506181
+      },
+      &quot;fixed_exposure_log_pixel_term_norm&quot;: {
+        &quot;n&quot;: 6561,
+        &quot;min&quot;: 5.5933692060124995e-05,
+        &quot;p50&quot;: 0.02435224679724759,
+        &quot;p95&quot;: 0.03138127323180941,
+        &quot;max&quot;: 0.03471182895279058
+      },
+      &quot;fixed_exposure_log_net_change_norm&quot;: {
+        &quot;n&quot;: 6561,
+        &quot;min&quot;: 9.002772206277694e-05,
+        &quot;p50&quot;: 0.011555451178882356,
+        &quot;p95&quot;: 0.015020011972850017,
+        &quot;max&quot;: 0.018754738563527523
+      }
+    },
+    &quot;hair&quot;: {
+      &quot;common_interior_fraction&quot;: 0.9994368463395013,
+      &quot;fit_mean_Lab_D65&quot;: [
+        10.5076956954335,
+        0.03520548464811979,
+        -0.05228193414150069
+      ],
+      &quot;direct_mean_Lab_D65&quot;: [
+        10.52673573377672,
+        0.03562222358655105,
+        -0.05487294517383973
+      ],
+      &quot;direct_vs_fit_DE00&quot;: {
+        &quot;n&quot;: 12423,
+        &quot;min&quot;: 0.0,
+        &quot;p50&quot;: 0.02000134851344907,
+        &quot;p95&quot;: 0.06446778984915144,
+        &quot;max&quot;: 0.46647894891234654
+      },
+      &quot;relative_XYZ_error&quot;: {
+        &quot;n&quot;: 12423,
+        &quot;min&quot;: 3.6190495866977854e-05,
+        &quot;p50&quot;: 0.0004341048594610384,
+        &quot;p95&quot;: 0.0019634199403670938,
+        &quot;max&quot;: 0.023553951177552778
+      },
+      &quot;fixed_exposure_log_reference_term_norm&quot;: {
+        &quot;n&quot;: 12423,
+        &quot;min&quot;: 2.6987293122827898e-05,
+        &quot;p50&quot;: 0.00017038236335141187,
+        &quot;p95&quot;: 0.001703300283155094,
+        &quot;max&quot;: 0.03139393457174912
+      },
+      &quot;fixed_exposure_log_pixel_term_norm&quot;: {
+        &quot;n&quot;: 12423,
+        &quot;min&quot;: 3.884335270906628e-07,
+        &quot;p50&quot;: 0.00019996145166789738,
+        &quot;p95&quot;: 0.0018296752682115582,
+        &quot;max&quot;: 0.04204377472934796
+      },
+      &quot;fixed_exposure_log_net_change_norm&quot;: {
+        &quot;n&quot;: 12423,
+        &quot;min&quot;: 1.3846742054414702e-06,
+        &quot;p50&quot;: 0.00015533506582533996,
+        &quot;p95&quot;: 0.000546048342086257,
+        &quot;max&quot;: 0.015549081182607324
+      }
+    },
+    &quot;sky&quot;: {
+      &quot;common_interior_fraction&quot;: 1.0,
+      &quot;fit_mean_Lab_D65&quot;: [
+        83.58291634881164,
+        -0.3344528275699675,
+        -0.40599232273432984
+      ],
+      &quot;direct_mean_Lab_D65&quot;: [
+        83.59033930729184,
+        -0.3111790482331371,
+        -0.414875623264797
+      ],
+      &quot;direct_vs_fit_DE00&quot;: {
+        &quot;n&quot;: 28928,
+        &quot;min&quot;: 0.0,
+        &quot;p50&quot;: 0.0,
+        &quot;p95&quot;: 0.410029814214625,
+        &quot;max&quot;: 0.7014319034386713
+      },
+      &quot;relative_XYZ_error&quot;: {
+        &quot;n&quot;: 28928,
+        &quot;min&quot;: 0.007829606783737012,
+        &quot;p50&quot;: 0.05884756223986229,
+        &quot;p95&quot;: 0.058849138271375175,
+        &quot;max&quot;: 0.058861938229356287
+      },
+      &quot;fixed_exposure_log_reference_term_norm&quot;: {
+        &quot;n&quot;: 28928,
+        &quot;min&quot;: 0.041495928128284156,
+        &quot;p50&quot;: 0.1335582791058835,
+        &quot;p95&quot;: 0.13356061074383763,
+        &quot;max&quot;: 0.1335788523143004
+      },
+      &quot;fixed_exposure_log_pixel_term_norm&quot;: {
+        &quot;n&quot;: 28928,
+        &quot;min&quot;: 0.013932691374409846,
+        &quot;p50&quot;: 0.10928380247642185,
+        &quot;p95&quot;: 0.10928724387037295,
+        &quot;max&quot;: 0.10931745673891606
+      },
+      &quot;fixed_exposure_log_net_change_norm&quot;: {
+        &quot;n&quot;: 28928,
+        &quot;min&quot;: 0.00933064420123232,
+        &quot;p50&quot;: 0.024274481363011392,
+        &quot;p95&quot;: 0.024274809454258535,
+        &quot;max&quot;: 0.030039096370531683
+      }
+    },
+    &quot;foliage&quot;: {
+      &quot;common_interior_fraction&quot;: 1.0,
+      &quot;fit_mean_Lab_D65&quot;: [
+        61.91229484882705,
+        -13.926327007254216,
+        15.101428255630212
+      ],
+      &quot;direct_mean_Lab_D65&quot;: [
+        61.847176808317606,
+        -13.452623089892965,
+        16.020540607054436
+      ],
+      &quot;direct_vs_fit_DE00&quot;: {
+        &quot;n&quot;: 22968,
+        &quot;min&quot;: 0.04916055661637212,
+        &quot;p50&quot;: 0.7448148736165023,
+        &quot;p95&quot;: 0.7861380256177304,
+        &quot;max&quot;: 0.8454008227647581
+      },
+      &quot;relative_XYZ_error&quot;: {
+        &quot;n&quot;: 22968,
+        &quot;min&quot;: 0.003616378929994574,
+        &quot;p50&quot;: 0.04002686490644909,
+        &quot;p95&quot;: 0.0451660649167148,
+        &quot;max&quot;: 0.048432557183396785
+      },
+      &quot;fixed_exposure_log_reference_term_norm&quot;: {
+        &quot;n&quot;: 22968,
+        &quot;min&quot;: 0.0037292322752128133,
+        &quot;p50&quot;: 0.0908877564094303,
+        &quot;p95&quot;: 0.10185005214778797,
+        &quot;max&quot;: 0.10749628845118112
+      },
+      &quot;fixed_exposure_log_pixel_term_norm&quot;: {
+        &quot;n&quot;: 22968,
+        &quot;min&quot;: 0.00039492584865798397,
+        &quot;p50&quot;: 0.043931482803525865,
+        &quot;p95&quot;: 0.055132295647446594,
+        &quot;max&quot;: 0.059980497284834025
+      },
+      &quot;fixed_exposure_log_net_change_norm&quot;: {
+        &quot;n&quot;: 22968,
+        &quot;min&quot;: 0.0030982934269192957,
+        &quot;p50&quot;: 0.04610645506387007,
+        &quot;p95&quot;: 0.049519613091078066,
+        &quot;max&quot;: 0.05334907498505584
+      }
+    },
+    &quot;patterned_shirt&quot;: {
+      &quot;common_interior_fraction&quot;: 1.0,
+      &quot;fit_mean_Lab_D65&quot;: [
+        20.084319500797378,
+        -0.22836048198581776,
+        -0.446052328119983
+      ],
+      &quot;direct_mean_Lab_D65&quot;: [
+        20.17216134141763,
+        -0.20756106141117178,
+        -0.4373006343378383
+      ],
+      &quot;direct_vs_fit_DE00&quot;: {
+        &quot;n&quot;: 16848,
+        &quot;min&quot;: 0.0,
+        &quot;p50&quot;: 0.078712543014719,
+        &quot;p95&quot;: 0.12408523780601452,
+        &quot;max&quot;: 0.5156674673684786
+      },
+      &quot;relative_XYZ_error&quot;: {
+        &quot;n&quot;: 16848,
+        &quot;min&quot;: 2.053126776065749e-05,
+        &quot;p50&quot;: 0.002066952192215743,
+        &quot;p95&quot;: 0.00883923346933326,
+        &quot;max&quot;: 0.025322640577676983
+      },
+      &quot;fixed_exposure_log_reference_term_norm&quot;: {
+        &quot;n&quot;: 16848,
+        &quot;min&quot;: 3.2868818815601535e-05,
+        &quot;p50&quot;: 0.0038317186150130357,
+        &quot;p95&quot;: 0.016506485985444366,
+        &quot;max&quot;: 0.031219673910906017
+      },
+      &quot;fixed_exposure_log_pixel_term_norm&quot;: {
+        &quot;n&quot;: 16848,
+        &quot;min&quot;: 4.7671668326087616e-06,
+        &quot;p50&quot;: 0.0028836554015328644,
+        &quot;p95&quot;: 0.012397475439069305,
+        &quot;max&quot;: 0.023221447752265263
+      },
+      &quot;fixed_exposure_log_net_change_norm&quot;: {
+        &quot;n&quot;: 16848,
+        &quot;min&quot;: 4.246315719054247e-05,
+        &quot;p50&quot;: 0.001142937993441616,
+        &quot;p95&quot;: 0.00460703032666553,
+        &quot;max&quot;: 0.013471170804302303
+      }
+    },
+    &quot;white_sleeve&quot;: {
+      &quot;common_interior_fraction&quot;: 1.0,
+      &quot;fit_mean_Lab_D65&quot;: [
+        38.18146927588417,
+        -0.9957344936283793,
+        -3.4980430597829915
+      ],
+      &quot;direct_mean_Lab_D65&quot;: [
+        38.29067743790575,
+        -0.8708063501498858,
+        -3.622152873893548
+      ],
+      &quot;direct_vs_fit_DE00&quot;: {
+        &quot;n&quot;: 14688,
+        &quot;min&quot;: 0.0,
+        &quot;p50&quot;: 0.16416309479663116,
+        &quot;p95&quot;: 0.5346466893817695,
+        &quot;max&quot;: 0.5998034343281714
+      },
+      &quot;relative_XYZ_error&quot;: {
+        &quot;n&quot;: 14688,
+        &quot;min&quot;: 4.128767826002454e-05,
+        &quot;p50&quot;: 0.008548941866660829,
+        &quot;p95&quot;: 0.04199106697878328,
+        &quot;max&quot;: 0.04417823840040836
+      },
+      &quot;fixed_exposure_log_reference_term_norm&quot;: {
+        &quot;n&quot;: 14688,
+        &quot;min&quot;: 7.190894259787709e-05,
+        &quot;p50&quot;: 0.015380959858439831,
+        &quot;p95&quot;: 0.09614288677534913,
+        &quot;max&quot;: 0.09962043900665697
+      },
+      &quot;fixed_exposure_log_pixel_term_norm&quot;: {
+        &quot;n&quot;: 14688,
+        &quot;min&quot;: 1.6858191578128968e-05,
+        &quot;p50&quot;: 0.012302110997488878,
+        &quot;p95&quot;: 0.08522438795524186,
+        &quot;max&quot;: 0.08903050988510687
+      },
+      &quot;fixed_exposure_log_net_change_norm&quot;: {
+        &quot;n&quot;: 14688,
+        &quot;min&quot;: 9.273295807752366e-06,
+        &quot;p50&quot;: 0.00397451384824502,
+        &quot;p95&quot;: 0.013703415323769435,
+        &quot;max&quot;: 0.019054320012065383
+      }
+    }
+  }
+}</pre></details>
