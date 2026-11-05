@@ -23,5 +23,3 @@ $after=@(Get-SpektraLabSourceInventory $repo)
 if((Get-SpektraLabInventoryDigest $after) -ne $beforeDigest){throw 'Source changed during build'}
 $receipt=[ordered]@{format='SpektraLab.PhoenixResearchV01Build';source_head=(& git -C $repo rev-parse HEAD);source_inventory_sha256=$beforeDigest;source_inventory=$before;executable_sha256=(Get-FileHash -LiteralPath "$BuildDirectory/app/spk_phoenix_research_v01.exe" -Algorithm SHA256).Hash.ToLowerInvariant();photographic_gate='Not Verified'}
 $receipt|ConvertTo-Json -Depth 12|Set-Content -LiteralPath "$BuildDirectory/app/research-build.json" -Encoding utf8
-
-

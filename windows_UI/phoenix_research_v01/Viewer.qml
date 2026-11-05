@@ -28,4 +28,3 @@ ApplicationWindow {
   Label {text:"同目录 PNG 与 TIFF16 来自同一 sRGB16 像素；recipe/report 保存路径、SHA256、阶段浮点数据。显示器 ICC 未验收。";color:"#bbbbbb";wrapMode:Text.Wrap;Layout.fillWidth:true}
  }
 }
-
