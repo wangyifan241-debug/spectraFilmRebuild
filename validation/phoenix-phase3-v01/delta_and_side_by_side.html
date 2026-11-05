@@ -1,0 +1,254 @@
+<!doctype html><meta charset="utf-8"><title>Research v0.1 — REJECTED_ENGINEERING</title><style>body{background:#202020;color:#eee;font:16px system-ui;margin:24px}main{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}img{width:100%}figure{margin:0}pre{white-space:pre-wrap}a{color:#adcfff}</style><h1>Research v0.1 — REJECTED_ENGINEERING</h1><p>Actual Sony RAW / NVIDIA Vulkan · scan-only · EV 0 · same shoulder / sRGB. Experimental hypothesis; no real-film accuracy claim. One candidate, no look tuning.</p><main><figure><figcaption>digital_baseline</figcaption><img src="raw/digital_baseline.png"></figure><figure><figcaption>round5_phoenix_i</figcaption><img src="raw/round5_phoenix_i.png"></figure><figure><figcaption>research_phoenix_i</figcaption><img src="raw/research_phoenix_i.png"></figure><figure><figcaption>digital_baseline</figcaption><img src="raw/digital_baseline.png"></figure><figure><figcaption>round5_phoenix_ii</figcaption><img src="raw/round5_phoenix_ii.png"></figure><figure><figcaption>research_phoenix_ii</figcaption><img src="raw/research_phoenix_ii.png"></figure><figure><figcaption>difference10x_phoenix_i</figcaption><img src="raw/difference10x_phoenix_i.png"></figure><figure><figcaption>difference10x_phoenix_ii</figcaption><img src="raw/difference10x_phoenix_ii.png"></figure><figure><figcaption>research_skin_phoenix_i</figcaption><img src="raw/research_skin_phoenix_i.png"></figure><figure><figcaption>round5_skin_phoenix_i</figcaption><img src="raw/round5_skin_phoenix_i.png"></figure><figure><figcaption>research_skin_phoenix_ii</figcaption><img src="raw/research_skin_phoenix_ii.png"></figure><figure><figcaption>round5_skin_phoenix_ii</figcaption><img src="raw/round5_skin_phoenix_ii.png"></figure></main><h2>Exposure diagnostics</h2><main><img src="phoenix_i-ramps.png"><img src="phoenix_ii-ramps.png"></main><h2>Engineering gates</h2><pre>[
+  {
+    &quot;name&quot;: &quot;raw shader domain&quot;,
+    &quot;passed&quot;: true,
+    &quot;details&quot;: {
+      &quot;curves_result&quot;: [
+        -3,
+        -1,
+        1
+      ],
+      &quot;matrix_result&quot;: [
+        1.2300000190734863,
+        4.559999942779541,
+        7.900000095367432
+      ],
+      &quot;maximum_absolute_error&quot;: 9.536743217353205e-08,
+      &quot;pass&quot;: true,
+      &quot;spectral_result&quot;: [
+        -0.2999999225139618,
+        -0.2999999225139618,
+        -0.2999999225139618
+      ]
+    }
+  },
+  {
+    &quot;name&quot;: &quot;raw heldout device&quot;,
+    &quot;passed&quot;: true,
+    &quot;details&quot;: {
+      &quot;heldout_XYZ_MAE&quot;: 0.003172865285181508,
+      &quot;heldout_XYZ_max_error&quot;: 0.028330949521313792
+    }
+  },
+  {
+    &quot;name&quot;: &quot;synthetic shader domain&quot;,
+    &quot;passed&quot;: true,
+    &quot;details&quot;: {
+      &quot;curves_result&quot;: [
+        -3,
+        -1,
+        1
+      ],
+      &quot;matrix_result&quot;: [
+        1.2300000190734863,
+        4.559999942779541,
+        7.900000095367432
+      ],
+      &quot;maximum_absolute_error&quot;: 9.536743217353205e-08,
+      &quot;pass&quot;: true,
+      &quot;spectral_result&quot;: [
+        -0.2999999225139618,
+        -0.2999999225139618,
+        -0.2999999225139618
+      ]
+    }
+  },
+  {
+    &quot;name&quot;: &quot;synthetic heldout device&quot;,
+    &quot;passed&quot;: true,
+    &quot;details&quot;: {
+      &quot;heldout_XYZ_MAE&quot;: 0.003172865285181508,
+      &quot;heldout_XYZ_max_error&quot;: 0.028330949521313792
+    }
+  },
+  {
+    &quot;name&quot;: &quot;phoenix_i neutral reconstruction&quot;,
+    &quot;passed&quot;: true,
+    &quot;details&quot;: {
+      &quot;max_relative_channel_spread&quot;: 0.0015132273166550152
+    }
+  },
+  {
+    &quot;name&quot;: &quot;phoenix_i monotonic neutral RGB biased ramps&quot;,
+    &quot;passed&quot;: false,
+    &quot;details&quot;: {
+      &quot;minimum_Y_step&quot;: -0.0007066638918741264
+    }
+  },
+  {
+    &quot;name&quot;: &quot;phoenix_i continuity&quot;,
+    &quot;passed&quot;: true,
+    &quot;details&quot;: {
+      &quot;max_normalized_second_difference&quot;: 0.009839910335943175
+    }
+  },
+  {
+    &quot;name&quot;: &quot;phoenix_i tone axis&quot;,
+    &quot;passed&quot;: true,
+    &quot;details&quot;: {
+      &quot;neutral_Y_strictly_decreasing&quot;: true,
+      &quot;policy&quot;: &quot;scalar Y neutral inversion, reciprocal RGB transmission ratio; CPU float32 buffers; not optical paper&quot;
+    }
+  },
+  {
+    &quot;name&quot;: &quot;synthetic phoenix_i finite&quot;,
+    &quot;passed&quot;: true,
+    &quot;details&quot;: {
+      &quot;nonfinite&quot;: 0,
+      &quot;negative_channels&quot;: 0,
+      &quot;above_one_channels&quot;: 398
+    }
+  },
+  {
+    &quot;name&quot;: &quot;synthetic phoenix_i legacy repeat&quot;,
+    &quot;passed&quot;: true,
+    &quot;details&quot;: {
+      &quot;exact&quot;: true
+    }
+  },
+  {
+    &quot;name&quot;: &quot;synthetic phoenix_i display clipping&quot;,
+    &quot;passed&quot;: true,
+    &quot;details&quot;: {
+      &quot;research_RGB8_endpoint_fraction&quot;: 0.0,
+      &quot;legacy_RGB8_endpoint_fraction&quot;: 0.0,
+      &quot;limitation&quot;: &quot;quantized endpoint measure; linear negative and headroom counts are reported separately&quot;
+    }
+  },
+  {
+    &quot;name&quot;: &quot;raw phoenix_i finite&quot;,
+    &quot;passed&quot;: true,
+    &quot;details&quot;: {
+      &quot;nonfinite&quot;: 0,
+      &quot;negative_channels&quot;: 0,
+      &quot;above_one_channels&quot;: 51616
+    }
+  },
+  {
+    &quot;name&quot;: &quot;raw phoenix_i legacy repeat&quot;,
+    &quot;passed&quot;: true,
+    &quot;details&quot;: {
+      &quot;exact&quot;: true
+    }
+  },
+  {
+    &quot;name&quot;: &quot;phoenix_i historical legacy float preservation&quot;,
+    &quot;passed&quot;: true,
+    &quot;details&quot;: {
+      &quot;prior&quot;: &quot;290bc31d9750dab79990185faa13b6f21cb8df7fbf30db9b1fd29e9b30037a6d&quot;,
+      &quot;current&quot;: &quot;290bc31d9750dab79990185faa13b6f21cb8df7fbf30db9b1fd29e9b30037a6d&quot;
+    }
+  },
+  {
+    &quot;name&quot;: &quot;raw phoenix_i display clipping&quot;,
+    &quot;passed&quot;: true,
+    &quot;details&quot;: {
+      &quot;research_RGB8_endpoint_fraction&quot;: 0.0,
+      &quot;legacy_RGB8_endpoint_fraction&quot;: 0.0,
+      &quot;limitation&quot;: &quot;quantized endpoint measure; linear negative and headroom counts are reported separately&quot;
+    }
+  },
+  {
+    &quot;name&quot;: &quot;phoenix_i synthetic skin hue continuity&quot;,
+    &quot;passed&quot;: false,
+    &quot;details&quot;: {
+      &quot;max_adjacent_hue_degrees&quot;: 23.612896827726985,
+      &quot;target&quot;: &quot;consistency only; no true skin fit&quot;
+    }
+  },
+  {
+    &quot;name&quot;: &quot;phoenix_ii neutral reconstruction&quot;,
+    &quot;passed&quot;: true,
+    &quot;details&quot;: {
+      &quot;max_relative_channel_spread&quot;: 0.00026736200080275385
+    }
+  },
+  {
+    &quot;name&quot;: &quot;phoenix_ii monotonic neutral RGB biased ramps&quot;,
+    &quot;passed&quot;: true,
+    &quot;details&quot;: {
+      &quot;minimum_Y_step&quot;: 8.487845936343275e-08
+    }
+  },
+  {
+    &quot;name&quot;: &quot;phoenix_ii continuity&quot;,
+    &quot;passed&quot;: true,
+    &quot;details&quot;: {
+      &quot;max_normalized_second_difference&quot;: 0.009981210230736438
+    }
+  },
+  {
+    &quot;name&quot;: &quot;phoenix_ii tone axis&quot;,
+    &quot;passed&quot;: true,
+    &quot;details&quot;: {
+      &quot;neutral_Y_strictly_decreasing&quot;: true,
+      &quot;policy&quot;: &quot;scalar Y neutral inversion, reciprocal RGB transmission ratio; CPU float32 buffers; not optical paper&quot;
+    }
+  },
+  {
+    &quot;name&quot;: &quot;synthetic phoenix_ii finite&quot;,
+    &quot;passed&quot;: true,
+    &quot;details&quot;: {
+      &quot;nonfinite&quot;: 0,
+      &quot;negative_channels&quot;: 0,
+      &quot;above_one_channels&quot;: 400
+    }
+  },
+  {
+    &quot;name&quot;: &quot;synthetic phoenix_ii legacy repeat&quot;,
+    &quot;passed&quot;: true,
+    &quot;details&quot;: {
+      &quot;exact&quot;: true
+    }
+  },
+  {
+    &quot;name&quot;: &quot;synthetic phoenix_ii display clipping&quot;,
+    &quot;passed&quot;: true,
+    &quot;details&quot;: {
+      &quot;research_RGB8_endpoint_fraction&quot;: 0.0,
+      &quot;legacy_RGB8_endpoint_fraction&quot;: 0.03479381443298969,
+      &quot;limitation&quot;: &quot;quantized endpoint measure; linear negative and headroom counts are reported separately&quot;
+    }
+  },
+  {
+    &quot;name&quot;: &quot;raw phoenix_ii finite&quot;,
+    &quot;passed&quot;: true,
+    &quot;details&quot;: {
+      &quot;nonfinite&quot;: 0,
+      &quot;negative_channels&quot;: 0,
+      &quot;above_one_channels&quot;: 0
+    }
+  },
+  {
+    &quot;name&quot;: &quot;raw phoenix_ii legacy repeat&quot;,
+    &quot;passed&quot;: true,
+    &quot;details&quot;: {
+      &quot;exact&quot;: true
+    }
+  },
+  {
+    &quot;name&quot;: &quot;phoenix_ii historical legacy float preservation&quot;,
+    &quot;passed&quot;: true,
+    &quot;details&quot;: {
+      &quot;prior&quot;: &quot;8420de795f6ed388dbf5ed846cd4555cdf4ad8188de9de821ea8be1291828f6e&quot;,
+      &quot;current&quot;: &quot;8420de795f6ed388dbf5ed846cd4555cdf4ad8188de9de821ea8be1291828f6e&quot;
+    }
+  },
+  {
+    &quot;name&quot;: &quot;raw phoenix_ii display clipping&quot;,
+    &quot;passed&quot;: true,
+    &quot;details&quot;: {
+      &quot;research_RGB8_endpoint_fraction&quot;: 0.0,
+      &quot;legacy_RGB8_endpoint_fraction&quot;: 0.0,
+      &quot;limitation&quot;: &quot;quantized endpoint measure; linear negative and headroom counts are reported separately&quot;
+    }
+  },
+  {
+    &quot;name&quot;: &quot;phoenix_ii synthetic skin hue continuity&quot;,
+    &quot;passed&quot;: false,
+    &quot;details&quot;: {
+      &quot;max_adjacent_hue_degrees&quot;: 16.10275241490217,
+      &quot;target&quot;: &quot;consistency only; no true skin fit&quot;
+    }
+  }
+]</pre><p><a href="metrics_and_settings.json">Full settings, source/output hashes and float diagnostics</a></p>
