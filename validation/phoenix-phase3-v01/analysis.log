@@ -1,0 +1,26 @@
+REJECTED_ENGINEERING
+[
+  {
+    "name": "phoenix_i monotonic neutral RGB biased ramps",
+    "passed": false,
+    "details": {
+      "minimum_Y_step": -0.0007066638918741264
+    }
+  },
+  {
+    "name": "phoenix_i synthetic skin hue continuity",
+    "passed": false,
+    "details": {
+      "max_adjacent_hue_degrees": 23.612896827726985,
+      "target": "consistency only; no true skin fit"
+    }
+  },
+  {
+    "name": "phoenix_ii synthetic skin hue continuity",
+    "passed": false,
+    "details": {
+      "max_adjacent_hue_degrees": 16.10275241490217,
+      "target": "consistency only; no true skin fit"
+    }
+  }
+]

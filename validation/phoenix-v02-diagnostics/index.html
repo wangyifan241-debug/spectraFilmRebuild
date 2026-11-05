@@ -1,0 +1,4616 @@
+<!doctype html><meta charset="utf-8"><title>Frozen v0.2 diagnostics</title><style>body{background:#202020;color:#eee;font:16px system-ui;margin:20px}main{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}img{width:100%}figure{margin:0}pre{white-space:pre-wrap}a{color:#acd9ff}</style><h1>Frozen v0.2: endpoint / quantization / scene diagnostics</h1><p>No new model, tuning, exposure edits or relaxed gate. Overlay magenta: floor with nonzero decoded input; cyan: floor with already-zero decoded input. White binary mask: all floor pixels. These annotations are not reconstructed outputs.</p><p><a href="RESULT.md">Diagnostic attribution report</a> · <a href="#DSC02443">Original portrait</a> · <a href="#DSC02337">Backlit portrait</a> · <a href="#DSC03870">Night street</a></p><h2 id="DSC02443">DSC02443 — original indoor portrait / uniform</h2><img style="max-width:360px" src="DSC02443/ROI_locations.png"><h3>phoenix_i</h3><main><figure><figcaption>Digital</figcaption><img src="DSC02443/digital_baseline.png"></figure><figure><figcaption>Round5</figcaption><img src="DSC02443/round5_phoenix_i.png"></figure><figure><figcaption>v01</figcaption><img src="DSC02443/research_v01_phoenix_i.png"></figure><figure><figcaption>v02</figcaption><img src="DSC02443/research_phoenix_i.png"></figure></main><main><img src="DSC02443/phoenix_i_floor_overlay.png"><img src="DSC02443/phoenix_i_floor_mask.png"><img src="DSC02443/phoenix_i_tone.png"></main><h4>face</h4><main><figure><figcaption>Digital</figcaption><img src="DSC02443/phoenix_i_face_Digital.png"></figure><figure><figcaption>v02</figcaption><img src="DSC02443/phoenix_i_face_v02.png"></figure></main><h4>arm</h4><main><figure><figcaption>Digital</figcaption><img src="DSC02443/phoenix_i_arm_Digital.png"></figure><figure><figcaption>v02</figcaption><img src="DSC02443/phoenix_i_arm_v02.png"></figure></main><h4>uniform</h4><main><figure><figcaption>Digital</figcaption><img src="DSC02443/phoenix_i_uniform_Digital.png"></figure><figure><figcaption>v02</figcaption><img src="DSC02443/phoenix_i_uniform_v02.png"></figure></main><h4>dark_clothing</h4><main><figure><figcaption>Digital</figcaption><img src="DSC02443/phoenix_i_dark_clothing_Digital.png"></figure><figure><figcaption>v02</figcaption><img src="DSC02443/phoenix_i_dark_clothing_v02.png"></figure></main><h4>background</h4><main><figure><figcaption>Digital</figcaption><img src="DSC02443/phoenix_i_background_Digital.png"></figure><figure><figcaption>v02</figcaption><img src="DSC02443/phoenix_i_background_v02.png"></figure></main><details><summary>Endpoint and ROI numbers</summary><pre>{
+  &quot;floor_pixels&quot;: 79876,
+  &quot;pixels&quot;: 749568,
+  &quot;floor_fraction&quot;: 0.10656271345628415,
+  &quot;ceiling_pixels&quot;: 0,
+  &quot;floor_max_relative_Y_error&quot;: 4.0072494211784715e-08,
+  &quot;stage_bounds&quot;: {
+    &quot;Y_constraint_pass&quot;: true,
+    &quot;endpoint_saturated_pixels&quot;: 79876,
+    &quot;log_chromatic_norm_bound&quot;: 1.3862943611198906,
+    &quot;maximum_channel_ratio&quot;: 3.092513709756564,
+    &quot;maximum_relative_Y_vs_scalar_exposure_error&quot;: 5.841813188744993e-08,
+    &quot;ratio_bound_pass&quot;: true
+  },
+  &quot;regions&quot;: {
+    &quot;face&quot;: {
+      &quot;floor_fraction&quot;: 0.00137987012987013,
+      &quot;input_linear_Y&quot;: {
+        &quot;n&quot;: 12320,
+        &quot;p01_p50_p99&quot;: [
+          0.003543519586571008,
+          0.177674597715462,
+          0.39085199319902236
+        ],
+        &quot;min&quot;: 0.0017410113034780602,
+        &quot;max&quot;: 0.5325235619258016,
+        &quot;std&quot;: 0.11158216209085514
+      },
+      &quot;output_linear_Y&quot;: {
+        &quot;n&quot;: 12320,
+        &quot;p01_p50_p99&quot;: [
+          0.004191218904417226,
+          0.17563766383030305,
+          0.3972792979133695
+        ],
+        &quot;min&quot;: 0.0028749999205626314,
+        &quot;max&quot;: 0.5615997399580837,
+        &quot;std&quot;: 0.11048857354289607
+      },
+      &quot;Digital_mean_Lab_D65&quot;: [
+        39.901274910368564,
+        9.78777850155824,
+        8.484444610188488
+      ],
+      &quot;v02_mean_Lab_D65&quot;: [
+        40.08892215071102,
+        15.015378275005592,
+        10.870669349183899
+      ],
+      &quot;display16_deltaL&quot;: {
+        &quot;n&quot;: 12320,
+        &quot;p01_p50_p99&quot;: [
+          -1.3009743174391364,
+          -0.07679675167140232,
+          3.2450728958895314
+        ],
+        &quot;min&quot;: -2.425936642423437,
+        &quot;max&quot;: 5.637750893377472,
+        &quot;std&quot;: 0.9907863761578077
+      },
+      &quot;display16_delta_ab&quot;: {
+        &quot;n&quot;: 12320,
+        &quot;p01_p50_p99&quot;: [
+          0.5453855187484852,
+          10.01148758090858,
+          13.288330964611928
+        ],
+        &quot;min&quot;: 0.04823654280659578,
+        &quot;max&quot;: 16.907619085434238,
+        &quot;std&quot;: 4.0656897658321896
+      },
+      &quot;equal_Y_abs_hue_shift&quot;: {
+        &quot;n&quot;: 12320,
+        &quot;p01_p50_p99&quot;: [
+          0.21384709968303553,
+          6.781154324683911,
+          83.67402569349541
+        ],
+        &quot;min&quot;: 0.0015419151565083666,
+        &quot;max&quot;: 122.72521511484973,
+        &quot;std&quot;: 17.653982391344684
+      },
+      &quot;note&quot;: &quot;ROI diagnostics, not true skin or film-color targets; hue unreliable near neutral&quot;
+    },
+    &quot;arm&quot;: {
+      &quot;floor_fraction&quot;: 0.0,
+      &quot;input_linear_Y&quot;: {
+        &quot;n&quot;: 2684,
+        &quot;p01_p50_p99&quot;: [
+          0.08576361238118758,
+          0.291300704941494,
+          0.4003855025105328
+        ],
+        &quot;min&quot;: 0.06014495664876662,
+        &quot;max&quot;: 0.4581098857792079,
+        &quot;std&quot;: 0.061454182023205586
+      },
+      &quot;output_linear_Y&quot;: {
+        &quot;n&quot;: 2684,
+        &quot;p01_p50_p99&quot;: [
+          0.08414198791214388,
+          0.2937723795341283,
+          0.4062529505936384
+        ],
+        &quot;min&quot;: 0.059569739639611166,
+        &quot;max&quot;: 0.4673789832932413,
+        &quot;std&quot;: 0.06361353688851056
+      },
+      &quot;Digital_mean_Lab_D65&quot;: [
+        58.14784236679975,
+        9.98741597166648,
+        14.777957601948481
+      ],
+      &quot;v02_mean_Lab_D65&quot;: [
+        58.14133856229111,
+        15.411572440721361,
+        25.7942118117581
+      ],
+      &quot;display16_deltaL&quot;: {
+        &quot;n&quot;: 2684,
+        &quot;p01_p50_p99&quot;: [
+          -0.48834172316316754,
+          0.02892813520881532,
+          0.3147207502648442
+        ],
+        &quot;min&quot;: -0.6441069956421686,
+        &quot;max&quot;: 0.5742391572915437,
+        &quot;std&quot;: 0.1837197090113386
+      },
+      &quot;display16_delta_ab&quot;: {
+        &quot;n&quot;: 2684,
+        &quot;p01_p50_p99&quot;: [
+          3.82227668754702,
+          13.578131889388327,
+          14.945926678803538
+        ],
+        &quot;min&quot;: 2.853911123110921,
+        &quot;max&quot;: 15.61550321213104,
+        &quot;std&quot;: 2.440793135840724
+      },
+      &quot;equal_Y_abs_hue_shift&quot;: {
+        &quot;n&quot;: 2684,
+        &quot;p01_p50_p99&quot;: [
+          0.1789036492124589,
+          4.209849639128805,
+          12.536634501259531
+        ],
+        &quot;min&quot;: 0.0024424451924858204,
+        &quot;max&quot;: 14.574442517818142,
+        &quot;std&quot;: 1.9965661742478833
+      },
+      &quot;note&quot;: &quot;ROI diagnostics, not true skin or film-color targets; hue unreliable near neutral&quot;
+    },
+    &quot;uniform&quot;: {
+      &quot;floor_fraction&quot;: 0.0,
+      &quot;input_linear_Y&quot;: {
+        &quot;n&quot;: 17748,
+        &quot;p01_p50_p99&quot;: [
+          0.009283146920549665,
+          0.33687752550335526,
+          0.7872408695731395
+        ],
+        &quot;min&quot;: 0.006444396813921723,
+        &quot;max&quot;: 0.8407659681103824,
+        &quot;std&quot;: 0.19806854523127967
+      },
+      &quot;output_linear_Y&quot;: {
+        &quot;n&quot;: 17748,
+        &quot;p01_p50_p99&quot;: [
+          0.009934471817482799,
+          0.33089184489506784,
+          0.7407928357248382
+        ],
+        &quot;min&quot;: 0.007130030515469238,
+        &quot;max&quot;: 0.7793509543196141,
+        &quot;std&quot;: 0.18930682042834673
+      },
+      &quot;Digital_mean_Lab_D65&quot;: [
+        60.946222254902494,
+        2.736985854626601,
+        -15.757994128829464
+      ],
+      &quot;v02_mean_Lab_D65&quot;: [
+        60.86383456445489,
+        4.621454664076904,
+        -28.372554962322692
+      ],
+      &quot;display16_deltaL&quot;: {
+        &quot;n&quot;: 17748,
+        &quot;p01_p50_p99&quot;: [
+          -0.9199458090008494,
+          -0.10291437543954629,
+          1.3735743324917304
+        ],
+        &quot;min&quot;: -1.406545733450585,
+        &quot;max&quot;: 5.004705486735663,
+        &quot;std&quot;: 0.4323362420966128
+      },
+      &quot;display16_delta_ab&quot;: {
+        &quot;n&quot;: 17748,
+        &quot;p01_p50_p99&quot;: [
+          3.266710969291013,
+          15.486520519099264,
+          20.188209644383672
+        ],
+        &quot;min&quot;: 0.14718986672577852,
+        &quot;max&quot;: 20.417506096774726,
+        &quot;std&quot;: 5.102098128597656
+      },
+      &quot;equal_Y_abs_hue_shift&quot;: {
+        &quot;n&quot;: 17748,
+        &quot;p01_p50_p99&quot;: [
+          0.027290105175008534,
+          1.5240148722830043,
+          10.135262982949527
+        ],
+        &quot;min&quot;: 0.0002679249241168691,
+        &quot;max&quot;: 30.142638310077587,
+        &quot;std&quot;: 2.172531180714494
+      },
+      &quot;note&quot;: &quot;ROI diagnostics, not true skin or film-color targets; hue unreliable near neutral&quot;
+    },
+    &quot;dark_clothing&quot;: {
+      &quot;floor_fraction&quot;: 0.008058470764617692,
+      &quot;input_linear_Y&quot;: {
+        &quot;n&quot;: 5336,
+        &quot;p01_p50_p99&quot;: [
+          0.002439444269994434,
+          0.015981335319258366,
+          0.025974754618332773
+        ],
+        &quot;min&quot;: 0.0016108809670469257,
+        &quot;max&quot;: 0.0827882281795375,
+        &quot;std&quot;: 0.006971814284260936
+      },
+      &quot;output_linear_Y&quot;: {
+        &quot;n&quot;: 5336,
+        &quot;p01_p50_p99&quot;: [
+          0.002959214307187422,
+          0.016533764165718293,
+          0.027051834481755598
+        ],
+        &quot;min&quot;: 0.002874999899498187,
+        &quot;max&quot;: 0.08365479027279615,
+        &quot;std&quot;: 0.0070614638739947624
+      },
+      &quot;Digital_mean_Lab_D65&quot;: [
+        12.609856292661203,
+        1.4656225529545182,
+        -10.449263509313022
+      ],
+      &quot;v02_mean_Lab_D65&quot;: [
+        12.88983487737653,
+        0.639321276462741,
+        -2.8261221255527866
+      ],
+      &quot;display16_deltaL&quot;: {
+        &quot;n&quot;: 5336,
+        &quot;p01_p50_p99&quot;: [
+          -0.7727122443335,
+          0.24120473055497982,
+          1.838936417283721
+        ],
+        &quot;min&quot;: -1.6673980034455766,
+        &quot;max&quot;: 2.824335029508152,
+        &quot;std&quot;: 0.46557565648268473
+      },
+      &quot;display16_delta_ab&quot;: {
+        &quot;n&quot;: 5336,
+        &quot;p01_p50_p99&quot;: [
+          2.6884855534386745,
+          7.9455370507984595,
+          10.318206300361272
+        ],
+        &quot;min&quot;: 0.24138467122265803,
+        &quot;max&quot;: 11.935960982658962,
+        &quot;std&quot;: 1.4433971615535435
+      },
+      &quot;equal_Y_abs_hue_shift&quot;: {
+        &quot;n&quot;: 5336,
+        &quot;p01_p50_p99&quot;: [
+          0.24508973085964386,
+          5.369308086368264,
+          21.103767516364474
+        ],
+        &quot;min&quot;: 0.0018090367749152847,
+        &quot;max&quot;: 42.126148151610096,
+        &quot;std&quot;: 4.061943717148473
+      },
+      &quot;note&quot;: &quot;ROI diagnostics, not true skin or film-color targets; hue unreliable near neutral&quot;
+    },
+    &quot;background&quot;: {
+      &quot;floor_fraction&quot;: 0.0,
+      &quot;input_linear_Y&quot;: {
+        &quot;n&quot;: 9020,
+        &quot;p01_p50_p99&quot;: [
+          0.07890980358400727,
+          0.09875267281983943,
+          0.12409079620721014
+        ],
+        &quot;min&quot;: 0.07202433835429772,
+        &quot;max&quot;: 0.12952814721179381,
+        &quot;std&quot;: 0.011687600478284516
+      },
+      &quot;output_linear_Y&quot;: {
+        &quot;n&quot;: 9020,
+        &quot;p01_p50_p99&quot;: [
+          0.07906396242956364,
+          0.09966307786688991,
+          0.12618535310349674
+        ],
+        &quot;min&quot;: 0.0715767635657005,
+        &quot;max&quot;: 0.13268974959552138,
+        &quot;std&quot;: 0.012164545259597032
+      },
+      &quot;Digital_mean_Lab_D65&quot;: [
+        37.87665024160005,
+        2.797914335725721,
+        6.770025301294735
+      ],
+      &quot;v02_mean_Lab_D65&quot;: [
+        38.032657223331384,
+        3.592442799109597,
+        8.011248186220739
+      ],
+      &quot;display16_deltaL&quot;: {
+        &quot;n&quot;: 9020,
+        &quot;p01_p50_p99&quot;: [
+          -0.11302041510373144,
+          0.16110235336942935,
+          0.3945541826289209
+        ],
+        &quot;min&quot;: -0.3715607352836656,
+        &quot;max&quot;: 0.5703834804199275,
+        &quot;std&quot;: 0.10848241785011013
+      },
+      &quot;display16_delta_ab&quot;: {
+        &quot;n&quot;: 9020,
+        &quot;p01_p50_p99&quot;: [
+          0.13170258290332587,
+          1.4324641136388405,
+          4.177703125373952
+        ],
+        &quot;min&quot;: 0.008266447561876673,
+        &quot;max&quot;: 5.021308599714636,
+        &quot;std&quot;: 1.1359100582755062
+      },
+      &quot;equal_Y_abs_hue_shift&quot;: {
+        &quot;n&quot;: 9020,
+        &quot;p01_p50_p99&quot;: [
+          0.04155228956326766,
+          2.2011127929265655,
+          7.525468014103107
+        ],
+        &quot;min&quot;: 0.0002779161664534513,
+        &quot;max&quot;: 12.267008952063662,
+        &quot;std&quot;: 1.7927898893860092
+      },
+      &quot;note&quot;: &quot;ROI diagnostics, not true skin or film-color targets; hue unreliable near neutral&quot;
+    }
+  },
+  &quot;floor_decomposition&quot;: {
+    &quot;decoded_zero_on_floor_pixels&quot;: 76218,
+    &quot;decoded_zero_on_floor_fraction_of_frame&quot;: 0.10168256915983606,
+    &quot;nonzero_input_on_floor_pixels&quot;: 3658,
+    &quot;nonzero_input_on_floor_fraction_of_frame&quot;: 0.004880144296448088,
+    &quot;nonzero_input_on_floor_fraction_of_nonzero_input&quot;: 0.0054325387985445905,
+    &quot;interpretation&quot;: &quot;Already-zero decoded pixels contain no input luminance variation to lose; lifting them to the reconstruction floor is different from flattening nonzero shadows.&quot;
+  },
+  &quot;floor&quot;: {
+    &quot;input_linear_Y&quot;: {
+      &quot;n&quot;: 79876,
+      &quot;p01_p50_p99&quot;: [
+        0.0,
+        0.0,
+        0.002865512835623469
+      ],
+      &quot;min&quot;: 0.0,
+      &quot;max&quot;: 0.005452664336218033,
+      &quot;std&quot;: 0.0005046251712942678
+    },
+    &quot;output_linear_Y&quot;: {
+      &quot;n&quot;: 79876,
+      &quot;p01_p50_p99&quot;: [
+        0.0028749999525435038,
+        0.002875000064978609,
+        0.002875000064978609
+      ],
+      &quot;min&quot;: 0.0028749998861944304,
+      &quot;max&quot;: 0.002875000115208421,
+      &quot;std&quot;: 1.7544571037702146e-11
+    },
+    &quot;display16_deltaL_vs_digital&quot;: {
+      &quot;n&quot;: 79876,
+      &quot;p01_p50_p99&quot;: [
+        -0.011580651537558495,
+        2.5957889806023857,
+        2.5957889806023857
+      ],
+      &quot;min&quot;: -2.325132113002688,
+      &quot;max&quot;: 2.5957889806023857,
+      &quot;std&quot;: 0.45886287080508503
+    },
+    &quot;display16_delta_ab_distance_vs_digital&quot;: {
+      &quot;n&quot;: 79876,
+      &quot;p01_p50_p99&quot;: [
+        0.13568585501474875,
+        0.13568585501474875,
+        2.3463211349082416
+      ],
+      &quot;min&quot;: 0.020316180090246282,
+      &quot;max&quot;: 5.091567654287683,
+      &quot;std&quot;: 0.3537138447448896
+    },
+    &quot;display16_deltaE00_vs_digital&quot;: {
+      &quot;n&quot;: 79876,
+      &quot;p01_p50_p99&quot;: [
+        0.8736299904205149,
+        1.5109184983148944,
+        2.4996617315220773
+      ],
+      &quot;min&quot;: 0.11613893869074335,
+      &quot;max&quot;: 6.529132281286184,
+      &quot;std&quot;: 0.20691291201672768
+    },
+    &quot;equal_Y_chromaticity_abs_hue_shift&quot;: {
+      &quot;n&quot;: 323,
+      &quot;p01_p50_p99&quot;: [
+        0.7582600771302879,
+        22.994970146822993,
+        56.72798999542228
+      ],
+      &quot;min&quot;: 0.02198323608155306,
+      &quot;max&quot;: 58.288512218442065,
+      &quot;std&quot;: 14.14322289675149
+    },
+    &quot;equal_Y_chroma_ratio&quot;: {
+      &quot;n&quot;: 323,
+      &quot;p01_p50_p99&quot;: [
+        0.02532538034264309,
+        0.051966386269567094,
+        0.06947408327079571
+      ],
+      &quot;min&quot;: 0.019641002350268253,
+      &quot;max&quot;: 0.07183413961180082,
+      &quot;std&quot;: 0.009906289215708968
+    },
+    &quot;color_note&quot;: &quot;equal-Y Lab is an analysis coordinate only, not a re-render or reference target&quot;
+  },
+  &quot;floor_with_nonzero_input&quot;: {
+    &quot;input_linear_Y&quot;: {
+      &quot;n&quot;: 3658,
+      &quot;p01_p50_p99&quot;: [
+        0.0009873602228264945,
+        0.0022002196409007073,
+        0.004227991777274268
+      ],
+      &quot;min&quot;: 0.0005801788859563181,
+      &quot;max&quot;: 0.005452664336218033,
+      &quot;std&quot;: 0.000728247152579346
+    },
+    &quot;output_linear_Y&quot;: {
+      &quot;n&quot;: 3658,
+      &quot;p01_p50_p99&quot;: [
+        0.0028749998991352797,
+        0.0028749999988910277,
+        0.0028750001006917414
+      ],
+      &quot;min&quot;: 0.0028749998861944304,
+      &quot;max&quot;: 0.002875000115208421,
+      &quot;std&quot;: 5.146309218704729e-11
+    },
+    &quot;display16_deltaL_vs_digital&quot;: {
+      &quot;n&quot;: 3658,
+      &quot;p01_p50_p99&quot;: [
+        -1.2452110024803404,
+        0.5954857114064147,
+        1.6905529800994057
+      ],
+      &quot;min&quot;: -2.325132113002688,
+      &quot;max&quot;: 2.055898030449992,
+      &quot;std&quot;: 0.660628019251098
+    },
+    &quot;display16_delta_ab_distance_vs_digital&quot;: {
+      &quot;n&quot;: 3658,
+      &quot;p01_p50_p99&quot;: [
+        0.08991002651215062,
+        1.325211056074429,
+        3.928071059560302
+      ],
+      &quot;min&quot;: 0.020316180090246282,
+      &quot;max&quot;: 5.091567654287683,
+      &quot;std&quot;: 0.9845763732626653
+    },
+    &quot;display16_deltaE00_vs_digital&quot;: {
+      &quot;n&quot;: 3658,
+      &quot;p01_p50_p99&quot;: [
+        0.26977039687770327,
+        1.5690369533588724,
+        4.051343835920742
+      ],
+      &quot;min&quot;: 0.11613893869074335,
+      &quot;max&quot;: 6.529132281286184,
+      &quot;std&quot;: 0.9453370209862989
+    },
+    &quot;equal_Y_chromaticity_abs_hue_shift&quot;: {
+      &quot;n&quot;: 323,
+      &quot;p01_p50_p99&quot;: [
+        0.7582600771302879,
+        22.994970146822993,
+        56.72798999542228
+      ],
+      &quot;min&quot;: 0.02198323608155306,
+      &quot;max&quot;: 58.288512218442065,
+      &quot;std&quot;: 14.14322289675149
+    },
+    &quot;equal_Y_chroma_ratio&quot;: {
+      &quot;n&quot;: 323,
+      &quot;p01_p50_p99&quot;: [
+        0.02532538034264309,
+        0.051966386269567094,
+        0.06947408327079571
+      ],
+      &quot;min&quot;: 0.019641002350268253,
+      &quot;max&quot;: 0.07183413961180082,
+      &quot;std&quot;: 0.009906289215708968
+    },
+    &quot;color_note&quot;: &quot;equal-Y Lab is an analysis coordinate only, not a re-render or reference target&quot;
+  },
+  &quot;nonfloor&quot;: {
+    &quot;input_linear_Y&quot;: {
+      &quot;n&quot;: 669692,
+      &quot;p01_p50_p99&quot;: [
+        0.004101061401840812,
+        0.09757177359772454,
+        0.8929927621376357
+      ],
+      &quot;min&quot;: 0.0010092712593972684,
+      &quot;max&quot;: 0.9913203285140931,
+      &quot;std&quot;: 0.21762749833473483
+    },
+    &quot;output_linear_Y&quot;: {
+      &quot;n&quot;: 669692,
+      &quot;p01_p50_p99&quot;: [
+        0.004727954058740976,
+        0.09825994769388996,
+        0.8024946275016038
+      ],
+      &quot;min&quot;: 0.002875911212604423,
+      &quot;max&quot;: 0.9767111780796826,
+      &quot;std&quot;: 0.20640732186964095
+    },
+    &quot;display16_deltaL_vs_digital&quot;: {
+      &quot;n&quot;: 669692,
+      &quot;p01_p50_p99&quot;: [
+        -1.5605313234223661,
+        0.12389771460453503,
+        2.28612968076929
+      ],
+      &quot;min&quot;: -4.4908523082651755,
+      &quot;max&quot;: 7.166449607301928,
+      &quot;std&quot;: 0.651321936933848
+    },
+    &quot;display16_delta_ab_distance_vs_digital&quot;: {
+      &quot;n&quot;: 669692,
+      &quot;p01_p50_p99&quot;: [
+        0.3825421390138463,
+        5.746111208858396,
+        19.661404585495852
+      ],
+      &quot;min&quot;: 0.008266447561876673,
+      &quot;max&quot;: 24.907574774707136,
+      &quot;std&quot;: 4.896531684885988
+    },
+    &quot;display16_deltaE00_vs_digital&quot;: {
+      &quot;n&quot;: 669692,
+      &quot;p01_p50_p99&quot;: [
+        0.4231769077917693,
+        4.467075864501494,
+        9.106666865205094
+      ],
+      &quot;min&quot;: 0.022090171059186425,
+      &quot;max&quot;: 15.751785926012143,
+      &quot;std&quot;: 2.207395447837466
+    },
+    &quot;equal_Y_chromaticity_abs_hue_shift&quot;: {
+      &quot;n&quot;: 630124,
+      &quot;p01_p50_p99&quot;: [
+        0.0815397128536472,
+        4.333859693806858,
+        35.5747812322625
+      ],
+      &quot;min&quot;: 1.4703781545222228e-05,
+      &quot;max&quot;: 73.13030557253364,
+      &quot;std&quot;: 6.539975079292103
+    },
+    &quot;equal_Y_chroma_ratio&quot;: {
+      &quot;n&quot;: 630124,
+      &quot;p01_p50_p99&quot;: [
+        0.10375557739088724,
+        1.2117631042874233,
+        2.5709333249887907
+      ],
+      &quot;min&quot;: 0.023562853817888082,
+      &quot;max&quot;: 3.2973291115517167,
+      &quot;std&quot;: 0.7064877449559123
+    },
+    &quot;color_note&quot;: &quot;equal-Y Lab is an analysis coordinate only, not a re-render or reference target&quot;
+  },
+  &quot;horizontal_floor_neighbor_contrast&quot;: {
+    &quot;pairs&quot;: 77417,
+    &quot;input_abs_EV_step&quot;: {
+      &quot;n&quot;: 77417,
+      &quot;p01_p50_p99&quot;: [
+        0.0,
+        0.0,
+        0.28533346716479546
+      ],
+      &quot;min&quot;: 0.0,
+      &quot;max&quot;: 1.8960322794958877,
+      &quot;std&quot;: 0.05527026369297276
+    },
+    &quot;output_abs_EV_step&quot;: {
+      &quot;n&quot;: 77417,
+      &quot;p01_p50_p99&quot;: [
+        0.0,
+        0.0,
+        3.661718110947731e-08
+      ],
+      &quot;min&quot;: 0.0,
+      &quot;max&quot;: 1.0852525811344549e-07,
+      &quot;std&quot;: 6.163451012363809e-09
+    }
+  }
+}</pre></details><h3>phoenix_ii</h3><main><figure><figcaption>Digital</figcaption><img src="DSC02443/digital_baseline.png"></figure><figure><figcaption>Round5</figcaption><img src="DSC02443/round5_phoenix_ii.png"></figure><figure><figcaption>v01</figcaption><img src="DSC02443/research_v01_phoenix_ii.png"></figure><figure><figcaption>v02</figcaption><img src="DSC02443/research_phoenix_ii.png"></figure></main><main><img src="DSC02443/phoenix_ii_floor_overlay.png"><img src="DSC02443/phoenix_ii_floor_mask.png"><img src="DSC02443/phoenix_ii_tone.png"></main><h4>face</h4><main><figure><figcaption>Digital</figcaption><img src="DSC02443/phoenix_ii_face_Digital.png"></figure><figure><figcaption>v02</figcaption><img src="DSC02443/phoenix_ii_face_v02.png"></figure></main><h4>arm</h4><main><figure><figcaption>Digital</figcaption><img src="DSC02443/phoenix_ii_arm_Digital.png"></figure><figure><figcaption>v02</figcaption><img src="DSC02443/phoenix_ii_arm_v02.png"></figure></main><h4>uniform</h4><main><figure><figcaption>Digital</figcaption><img src="DSC02443/phoenix_ii_uniform_Digital.png"></figure><figure><figcaption>v02</figcaption><img src="DSC02443/phoenix_ii_uniform_v02.png"></figure></main><h4>dark_clothing</h4><main><figure><figcaption>Digital</figcaption><img src="DSC02443/phoenix_ii_dark_clothing_Digital.png"></figure><figure><figcaption>v02</figcaption><img src="DSC02443/phoenix_ii_dark_clothing_v02.png"></figure></main><h4>background</h4><main><figure><figcaption>Digital</figcaption><img src="DSC02443/phoenix_ii_background_Digital.png"></figure><figure><figcaption>v02</figcaption><img src="DSC02443/phoenix_ii_background_v02.png"></figure></main><details><summary>Endpoint and ROI numbers</summary><pre>{
+  &quot;floor_pixels&quot;: 80584,
+  &quot;pixels&quot;: 749568,
+  &quot;floor_fraction&quot;: 0.1075072575136612,
+  &quot;ceiling_pixels&quot;: 0,
+  &quot;floor_max_relative_Y_error&quot;: 3.9617547353820726e-08,
+  &quot;stage_bounds&quot;: {
+    &quot;Y_constraint_pass&quot;: true,
+    &quot;endpoint_saturated_pixels&quot;: 80584,
+    &quot;log_chromatic_norm_bound&quot;: 1.3862943611198906,
+    &quot;maximum_channel_ratio&quot;: 1.8241514931280147,
+    &quot;maximum_relative_Y_vs_scalar_exposure_error&quot;: 5.83766026629462e-08,
+    &quot;ratio_bound_pass&quot;: true
+  },
+  &quot;regions&quot;: {
+    &quot;face&quot;: {
+      &quot;floor_fraction&quot;: 0.0025974025974025974,
+      &quot;input_linear_Y&quot;: {
+        &quot;n&quot;: 12320,
+        &quot;p01_p50_p99&quot;: [
+          0.003543519586571008,
+          0.177674597715462,
+          0.39085199319902236
+        ],
+        &quot;min&quot;: 0.0017410113034780602,
+        &quot;max&quot;: 0.5325235619258016,
+        &quot;std&quot;: 0.11158216209085514
+      },
+      &quot;output_linear_Y&quot;: {
+        &quot;n&quot;: 12320,
+        &quot;p01_p50_p99&quot;: [
+          0.0035146927261841404,
+          0.1683793207125187,
+          0.3767803864671079
+        ],
+        &quot;min&quot;: 0.002874999899532157,
+        &quot;max&quot;: 0.5249086533090651,
+        &quot;std&quot;: 0.10566684354622229
+      },
+      &quot;Digital_mean_Lab_D65&quot;: [
+        39.901274910368564,
+        9.78777850155824,
+        8.484444610188488
+      ],
+      &quot;v02_mean_Lab_D65&quot;: [
+        39.320990789584904,
+        4.368018677076911,
+        5.286871642382161
+      ],
+      &quot;display16_deltaL&quot;: {
+        &quot;n&quot;: 12320,
+        &quot;p01_p50_p99&quot;: [
+          -1.8430424051383907,
+          -0.813117426114772,
+          1.714020007762004
+        ],
+        &quot;min&quot;: -2.182532136173208,
+        &quot;max&quot;: 4.270275721987286,
+        &quot;std&quot;: 0.7950230106933123
+      },
+      &quot;display16_delta_ab&quot;: {
+        &quot;n&quot;: 12320,
+        &quot;p01_p50_p99&quot;: [
+          0.5724720296199698,
+          6.729356869343017,
+          11.379746158125476
+        ],
+        &quot;min&quot;: 0.03471853973611607,
+        &quot;max&quot;: 17.68820404433496,
+        &quot;std&quot;: 2.633845847503809
+      },
+      &quot;equal_Y_abs_hue_shift&quot;: {
+        &quot;n&quot;: 12320,
+        &quot;p01_p50_p99&quot;: [
+          0.3699665894892473,
+          8.09251392886327,
+          79.55920021388555
+        ],
+        &quot;min&quot;: 0.011598108472782087,
+        &quot;max&quot;: 179.33882995336518,
+        &quot;std&quot;: 14.361891113598464
+      },
+      &quot;note&quot;: &quot;ROI diagnostics, not true skin or film-color targets; hue unreliable near neutral&quot;
+    },
+    &quot;arm&quot;: {
+      &quot;floor_fraction&quot;: 0.0,
+      &quot;input_linear_Y&quot;: {
+        &quot;n&quot;: 2684,
+        &quot;p01_p50_p99&quot;: [
+          0.08576361238118758,
+          0.291300704941494,
+          0.4003855025105328
+        ],
+        &quot;min&quot;: 0.06014495664876662,
+        &quot;max&quot;: 0.4581098857792079,
+        &quot;std&quot;: 0.061454182023205586
+      },
+      &quot;output_linear_Y&quot;: {
+        &quot;n&quot;: 2684,
+        &quot;p01_p50_p99&quot;: [
+          0.08152237429934714,
+          0.27834989019859735,
+          0.38283420081899766
+        ],
+        &quot;min&quot;: 0.059845516565608985,
+        &quot;max&quot;: 0.4382167017008722,
+        &quot;std&quot;: 0.05991980711319483
+      },
+      &quot;Digital_mean_Lab_D65&quot;: [
+        58.14784236679975,
+        9.98741597166648,
+        14.777957601948481
+      ],
+      &quot;v02_mean_Lab_D65&quot;: [
+        57.160970412180944,
+        3.8802809810913153,
+        10.168154961529664
+      ],
+      &quot;display16_deltaL&quot;: {
+        &quot;n&quot;: 2684,
+        &quot;p01_p50_p99&quot;: [
+          -1.4077391670528088,
+          -0.966794044353982,
+          -0.6397934070574611
+        ],
+        &quot;min&quot;: -1.6271660744120595,
+        &quot;max&quot;: 0.05330608890429289,
+        &quot;std&quot;: 0.16964330835571922
+      },
+      &quot;display16_delta_ab&quot;: {
+        &quot;n&quot;: 2684,
+        &quot;p01_p50_p99&quot;: [
+          6.388628538565281,
+          7.625636330236144,
+          10.085602348611111
+        ],
+        &quot;min&quot;: 5.743298636512051,
+        &quot;max&quot;: 12.580811095220907,
+        &quot;std&quot;: 0.6425393526324925
+      },
+      &quot;equal_Y_abs_hue_shift&quot;: {
+        &quot;n&quot;: 2684,
+        &quot;p01_p50_p99&quot;: [
+          2.7648665707873206,
+          12.086426711983322,
+          13.144619774366463
+        ],
+        &quot;min&quot;: 0.1187128122369927,
+        &quot;max&quot;: 13.717720525534531,
+        &quot;std&quot;: 1.694668457739993
+      },
+      &quot;note&quot;: &quot;ROI diagnostics, not true skin or film-color targets; hue unreliable near neutral&quot;
+    },
+    &quot;uniform&quot;: {
+      &quot;floor_fraction&quot;: 0.0,
+      &quot;input_linear_Y&quot;: {
+        &quot;n&quot;: 17748,
+        &quot;p01_p50_p99&quot;: [
+          0.009283146920549665,
+          0.33687752550335526,
+          0.7872408695731395
+        ],
+        &quot;min&quot;: 0.006444396813921723,
+        &quot;max&quot;: 0.8407659681103824,
+        &quot;std&quot;: 0.19806854523127967
+      },
+      &quot;output_linear_Y&quot;: {
+        &quot;n&quot;: 17748,
+        &quot;p01_p50_p99&quot;: [
+          0.009521738253711066,
+          0.3427182090932831,
+          0.7948785690586941
+        ],
+        &quot;min&quot;: 0.00673818905192092,
+        &quot;max&quot;: 0.842856060591191,
+        &quot;std&quot;: 0.2014567827084259
+      },
+      &quot;Digital_mean_Lab_D65&quot;: [
+        60.946222254902494,
+        2.736985854626601,
+        -15.757994128829464
+      ],
+      &quot;v02_mean_Lab_D65&quot;: [
+        61.22861067036561,
+        0.9417813773865026,
+        -9.043342109887062
+      ],
+      &quot;display16_deltaL&quot;: {
+        &quot;n&quot;: 17748,
+        &quot;p01_p50_p99&quot;: [
+          0.019698956811102734,
+          0.280984586940793,
+          0.5433165970142955
+        ],
+        &quot;min&quot;: -0.2702186555634114,
+        &quot;max&quot;: 3.4862075841380786,
+        &quot;std&quot;: 0.13478283061335186
+      },
+      &quot;display16_delta_ab&quot;: {
+        &quot;n&quot;: 17748,
+        &quot;p01_p50_p99&quot;: [
+          1.340492144600082,
+          6.681680371062775,
+          11.787092823277284
+        ],
+        &quot;min&quot;: 0.40162450282686585,
+        &quot;max&quot;: 18.137665059552354,
+        &quot;std&quot;: 2.6926404932076538
+      },
+      &quot;equal_Y_abs_hue_shift&quot;: {
+        &quot;n&quot;: 17748,
+        &quot;p01_p50_p99&quot;: [
+          0.4898270530183663,
+          4.0289924755252855,
+          5.996994670171536
+        ],
+        &quot;min&quot;: 0.00309501720175831,
+        &quot;max&quot;: 22.53678492135444,
+        &quot;std&quot;: 1.2449469676272173
+      },
+      &quot;note&quot;: &quot;ROI diagnostics, not true skin or film-color targets; hue unreliable near neutral&quot;
+    },
+    &quot;dark_clothing&quot;: {
+      &quot;floor_fraction&quot;: 0.016679160419790104,
+      &quot;input_linear_Y&quot;: {
+        &quot;n&quot;: 5336,
+        &quot;p01_p50_p99&quot;: [
+          0.002439444269994434,
+          0.015981335319258366,
+          0.025974754618332773
+        ],
+        &quot;min&quot;: 0.0016108809670469257,
+        &quot;max&quot;: 0.0827882281795375,
+        &quot;std&quot;: 0.006971814284260936
+      },
+      &quot;output_linear_Y&quot;: {
+        &quot;n&quot;: 5336,
+        &quot;p01_p50_p99&quot;: [
+          0.00287500001380778,
+          0.01730312123532761,
+          0.027746123368208725
+        ],
+        &quot;min&quot;: 0.002874999906208366,
+        &quot;max&quot;: 0.08293216592394485,
+        &quot;std&quot;: 0.007324548707768109
+      },
+      &quot;Digital_mean_Lab_D65&quot;: [
+        12.609856292661203,
+        1.4656225529545182,
+        -10.449263509313022
+      ],
+      &quot;v02_mean_Lab_D65&quot;: [
+        13.140862735774549,
+        0.2644311720078431,
+        -1.15769751839817
+      ],
+      &quot;display16_deltaL&quot;: {
+        &quot;n&quot;: 5336,
+        &quot;p01_p50_p99&quot;: [
+          0.06300457837401333,
+          0.560798627273206,
+          0.8728832076961204
+        ],
+        &quot;min&quot;: -0.04957756207669206,
+        &quot;max&quot;: 1.0502546580339391,
+        &quot;std&quot;: 0.17461556551139956
+      },
+      &quot;display16_delta_ab&quot;: {
+        &quot;n&quot;: 5336,
+        &quot;p01_p50_p99&quot;: [
+          2.8273048645440166,
+          9.817011439422554,
+          12.568985970010079
+        ],
+        &quot;min&quot;: 1.2874397186121704,
+        &quot;max&quot;: 14.661252063129536,
+        &quot;std&quot;: 1.8916400150564856
+      },
+      &quot;equal_Y_abs_hue_shift&quot;: {
+        &quot;n&quot;: 5336,
+        &quot;p01_p50_p99&quot;: [
+          0.11765468795331913,
+          5.381968115001243,
+          36.867257674753034
+        ],
+        &quot;min&quot;: 0.00666738898848962,
+        &quot;max&quot;: 169.9762266716025,
+        &quot;std&quot;: 7.771789074598821
+      },
+      &quot;note&quot;: &quot;ROI diagnostics, not true skin or film-color targets; hue unreliable near neutral&quot;
+    },
+    &quot;background&quot;: {
+      &quot;floor_fraction&quot;: 0.0,
+      &quot;input_linear_Y&quot;: {
+        &quot;n&quot;: 9020,
+        &quot;p01_p50_p99&quot;: [
+          0.07890980358400727,
+          0.09875267281983943,
+          0.12409079620721014
+        ],
+        &quot;min&quot;: 0.07202433835429772,
+        &quot;max&quot;: 0.12952814721179381,
+        &quot;std&quot;: 0.011687600478284516
+      },
+      &quot;output_linear_Y&quot;: {
+        &quot;n&quot;: 9020,
+        &quot;p01_p50_p99&quot;: [
+          0.07843686134184946,
+          0.0979628117680747,
+          0.12332799671803314
+        ],
+        &quot;min&quot;: 0.07121824146751166,
+        &quot;max&quot;: 0.12853164259912744,
+        &quot;std&quot;: 0.01159513992499581
+      },
+      &quot;Digital_mean_Lab_D65&quot;: [
+        37.87665024160005,
+        2.797914335725721,
+        6.770025301294735
+      ],
+      &quot;v02_mean_Lab_D65&quot;: [
+        37.77079174166534,
+        1.587592068174022,
+        5.180853525130237
+      ],
+      &quot;display16_deltaL&quot;: {
+        &quot;n&quot;: 9020,
+        &quot;p01_p50_p99&quot;: [
+          -0.2569771025616289,
+          -0.10362533683841235,
+          0.03656369546532645
+        ],
+        &quot;min&quot;: -0.38415446508136597,
+        &quot;max&quot;: 0.1311804482478678,
+        &quot;std&quot;: 0.061360500767827
+      },
+      &quot;display16_delta_ab&quot;: {
+        &quot;n&quot;: 9020,
+        &quot;p01_p50_p99&quot;: [
+          1.1001206779700845,
+          1.959533713098914,
+          3.4636390324264466
+        ],
+        &quot;min&quot;: 0.7224328201677789,
+        &quot;max&quot;: 4.132944469784908,
+        &quot;std&quot;: 0.5217752494038191
+      },
+      &quot;equal_Y_abs_hue_shift&quot;: {
+        &quot;n&quot;: 9020,
+        &quot;p01_p50_p99&quot;: [
+          3.699771019214327,
+          4.818301005048468,
+          5.801627872128197
+        ],
+        &quot;min&quot;: 2.28671237006256,
+        &quot;max&quot;: 6.346204490784771,
+        &quot;std&quot;: 0.4487599244469068
+      },
+      &quot;note&quot;: &quot;ROI diagnostics, not true skin or film-color targets; hue unreliable near neutral&quot;
+    }
+  },
+  &quot;floor_decomposition&quot;: {
+    &quot;decoded_zero_on_floor_pixels&quot;: 76218,
+    &quot;decoded_zero_on_floor_fraction_of_frame&quot;: 0.10168256915983606,
+    &quot;nonzero_input_on_floor_pixels&quot;: 4366,
+    &quot;nonzero_input_on_floor_fraction_of_frame&quot;: 0.0058246883538251365,
+    &quot;nonzero_input_on_floor_fraction_of_nonzero_input&quot;: 0.006483997920843544,
+    &quot;interpretation&quot;: &quot;Already-zero decoded pixels contain no input luminance variation to lose; lifting them to the reconstruction floor is different from flattening nonzero shadows.&quot;
+  },
+  &quot;floor&quot;: {
+    &quot;input_linear_Y&quot;: {
+      &quot;n&quot;: 80584,
+      &quot;p01_p50_p99&quot;: [
+        0.0,
+        0.0,
+        0.0026093619680212124
+      ],
+      &quot;min&quot;: 0.0,
+      &quot;max&quot;: 0.0029604032235420537,
+      &quot;std&quot;: 0.0004954699465069631
+    },
+    &quot;output_linear_Y&quot;: {
+      &quot;n&quot;: 80584,
+      &quot;p01_p50_p99&quot;: [
+        0.002874999940109719,
+        0.002874999940109719,
+        0.0028750000501894745
+      ],
+      &quot;min&quot;: 0.0028749998860995514,
+      &quot;max&quot;: 0.0028750001137641955,
+      &quot;std&quot;: 1.781828128056049e-11
+    },
+    &quot;display16_deltaL_vs_digital&quot;: {
+      &quot;n&quot;: 80584,
+      &quot;p01_p50_p99&quot;: [
+        0.22815838924277457,
+        2.596341948004593,
+        2.596341948004593
+      ],
+      &quot;min&quot;: -0.05340092074163039,
+      &quot;max&quot;: 2.596341948004593,
+      &quot;std&quot;: 0.45002965275638507
+    },
+    &quot;display16_delta_ab_distance_vs_digital&quot;: {
+      &quot;n&quot;: 80584,
+      &quot;p01_p50_p99&quot;: [
+        0.006316639517058905,
+        0.006316639517058905,
+        2.48979425525223
+      ],
+      &quot;min&quot;: 0.006316639517058905,
+      &quot;max&quot;: 9.256672685190342,
+      &quot;std&quot;: 0.4459077000765678
+    },
+    &quot;display16_deltaE00_vs_digital&quot;: {
+      &quot;n&quot;: 80584,
+      &quot;p01_p50_p99&quot;: [
+        0.8425053397644694,
+        1.5029964919934276,
+        2.5911489835634187
+      ],
+      &quot;min&quot;: 0.09904431021334864,
+      &quot;max&quot;: 8.505522948917575,
+      &quot;std&quot;: 0.25336962137377933
+    },
+    &quot;equal_Y_chromaticity_abs_hue_shift&quot;: {
+      &quot;n&quot;: 0
+    },
+    &quot;equal_Y_chroma_ratio&quot;: {
+      &quot;n&quot;: 0
+    },
+    &quot;color_note&quot;: &quot;equal-Y Lab is an analysis coordinate only, not a re-render or reference target&quot;
+  },
+  &quot;floor_with_nonzero_input&quot;: {
+    &quot;input_linear_Y&quot;: {
+      &quot;n&quot;: 4366,
+      &quot;p01_p50_p99&quot;: [
+        0.0010070743729249027,
+        0.002190064328484575,
+        0.0029038157671578847
+      ],
+      &quot;min&quot;: 0.0005801788859563181,
+      &quot;max&quot;: 0.0029604032235420537,
+      &quot;std&quot;: 0.00047210787838284485
+    },
+    &quot;output_linear_Y&quot;: {
+      &quot;n&quot;: 4366,
+      &quot;p01_p50_p99&quot;: [
+        0.00287499989862227,
+        0.0028749999985838892,
+        0.002875000100360336
+      ],
+      &quot;min&quot;: 0.0028749998860995514,
+      &quot;max&quot;: 0.0028750001137641955,
+      &quot;std&quot;: 5.130574493035421e-11
+    },
+    &quot;display16_deltaL_vs_digital&quot;: {
+      &quot;n&quot;: 4366,
+      &quot;p01_p50_p99&quot;: [
+        -0.020574139326729045,
+        0.6036648690322419,
+        1.6688956538888218
+      ],
+      &quot;min&quot;: -0.05340092074163039,
+      &quot;max&quot;: 2.054950890106806,
+      &quot;std&quot;: 0.42437877258980977
+    },
+    &quot;display16_delta_ab_distance_vs_digital&quot;: {
+      &quot;n&quot;: 4366,
+      &quot;p01_p50_p99&quot;: [
+        0.11616146528972922,
+        1.2127135311025325,
+        5.42128974040828
+      ],
+      &quot;min&quot;: 0.029234811276809942,
+      &quot;max&quot;: 9.256672685190342,
+      &quot;std&quot;: 1.1920260281881423
+    },
+    &quot;display16_deltaE00_vs_digital&quot;: {
+      &quot;n&quot;: 4366,
+      &quot;p01_p50_p99&quot;: [
+        0.30451499090041484,
+        1.5239061636830078,
+        5.119300313903589
+      ],
+      &quot;min&quot;: 0.09904431021334864,
+      &quot;max&quot;: 8.505522948917575,
+      &quot;std&quot;: 1.0597627923989237
+    },
+    &quot;equal_Y_chromaticity_abs_hue_shift&quot;: {
+      &quot;n&quot;: 0
+    },
+    &quot;equal_Y_chroma_ratio&quot;: {
+      &quot;n&quot;: 0
+    },
+    &quot;color_note&quot;: &quot;equal-Y Lab is an analysis coordinate only, not a re-render or reference target&quot;
+  },
+  &quot;nonfloor&quot;: {
+    &quot;input_linear_Y&quot;: {
+      &quot;n&quot;: 668984,
+      &quot;p01_p50_p99&quot;: [
+        0.004282555286820647,
+        0.09767769716865421,
+        0.8930569825491682
+      ],
+      &quot;min&quot;: 0.002334326585250348,
+      &quot;max&quot;: 0.9913203285140931,
+      &quot;std&quot;: 0.21765869763530835
+    },
+    &quot;output_linear_Y&quot;: {
+      &quot;n&quot;: 668984,
+      &quot;p01_p50_p99&quot;: [
+        0.004361296318928858,
+        0.09590862699493542,
+        0.8899351282921824
+      ],
+      &quot;min&quot;: 0.0028751468884374016,
+      &quot;max&quot;: 0.9921071914955496,
+      &quot;std&quot;: 0.21889385535676933
+    },
+    &quot;display16_deltaL_vs_digital&quot;: {
+      &quot;n&quot;: 668984,
+      &quot;p01_p50_p99&quot;: [
+        -1.6800006882193228,
+        0.05046169239157017,
+        1.0817602104982191
+      ],
+      &quot;min&quot;: -4.669566968797291,
+      &quot;max&quot;: 6.487891583040341,
+      &quot;std&quot;: 0.5530646986080346
+    },
+    &quot;display16_delta_ab_distance_vs_digital&quot;: {
+      &quot;n&quot;: 668984,
+      &quot;p01_p50_p99&quot;: [
+        0.6299632910138582,
+        5.469530061216286,
+        12.30548742718099
+      ],
+      &quot;min&quot;: 0.011150384901368186,
+      &quot;max&quot;: 27.979809568589577,
+      &quot;std&quot;: 3.1209152080122227
+    },
+    &quot;display16_deltaE00_vs_digital&quot;: {
+      &quot;n&quot;: 668984,
+      &quot;p01_p50_p99&quot;: [
+        0.6839662602342849,
+        4.607770208401687,
+        9.227985489761569
+      ],
+      &quot;min&quot;: 0.03215269980157452,
+      &quot;max&quot;: 16.969709804911464,
+      &quot;std&quot;: 2.118554089746196
+    },
+    &quot;equal_Y_chromaticity_abs_hue_shift&quot;: {
+      &quot;n&quot;: 534613,
+      &quot;p01_p50_p99&quot;: [
+        0.22830837922712022,
+        4.775745761393409,
+        14.810398894832245
+      ],
+      &quot;min&quot;: 9.975396778827417e-06,
+      &quot;max&quot;: 34.53081679199835,
+      &quot;std&quot;: 3.630395247523861
+    },
+    &quot;equal_Y_chroma_ratio&quot;: {
+      &quot;n&quot;: 534613,
+      &quot;p01_p50_p99&quot;: [
+        0.06635629621551682,
+        0.5760681898825704,
+        0.8409756132253389
+      ],
+      &quot;min&quot;: 0.01716881117443482,
+      &quot;max&quot;: 0.9516563471397975,
+      &quot;std&quot;: 0.19640400367956945
+    },
+    &quot;color_note&quot;: &quot;equal-Y Lab is an analysis coordinate only, not a re-render or reference target&quot;
+  },
+  &quot;horizontal_floor_neighbor_contrast&quot;: {
+    &quot;pairs&quot;: 78491,
+    &quot;input_abs_EV_step&quot;: {
+      &quot;n&quot;: 78491,
+      &quot;p01_p50_p99&quot;: [
+        0.0,
+        0.0,
+        0.34623398279086626
+      ],
+      &quot;min&quot;: 0.0,
+      &quot;max&quot;: 1.8564913251704738,
+      &quot;std&quot;: 0.06220320548375647
+    },
+    &quot;output_abs_EV_step&quot;: {
+      &quot;n&quot;: 78491,
+      &quot;p01_p50_p99&quot;: [
+        0.0,
+        0.0,
+        4.565910547427257e-08
+      ],
+      &quot;min&quot;: 0.0,
+      &quot;max&quot;: 1.0624613722143295e-07,
+      &quot;std&quot;: 7.552397366270615e-09
+    }
+  }
+}</pre></details><h2 id="DSC02337">DSC02337 — backlit outdoor portrait / foliage / bright sky</h2><img style="max-width:360px" src="DSC02337/ROI_locations.png"><h3>phoenix_i</h3><main><figure><figcaption>Digital</figcaption><img src="DSC02337/digital_baseline.png"></figure><figure><figcaption>Round5</figcaption><img src="DSC02337/round5_phoenix_i.png"></figure><figure><figcaption>v01</figcaption><img src="DSC02337/research_v01_phoenix_i.png"></figure><figure><figcaption>v02</figcaption><img src="DSC02337/research_phoenix_i.png"></figure></main><main><img src="DSC02337/phoenix_i_floor_overlay.png"><img src="DSC02337/phoenix_i_floor_mask.png"><img src="DSC02337/phoenix_i_tone.png"></main><h4>face</h4><main><figure><figcaption>Digital</figcaption><img src="DSC02337/phoenix_i_face_Digital.png"></figure><figure><figcaption>v02</figcaption><img src="DSC02337/phoenix_i_face_v02.png"></figure></main><h4>hair</h4><main><figure><figcaption>Digital</figcaption><img src="DSC02337/phoenix_i_hair_Digital.png"></figure><figure><figcaption>v02</figcaption><img src="DSC02337/phoenix_i_hair_v02.png"></figure></main><h4>sky</h4><main><figure><figcaption>Digital</figcaption><img src="DSC02337/phoenix_i_sky_Digital.png"></figure><figure><figcaption>v02</figcaption><img src="DSC02337/phoenix_i_sky_v02.png"></figure></main><h4>foliage</h4><main><figure><figcaption>Digital</figcaption><img src="DSC02337/phoenix_i_foliage_Digital.png"></figure><figure><figcaption>v02</figcaption><img src="DSC02337/phoenix_i_foliage_v02.png"></figure></main><h4>patterned_shirt</h4><main><figure><figcaption>Digital</figcaption><img src="DSC02337/phoenix_i_patterned_shirt_Digital.png"></figure><figure><figcaption>v02</figcaption><img src="DSC02337/phoenix_i_patterned_shirt_v02.png"></figure></main><h4>white_sleeve</h4><main><figure><figcaption>Digital</figcaption><img src="DSC02337/phoenix_i_white_sleeve_Digital.png"></figure><figure><figcaption>v02</figcaption><img src="DSC02337/phoenix_i_white_sleeve_v02.png"></figure></main><details><summary>Endpoint and ROI numbers</summary><pre>{
+  &quot;floor_pixels&quot;: 77918,
+  &quot;pixels&quot;: 749568,
+  &quot;floor_fraction&quot;: 0.10395054217896176,
+  &quot;ceiling_pixels&quot;: 0,
+  &quot;floor_max_relative_Y_error&quot;: 3.9653253347538e-08,
+  &quot;stage_bounds&quot;: {
+    &quot;Y_constraint_pass&quot;: true,
+    &quot;endpoint_saturated_pixels&quot;: 77918,
+    &quot;log_chromatic_norm_bound&quot;: 1.3862943611198906,
+    &quot;maximum_channel_ratio&quot;: 3.7459421267898034,
+    &quot;maximum_relative_Y_vs_scalar_exposure_error&quot;: 5.926620350038547e-08,
+    &quot;ratio_bound_pass&quot;: true
+  },
+  &quot;regions&quot;: {
+    &quot;face&quot;: {
+      &quot;floor_fraction&quot;: 0.0,
+      &quot;input_linear_Y&quot;: {
+        &quot;n&quot;: 6561,
+        &quot;p01_p50_p99&quot;: [
+          0.020450580059361494,
+          0.09315576553850323,
+          0.12574279899109853
+        ],
+        &quot;min&quot;: 0.007448899881739822,
+        &quot;max&quot;: 0.12974411578669398,
+        &quot;std&quot;: 0.02469705539259206
+      },
+      &quot;output_linear_Y&quot;: {
+        &quot;n&quot;: 6561,
+        &quot;p01_p50_p99&quot;: [
+          0.022675376511631307,
+          0.09419306525778473,
+          0.1279980616086763
+        ],
+        &quot;min&quot;: 0.007541214150467003,
+        &quot;max&quot;: 0.1323792194442041,
+        &quot;std&quot;: 0.024963789845983506
+      },
+      &quot;Digital_mean_Lab_D65&quot;: [
+        34.89703085948121,
+        6.954889391051059,
+        9.036519323404633
+      ],
+      &quot;v02_mean_Lab_D65&quot;: [
+        35.129443684359345,
+        7.825079399943821,
+        7.830463265962295
+      ],
+      &quot;display16_deltaL&quot;: {
+        &quot;n&quot;: 6561,
+        &quot;p01_p50_p99&quot;: [
+          -0.014487919738401444,
+          0.20126711546684817,
+          1.0669895920137205
+        ],
+        &quot;min&quot;: -0.36884822677183493,
+        &quot;max&quot;: 2.4081623825511613,
+        &quot;std&quot;: 0.18556450037149555
+      },
+      &quot;display16_delta_ab&quot;: {
+        &quot;n&quot;: 6561,
+        &quot;p01_p50_p99&quot;: [
+          0.8561948057713977,
+          3.3032913160344934,
+          9.702494210767618
+        ],
+        &quot;min&quot;: 0.29298984623373997,
+        &quot;max&quot;: 11.634706655061041,
+        &quot;std&quot;: 1.7462522146331745
+      },
+      &quot;equal_Y_abs_hue_shift&quot;: {
+        &quot;n&quot;: 6561,
+        &quot;p01_p50_p99&quot;: [
+          0.5805639763131353,
+          7.440619212082709,
+          18.25756498020698
+        ],
+        &quot;min&quot;: 0.033667406666893385,
+        &quot;max&quot;: 40.352241358272096,
+        &quot;std&quot;: 3.909331504036239
+      },
+      &quot;note&quot;: &quot;ROI diagnostics, not true skin or film-color targets; hue unreliable near neutral&quot;
+    },
+    &quot;hair&quot;: {
+      &quot;floor_fraction&quot;: 0.005390185036202736,
+      &quot;input_linear_Y&quot;: {
+        &quot;n&quot;: 12430,
+        &quot;p01_p50_p99&quot;: [
+          0.00420024864983578,
+          0.011333211903958255,
+          0.034096353081799244
+        ],
+        &quot;min&quot;: 0.00236882575209972,
+        &quot;max&quot;: 0.09117313963847011,
+        &quot;std&quot;: 0.005898369004483798
+      },
+      &quot;output_linear_Y&quot;: {
+        &quot;n&quot;: 12430,
+        &quot;p01_p50_p99&quot;: [
+          0.0034328016238957112,
+          0.011496501272984502,
+          0.035060541687819045
+        ],
+        &quot;min&quot;: 0.002874999915983109,
+        &quot;max&quot;: 0.09848473171224743,
+        &quot;std&quot;: 0.006344505231912727
+      },
+      &quot;Digital_mean_Lab_D65&quot;: [
+        10.396555571814554,
+        0.2637105377963717,
+        -1.8595891524952224
+      ],
+      &quot;v02_mean_Lab_D65&quot;: [
+        10.415065038184235,
+        0.1512188177826489,
+        -0.34803781443011905
+      ],
+      &quot;display16_deltaL&quot;: {
+        &quot;n&quot;: 12430,
+        &quot;p01_p50_p99&quot;: [
+          -1.7233921180936227,
+          0.06394304356909153,
+          1.7253216098739892
+        ],
+        &quot;min&quot;: -3.064553084435204,
+        &quot;max&quot;: 2.803465445124175,
+        &quot;std&quot;: 0.738935007843699
+      },
+      &quot;display16_delta_ab&quot;: {
+        &quot;n&quot;: 12430,
+        &quot;p01_p50_p99&quot;: [
+          0.2936842318104459,
+          2.135523269529152,
+          5.117832443048388
+        ],
+        &quot;min&quot;: 0.03910886669654938,
+        &quot;max&quot;: 11.141297594294839,
+        &quot;std&quot;: 1.0975347249332166
+      },
+      &quot;equal_Y_abs_hue_shift&quot;: {
+        &quot;n&quot;: 12430,
+        &quot;p01_p50_p99&quot;: [
+          0.11354755443802475,
+          10.106644005472631,
+          63.66726624840489
+        ],
+        &quot;min&quot;: 0.001022667905289154,
+        &quot;max&quot;: 90.25631430493746,
+        &quot;std&quot;: 14.799609075924414
+      },
+      &quot;note&quot;: &quot;ROI diagnostics, not true skin or film-color targets; hue unreliable near neutral&quot;
+    },
+    &quot;sky&quot;: {
+      &quot;floor_fraction&quot;: 0.0,
+      &quot;input_linear_Y&quot;: {
+        &quot;n&quot;: 28928,
+        &quot;p01_p50_p99&quot;: [
+          0.3091658342084313,
+          0.9999956035476685,
+          0.9999956035476685
+        ],
+        &quot;min&quot;: 0.1337233019043773,
+        &quot;max&quot;: 0.9999956035476685,
+        &quot;std&quot;: 0.112593084253856
+      },
+      &quot;output_linear_Y&quot;: {
+        &quot;n&quot;: 28928,
+        &quot;p01_p50_p99&quot;: [
+          0.261104977099082,
+          1.0013414695434688,
+          1.0030569745710212
+        ],
+        &quot;min&quot;: 0.1264976659471348,
+        &quot;max&quot;: 1.0070405433362484,
+        &quot;std&quot;: 0.1286985674905578
+      },
+      &quot;Digital_mean_Lab_D65&quot;: [
+        83.6138712490509,
+        -0.5659550322215614,
+        -0.6901791625129687
+      ],
+      &quot;v02_mean_Lab_D65&quot;: [
+        83.43710817351857,
+        -1.047124596211019,
+        -1.302710304870119
+      ],
+      &quot;display16_deltaL&quot;: {
+        &quot;n&quot;: 28928,
+        &quot;p01_p50_p99&quot;: [
+          -3.9488426415773388,
+          0.015721449446246538,
+          0.03502094454755422
+        ],
+        &quot;min&quot;: -5.4376130219108205,
+        &quot;max&quot;: 0.08017462015844501,
+        &quot;std&quot;: 0.7709746701015083
+      },
+      &quot;display16_delta_ab&quot;: {
+        &quot;n&quot;: 28928,
+        &quot;p01_p50_p99&quot;: [
+          0.005839960137899911,
+          0.006914408862049564,
+          16.655926632199773
+        ],
+        &quot;min&quot;: 0.0058398494154906075,
+        &quot;max&quot;: 17.69038884380053,
+        &quot;std&quot;: 3.2428437802509005
+      },
+      &quot;equal_Y_abs_hue_shift&quot;: {
+        &quot;n&quot;: 28928,
+        &quot;p01_p50_p99&quot;: [
+          1.5734803252311416,
+          20.091423940587106,
+          41.148234985149706
+        ],
+        &quot;min&quot;: 0.0032300394289563883,
+        &quot;max&quot;: 65.82773025565521,
+        &quot;std&quot;: 5.801808135825846
+      },
+      &quot;note&quot;: &quot;ROI diagnostics, not true skin or film-color targets; hue unreliable near neutral&quot;
+    },
+    &quot;foliage&quot;: {
+      &quot;floor_fraction&quot;: 0.0,
+      &quot;input_linear_Y&quot;: {
+        &quot;n&quot;: 22968,
+        &quot;p01_p50_p99&quot;: [
+          0.23794466281716434,
+          0.3683182937812127,
+          0.4644685533849127
+        ],
+        &quot;min&quot;: 0.03138946997336112,
+        &quot;max&quot;: 0.49639576353546677,
+        &quot;std&quot;: 0.055225094013235845
+      },
+      &quot;output_linear_Y&quot;: {
+        &quot;n&quot;: 22968,
+        &quot;p01_p50_p99&quot;: [
+          0.19654035577544265,
+          0.26969900362696164,
+          0.3435649647670552
+        ],
+        &quot;min&quot;: 0.02944880513239782,
+        &quot;max&quot;: 0.3788821498914651,
+        &quot;std&quot;: 0.035572799606257935
+      },
+      &quot;Digital_mean_Lab_D65&quot;: [
+        64.7314901669102,
+        -19.849703230026464,
+        24.614536918962617
+      ],
+      &quot;v02_mean_Lab_D65&quot;: [
+        57.95963023045183,
+        -39.23164734236273,
+        35.62422060841997
+      ],
+      &quot;display16_deltaL&quot;: {
+        &quot;n&quot;: 22968,
+        &quot;p01_p50_p99&quot;: [
+          -8.226292042663408,
+          -6.968358434232584,
+          -4.284216687007991
+        ],
+        &quot;min&quot;: -8.92882564662537,
+        &quot;max&quot;: -0.16474647131399678,
+        &quot;std&quot;: 0.9724876403775676
+      },
+      &quot;display16_delta_ab&quot;: {
+        &quot;n&quot;: 22968,
+        &quot;p01_p50_p99&quot;: [
+          17.25609586093026,
+          22.506034650128864,
+          25.89927401415273
+        ],
+        &quot;min&quot;: 2.7201289786322356,
+        &quot;max&quot;: 26.491249535555024,
+        &quot;std&quot;: 2.253770903666994
+      },
+      &quot;equal_Y_abs_hue_shift&quot;: {
+        &quot;n&quot;: 22968,
+        &quot;p01_p50_p99&quot;: [
+          6.596214261204378,
+          9.571043201687857,
+          12.38064565476459
+        ],
+        &quot;min&quot;: 3.340031758272602,
+        &quot;max&quot;: 14.03535835243082,
+        &quot;std&quot;: 1.1702822336529426
+      },
+      &quot;note&quot;: &quot;ROI diagnostics, not true skin or film-color targets; hue unreliable near neutral&quot;
+    },
+    &quot;patterned_shirt&quot;: {
+      &quot;floor_fraction&quot;: 0.0,
+      &quot;input_linear_Y&quot;: {
+        &quot;n&quot;: 16848,
+        &quot;p01_p50_p99&quot;: [
+          0.007523537657859371,
+          0.02999758965042075,
+          0.0772224584052635
+        ],
+        &quot;min&quot;: 0.0031521175730816085,
+        &quot;max&quot;: 0.09661364376714603,
+        &quot;std&quot;: 0.015852790417339353
+      },
+      &quot;output_linear_Y&quot;: {
+        &quot;n&quot;: 16848,
+        &quot;p01_p50_p99&quot;: [
+          0.007056130167845065,
+          0.029726705814836545,
+          0.07756597294760854
+        ],
+        &quot;min&quot;: 0.0031799139820391543,
+        &quot;max&quot;: 0.09717160772561728,
+        &quot;std&quot;: 0.016084087180728776
+      },
+      &quot;Digital_mean_Lab_D65&quot;: [
+        20.072822052829192,
+        -1.352501811702539,
+        -2.990977400835522
+      ],
+      &quot;v02_mean_Lab_D65&quot;: [
+        19.87273336398375,
+        -0.3298065187900848,
+        -0.7713223878190257
+      ],
+      &quot;display16_deltaL&quot;: {
+        &quot;n&quot;: 16848,
+        &quot;p01_p50_p99&quot;: [
+          -1.2062449856790884,
+          -0.11644793459785774,
+          0.3425049201717782
+        ],
+        &quot;min&quot;: -2.2494048986915196,
+        &quot;max&quot;: 2.010663062004788,
+        &quot;std&quot;: 0.2988218393546496
+      },
+      &quot;display16_delta_ab&quot;: {
+        &quot;n&quot;: 16848,
+        &quot;p01_p50_p99&quot;: [
+          0.18834848014277178,
+          2.396586492592922,
+          7.397106484912591
+        ],
+        &quot;min&quot;: 0.01410896697166824,
+        &quot;max&quot;: 9.973282221295438,
+        &quot;std&quot;: 1.6406865899651644
+      },
+      &quot;equal_Y_abs_hue_shift&quot;: {
+        &quot;n&quot;: 16848,
+        &quot;p01_p50_p99&quot;: [
+          0.31022978701641934,
+          9.223059846870342,
+          25.644865325893587
+        ],
+        &quot;min&quot;: 0.001640063145998738,
+        &quot;max&quot;: 59.65260832248239,
+        &quot;std&quot;: 5.393350070546315
+      },
+      &quot;note&quot;: &quot;ROI diagnostics, not true skin or film-color targets; hue unreliable near neutral&quot;
+    },
+    &quot;white_sleeve&quot;: {
+      &quot;floor_fraction&quot;: 0.0,
+      &quot;input_linear_Y&quot;: {
+        &quot;n&quot;: 14688,
+        &quot;p01_p50_p99&quot;: [
+          0.009209135632843304,
+          0.058790148548571765,
+          0.3745373089469017
+        ],
+        &quot;min&quot;: 0.00524085318713244,
+        &quot;max&quot;: 0.3857867834640801,
+        &quot;std&quot;: 0.14426508450906403
+      },
+      &quot;output_linear_Y&quot;: {
+        &quot;n&quot;: 14688,
+        &quot;p01_p50_p99&quot;: [
+          0.008777038315101127,
+          0.05907380035482347,
+          0.3421326912172453
+        ],
+        &quot;min&quot;: 0.005198931102569541,
+        &quot;max&quot;: 0.3640687735016674,
+        &quot;std&quot;: 0.13131994573818598
+      },
+      &quot;Digital_mean_Lab_D65&quot;: [
+        38.25314539007749,
+        -1.4611517416368711,
+        -6.926239089373887
+      ],
+      &quot;v02_mean_Lab_D65&quot;: [
+        37.52955210499435,
+        -2.7390803757204303,
+        -11.857238871991981
+      ],
+      &quot;display16_deltaL&quot;: {
+        &quot;n&quot;: 14688,
+        &quot;p01_p50_p99&quot;: [
+          -2.5057663566461033,
+          -0.4082501923088522,
+          0.5169892790449642
+        ],
+        &quot;min&quot;: -3.852167650995071,
+        &quot;max&quot;: 2.0510826422297335,
+        &quot;std&quot;: 0.8490170920105304
+      },
+      &quot;display16_delta_ab&quot;: {
+        &quot;n&quot;: 14688,
+        &quot;p01_p50_p99&quot;: [
+          0.5346438061063197,
+          6.044387226314703,
+          18.200014695543395
+        ],
+        &quot;min&quot;: 0.010666686142256342,
+        &quot;max&quot;: 19.270870851485558,
+        &quot;std&quot;: 6.732738656429557
+      },
+      &quot;equal_Y_abs_hue_shift&quot;: {
+        &quot;n&quot;: 14688,
+        &quot;p01_p50_p99&quot;: [
+          0.06143110081652907,
+          3.8358646517260127,
+          20.838367298869045
+        ],
+        &quot;min&quot;: 0.0010364732465291127,
+        &quot;max&quot;: 50.07450658252753,
+        &quot;std&quot;: 4.9623236496366925
+      },
+      &quot;note&quot;: &quot;ROI diagnostics, not true skin or film-color targets; hue unreliable near neutral&quot;
+    }
+  },
+  &quot;floor_decomposition&quot;: {
+    &quot;decoded_zero_on_floor_pixels&quot;: 76218,
+    &quot;decoded_zero_on_floor_fraction_of_frame&quot;: 0.10168256915983606,
+    &quot;nonzero_input_on_floor_pixels&quot;: 1700,
+    &quot;nonzero_input_on_floor_fraction_of_frame&quot;: 0.002267973019125683,
+    &quot;nonzero_input_on_floor_fraction_of_nonzero_input&quot;: 0.002524689982921215,
+    &quot;interpretation&quot;: &quot;Already-zero decoded pixels contain no input luminance variation to lose; lifting them to the reconstruction floor is different from flattening nonzero shadows.&quot;
+  },
+  &quot;floor&quot;: {
+    &quot;input_linear_Y&quot;: {
+      &quot;n&quot;: 77918,
+      &quot;p01_p50_p99&quot;: [
+        0.0,
+        0.0,
+        0.0031710944678662346
+      ],
+      &quot;min&quot;: 0.0,
+      &quot;max&quot;: 0.005438796155859623,
+      &quot;std&quot;: 0.000471801363252886
+    },
+    &quot;output_linear_Y&quot;: {
+      &quot;n&quot;: 77918,
+      &quot;p01_p50_p99&quot;: [
+        0.0028749999908473842,
+        0.002875000064978609,
+        0.002875000064978609
+      ],
+      &quot;min&quot;: 0.0028749998859968966,
+      &quot;max&quot;: 0.002875000112561556,
+      &quot;std&quot;: 1.2196862266332956e-11
+    },
+    &quot;display16_deltaL_vs_digital&quot;: {
+      &quot;n&quot;: 77918,
+      &quot;p01_p50_p99&quot;: [
+        -0.2795291524047114,
+        2.5957889806023857,
+        2.5957889806023857
+      ],
+      &quot;min&quot;: -2.328563825703597,
+      &quot;max&quot;: 2.5957889806023857,
+      &quot;std&quot;: 0.42771013843612554
+    },
+    &quot;display16_delta_ab_distance_vs_digital&quot;: {
+      &quot;n&quot;: 77918,
+      &quot;p01_p50_p99&quot;: [
+        0.13568585501474875,
+        0.13568585501474875,
+        1.3049173078175933
+      ],
+      &quot;min&quot;: 0.13568585501474875,
+      &quot;max&quot;: 4.19907393663727,
+      &quot;std&quot;: 0.18964992708691683
+    },
+    &quot;display16_deltaE00_vs_digital&quot;: {
+      &quot;n&quot;: 77918,
+      &quot;p01_p50_p99&quot;: [
+        1.5070764662137066,
+        1.5109184983148944,
+        1.629417978543262
+      ],
+      &quot;min&quot;: 0.31138982328619486,
+      &quot;max&quot;: 5.494311598226825,
+      &quot;std&quot;: 0.10743014672915933
+    },
+    &quot;equal_Y_chromaticity_abs_hue_shift&quot;: {
+      &quot;n&quot;: 10,
+      &quot;p01_p50_p99&quot;: [
+        15.094089403510024,
+        51.02499610528605,
+        52.81279543824211
+      ],
+      &quot;min&quot;: 14.937206555850906,
+      &quot;max&quot;: 52.86937516457078,
+      &quot;std&quot;: 14.011868678017043
+    },
+    &quot;equal_Y_chroma_ratio&quot;: {
+      &quot;n&quot;: 10,
+      &quot;p01_p50_p99&quot;: [
+        0.054753554628081964,
+        0.06127894150774721,
+        0.0670753839373172
+      ],
+      &quot;min&quot;: 0.054689727001244866,
+      &quot;max&quot;: 0.06710520229659919,
+      &quot;std&quot;: 0.004052765939228988
+    },
+    &quot;color_note&quot;: &quot;equal-Y Lab is an analysis coordinate only, not a re-render or reference target&quot;
+  },
+  &quot;floor_with_nonzero_input&quot;: {
+    &quot;input_linear_Y&quot;: {
+      &quot;n&quot;: 1700,
+      &quot;p01_p50_p99&quot;: [
+        0.0020312810065767238,
+        0.0031052761265372396,
+        0.004736329976772839
+      ],
+      &quot;min&quot;: 0.0015674278900752775,
+      &quot;max&quot;: 0.005438796155859623,
+      &quot;std&quot;: 0.0006054911696611355
+    },
+    &quot;output_linear_Y&quot;: {
+      &quot;n&quot;: 1700,
+      &quot;p01_p50_p99&quot;: [
+        0.0028749998974843963,
+        0.0028749999985397444,
+        0.002875000101647995
+      ],
+      &quot;min&quot;: 0.0028749998859968966,
+      &quot;max&quot;: 0.002875000112561556,
+      &quot;std&quot;: 5.21990843396739e-11
+    },
+    &quot;display16_deltaL_vs_digital&quot;: {
+      &quot;n&quot;: 1700,
+      &quot;p01_p50_p99&quot;: [
+        -1.6834275115051827,
+        -0.22114925806776142,
+        0.7448982305217394
+      ],
+      &quot;min&quot;: -2.328563825703597,
+      &quot;max&quot;: 1.149561689471728,
+      &quot;std&quot;: 0.5446144738616361
+    },
+    &quot;display16_delta_ab_distance_vs_digital&quot;: {
+      &quot;n&quot;: 1700,
+      &quot;p01_p50_p99&quot;: [
+        0.390348539463194,
+        1.2563885689663314,
+        3.003183558179995
+      ],
+      &quot;min&quot;: 0.20706141887076004,
+      &quot;max&quot;: 4.19907393663727,
+      &quot;std&quot;: 0.5207626706676467
+    },
+    &quot;display16_deltaE00_vs_digital&quot;: {
+      &quot;n&quot;: 1700,
+      &quot;p01_p50_p99&quot;: [
+        0.4833315657251141,
+        1.5612906974004703,
+        3.940841328496791
+      ],
+      &quot;min&quot;: 0.31138982328619486,
+      &quot;max&quot;: 5.494311598226825,
+      &quot;std&quot;: 0.7068832408648301
+    },
+    &quot;equal_Y_chromaticity_abs_hue_shift&quot;: {
+      &quot;n&quot;: 10,
+      &quot;p01_p50_p99&quot;: [
+        15.094089403510024,
+        51.02499610528605,
+        52.81279543824211
+      ],
+      &quot;min&quot;: 14.937206555850906,
+      &quot;max&quot;: 52.86937516457078,
+      &quot;std&quot;: 14.011868678017043
+    },
+    &quot;equal_Y_chroma_ratio&quot;: {
+      &quot;n&quot;: 10,
+      &quot;p01_p50_p99&quot;: [
+        0.054753554628081964,
+        0.06127894150774721,
+        0.0670753839373172
+      ],
+      &quot;min&quot;: 0.054689727001244866,
+      &quot;max&quot;: 0.06710520229659919,
+      &quot;std&quot;: 0.004052765939228988
+    },
+    &quot;color_note&quot;: &quot;equal-Y Lab is an analysis coordinate only, not a re-render or reference target&quot;
+  },
+  &quot;nonfloor&quot;: {
+    &quot;input_linear_Y&quot;: {
+      &quot;n&quot;: 671650,
+      &quot;p01_p50_p99&quot;: [
+        0.005777222324585287,
+        0.17735278525390696,
+        0.9999956035476685
+      ],
+      &quot;min&quot;: 0.002300046609672764,
+      &quot;max&quot;: 0.9999956035476685,
+      &quot;std&quot;: 0.40067564197034994
+    },
+    &quot;output_linear_Y&quot;: {
+      &quot;n&quot;: 671650,
+      &quot;p01_p50_p99&quot;: [
+        0.005107694948884767,
+        0.1666426941381417,
+        1.0070400308791105
+      ],
+      &quot;min&quot;: 0.002876571260583261,
+      &quot;max&quot;: 1.1902803393088222,
+      &quot;std&quot;: 0.40021520191723514
+    },
+    &quot;display16_deltaL_vs_digital&quot;: {
+      &quot;n&quot;: 671650,
+      &quot;p01_p50_p99&quot;: [
+        -8.29352433740907,
+        0.015425596991548218,
+        0.9034559025613135
+      ],
+      &quot;min&quot;: -10.405580306299711,
+      &quot;max&quot;: 3.844256093728948,
+      &quot;std&quot;: 2.2416124344364348
+    },
+    &quot;display16_delta_ab_distance_vs_digital&quot;: {
+      &quot;n&quot;: 671650,
+      &quot;p01_p50_p99&quot;: [
+        0.006914408862049564,
+        3.2616788312838394,
+        25.880670981919085
+      ],
+      &quot;min&quot;: 0.0034618022643161965,
+      &quot;max&quot;: 27.097612844955385,
+      &quot;std&quot;: 7.919657831291718
+    },
+    &quot;display16_deltaE00_vs_digital&quot;: {
+      &quot;n&quot;: 671650,
+      &quot;p01_p50_p99&quot;: [
+        0.013226668329666277,
+        2.9897336010087066,
+        11.104436025643134
+      ],
+      &quot;min&quot;: 0.012440342798986434,
+      &quot;max&quot;: 11.75908403374425,
+      &quot;std&quot;: 3.610462550662176
+    },
+    &quot;equal_Y_chromaticity_abs_hue_shift&quot;: {
+      &quot;n&quot;: 455445,
+      &quot;p01_p50_p99&quot;: [
+        0.1437456948524175,
+        7.442585584644519,
+        25.840468421228746
+      ],
+      &quot;min&quot;: 1.0771992521085849e-05,
+      &quot;max&quot;: 62.61777585023253,
+      &quot;std&quot;: 5.14089004048936
+    },
+    &quot;equal_Y_chroma_ratio&quot;: {
+      &quot;n&quot;: 455445,
+      &quot;p01_p50_p99&quot;: [
+        0.13418256728335198,
+        1.0348896977509972,
+        2.7870931001236445
+      ],
+      &quot;min&quot;: 0.05571488051329543,
+      &quot;max&quot;: 3.2455534410427385,
+      &quot;std&quot;: 0.8460605558552626
+    },
+    &quot;color_note&quot;: &quot;equal-Y Lab is an analysis coordinate only, not a re-render or reference target&quot;
+  },
+  &quot;horizontal_floor_neighbor_contrast&quot;: {
+    &quot;pairs&quot;: 76145,
+    &quot;input_abs_EV_step&quot;: {
+      &quot;n&quot;: 76145,
+      &quot;p01_p50_p99&quot;: [
+        0.0,
+        0.0,
+        0.04741700161912854
+      ],
+      &quot;min&quot;: 0.0,
+      &quot;max&quot;: 0.856583098509204,
+      &quot;std&quot;: 0.02150427365245595
+    },
+    &quot;output_abs_EV_step&quot;: {
+      &quot;n&quot;: 76145,
+      &quot;p01_p50_p99&quot;: [
+        0.0,
+        0.0,
+        1.0480634742293175e-08
+      ],
+      &quot;min&quot;: 0.0,
+      &quot;max&quot;: 1.0296210994908961e-07,
+      &quot;std&quot;: 4.213268310667109e-09
+    }
+  }
+}</pre></details><h3>phoenix_ii</h3><main><figure><figcaption>Digital</figcaption><img src="DSC02337/digital_baseline.png"></figure><figure><figcaption>Round5</figcaption><img src="DSC02337/round5_phoenix_ii.png"></figure><figure><figcaption>v01</figcaption><img src="DSC02337/research_v01_phoenix_ii.png"></figure><figure><figcaption>v02</figcaption><img src="DSC02337/research_phoenix_ii.png"></figure></main><main><img src="DSC02337/phoenix_ii_floor_overlay.png"><img src="DSC02337/phoenix_ii_floor_mask.png"><img src="DSC02337/phoenix_ii_tone.png"></main><h4>face</h4><main><figure><figcaption>Digital</figcaption><img src="DSC02337/phoenix_ii_face_Digital.png"></figure><figure><figcaption>v02</figcaption><img src="DSC02337/phoenix_ii_face_v02.png"></figure></main><h4>hair</h4><main><figure><figcaption>Digital</figcaption><img src="DSC02337/phoenix_ii_hair_Digital.png"></figure><figure><figcaption>v02</figcaption><img src="DSC02337/phoenix_ii_hair_v02.png"></figure></main><h4>sky</h4><main><figure><figcaption>Digital</figcaption><img src="DSC02337/phoenix_ii_sky_Digital.png"></figure><figure><figcaption>v02</figcaption><img src="DSC02337/phoenix_ii_sky_v02.png"></figure></main><h4>foliage</h4><main><figure><figcaption>Digital</figcaption><img src="DSC02337/phoenix_ii_foliage_Digital.png"></figure><figure><figcaption>v02</figcaption><img src="DSC02337/phoenix_ii_foliage_v02.png"></figure></main><h4>patterned_shirt</h4><main><figure><figcaption>Digital</figcaption><img src="DSC02337/phoenix_ii_patterned_shirt_Digital.png"></figure><figure><figcaption>v02</figcaption><img src="DSC02337/phoenix_ii_patterned_shirt_v02.png"></figure></main><h4>white_sleeve</h4><main><figure><figcaption>Digital</figcaption><img src="DSC02337/phoenix_ii_white_sleeve_Digital.png"></figure><figure><figcaption>v02</figcaption><img src="DSC02337/phoenix_ii_white_sleeve_v02.png"></figure></main><details><summary>Endpoint and ROI numbers</summary><pre>{
+  &quot;floor_pixels&quot;: 76691,
+  &quot;pixels&quot;: 749568,
+  &quot;floor_fraction&quot;: 0.10231359929986339,
+  &quot;ceiling_pixels&quot;: 0,
+  &quot;floor_max_relative_Y_error&quot;: 3.922408353673745e-08,
+  &quot;stage_bounds&quot;: {
+    &quot;Y_constraint_pass&quot;: true,
+    &quot;endpoint_saturated_pixels&quot;: 76691,
+    &quot;log_chromatic_norm_bound&quot;: 1.3862943611198906,
+    &quot;maximum_channel_ratio&quot;: 1.8575883901052475,
+    &quot;maximum_relative_Y_vs_scalar_exposure_error&quot;: 5.94094666794831e-08,
+    &quot;ratio_bound_pass&quot;: true
+  },
+  &quot;regions&quot;: {
+    &quot;face&quot;: {
+      &quot;floor_fraction&quot;: 0.0,
+      &quot;input_linear_Y&quot;: {
+        &quot;n&quot;: 6561,
+        &quot;p01_p50_p99&quot;: [
+          0.020450580059361494,
+          0.09315576553850323,
+          0.12574279899109853
+        ],
+        &quot;min&quot;: 0.007448899881739822,
+        &quot;max&quot;: 0.12974411578669398,
+        &quot;std&quot;: 0.02469705539259206
+      },
+      &quot;output_linear_Y&quot;: {
+        &quot;n&quot;: 6561,
+        &quot;p01_p50_p99&quot;: [
+          0.02244117543980245,
+          0.09158773628033771,
+          0.12389930457927181
+        ],
+        &quot;min&quot;: 0.007390896071701264,
+        &quot;max&quot;: 0.12771977088311387,
+        &quot;std&quot;: 0.023339203588853562
+      },
+      &quot;Digital_mean_Lab_D65&quot;: [
+        34.89703085948121,
+        6.954889391051059,
+        9.036519323404633
+      ],
+      &quot;v02_mean_Lab_D65&quot;: [
+        34.8105567386539,
+        3.5476921798668637,
+        5.85949432459571
+      ],
+      &quot;display16_deltaL&quot;: {
+        &quot;n&quot;: 6561,
+        &quot;p01_p50_p99&quot;: [
+          -0.5655646758447276,
+          -0.19576990107130854,
+          1.6306305696079124
+        ],
+        &quot;min&quot;: -0.6786622410718763,
+        &quot;max&quot;: 2.8156849297801685,
+        &quot;std&quot;: 0.412105048312304
+      },
+      &quot;display16_delta_ab&quot;: {
+        &quot;n&quot;: 6561,
+        &quot;p01_p50_p99&quot;: [
+          2.0397366938324697,
+          4.421342857375137,
+          11.281033675324561
+        ],
+        &quot;min&quot;: 0.8994799497490708,
+        &quot;max&quot;: 13.263234075457353,
+        &quot;std&quot;: 1.8055230178296513
+      },
+      &quot;equal_Y_abs_hue_shift&quot;: {
+        &quot;n&quot;: 6561,
+        &quot;p01_p50_p99&quot;: [
+          0.2591291143012313,
+          4.723574530115172,
+          11.19127966930744
+        ],
+        &quot;min&quot;: 0.0020693576194048546,
+        &quot;max&quot;: 33.17767066347366,
+        &quot;std&quot;: 2.347553991121711
+      },
+      &quot;note&quot;: &quot;ROI diagnostics, not true skin or film-color targets; hue unreliable near neutral&quot;
+    },
+    &quot;hair&quot;: {
+      &quot;floor_fraction&quot;: 0.0005631536604987933,
+      &quot;input_linear_Y&quot;: {
+        &quot;n&quot;: 12430,
+        &quot;p01_p50_p99&quot;: [
+          0.00420024864983578,
+          0.011333211903958255,
+          0.034096353081799244
+        ],
+        &quot;min&quot;: 0.00236882575209972,
+        &quot;max&quot;: 0.09117313963847011,
+        &quot;std&quot;: 0.005898369004483798
+      },
+      &quot;output_linear_Y&quot;: {
+        &quot;n&quot;: 12430,
+        &quot;p01_p50_p99&quot;: [
+          0.004416332497969532,
+          0.011477272389000514,
+          0.03502694131352636
+        ],
+        &quot;min&quot;: 0.002874999900971213,
+        &quot;max&quot;: 0.09545115512797162,
+        &quot;std&quot;: 0.006074761912602574
+      },
+      &quot;Digital_mean_Lab_D65&quot;: [
+        10.396555571814554,
+        0.2637105377963717,
+        -1.8595891524952224
+      ],
+      &quot;v02_mean_Lab_D65&quot;: [
+        10.5076956954335,
+        0.03520548464811979,
+        -0.05228193414150069
+      ],
+      &quot;display16_deltaL&quot;: {
+        &quot;n&quot;: 12430,
+        &quot;p01_p50_p99&quot;: [
+          -0.08412557010025719,
+          0.07946118719532969,
+          0.650078938433242
+        ],
+        &quot;min&quot;: -0.32072891728543595,
+        &quot;max&quot;: 1.5886574777025118,
+        &quot;std&quot;: 0.13496404192961062
+      },
+      &quot;display16_delta_ab&quot;: {
+        &quot;n&quot;: 12430,
+        &quot;p01_p50_p99&quot;: [
+          0.33208652660236326,
+          2.4695067084426943,
+          6.010474614757293
+        ],
+        &quot;min&quot;: 0.04102951535439289,
+        &quot;max&quot;: 8.47335554328228,
+        &quot;std&quot;: 1.2924644439367639
+      },
+      &quot;equal_Y_abs_hue_shift&quot;: {
+        &quot;n&quot;: 12430,
+        &quot;p01_p50_p99&quot;: [
+          0.20185373330949347,
+          11.599611660648023,
+          104.93117188487962
+        ],
+        &quot;min&quot;: 0.0009696933703935429,
+        &quot;max&quot;: 179.31447327206064,
+        &quot;std&quot;: 20.693557036522627
+      },
+      &quot;note&quot;: &quot;ROI diagnostics, not true skin or film-color targets; hue unreliable near neutral&quot;
+    },
+    &quot;sky&quot;: {
+      &quot;floor_fraction&quot;: 0.0,
+      &quot;input_linear_Y&quot;: {
+        &quot;n&quot;: 28928,
+        &quot;p01_p50_p99&quot;: [
+          0.3091658342084313,
+          0.9999956035476685,
+          0.9999956035476685
+        ],
+        &quot;min&quot;: 0.1337233019043773,
+        &quot;max&quot;: 0.9999956035476685,
+        &quot;std&quot;: 0.112593084253856
+      },
+      &quot;output_linear_Y&quot;: {
+        &quot;n&quot;: 28928,
+        &quot;p01_p50_p99&quot;: [
+          0.2951938453347011,
+          1.0005986892555356,
+          1.0010481505678313
+        ],
+        &quot;min&quot;: 0.1213857346948497,
+        &quot;max&quot;: 1.0019872620381833,
+        &quot;std&quot;: 0.11484855073499255
+      },
+      &quot;Digital_mean_Lab_D65&quot;: [
+        83.6138712490509,
+        -0.5659550322215614,
+        -0.6901791625129687
+      ],
+      &quot;v02_mean_Lab_D65&quot;: [
+        83.58291634881164,
+        -0.3344528275699675,
+        -0.40599232273432984
+      ],
+      &quot;display16_deltaL&quot;: {
+        &quot;n&quot;: 28928,
+        &quot;p01_p50_p99&quot;: [
+          -1.1345346440215605,
+          0.007166504572879262,
+          0.011934255340804611
+        ],
+        &quot;min&quot;: -2.320964403428853,
+        &quot;max&quot;: 0.023473889879554122,
+        &quot;std&quot;: 0.18913823464770194
+      },
+      &quot;display16_delta_ab&quot;: {
+        &quot;n&quot;: 28928,
+        &quot;p01_p50_p99&quot;: [
+          0.00818811826189858,
+          0.01031246654464011,
+          9.52585718645214
+        ],
+        &quot;min&quot;: 0.008187866769927584,
+        &quot;max&quot;: 11.573606828324333,
+        &quot;std&quot;: 1.7951951659390017
+      },
+      &quot;equal_Y_abs_hue_shift&quot;: {
+        &quot;n&quot;: 28928,
+        &quot;p01_p50_p99&quot;: [
+          1.3973675556125975,
+          9.94192262441237,
+          10.048129697270781
+        ],
+        &quot;min&quot;: 0.002537077936665355,
+        &quot;max&quot;: 18.28349275016697,
+        &quot;std&quot;: 1.7648820413000992
+      },
+      &quot;note&quot;: &quot;ROI diagnostics, not true skin or film-color targets; hue unreliable near neutral&quot;
+    },
+    &quot;foliage&quot;: {
+      &quot;floor_fraction&quot;: 0.0,
+      &quot;input_linear_Y&quot;: {
+        &quot;n&quot;: 22968,
+        &quot;p01_p50_p99&quot;: [
+          0.23794466281716434,
+          0.3683182937812127,
+          0.4644685533849127
+        ],
+        &quot;min&quot;: 0.03138946997336112,
+        &quot;max&quot;: 0.49639576353546677,
+        &quot;std&quot;: 0.055225094013235845
+      },
+      &quot;output_linear_Y&quot;: {
+        &quot;n&quot;: 22968,
+        &quot;p01_p50_p99&quot;: [
+          0.20574894242498926,
+          0.3236509779995158,
+          0.4214631594393781
+        ],
+        &quot;min&quot;: 0.029732836486788466,
+        &quot;max&quot;: 0.45335134411099853,
+        &quot;std&quot;: 0.05185314799807592
+      },
+      &quot;Digital_mean_Lab_D65&quot;: [
+        64.7314901669102,
+        -19.849703230026464,
+        24.614536918962617
+      ],
+      &quot;v02_mean_Lab_D65&quot;: [
+        61.91229484882705,
+        -13.926327007254216,
+        15.101428255630212
+      ],
+      &quot;display16_deltaL&quot;: {
+        &quot;n&quot;: 22968,
+        &quot;p01_p50_p99&quot;: [
+          -3.6482313315169796,
+          -2.839474382220267,
+          -1.957627395871155
+        ],
+        &quot;min&quot;: -4.119288216654027,
+        &quot;max&quot;: -0.5471014705709081,
+        &quot;std&quot;: 0.3991460312716686
+      },
+      &quot;display16_delta_ab&quot;: {
+        &quot;n&quot;: 22968,
+        &quot;p01_p50_p99&quot;: [
+          8.339962563084828,
+          11.361795134694342,
+          13.242783044080323
+        ],
+        &quot;min&quot;: 6.413741895414657,
+        &quot;max&quot;: 14.336274241529756,
+        &quot;std&quot;: 1.139032399691454
+      },
+      &quot;equal_Y_abs_hue_shift&quot;: {
+        &quot;n&quot;: 22968,
+        &quot;p01_p50_p99&quot;: [
+          0.9197804306236668,
+          4.028993406737158,
+          7.095992620564294
+        ],
+        &quot;min&quot;: 0.1384761449434393,
+        &quot;max&quot;: 13.119289242216041,
+        &quot;std&quot;: 1.4100403153523235
+      },
+      &quot;note&quot;: &quot;ROI diagnostics, not true skin or film-color targets; hue unreliable near neutral&quot;
+    },
+    &quot;patterned_shirt&quot;: {
+      &quot;floor_fraction&quot;: 0.0,
+      &quot;input_linear_Y&quot;: {
+        &quot;n&quot;: 16848,
+        &quot;p01_p50_p99&quot;: [
+          0.007523537657859371,
+          0.02999758965042075,
+          0.0772224584052635
+        ],
+        &quot;min&quot;: 0.0031521175730816085,
+        &quot;max&quot;: 0.09661364376714603,
+        &quot;std&quot;: 0.015852790417339353
+      },
+      &quot;output_linear_Y&quot;: {
+        &quot;n&quot;: 16848,
+        &quot;p01_p50_p99&quot;: [
+          0.007992929773432043,
+          0.030031702143083885,
+          0.07709273571454427
+        ],
+        &quot;min&quot;: 0.0033243092640366637,
+        &quot;max&quot;: 0.09508563198313787,
+        &quot;std&quot;: 0.015606025081023907
+      },
+      &quot;Digital_mean_Lab_D65&quot;: [
+        20.072822052829192,
+        -1.352501811702539,
+        -2.990977400835522
+      ],
+      &quot;v02_mean_Lab_D65&quot;: [
+        20.084319500797378,
+        -0.22836048198581776,
+        -0.446052328119983
+      ],
+      &quot;display16_deltaL&quot;: {
+        &quot;n&quot;: 16848,
+        &quot;p01_p50_p99&quot;: [
+          -0.24503402902339488,
+          -0.01592350451803881,
+          0.47095797521711835
+        ],
+        &quot;min&quot;: -0.3737323273874722,
+        &quot;max&quot;: 0.9415083823913122,
+        &quot;std&quot;: 0.15463513053677305
+      },
+      &quot;display16_delta_ab&quot;: {
+        &quot;n&quot;: 16848,
+        &quot;p01_p50_p99&quot;: [
+          0.36146505639348453,
+          2.837149637491822,
+          8.686437132391493
+        ],
+        &quot;min&quot;: 0.0145639611811428,
+        &quot;max&quot;: 11.672336083244458,
+        &quot;std&quot;: 1.9017166768021019
+      },
+      &quot;equal_Y_abs_hue_shift&quot;: {
+        &quot;n&quot;: 16848,
+        &quot;p01_p50_p99&quot;: [
+          0.5062126821272938,
+          7.63756439208845,
+          14.986559584064294
+        ],
+        &quot;min&quot;: 0.0012941845009777353,
+        &quot;max&quot;: 55.33979360473701,
+        &quot;std&quot;: 3.5571564741575106
+      },
+      &quot;note&quot;: &quot;ROI diagnostics, not true skin or film-color targets; hue unreliable near neutral&quot;
+    },
+    &quot;white_sleeve&quot;: {
+      &quot;floor_fraction&quot;: 0.0,
+      &quot;input_linear_Y&quot;: {
+        &quot;n&quot;: 14688,
+        &quot;p01_p50_p99&quot;: [
+          0.009209135632843304,
+          0.058790148548571765,
+          0.3745373089469017
+        ],
+        &quot;min&quot;: 0.00524085318713244,
+        &quot;max&quot;: 0.3857867834640801,
+        &quot;std&quot;: 0.14426508450906403
+      },
+      &quot;output_linear_Y&quot;: {
+        &quot;n&quot;: 14688,
+        &quot;p01_p50_p99&quot;: [
+          0.00977344699851859,
+          0.05888719541592244,
+          0.3715730068735767
+        ],
+        &quot;min&quot;: 0.0056602843202258925,
+        &quot;max&quot;: 0.38450906567377446,
+        &quot;std&quot;: 0.14274338003936635
+      },
+      &quot;Digital_mean_Lab_D65&quot;: [
+        38.25314539007749,
+        -1.4611517416368711,
+        -6.926239089373887
+      ],
+      &quot;v02_mean_Lab_D65&quot;: [
+        38.18146927588417,
+        -0.9957344936283793,
+        -3.4980430597829915
+      ],
+      &quot;display16_deltaL&quot;: {
+        &quot;n&quot;: 14688,
+        &quot;p01_p50_p99&quot;: [
+          -0.5593297979174038,
+          -0.07293355044022576,
+          0.46693675202257506
+        ],
+        &quot;min&quot;: -1.0097870316141808,
+        &quot;max&quot;: 0.9820750392536901,
+        &quot;std&quot;: 0.23238274399135722
+      },
+      &quot;display16_delta_ab&quot;: {
+        &quot;n&quot;: 14688,
+        &quot;p01_p50_p99&quot;: [
+          0.6341984110894701,
+          3.711091110720372,
+          8.492925308266193
+        ],
+        &quot;min&quot;: 0.04705544674724217,
+        &quot;max&quot;: 11.726146549796276,
+        &quot;std&quot;: 1.6594115134622693
+      },
+      &quot;equal_Y_abs_hue_shift&quot;: {
+        &quot;n&quot;: 14688,
+        &quot;p01_p50_p99&quot;: [
+          0.1662788040525004,
+          3.6582667429253064,
+          14.156416880606344
+        ],
+        &quot;min&quot;: 0.0006201519178716808,
+        &quot;max&quot;: 27.83734405130349,
+        &quot;std&quot;: 3.44187578950059
+      },
+      &quot;note&quot;: &quot;ROI diagnostics, not true skin or film-color targets; hue unreliable near neutral&quot;
+    }
+  },
+  &quot;floor_decomposition&quot;: {
+    &quot;decoded_zero_on_floor_pixels&quot;: 76218,
+    &quot;decoded_zero_on_floor_fraction_of_frame&quot;: 0.10168256915983606,
+    &quot;nonzero_input_on_floor_pixels&quot;: 473,
+    &quot;nonzero_input_on_floor_fraction_of_frame&quot;: 0.0006310301400273224,
+    &quot;nonzero_input_on_floor_fraction_of_nonzero_input&quot;: 0.0007024578599539615,
+    &quot;interpretation&quot;: &quot;Already-zero decoded pixels contain no input luminance variation to lose; lifting them to the reconstruction floor is different from flattening nonzero shadows.&quot;
+  },
+  &quot;floor&quot;: {
+    &quot;input_linear_Y&quot;: {
+      &quot;n&quot;: 76691,
+      &quot;p01_p50_p99&quot;: [
+        0.0,
+        0.0,
+        0.0
+      ],
+      &quot;min&quot;: 0.0,
+      &quot;max&quot;: 0.002893530106902402,
+      &quot;std&quot;: 0.000194515832609062
+    },
+    &quot;output_linear_Y&quot;: {
+      &quot;n&quot;: 76691,
+      &quot;p01_p50_p99&quot;: [
+        0.002874999940109719,
+        0.002874999940109719,
+        0.002874999940109719
+      ],
+      &quot;min&quot;: 0.0028749998902588155,
+      &quot;max&quot;: 0.00287500011276924,
+      &quot;std&quot;: 6.123523931527695e-12
+    },
+    &quot;display16_deltaL_vs_digital&quot;: {
+      &quot;n&quot;: 76691,
+      &quot;p01_p50_p99&quot;: [
+        2.596341948004593,
+        2.596341948004593,
+        2.596341948004593
+      ],
+      &quot;min&quot;: -0.020028498954147267,
+      &quot;max&quot;: 2.596341948004593,
+      &quot;std&quot;: 0.17678235701918366
+    },
+    &quot;display16_delta_ab_distance_vs_digital&quot;: {
+      &quot;n&quot;: 76691,
+      &quot;p01_p50_p99&quot;: [
+        0.006316639517058905,
+        0.006316639517058905,
+        0.006316639517058905
+      ],
+      &quot;min&quot;: 0.006316639517058905,
+      &quot;max&quot;: 2.703848234243585,
+      &quot;std&quot;: 0.0971884718413029
+    },
+    &quot;display16_deltaE00_vs_digital&quot;: {
+      &quot;n&quot;: 76691,
+      &quot;p01_p50_p99&quot;: [
+        1.5029964919934276,
+        1.5029964919934276,
+        1.5029964919934276
+      ],
+      &quot;min&quot;: 0.3101413335501125,
+      &quot;max&quot;: 2.5771379192181754,
+      &quot;std&quot;: 0.036337018648123456
+    },
+    &quot;equal_Y_chromaticity_abs_hue_shift&quot;: {
+      &quot;n&quot;: 0
+    },
+    &quot;equal_Y_chroma_ratio&quot;: {
+      &quot;n&quot;: 0
+    },
+    &quot;color_note&quot;: &quot;equal-Y Lab is an analysis coordinate only, not a re-render or reference target&quot;
+  },
+  &quot;floor_with_nonzero_input&quot;: {
+    &quot;input_linear_Y&quot;: {
+      &quot;n&quot;: 473,
+      &quot;p01_p50_p99&quot;: [
+        0.001828156915359807,
+        0.0024989482667562317,
+        0.002822950748835368
+      ],
+      &quot;min&quot;: 0.0015674278900752775,
+      &quot;max&quot;: 0.002893530106902402,
+      &quot;std&quot;: 0.00022363035564982095
+    },
+    &quot;output_linear_Y&quot;: {
+      &quot;n&quot;: 473,
+      &quot;p01_p50_p99&quot;: [
+        0.0028749999004581473,
+        0.0028750000001584414,
+        0.002875000106061736
+      ],
+      &quot;min&quot;: 0.0028749998902588155,
+      &quot;max&quot;: 0.00287500011276924,
+      &quot;std&quot;: 5.1063301603871356e-11
+    },
+    &quot;display16_deltaL_vs_digital&quot;: {
+      &quot;n&quot;: 473,
+      &quot;p01_p50_p99&quot;: [
+        0.04017543259471509,
+        0.3259543547232582,
+        0.9319068976135528
+      ],
+      &quot;min&quot;: -0.020028498954147267,
+      &quot;max&quot;: 1.149632607593599,
+      &quot;std&quot;: 0.19982485117331297
+    },
+    &quot;display16_delta_ab_distance_vs_digital&quot;: {
+      &quot;n&quot;: 473,
+      &quot;p01_p50_p99&quot;: [
+        0.3475420062252888,
+        1.1538160898151706,
+        2.2066523211367994
+      ],
+      &quot;min&quot;: 0.20528011916498,
+      &quot;max&quot;: 2.703848234243585,
+      &quot;std&quot;: 0.4094239272220768
+    },
+    &quot;display16_deltaE00_vs_digital&quot;: {
+      &quot;n&quot;: 473,
+      &quot;p01_p50_p99&quot;: [
+        0.409855384065594,
+        1.3046439130392584,
+        2.274506693110868
+      ],
+      &quot;min&quot;: 0.3101413335501125,
+      &quot;max&quot;: 2.5771379192181754,
+      &quot;std&quot;: 0.4222599035697877
+    },
+    &quot;equal_Y_chromaticity_abs_hue_shift&quot;: {
+      &quot;n&quot;: 0
+    },
+    &quot;equal_Y_chroma_ratio&quot;: {
+      &quot;n&quot;: 0
+    },
+    &quot;color_note&quot;: &quot;equal-Y Lab is an analysis coordinate only, not a re-render or reference target&quot;
+  },
+  &quot;nonfloor&quot;: {
+    &quot;input_linear_Y&quot;: {
+      &quot;n&quot;: 672877,
+      &quot;p01_p50_p99&quot;: [
+        0.005488894321700353,
+        0.17626242317848503,
+        0.9999956035476685
+      ],
+      &quot;min&quot;: 0.0025880079814117403,
+      &quot;max&quot;: 0.9999956035476685,
+      &quot;std&quot;: 0.4006272709151986
+    },
+    &quot;output_linear_Y&quot;: {
+      &quot;n&quot;: 672877,
+      &quot;p01_p50_p99&quot;: [
+        0.005582118696896022,
+        0.16615005126164403,
+        1.0031031602450848
+      ],
+      &quot;min&quot;: 0.0028752865522474517,
+      &quot;max&quot;: 1.0819329853427648,
+      &quot;std&quot;: 0.40155080260904663
+    },
+    &quot;display16_deltaL_vs_digital&quot;: {
+      &quot;n&quot;: 672877,
+      &quot;p01_p50_p99&quot;: [
+        -3.398993875964509,
+        0.0008029432796732294,
+        0.4710143974016714
+      ],
+      &quot;min&quot;: -4.82742604597469,
+      &quot;max&quot;: 3.2748484347778373,
+      &quot;std&quot;: 0.9738979990578231
+    },
+    &quot;display16_delta_ab_distance_vs_digital&quot;: {
+      &quot;n&quot;: 672877,
+      &quot;p01_p50_p99&quot;: [
+        0.010235080015974497,
+        3.1997972125203997,
+        14.561598795929898
+      ],
+      &quot;min&quot;: 0.00740153700951113,
+      &quot;max&quot;: 20.1346026060058,
+      &quot;std&quot;: 4.166167453214797
+    },
+    &quot;display16_deltaE00_vs_digital&quot;: {
+      &quot;n&quot;: 672877,
+      &quot;p01_p50_p99&quot;: [
+        0.011604666111206665,
+        2.972442811362901,
+        9.627732341627198
+      ],
+      &quot;min&quot;: 0.010507136124323871,
+      &quot;max&quot;: 13.091207091285474,
+      &quot;std&quot;: 2.523757202891793
+    },
+    &quot;equal_Y_chromaticity_abs_hue_shift&quot;: {
+      &quot;n&quot;: 373529,
+      &quot;p01_p50_p99&quot;: [
+        0.10124084008434353,
+        4.549586972366342,
+        13.474181414114776
+      ],
+      &quot;min&quot;: 3.896128893643436e-05,
+      &quot;max&quot;: 22.81200808902804,
+      &quot;std&quot;: 3.0885855282197374
+    },
+    &quot;equal_Y_chroma_ratio&quot;: {
+      &quot;n&quot;: 373529,
+      &quot;p01_p50_p99&quot;: [
+        0.09248449262528433,
+        0.6348359705227334,
+        0.892708990320712
+      ],
+      &quot;min&quot;: 0.029656370836047496,
+      &quot;max&quot;: 0.9516426225724626,
+      &quot;std&quot;: 0.20646211598168798
+    },
+    &quot;color_note&quot;: &quot;equal-Y Lab is an analysis coordinate only, not a re-render or reference target&quot;
+  },
+  &quot;horizontal_floor_neighbor_contrast&quot;: {
+    &quot;pairs&quot;: 75499,
+    &quot;input_abs_EV_step&quot;: {
+      &quot;n&quot;: 75499,
+      &quot;p01_p50_p99&quot;: [
+        0.0,
+        0.0,
+        0.0
+      ],
+      &quot;min&quot;: 0.0,
+      &quot;max&quot;: 0.4992426327502315,
+      &quot;std&quot;: 0.010870545387755335
+    },
+    &quot;output_abs_EV_step&quot;: {
+      &quot;n&quot;: 75499,
+      &quot;p01_p50_p99&quot;: [
+        0.0,
+        0.0,
+        0.0
+      ],
+      &quot;min&quot;: 0.0,
+      &quot;max&quot;: 9.608692863594115e-08,
+      &quot;std&quot;: 2.28712629526256e-09
+    }
+  }
+}</pre></details><h2 id="DSC03870">DSC03870 — night street / lit signage / dark road</h2><img style="max-width:360px" src="DSC03870/ROI_locations.png"><h3>phoenix_i</h3><main><figure><figcaption>Digital</figcaption><img src="DSC03870/digital_baseline.png"></figure><figure><figcaption>Round5</figcaption><img src="DSC03870/round5_phoenix_i.png"></figure><figure><figcaption>v01</figcaption><img src="DSC03870/research_v01_phoenix_i.png"></figure><figure><figcaption>v02</figcaption><img src="DSC03870/research_phoenix_i.png"></figure></main><main><img src="DSC03870/phoenix_i_floor_overlay.png"><img src="DSC03870/phoenix_i_floor_mask.png"><img src="DSC03870/phoenix_i_tone.png"></main><h4>dark_sky</h4><main><figure><figcaption>Digital</figcaption><img src="DSC03870/phoenix_i_dark_sky_Digital.png"></figure><figure><figcaption>v02</figcaption><img src="DSC03870/phoenix_i_dark_sky_v02.png"></figure></main><h4>red_sign</h4><main><figure><figcaption>Digital</figcaption><img src="DSC03870/phoenix_i_red_sign_Digital.png"></figure><figure><figcaption>v02</figcaption><img src="DSC03870/phoenix_i_red_sign_v02.png"></figure></main><h4>storefront</h4><main><figure><figcaption>Digital</figcaption><img src="DSC03870/phoenix_i_storefront_Digital.png"></figure><figure><figcaption>v02</figcaption><img src="DSC03870/phoenix_i_storefront_v02.png"></figure></main><h4>bicycles</h4><main><figure><figcaption>Digital</figcaption><img src="DSC03870/phoenix_i_bicycles_Digital.png"></figure><figure><figcaption>v02</figcaption><img src="DSC03870/phoenix_i_bicycles_v02.png"></figure></main><h4>road</h4><main><figure><figcaption>Digital</figcaption><img src="DSC03870/phoenix_i_road_Digital.png"></figure><figure><figcaption>v02</figcaption><img src="DSC03870/phoenix_i_road_v02.png"></figure></main><h4>dark_trees</h4><main><figure><figcaption>Digital</figcaption><img src="DSC03870/phoenix_i_dark_trees_Digital.png"></figure><figure><figcaption>v02</figcaption><img src="DSC03870/phoenix_i_dark_trees_v02.png"></figure></main><details><summary>Endpoint and ROI numbers</summary><pre>{
+  &quot;floor_pixels&quot;: 284713,
+  &quot;pixels&quot;: 749568,
+  &quot;floor_fraction&quot;: 0.3798361189378415,
+  &quot;ceiling_pixels&quot;: 0,
+  &quot;floor_max_relative_Y_error&quot;: 4.042037149432076e-08,
+  &quot;stage_bounds&quot;: {
+    &quot;Y_constraint_pass&quot;: true,
+    &quot;endpoint_saturated_pixels&quot;: 284713,
+    &quot;log_chromatic_norm_bound&quot;: 1.3862943611198906,
+    &quot;maximum_channel_ratio&quot;: 5.156652301115397,
+    &quot;maximum_relative_Y_vs_scalar_exposure_error&quot;: 5.892560972498018e-08,
+    &quot;ratio_bound_pass&quot;: true
+  },
+  &quot;regions&quot;: {
+    &quot;dark_sky&quot;: {
+      &quot;floor_fraction&quot;: 0.5661640798226164,
+      &quot;input_linear_Y&quot;: {
+        &quot;n&quot;: 22550,
+        &quot;p01_p50_p99&quot;: [
+          0.00011880266312943074,
+          0.0015979053952181015,
+          0.0038494974152121623
+        ],
+        &quot;min&quot;: 0.0,
+        &quot;max&quot;: 0.0062445001627862455,
+        &quot;std&quot;: 0.0008192612365597672
+      },
+      &quot;output_linear_Y&quot;: {
+        &quot;n&quot;: 22550,
+        &quot;p01_p50_p99&quot;: [
+          0.0028749999032740095,
+          0.0028750000661980826,
+          0.007926079909454115
+        ],
+        &quot;min&quot;: 0.002874999885132769,
+        &quot;max&quot;: 0.014754510591612199,
+        &quot;std&quot;: 0.0012204627101152622
+      },
+      &quot;Digital_mean_Lab_D65&quot;: [
+        1.5093003971227135,
+        0.8210169051701672,
+        -1.1497561910626986
+      ],
+      &quot;v02_mean_Lab_D65&quot;: [
+        3.2581978435203265,
+        -0.011656270159090192,
+        0.015789193342956292
+      ],
+      &quot;display16_deltaL&quot;: {
+        &quot;n&quot;: 22550,
+        &quot;p01_p50_p99&quot;: [
+          -0.3080367728117918,
+          1.641914611640372,
+          5.061280599223465
+        ],
+        &quot;min&quot;: -2.1613292271333187,
+        &quot;max&quot;: 8.600079029968448,
+        &quot;std&quot;: 1.0392827018439237
+      },
+      &quot;display16_delta_ab&quot;: {
+        &quot;n&quot;: 22550,
+        &quot;p01_p50_p99&quot;: [
+          0.21416868797587,
+          1.9147498281816646,
+          6.678829026699648
+        ],
+        &quot;min&quot;: 0.02295707585866308,
+        &quot;max&quot;: 13.021911156995978,
+        &quot;std&quot;: 1.4259377831820559
+      },
+      &quot;equal_Y_abs_hue_shift&quot;: {
+        &quot;n&quot;: 22550,
+        &quot;p01_p50_p99&quot;: [
+          0.7991900638845624,
+          50.67135137808884,
+          173.38498580487425
+        ],
+        &quot;min&quot;: 0.01080961623733856,
+        &quot;max&quot;: 179.95722565816033,
+        &quot;std&quot;: 45.72144458600104
+      },
+      &quot;note&quot;: &quot;ROI diagnostics, not true skin or film-color targets; hue unreliable near neutral&quot;
+    },
+    &quot;red_sign&quot;: {
+      &quot;floor_fraction&quot;: 0.0,
+      &quot;input_linear_Y&quot;: {
+        &quot;n&quot;: 1025,
+        &quot;p01_p50_p99&quot;: [
+          0.0037463861482638196,
+          0.008590961396153177,
+          0.9999956035476685
+        ],
+        &quot;min&quot;: 0.0031038190562697825,
+        &quot;max&quot;: 0.999996155369836,
+        &quot;std&quot;: 0.34822509843531557
+      },
+      &quot;output_linear_Y&quot;: {
+        &quot;n&quot;: 1025,
+        &quot;p01_p50_p99&quot;: [
+          0.004524701770957906,
+          0.012768950398906692,
+          1.0934181856090612
+        ],
+        &quot;min&quot;: 0.0036974057170519373,
+        &quot;max&quot;: 1.179557434862733,
+        &quot;std&quot;: 0.3414335083603444
+      },
+      &quot;Digital_mean_Lab_D65&quot;: [
+        31.3868507892315,
+        11.96670768285242,
+        1.1813727765331585
+      ],
+      &quot;v02_mean_Lab_D65&quot;: [
+        28.504306487577377,
+        8.103061872084735,
+        2.1526150970626783
+      ],
+      &quot;display16_deltaL&quot;: {
+        &quot;n&quot;: 1025,
+        &quot;p01_p50_p99&quot;: [
+          -26.118457724615393,
+          0.7682780543811312,
+          6.074596266182779
+        ],
+        &quot;min&quot;: -27.69693766851836,
+        &quot;max&quot;: 7.455217448450249,
+        &quot;std&quot;: 9.50235464385259
+      },
+      &quot;display16_delta_ab&quot;: {
+        &quot;n&quot;: 1025,
+        &quot;p01_p50_p99&quot;: [
+          0.2615208845133489,
+          7.462813130786074,
+          47.47136083058697
+        ],
+        &quot;min&quot;: 0.23013375087411164,
+        &quot;max&quot;: 56.23964206412978,
+        &quot;std&quot;: 8.135130942459977
+      },
+      &quot;equal_Y_abs_hue_shift&quot;: {
+        &quot;n&quot;: 1025,
+        &quot;p01_p50_p99&quot;: [
+          0.232151061766167,
+          7.738917866968876,
+          137.19036850703299
+        ],
+        &quot;min&quot;: 0.04785683860802692,
+        &quot;max&quot;: 138.5479673328191,
+        &quot;std&quot;: 40.995961964721225
+      },
+      &quot;note&quot;: &quot;ROI diagnostics, not true skin or film-color targets; hue unreliable near neutral&quot;
+    },
+    &quot;storefront&quot;: {
+      &quot;floor_fraction&quot;: 0.02240717029449424,
+      &quot;input_linear_Y&quot;: {
+        &quot;n&quot;: 4686,
+        &quot;p01_p50_p99&quot;: [
+          0.002805697071615177,
+          0.07980617315472477,
+          0.9999956035476685
+        ],
+        &quot;min&quot;: 0.0014096164946744683,
+        &quot;max&quot;: 0.9999970119092881,
+        &quot;std&quot;: 0.17874374010450197
+      },
+      &quot;output_linear_Y&quot;: {
+        &quot;n&quot;: 4686,
+        &quot;p01_p50_p99&quot;: [
+          0.002874999989579951,
+          0.07986716160400137,
+          1.0186933117593484
+        ],
+        &quot;min&quot;: 0.0028749998989259823,
+        &quot;max&quot;: 1.201740537807834,
+        &quot;std&quot;: 0.17161774714682554
+      },
+      &quot;Digital_mean_Lab_D65&quot;: [
+        36.88531466141574,
+        -1.521978116173337,
+        2.130872564120985
+      ],
+      &quot;v02_mean_Lab_D65&quot;: [
+        36.0671734784992,
+        -2.985437455370887,
+        1.3752226114547954
+      ],
+      &quot;display16_deltaL&quot;: {
+        &quot;n&quot;: 4686,
+        &quot;p01_p50_p99&quot;: [
+          -18.28880792774092,
+          -0.18566498479852456,
+          3.284323887101435
+        ],
+        &quot;min&quot;: -25.148341615905217,
+        &quot;max&quot;: 6.398132173187051,
+        &quot;std&quot;: 3.283825809435452
+      },
+      &quot;display16_delta_ab&quot;: {
+        &quot;n&quot;: 4686,
+        &quot;p01_p50_p99&quot;: [
+          0.26246385781313336,
+          5.080501851363568,
+          22.952477707949022
+        ],
+        &quot;min&quot;: 0.017283578719877676,
+        &quot;max&quot;: 54.97938292413976,
+        &quot;std&quot;: 5.035542706247155
+      },
+      &quot;equal_Y_abs_hue_shift&quot;: {
+        &quot;n&quot;: 4686,
+        &quot;p01_p50_p99&quot;: [
+          0.0945327947198237,
+          6.9361501694686325,
+          125.8063176582067
+        ],
+        &quot;min&quot;: 0.0035113157331636558,
+        &quot;max&quot;: 139.19834360566375,
+        &quot;std&quot;: 18.36201406870449
+      },
+      &quot;note&quot;: &quot;ROI diagnostics, not true skin or film-color targets; hue unreliable near neutral&quot;
+    },
+    &quot;bicycles&quot;: {
+      &quot;floor_fraction&quot;: 0.08775705404112864,
+      &quot;input_linear_Y&quot;: {
+        &quot;n&quot;: 8364,
+        &quot;p01_p50_p99&quot;: [
+          0.001071901957559233,
+          0.011993580947362631,
+          0.038342834574674446
+        ],
+        &quot;min&quot;: 1.9092393373139203e-07,
+        &quot;max&quot;: 0.32245837365843655,
+        &quot;std&quot;: 0.009768531206291111
+      },
+      &quot;output_linear_Y&quot;: {
+        &quot;n&quot;: 8364,
+        &quot;p01_p50_p99&quot;: [
+          0.00287499992723436,
+          0.011984864632497308,
+          0.037824231762972164
+        ],
+        &quot;min&quot;: 0.0028749998855274635,
+        &quot;max&quot;: 0.31110641224948765,
+        &quot;std&quot;: 0.009588131497262934
+      },
+      &quot;Digital_mean_Lab_D65&quot;: [
+        10.378169086227933,
+        -1.5969311035152352,
+        4.238217742456647
+      ],
+      &quot;v02_mean_Lab_D65&quot;: [
+        10.36914512514907,
+        -0.3746808927574164,
+        0.8685087463181507
+      ],
+      &quot;display16_deltaL&quot;: {
+        &quot;n&quot;: 8364,
+        &quot;p01_p50_p99&quot;: [
+          -3.4575119184932364,
+          -0.02688827152728912,
+          4.303870966743624
+        ],
+        &quot;min&quot;: -4.1990758957087735,
+        &quot;max&quot;: 8.539444852476088,
+        &quot;std&quot;: 1.7818943819927984
+      },
+      &quot;display16_delta_ab&quot;: {
+        &quot;n&quot;: 8364,
+        &quot;p01_p50_p99&quot;: [
+          0.5103041782727936,
+          5.749247687376727,
+          14.675750847066958
+        ],
+        &quot;min&quot;: 0.12269613378441081,
+        &quot;max&quot;: 28.04065092125106,
+        &quot;std&quot;: 3.695235539157134
+      },
+      &quot;equal_Y_abs_hue_shift&quot;: {
+        &quot;n&quot;: 8364,
+        &quot;p01_p50_p99&quot;: [
+          0.30678429536995083,
+          12.39412168623312,
+          109.45493807789352
+        ],
+        &quot;min&quot;: 0.0008825531934633091,
+        &quot;max&quot;: 178.663081769536,
+        &quot;std&quot;: 22.2449510050012
+      },
+      &quot;note&quot;: &quot;ROI diagnostics, not true skin or film-color targets; hue unreliable near neutral&quot;
+    },
+    &quot;road&quot;: {
+      &quot;floor_fraction&quot;: 0.031620065789473684,
+      &quot;input_linear_Y&quot;: {
+        &quot;n&quot;: 24320,
+        &quot;p01_p50_p99&quot;: [
+          0.0,
+          0.01356012756735338,
+          0.017500474092622124
+        ],
+        &quot;min&quot;: 0.0,
+        &quot;max&quot;: 0.02237272500188863,
+        &quot;std&quot;: 0.0029417999980480103
+      },
+      &quot;output_linear_Y&quot;: {
+        &quot;n&quot;: 24320,
+        &quot;p01_p50_p99&quot;: [
+          0.002875000064978609,
+          0.016841829793430397,
+          0.021125546184755806
+        ],
+        &quot;min&quot;: 0.002875000034156418,
+        &quot;max&quot;: 0.02489431312121954,
+        &quot;std&quot;: 0.0032369410881153493
+      },
+      &quot;Digital_mean_Lab_D65&quot;: [
+        11.134425083097051,
+        6.035737542017501,
+        8.069587694679562
+      ],
+      &quot;v02_mean_Lab_D65&quot;: [
+        13.228832344890607,
+        0.46852041441860254,
+        1.519127399700925
+      ],
+      &quot;display16_deltaL&quot;: {
+        &quot;n&quot;: 24320,
+        &quot;p01_p50_p99&quot;: [
+          -0.7282075968373801,
+          2.18748766369605,
+          4.026802308483405
+        ],
+        &quot;min&quot;: -4.6778724863014745,
+        &quot;max&quot;: 6.018483045506482,
+        &quot;std&quot;: 0.9345296004650349
+      },
+      &quot;display16_delta_ab&quot;: {
+        &quot;n&quot;: 24320,
+        &quot;p01_p50_p99&quot;: [
+          0.13568585501474875,
+          9.13932187321129,
+          14.097125341783931
+        ],
+        &quot;min&quot;: 0.13568585501474875,
+        &quot;max&quot;: 17.459486007136668,
+        &quot;std&quot;: 2.582225730433772
+      },
+      &quot;equal_Y_abs_hue_shift&quot;: {
+        &quot;n&quot;: 24320,
+        &quot;p01_p50_p99&quot;: [
+          5.607106791827571,
+          15.592684161629492,
+          118.86464678571542
+        ],
+        &quot;min&quot;: 0.028811359587677998,
+        &quot;max&quot;: 118.86464678571542,
+        &quot;std&quot;: 18.498493263410708
+      },
+      &quot;note&quot;: &quot;ROI diagnostics, not true skin or film-color targets; hue unreliable near neutral&quot;
+    },
+    &quot;dark_trees&quot;: {
+      &quot;floor_fraction&quot;: 0.6041583366653339,
+      &quot;input_linear_Y&quot;: {
+        &quot;n&quot;: 22509,
+        &quot;p01_p50_p99&quot;: [
+          0.0005620655389551185,
+          0.003168257031382574,
+          0.009424664200594162
+        ],
+        &quot;min&quot;: 0.0,
+        &quot;max&quot;: 0.026518680747435894,
+        &quot;std&quot;: 0.001861271095796629
+      },
+      &quot;output_linear_Y&quot;: {
+        &quot;n&quot;: 22509,
+        &quot;p01_p50_p99&quot;: [
+          0.0028749999023142078,
+          0.0028750000541447897,
+          0.010663446712932106
+        ],
+        &quot;min&quot;: 0.002874999884112645,
+        &quot;max&quot;: 0.027551004387937672,
+        &quot;std&quot;: 0.0018303127006723103
+      },
+      &quot;Digital_mean_Lab_D65&quot;: [
+        3.0809807308388866,
+        -0.47062766198403316,
+        2.62232764233079
+      ],
+      &quot;v02_mean_Lab_D65&quot;: [
+        3.4689874126255145,
+        -0.05386261749183128,
+        0.17859744171570593
+      ],
+      &quot;display16_deltaL&quot;: {
+        &quot;n&quot;: 22509,
+        &quot;p01_p50_p99&quot;: [
+          -3.3946647659874327,
+          0.4106767313590183,
+          4.338110870591105
+        ],
+        &quot;min&quot;: -4.820044100344095,
+        &quot;max&quot;: 9.326595245513829,
+        &quot;std&quot;: 1.5484176514191814
+      },
+      &quot;display16_delta_ab&quot;: {
+        &quot;n&quot;: 22509,
+        &quot;p01_p50_p99&quot;: [
+          0.3560213734624598,
+          3.184846631066524,
+          9.830711138397499
+        ],
+        &quot;min&quot;: 0.048309905177646266,
+        &quot;max&quot;: 17.101157047729263,
+        &quot;std&quot;: 2.0436207708691567
+      },
+      &quot;equal_Y_abs_hue_shift&quot;: {
+        &quot;n&quot;: 22509,
+        &quot;p01_p50_p99&quot;: [
+          0.43761179386077403,
+          17.91945582401911,
+          119.7975300987789
+        ],
+        &quot;min&quot;: 0.001354823027782004,
+        &quot;max&quot;: 179.6724516182992,
+        &quot;std&quot;: 25.522093912653748
+      },
+      &quot;note&quot;: &quot;ROI diagnostics, not true skin or film-color targets; hue unreliable near neutral&quot;
+    }
+  },
+  &quot;floor_decomposition&quot;: {
+    &quot;decoded_zero_on_floor_pixels&quot;: 75909,
+    &quot;decoded_zero_on_floor_fraction_of_frame&quot;: 0.10127033171106557,
+    &quot;nonzero_input_on_floor_pixels&quot;: 208804,
+    &quot;nonzero_input_on_floor_fraction_of_frame&quot;: 0.27856578722677594,
+    &quot;nonzero_input_on_floor_fraction_of_nonzero_input&quot;: 0.3099550365986352,
+    &quot;interpretation&quot;: &quot;Already-zero decoded pixels contain no input luminance variation to lose; lifting them to the reconstruction floor is different from flattening nonzero shadows.&quot;
+  },
+  &quot;floor&quot;: {
+    &quot;input_linear_Y&quot;: {
+      &quot;n&quot;: 284713,
+      &quot;p01_p50_p99&quot;: [
+        0.0,
+        0.001034243439142732,
+        0.005012471335529355
+      ],
+      &quot;min&quot;: 0.0,
+      &quot;max&quot;: 0.008897216159707214,
+      &quot;std&quot;: 0.0011994610696989556
+    },
+    &quot;output_linear_Y&quot;: {
+      &quot;n&quot;: 284713,
+      &quot;p01_p50_p99&quot;: [
+        0.002874999900717069,
+        0.0028750000320760067,
+        0.002875000098652775
+      ],
+      &quot;min&quot;: 0.0028749998838586265,
+      &quot;max&quot;: 0.002875000116208568,
+      &quot;std&quot;: 5.2672093921507014e-11
+    },
+    &quot;display16_deltaL_vs_digital&quot;: {
+      &quot;n&quot;: 284713,
+      &quot;p01_p50_p99&quot;: [
+        -1.889222510097871,
+        1.6620731543253733,
+        2.5957889806023857
+      ],
+      &quot;min&quot;: -4.797460179424348,
+      &quot;max&quot;: 2.5957889806023857,
+      &quot;std&quot;: 1.0764999468095575
+    },
+    &quot;display16_delta_ab_distance_vs_digital&quot;: {
+      &quot;n&quot;: 284713,
+      &quot;p01_p50_p99&quot;: [
+        0.13568585501474875,
+        0.9459975983868174,
+        6.015331620485913
+      ],
+      &quot;min&quot;: 0.01682425125158651,
+      &quot;max&quot;: 11.495992275455464,
+      &quot;std&quot;: 1.3298458865292464
+    },
+    &quot;display16_deltaE00_vs_digital&quot;: {
+      &quot;n&quot;: 284713,
+      &quot;p01_p50_p99&quot;: [
+        0.636107248608959,
+        1.5109184983148944,
+        6.324982457757937
+      ],
+      &quot;min&quot;: 0.05127474888037995,
+      &quot;max&quot;: 11.61018530881354,
+      &quot;std&quot;: 1.063578501084227
+    },
+    &quot;equal_Y_chromaticity_abs_hue_shift&quot;: {
+      &quot;n&quot;: 18013,
+      &quot;p01_p50_p99&quot;: [
+        0.23825695163855243,
+        13.719389272586199,
+        49.66259733554308
+      ],
+      &quot;min&quot;: 0.0050379841609355935,
+      &quot;max&quot;: 66.64669799792108,
+      &quot;std&quot;: 10.948590195309185
+    },
+    &quot;equal_Y_chroma_ratio&quot;: {
+      &quot;n&quot;: 18013,
+      &quot;p01_p50_p99&quot;: [
+        0.00768957950921865,
+        0.019626517649453137,
+        0.06277367462635412
+      ],
+      &quot;min&quot;: 0.0021142487945117186,
+      &quot;max&quot;: 0.0721133937167764,
+      &quot;std&quot;: 0.013569081162377882
+    },
+    &quot;color_note&quot;: &quot;equal-Y Lab is an analysis coordinate only, not a re-render or reference target&quot;
+  },
+  &quot;floor_with_nonzero_input&quot;: {
+    &quot;input_linear_Y&quot;: {
+      &quot;n&quot;: 208804,
+      &quot;p01_p50_p99&quot;: [
+        4.347101154095819e-05,
+        0.0014566222595219966,
+        0.005250641234929549
+      ],
+      &quot;min&quot;: 1.307698176242411e-09,
+      &quot;max&quot;: 0.008897216159707214,
+      &quot;std&quot;: 0.001104509381821685
+    },
+    &quot;output_linear_Y&quot;: {
+      &quot;n&quot;: 208804,
+      &quot;p01_p50_p99&quot;: [
+        0.0028749998981025863,
+        0.0028750000011948636,
+        0.0028750001012993283
+      ],
+      &quot;min&quot;: 0.0028749998838586265,
+      &quot;max&quot;: 0.002875000116208568,
+      &quot;std&quot;: 5.193640598351758e-11
+    },
+    &quot;display16_deltaL_vs_digital&quot;: {
+      &quot;n&quot;: 208804,
+      &quot;p01_p50_p99&quot;: [
+        -2.0982525651570247,
+        1.2796204891417453,
+        2.54688324697716
+      ],
+      &quot;min&quot;: -4.797460179424348,
+      &quot;max&quot;: 2.5946341074291617,
+      &quot;std&quot;: 0.9888855040274394
+    },
+    &quot;display16_delta_ab_distance_vs_digital&quot;: {
+      &quot;n&quot;: 208804,
+      &quot;p01_p50_p99&quot;: [
+        0.14772143295152876,
+        1.3598866997675079,
+        6.436259176765409
+      ],
+      &quot;min&quot;: 0.01682425125158651,
+      &quot;max&quot;: 11.495992275455464,
+      &quot;std&quot;: 1.3223822787732826
+    },
+    &quot;display16_deltaE00_vs_digital&quot;: {
+      &quot;n&quot;: 208804,
+      &quot;p01_p50_p99&quot;: [
+        0.5825167113701711,
+        1.82525307555816,
+        6.712473989961835
+      ],
+      &quot;min&quot;: 0.05127474888037995,
+      &quot;max&quot;: 11.61018530881354,
+      &quot;std&quot;: 1.1939172203994393
+    },
+    &quot;equal_Y_chromaticity_abs_hue_shift&quot;: {
+      &quot;n&quot;: 18013,
+      &quot;p01_p50_p99&quot;: [
+        0.23825695163855243,
+        13.719389272586199,
+        49.66259733554308
+      ],
+      &quot;min&quot;: 0.0050379841609355935,
+      &quot;max&quot;: 66.64669799792108,
+      &quot;std&quot;: 10.948590195309185
+    },
+    &quot;equal_Y_chroma_ratio&quot;: {
+      &quot;n&quot;: 18013,
+      &quot;p01_p50_p99&quot;: [
+        0.00768957950921865,
+        0.019626517649453137,
+        0.06277367462635412
+      ],
+      &quot;min&quot;: 0.0021142487945117186,
+      &quot;max&quot;: 0.0721133937167764,
+      &quot;std&quot;: 0.013569081162377882
+    },
+    &quot;color_note&quot;: &quot;equal-Y Lab is an analysis coordinate only, not a re-render or reference target&quot;
+  },
+  &quot;nonfloor&quot;: {
+    &quot;input_linear_Y&quot;: {
+      &quot;n&quot;: 464855,
+      &quot;p01_p50_p99&quot;: [
+        0.0007810876209061071,
+        0.006925824464778276,
+        0.3663838726217157
+      ],
+      &quot;min&quot;: 4.699474742412567e-05,
+      &quot;max&quot;: 0.9999999045394896,
+      &quot;std&quot;: 0.08682941902280937
+    },
+    &quot;output_linear_Y&quot;: {
+      &quot;n&quot;: 464855,
+      &quot;p01_p50_p99&quot;: [
+        0.002946413534549197,
+        0.00907899044234343,
+        0.316505143798296
+      ],
+      &quot;min&quot;: 0.0028750135615606327,
+      &quot;max&quot;: 1.3125057069869517,
+      &quot;std&quot;: 0.08747010963339903
+    },
+    &quot;display16_deltaL_vs_digital&quot;: {
+      &quot;n&quot;: 464855,
+      &quot;p01_p50_p99&quot;: [
+        -3.157836249869165,
+        1.7939438493650286,
+        5.610335135994169
+      ],
+      &quot;min&quot;: -28.502799559274543,
+      &quot;max&quot;: 18.719009368084883,
+      &quot;std&quot;: 1.9796306488709936
+    },
+    &quot;display16_delta_ab_distance_vs_digital&quot;: {
+      &quot;n&quot;: 464855,
+      &quot;p01_p50_p99&quot;: [
+        0.4999362970692457,
+        5.242434543859914,
+        17.57038779363254
+      ],
+      &quot;min&quot;: 0.017283578719877676,
+      &quot;max&quot;: 62.38545913989789,
+      &quot;std&quot;: 3.8524703831008162
+    },
+    &quot;display16_deltaE00_vs_digital&quot;: {
+      &quot;n&quot;: 464855,
+      &quot;p01_p50_p99&quot;: [
+        0.6314529290436502,
+        5.614109762970122,
+        12.850846689089208
+      ],
+      &quot;min&quot;: 0.026465650470925212,
+      &quot;max&quot;: 32.309082276096056,
+      &quot;std&quot;: 3.000887518454657
+    },
+    &quot;equal_Y_chromaticity_abs_hue_shift&quot;: {
+      &quot;n&quot;: 317426,
+      &quot;p01_p50_p99&quot;: [
+        0.46847170063197296,
+        16.05610116363502,
+        69.77446522733601
+      ],
+      &quot;min&quot;: 5.7552223609036446e-05,
+      &quot;max&quot;: 84.75954083656427,
+      &quot;std&quot;: 14.065361907943172
+    },
+    &quot;equal_Y_chroma_ratio&quot;: {
+      &quot;n&quot;: 317426,
+      &quot;p01_p50_p99&quot;: [
+        0.02132538208752739,
+        0.12649324626637187,
+        2.5649467645143673
+      ],
+      &quot;min&quot;: 0.0056364741063120605,
+      &quot;max&quot;: 4.040216267711506,
+      &quot;std&quot;: 0.37228972272696315
+    },
+    &quot;color_note&quot;: &quot;equal-Y Lab is an analysis coordinate only, not a re-render or reference target&quot;
+  },
+  &quot;horizontal_floor_neighbor_contrast&quot;: {
+    &quot;pairs&quot;: 207507,
+    &quot;input_abs_EV_step&quot;: {
+      &quot;n&quot;: 207507,
+      &quot;p01_p50_p99&quot;: [
+        0.0,
+        0.2495305047978107,
+        12.695937226376136
+      ],
+      &quot;min&quot;: 0.0,
+      &quot;max&quot;: 32.73416396613126,
+      &quot;std&quot;: 2.2770045191937207
+    },
+    &quot;output_abs_EV_step&quot;: {
+      &quot;n&quot;: 207507,
+      &quot;p01_p50_p99&quot;: [
+        0.0,
+        1.060255527818299e-08,
+        8.224520261279624e-08
+      ],
+      &quot;min&quot;: 0.0,
+      &quot;max&quot;: 1.106200571143745e-07,
+      &quot;std&quot;: 2.2406647693512246e-08
+    }
+  }
+}</pre></details><h3>phoenix_ii</h3><main><figure><figcaption>Digital</figcaption><img src="DSC03870/digital_baseline.png"></figure><figure><figcaption>Round5</figcaption><img src="DSC03870/round5_phoenix_ii.png"></figure><figure><figcaption>v01</figcaption><img src="DSC03870/research_v01_phoenix_ii.png"></figure><figure><figcaption>v02</figcaption><img src="DSC03870/research_phoenix_ii.png"></figure></main><main><img src="DSC03870/phoenix_ii_floor_overlay.png"><img src="DSC03870/phoenix_ii_floor_mask.png"><img src="DSC03870/phoenix_ii_tone.png"></main><h4>dark_sky</h4><main><figure><figcaption>Digital</figcaption><img src="DSC03870/phoenix_ii_dark_sky_Digital.png"></figure><figure><figcaption>v02</figcaption><img src="DSC03870/phoenix_ii_dark_sky_v02.png"></figure></main><h4>red_sign</h4><main><figure><figcaption>Digital</figcaption><img src="DSC03870/phoenix_ii_red_sign_Digital.png"></figure><figure><figcaption>v02</figcaption><img src="DSC03870/phoenix_ii_red_sign_v02.png"></figure></main><h4>storefront</h4><main><figure><figcaption>Digital</figcaption><img src="DSC03870/phoenix_ii_storefront_Digital.png"></figure><figure><figcaption>v02</figcaption><img src="DSC03870/phoenix_ii_storefront_v02.png"></figure></main><h4>bicycles</h4><main><figure><figcaption>Digital</figcaption><img src="DSC03870/phoenix_ii_bicycles_Digital.png"></figure><figure><figcaption>v02</figcaption><img src="DSC03870/phoenix_ii_bicycles_v02.png"></figure></main><h4>road</h4><main><figure><figcaption>Digital</figcaption><img src="DSC03870/phoenix_ii_road_Digital.png"></figure><figure><figcaption>v02</figcaption><img src="DSC03870/phoenix_ii_road_v02.png"></figure></main><h4>dark_trees</h4><main><figure><figcaption>Digital</figcaption><img src="DSC03870/phoenix_ii_dark_trees_Digital.png"></figure><figure><figcaption>v02</figcaption><img src="DSC03870/phoenix_ii_dark_trees_v02.png"></figure></main><details><summary>Endpoint and ROI numbers</summary><pre>{
+  &quot;floor_pixels&quot;: 353900,
+  &quot;pixels&quot;: 749568,
+  &quot;floor_fraction&quot;: 0.472138618510929,
+  &quot;ceiling_pixels&quot;: 0,
+  &quot;floor_max_relative_Y_error&quot;: 4.04061668568545e-08,
+  &quot;stage_bounds&quot;: {
+    &quot;Y_constraint_pass&quot;: true,
+    &quot;endpoint_saturated_pixels&quot;: 353900,
+    &quot;log_chromatic_norm_bound&quot;: 1.3862943611198906,
+    &quot;maximum_channel_ratio&quot;: 3.3669841516969714,
+    &quot;maximum_relative_Y_vs_scalar_exposure_error&quot;: 5.852995510480241e-08,
+    &quot;ratio_bound_pass&quot;: true
+  },
+  &quot;regions&quot;: {
+    &quot;dark_sky&quot;: {
+      &quot;floor_fraction&quot;: 0.9075831485587583,
+      &quot;input_linear_Y&quot;: {
+        &quot;n&quot;: 22550,
+        &quot;p01_p50_p99&quot;: [
+          0.00011880266312943074,
+          0.0015979053952181015,
+          0.0038494974152121623
+        ],
+        &quot;min&quot;: 0.0,
+        &quot;max&quot;: 0.0062445001627862455,
+        &quot;std&quot;: 0.0008192612365597672
+      },
+      &quot;output_linear_Y&quot;: {
+        &quot;n&quot;: 22550,
+        &quot;p01_p50_p99&quot;: [
+          0.0028749998998777743,
+          0.0028750000084829864,
+          0.00398336041190525
+        ],
+        &quot;min&quot;: 0.0028749998839526668,
+        &quot;max&quot;: 0.009773010830923636,
+        &quot;std&quot;: 0.00022197812782136879
+      },
+      &quot;Digital_mean_Lab_D65&quot;: [
+        1.5093003971227135,
+        0.8210169051701672,
+        -1.1497561910626986
+      ],
+      &quot;v02_mean_Lab_D65&quot;: [
+        2.640172354391922,
+        0.0021793106406476064,
+        -0.0016353537253960897
+      ],
+      &quot;display16_deltaL&quot;: {
+        &quot;n&quot;: 22550,
+        &quot;p01_p50_p99&quot;: [
+          -0.04612408254739897,
+          1.1435710290784318,
+          2.4699214562249168
+        ],
+        &quot;min&quot;: -0.3054984661927769,
+        &quot;max&quot;: 4.960369649060407,
+        &quot;std&quot;: 0.6509582628790984
+      },
+      &quot;display16_delta_ab&quot;: {
+        &quot;n&quot;: 22550,
+        &quot;p01_p50_p99&quot;: [
+          0.1748001468597735,
+          1.9419459474191316,
+          7.01871658812799
+        ],
+        &quot;min&quot;: 0.006316639517058905,
+        &quot;max&quot;: 13.445438579989627,
+        &quot;std&quot;: 1.487637332309501
+      },
+      &quot;equal_Y_abs_hue_shift&quot;: {
+        &quot;n&quot;: 22550,
+        &quot;p01_p50_p99&quot;: [
+          1.0952701616647023,
+          37.381574020384505,
+          173.47208184608573
+        ],
+        &quot;min&quot;: 0.023035144301701393,
+        &quot;max&quot;: 179.99794362716534,
+        &quot;std&quot;: 43.637195990741034
+      },
+      &quot;note&quot;: &quot;ROI diagnostics, not true skin or film-color targets; hue unreliable near neutral&quot;
+    },
+    &quot;red_sign&quot;: {
+      &quot;floor_fraction&quot;: 0.0,
+      &quot;input_linear_Y&quot;: {
+        &quot;n&quot;: 1025,
+        &quot;p01_p50_p99&quot;: [
+          0.0037463861482638196,
+          0.008590961396153177,
+          0.9999956035476685
+        ],
+        &quot;min&quot;: 0.0031038190562697825,
+        &quot;max&quot;: 0.999996155369836,
+        &quot;std&quot;: 0.34822509843531557
+      },
+      &quot;output_linear_Y&quot;: {
+        &quot;n&quot;: 1025,
+        &quot;p01_p50_p99&quot;: [
+          0.00408169970966086,
+          0.009294601883654668,
+          1.039043902750555
+        ],
+        &quot;min&quot;: 0.003212154007143248,
+        &quot;max&quot;: 1.078042525967729,
+        &quot;std&quot;: 0.3321764622922995
+      },
+      &quot;Digital_mean_Lab_D65&quot;: [
+        31.3868507892315,
+        11.96670768285242,
+        1.1813727765331585
+      ],
+      &quot;v02_mean_Lab_D65&quot;: [
+        27.455644986062186,
+        3.4909843082889926,
+        2.6318789041883908
+      ],
+      &quot;display16_deltaL&quot;: {
+        &quot;n&quot;: 1025,
+        &quot;p01_p50_p99&quot;: [
+          -25.722078825252574,
+          0.1622962050203327,
+          4.388111286958796
+        ],
+        &quot;min&quot;: -27.240394863401576,
+        &quot;max&quot;: 7.05049009725429,
+        &quot;std&quot;: 8.721377238871888
+      },
+      &quot;display16_delta_ab&quot;: {
+        &quot;n&quot;: 1025,
+        &quot;p01_p50_p99&quot;: [
+          0.03797122836769739,
+          8.950968617403458,
+          45.3336350641911
+        ],
+        &quot;min&quot;: 0.03308117926247873,
+        &quot;max&quot;: 60.53888533102751,
+        &quot;std&quot;: 10.254594060491412
+      },
+      &quot;equal_Y_abs_hue_shift&quot;: {
+        &quot;n&quot;: 1025,
+        &quot;p01_p50_p99&quot;: [
+          0.09709986050508974,
+          8.59075229523711,
+          142.3615610267474
+        ],
+        &quot;min&quot;: 0.007664039036399117,
+        &quot;max&quot;: 143.70707572449862,
+        &quot;std&quot;: 40.32306033855536
+      },
+      &quot;note&quot;: &quot;ROI diagnostics, not true skin or film-color targets; hue unreliable near neutral&quot;
+    },
+    &quot;storefront&quot;: {
+      &quot;floor_fraction&quot;: 0.009389671361502348,
+      &quot;input_linear_Y&quot;: {
+        &quot;n&quot;: 4686,
+        &quot;p01_p50_p99&quot;: [
+          0.002805697071615177,
+          0.07980617315472477,
+          0.9999956035476685
+        ],
+        &quot;min&quot;: 0.0014096164946744683,
+        &quot;max&quot;: 0.9999970119092881,
+        &quot;std&quot;: 0.17874374010450197
+      },
+      &quot;output_linear_Y&quot;: {
+        &quot;n&quot;: 4686,
+        &quot;p01_p50_p99&quot;: [
+          0.0029199757671676506,
+          0.07723946311956867,
+          1.007132914952005
+        ],
+        &quot;min&quot;: 0.0028749998942964477,
+        &quot;max&quot;: 1.0763503906553984,
+        &quot;std&quot;: 0.16939500060238727
+      },
+      &quot;Digital_mean_Lab_D65&quot;: [
+        36.88531466141574,
+        -1.521978116173337,
+        2.130872564120985
+      ],
+      &quot;v02_mean_Lab_D65&quot;: [
+        36.29555651594862,
+        -1.0350810190760622,
+        0.7536085479504797
+      ],
+      &quot;display16_deltaL&quot;: {
+        &quot;n&quot;: 4686,
+        &quot;p01_p50_p99&quot;: [
+          -18.95012365767051,
+          -0.0514221158083501,
+          2.2583538366124376
+        ],
+        &quot;min&quot;: -24.732158836449976,
+        &quot;max&quot;: 7.386061784339539,
+        &quot;std&quot;: 3.2483769321883864
+      },
+      &quot;display16_delta_ab&quot;: {
+        &quot;n&quot;: 4686,
+        &quot;p01_p50_p99&quot;: [
+          0.08267553351320099,
+          2.479525563747295,
+          27.405471794186493
+        ],
+        &quot;min&quot;: 0.020649824484580193,
+        &quot;max&quot;: 49.779542294124255,
+        &quot;std&quot;: 6.019649118901721
+      },
+      &quot;equal_Y_abs_hue_shift&quot;: {
+        &quot;n&quot;: 4686,
+        &quot;p01_p50_p99&quot;: [
+          0.1003082331691445,
+          5.979857875577366,
+          111.6258210992552
+        ],
+        &quot;min&quot;: 6.184948585996608e-05,
+        &quot;max&quot;: 170.43369082240815,
+        &quot;std&quot;: 18.080571714226153
+      },
+      &quot;note&quot;: &quot;ROI diagnostics, not true skin or film-color targets; hue unreliable near neutral&quot;
+    },
+    &quot;bicycles&quot;: {
+      &quot;floor_fraction&quot;: 0.07101865136298421,
+      &quot;input_linear_Y&quot;: {
+        &quot;n&quot;: 8364,
+        &quot;p01_p50_p99&quot;: [
+          0.001071901957559233,
+          0.011993580947362631,
+          0.038342834574674446
+        ],
+        &quot;min&quot;: 1.9092393373139203e-07,
+        &quot;max&quot;: 0.32245837365843655,
+        &quot;std&quot;: 0.009768531206291111
+      },
+      &quot;output_linear_Y&quot;: {
+        &quot;n&quot;: 8364,
+        &quot;p01_p50_p99&quot;: [
+          0.0028749999399323143,
+          0.012691438518671737,
+          0.03728625801435151
+        ],
+        &quot;min&quot;: 0.0028749998888134023,
+        &quot;max&quot;: 0.3255564495360598,
+        &quot;std&quot;: 0.009710028591796937
+      },
+      &quot;Digital_mean_Lab_D65&quot;: [
+        10.378169086227933,
+        -1.5969311035152352,
+        4.238217742456647
+      ],
+      &quot;v02_mean_Lab_D65&quot;: [
+        10.747261453835517,
+        -0.0712250038817491,
+        0.19082713463530757
+      ],
+      &quot;display16_deltaL&quot;: {
+        &quot;n&quot;: 8364,
+        &quot;p01_p50_p99&quot;: [
+          -0.500033566471071,
+          0.20623777043036995,
+          2.190885435813039
+        ],
+        &quot;min&quot;: -2.333781584407838,
+        &quot;max&quot;: 8.156918401045647,
+        &quot;std&quot;: 0.573291728199238
+      },
+      &quot;display16_delta_ab&quot;: {
+        &quot;n&quot;: 8364,
+        &quot;p01_p50_p99&quot;: [
+          0.5438833062562984,
+          6.409615777682658,
+          16.78658254306097
+        ],
+        &quot;min&quot;: 0.046081517315800506,
+        &quot;max&quot;: 30.98319063142836,
+        &quot;std&quot;: 4.263483037195712
+      },
+      &quot;equal_Y_abs_hue_shift&quot;: {
+        &quot;n&quot;: 8364,
+        &quot;p01_p50_p99&quot;: [
+          0.3108050691869718,
+          15.816445217591863,
+          119.53097936484826
+        ],
+        &quot;min&quot;: 0.011358262015647824,
+        &quot;max&quot;: 179.38083769089644,
+        &quot;std&quot;: 20.551223311237948
+      },
+      &quot;note&quot;: &quot;ROI diagnostics, not true skin or film-color targets; hue unreliable near neutral&quot;
+    },
+    &quot;road&quot;: {
+      &quot;floor_fraction&quot;: 0.031578947368421054,
+      &quot;input_linear_Y&quot;: {
+        &quot;n&quot;: 24320,
+        &quot;p01_p50_p99&quot;: [
+          0.0,
+          0.01356012756735338,
+          0.017500474092622124
+        ],
+        &quot;min&quot;: 0.0,
+        &quot;max&quot;: 0.02237272500188863,
+        &quot;std&quot;: 0.0029417999980480103
+      },
+      &quot;output_linear_Y&quot;: {
+        &quot;n&quot;: 24320,
+        &quot;p01_p50_p99&quot;: [
+          0.002874999940109719,
+          0.015291611222384219,
+          0.021035687775638436
+        ],
+        &quot;min&quot;: 0.002874999940109719,
+        &quot;max&quot;: 0.026864235269275123,
+        &quot;std&quot;: 0.003214588078123067
+      },
+      &quot;Digital_mean_Lab_D65&quot;: [
+        11.134425083097051,
+        6.035737542017501,
+        8.069587694679562
+      ],
+      &quot;v02_mean_Lab_D65&quot;: [
+        12.44394547938858,
+        0.41479143195286555,
+        0.16403781699163208
+      ],
+      &quot;display16_deltaL&quot;: {
+        &quot;n&quot;: 24320,
+        &quot;p01_p50_p99&quot;: [
+          -0.14565117372337627,
+          1.2520341046718162,
+          3.2282638621625326
+        ],
+        &quot;min&quot;: -1.289176259222618,
+        &quot;max&quot;: 5.270277428007109,
+        &quot;std&quot;: 0.7700619566802838
+      },
+      &quot;display16_delta_ab&quot;: {
+        &quot;n&quot;: 24320,
+        &quot;p01_p50_p99&quot;: [
+          0.006316639517058905,
+          10.316434090868626,
+          15.623376641393948
+        ],
+        &quot;min&quot;: 0.006316639517058905,
+        &quot;max&quot;: 18.92175242575493,
+        &quot;std&quot;: 2.877462345736345
+      },
+      &quot;equal_Y_abs_hue_shift&quot;: {
+        &quot;n&quot;: 24320,
+        &quot;p01_p50_p99&quot;: [
+          3.560571573983341,
+          29.879680892201335,
+          47.12059140167588
+        ],
+        &quot;min&quot;: 0.006475097544949904,
+        &quot;max&quot;: 56.032576385642344,
+        &quot;std&quot;: 9.569635912288538
+      },
+      &quot;note&quot;: &quot;ROI diagnostics, not true skin or film-color targets; hue unreliable near neutral&quot;
+    },
+    &quot;dark_trees&quot;: {
+      &quot;floor_fraction&quot;: 0.41521169310053757,
+      &quot;input_linear_Y&quot;: {
+        &quot;n&quot;: 22509,
+        &quot;p01_p50_p99&quot;: [
+          0.0005620655389551185,
+          0.003168257031382574,
+          0.009424664200594162
+        ],
+        &quot;min&quot;: 0.0,
+        &quot;max&quot;: 0.026518680747435894,
+        &quot;std&quot;: 0.001861271095796629
+      },
+      &quot;output_linear_Y&quot;: {
+        &quot;n&quot;: 22509,
+        &quot;p01_p50_p99&quot;: [
+          0.002874999906717412,
+          0.0031765211830686777,
+          0.009210108487753879
+        ],
+        &quot;min&quot;: 0.0028749998861092143,
+        &quot;max&quot;: 0.028133267320449837,
+        &quot;std&quot;: 0.0015070257493775788
+      },
+      &quot;Digital_mean_Lab_D65&quot;: [
+        3.0809807308388866,
+        -0.47062766198403316,
+        2.62232764233079
+      ],
+      &quot;v02_mean_Lab_D65&quot;: [
+        3.4424665482664683,
+        -9.28911229757789e-05,
+        0.0042980439893991335
+      ],
+      &quot;display16_deltaL&quot;: {
+        &quot;n&quot;: 22509,
+        &quot;p01_p50_p99&quot;: [
+          -0.643732720082806,
+          0.1544705561620212,
+          2.124249897533446
+        ],
+        &quot;min&quot;: -1.3770490509185898,
+        &quot;max&quot;: 6.923491259302434,
+        &quot;std&quot;: 0.6094674729396379
+      },
+      &quot;display16_delta_ab&quot;: {
+        &quot;n&quot;: 22509,
+        &quot;p01_p50_p99&quot;: [
+          0.3870263068582321,
+          3.318121139145564,
+          10.301009248151379
+        ],
+        &quot;min&quot;: 0.006316639517058905,
+        &quot;max&quot;: 18.68480651770792,
+        &quot;std&quot;: 2.1339803591073685
+      },
+      &quot;equal_Y_abs_hue_shift&quot;: {
+        &quot;n&quot;: 22509,
+        &quot;p01_p50_p99&quot;: [
+          0.5325111976496294,
+          27.1829990671703,
+          167.2866287626956
+        ],
+        &quot;min&quot;: 0.0006953934724549526,
+        &quot;max&quot;: 179.9492047427304,
+        &quot;std&quot;: 35.93688538623328
+      },
+      &quot;note&quot;: &quot;ROI diagnostics, not true skin or film-color targets; hue unreliable near neutral&quot;
+    }
+  },
+  &quot;floor_decomposition&quot;: {
+    &quot;decoded_zero_on_floor_pixels&quot;: 75909,
+    &quot;decoded_zero_on_floor_fraction_of_frame&quot;: 0.10127033171106557,
+    &quot;nonzero_input_on_floor_pixels&quot;: 277991,
+    &quot;nonzero_input_on_floor_fraction_of_frame&quot;: 0.3708682867998634,
+    &quot;nonzero_input_on_floor_fraction_of_nonzero_input&quot;: 0.412658333073558,
+    &quot;interpretation&quot;: &quot;Already-zero decoded pixels contain no input luminance variation to lose; lifting them to the reconstruction floor is different from flattening nonzero shadows.&quot;
+  },
+  &quot;floor&quot;: {
+    &quot;input_linear_Y&quot;: {
+      &quot;n&quot;: 353900,
+      &quot;p01_p50_p99&quot;: [
+        0.0,
+        0.0012458438640572246,
+        0.002847675982841971
+      ],
+      &quot;min&quot;: 0.0,
+      &quot;max&quot;: 0.003751010976391891,
+      &quot;std&quot;: 0.0008927580102563872
+    },
+    &quot;output_linear_Y&quot;: {
+      &quot;n&quot;: 353900,
+      &quot;p01_p50_p99&quot;: [
+        0.002874999900546867,
+        0.002874999977064784,
+        0.0028750001003208688
+      ],
+      &quot;min&quot;: 0.0028749998838328754,
+      &quot;max&quot;: 0.00287500011616773,
+      &quot;std&quot;: 5.201348776627655e-11
+    },
+    &quot;display16_deltaL_vs_digital&quot;: {
+      &quot;n&quot;: 353900,
+      &quot;p01_p50_p99&quot;: [
+        0.03508482811630472,
+        1.465201025101095,
+        2.596341948004593
+      ],
+      &quot;min&quot;: -0.7157247614361602,
+      &quot;max&quot;: 2.596341948004593,
+      &quot;std&quot;: 0.8085504108716413
+    },
+    &quot;display16_delta_ab_distance_vs_digital&quot;: {
+      &quot;n&quot;: 353900,
+      &quot;p01_p50_p99&quot;: [
+        0.006316639517058905,
+        1.2989742381494422,
+        8.744953845501302
+      ],
+      &quot;min&quot;: 0.006316639517058905,
+      &quot;max&quot;: 17.75279692775003,
+      &quot;std&quot;: 1.848499109618047
+    },
+    &quot;display16_deltaE00_vs_digital&quot;: {
+      &quot;n&quot;: 353900,
+      &quot;p01_p50_p99&quot;: [
+        0.6868124826099125,
+        1.776404094975624,
+        7.919176777464804
+      ],
+      &quot;min&quot;: 0.06570481531719057,
+      &quot;max&quot;: 13.515317624554118,
+      &quot;std&quot;: 1.483425242133672
+    },
+    &quot;equal_Y_chromaticity_abs_hue_shift&quot;: {
+      &quot;n&quot;: 0
+    },
+    &quot;equal_Y_chroma_ratio&quot;: {
+      &quot;n&quot;: 0
+    },
+    &quot;color_note&quot;: &quot;equal-Y Lab is an analysis coordinate only, not a re-render or reference target&quot;
+  },
+  &quot;floor_with_nonzero_input&quot;: {
+    &quot;input_linear_Y&quot;: {
+      &quot;n&quot;: 277991,
+      &quot;p01_p50_p99&quot;: [
+        6.358883007598577e-05,
+        0.0015425171721440973,
+        0.0028697735615504905
+      ],
+      &quot;min&quot;: 1.307698176242411e-09,
+      &quot;max&quot;: 0.003751010976391891,
+      &quot;std&quot;: 0.000716707834342868
+    },
+    &quot;output_linear_Y&quot;: {
+      &quot;n&quot;: 277991,
+      &quot;p01_p50_p99&quot;: [
+        0.0028749998986136167,
+        0.002874999999966775,
+        0.00287500010242386
+      ],
+      &quot;min&quot;: 0.0028749998838328754,
+      &quot;max&quot;: 0.00287500011616773,
+      &quot;std&quot;: 5.17220024952331e-11
+    },
+    &quot;display16_deltaL_vs_digital&quot;: {
+      &quot;n&quot;: 277991,
+      &quot;p01_p50_p99&quot;: [
+        0.019645980802483365,
+        1.194604092995295,
+        2.5288247979265037
+      ],
+      &quot;min&quot;: -0.7157247614361602,
+      &quot;max&quot;: 2.595187074831369,
+      &quot;std&quot;: 0.6478629378107728
+    },
+    &quot;display16_delta_ab_distance_vs_digital&quot;: {
+      &quot;n&quot;: 277991,
+      &quot;p01_p50_p99&quot;: [
+        0.13526887212796834,
+        1.7040629082195935,
+        9.344704668358629
+      ],
+      &quot;min&quot;: 0.014291251742359285,
+      &quot;max&quot;: 17.75279692775003,
+      &quot;std&quot;: 1.8254924785034208
+    },
+    &quot;display16_deltaE00_vs_digital&quot;: {
+      &quot;n&quot;: 277991,
+      &quot;p01_p50_p99&quot;: [
+        0.6415278801370923,
+        2.1589865702978277,
+        8.29598654313424
+      ],
+      &quot;min&quot;: 0.06570481531719057,
+      &quot;max&quot;: 13.515317624554118,
+      &quot;std&quot;: 1.5893473683242092
+    },
+    &quot;equal_Y_chromaticity_abs_hue_shift&quot;: {
+      &quot;n&quot;: 0
+    },
+    &quot;equal_Y_chroma_ratio&quot;: {
+      &quot;n&quot;: 0
+    },
+    &quot;color_note&quot;: &quot;equal-Y Lab is an analysis coordinate only, not a re-render or reference target&quot;
+  },
+  &quot;nonfloor&quot;: {
+    &quot;input_linear_Y&quot;: {
+      &quot;n&quot;: 395668,
+      &quot;p01_p50_p99&quot;: [
+        0.002484707301992629,
+        0.009284010313923634,
+        0.45891909336456493
+      ],
+      &quot;min&quot;: 4.699474742412567e-05,
+      &quot;max&quot;: 0.9999999045394896,
+      &quot;std&quot;: 0.09372887274926543
+    },
+    &quot;output_linear_Y&quot;: {
+      &quot;n&quot;: 395668,
+      &quot;p01_p50_p99&quot;: [
+        0.0029179470808022093,
+        0.009920289480348909,
+        0.3630717399199297
+      ],
+      &quot;min&quot;: 0.0028750130809011634,
+      &quot;max&quot;: 1.121954233769512,
+      &quot;std&quot;: 0.09267065533943404
+    },
+    &quot;display16_deltaL_vs_digital&quot;: {
+      &quot;n&quot;: 395668,
+      &quot;p01_p50_p99&quot;: [
+        -0.8465514031373531,
+        0.25629878414727614,
+        3.341081260502429
+      ],
+      &quot;min&quot;: -27.778327683433886,
+      &quot;max&quot;: 22.885691763616563,
+      &quot;std&quot;: 1.3224411966601957
+    },
+    &quot;display16_delta_ab_distance_vs_digital&quot;: {
+      &quot;n&quot;: 395668,
+      &quot;p01_p50_p99&quot;: [
+        0.33162531530675293,
+        6.418297471014314,
+        21.204643814038892
+      ],
+      &quot;min&quot;: 0.009268279154382683,
+      &quot;max&quot;: 61.32944776200316,
+      &quot;std&quot;: 4.4478758593747
+    },
+    &quot;display16_deltaE00_vs_digital&quot;: {
+      &quot;n&quot;: 395668,
+      &quot;p01_p50_p99&quot;: [
+        0.42998688786202993,
+        6.48402206404359,
+        14.418926942878507
+      ],
+      &quot;min&quot;: 0.036364461128757145,
+      &quot;max&quot;: 29.500809542023205,
+      &quot;std&quot;: 3.376213169712105
+    },
+    &quot;equal_Y_chromaticity_abs_hue_shift&quot;: {
+      &quot;n&quot;: 72320,
+      &quot;p01_p50_p99&quot;: [
+        0.17494998994081615,
+        14.101394997137433,
+        40.18446454939659
+      ],
+      &quot;min&quot;: 6.184948585996608e-05,
+      &quot;max&quot;: 68.98436460002327,
+      &quot;std&quot;: 11.391747317163535
+    },
+    &quot;equal_Y_chroma_ratio&quot;: {
+      &quot;n&quot;: 72320,
+      &quot;p01_p50_p99&quot;: [
+        0.015748659138228666,
+        0.06328111324858769,
+        0.8617200088507998
+      ],
+      &quot;min&quot;: 0.00375560277055975,
+      &quot;max&quot;: 1.0004993576085417,
+      &quot;std&quot;: 0.23424270303168682
+    },
+    &quot;color_note&quot;: &quot;equal-Y Lab is an analysis coordinate only, not a re-render or reference target&quot;
+  },
+  &quot;horizontal_floor_neighbor_contrast&quot;: {
+    &quot;pairs&quot;: 308905,
+    &quot;input_abs_EV_step&quot;: {
+      &quot;n&quot;: 308905,
+      &quot;p01_p50_p99&quot;: [
+        0.0,
+        0.34755429741213817,
+        10.435743561651455
+      ],
+      &quot;min&quot;: 0.0,
+      &quot;max&quot;: 31.593940213016587,
+      &quot;std&quot;: 2.0447383341530445
+    },
+    &quot;output_abs_EV_step&quot;: {
+      &quot;n&quot;: 308905,
+      &quot;p01_p50_p99&quot;: [
+        0.0,
+        1.7015732822756036e-08,
+        8.356268914155866e-08
+      ],
+      &quot;min&quot;: 0.0,
+      &quot;max&quot;: 1.1267910693391059e-07,
+      &quot;std&quot;: 2.2533971864508232e-08
+    }
+  }
+}</pre></details><h2>RGB8 stratification: original gate retained</h2><pre>{
+  &quot;phoenix_i&quot;: {
+    &quot;original_gate&quot;: {
+      &quot;threshold_degrees&quot;: 15,
+      &quot;minimum_chroma_each_endpoint&quot;: 2,
+      &quot;eligible_pairs&quot;: 268,
+      &quot;failed_pairs&quot;: 10,
+      &quot;max_hue_step_RGB8&quot;: 23.618046996960402
+    },
+    &quot;quantizer&quot;: {
+      &quot;original_PNG_IHDR_bit_depth&quot;: 16,
+      &quot;PNG_Pillow_readback_equals_RGB16_high_byte&quot;: true,
+      &quot;PNG_Pillow_readback_equals_nearest_8bit&quot;: false,
+      &quot;max_error_normalized_sRGB&quot;: 0.0037994964522773955,
+      &quot;RGB8_vs_RGB16_deltaE00&quot;: {
+        &quot;n&quot;: 388,
+        &quot;p01_p50_p99&quot;: [
+          0.06043073197776962,
+          0.2512318036698338,
+          0.7875144304477116
+        ],
+        &quot;min&quot;: 0.0375581707257344,
+        &quot;max&quot;: 0.9455752211502304,
+        &quot;std&quot;: 0.16675759211639649
+      },
+      &quot;note&quot;: &quot;tests the actual historical PIL RGB8 readback, not an assumed rounding rule&quot;
+    },
+    &quot;stratified_pair_reports&quot;: {
+      &quot;Lstar16&quot;: [
+        {
+          &quot;range&quot;: [
+            0,
+            5
+          ],
+          &quot;all_pairs&quot;: 32,
+          &quot;eligible_pairs_original_gate&quot;: 0,
+          &quot;failed_pairs_original_gate&quot;: 0,
+          &quot;maximum_RGB8_hue_step_eligible&quot;: null,
+          &quot;maximum_RGB16_hue_step_same_pairs&quot;: null,
+          &quot;hue_step_quantization_error&quot;: {
+            &quot;n&quot;: 0
+          }
+        },
+        {
+          &quot;range&quot;: [
+            5,
+            10
+          ],
+          &quot;all_pairs&quot;: 41,
+          &quot;eligible_pairs_original_gate&quot;: 0,
+          &quot;failed_pairs_original_gate&quot;: 0,
+          &quot;maximum_RGB8_hue_step_eligible&quot;: null,
+          &quot;maximum_RGB16_hue_step_same_pairs&quot;: null,
+          &quot;hue_step_quantization_error&quot;: {
+            &quot;n&quot;: 0
+          }
+        },
+        {
+          &quot;range&quot;: [
+            10,
+            25
+          ],
+          &quot;all_pairs&quot;: 89,
+          &quot;eligible_pairs_original_gate&quot;: 56,
+          &quot;failed_pairs_original_gate&quot;: 10,
+          &quot;maximum_RGB8_hue_step_eligible&quot;: 23.618046996960402,
+          &quot;maximum_RGB16_hue_step_same_pairs&quot;: 3.8563484046377994,
+          &quot;hue_step_quantization_error&quot;: {
+            &quot;n&quot;: 56,
+            &quot;p01_p50_p99&quot;: [
+              0.21275762435070078,
+              3.3111616000125537,
+              20.15687313979729
+            ],
+            &quot;min&quot;: 0.20331389582651127,
+            &quot;max&quot;: 20.21381647520073,
+            &quot;std&quot;: 5.646798035787205
+          }
+        },
+        {
+          &quot;range&quot;: [
+            25,
+            50
+          ],
+          &quot;all_pairs&quot;: 74,
+          &quot;eligible_pairs_original_gate&quot;: 74,
+          &quot;failed_pairs_original_gate&quot;: 0,
+          &quot;maximum_RGB8_hue_step_eligible&quot;: 5.0173971961028485,
+          &quot;maximum_RGB16_hue_step_same_pairs&quot;: 1.1544181628922274,
+          &quot;hue_step_quantization_error&quot;: {
+            &quot;n&quot;: 74,
+            &quot;p01_p50_p99&quot;: [
+              0.011040407815332002,
+              0.41859196519854436,
+              3.999223310464172
+            ],
+            &quot;min&quot;: 0.005994629361055104,
+            &quot;max&quot;: 4.545829872941823,
+            &quot;std&quot;: 0.9106097307705538
+          }
+        },
+        {
+          &quot;range&quot;: [
+            50,
+            101
+          ],
+          &quot;all_pairs&quot;: 148,
+          &quot;eligible_pairs_original_gate&quot;: 138,
+          &quot;failed_pairs_original_gate&quot;: 0,
+          &quot;maximum_RGB8_hue_step_eligible&quot;: 11.602302136579993,
+          &quot;maximum_RGB16_hue_step_same_pairs&quot;: 3.0730143768678886,
+          &quot;hue_step_quantization_error&quot;: {
+            &quot;n&quot;: 138,
+            &quot;p01_p50_p99&quot;: [
+              0.0011495621261875047,
+              0.5002731187361746,
+              6.657842299715382
+            ],
+            &quot;min&quot;: 0.00016066309186157923,
+            &quot;max&quot;: 9.131458848789464,
+            &quot;std&quot;: 1.372393385877266
+          }
+        }
+      ],
+      &quot;Cstar16&quot;: [
+        {
+          &quot;range&quot;: [
+            0,
+            2
+          ],
+          &quot;all_pairs&quot;: 121,
+          &quot;eligible_pairs_original_gate&quot;: 5,
+          &quot;failed_pairs_original_gate&quot;: 2,
+          &quot;maximum_RGB8_hue_step_eligible&quot;: 23.587518352337383,
+          &quot;maximum_RGB16_hue_step_same_pairs&quot;: 3.8563484046377994,
+          &quot;hue_step_quantization_error&quot;: {
+            &quot;n&quot;: 5,
+            &quot;p01_p50_p99&quot;: [
+              3.3040283816745646,
+              3.572920133606601,
+              20.095118610487408
+            ],
+            &quot;min&quot;: 3.3034081018190875,
+            &quot;max&quot;: 20.11028313810357,
+            &quot;std&quot;: 8.095700321565197
+          }
+        },
+        {
+          &quot;range&quot;: [
+            2,
+            5
+          ],
+          &quot;all_pairs&quot;: 50,
+          &quot;eligible_pairs_original_gate&quot;: 50,
+          &quot;failed_pairs_original_gate&quot;: 8,
+          &quot;maximum_RGB8_hue_step_eligible&quot;: 23.618046996960402,
+          &quot;maximum_RGB16_hue_step_same_pairs&quot;: 3.518600624531331,
+          &quot;hue_step_quantization_error&quot;: {
+            &quot;n&quot;: 50,
+            &quot;p01_p50_p99&quot;: [
+              0.2907526020137922,
+              3.3137527180463024,
+              18.240240416018107
+            ],
+            &quot;min&quot;: 0.20331389582651127,
+            &quot;max&quot;: 20.21381647520073,
+            &quot;std&quot;: 5.071324390094447
+          }
+        },
+        {
+          &quot;range&quot;: [
+            5,
+            10
+          ],
+          &quot;all_pairs&quot;: 33,
+          &quot;eligible_pairs_original_gate&quot;: 33,
+          &quot;failed_pairs_original_gate&quot;: 0,
+          &quot;maximum_RGB8_hue_step_eligible&quot;: 8.09895372715954,
+          &quot;maximum_RGB16_hue_step_same_pairs&quot;: 3.04477226753761,
+          &quot;hue_step_quantization_error&quot;: {
+            &quot;n&quot;: 33,
+            &quot;p01_p50_p99&quot;: [
+              0.01867935063600271,
+              1.0241317167731836,
+              6.221245689074117
+            ],
+            &quot;min&quot;: 0.012518920651018561,
+            &quot;max&quot;: 6.507175661067208,
+            &quot;std&quot;: 1.8137088869592766
+          }
+        },
+        {
+          &quot;range&quot;: [
+            10,
+            20
+          ],
+          &quot;all_pairs&quot;: 59,
+          &quot;eligible_pairs_original_gate&quot;: 59,
+          &quot;failed_pairs_original_gate&quot;: 0,
+          &quot;maximum_RGB8_hue_step_eligible&quot;: 4.620806658146648,
+          &quot;maximum_RGB16_hue_step_same_pairs&quot;: 0.8406441845519907,
+          &quot;hue_step_quantization_error&quot;: {
+            &quot;n&quot;: 59,
+            &quot;p01_p50_p99&quot;: [
+              0.010003604023357298,
+              0.3694802981135581,
+              3.6586354519429407
+            ],
+            &quot;min&quot;: 0.005994629361055104,
+            &quot;max&quot;: 4.310007957543405,
+            &quot;std&quot;: 0.8703205385034333
+          }
+        },
+        {
+          &quot;range&quot;: [
+            20,
+            1000000.0
+          ],
+          &quot;all_pairs&quot;: 121,
+          &quot;eligible_pairs_original_gate&quot;: 121,
+          &quot;failed_pairs_original_gate&quot;: 0,
+          &quot;maximum_RGB8_hue_step_eligible&quot;: 2.588984078507565,
+          &quot;maximum_RGB16_hue_step_same_pairs&quot;: 1.1759047952653532,
+          &quot;hue_step_quantization_error&quot;: {
+            &quot;n&quot;: 121,
+            &quot;p01_p50_p99&quot;: [
+              0.0008351071579852487,
+              0.4351875266574723,
+              1.394183904443025
+            ],
+            &quot;min&quot;: 0.00016066309186157923,
+            &quot;max&quot;: 1.5127824750110506,
+            &quot;std&quot;: 0.31489306002505896
+          }
+        }
+      ],
+      &quot;quantization_deltaE00&quot;: [
+        {
+          &quot;range&quot;: [
+            0,
+            0.25
+          ],
+          &quot;all_pairs&quot;: 130,
+          &quot;eligible_pairs_original_gate&quot;: 110,
+          &quot;failed_pairs_original_gate&quot;: 0,
+          &quot;maximum_RGB8_hue_step_eligible&quot;: 6.902355523001802,
+          &quot;maximum_RGB16_hue_step_same_pairs&quot;: 3.0730143768678886,
+          &quot;hue_step_quantization_error&quot;: {
+            &quot;n&quot;: 110,
+            &quot;p01_p50_p99&quot;: [
+              0.0006316362962073187,
+              0.30102083711615535,
+              2.4923833992127107
+            ],
+            &quot;min&quot;: 0.00016066309186157923,
+            &quot;max&quot;: 4.2415407611578075,
+            &quot;std&quot;: 0.5345369670992387
+          }
+        },
+        {
+          &quot;range&quot;: [
+            0.25,
+            0.5
+          ],
+          &quot;all_pairs&quot;: 188,
+          &quot;eligible_pairs_original_gate&quot;: 126,
+          &quot;failed_pairs_original_gate&quot;: 0,
+          &quot;maximum_RGB8_hue_step_eligible&quot;: 11.602302136579993,
+          &quot;maximum_RGB16_hue_step_same_pairs&quot;: 3.4665414393658125,
+          &quot;hue_step_quantization_error&quot;: {
+            &quot;n&quot;: 126,
+            &quot;p01_p50_p99&quot;: [
+              0.022010653608205644,
+              0.6636132377366692,
+              6.675720030949755
+            ],
+            &quot;min&quot;: 0.005994629361055104,
+            &quot;max&quot;: 9.131458848789464,
+            &quot;std&quot;: 1.5120523816864624
+          }
+        },
+        {
+          &quot;range&quot;: [
+            0.5,
+            1
+          ],
+          &quot;all_pairs&quot;: 66,
+          &quot;eligible_pairs_original_gate&quot;: 32,
+          &quot;failed_pairs_original_gate&quot;: 10,
+          &quot;maximum_RGB8_hue_step_eligible&quot;: 23.618046996960402,
+          &quot;maximum_RGB16_hue_step_same_pairs&quot;: 3.8563484046377994,
+          &quot;hue_step_quantization_error&quot;: {
+            &quot;n&quot;: 32,
+            &quot;p01_p50_p99&quot;: [
+              0.7784751419044198,
+              7.3876084485142,
+              20.18172114070061
+            ],
+            &quot;min&quot;: 0.6681076952242506,
+            &quot;max&quot;: 20.21381647520073,
+            &quot;std&quot;: 5.793804475334037
+          }
+        },
+        {
+          &quot;range&quot;: [
+            1,
+            1000000.0
+          ],
+          &quot;all_pairs&quot;: 0,
+          &quot;eligible_pairs_original_gate&quot;: 0,
+          &quot;failed_pairs_original_gate&quot;: 0,
+          &quot;maximum_RGB8_hue_step_eligible&quot;: null,
+          &quot;maximum_RGB16_hue_step_same_pairs&quot;: null,
+          &quot;hue_step_quantization_error&quot;: {
+            &quot;n&quot;: 0
+          }
+        }
+      ]
+    },
+    &quot;C8_eligibility_vs_C16&quot;: {
+      &quot;RGB8_only_pairs&quot;: 5,
+      &quot;RGB16_only_pairs&quot;: 0
+    }
+  },
+  &quot;phoenix_ii&quot;: {
+    &quot;original_gate&quot;: {
+      &quot;threshold_degrees&quot;: 15,
+      &quot;minimum_chroma_each_endpoint&quot;: 2,
+      &quot;eligible_pairs&quot;: 254,
+      &quot;failed_pairs&quot;: 2,
+      &quot;max_hue_step_RGB8&quot;: 16.10275241490217
+    },
+    &quot;quantizer&quot;: {
+      &quot;original_PNG_IHDR_bit_depth&quot;: 16,
+      &quot;PNG_Pillow_readback_equals_RGB16_high_byte&quot;: true,
+      &quot;PNG_Pillow_readback_equals_nearest_8bit&quot;: false,
+      &quot;max_error_normalized_sRGB&quot;: 0.003616388189517053,
+      &quot;RGB8_vs_RGB16_deltaE00&quot;: {
+        &quot;n&quot;: 388,
+        &quot;p01_p50_p99&quot;: [
+          0.024844646790892308,
+          0.22723409936828423,
+          0.6907717971516943
+        ],
+        &quot;min&quot;: 0.009858516543561931,
+        &quot;max&quot;: 0.9072692492205475,
+        &quot;std&quot;: 0.15531088118698447
+      },
+      &quot;note&quot;: &quot;tests the actual historical PIL RGB8 readback, not an assumed rounding rule&quot;
+    },
+    &quot;stratified_pair_reports&quot;: {
+      &quot;Lstar16&quot;: [
+        {
+          &quot;range&quot;: [
+            0,
+            5
+          ],
+          &quot;all_pairs&quot;: 63,
+          &quot;eligible_pairs_original_gate&quot;: 0,
+          &quot;failed_pairs_original_gate&quot;: 0,
+          &quot;maximum_RGB8_hue_step_eligible&quot;: null,
+          &quot;maximum_RGB16_hue_step_same_pairs&quot;: null,
+          &quot;hue_step_quantization_error&quot;: {
+            &quot;n&quot;: 0
+          }
+        },
+        {
+          &quot;range&quot;: [
+            5,
+            10
+          ],
+          &quot;all_pairs&quot;: 27,
+          &quot;eligible_pairs_original_gate&quot;: 0,
+          &quot;failed_pairs_original_gate&quot;: 0,
+          &quot;maximum_RGB8_hue_step_eligible&quot;: null,
+          &quot;maximum_RGB16_hue_step_same_pairs&quot;: null,
+          &quot;hue_step_quantization_error&quot;: {
+            &quot;n&quot;: 0
+          }
+        },
+        {
+          &quot;range&quot;: [
+            10,
+            25
+          ],
+          &quot;all_pairs&quot;: 68,
+          &quot;eligible_pairs_original_gate&quot;: 28,
+          &quot;failed_pairs_original_gate&quot;: 1,
+          &quot;maximum_RGB8_hue_step_eligible&quot;: 15.732772938741022,
+          &quot;maximum_RGB16_hue_step_same_pairs&quot;: 1.6462060365293496,
+          &quot;hue_step_quantization_error&quot;: {
+            &quot;n&quot;: 28,
+            &quot;p01_p50_p99&quot;: [
+              0.15323089930617073,
+              1.3487516318894137,
+              13.497248436044488
+            ],
+            &quot;min&quot;: 0.13451371267120749,
+            &quot;max&quot;: 14.107035404484748,
+            &quot;std&quot;: 3.972677004781929
+          }
+        },
+        {
+          &quot;range&quot;: [
+            25,
+            50
+          ],
+          &quot;all_pairs&quot;: 81,
+          &quot;eligible_pairs_original_gate&quot;: 81,
+          &quot;failed_pairs_original_gate&quot;: 0,
+          &quot;maximum_RGB8_hue_step_eligible&quot;: 4.640058844185745,
+          &quot;maximum_RGB16_hue_step_same_pairs&quot;: 1.04319236148703,
+          &quot;hue_step_quantization_error&quot;: {
+            &quot;n&quot;: 81,
+            &quot;p01_p50_p99&quot;: [
+              0.03354772180902046,
+              1.0844757988154186,
+              3.8409151277773335
+            ],
+            &quot;min&quot;: 0.024309521475231577,
+            &quot;max&quot;: 3.8930292749409716,
+            &quot;std&quot;: 0.8886405553483921
+          }
+        },
+        {
+          &quot;range&quot;: [
+            50,
+            101
+          ],
+          &quot;all_pairs&quot;: 145,
+          &quot;eligible_pairs_original_gate&quot;: 145,
+          &quot;failed_pairs_original_gate&quot;: 1,
+          &quot;maximum_RGB8_hue_step_eligible&quot;: 16.10275241490217,
+          &quot;maximum_RGB16_hue_step_same_pairs&quot;: 5.938761326897804,
+          &quot;hue_step_quantization_error&quot;: {
+            &quot;n&quot;: 145,
+            &quot;p01_p50_p99&quot;: [
+              0.0383767596015025,
+              1.2214826847202573,
+              7.439170038712681
+            ],
+            &quot;min&quot;: 0.02469064402205845,
+            &quot;max&quot;: 14.671670498756555,
+            &quot;std&quot;: 1.630385380400957
+          }
+        }
+      ],
+      &quot;Cstar16&quot;: [
+        {
+          &quot;range&quot;: [
+            0,
+            2
+          ],
+          &quot;all_pairs&quot;: 128,
+          &quot;eligible_pairs_original_gate&quot;: 0,
+          &quot;failed_pairs_original_gate&quot;: 0,
+          &quot;maximum_RGB8_hue_step_eligible&quot;: null,
+          &quot;maximum_RGB16_hue_step_same_pairs&quot;: null,
+          &quot;hue_step_quantization_error&quot;: {
+            &quot;n&quot;: 0
+          }
+        },
+        {
+          &quot;range&quot;: [
+            2,
+            5
+          ],
+          &quot;all_pairs&quot;: 46,
+          &quot;eligible_pairs_original_gate&quot;: 44,
+          &quot;failed_pairs_original_gate&quot;: 2,
+          &quot;maximum_RGB8_hue_step_eligible&quot;: 16.10275241490217,
+          &quot;maximum_RGB16_hue_step_same_pairs&quot;: 5.938761326897804,
+          &quot;hue_step_quantization_error&quot;: {
+            &quot;n&quot;: 44,
+            &quot;p01_p50_p99&quot;: [
+              0.09703077255554916,
+              1.4991446287214956,
+              14.428877408219678
+            ],
+            &quot;min&quot;: 0.06875416860864902,
+            &quot;max&quot;: 14.671670498756555,
+            &quot;std&quot;: 3.861653945578947
+          }
+        },
+        {
+          &quot;range&quot;: [
+            5,
+            10
+          ],
+          &quot;all_pairs&quot;: 76,
+          &quot;eligible_pairs_original_gate&quot;: 76,
+          &quot;failed_pairs_original_gate&quot;: 0,
+          &quot;maximum_RGB8_hue_step_eligible&quot;: 5.742027205476319,
+          &quot;maximum_RGB16_hue_step_same_pairs&quot;: 5.396800731774903,
+          &quot;hue_step_quantization_error&quot;: {
+            &quot;n&quot;: 76,
+            &quot;p01_p50_p99&quot;: [
+              0.03756598169108827,
+              1.552285997726642,
+              4.527033914646061
+            ],
+            &quot;min&quot;: 0.02469064402205845,
+            &quot;max&quot;: 4.91184026408348,
+            &quot;std&quot;: 1.0816998393345303
+          }
+        },
+        {
+          &quot;range&quot;: [
+            10,
+            20
+          ],
+          &quot;all_pairs&quot;: 134,
+          &quot;eligible_pairs_original_gate&quot;: 134,
+          &quot;failed_pairs_original_gate&quot;: 0,
+          &quot;maximum_RGB8_hue_step_eligible&quot;: 4.640058844185745,
+          &quot;maximum_RGB16_hue_step_same_pairs&quot;: 1.04319236148703,
+          &quot;hue_step_quantization_error&quot;: {
+            &quot;n&quot;: 134,
+            &quot;p01_p50_p99&quot;: [
+              0.03571283010939027,
+              1.0024926323877708,
+              3.6085765576940285
+            ],
+            &quot;min&quot;: 0.024309521475231577,
+            &quot;max&quot;: 3.8930292749409716,
+            &quot;std&quot;: 0.7937032646627169
+          }
+        },
+        {
+          &quot;range&quot;: [
+            20,
+            1000000.0
+          ],
+          &quot;all_pairs&quot;: 0,
+          &quot;eligible_pairs_original_gate&quot;: 0,
+          &quot;failed_pairs_original_gate&quot;: 0,
+          &quot;maximum_RGB8_hue_step_eligible&quot;: null,
+          &quot;maximum_RGB16_hue_step_same_pairs&quot;: null,
+          &quot;hue_step_quantization_error&quot;: {
+            &quot;n&quot;: 0
+          }
+        }
+      ],
+      &quot;quantization_deltaE00&quot;: [
+        {
+          &quot;range&quot;: [
+            0,
+            0.25
+          ],
+          &quot;all_pairs&quot;: 132,
+          &quot;eligible_pairs_original_gate&quot;: 54,
+          &quot;failed_pairs_original_gate&quot;: 0,
+          &quot;maximum_RGB8_hue_step_eligible&quot;: 6.453295057316097,
+          &quot;maximum_RGB16_hue_step_same_pairs&quot;: 5.859349810786199,
+          &quot;hue_step_quantization_error&quot;: {
+            &quot;n&quot;: 54,
+            &quot;p01_p50_p99&quot;: [
+              0.04235235085593132,
+              0.7161907791546582,
+              3.595628794692592
+            ],
+            &quot;min&quot;: 0.03564168714160587,
+            &quot;max&quot;: 3.602847907336752,
+            &quot;std&quot;: 0.8021915236465205
+          }
+        },
+        {
+          &quot;range&quot;: [
+            0.25,
+            0.5
+          ],
+          &quot;all_pairs&quot;: 197,
+          &quot;eligible_pairs_original_gate&quot;: 162,
+          &quot;failed_pairs_original_gate&quot;: 0,
+          &quot;maximum_RGB8_hue_step_eligible&quot;: 13.2403996504421,
+          &quot;maximum_RGB16_hue_step_same_pairs&quot;: 5.938761326897804,
+          &quot;hue_step_quantization_error&quot;: {
+            &quot;n&quot;: 162,
+            &quot;p01_p50_p99&quot;: [
+              0.03150228702300808,
+              1.2018910273640984,
+              9.029230322190918
+            ],
+            &quot;min&quot;: 0.024309521475231577,
+            &quot;max&quot;: 11.848565151002305,
+            &quot;std&quot;: 1.6816199719044418
+          }
+        },
+        {
+          &quot;range&quot;: [
+            0.5,
+            1
+          ],
+          &quot;all_pairs&quot;: 55,
+          &quot;eligible_pairs_original_gate&quot;: 38,
+          &quot;failed_pairs_original_gate&quot;: 2,
+          &quot;maximum_RGB8_hue_step_eligible&quot;: 16.10275241490217,
+          &quot;maximum_RGB16_hue_step_same_pairs&quot;: 5.2765465588987865,
+          &quot;hue_step_quantization_error&quot;: {
+            &quot;n&quot;: 38,
+            &quot;p01_p50_p99&quot;: [
+              0.294844786378076,
+              1.7154203833278672,
+              14.462755513875988
+            ],
+            &quot;min&quot;: 0.25594141058033415,
+            &quot;max&quot;: 14.671670498756555,
+            &quot;std&quot;: 3.308634378611498
+          }
+        },
+        {
+          &quot;range&quot;: [
+            1,
+            1000000.0
+          ],
+          &quot;all_pairs&quot;: 0,
+          &quot;eligible_pairs_original_gate&quot;: 0,
+          &quot;failed_pairs_original_gate&quot;: 0,
+          &quot;maximum_RGB8_hue_step_eligible&quot;: null,
+          &quot;maximum_RGB16_hue_step_same_pairs&quot;: null,
+          &quot;hue_step_quantization_error&quot;: {
+            &quot;n&quot;: 0
+          }
+        }
+      ]
+    },
+    &quot;C8_eligibility_vs_C16&quot;: {
+      &quot;RGB8_only_pairs&quot;: 0,
+      &quot;RGB16_only_pairs&quot;: 2
+    }
+  }
+}</pre><p><a href="RGB8_failed_pairs.csv">Every failed pair CSV</a> · <a href="RGB8_failed_pairs.json">Exact code values</a> · <a href="diagnostics.json">All diagnostics and provenance</a></p>

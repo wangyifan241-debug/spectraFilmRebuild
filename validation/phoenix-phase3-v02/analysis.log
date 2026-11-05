@@ -1,0 +1,22 @@
+REJECTED_ENGINEERING
+Checks: 54 passed: 52
+[
+  {
+    "name": "phoenix_i skin hue RGB8_sRGB_to_Lab_D65",
+    "passed": false,
+    "details": {
+      "max_adjacent_hue_degrees": 23.618046996960402,
+      "eligible_pairs": 268,
+      "minimum_chroma": 2
+    }
+  },
+  {
+    "name": "phoenix_ii skin hue RGB8_sRGB_to_Lab_D65",
+    "passed": false,
+    "details": {
+      "max_adjacent_hue_degrees": 16.10275241490217,
+      "eligible_pairs": 254,
+      "minimum_chroma": 2
+    }
+  }
+]

@@ -1,0 +1,35 @@
+{
+  "candidate": "BoundedLuminanceToneV02",
+  "render_commands": [
+    [
+      "spk_phoenix_research_v02.exe",
+      "--render",
+      "build/phoenix-research-v02-ascii/app/resources",
+      "synthetic",
+      "build/phoenix-phase3-v02-run1/synthetic"
+    ],
+    [
+      "spk_phoenix_research_v02.exe",
+      "--render",
+      "build/phoenix-research-v02-ascii/app/resources",
+      "C:/Users/Strickland/Downloads/DSC02443.ARW",
+      "build/phoenix-phase3-v02-run1/raw"
+    ]
+  ],
+  "actual_command_path_note": "Commands used the C:/Users/Strickland/SpektraLab-work ASCII junction for source/build paths.",
+  "exit_codes": {
+    "initial_build_receipt": 1,
+    "final_build": 0,
+    "synthetic_render": 0,
+    "raw_render": 0,
+    "engineering_analysis": 2
+  },
+  "analysis_command": [
+    "python",
+    "windows_UI/phoenix_research_v02/analyze.py",
+    "build/phoenix-phase3-v02-run1"
+  ],
+  "executable_sha256": "c6fe81916a9b57f7d0fea6a46e914ea9a74518ade5b6db803d7671b2ac4a83fd",
+  "analysis_source_sha256": "3547605c2778fcee24f82c80c698572a88a9cf8958ea6f33dca010bc0d531844",
+  "result": "REJECTED_ENGINEERING; RGB8 hue gates retained; no preset promotion; stop for visual review"
+}

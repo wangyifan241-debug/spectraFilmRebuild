@@ -1,0 +1,151 @@
+Numerical checks 58 passed 50
+[
+  {
+    "name": "synthetic phoenix_i baked XYZ/ProPhoto roundtrip precision",
+    "passed": false,
+    "details": {
+      "roundtrip_max_error": 9.140000000007475e-05,
+      "white_XYZ_from_fit": [
+        0.964196861248921,
+        0.9999999999999994,
+        0.8251225920040427
+      ],
+      "flat_transmission_ProPhoto": [
+        1.0000452107896414,
+        1.0000134024999197,
+        1.000296118286501
+      ],
+      "tone_Y_vs_baked_Y_row_max_error": 4.0200000000045755e-05
+    }
+  },
+  {
+    "name": "synthetic phoenix_ii baked XYZ/ProPhoto roundtrip precision",
+    "passed": false,
+    "details": {
+      "roundtrip_max_error": 9.140000000007475e-05,
+      "white_XYZ_from_fit": [
+        0.964196861248921,
+        0.9999999999999994,
+        0.8251225920040427
+      ],
+      "flat_transmission_ProPhoto": [
+        1.0000452107896414,
+        1.0000134024999197,
+        1.000296118286501
+      ],
+      "tone_Y_vs_baked_Y_row_max_error": 4.0200000000045755e-05
+    }
+  },
+  {
+    "name": "synthetic-local phoenix_i baked XYZ/ProPhoto roundtrip precision",
+    "passed": false,
+    "details": {
+      "roundtrip_max_error": 9.140000000007475e-05,
+      "white_XYZ_from_fit": [
+        0.964196861248921,
+        0.9999999999999994,
+        0.8251225920040427
+      ],
+      "flat_transmission_ProPhoto": [
+        1.0000452107896414,
+        1.0000134024999197,
+        1.000296118286501
+      ],
+      "tone_Y_vs_baked_Y_row_max_error": 4.0200000000045755e-05
+    }
+  },
+  {
+    "name": "synthetic-local phoenix_ii baked XYZ/ProPhoto roundtrip precision",
+    "passed": false,
+    "details": {
+      "roundtrip_max_error": 9.140000000007475e-05,
+      "white_XYZ_from_fit": [
+        0.964196861248921,
+        0.9999999999999994,
+        0.8251225920040427
+      ],
+      "flat_transmission_ProPhoto": [
+        1.0000452107896414,
+        1.0000134024999197,
+        1.000296118286501
+      ],
+      "tone_Y_vs_baked_Y_row_max_error": 4.0200000000045755e-05
+    }
+  },
+  {
+    "name": "DSC02443 phoenix_i baked XYZ/ProPhoto roundtrip precision",
+    "passed": false,
+    "details": {
+      "roundtrip_max_error": 9.140000000007475e-05,
+      "white_XYZ_from_fit": [
+        0.964196861248921,
+        0.9999999999999994,
+        0.8251225920040427
+      ],
+      "flat_transmission_ProPhoto": [
+        1.0000452107896414,
+        1.0000134024999197,
+        1.000296118286501
+      ],
+      "tone_Y_vs_baked_Y_row_max_error": 4.0200000000045755e-05
+    }
+  },
+  {
+    "name": "DSC02443 phoenix_ii baked XYZ/ProPhoto roundtrip precision",
+    "passed": false,
+    "details": {
+      "roundtrip_max_error": 9.140000000007475e-05,
+      "white_XYZ_from_fit": [
+        0.964196861248921,
+        0.9999999999999994,
+        0.8251225920040427
+      ],
+      "flat_transmission_ProPhoto": [
+        1.0000452107896414,
+        1.0000134024999197,
+        1.000296118286501
+      ],
+      "tone_Y_vs_baked_Y_row_max_error": 4.0200000000045755e-05
+    }
+  },
+  {
+    "name": "DSC02337 phoenix_i baked XYZ/ProPhoto roundtrip precision",
+    "passed": false,
+    "details": {
+      "roundtrip_max_error": 9.140000000007475e-05,
+      "white_XYZ_from_fit": [
+        0.964196861248921,
+        0.9999999999999994,
+        0.8251225920040427
+      ],
+      "flat_transmission_ProPhoto": [
+        1.0000452107896414,
+        1.0000134024999197,
+        1.000296118286501
+      ],
+      "tone_Y_vs_baked_Y_row_max_error": 4.0200000000045755e-05
+    }
+  },
+  {
+    "name": "DSC02337 phoenix_ii baked XYZ/ProPhoto roundtrip precision",
+    "passed": false,
+    "details": {
+      "roundtrip_max_error": 9.140000000007475e-05,
+      "white_XYZ_from_fit": [
+        0.964196861248921,
+        0.9999999999999994,
+        0.8251225920040427
+      ],
+      "flat_transmission_ProPhoto": [
+        1.0000452107896414,
+        1.0000134024999197,
+        1.000296118286501
+      ],
+      "tone_Y_vs_baked_Y_row_max_error": 4.0200000000045755e-05
+    }
+  }
+]
+DSC02443 phoenix_i {'n': 669624, 'min': 0.0006268002548712308, 'p50': 0.03514643993462824, 'p95': 0.11121357788853296, 'max': 0.13163629060154092} {'n': 669624, 'min': 0.0, 'p50': 0.4853390971944602, 'p95': 1.5056512789360328, 'max': 2.7100700558083757}
+DSC02443 phoenix_ii {'n': 668964, 'min': 9.637856536054177e-06, 'p50': 0.02590676267154005, 'p95': 0.05378640034285666, 'max': 0.05857458742436932} {'n': 668964, 'min': 0.0, 'p50': 0.37349971017881034, 'p95': 0.7117235363400047, 'max': 0.948608658954606}
+DSC02337 phoenix_i {'n': 671647, 'min': 0.0007168730513972278, 'p50': 0.032220720120897564, 'p95': 0.13474192580770167, 'max': 0.13843557162144288} {'n': 671647, 'min': 0.0, 'p50': 0.16981718213037, 'p95': 1.071889466951715, 'max': 1.8161203216717043}
+DSC02337 phoenix_ii {'n': 672876, 'min': 2.053126776065749e-05, 'p50': 0.028742002634434945, 'p95': 0.05884980812680988, 'max': 0.05961371430435566} {'n': 672876, 'min': 0.0, 'p50': 0.10844118946689799, 'p95': 0.7464835415043944, 'max': 0.8632295894464607}

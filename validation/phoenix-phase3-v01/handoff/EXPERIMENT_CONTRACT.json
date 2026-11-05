@@ -1,0 +1,18 @@
+{
+  "project": "SpektraLab Phoenix Film Reconstruction",
+  "phase": "3",
+  "candidate": "DecoupledDeviceToneV01",
+  "status": "specification_only_not_implemented",
+  "legacy_control": "LegacyRound5",
+  "stock_ids_legacy": ["harman_phoenix_200_round5", "harman_phoenix_ii_200_round5"],
+  "proposed_research_ids": ["harman_phoenix_200_research_v01", "harman_phoenix_ii_200_research_v01"],
+  "fixed_input": "DSC02443.ARW",
+  "color_input": "linear ProPhoto RGB, as-shot WB; identical for control and candidate",
+  "controls": {"exposure_ev": 0, "grain": false, "halation": false, "glare": false, "paper": "scan-only explicitly labelled", "display_shoulder": "identical to Round5"},
+  "neutral_sweep": {"base": 0.184, "ev_from": -6, "ev_to": 6, "ev_step": 0.125},
+  "mandatory_checks": ["shader_signal_domain", "device_heldout_spectral", "legacy_bit_identical", "neutral_chromatic_drift", "monotonic_luminance", "finite_values", "continuity", "linear_headroom", "display_gamut", "skin_consistency", "image_provenance"],
+  "render_deliverables": ["digital_baseline.png", "round5_phoenix_i.png", "round5_phoenix_ii.png", "research_phoenix_i.png", "research_phoenix_ii.png", "delta_and_side_by_side.html", "metrics_and_settings.json"],
+  "windows_exe": "conditional_on_engineering_gates",
+  "policy": "one_candidate_then_stop_for_user_visual_review",
+  "no_claims": ["film_color_accuracy", "real_film_skin_fit", "dE_increase_implies_accuracy"]
+}

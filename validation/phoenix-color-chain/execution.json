@@ -1,0 +1,33 @@
+{
+  "source_parent_head": "f7d851b8dac5b7fe544526383111679b9a5acdc3",
+  "classification": "diagnostics only; no new model or preset",
+  "initial_integral_executable_sha256": "2cdb85d64199715f91334fec0344223a9956e525ba73af51f2f4c20df960af00",
+  "initial_integral_executable_preserved": "build/phoenix-color-chain-run1/spk_color_chain_initial.exe",
+  "layout_executable_sha256": "07afd0f55d7dfd7b2fdaa2a1b82cfc808d7f587f692048a7b179a2666fd5cf98",
+  "layout_executable_preserved": "build/phoenix-color-chain-layout-probe.exe",
+  "final_executable_sha256": "f1c641fe093fb805b8deea3e8ca67d9cc1580f1ef363d004b5e04894b298aec0",
+  "main_runs": [
+    "synthetic",
+    "synthetic-local",
+    "DSC02443.ARW",
+    "DSC02337.ARW"
+  ],
+  "main_render_exit_codes": [
+    0,
+    0,
+    0,
+    0
+  ],
+  "layout_render_exit_code": 0,
+  "final_layout_render_exit_code": 0,
+  "layout_build_receipt": "rejected by before/after source inventory; log retained",
+  "final_scoped_build_exit_code": 0,
+  "final_scoped_inventory": "engine/**, windows_UI/**, license/** and .gitignore; unrelated root personal notes excluded",
+  "observer_final_replay_all_37_float_buffers_exact": true,
+  "analysis_scripts": {
+    "tools\\phoenix-color-chain\\analyze.py": "81137aa460abf1f0932a18dd6278f4a6981365125ef63829b31a366aec9df392",
+    "tools\\phoenix-color-chain\\neutral_layout.py": "476a5cb0690460ba7461a01a7f60bd8f4210d609c9eb042ac76dea91f0221337"
+  },
+  "night_and_endpoints": "not extended or tuned",
+  "result": "no uniquely identified positive-color correction; no candidate promoted; strict matrix precision flags and historical RGB8 failures retained"
+}
