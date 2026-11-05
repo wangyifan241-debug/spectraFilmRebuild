@@ -1,0 +1,31 @@
+{
+  "mode": "frozen v0.2 diagnosis, no new model",
+  "executable_sha256": "c6fe81916a9b57f7d0fea6a46e914ea9a74518ade5b6db803d7671b2ac4a83fd",
+  "source_head": "69c95800db68710f181b81858c7b4634dc628689",
+  "analysis_source_sha256": "840bf08f76fc715c613c43b954320f15b2533450a238ab81edc54d9d1ddcf456",
+  "additional_RAWs": [
+    "C:/Users/Strickland/Downloads/DSC02337.ARW",
+    "C:/Users/Strickland/Downloads/DSC03870.ARW"
+  ],
+  "render_arguments": "<unchanged EXE> --render <unchanged adjacent resources> <RAW> <new output directory>",
+  "additional_render_exit_codes": {
+    "DSC02337": 0,
+    "DSC03870": 0
+  },
+  "original_RAW_and_synthetic": "reuse immutable build/phoenix-phase3-v02-run1, no rerender",
+  "analysis_exit_code": 0,
+  "checks": {
+    "all_three_scenes_same_executable": true,
+    "all_three_device_recipes_equal": true,
+    "all_three_resource_inventories_equal": true,
+    "all_three_EV_zero_and_stochastic_flags_off": true,
+    "historical_v01_v02_artifact_hashes_unchanged": true,
+    "HTML_local_links_exist": true
+  },
+  "note": "As-shot WB policy fixed; each RAW retains its own recorded capture WB. No per-image model/exposure adjustment.",
+  "actual_output_directories": {
+    "DSC02443": "build\\phoenix-phase3-v02-run1\\raw",
+    "DSC02337": "build\\phoenix-v02-diagnostics-run1\\DSC02337",
+    "DSC03870": "build\\phoenix-v02-diagnostics-run1\\DSC03870"
+  }
+}
